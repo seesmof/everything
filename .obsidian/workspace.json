@@ -11,9 +11,11 @@
             "id": "5123e1b0ad4d5fb9",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "logo.png"
+                "file": "University/Year 2 Term 1/Дисципліни.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "logo.png",
+                "file": "University/Year 2 Term 1/Дисципліни.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "logo.png",
+                "file": "University/Year 2 Term 1/Дисципліни.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "logo.png"
+                "file": "University/Year 2 Term 1/Дисципліни.md"
               }
             }
           },
@@ -168,6 +170,11 @@
   },
   "active": "5123e1b0ad4d5fb9",
   "lastOpenFiles": [
+    "logo.png",
+    "University/Year 2 Term 1/Дисципліни.md",
+    "University/Year 2 Term 1/121 University Year Two Term One.md",
+    "University/Year 2 Term 2/Дисципліни.md",
+    "University/Year 2 Term 2",
     "University/Year 1 Term 2/КДМ/tasks/lb3/tsk1/subtsk1/tsk.md",
     "University/Year 1 Term 2/КДМ/tasks/lb3/tsk2/test.exe",
     "University/Year 1 Term 2/КДМ/tasks/lb3/tsk2/test.cpp",
@@ -181,7 +188,6 @@
     "University/Year 1 Term 2/КДМ/tasks/lb3/звіт.pdf",
     "University/Year 1 Term 2/КДМ/tasks/lb3/звіт.docx",
     "University/Year 1 Term 2/КДМ/tasks/lb3/tsk2",
-    "University/Year 1 Term 2/КДМ/tasks/lb3/tsk1",
     "University/Year 1 Term 2/КДМ/tasks/lb4/task.md",
     "University/Year 1 Term 2/КДМ/tasks/control-test/task.md",
     "University/Year 1 Term 2/КДМ/notes/Тест - 01.06.2023 08_29.md",
@@ -200,10 +206,6 @@
     "University/Year 1 Term 2/КДМ/notes/April 13, 2023.md",
     "University/Year 1 Term 2/КДМ/notes/11.05.2023 08_28.md",
     "University/Year 1 Term 2/КДМ/notes/02.05.2023 11_53.md",
-    "University/Year 1 Term 2/ООП/tasks/lb7/task.md",
-    "University/Year 1 Term 2/ООП/notes/Лекція 15.05.2023 10_03.md",
-    "University/Year 1 Term 2/ООП/notes/Лекція - 22.05.2023 10_03.md",
-    "University/Year 1 Term 2/ООП/notes/Лаба 9 07.05.2023 21_00.md",
     "University/Year 1 Term 2/ВММА/tasks/exam/old/розв'язки_лаб/інтеграли-2.jpg",
     "University/Year 1 Term 2/ВММА/tasks/exam/old/розв'язки_лаб/інтеграли-1.jpg",
     "University/Year 1 Term 2/ВММА/tasks/exam/old/розв'язки_лаб/Похідна-9.jpg",
