@@ -1,0 +1,589 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MessageBox_CantUndone" xml:space="preserve">
+    <value>Tej czynności nie można cofnąć.</value>
+  </data>
+  <data name="Mod_BackwardCompatibilityMessage" xml:space="preserve">
+    <value>Dane z oryginalnego Node Controller'a zostały zaimportowane.
+Kompatybilność wsteczna nie pozwala na transfer wszystkich danych, mogą być konieczne ręczne korekty.</value>
+  </data>
+  <data name="Mod_BackwardCompatibilityWarning" xml:space="preserve">
+    <value>OSTRZEŻENIE: Jeżeli stworzysz nowy zapis nie będziesz już mógł korzystać z oryginalnego Node Controller'a na tej mapie.</value>
+  </data>
+  <data name="Mod_Description" xml:space="preserve">
+    <value>Kontroluj typ i kształt węzła</value>
+  </data>
+  <data name="Mod_LoadFailed" xml:space="preserve">
+    <value>Ładowanie danych zakończone z błędami.
+Nie udało się załadować danych dla {0} węzłów.</value>
+  </data>
+  <data name="Mod_LoadFailedAll" xml:space="preserve">
+    <value>Ładowanie danych zakończone z błędami.
+Nie udało się załadować danych wszystkich węzłów.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_0" xml:space="preserve">
+    <value>[RELEASE] Wydanie wersji Renewal</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="Mod_WhatsNewMessage3_3" xml:space="preserve">
+    <value>[UPDATED] Dodano możliwość wyłączenia opcji "napraw pieszych na długich przecięciach" ze względu na skargi na wpływ na prędkość symulacji. Opcja jest domyślnie wyłączona, może być włączona w ustawieniach modyfikacji.
+[NEW] Dodano opcję "Kolizja". jeśli wyłączysz go dla segmentu, segment nie będzie miał limitów zmiany przesunięcia i może być nakładany na siebie przez inne segmenty.
+[NEW] Dodano opcję "Nodeless". Tworzy ona renderowanie segmentu bez węzła.
+[NEW] Dodano możliwość ukrycia nieużywanych opcji. Wszystkie opcje wykluczając przesuwanie, przesunięcie i obracanie mogą być ukryte w ustawieniach modyfikacji, jeśli ich nie używasz.
+[FIXED] Naprawiono obliczanie przesunięcia na środkowych węzłach.
+[UPDATED] Maksymalna wartość nachylenia dróg została zwiększona do 60 stopni.
+[UPDATED] Maksymalna wartość skręcania dróg wzrosła do 60 stopni.
+[UPDATED] Maksymalna wartość przesunięcia została zwiększona do 64 metrów.
+[FIXED] Naprawiono dziurę w nakładce na w dużych węzłach.
+[TRANSLATION] Dodano język rumuński.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_3_1" xml:space="preserve">
+    <value>[UPDATED] Dodano obsługę DLC Place i Promenady.
+[FIXED] Naprawiono pozycje rekwizytów na skręconych segmentach.
+[FIXED] Dane symulacyjne nie są już zmieniane z głównego wątku.
+[FIXED] Naprawiono brakującą teksturę przejść dla pieszych na węzłach z przejściem dla pieszych.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_3_2" xml:space="preserve">
+    <value>[FIXED] Naprawiono glicze pojawiające się na ziemi, podczas używania modu Surface Painter.
+[TRANSLATION] Dodano język czeski.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_3_3" xml:space="preserve">
+    <value>[FIXED] Poprawiono kompatybilność z modem Adaptive Network mogącym powodować niebieskie dziury zamiast węzłów.
+[FIXED] Naprawiono błąd, gdy brakujące zasoby mogą spowodować błąd ładowania danych NCR.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_4" xml:space="preserve">
+    <value>[NEW] Dodano tryb dowolny który pozwala na ustawienie pozycji rogów oraz rotacji bez żadnych limitów.
+[NEW] Dodano możliwość wyłączenia "Śledź główne nachylenie" dla segmentów, co pozwala na niezależne nachylenie segmentów.
+[NEW] Dodano możliwość ustawienia wysokości delta dla każdego segmentu.
+[UPDATED] Wygięcie wezłów śledzi nachylenie sąsiednich węzłów tak aby segment pomiędzy nimi był gładszy.
+[FIXED] Domyślne przesunięcie linii kolejowych nie jest ustawione na 0.</value>
+  </data>
+  
+  <data name="NodeStyle_Bend" xml:space="preserve">
+    <value>Zegnij</value>
+  </data>
+  <data name="NodeStyle_Crossing" xml:space="preserve">
+    <value>Skrzyżowanie</value>
+  </data>
+  <data name="NodeStyle_Custom" xml:space="preserve">
+    <value>Niestandardowy</value>
+  </data>
+  <data name="NodeStyle_End" xml:space="preserve">
+    <value>Koniec</value>
+  </data>
+  <data name="NodeStyle_Middle" xml:space="preserve">
+    <value>Środek</value>
+  </data>
+  <data name="NodeStyle_Stretch" xml:space="preserve">
+    <value>Rozciągnij</value>
+  </data>
+  <data name="NodeStyle_UTurn" xml:space="preserve">
+    <value>Zawracanie</value>
+  </data>
+  <data name="Options_All" xml:space="preserve">
+    <value>Wszystkie</value>
+  </data>
+  <data name="Option_CalculateShiftByIntersections" xml:space="preserve">
+    <value>Oblicz przesunięcie na podstawie skrzyżowań</value>
+  </data>
+  <data name="Option_CalculateShiftByNearby" xml:space="preserve">
+    <value>Oblicz przesunięcie na podstawie pobliskich węzłów</value>
+  </data>
+  <data name="Option_CalculateTwistByIntersections" xml:space="preserve">
+    <value>Oblicz skręt na podstawie skrzyżowań</value>
+  </data>
+  <data name="Option_CalculateTwistByNearby" xml:space="preserve">
+    <value>Oblicz skręt na podstawie pobliskich węzłów</value>
+  </data>
+  <data name="Option_Collision" xml:space="preserve">
+    <value>Kolizja</value>
+  </data>
+  <data name="Option_DeltaHeight" xml:space="preserve">
+    <value>Wysokość Delta</value>
+  </data>
+  <data name="Option_Direction" xml:space="preserve">
+    <value>Kierunek</value>
+  </data>
+  <data name="Option_Distance" xml:space="preserve">
+    <value>Odległość</value>
+  </data>
+  <data name="Option_Elevation" xml:space="preserve">
+    <value>Wysokość</value>
+  </data>
+  <data name="Option_FlatEnd" xml:space="preserve">
+    <value>Płaski koniec</value>
+  </data>
+  <data name="Option_FollowSlope" xml:space="preserve">
+    <value>Śledź główne nachylenie</value>
+  </data>
+  <data name="Option_HideCrosswalkModRequired" xml:space="preserve">
+    <value>Wymagany mod ukrywający przejścia dla pieszych</value>
+  </data>
+  <data name="Option_Horizontal" xml:space="preserve">
+    <value>Poziomo</value>
+  </data>
+  <data name="Option_KeepDefault" xml:space="preserve">
+    <value>Zresetuj przesunięcie</value>
+  </data>
+  <data name="Option_LeftCorner" xml:space="preserve">
+    <value>Lewy narożnik</value>
+  </data>
+  <data name="Option_LeftCornerDirection" xml:space="preserve">
+    <value>Kierunek lewego narożnika</value>
+  </data>
+  <data name="Option_LeftCornerFlatEnd" xml:space="preserve">
+    <value>Lewy narożnik płaski koniec</value>
+  </data>
+  <data name="Option_LeftCornerPosition" xml:space="preserve">
+    <value>Pozycja lewego narożnika</value>
+  </data>
+  <data name="Option_MainSlopeDirection" xml:space="preserve">
+    <value>Główny kierunek nachylenia</value>
+  </data>
+  <data name="Option_MainSlopeDirectionAuto" xml:space="preserve">
+    <value>Automatycznie</value>
+  </data>
+  <data name="Option_MainSlopeDirectionManually" xml:space="preserve">
+    <value>Ręcznie</value>
+  </data>
+  <data name="Option_MakeStraightEnds" xml:space="preserve">
+    <value>Zrób końce proste</value>
+  </data>
+  <data name="Option_Marking" xml:space="preserve">
+    <value>Oznakowanie</value>
+  </data>
+  <data name="Option_Mode" xml:space="preserve">
+    <value>Tryb</value>
+  </data>
+  <data name="Option_ModeFlat" xml:space="preserve">
+    <value>Płaski</value>
+  </data>
+  <data name="Option_ModeFreeForm" xml:space="preserve">
+    <value>Dowolne formowanie</value>
+  </data>
+  <data name="Option_ModeSlope" xml:space="preserve">
+    <value>Nachylenie</value>
+  </data>
+  <data name="Option_MoreOptions" xml:space="preserve">
+    <value>Więcej opcji</value>
+  </data>
+  <data name="Option_NodeLess" xml:space="preserve">
+    <value>Bez węzłów</value>
+  </data>
+  <data name="Option_Offset" xml:space="preserve">
+    <value>Przesunięcie</value>
+  </data>
+  <data name="Option_OffsetFormat" xml:space="preserve">
+    <value>{0}m</value>
+  </data>
+  <data name="Option_Position" xml:space="preserve">
+    <value>Pozycja</value>
+  </data>
+  <data name="Option_ResetToDefault" xml:space="preserve">
+    <value>Resetuj do domyślnych</value>
+  </data>
+  <data name="Option_RightCorner" xml:space="preserve">
+    <value>Prawy narożnik</value>
+  </data>
+  <data name="Option_RightCornerDirection" xml:space="preserve">
+    <value>Kierunek prawego narożnika</value>
+  </data>
+  <data name="Option_RightCornerFlatEnd" xml:space="preserve">
+    <value>Prawy narożnik płaski koniec</value>
+  </data>
+  <data name="Option_RightCornerPosition" xml:space="preserve">
+    <value>Pozycja prawego narożnika</value>
+  </data>
+  <data name="Option_Rotate" xml:space="preserve">
+    <value>Obróć</value>
+  </data>
+  <data name="Option_RotateFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_SetShiftBetweenIntersections" xml:space="preserve">
+    <value>Ustaw przesunięcie pomiędzy skrzyżowaniami</value>
+  </data>
+  <data name="Option_SetTwistBetweenIntersections" xml:space="preserve">
+    <value>Ustaw skręt pomiędzy skrzyżowaniami</value>
+  </data>
+  <data name="Option_Shift" xml:space="preserve">
+    <value>Przesuń</value>
+  </data>
+  <data name="Option_ShiftFormat" xml:space="preserve">
+    <value>{0}m</value>
+  </data>
+  <data name="Option_Slope" xml:space="preserve">
+    <value>Nachylenie</value>
+  </data>
+  <data name="Option_SlopeFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_Stretch" xml:space="preserve">
+    <value>Rozciągnij</value>
+  </data>
+  <data name="Option_StretchFormat" xml:space="preserve">
+    <value>{0}%</value>
+  </data>
+  <data name="Option_Twist" xml:space="preserve">
+    <value>Skręć</value>
+  </data>
+  <data name="Option_TwistFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_Type" xml:space="preserve">
+    <value>Typ węzła</value>
+  </data>
+  <data name="Option_Vertical" xml:space="preserve">
+    <value>Pionowo</value>
+  </data>
+  <data name="Panel_NodeId" xml:space="preserve">
+    <value>Węzeł #{0}</value>
+  </data>
+  <data name="Settings_ApplyAfterRestart" xml:space="preserve">
+    <value>Zostanie zastosowane po ponownym uruchomieniu gry</value>
+  </data>
+  <data name="Settings_BackupTab" xml:space="preserve">
+    <value>Kopia zapasowa</value>
+  </data>
+  <data name="Settings_CopyPathToClipboard" xml:space="preserve">
+    <value>Skopiuj ścieżkę do schowka</value>
+  </data>
+  <data name="Settings_DeleteDataButton" xml:space="preserve">
+    <value>Usuń dane ze wszystkich węzłów</value>
+  </data>
+  <data name="Settings_DeleteDataCaption" xml:space="preserve">
+    <value>Usuń wszystkie dane</value>
+  </data>
+  <data name="Settings_DeleteDataMessage" xml:space="preserve">
+    <value>Czy na pewno chcesz usunąć wszystkie dane?</value>
+  </data>
+  <data name="Settings_DumpDataButton" xml:space="preserve">
+    <value>Zrzuć dane węzłów do pliku</value>
+  </data>
+  <data name="Settings_DumpDataCaption" xml:space="preserve">
+    <value>Zrzuć dane węzłów</value>
+  </data>
+  <data name="Settings_DumpMessageFailed" xml:space="preserve">
+    <value>Zrzut nieudany</value>
+  </data>
+  <data name="Settings_DumpMessageSuccess" xml:space="preserve">
+    <value>Zrzut pomyślnie zapisany do pliku</value>
+  </data>
+  <data name="Settings_InsertNode" xml:space="preserve">
+    <value>Wstawianie węzła</value>
+  </data>
+  <data name="Settings_InsertNodeDisabled" xml:space="preserve">
+    <value>Wyłączone</value>
+  </data>
+  <data name="Settings_InsertNodeEnabled" xml:space="preserve">
+    <value>Klikając na segment</value>
+  </data>
+  <data name="Settings_InsertNodeWithModifier" xml:space="preserve">
+    <value>Klikając na segmencie trzymając {0}</value>
+  </data>
+  <data name="Settings_LongIntersectionFix" xml:space="preserve">
+    <value>Napraw zablokowanych pieszych na długich skrzyżowaniach</value>
+  </data>
+  <data name="Settings_LongIntersectionFixWarning" xml:space="preserve">
+    <value>Ta opcja zwiększa maksymalną odległość znajdowania ścieżek na skrzyżowaniach, co zapobiega utknięciu pieszych na tak długich skrzyżowania, ta opcja może wpłynąć na płynność symulacji</value>
+  </data>
+  <data name="Settings_NodeIsSlopedByDefault" xml:space="preserve">
+    <value>Węzeł jest domyślnie pochyły</value>
+  </data>
+  <data name="Settings_OptionsVisibility" xml:space="preserve">
+    <value>Widoczność opcji</value>
+  </data>
+  <data name="Settings_Option_Disabled" xml:space="preserve">
+    <value>Wyłączone</value>
+  </data>
+  <data name="Settings_Option_Hidden" xml:space="preserve">
+    <value>Ukryte</value>
+  </data>
+  <data name="Settings_Option_Visible" xml:space="preserve">
+    <value>Zawsze widoczne</value>
+  </data>
+  <data name="Settings_OverlayOpacity" xml:space="preserve">
+    <value>Przezroczystość nakładki</value>
+  </data>
+  <data name="Settings_RenderNearNode" xml:space="preserve">
+    <value>Pokaż nakładkę pobliskich węzłów</value>
+  </data>
+  <data name="Settings_Restore" xml:space="preserve">
+    <value>Przywróć</value>
+  </data>
+  <data name="Settings_RestoreDataButton" xml:space="preserve">
+    <value>Przywróć dane węzłów z pliku</value>
+  </data>
+  <data name="Settings_RestoreDataCaption" xml:space="preserve">
+    <value>Przywróć dane węzłów</value>
+  </data>
+  <data name="Settings_RestoreDataMessage" xml:space="preserve">
+    <value>Czy na pewno chcesz przywrócić dane węzłów?
+Przywrócone dane zastąpią wszystkie istniejące dane węzłów.</value>
+  </data>
+  <data name="Settings_RestoreDataMessageFailed" xml:space="preserve">
+    <value>Przywrócenie danych węzłów nie powiodło się</value>
+  </data>
+  <data name="Settings_RestoreDataMessageSuccess" xml:space="preserve">
+    <value>Dane węzłów zostały pomyślnie przywrócone</value>
+  </data>
+  <data name="Settings_SelectMiddleNodes" xml:space="preserve">
+    <value>Wybierz węzły środkowe</value>
+  </data>
+  <data name="Settings_SelectMiddleNodesDiscription" xml:space="preserve">
+    <value>Jeśli ta opcja jest wyłączona, węzły środkowe przeniosą się do klikniętego miejsca</value>
+  </data>
+  <data name="Settings_ShortcutEnterUnderground" xml:space="preserve">
+    <value>Przejdź do trybu podziemnego</value>
+  </data>
+  <data name="Settings_ShortcutExitUnderground" xml:space="preserve">
+    <value>Wyjdź z trybu podziemnego</value>
+  </data>
+  <data name="Settings_ToggleUnderground" xml:space="preserve">
+    <value>Przełącz tryb podziemny</value>
+  </data>
+  <data name="Settings_ToggleUndergroundButtons" xml:space="preserve">
+    <value>Naciśnij {0}, aby wejść i {1}, aby wyjść</value>
+  </data>
+  <data name="Settings_ToggleUndergroundHold" xml:space="preserve">
+    <value>Przytrzymaj {0}</value>
+  </data>
+  <data name="Setting_ShortcutCalculateShiftByIntersections" xml:space="preserve">
+    <value>Oblicz przesunięcie na podstawie skrzyżowań</value>
+  </data>
+  <data name="Setting_ShortcutCalculateShiftByNearby" xml:space="preserve">
+    <value>Oblicz przesunięcie na podstawie pobliskich węzłów</value>
+  </data>
+  <data name="Setting_ShortcutCalculateTwistByIntersections" xml:space="preserve">
+    <value>Oblicz skręt na podstawie skrzyżowań</value>
+  </data>
+  <data name="Setting_ShortcutCalculateTwistByNearby" xml:space="preserve">
+    <value>Oblicz skręt na podstawie pobliskich węzłów</value>
+  </data>
+  <data name="Setting_ShortcutChangeMainRoadMode" xml:space="preserve">
+    <value>Zmień tryb kierunku głównego pochylenia</value>
+  </data>
+  <data name="Setting_ShortcutChangeNodeStyle" xml:space="preserve">
+    <value>Zmień styl węzła</value>
+  </data>
+  <data name="Setting_ShortcutKeepDefault" xml:space="preserve">
+    <value>Zresetuj przesunięcie</value>
+  </data>
+  <data name="Setting_ShortcutMakeStraightEnds" xml:space="preserve">
+    <value>Zrób końce proste</value>
+  </data>
+  <data name="Setting_ShortcutResetToDefault" xml:space="preserve">
+    <value>Resetuj do domyślnych</value>
+  </data>
+  <data name="Setting_ShortcutSetShiftBetweenIntersections" xml:space="preserve">
+    <value>Ustaw przesunięcie między skrzyżowaniami</value>
+  </data>
+  <data name="Setting_ShortcutSetTwistBetweenIntersections" xml:space="preserve">
+    <value>Ustaw skręt pomiędzy skrzyżowaniami</value>
+  </data>
+  <data name="Tool_EnterUnderground" xml:space="preserve">
+    <value>Naciśnij {0}, aby przejść do trybu podziemnego</value>
+  </data>
+  <data name="Tool_ExitUnderground" xml:space="preserve">
+    <value>Naciśnij {0}, aby wyjść z trybu podziemnego</value>
+  </data>
+  <data name="Tool_InfoAlignMode" xml:space="preserve">
+    <value>Przytrzymaj {0} aby wyrównać drogi</value>
+  </data>
+  <data name="Tool_InfoApplyAlign" xml:space="preserve">
+    <value>Kliknij aby wyrównać do tego rogu</value>
+  </data>
+  <data name="Tool_InfoChangeMainMode" xml:space="preserve">
+    <value>Przytrzymaj {0} aby zmienić główny kierunek nachylenia</value>
+  </data>
+  <data name="Tool_InfoClickNode" xml:space="preserve">
+    <value>Skrzyżowanie #{0}
+Kliknij aby edytować</value>
+  </data>
+  <data name="Tool_InfoClickToSelectFirstAlign" xml:space="preserve">
+    <value>Kliknij aby wybrać róg do którego chcesz wyrównać</value>
+  </data>
+  <data name="Tool_InfoDragCenter" xml:space="preserve">
+    <value>Przeciągnij aby zmienić przesunięcie</value>
+  </data>
+  <data name="Tool_InfoDragCenterFree" xml:space="preserve">
+    <value>Przeciągnij, aby zmienić pozycję
+Przytrzymaj {0} aby zmienić wysokość</value>
+  </data>
+  <data name="Tool_InfoDragCircle" xml:space="preserve">
+    <value>Przeciągnij aby zmienić obrót</value>
+  </data>
+  <data name="Tool_InfoDragCorner" xml:space="preserve">
+    <value>Przeciągnij aby zmienić przesunięcie rogu</value>
+  </data>
+  <data name="Tool_InfoDragCornerFree" xml:space="preserve">
+    <value>Przeciągnij, aby zmienić pozycję narożnika
+Przytrzymaj {0} aby zmienić wysokość narożnika</value>
+  </data>
+  <data name="Tool_InfoDragMainSlopeDirectionEnd" xml:space="preserve">
+    <value>Przeciągnij ten koniec aby zmienić główny kierunek nachylnia</value>
+  </data>
+  <data name="Tool_InfoDropMainSlopeDirectionEnd" xml:space="preserve">
+    <value>Upuść ten koniec aby zmienić główny kierunek nachylenia</value>
+  </data>
+  <data name="Tool_InfoInsertCrossingNode" xml:space="preserve">
+    <value>Kliknij aby wstawić węzeł skrzyżowania</value>
+  </data>
+  <data name="Tool_InfoInsertCrossingNodeWithModifier" xml:space="preserve">
+    <value>Kliknij trzymając {0} aby wstawić węzeł skrzyżowania</value>
+  </data>
+  <data name="Tool_InfoInsertNode" xml:space="preserve">
+    <value>Kliknij aby wstawić węzeł</value>
+  </data>
+  <data name="Tool_InfoInsertNodeWithModifier" xml:space="preserve">
+    <value>Kliknij trzymając {0} aby wstawić węzeł</value>
+  </data>
+  <data name="Tool_InfoSelectAlignRelative" xml:space="preserve">
+    <value>Wybierz róg do którego chcesz wrównać</value>
+  </data>
+  <data name="Tool_InfoSelectMainSlopeDirection" xml:space="preserve">
+    <value>Zmień na oczekiwany główny kierunek nachylenia</value>
+  </data>
+  <data name="Tool_InfoSelectNewMainSlopeDirectionEnd" xml:space="preserve">
+    <value>Wybierz punkt końcowy głównego kierunku nachylenia</value>
+  </data>
+  <data name="Tool_InfoSelectNode" xml:space="preserve">
+    <value>Wybierz węzeł</value>
+  </data>
+  <data name="Tool_InfoSelectToAlign" xml:space="preserve">
+    <value>Wybierz rogi które chcesz wyrównać</value>
+  </data>
+  <data name="Tool_InfoTooCloseNode" xml:space="preserve">
+    <value>Nie można wstawić węzła
+Za blisko do sąsiedniego węzła</value>
+  </data>
+  <data name="Tool_InfoUnderground" xml:space="preserve">
+    <value>Przytrzymaj {0} by przejść w tryb podziemny</value>
+  </data>
+</root>

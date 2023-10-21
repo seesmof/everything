@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MessageBox_CantUndone" xml:space="preserve">
+    <value>Questa azione non può esser annullata.</value>
+  </data>
+  <data name="Mod_BackwardCompatibilityMessage" xml:space="preserve">
+    <value>Sono stati importati i dati del Node Controller originale.
+La retrocompatibilitá non garantisce il trasferimento di tutti i dati; possibili correzioni manuali necessarie.</value>
+  </data>
+  <data name="Mod_BackwardCompatibilityWarning" xml:space="preserve">
+    <value>ATTENZIONE: Effettuando un nuovo salvataggio non si potrà più utilizzare il Node Controller originale in questa mappa.</value>
+  </data>
+  <data name="Mod_Description" xml:space="preserve">
+    <value>Cambia tipologia e forma del nodo</value>
+  </data>
+  <data name="Mod_LoadFailed" xml:space="preserve">
+    <value>Il caricamento è stato completato con errori.
+Impossibile caricare i dati per {0} nodi.</value>
+  </data>
+  <data name="Mod_LoadFailedAll" xml:space="preserve">
+    <value>Il caricamento è stato completato con errori.
+Impossibile caricare i dati per tutti i nodi.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_0" xml:space="preserve">
+    <value>[RELEASE] rilascio versione Renewal</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="Mod_WhatsNewMessage3_3" xml:space="preserve">
+    <value>[UPDATED] Aggiunta la possibilità di disabilitare l'opzione "Correggi i pedoni bloccati su intersezioni lunghe" a causa di lamentele riguardo l'impatto sulla velocità di simulazione. L'opzione è disabilitata di default, può essere abilitata nelle impostazioni della mod.
+[NEW] Aggiunta l'opzione "Collisione". Se la disattivi per il segmento, non avrà limiti per cambiare l'offset e potrà essere sovrapposto da altri segmenti.
+[NEW] Aggiunta l'opzione "Senza nodo". Fa renderizzare i segmenti senza nodi.
+[NEW] Aggiunta la possibilità di nascondere le opzioni inutilizzate. Tutte le opzioni escludono offset, spostamento e rotazione possono essere nascoste nelle impostazioni della mod se non le usate.
+[FIXED] Sistemato il calcolo dello spostamento sui nodi centrali.
+[UPDATED] Il valore massimo della pendenza per le strade è stato aumentato a 60 gradi.
+[UPDATED] Il valore massimo di torsione per le strade è stato aumentato a 60 gradi.
+[UPDATED] Il valore massimo dello spostamento è stato aumentato a 64 metri.
+[FIXED] Risolto il buco in sovrapposizione su un nodo di grandi dimensioni.
+[TRANSLATION] Aggiunta lingua rumena.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_3_1" xml:space="preserve">
+    <value>[UPDATED] Aggiunto il supporto per il DLC Plaza &amp; Promenades.
+[FIXED] Corrette le posizioni dei prop su segmenti inclinati.
+[FIXED] I dati di simulazione non sono più cambiati dal thread principale.
+[FIXED] Risolta la mancanza della texture delle strisce pedonali sui nodi con attraversamento.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_3_2" xml:space="preserve">
+    <value>[FIXED] Risolti i glitch del terreno che potrebbero apparire quando si usa la mod Surface Painter.
+[TRANSLATION] Aggiunta la lingua ceca.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_3_3" xml:space="preserve">
+    <value>[FIXED] Corretta la compatibilità con Adaptive Network mod che potrebbe causare vuoti blu al posto dei nodi.
+[FIXED] Errore corretto quando la risorsa di rete è persa, potrebbe causare un errore di caricamento dei dati NCR.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_4" xml:space="preserve">
+    <value>[NEW] Aggiunta la modalità a forma libera che permette di impostare la posizione e la rotazione dell'angolo senza alcuna limitazione.
+[NEW] Aggiunta la possibilità di disabilitare "Segui la pendenza principale" per segmenti che permettono di rendere i segmenti pendenti indipendentemente.
+[NEW] Aggiunta la possibilità di impostare l'altezza Delta per ogni segmento.
+[UPDATED] I nodi di curva seguono la pendenza dei nodi vicini, in modo che il segmento tra di essi sia più liscio.
+[FIXED] Lo spostamento predefinito delle ferrovie non è impostato a 0.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_5" xml:space="preserve">
+    <value>[UPDATED] Nuovo stile UI.
+[NEW] Possibilità di modificare l'offset e la rotazione per i segmenti senza nodo.
+[NEW] Permette di spostare il nodo finale in modalità forma libera.
+[NEW] Aggiunto lo spostamento alla modalità forma libera.
+[NEW] Aggiunta l'estremità piatta alla modalità forma libera.
+[NEW] Permette di modificare il valore con passo 0.01 facendo scorrere la rotella quando si tiene premuto Alt.
+[NEW] Tenere premuto ctrl per spostarsi solo in direzione X, tenere premuto alt per spostarsi solo in direzione Y in modalità forma libera.
+[NEW] Aggiunta l'opzione per impostare l'opacità della sovrapposizione.
+[NEW] Il colore della sovrapposizione dei segmenti lampeggia quando i suoi campi sul pannello vengono passati con il mouse.
+[FIXED] Fissata la posizione del segmento senza nodo in modalità forma libera.
+[FIXED] Corretto il valore predefinito della direzione dell'angolo in modalità forma libera.
+[FIXED] Corretto l'errore durante la modifica dei nodi collegati a strutture di trasporto o edifici.</value>
+  </data>
+  <data name="NodeStyle_Bend" xml:space="preserve">
+    <value>Piega</value>
+  </data>
+  <data name="NodeStyle_Crossing" xml:space="preserve">
+    <value>Incrocio</value>
+  </data>
+  <data name="NodeStyle_Custom" xml:space="preserve">
+    <value>Personalizza</value>
+  </data>
+  <data name="NodeStyle_End" xml:space="preserve">
+    <value>Fine</value>
+  </data>
+  <data name="NodeStyle_Middle" xml:space="preserve">
+    <value>Centrale</value>
+  </data>
+  <data name="NodeStyle_Stretch" xml:space="preserve">
+    <value>Allungato</value>
+  </data>
+  <data name="NodeStyle_UTurn" xml:space="preserve">
+    <value>Curva ad U</value>
+  </data>
+  <data name="Options_All" xml:space="preserve">
+    <value>Tutto</value>
+  </data>
+  <data name="Option_CalculateShiftByIntersections" xml:space="preserve">
+    <value>Calcola lo spostamento dalle intersezioni</value>
+  </data>
+  <data name="Option_CalculateShiftByNearby" xml:space="preserve">
+    <value>Calcola lo spostamento dai nodi vicini</value>
+  </data>
+  <data name="Option_CalculateTwistByIntersections" xml:space="preserve">
+    <value>Calcola la torsione per intersezioni</value>
+  </data>
+  <data name="Option_CalculateTwistByNearby" xml:space="preserve">
+    <value>Calcola torsione per nodi vicini</value>
+  </data>
+  <data name="Option_Collision" xml:space="preserve">
+    <value>Collisione</value>
+  </data>
+  <data name="Option_DeltaHeight" xml:space="preserve">
+    <value>Altezza Delta</value>
+  </data>
+  <data name="Option_Direction" xml:space="preserve">
+    <value>Direzione</value>
+  </data>
+  <data name="Option_Distance" xml:space="preserve">
+    <value>Distanza</value>
+  </data>
+  <data name="Option_Elevation" xml:space="preserve">
+    <value>Elevazione</value>
+  </data>
+  <data name="Option_FlatEnd" xml:space="preserve">
+    <value>Estremità iatta</value>
+  </data>
+  <data name="Option_FollowSlope" xml:space="preserve">
+    <value>Segui la pendenza principale</value>
+  </data>
+  <data name="Option_HideCrosswalkModRequired" xml:space="preserve">
+    <value>È richiesta la Mod Hide Crosswalks</value>
+  </data>
+  <data name="Option_Horizontal" xml:space="preserve">
+    <value>Orizzontale</value>
+  </data>
+  <data name="Option_KeepDefault" xml:space="preserve">
+    <value>Ripristina la deviazione</value>
+  </data>
+  <data name="Option_LeftCorner" xml:space="preserve">
+    <value>Angolo sinistro</value>
+  </data>
+  <data name="Option_LeftCornerDirection" xml:space="preserve">
+    <value>Direzione dell'angolo sinistro</value>
+  </data>
+  <data name="Option_LeftCornerFlatEnd" xml:space="preserve">
+    <value>Angolo sinistro estremità piatta</value>
+  </data>
+  <data name="Option_LeftCornerPosition" xml:space="preserve">
+    <value>Posizione dell'angolo sinistro</value>
+  </data>
+  <data name="Option_MainSlopeDirection" xml:space="preserve">
+    <value>Direzione principale della pendenza</value>
+  </data>
+  <data name="Option_MainSlopeDirectionAuto" xml:space="preserve">
+    <value>Automatico</value>
+  </data>
+  <data name="Option_MainSlopeDirectionManually" xml:space="preserve">
+    <value>Manuale</value>
+  </data>
+  <data name="Option_MakeStraightEnds" xml:space="preserve">
+    <value>Rendi le estremità dritte</value>
+  </data>
+  <data name="Option_Marking" xml:space="preserve">
+    <value>Marcatura</value>
+  </data>
+  <data name="Option_Mode" xml:space="preserve">
+    <value>Modo</value>
+  </data>
+  <data name="Option_ModeFlat" xml:space="preserve">
+    <value>Flat</value>
+  </data>
+  <data name="Option_ModeFreeForm" xml:space="preserve">
+    <value>Forma libera</value>
+  </data>
+  <data name="Option_ModeSlope" xml:space="preserve">
+    <value>Pendenza</value>
+  </data>
+  <data name="Option_MoreOptions" xml:space="preserve">
+    <value>Altre opzioni</value>
+  </data>
+  <data name="Option_NodeLess" xml:space="preserve">
+    <value>Senza nodo</value>
+  </data>
+  <data name="Option_Offset" xml:space="preserve">
+    <value>Spostamento</value>
+  </data>
+  <data name="Option_OffsetFormat" xml:space="preserve">
+    <value>{0}m</value>
+  </data>
+  <data name="Option_Position" xml:space="preserve">
+    <value>Posizione</value>
+  </data>
+  <data name="Option_ResetToDefault" xml:space="preserve">
+    <value>Ripristina impostazioni predefinite</value>
+  </data>
+  <data name="Option_RightCorner" xml:space="preserve">
+    <value>Angolo destro</value>
+  </data>
+  <data name="Option_RightCornerDirection" xml:space="preserve">
+    <value>Direzione dell'angolo destro</value>
+  </data>
+  <data name="Option_RightCornerFlatEnd" xml:space="preserve">
+    <value>Angolo destro estremità piatta</value>
+  </data>
+  <data name="Option_RightCornerPosition" xml:space="preserve">
+    <value>Posizione dell'angolo destro</value>
+  </data>
+  <data name="Option_Rotate" xml:space="preserve">
+    <value>Rotazione</value>
+  </data>
+  <data name="Option_RotateFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_SetShiftBetweenIntersections" xml:space="preserve">
+    <value>Imposta spostamento tra le intersezioni</value>
+  </data>
+  <data name="Option_SetTwistBetweenIntersections" xml:space="preserve">
+    <value>Imposta torsione tra intersezioni</value>
+  </data>
+  <data name="Option_Shift" xml:space="preserve">
+    <value>Spostamento</value>
+  </data>
+  <data name="Option_ShiftFormat" xml:space="preserve">
+    <value>{0}m</value>
+  </data>
+  <data name="Option_Slope" xml:space="preserve">
+    <value>Pendenza</value>
+  </data>
+  <data name="Option_SlopeFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_Stretch" xml:space="preserve">
+    <value>Estensione</value>
+  </data>
+  <data name="Option_StretchFormat" xml:space="preserve">
+    <value>{0}%</value>
+  </data>
+  <data name="Option_Twist" xml:space="preserve">
+    <value>Torsione</value>
+  </data>
+  <data name="Option_TwistFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_Type" xml:space="preserve">
+    <value>Tipologia di nodo</value>
+  </data>
+  <data name="Option_Vertical" xml:space="preserve">
+    <value>Verticale</value>
+  </data>
+  <data name="Panel_NodeId" xml:space="preserve">
+    <value>Nodo #{0}</value>
+  </data>
+  <data name="Settings_ApplyAfterRestart" xml:space="preserve">
+    <value>Si applica dopo il riavvio del gioco</value>
+  </data>
+  <data name="Settings_BackupTab" xml:space="preserve">
+    <value>Backup</value>
+  </data>
+  <data name="Settings_CopyPathToClipboard" xml:space="preserve">
+    <value>Copia il percorso negli appunti</value>
+  </data>
+  <data name="Settings_DeleteDataButton" xml:space="preserve">
+    <value>Elimina dati da tutti i nodi</value>
+  </data>
+  <data name="Settings_DeleteDataCaption" xml:space="preserve">
+    <value>Elimina tutti i dati</value>
+  </data>
+  <data name="Settings_DeleteDataMessage" xml:space="preserve">
+    <value>Vuoi veramente rimuovere tutti i dati?</value>
+  </data>
+  <data name="Settings_DumpDataButton" xml:space="preserve">
+    <value>Scarica i dati dei nodi su file</value>
+  </data>
+  <data name="Settings_DumpDataCaption" xml:space="preserve">
+    <value>Scarica i dati dei nodi</value>
+  </data>
+  <data name="Settings_DumpMessageFailed" xml:space="preserve">
+    <value>Scarico fallito</value>
+  </data>
+  <data name="Settings_DumpMessageSuccess" xml:space="preserve">
+    <value>Scarico salvato correttamente sul file</value>
+  </data>
+  <data name="Settings_InsertNode" xml:space="preserve">
+    <value>Inserimento nodo</value>
+  </data>
+  <data name="Settings_InsertNodeDisabled" xml:space="preserve">
+    <value>Disabilitata</value>
+  </data>
+  <data name="Settings_InsertNodeEnabled" xml:space="preserve">
+    <value>Cliccando sul segmento</value>
+  </data>
+  <data name="Settings_InsertNodeWithModifier" xml:space="preserve">
+    <value>Cliccando con {0} sul segmento</value>
+  </data>
+  <data name="Settings_LongIntersectionFix" xml:space="preserve">
+    <value>Correggi i pedoni bloccati su intersezioni lunghe</value>
+  </data>
+  <data name="Settings_LongIntersectionFixWarning" xml:space="preserve">
+    <value>Questa opzione aumenta la distanza massima di ricerca del percorso all'intersezione, impedendo ai pedoni di bloccarsi su intersezioni così lunghe, tuttavia questa opzione può influenzare la velocità di simulazione</value>
+  </data>
+  <data name="Settings_NodeIsSlopedByDefault" xml:space="preserve">
+    <value>Il nodo è inclinato di default</value>
+  </data>
+  <data name="Settings_OptionsVisibility" xml:space="preserve">
+    <value>Visibilità opzioni</value>
+  </data>
+  <data name="Settings_Option_Disabled" xml:space="preserve">
+    <value>Disabilitato</value>
+  </data>
+  <data name="Settings_Option_Hidden" xml:space="preserve">
+    <value>Nascosto</value>
+  </data>
+  <data name="Settings_Option_Visible" xml:space="preserve">
+    <value>Sempre visibile</value>
+  </data>
+  <data name="Settings_OverlayOpacity" xml:space="preserve">
+    <value>Opacità Copertura</value>
+  </data>
+  <data name="Settings_RenderNearNode" xml:space="preserve">
+    <value>Mostra la sovrapposizione dei nodi vicini</value>
+  </data>
+  <data name="Settings_Restore" xml:space="preserve">
+    <value>Ripristina</value>
+  </data>
+  <data name="Settings_RestoreDataButton" xml:space="preserve">
+    <value>Ripristina i dati dei nodi da file</value>
+  </data>
+  <data name="Settings_RestoreDataCaption" xml:space="preserve">
+    <value>Ripristina dati nodi</value>
+  </data>
+  <data name="Settings_RestoreDataMessage" xml:space="preserve">
+    <value>Sei sicuro di voler ripristinare i dati dei nodi?
+I dati dei nodi ripristinati sostituiranno quelli esistenti.</value>
+  </data>
+  <data name="Settings_RestoreDataMessageFailed" xml:space="preserve">
+    <value>Ripristino dati nodi non riuscito</value>
+  </data>
+  <data name="Settings_RestoreDataMessageSuccess" xml:space="preserve">
+    <value>Dati dei nodi ripristinati con successo</value>
+  </data>
+  <data name="Settings_SelectMiddleNodes" xml:space="preserve">
+    <value>Seleziona nodi centrali</value>
+  </data>
+  <data name="Settings_SelectMiddleNodesDiscription" xml:space="preserve">
+    <value>Se questa opzione è disabilitata, i nodi centrali si sposteranno alla posizione cliccata</value>
+  </data>
+  <data name="Settings_ShortcutEnterUnderground" xml:space="preserve">
+    <value>Entra in modalità sotterranea</value>
+  </data>
+  <data name="Settings_ShortcutExitUnderground" xml:space="preserve">
+    <value>Esci dalla modalità sotterranea</value>
+  </data>
+  <data name="Settings_ToggleUnderground" xml:space="preserve">
+    <value>Modalità sotterranea</value>
+  </data>
+  <data name="Settings_ToggleUndergroundButtons" xml:space="preserve">
+    <value>Premi {0} per entrare e {1} per uscire</value>
+  </data>
+  <data name="Settings_ToggleUndergroundHold" xml:space="preserve">
+    <value>Tieni premuto {0}</value>
+  </data>
+  <data name="Setting_ShortcutCalculateShiftByIntersections" xml:space="preserve">
+    <value>Calcola lo spostamento dalle intersezioni</value>
+  </data>
+  <data name="Setting_ShortcutCalculateShiftByNearby" xml:space="preserve">
+    <value>Calcola lo spostamento dai nodi vicini</value>
+  </data>
+  <data name="Setting_ShortcutCalculateTwistByIntersections" xml:space="preserve">
+    <value>Calcola la torsione per intersezioni</value>
+  </data>
+  <data name="Setting_ShortcutCalculateTwistByNearby" xml:space="preserve">
+    <value>Calcola torsione per nodi vicini</value>
+  </data>
+  <data name="Setting_ShortcutChangeMainRoadMode" xml:space="preserve">
+    <value>Cambia la modalità principale di direzione della pendenza</value>
+  </data>
+  <data name="Setting_ShortcutChangeNodeStyle" xml:space="preserve">
+    <value>Cambia lo stile del nodo</value>
+  </data>
+  <data name="Setting_ShortcutKeepDefault" xml:space="preserve">
+    <value>Ripristina la deviazione</value>
+  </data>
+  <data name="Setting_ShortcutMakeStraightEnds" xml:space="preserve">
+    <value>Rendi le estremità dritte</value>
+  </data>
+  <data name="Setting_ShortcutResetToDefault" xml:space="preserve">
+    <value>Ripristina impostazioni predefinite</value>
+  </data>
+  <data name="Setting_ShortcutSetShiftBetweenIntersections" xml:space="preserve">
+    <value>Imposta spostamento tra le intersezioni</value>
+  </data>
+  <data name="Setting_ShortcutSetTwistBetweenIntersections" xml:space="preserve">
+    <value>Imposta torsione tra intersezioni</value>
+  </data>
+  <data name="Tool_EnterUnderground" xml:space="preserve">
+    <value>Premi {0} per entrare nella modalità sotterranea</value>
+  </data>
+  <data name="Tool_ExitUnderground" xml:space="preserve">
+    <value>Premi {0} per uscire dalla modalità sotterranea</value>
+  </data>
+  <data name="Tool_InfoAlignMode" xml:space="preserve">
+    <value>Tieni premuto {0} per allineare le strade</value>
+  </data>
+  <data name="Tool_InfoApplyAlign" xml:space="preserve">
+    <value>Clicca per allineare con questo angolo</value>
+  </data>
+  <data name="Tool_InfoChangeMainMode" xml:space="preserve">
+    <value>Tieni premuto {0} per cambiare la direzione della pendenza</value>
+  </data>
+  <data name="Tool_InfoClickNode" xml:space="preserve">
+    <value>Nodo #{0}
+Clicca per modificare</value>
+  </data>
+  <data name="Tool_InfoClickToSelectFirstAlign" xml:space="preserve">
+    <value>Clicca per selezionare l'angolo che vuoi allineare</value>
+  </data>
+  <data name="Tool_InfoDragCenter" xml:space="preserve">
+    <value>Trascina per cambiare lo spostamento</value>
+  </data>
+  <data name="Tool_InfoDragCenterFree" xml:space="preserve">
+    <value>Trascina per cambiare la posizione
+Tieni premuto {0} per cambiare l'elevazione</value>
+  </data>
+  <data name="Tool_InfoDragCircle" xml:space="preserve">
+    <value>Trascina per cambiare la rotazione</value>
+  </data>
+  <data name="Tool_InfoDragCorner" xml:space="preserve">
+    <value>Trascina per cambiare lo spostamento dell'angolo</value>
+  </data>
+  <data name="Tool_InfoDragCornerFree" xml:space="preserve">
+    <value>Trascina per cambiare la posizione dell'angolo
+Tieni premuto {0} per cambiare l'elevazione dell'angolo</value>
+  </data>
+  <data name="Tool_InfoDragMainSlopeDirectionEnd" xml:space="preserve">
+    <value>Trascina questa estremità per cambiare la direzione della pendenza principale</value>
+  </data>
+  <data name="Tool_InfoDropMainSlopeDirectionEnd" xml:space="preserve">
+    <value>Rilascia questa estremità per cambiare la direzione della pendenza principale</value>
+  </data>
+  <data name="Tool_InfoInsertCrossingNode" xml:space="preserve">
+    <value>Clicca per inserire un nodo di incrocio</value>
+  </data>
+  <data name="Tool_InfoInsertCrossingNodeWithModifier" xml:space="preserve">
+    <value>Fare clic con {0} per inserire il nodo di passaggio</value>
+  </data>
+  <data name="Tool_InfoInsertNode" xml:space="preserve">
+    <value>Clicca per inserire il nodo</value>
+  </data>
+  <data name="Tool_InfoInsertNodeWithModifier" xml:space="preserve">
+    <value>Fare clic con {0} per inserire nodo</value>
+  </data>
+  <data name="Tool_InfoSelectAlignRelative" xml:space="preserve">
+    <value>Seleziona l'angolo con cui vuoi allinearti</value>
+  </data>
+  <data name="Tool_InfoSelectMainSlopeDirection" xml:space="preserve">
+    <value>Passa alla direzione della pendenza principale desiderata</value>
+  </data>
+  <data name="Tool_InfoSelectNewMainSlopeDirectionEnd" xml:space="preserve">
+    <value>Seleziona la posizione finale della direzione della pendenza principale</value>
+  </data>
+  <data name="Tool_InfoSelectNode" xml:space="preserve">
+    <value>Seleziona un nodo</value>
+  </data>
+  <data name="Tool_InfoSelectToAlign" xml:space="preserve">
+    <value>Seleziona gli angoli da allineare</value>
+  </data>
+  <data name="Tool_InfoTooCloseNode" xml:space="preserve">
+    <value>Impossibile inserire il nodo
+Troppo vicino ad un altro nodo</value>
+  </data>
+  <data name="Tool_InfoUnderground" xml:space="preserve">
+    <value>Tieni premuto {0} per
+modalità sotterranea</value>
+  </data>
+</root>

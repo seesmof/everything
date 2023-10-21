@@ -1,0 +1,604 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MessageBox_CantUndone" xml:space="preserve">
+    <value>この操作は元に戻せません。</value>
+  </data>
+  <data name="Mod_BackwardCompatibilityMessage" xml:space="preserve">
+    <value>オリジナルのNode Controller2から、各設定をRenewal用に変換しました。
+一部の設定には互換性が無く、手動で調整する必要があります。</value>
+  </data>
+  <data name="Mod_BackwardCompatibilityWarning" xml:space="preserve">
+    <value>警告: マップをセーブして次回のロードから、オリジナルのNode Controller2は設定が認識できません。</value>
+  </data>
+  <data name="Mod_Description" xml:space="preserve">
+    <value>交差点やノードの種類・形状を、調整や変更ができます。</value>
+  </data>
+  <data name="Mod_LoadFailed" xml:space="preserve">
+    <value>ロード中にエラーが発生しました。
+ {0} ヶ所のノードでロードに失敗しました。</value>
+  </data>
+  <data name="Mod_LoadFailedAll" xml:space="preserve">
+    <value>ロード中にエラーが発生しました。
+全てのノードでロードに失敗しました。</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_0" xml:space="preserve">
+    <value>[RELEASE] Renewal version release</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="Mod_WhatsNewMessage3_3" xml:space="preserve">
+    <value>[UPDATED] Added the ability to disable option "fix stuck pedestrian on long intersections" due to complaining about affecting simulation speed. The option is disabled by default, can be enabled in the mod settings.
+[NEW] Added option "Collision". if you disable it for segment, segment will not have limits for changing offset and can be overlapped by other segments.
+[NEW] Added option "Nodeless". it makes segment render without node.
+[NEW] Added the ability to hide unused options. All options exclude offset, shift and rotate can be hidden in the mod settings if you dont use them.
+[FIXED] Fixed shift calculation on middle nodes.
+[UPDATED] Max slope value for roads was increased to 60 degrees.
+[UPDATED] Max tweest value for roads was increased to 60 degrees.
+[UPDATED] Max shift value was increased to 64 meters.
+[FIXED] Fixed hole in overlay on such a big nodes.
+[TRANSLATION] Added Romanian language.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_3_1" xml:space="preserve">
+    <value>[UPDATED] Added Plazas &amp; Promenades DLC support.
+[FIXED] Fixed prop positions on twisted segments.
+[FIXED] Simulation data is not changed from main thread anymore.
+[FIXED] Fixed missing crosswalk texture on crosswalk nodes.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_3_2" xml:space="preserve">
+    <value>[FIXED] Fixed terrain glitches that could appear when using Surface Painter mod.
+[TRANSLATION] Added Czech language.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_3_3" xml:space="preserve">
+    <value>[FIXED] Fixed compatibility with Adaptive Network mod which could cause blue voids instead of nodes.
+[FIXED] Fixed error when missed network asset could cause NCR data loading failure.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_4" xml:space="preserve">
+    <value>[NEW] Added free-form mode that allow to set corner position and rotation without any limitations.
+[NEW] Added the ability to disable "Follow main slope" for segments that allows to make segments slope independently.
+[NEW] Added the ability to set delta height for each segment.
+[UPDATED] Bend nodes follow slope of near nodes, so that segment between them is smoother.
+[FIXED] Default offset of railways is not set to 0.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_5" xml:space="preserve">
+    <value>[UPDATED] New UI style.
+[NEW] Allow to change offset and rotation for nodeless segments.
+[NEW] Allow to move end node in free form mode.
+[NEW] Added shift to free form mode.
+[NEW] Added flat end to free form mode.
+[NEW] Allow to change value with step 0.01 by scrolling the wheel when Alt is being held.
+[NEW] Hold ctrl to move only by X direction, hold alt to move only by Y direction in free form mode.
+[NEW] Added option to set overlay opacity.
+[NEW] Segment overlay color is blinking when its fields on panel is being hovered.
+[FIXED] Fixed nodeless segment position in free form mode.
+[FIXED] Fixed default value of corner direction in free form mode.
+[FIXED] Fixed error while editing nodes which is connected to transport strations or buildings.</value>
+  </data>
+  <data name="NodeStyle_Bend" xml:space="preserve">
+    <value>ベンド</value>
+  </data>
+  <data name="NodeStyle_Crossing" xml:space="preserve">
+    <value>横断歩道</value>
+  </data>
+  <data name="NodeStyle_Custom" xml:space="preserve">
+    <value>カスタム</value>
+  </data>
+  <data name="NodeStyle_End" xml:space="preserve">
+    <value>終端</value>
+  </data>
+  <data name="NodeStyle_Middle" xml:space="preserve">
+    <value>ミドル</value>
+  </data>
+  <data name="NodeStyle_Stretch" xml:space="preserve">
+    <value>ストレッチ</value>
+  </data>
+  <data name="NodeStyle_UTurn" xml:space="preserve">
+    <value>Uターン</value>
+  </data>
+  <data name="Options_All" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="Option_CalculateShiftByIntersections" xml:space="preserve">
+    <value>交差点間でシフト値を、まとめてスムージング</value>
+  </data>
+  <data name="Option_CalculateShiftByNearby" xml:space="preserve">
+    <value>隣接するノードで、シフトをスムージング</value>
+  </data>
+  <data name="Option_CalculateTwistByIntersections" xml:space="preserve">
+    <value>交差点間でツイスト値を、まとめてスムージング</value>
+  </data>
+  <data name="Option_CalculateTwistByNearby" xml:space="preserve">
+    <value>隣接するノードで、ツイストのスムージング</value>
+  </data>
+  <data name="Option_Collision" xml:space="preserve">
+    <value>衝突判定</value>
+  </data>
+  <data name="Option_DeltaHeight" xml:space="preserve">
+    <value>デルタの高さ</value>
+  </data>
+  <data name="Option_Direction" xml:space="preserve">
+    <value>方向</value>
+  </data>
+  <data name="Option_Distance" xml:space="preserve">
+    <value>距離</value>
+  </data>
+  <data name="Option_Elevation" xml:space="preserve">
+    <value>高さ</value>
+  </data>
+  <data name="Option_FlatEnd" xml:space="preserve">
+    <value>平坦な終端</value>
+  </data>
+  <data name="Option_FollowSlope" xml:space="preserve">
+    <value>メインのスロープに追従</value>
+  </data>
+  <data name="Option_HideCrosswalkModRequired" xml:space="preserve">
+    <value>Hide Crosswalks MODが必要</value>
+  </data>
+  <data name="Option_Horizontal" xml:space="preserve">
+    <value>水平</value>
+  </data>
+  <data name="Option_KeepDefault" xml:space="preserve">
+    <value>オフセットをリセット</value>
+  </data>
+  <data name="Option_LeftCorner" xml:space="preserve">
+    <value>左コーナー</value>
+  </data>
+  <data name="Option_LeftCornerDirection" xml:space="preserve">
+    <value>左コーナーの方向</value>
+  </data>
+  <data name="Option_LeftCornerFlatEnd" xml:space="preserve">
+    <value>左コーナーの平坦な終端</value>
+  </data>
+  <data name="Option_LeftCornerPosition" xml:space="preserve">
+    <value>左コーナーの位置</value>
+  </data>
+  <data name="Option_MainSlopeDirection" xml:space="preserve">
+    <value>スロープ化の選択方法</value>
+  </data>
+  <data name="Option_MainSlopeDirectionAuto" xml:space="preserve">
+    <value>自動</value>
+  </data>
+  <data name="Option_MainSlopeDirectionManually" xml:space="preserve">
+    <value>任意</value>
+  </data>
+  <data name="Option_MakeStraightEnds" xml:space="preserve">
+    <value>セグメントの端を直線化</value>
+  </data>
+  <data name="Option_Marking" xml:space="preserve">
+    <value>横断歩道の表示</value>
+  </data>
+  <data name="Option_Mode" xml:space="preserve">
+    <value>モード</value>
+  </data>
+  <data name="Option_ModeFlat" xml:space="preserve">
+    <value>フラット</value>
+  </data>
+  <data name="Option_ModeFreeForm" xml:space="preserve">
+    <value>フリーフォーム</value>
+  </data>
+  <data name="Option_ModeSlope" xml:space="preserve">
+    <value>スロープ</value>
+  </data>
+  <data name="Option_MoreOptions" xml:space="preserve">
+    <value>オプションを展開</value>
+  </data>
+  <data name="Option_NodeLess" xml:space="preserve">
+    <value>ノードレス</value>
+  </data>
+  <data name="Option_Offset" xml:space="preserve">
+    <value>オフセット(長さ)</value>
+  </data>
+  <data name="Option_OffsetFormat" xml:space="preserve">
+    <value>{0}m</value>
+  </data>
+  <data name="Option_Position" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="Option_ResetToDefault" xml:space="preserve">
+    <value>デフォルトに戻す</value>
+  </data>
+  <data name="Option_RightCorner" xml:space="preserve">
+    <value>右コーナー</value>
+  </data>
+  <data name="Option_RightCornerDirection" xml:space="preserve">
+    <value>右コーナーの方向</value>
+  </data>
+  <data name="Option_RightCornerFlatEnd" xml:space="preserve">
+    <value>右コーナーの平坦な終端</value>
+  </data>
+  <data name="Option_RightCornerPosition" xml:space="preserve">
+    <value>右コーナーの位置</value>
+  </data>
+  <data name="Option_Rotate" xml:space="preserve">
+    <value>回転(角度)</value>
+  </data>
+  <data name="Option_RotateFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_SetShiftBetweenIntersections" xml:space="preserve">
+    <value>交差点間では、シフト値を一括適用</value>
+  </data>
+  <data name="Option_SetTwistBetweenIntersections" xml:space="preserve">
+    <value>交差点間では、ツイスト値を一括適用</value>
+  </data>
+  <data name="Option_Shift" xml:space="preserve">
+    <value>シフト(左右の移動)</value>
+  </data>
+  <data name="Option_ShiftFormat" xml:space="preserve">
+    <value>{0}m</value>
+  </data>
+  <data name="Option_Slope" xml:space="preserve">
+    <value>スロープ(勾配)</value>
+  </data>
+  <data name="Option_SlopeFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_Stretch" xml:space="preserve">
+    <value>ストレッチ(太さ)</value>
+  </data>
+  <data name="Option_StretchFormat" xml:space="preserve">
+    <value>{0}%</value>
+  </data>
+  <data name="Option_Twist" xml:space="preserve">
+    <value>ツイスト(バンク)</value>
+  </data>
+  <data name="Option_TwistFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_Type" xml:space="preserve">
+    <value>ノードの設定</value>
+  </data>
+  <data name="Option_Vertical" xml:space="preserve">
+    <value>垂直</value>
+  </data>
+  <data name="Panel_NodeId" xml:space="preserve">
+    <value>ノード #{0} を調整中</value>
+  </data>
+  <data name="Settings_ApplyAfterRestart" xml:space="preserve">
+    <value>ゲーム再起動後に適用</value>
+  </data>
+  <data name="Settings_BackupTab" xml:space="preserve">
+    <value>バックアップ</value>
+  </data>
+  <data name="Settings_CopyPathToClipboard" xml:space="preserve">
+    <value>クリップボードにコピー</value>
+  </data>
+  <data name="Settings_DeleteDataButton" xml:space="preserve">
+    <value>全てのノードからデータを削除</value>
+  </data>
+  <data name="Settings_DeleteDataCaption" xml:space="preserve">
+    <value>全てのデータを削除</value>
+  </data>
+  <data name="Settings_DeleteDataMessage" xml:space="preserve">
+    <value>本当に全てのデータを削除しますか？</value>
+  </data>
+  <data name="Settings_DumpDataButton" xml:space="preserve">
+    <value>ノードデータをファイルに保存</value>
+  </data>
+  <data name="Settings_DumpDataCaption" xml:space="preserve">
+    <value>ノードデータのダンプ出力</value>
+  </data>
+  <data name="Settings_DumpMessageFailed" xml:space="preserve">
+    <value>ダンプ出力に失敗しました。</value>
+  </data>
+  <data name="Settings_DumpMessageSuccess" xml:space="preserve">
+    <value>ダンプ出力は正常に行われました。</value>
+  </data>
+  <data name="Settings_InsertNode" xml:space="preserve">
+    <value>ノードの追加方法</value>
+  </data>
+  <data name="Settings_InsertNodeDisabled" xml:space="preserve">
+    <value>無効化</value>
+  </data>
+  <data name="Settings_InsertNodeEnabled" xml:space="preserve">
+    <value>セグメント上のクリックで即追加</value>
+  </data>
+  <data name="Settings_InsertNodeWithModifier" xml:space="preserve">
+    <value>セグメント上で {0} をクリック</value>
+  </data>
+  <data name="Settings_LongIntersectionFix" xml:space="preserve">
+    <value>長い交差点で歩行者の立ち往生を修正</value>
+  </data>
+  <data name="Settings_LongIntersectionFixWarning" xml:space="preserve">
+    <value>オプションは交差点内での経路探索における最大距離を拡張して、 長い横断歩道で歩行者がスタックする現象を防ぎます。 ただし、有効化するとシミュレーション速度に影響を与える可能性があります。</value>
+  </data>
+  <data name="Settings_NodeIsSlopedByDefault" xml:space="preserve">
+    <value>デフォルトでノードを全てスロープ化</value>
+  </data>
+  <data name="Settings_OptionsVisibility" xml:space="preserve">
+    <value>オプションの表示設定</value>
+  </data>
+  <data name="Settings_Option_Disabled" xml:space="preserve">
+    <value>無効化</value>
+  </data>
+  <data name="Settings_Option_Hidden" xml:space="preserve">
+    <value>折り畳む</value>
+  </data>
+  <data name="Settings_Option_Visible" xml:space="preserve">
+    <value>常に表示</value>
+  </data>
+  <data name="Settings_OverlayOpacity" xml:space="preserve">
+    <value>オーバーレイの不透明度</value>
+  </data>
+  <data name="Settings_RenderNearNode" xml:space="preserve">
+    <value>選択中は近くにあるノードをハイライト</value>
+  </data>
+  <data name="Settings_Restore" xml:space="preserve">
+    <value>復元</value>
+  </data>
+  <data name="Settings_RestoreDataButton" xml:space="preserve">
+    <value>ノードデータをファイルから復元</value>
+  </data>
+  <data name="Settings_RestoreDataCaption" xml:space="preserve">
+    <value>ノードデータを復元</value>
+  </data>
+  <data name="Settings_RestoreDataMessage" xml:space="preserve">
+    <value>本当にデータを復元しますか？
+復元すると、既存のノードデータを全て置き換えます。</value>
+  </data>
+  <data name="Settings_RestoreDataMessageFailed" xml:space="preserve">
+    <value>ノードデータの復元に失敗しました。</value>
+  </data>
+  <data name="Settings_RestoreDataMessageSuccess" xml:space="preserve">
+    <value>ノードデータの復元に成功しました。</value>
+  </data>
+  <data name="Settings_SelectMiddleNodes" xml:space="preserve">
+    <value>中間部分にあるノードも選択</value>
+  </data>
+  <data name="Settings_SelectMiddleNodesDiscription" xml:space="preserve">
+    <value>このオプションを無効にすると、中間部分にあるノードは選択されません</value>
+  </data>
+  <data name="Settings_ShortcutEnterUnderground" xml:space="preserve">
+    <value>地下表示に移行</value>
+  </data>
+  <data name="Settings_ShortcutExitUnderground" xml:space="preserve">
+    <value>地下表示を終了</value>
+  </data>
+  <data name="Settings_ToggleUnderground" xml:space="preserve">
+    <value>地下表示の切り替え方法</value>
+  </data>
+  <data name="Settings_ToggleUndergroundButtons" xml:space="preserve">
+    <value>{0} で移行 / {1} は終了</value>
+  </data>
+  <data name="Settings_ToggleUndergroundHold" xml:space="preserve">
+    <value>{0} を保持</value>
+  </data>
+  <data name="Setting_ShortcutCalculateShiftByIntersections" xml:space="preserve">
+    <value>交差点間でシフト値を、まとめてスムージング</value>
+  </data>
+  <data name="Setting_ShortcutCalculateShiftByNearby" xml:space="preserve">
+    <value>隣接するノードで、シフトをスムージング</value>
+  </data>
+  <data name="Setting_ShortcutCalculateTwistByIntersections" xml:space="preserve">
+    <value>交差点間でツイスト値を、まとめてスムージング</value>
+  </data>
+  <data name="Setting_ShortcutCalculateTwistByNearby" xml:space="preserve">
+    <value>隣接するノードで、ツイストのスムージング</value>
+  </data>
+  <data name="Setting_ShortcutChangeMainRoadMode" xml:space="preserve">
+    <value>スロープ化の選択方法</value>
+  </data>
+  <data name="Setting_ShortcutChangeNodeStyle" xml:space="preserve">
+    <value>スタイルの変更</value>
+  </data>
+  <data name="Setting_ShortcutKeepDefault" xml:space="preserve">
+    <value>オフセットをリセット</value>
+  </data>
+  <data name="Setting_ShortcutMakeStraightEnds" xml:space="preserve">
+    <value>セグメントの端を直線化</value>
+  </data>
+  <data name="Setting_ShortcutResetToDefault" xml:space="preserve">
+    <value>デフォルトに戻す</value>
+  </data>
+  <data name="Setting_ShortcutSetShiftBetweenIntersections" xml:space="preserve">
+    <value>交差点間では、シフト値を一括適用</value>
+  </data>
+  <data name="Setting_ShortcutSetTwistBetweenIntersections" xml:space="preserve">
+    <value>交差点間では、ツイスト値を一括適用</value>
+  </data>
+  <data name="Tool_EnterUnderground" xml:space="preserve">
+    <value>{0} を押して
+地下表示に移行</value>
+  </data>
+  <data name="Tool_ExitUnderground" xml:space="preserve">
+    <value>{0} を押して
+地下表示を終了</value>
+  </data>
+  <data name="Tool_InfoAlignMode" xml:space="preserve">
+    <value>{0} で、ネットワークを整列</value>
+  </data>
+  <data name="Tool_InfoApplyAlign" xml:space="preserve">
+    <value>クリックしてこのコーナーへ自動整列</value>
+  </data>
+  <data name="Tool_InfoChangeMainMode" xml:space="preserve">
+    <value>{0} で、スロープ化する接続方向を変更</value>
+  </data>
+  <data name="Tool_InfoClickNode" xml:space="preserve">
+    <value>ノード #{0}
+クリックして形状を調整</value>
+  </data>
+  <data name="Tool_InfoClickToSelectFirstAlign" xml:space="preserve">
+    <value>クリックしてこのコーナーを始点に選択</value>
+  </data>
+  <data name="Tool_InfoDragCenter" xml:space="preserve">
+    <value>ドラッグしてオフセットを変更</value>
+  </data>
+  <data name="Tool_InfoDragCenterFree" xml:space="preserve">
+    <value>ドラッグして位置を変更
+ {0} を長押しで高さを変更</value>
+  </data>
+  <data name="Tool_InfoDragCircle" xml:space="preserve">
+    <value>ドラッグして回転(角度)を変更</value>
+  </data>
+  <data name="Tool_InfoDragCorner" xml:space="preserve">
+    <value>ドラッグしてコーナーオフセットを変更</value>
+  </data>
+  <data name="Tool_InfoDragCornerFree" xml:space="preserve">
+    <value>ドラッグしてコーナーの位置を変更
+ {0} を長押しでコーナーの高さを変更</value>
+  </data>
+  <data name="Tool_InfoDragMainSlopeDirectionEnd" xml:space="preserve">
+    <value>終端をドラッグして、スロープ化したい接続先を変更</value>
+  </data>
+  <data name="Tool_InfoDropMainSlopeDirectionEnd" xml:space="preserve">
+    <value>終端をドロップして、この接続方向でスロープ化する</value>
+  </data>
+  <data name="Tool_InfoInsertCrossingNode" xml:space="preserve">
+    <value>クリックして横断歩道を追加</value>
+  </data>
+  <data name="Tool_InfoInsertCrossingNodeWithModifier" xml:space="preserve">
+    <value>{0} をクリックして横断歩道を追加</value>
+  </data>
+  <data name="Tool_InfoInsertNode" xml:space="preserve">
+    <value>クリックしてノードを追加</value>
+  </data>
+  <data name="Tool_InfoInsertNodeWithModifier" xml:space="preserve">
+    <value>{0} をクリックしてノードを追加</value>
+  </data>
+  <data name="Tool_InfoSelectAlignRelative" xml:space="preserve">
+    <value>コーナーの終点を選択して自動整列</value>
+  </data>
+  <data name="Tool_InfoSelectMainSlopeDirection" xml:space="preserve">
+    <value>スロープを変更したい、セグメントの終端を選択</value>
+  </data>
+  <data name="Tool_InfoSelectNewMainSlopeDirectionEnd" xml:space="preserve">
+    <value>終端をD&amp;Dして、他のセグメントへ接続先を変更</value>
+  </data>
+  <data name="Tool_InfoSelectNode" xml:space="preserve">
+    <value>調整したいノード(交差点)を選択してください</value>
+  </data>
+  <data name="Tool_InfoSelectToAlign" xml:space="preserve">
+    <value>自動整列したいコーナーの始点を選択</value>
+  </data>
+  <data name="Tool_InfoTooCloseNode" xml:space="preserve">
+    <value>ノードが追加できません
+他のノードと近すぎます</value>
+  </data>
+  <data name="Tool_InfoUnderground" xml:space="preserve">
+    <value>{0} で、地下表示に切り替え</value>
+  </data>
+</root>

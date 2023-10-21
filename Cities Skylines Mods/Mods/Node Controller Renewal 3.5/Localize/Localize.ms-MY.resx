@@ -1,0 +1,605 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MessageBox_CantUndone" xml:space="preserve">
+    <value>Tindakan ini tidak boleh dibuat asal.</value>
+  </data>
+  <data name="Mod_BackwardCompatibilityMessage" xml:space="preserve">
+    <value>Data Node Controller asal telah diimport.
+Keserasian ke belakang tidak menyediakan pemindahan kesemua data, pelarasan manual mungkin diperlukan.</value>
+  </data>
+  <data name="Mod_BackwardCompatibilityWarning" xml:space="preserve">
+    <value>AMARAN: Jika anda menyimpan baharu, anda tidak akan mampu gunakan Node Controller yang asal di peta ini.</value>
+  </data>
+  <data name="Mod_Description" xml:space="preserve">
+    <value>Kawal jenis dan bentuk nod</value>
+  </data>
+  <data name="Mod_LoadFailed" xml:space="preserve">
+    <value>Pemuatan selesai dengan ralat.
+Gagal memuatkan data untuk {0} nod.</value>
+  </data>
+  <data name="Mod_LoadFailedAll" xml:space="preserve">
+    <value>Pemuatan selesai dengan ralat.
+Gagal memuatkan data untuk kesemua nod.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_0" xml:space="preserve">
+    <value>[RELEASE] Terbitan versi Renewal</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="Mod_WhatsNewMessage3_3" xml:space="preserve">
+    <value>[UPDATED] Keupayaan untuk menyahdayakan pilihan "baiki pejalan kaki yang tersangkut pada persimpangan yang panjang" telah ditambah kerana terdapat aduan mengenai terkesannya kelajuan penyelakuan. Pilihan ini dinyahdayakan secara lalai, boleh didayakan dalam tetapan mod.
+[NEW] Pilihan "Perlanggaran" telah ditambah. Jika anda menyahdayakannya untuk segmen, segmen tidak akan ada had dalam pengubahan ofset dan boleh bertindih dengan segmen lain.
+[NEW] Pilihan "Tanpa nod" telah ditambah. Pilihan tersebut membuatkan segmen dikemas gabung tanpa nod.
+[NEW] Keupayaan untuk menyembunyikan pilihan yang tidak digunakan telah ditambah. Semua pilihan kecuali ofset, anjakan dan putaran boleh disembunyikan dalam tetapan mod jika anda tidak menggunakannya.
+[FIXED] Perkiraan anjakan pada nod pertengahan telah dibaiki.
+[UPDATED] Nilai lereng maksimum untuk jalan telah ditingkatkan ke 60 darjah.
+[UPDATED] Nilai pulas maksimum untuk jalan telah ditingkatkan ke 60 darjah.
+[UPDATED] Nilai anjakan maksimum telah ditingkatkan ke 64 meter.
+[FIXED] Lubang dalam tindihan atas pada nod yang amat besar telah dibaiki.
+[TRANSLATION] Bahasa Romania telah ditambah.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_3_1" xml:space="preserve">
+    <value>[UPDATED] Sokongan buat DLC Plazas &amp; Promenades telah ditambah.
+[FIXED] Kedudukan prop pada segmen terpulas telah dibaiki.
+[FIXED] Data penyelakuan kini sudah tidak diubah dari bebenang utama.
+[FIXED] Tekstur lintasan pejalan kaki pada nod lintasan yang hilang telah dibaiki.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_3_2" xml:space="preserve">
+    <value>[FIXED] Glic rupa bumi yang mampu muncul ketika menggunakan mod Surface Painter telah dibaiki.
+[TRANSLATION] Bahasa Czechoslovakia telah ditambah.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_3_3" xml:space="preserve">
+    <value>[FIXED] Keserasian dengan mod Adaptive Network yang mampu menyebabkan lompang biru menggantikan nod telah dibaiki.
+[FIXED] Ralat ketika kehilangan aset rangkaian mampu menyebabkan kegagalan pemuatan data NCR telah dibaiki.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_4" xml:space="preserve">
+    <value>[NEW] Mod bentuk bebas telah ditambah yang membolehkan penetapan putaran dan kedudukan bucu tanpa had.
+[NEW] Keupayaan untuk menyahdayakan "Ikut lereng utama" untuk segmen telah ditambah yang membolehkan penetapan lereng segmen secara berasingan.
+[NEW] Keupayaan untuk menetapkan ketinggian delta telah ditambah untuk setiap segmen.
+[UPDATED] Nod lentur kini ikut lereng nod berhampiran, supaya segmen di antara mereka lebih rata.
+[FIXED] Ofset lalai bagi landasan kereta api tidak ditetapkan kepada 0.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_5" xml:space="preserve">
+    <value>[UPDATED] Gaya UI baharu.
+[NEW] Membolehkan pengubahan ofset dan putaran untuk segmen tanpa nod.
+[NEW] Membolehkan nod penamat dipindahkan dalam mod bentuk bebas.
+[NEW] Anjakan telah ditambah ke mod bentuk bebas.
+[NEW] Penghujung datar telah ditambah ke mod bentuk bebas.
+[NEW] Membolehkan pengubahan nilai dengan 0.01 langkah dengan menatal roda tetikus sambil menahan Alt.
+[NEW] Tahan ctrl untuk pindah dalam arah X sahaja, tahan alt untuk pindah dalam arah Y sahaja dalam mod bentuk bebas.
+[NEW] Pilihan untuk menetapkan kelegapan tindihan atas telah ditambah.
+[NEW] Warna tindihan atas segmen berkelip apabila tetikus dilalukan di atas medannya di atas panel.
+[FIXED] Kedudukan segmen tanpa nod dalam mod bentuk bebas telah dibaiki.
+[FIXED] Nilai asal arah bucu dalam mod bentuk bebas telah dibaiki.
+[FIXED] Ralat ketika menyunting nod yang tersambung ke stesen pengangkutan atau bangunan telah dibaiki.</value>
+  </data>
+  <data name="NodeStyle_Bend" xml:space="preserve">
+    <value>Lentur</value>
+  </data>
+  <data name="NodeStyle_Crossing" xml:space="preserve">
+    <value>Lintasan</value>
+  </data>
+  <data name="NodeStyle_Custom" xml:space="preserve">
+    <value>Tersuai</value>
+  </data>
+  <data name="NodeStyle_End" xml:space="preserve">
+    <value>Penamat</value>
+  </data>
+  <data name="NodeStyle_Middle" xml:space="preserve">
+    <value>Pertengahan</value>
+  </data>
+  <data name="NodeStyle_Stretch" xml:space="preserve">
+    <value>Regangan</value>
+  </data>
+  <data name="NodeStyle_UTurn" xml:space="preserve">
+    <value>Pusingan U</value>
+  </data>
+  <data name="Options_All" xml:space="preserve">
+    <value>Semua</value>
+  </data>
+  <data name="Option_CalculateShiftByIntersections" xml:space="preserve">
+    <value>Kira anjakan mengikut persimpangan</value>
+  </data>
+  <data name="Option_CalculateShiftByNearby" xml:space="preserve">
+    <value>Kira anjakan mengikut nod berhampiran</value>
+  </data>
+  <data name="Option_CalculateTwistByIntersections" xml:space="preserve">
+    <value>Kira pulas mengikut persimpangan</value>
+  </data>
+  <data name="Option_CalculateTwistByNearby" xml:space="preserve">
+    <value>Kira pulas mengikut nod berhampiran</value>
+  </data>
+  <data name="Option_Collision" xml:space="preserve">
+    <value>Perlanggaran</value>
+  </data>
+  <data name="Option_DeltaHeight" xml:space="preserve">
+    <value>Ketinggian delta</value>
+  </data>
+  <data name="Option_Direction" xml:space="preserve">
+    <value>Arah</value>
+  </data>
+  <data name="Option_Distance" xml:space="preserve">
+    <value>Jarak</value>
+  </data>
+  <data name="Option_Elevation" xml:space="preserve">
+    <value>Ketinggian</value>
+  </data>
+  <data name="Option_FlatEnd" xml:space="preserve">
+    <value>Penghujung datar</value>
+  </data>
+  <data name="Option_FollowSlope" xml:space="preserve">
+    <value>Ikut lereng utama</value>
+  </data>
+  <data name="Option_HideCrosswalkModRequired" xml:space="preserve">
+    <value>Mod “Hide crosswalks” diperlukan</value>
+  </data>
+  <data name="Option_Horizontal" xml:space="preserve">
+    <value>Mendatar</value>
+  </data>
+  <data name="Option_KeepDefault" xml:space="preserve">
+    <value>Tetap semula ofset</value>
+  </data>
+  <data name="Option_LeftCorner" xml:space="preserve">
+    <value>Bucu kiri</value>
+  </data>
+  <data name="Option_LeftCornerDirection" xml:space="preserve">
+    <value>Arah bucu kiri</value>
+  </data>
+  <data name="Option_LeftCornerFlatEnd" xml:space="preserve">
+    <value>Penghujung datar bucu kiri</value>
+  </data>
+  <data name="Option_LeftCornerPosition" xml:space="preserve">
+    <value>Kedudukan bucu kiri</value>
+  </data>
+  <data name="Option_MainSlopeDirection" xml:space="preserve">
+    <value>Arah lereng utama</value>
+  </data>
+  <data name="Option_MainSlopeDirectionAuto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="Option_MainSlopeDirectionManually" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="Option_MakeStraightEnds" xml:space="preserve">
+    <value>Luruskan penghujung segmen</value>
+  </data>
+  <data name="Option_Marking" xml:space="preserve">
+    <value>Tanda</value>
+  </data>
+  <data name="Option_Mode" xml:space="preserve">
+    <value>Mod</value>
+  </data>
+  <data name="Option_ModeFlat" xml:space="preserve">
+    <value>Datar</value>
+  </data>
+  <data name="Option_ModeFreeForm" xml:space="preserve">
+    <value>Bentuk bebas</value>
+  </data>
+  <data name="Option_ModeSlope" xml:space="preserve">
+    <value>Lereng</value>
+  </data>
+  <data name="Option_MoreOptions" xml:space="preserve">
+    <value>Lebih banyak pilihan</value>
+  </data>
+  <data name="Option_NodeLess" xml:space="preserve">
+    <value>Tanpa nod</value>
+  </data>
+  <data name="Option_Offset" xml:space="preserve">
+    <value>Ofset</value>
+  </data>
+  <data name="Option_OffsetFormat" xml:space="preserve">
+    <value>{0}m</value>
+  </data>
+  <data name="Option_Position" xml:space="preserve">
+    <value>Kedudukan</value>
+  </data>
+  <data name="Option_ResetToDefault" xml:space="preserve">
+    <value>Tetap semula kepada asal</value>
+  </data>
+  <data name="Option_RightCorner" xml:space="preserve">
+    <value>Busu kanan</value>
+  </data>
+  <data name="Option_RightCornerDirection" xml:space="preserve">
+    <value>Arah bucu kanan</value>
+  </data>
+  <data name="Option_RightCornerFlatEnd" xml:space="preserve">
+    <value>Penghujung datar bucu kanan</value>
+  </data>
+  <data name="Option_RightCornerPosition" xml:space="preserve">
+    <value>Kedudukan bucu kanan</value>
+  </data>
+  <data name="Option_Rotate" xml:space="preserve">
+    <value>Putar</value>
+  </data>
+  <data name="Option_RotateFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_SetShiftBetweenIntersections" xml:space="preserve">
+    <value>Tetapkan anjakan di antara persimpangan</value>
+  </data>
+  <data name="Option_SetTwistBetweenIntersections" xml:space="preserve">
+    <value>Tetapkan pulas di antara persimpangan</value>
+  </data>
+  <data name="Option_Shift" xml:space="preserve">
+    <value>Anjak</value>
+  </data>
+  <data name="Option_ShiftFormat" xml:space="preserve">
+    <value>{0}m</value>
+  </data>
+  <data name="Option_Slope" xml:space="preserve">
+    <value>Lereng</value>
+  </data>
+  <data name="Option_SlopeFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_Stretch" xml:space="preserve">
+    <value>Regang</value>
+  </data>
+  <data name="Option_StretchFormat" xml:space="preserve">
+    <value>{0}%</value>
+  </data>
+  <data name="Option_Twist" xml:space="preserve">
+    <value>Pulas</value>
+  </data>
+  <data name="Option_TwistFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_Type" xml:space="preserve">
+    <value>Jenis nod</value>
+  </data>
+  <data name="Option_Vertical" xml:space="preserve">
+    <value>Menegak</value>
+  </data>
+  <data name="Panel_NodeId" xml:space="preserve">
+    <value>Nod #{0}</value>
+  </data>
+  <data name="Settings_ApplyAfterRestart" xml:space="preserve">
+    <value>Diterapkan selepas permainan dimulakan semula</value>
+  </data>
+  <data name="Settings_BackupTab" xml:space="preserve">
+    <value>Sandaran</value>
+  </data>
+  <data name="Settings_CopyPathToClipboard" xml:space="preserve">
+    <value>Salin laluan ke papan keratan</value>
+  </data>
+  <data name="Settings_DeleteDataButton" xml:space="preserve">
+    <value>Padamkan data dari semua nod</value>
+  </data>
+  <data name="Settings_DeleteDataCaption" xml:space="preserve">
+    <value>Padamkan semua data</value>
+  </data>
+  <data name="Settings_DeleteDataMessage" xml:space="preserve">
+    <value>Adakah anda benar-benar ingin membuang semua data?</value>
+  </data>
+  <data name="Settings_DumpDataButton" xml:space="preserve">
+    <value>Longgokkan data nod ke fail</value>
+  </data>
+  <data name="Settings_DumpDataCaption" xml:space="preserve">
+    <value>Longgokkan data nod</value>
+  </data>
+  <data name="Settings_DumpMessageFailed" xml:space="preserve">
+    <value>Longgokan gagal</value>
+  </data>
+  <data name="Settings_DumpMessageSuccess" xml:space="preserve">
+    <value>Longgokan berjaya disimpan ke fail</value>
+  </data>
+  <data name="Settings_InsertNode" xml:space="preserve">
+    <value>Masukkan nod</value>
+  </data>
+  <data name="Settings_InsertNodeDisabled" xml:space="preserve">
+    <value>Dinyahdayakan</value>
+  </data>
+  <data name="Settings_InsertNodeEnabled" xml:space="preserve">
+    <value>Dengan mengklik pada segmen</value>
+  </data>
+  <data name="Settings_InsertNodeWithModifier" xml:space="preserve">
+    <value>Dengan mengklik sambil tahan {0} pada segmen</value>
+  </data>
+  <data name="Settings_LongIntersectionFix" xml:space="preserve">
+    <value>Baiki pejalan kaki yang tersangkut pada persimpangan yang panjang</value>
+  </data>
+  <data name="Settings_LongIntersectionFixWarning" xml:space="preserve">
+    <value>Pilihan ini meningkatkan jarak maksimum pencarian laluan pada persimpangan, yang mengelakkan pejalan kaki tersangkut pada persimpangan yang panjang, tetapi pilihan ini boleh memberi kesan kepada kelajuan penyelakuan</value>
+  </data>
+  <data name="Settings_NodeIsSlopedByDefault" xml:space="preserve">
+    <value>Nod berlereng secara lalai</value>
+  </data>
+  <data name="Settings_OptionsVisibility" xml:space="preserve">
+    <value>Ketampakan pilihan</value>
+  </data>
+  <data name="Settings_Option_Disabled" xml:space="preserve">
+    <value>Dinyahdayakan</value>
+  </data>
+  <data name="Settings_Option_Hidden" xml:space="preserve">
+    <value>Disembunyikan</value>
+  </data>
+  <data name="Settings_Option_Visible" xml:space="preserve">
+    <value>Sentiasa tampak</value>
+  </data>
+  <data name="Settings_OverlayOpacity" xml:space="preserve">
+    <value>Kelegapan tindihan atas</value>
+  </data>
+  <data name="Settings_RenderNearNode" xml:space="preserve">
+    <value>Tunjuk tindihan atas nod berhampiran</value>
+  </data>
+  <data name="Settings_Restore" xml:space="preserve">
+    <value>Pulih</value>
+  </data>
+  <data name="Settings_RestoreDataButton" xml:space="preserve">
+    <value>Pulihkan data nod dari fail</value>
+  </data>
+  <data name="Settings_RestoreDataCaption" xml:space="preserve">
+    <value>Pulihkan data nod</value>
+  </data>
+  <data name="Settings_RestoreDataMessage" xml:space="preserve">
+    <value>Adakah anda benar-benar ingin memulihkan data nod?
+Data yang dipulihkan akan menggantikan kesemua data nod sedia ada.</value>
+  </data>
+  <data name="Settings_RestoreDataMessageFailed" xml:space="preserve">
+    <value>Pemulihan data nod telah gagal</value>
+  </data>
+  <data name="Settings_RestoreDataMessageSuccess" xml:space="preserve">
+    <value>Data nod berjaya dipulihkan</value>
+  </data>
+  <data name="Settings_SelectMiddleNodes" xml:space="preserve">
+    <value>Pilih nod pertengahan</value>
+  </data>
+  <data name="Settings_SelectMiddleNodesDiscription" xml:space="preserve">
+    <value>Jika pilihan ini dinyahdayakan, nod pertengahan akan pindah ke kedudukan yang diklik</value>
+  </data>
+  <data name="Settings_ShortcutEnterUnderground" xml:space="preserve">
+    <value>Masuk mod bawah tanah</value>
+  </data>
+  <data name="Settings_ShortcutExitUnderground" xml:space="preserve">
+    <value>Keluar mod bawah tanah</value>
+  </data>
+  <data name="Settings_ToggleUnderground" xml:space="preserve">
+    <value>Togol mod bawah tanah</value>
+  </data>
+  <data name="Settings_ToggleUndergroundButtons" xml:space="preserve">
+    <value>Tekan {0} untuk masuk dan {1} untuk keluar</value>
+  </data>
+  <data name="Settings_ToggleUndergroundHold" xml:space="preserve">
+    <value>Tahan kekunci {0}</value>
+  </data>
+  <data name="Setting_ShortcutCalculateShiftByIntersections" xml:space="preserve">
+    <value>Kira anjakan mengikut persimpangan</value>
+  </data>
+  <data name="Setting_ShortcutCalculateShiftByNearby" xml:space="preserve">
+    <value>Kira anjakan mengikut nod berhampiran</value>
+  </data>
+  <data name="Setting_ShortcutCalculateTwistByIntersections" xml:space="preserve">
+    <value>Kira pulas mengikut persimpangan</value>
+  </data>
+  <data name="Setting_ShortcutCalculateTwistByNearby" xml:space="preserve">
+    <value>Kira pulas mengikut nod berhampiran</value>
+  </data>
+  <data name="Setting_ShortcutChangeMainRoadMode" xml:space="preserve">
+    <value>Ubah mod arah lereng utama</value>
+  </data>
+  <data name="Setting_ShortcutChangeNodeStyle" xml:space="preserve">
+    <value>Ubah gaya nod</value>
+  </data>
+  <data name="Setting_ShortcutKeepDefault" xml:space="preserve">
+    <value>Tetap semula ofset</value>
+  </data>
+  <data name="Setting_ShortcutMakeStraightEnds" xml:space="preserve">
+    <value>Luruskan penghujung segmen</value>
+  </data>
+  <data name="Setting_ShortcutResetToDefault" xml:space="preserve">
+    <value>Tetap semula kepada asal</value>
+  </data>
+  <data name="Setting_ShortcutSetShiftBetweenIntersections" xml:space="preserve">
+    <value>Tetapkan anjakan di antara persimpangan</value>
+  </data>
+  <data name="Setting_ShortcutSetTwistBetweenIntersections" xml:space="preserve">
+    <value>Tetapkan pulas di antara persimpangan</value>
+  </data>
+  <data name="Tool_EnterUnderground" xml:space="preserve">
+    <value>Tekan {0} untuk masuk
+ke mod bawah tanah</value>
+  </data>
+  <data name="Tool_ExitUnderground" xml:space="preserve">
+    <value>Tekan {0} untuk keluar
+ke mod bawah tanah</value>
+  </data>
+  <data name="Tool_InfoAlignMode" xml:space="preserve">
+    <value>Tahan kekunci {0} untuk menjajar jalan</value>
+  </data>
+  <data name="Tool_InfoApplyAlign" xml:space="preserve">
+    <value>Klik untuk menjajar dengan bucu ini</value>
+  </data>
+  <data name="Tool_InfoChangeMainMode" xml:space="preserve">
+    <value>Tahan kekunci {0} untuk ubah arah lereng utama</value>
+  </data>
+  <data name="Tool_InfoClickNode" xml:space="preserve">
+    <value>Nod #{0}
+Klik untuk sunting</value>
+  </data>
+  <data name="Tool_InfoClickToSelectFirstAlign" xml:space="preserve">
+    <value>Klik untuk pilih bucu yang anda ingin jajarkan</value>
+  </data>
+  <data name="Tool_InfoDragCenter" xml:space="preserve">
+    <value>Seret untuk ubah ofset</value>
+  </data>
+  <data name="Tool_InfoDragCenterFree" xml:space="preserve">
+    <value>Seret untuk ubah kedudukan
+Tahan {0} untuk ubah ketinggian</value>
+  </data>
+  <data name="Tool_InfoDragCircle" xml:space="preserve">
+    <value>Seret untuk ubah putaran</value>
+  </data>
+  <data name="Tool_InfoDragCorner" xml:space="preserve">
+    <value>Seret untuk ubah ofset bucu</value>
+  </data>
+  <data name="Tool_InfoDragCornerFree" xml:space="preserve">
+    <value>Seret untuk ubah kedudukan bucu
+Tahan {0} untuk ubah ketinggian bucu</value>
+  </data>
+  <data name="Tool_InfoDragMainSlopeDirectionEnd" xml:space="preserve">
+    <value>Seret penghujung ini untuk ubah arah lereng utama</value>
+  </data>
+  <data name="Tool_InfoDropMainSlopeDirectionEnd" xml:space="preserve">
+    <value>Lepaskan penghujung ini untuk ubah arah lereng utama</value>
+  </data>
+  <data name="Tool_InfoInsertCrossingNode" xml:space="preserve">
+    <value>Klik untuk masukkan nod lintasan</value>
+  </data>
+  <data name="Tool_InfoInsertCrossingNodeWithModifier" xml:space="preserve">
+    <value>Klik sambil tahan {0} untuk masukkan nod lintasan</value>
+  </data>
+  <data name="Tool_InfoInsertNode" xml:space="preserve">
+    <value>Klik untuk masukkan nod</value>
+  </data>
+  <data name="Tool_InfoInsertNodeWithModifier" xml:space="preserve">
+    <value>Klik sambil tahan {0} untuk masukkan nod</value>
+  </data>
+  <data name="Tool_InfoSelectAlignRelative" xml:space="preserve">
+    <value>Pilih bucu yang ingin ditujukan jajaran</value>
+  </data>
+  <data name="Tool_InfoSelectMainSlopeDirection" xml:space="preserve">
+    <value>Ubah ke arah lereng utama yang diinginkan</value>
+  </data>
+  <data name="Tool_InfoSelectNewMainSlopeDirectionEnd" xml:space="preserve">
+    <value>Pilih kedudukan akhir arah lereng utama</value>
+  </data>
+  <data name="Tool_InfoSelectNode" xml:space="preserve">
+    <value>Pilih nod</value>
+  </data>
+  <data name="Tool_InfoSelectToAlign" xml:space="preserve">
+    <value>Pilih bucu yang ingin dijajarkan</value>
+  </data>
+  <data name="Tool_InfoTooCloseNode" xml:space="preserve">
+    <value>Tidak boleh masukkan nod
+Terlalu dekat dengan nod berhampiran</value>
+  </data>
+  <data name="Tool_InfoUnderground" xml:space="preserve">
+    <value>Tahan kekunci {0}
+untuk mod bawah tanah</value>
+  </data>
+</root>

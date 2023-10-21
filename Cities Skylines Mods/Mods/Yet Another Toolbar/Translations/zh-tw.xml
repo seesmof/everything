@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Language UniqueName="zh-tw" ReadableName="繁體中文">
+  <Translations>
+    <Translation ID="YAT_DESC" String="又一個工具列修改模組"/>
+    <Translation ID="TRN_CHOICE" String="語言設置 (下次生效)"/>
+    <Translation ID="TRN_SYS" String="使用系統默認語言"/>
+    <Translation ID="YAT_SET_HMB" String="隱藏主按鈕"/>
+    <Translation ID="YAT_SET_HAB" String="隱藏顧問按鈕"/>
+    <Translation ID="YAT_SET_HFP" String="隱藏過濾面板"/>
+    <Translation ID="YAT_SET_HMBRST" String="重設主按鈕位置"/>
+    <Translation ID="YAT_SET_DUN" String="停用未來的更新通知"/>
+    <Translation ID="YAT_SET_CFP" String="設定文件路徑"/>
+    <Translation ID="YAT_SET_OFE" String="在檔案總管中顯示"/>
+    <Translation ID="YAT_SET_KEY" String="切換展開/收疊模式"/>
+    <Translation ID="YAT_SET_QMKEY" String="開啟快速選單"/>
+    <Translation ID="YAT_QM_TIT" String="快速選單"/>
+    <Translation ID="YAT_QM_ROW" String="展開時的列數:"/>
+    <Translation ID="YAT_QM_COL" String="行數:"/>
+    <Translation ID="YAT_QM_SCL" String="面板縮放比例:"/>
+    <Translation ID="YAT_QM_HOR" String="面板水平位置偏移:"/>
+    <Translation ID="YAT_QM_VER" String="面板垂直位置偏移:"/>
+    <Translation ID="YAT_QM_BAC" String="面板背景:"/>
+    <Translation ID="YAT_QM_DRK" String="深色"/>
+    <Translation ID="YAT_QM_LGH" String="亮色"/>
+    <Translation ID="YAT_QM_TRS" String="透明"/>
+    <Translation ID="YAT_UP_TIT" String="更新"/>
+    <Translation ID="YAT_UP_CNF" String="確認"/>
+    <Translation ID="YAT_SET_HMKEY" String="隱藏工具列面板"/>
+    <Translation ID="YAT_QM_THM" String="Thumbnail Bar 背景:"/>
+    <Translation ID="YAT_QM_TSB" String="TS Bar 背景:"/>
+    <Translation ID="YAT_QM_IPB" String="資訊面板背景:"/>
+    <Translation ID="YAT_QM_PB_OR" String="原始"/>
+    <Translation ID="YAT_SET_UUI" String="將主按鈕整合到 UnifiedUI (UUI) 模組面板"/>
+    <Translation ID="YAT_QM_ASSET" String="某些功能在資產編輯器模式下不可用"/>
+    <Translation ID="YAT_QM_TSO" String="TS Bar 偏移:"/>
+
+  </Translations>
+</Language>

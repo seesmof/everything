@@ -1,0 +1,490 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Dependency_Conflict" xml:space="preserve">
+    <value>Виявлені несумісні моди.</value>
+  </data>
+  <data name="Dependency_Disable" xml:space="preserve">
+    <value>Вимкнути</value>
+  </data>
+  <data name="Dependency_DisableMod" xml:space="preserve">
+    <value>Вимкнути {0}</value>
+  </data>
+  <data name="Dependency_Enable" xml:space="preserve">
+    <value>Увімкнути</value>
+  </data>
+  <data name="Dependency_EnableMod" xml:space="preserve">
+    <value>Увімкнути {0}</value>
+  </data>
+  <data name="Dependency_Get" xml:space="preserve">
+    <value>Отримати</value>
+  </data>
+  <data name="Dependency_Missing" xml:space="preserve">
+    <value>Знайдено відсутні залежності.</value>
+  </data>
+  <data name="Dependency_MissingAndConflict" xml:space="preserve">
+    <value>Виявлено відсутні залежності та конфліктуючі модифікації.</value>
+  </data>
+  <data name="Dependency_NeedFix" xml:space="preserve">
+    <value>Аби продовжити використання {0} потрібно виправити ці проблеми, інакше мод буде вимкнено.</value>
+  </data>
+  <data name="Dependency_NoIssues" xml:space="preserve">
+    <value>Всі проблеми виправлено, {0} можна увімкнути.</value>
+  </data>
+  <data name="Dependency_Remove" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="Dependency_Subscribe" xml:space="preserve">
+    <value>Підписатися</value>
+  </data>
+  <data name="Dependency_Unsubscribe" xml:space="preserve">
+    <value>Відписатися</value>
+  </data>
+  <data name="FieldPanel_ScrollWheel" xml:space="preserve">
+    <value>Прокрутіть колесико для зміни
+Shift X10, Ctrl X0.1</value>
+  </data>
+  <data name="Key_Alt" xml:space="preserve">
+    <value>Alt</value>
+  </data>
+  <data name="Key_Control" xml:space="preserve">
+    <value>Ctrl</value>
+  </data>
+  <data name="Key_Enter" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="Key_Shift" xml:space="preserve">
+    <value>Shift</value>
+  </data>
+  <data name="Key_Tab" xml:space="preserve">
+    <value>Tab</value>
+  </data>
+  <data name="ListPanel_ScrollWheel" xml:space="preserve">
+    <value>Прокрутіть колесико для зміни</value>
+  </data>
+  <data name="MessageBox_Cancel" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
+  <data name="MessageBox_DontShowAgain" xml:space="preserve">
+    <value>Не показувати знову</value>
+  </data>
+  <data name="MessageBox_MoreInfo" xml:space="preserve">
+    <value>Детальніше</value>
+  </data>
+  <data name="MessageBox_No" xml:space="preserve">
+    <value>Ні</value>
+  </data>
+  <data name="MessageBox_OK" xml:space="preserve">
+    <value>Ок</value>
+  </data>
+  <data name="MessageBox_Yes" xml:space="preserve">
+    <value>Так</value>
+  </data>
+  <data name="Mod_BetaWarningAgree" xml:space="preserve">
+    <value>Я погоджуюся</value>
+  </data>
+  <data name="Mod_BetaWarningCaption" xml:space="preserve">
+    <value>Попередження про версію BETA</value>
+  </data>
+  <data name="Mod_BetaWarningGetStable" xml:space="preserve">
+    <value>Використовувати стабільну версію</value>
+  </data>
+  <data name="Mod_BetaWarningMessage" xml:space="preserve">
+    <value>Ви використовуєте BETA версію {0}. Вона створена для тестування нових можливостей і може містити помилки. Якщо ви підписані на неї помилково, то перейдіть до стабільної версії.</value>
+  </data>
+  <data name="Mod_DescriptionBeta" xml:space="preserve">
+    <value>Це версія BETA, можуть виникнути помилки і стабільність не гарантована!</value>
+  </data>
+  <data name="Mod_LinuxWarning" xml:space="preserve">
+    <value>Linux-версія Cities Skylines не має всіх необхідних бібліотек для коректної роботи мода. Вам потрібно встановити пакет "Mono Develop" на вашу систему. Якщо все працює без перебоїв, просто проігноруйте це повідомлення.</value>
+  </data>
+  <data name="Mod_LoadedWithErrors" xml:space="preserve">
+    <value>Мод завантажено з помилками.
+Не рекомендується використовувати мод у такому стані, оскільки це може призвести до непередбачуваної роботи.
+Перезапустіть гру.</value>
+  </data>
+  <data name="Mod_LocaleGame" xml:space="preserve">
+    <value>Мова гри</value>
+  </data>
+  <data name="Mod_Locale_cs-CZ" xml:space="preserve">
+    <value>Чеська</value>
+  </data>
+  <data name="Mod_Locale_da-DK" xml:space="preserve">
+    <value>Датська</value>
+  </data>
+  <data name="Mod_Locale_de-DE" xml:space="preserve">
+    <value>Німецька</value>
+  </data>
+  <data name="Mod_Locale_en-US" xml:space="preserve">
+    <value>Англійська США</value>
+  </data>
+  <data name="Mod_Locale_en-GB" xml:space="preserve">
+    <value>Англійська Велика Британія</value>
+  </data>
+  <data name="Mod_Locale_es-ES" xml:space="preserve">
+    <value>Іспанська</value>
+  </data>
+  <data name="Mod_Locale_fi-FI" xml:space="preserve">
+    <value>Фінська</value>
+  </data>
+  <data name="Mod_Locale_fr-FR" xml:space="preserve">
+    <value>Французька</value>
+  </data>
+  <data name="Mod_Locale_hu-HU" xml:space="preserve">
+    <value>Угорська</value>
+  </data>
+  <data name="Mod_Locale_id-ID" xml:space="preserve">
+    <value>Індонезійська</value>
+  </data>
+  <data name="Mod_Locale_it-IT" xml:space="preserve">
+    <value>Італійська</value>
+  </data>
+  <data name="Mod_Locale_ja-JP" xml:space="preserve">
+    <value>Японська</value>
+  </data>
+  <data name="Mod_Locale_ko-KR" xml:space="preserve">
+    <value>Корейська</value>
+  </data>
+  <data name="Mod_Locale_ms-MY" xml:space="preserve">
+    <value>Малайзійська</value>
+    <comment>Mod_Locale_ms
+</comment>
+  </data>
+  <data name="Mod_Locale_nl-NL" xml:space="preserve">
+    <value>Голландська</value>
+  </data>
+  <data name="Mod_Locale_pl-PL" xml:space="preserve">
+    <value>Польська</value>
+  </data>
+  <data name="Mod_Locale_pt-PT" xml:space="preserve">
+    <value>Португальська</value>
+  </data>
+  <data name="Mod_Locale_ro-RO" xml:space="preserve">
+    <value>Румунська</value>
+  </data>
+  <data name="Mod_Locale_ru-RU" xml:space="preserve">
+    <value>Російська</value>
+  </data>
+  <data name="Mod_Locale_tr-TR" xml:space="preserve">
+    <value>Турецька</value>
+  </data>
+  <data name="Mod_Locale_zh-CN" xml:space="preserve">
+    <value>Китайська спрощена</value>
+  </data>
+  <data name="Mod_Locale_zh-TW" xml:space="preserve">
+    <value>Китайська традиційна</value>
+  </data>
+  <data name="Mod_Status" xml:space="preserve">
+    <value>Стан: {0}</value>
+  </data>
+  <data name="Mod_Status_GameOutOfDate" xml:space="preserve">
+    <value>Застаріла версія гри</value>
+  </data>
+  <data name="Mod_Status_LoadingError" xml:space="preserve">
+    <value>Помилка завантаження</value>
+  </data>
+  <data name="Mod_Status_ModOutOfDate" xml:space="preserve">
+    <value>Версія моду застаріла</value>
+  </data>
+  <data name="Mod_Status_OperateNormally" xml:space="preserve">
+    <value>Працює в штатному режимі</value>
+  </data>
+  <data name="Mod_Status_Unknown" xml:space="preserve">
+    <value>Невідомо</value>
+  </data>
+  <data name="Mod_Support" xml:space="preserve">
+    <value>Підтримка</value>
+  </data>
+  <data name="Mod_Version" xml:space="preserve">
+    <value>Версія {0}</value>
+  </data>
+  <data name="Mod_VersionWarning_GameOutOfDate" xml:space="preserve">
+    <value>Версія гри застаріла.
+
+Мод потребує версії: {0}
+Поточна версія гри: {1}
+
+Оновіть гру до останньої версії, в іншому випадку правильна робота моду не гарантується і може привести до непередбачуваних помилок.</value>
+  </data>
+  <data name="Mod_VersionWarning_ModOutOfDate" xml:space="preserve">
+    <value>Модифікація застаріла.
+
+Мод був створений для версії: {0}
+Поточна версія гри: {1}
+
+Оновіть мод до останньої версії, в іншому випадку правильна робота моду не гарантується і може привести до непередбачуваних помилок.</value>
+  </data>
+  <data name="Mod_WhatsNewCaption" xml:space="preserve">
+    <value>Що нового в {0}</value>
+  </data>
+  
+  <data name="Mod_WhatsNewVersion" xml:space="preserve">
+    <value>Версія {0}</value>
+  </data>
+  <data name="Panel_Additional" xml:space="preserve">
+    <value>Додатково</value>
+  </data>
+  <data name="Settings_Cancel" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
+  <data name="Settings_ChangeLog" xml:space="preserve">
+    <value>Журнал змін</value>
+  </data>
+  <data name="Settings_ForLinuxUsers" xml:space="preserve">
+    <value>Для користувачів Linux</value>
+  </data>
+  <data name="Settings_General" xml:space="preserve">
+    <value>Загальний</value>
+  </data>
+  <data name="Settings_GeneralTab" xml:space="preserve">
+    <value>Головна</value>
+  </data>
+  <data name="Settings_Language" xml:space="preserve">
+    <value>Мова</value>
+  </data>
+  <data name="Settings_Notifications" xml:space="preserve">
+    <value>Сповіщення</value>
+  </data>
+  <data name="Settings_PressAnyKey" xml:space="preserve">
+    <value>Натисніть будь-яку клавішу</value>
+  </data>
+  <data name="Settings_ShortcutActivateTool" xml:space="preserve">
+    <value>Активувати інструмент</value>
+  </data>
+  <data name="Settings_Shortcuts" xml:space="preserve">
+    <value>Гарячі клавіші</value>
+  </data>
+  <data name="Settings_ShortcutSelectionStepOver" xml:space="preserve">
+    <value>Пропустити виділене</value>
+  </data>
+  <data name="Settings_ShowOnlyMajor" xml:space="preserve">
+    <value>Сповіщення лише про важливі оновлення</value>
+  </data>
+  <data name="Settings_ShowTooltips" xml:space="preserve">
+    <value>Показувати підказки</value>
+  </data>
+  <data name="Settings_ShowWhatsNew" xml:space="preserve">
+    <value>Показувати що нового</value>
+  </data>
+  <data name="Settings_SolveCrashOnLinux" xml:space="preserve">
+    <value>Вирішення вилетів на Linux</value>
+  </data>
+  <data name="Settings_SupportTab" xml:space="preserve">
+    <value>Підтримка</value>
+  </data>
+  <data name="Settings_ToolButton" xml:space="preserve">
+    <value>Кнопка інструменту</value>
+  </data>
+  <data name="Settings_ToolButtonBoth" xml:space="preserve">
+    <value>Показувати в обох місцях</value>
+  </data>
+  <data name="Settings_ToolButtonOnlyToolbar" xml:space="preserve">
+    <value>Показувати лише в панелі інструментів</value>
+  </data>
+  <data name="Settings_ToolButtonOnlyUUI" xml:space="preserve">
+    <value>Показати лише в UnifiedUI</value>
+  </data>
+  <data name="Settings_TranslationDescription" xml:space="preserve">
+    <value>Ви можете допомогти поліпшити переклад моду
+або перекласти модифікацію на вашу мову</value>
+  </data>
+  <data name="Settings_TranslationImprove" xml:space="preserve">
+    <value>Покращити переклад</value>
+  </data>
+  <data name="Settings_TranslationNew" xml:space="preserve">
+    <value>Додати нову мову</value>
+  </data>
+  <data name="Settings_Troubleshooting" xml:space="preserve">
+    <value>Усунення проблем</value>
+  </data>
+  <data name="Setting_Donate" xml:space="preserve">
+    <value>Якщо вам подобається {0}, ви можете підтримати автора</value>
+  </data>
+  <data name="Tool_InfoSelectionStepOver" xml:space="preserve">
+    <value>Натисніть {0} щоб пропустити виділене</value>
+  </data>
+  <data name="WhatsNew_FIXED" xml:space="preserve">
+    <value>ВИПРАВЛЕНО</value>
+  </data>
+  <data name="WhatsNew_NEW" xml:space="preserve">
+    <value>НОВИЙ</value>
+  </data>
+  <data name="WhatsNew_REMOVED" xml:space="preserve">
+    <value>ВИДАЛЕНО</value>
+  </data>
+  <data name="WhatsNew_REVERTED" xml:space="preserve">
+    <value>ПОВЕРНЕНО</value>
+  </data>
+  <data name="WhatsNew_TRANSLATION" xml:space="preserve">
+    <value>ПЕРЕКЛАД</value>
+  </data>
+  <data name="WhatsNew_UPDATED" xml:space="preserve">
+    <value>ОНОВЛЕНО</value>
+  </data>
+  <data name="WhatsNew_WARNING" xml:space="preserve">
+    <value>УВАГА</value>
+  </data>
+  <data name="Mod_Locale_pt-BR" xml:space="preserve">
+    <value>Бразильська</value>
+    <comment>Mod_Locale_pt-br</comment>
+  </data>
+  <data name="Mod_VersionWarning_DontShow" xml:space="preserve">
+    <value>Не показувати знову</value>
+  </data>
+  <data name="Dependency_Disabled" xml:space="preserve">
+    <value>Вимкнено</value>
+  </data>
+  <data name="Dependency_Enabled" xml:space="preserve">
+    <value>Увімкнено</value>
+  </data>
+  <data name="Dependency_Installed" xml:space="preserve">
+    <value>Встановлено</value>
+  </data>
+  <data name="Dependency_Removed" xml:space="preserve">
+    <value>Видалено</value>
+  </data>
+  <data name="Dependency_Subscribed" xml:space="preserve">
+    <value>Підписано</value>
+  </data>
+  <data name="Dependency_Unsubscribed" xml:space="preserve">
+    <value>Відписано</value>
+  </data>
+  <data name="Key_Backspace" xml:space="preserve">
+    <value>Backspace</value>
+  </data>
+  <data name="Key_Esc" xml:space="preserve">
+    <value>Esc</value>
+  </data>
+  <data name="Settings_DiscardShortcut" xml:space="preserve">
+    <value>Натисніть {0}, аби скасувати зміни</value>
+  </data>
+  <data name="Settings_ResetShortcut" xml:space="preserve">
+    <value>Натисніть {0}, аби скинути прив'язку</value>
+  </data>
+  <data name="Key_Space" xml:space="preserve">
+    <value>Space</value>
+  </data>
+  <data name="Popup_Empty" xml:space="preserve">
+    <value>Список порожній</value>
+  </data>
+  <data name="Mod_Locale_uk-UA" xml:space="preserve">
+    <value>Українська</value>
+  </data>
+  
+</root>

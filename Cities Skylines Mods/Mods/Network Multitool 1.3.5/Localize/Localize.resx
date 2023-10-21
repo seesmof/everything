@@ -1,0 +1,691 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Mode_AddNode" xml:space="preserve">
+    <value>Add node mode</value>
+  </data>
+  <data name="Mode_AddNode_Info_ClickToAdd" xml:space="preserve">
+    <value>Click to add node</value>
+  </data>
+  <data name="Mode_AddNode_Info_PreciseMeasurement" xml:space="preserve">
+    <value>Hold {0} for precise measurement</value>
+  </data>
+  <data name="Mode_AddNode_Info_SelectToAdd" xml:space="preserve">
+    <value>Select segment to add node</value>
+  </data>
+  <data name="Mode_AddNode_Info_TooCloseNode" xml:space="preserve">
+    <value>Can't add node
+Too close to nearby node</value>
+  </data>
+  <data name="Mode_AngleFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Mode_ArrangeAtCircle" xml:space="preserve">
+    <value>Arrange at circle mode</value>
+  </data>
+  <data name="Mode_ArrangeAtLine" xml:space="preserve">
+    <value>Arrange at line mode</value>
+  </data>
+  <data name="Mode_ArrangeCircle_Info_ClickToComplite" xml:space="preserve">
+    <value>Click to complete circle selection</value>
+  </data>
+  <data name="Mode_ArrangeLine_Info_ClickToSelectDirection" xml:space="preserve">
+    <value>Click to select arrange direction</value>
+  </data>
+  <data name="Mode_ArrangeLine_Info_SelectDirection" xml:space="preserve">
+    <value>Select segment to set arrange direction</value>
+  </data>
+  <data name="Mode_Connection_Info_DoubleClickOnCenterToChangeDir" xml:space="preserve">
+    <value>Double click on circle center
+to change curve direction</value>
+  </data>
+  <data name="Mode_Connection_Info_DoubleClickToAdd" xml:space="preserve">
+    <value>Double click to add curve to this line</value>
+  </data>
+  <data name="Mode_Connection_Info_DoubleClickToRemove" xml:space="preserve">
+    <value>Double right click to remove this curve</value>
+  </data>
+  <data name="Mode_Connection_Info_DragToChangeRadius" xml:space="preserve">
+    <value>Drag to change radius</value>
+  </data>
+  <data name="Mode_Connection_Info_DragToMove" xml:space="preserve">
+    <value>Drag to move circle</value>
+  </data>
+  <data name="Mode_CreateConnection" xml:space="preserve">
+    <value>Create connection mode</value>
+  </data>
+  <data name="Mode_CreateCurve" xml:space="preserve">
+    <value>Create curve mode</value>
+  </data>
+  <data name="Mode_CreateLoop" xml:space="preserve">
+    <value>Create loop mode</value>
+  </data>
+  <data name="Mode_CreateLoop_Info_Change" xml:space="preserve">
+    <value>Press {0} to change loop</value>
+  </data>
+  <data name="Mode_CreateParallerl" xml:space="preserve">
+    <value>Create parallel mode</value>
+  </data>
+  <data name="Mode_Info_Apply" xml:space="preserve">
+    <value>Press {0} to apply</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_Apply" xml:space="preserve">
+    <value>Press {0} to arrange at circle</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_BigDelta" xml:space="preserve">
+    <value>Too big angle between nodes
+round shape won't be perfect</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_DoubleClickToResetCenter" xml:space="preserve">
+    <value>Double click to reset center position</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_DoubleClickToResetNode" xml:space="preserve">
+    <value>Double click to reset node position</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_DragToChangeRadius" xml:space="preserve">
+    <value>Drag to change radius</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_DragToMoveCenter" xml:space="preserve">
+    <value>Drag to move circle</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_DragToMoveNode" xml:space="preserve">
+    <value>Drag to move node</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_MoveAll" xml:space="preserve">
+    <value>Hold {0} to move all nodes
+at the same time</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_PressToDistributeBetweenIntersections" xml:space="preserve">
+    <value>Press {0} to distribute nodes
+evenly between intersections</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_PressToDistributeEvenly" xml:space="preserve">
+    <value>Press {0} to distribute nodes evenly on circle</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_PressToDistributeIntersections" xml:space="preserve">
+    <value>Press {0} to distribute
+intersections evenly on circle</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_PressToReset" xml:space="preserve">
+    <value>Press {0} to reset parameters</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_WrongOrder" xml:space="preserve">
+    <value>Wrong nodes order</value>
+  </data>
+  <data name="Mode_Info_ArrangeLine_Apply" xml:space="preserve">
+    <value>Press {0} to arrange at line</value>
+  </data>
+  <data name="Mode_Info_ChangeAllRadius" xml:space="preserve">
+    <value>Press {0} or {1} to change all radii</value>
+  </data>
+  <data name="Mode_Info_ChangeBothRadius" xml:space="preserve">
+    <value>Press {0} or {1} to change both radii</value>
+  </data>
+  <data name="Mode_Info_ChangeCircle" xml:space="preserve">
+    <value>Press {0} to switch selected circle</value>
+  </data>
+  <data name="Mode_Info_ChangeOffset" xml:space="preserve">
+    <value>Press {0} or {1} to change curve start offset</value>
+  </data>
+  <data name="Mode_Info_ChangeOneRadius" xml:space="preserve">
+    <value>Press {0} or {1} to change one radius</value>
+  </data>
+  <data name="Mode_Info_ChangeRadius" xml:space="preserve">
+    <value>Press {0} or {1} to change radius</value>
+  </data>
+  <data name="Mode_Info_ChangeShift" xml:space="preserve">
+    <value>Press {0} or {1} to change offset</value>
+  </data>
+  <data name="Mode_Info_ClickFirstSegment" xml:space="preserve">
+    <value>Click to select first segment</value>
+  </data>
+  <data name="Mode_Info_ClickOnNodeToChangeCreateDir" xml:space="preserve">
+    <value>Click on node to change create direction</value>
+  </data>
+  <data name="Mode_Info_ClickSecondSegment" xml:space="preserve">
+    <value>Click to select second segment</value>
+  </data>
+  <data name="Mode_Info_ClickSelectNode" xml:space="preserve">
+    <value>Click to select node</value>
+  </data>
+  <data name="Mode_Info_ClickToChangeCreateDir" xml:space="preserve">
+    <value>Click to change create direction</value>
+  </data>
+  <data name="Mode_Info_ClickUnselectNode" xml:space="preserve">
+    <value>Click to unselect node</value>
+  </data>
+  <data name="Mode_Info_Connection_Create" xml:space="preserve">
+    <value>Press {0} to create connection</value>
+  </data>
+  <data name="Mode_Info_ConstructionCost" xml:space="preserve">
+    <value>Construction cost: {0}</value>
+  </data>
+  <data name="Mode_Info_Create" xml:space="preserve">
+    <value>Press {0} to create</value>
+  </data>
+  <data name="Mode_Info_HoldToMoveSlower" xml:space="preserve">
+    <value>Hold {0} to move X{1} slower</value>
+  </data>
+  <data name="Mode_Info_HoldToStep" xml:space="preserve">
+    <value>Hold {0} to step {1}</value>
+  </data>
+  <data name="Mode_Info_InvertNetwork" xml:space="preserve">
+    <value>Press {0} to invert network</value>
+  </data>
+  <data name="Mode_Info_Loop_Create" xml:space="preserve">
+    <value>Press {0} to create loop</value>
+  </data>
+  <data name="Mode_Info_NotEnoughMoney" xml:space="preserve">
+    <value>Not enough money</value>
+  </data>
+  <data name="Mode_Info_OutOfMap" xml:space="preserve">
+    <value>Out of map</value>
+  </data>
+  <data name="Mode_Info_Parallel_ChangeHeight" xml:space="preserve">
+    <value>Press {0} or {1} to change height</value>
+  </data>
+  <data name="Mode_Info_Parallel_ChangeShift" xml:space="preserve">
+    <value>Press {0} to switch creation side</value>
+  </data>
+  <data name="Mode_Info_Parallel_Create" xml:space="preserve">
+    <value>Press {0} to create parallel</value>
+  </data>
+  <data name="Mode_Info_RadiusTooBig" xml:space="preserve">
+    <value>Radius too big</value>
+  </data>
+  <data name="Mode_Info_RadiusTooSmall" xml:space="preserve">
+    <value>Radius too small</value>
+  </data>
+  <data name="Mode_Info_Refund" xml:space="preserve">
+    <value>Refund: {0}</value>
+  </data>
+  <data name="Mode_Info_SelectFirstSegment" xml:space="preserve">
+    <value>Select first segment</value>
+  </data>
+  <data name="Mode_Info_SelectSecondSegment" xml:space="preserve">
+    <value>Select second segment</value>
+  </data>
+  <data name="Mode_Info_SelectSegment" xml:space="preserve">
+    <value>Select segment</value>
+  </data>
+  <data name="Mode_Info_Slope_Apply" xml:space="preserve">
+    <value>Press {0} to apply slope</value>
+  </data>
+  <data name="Mode_Info_Step" xml:space="preserve">
+    <value>Shift - X10, Ctrl - X0.1, Alt - X0.01</value>
+  </data>
+  <data name="Mode_Info_SwitchFollowTerrain" xml:space="preserve">
+    <value>Press {0} to switch follow terrain</value>
+  </data>
+  <data name="Mode_Info_SwitchOffset" xml:space="preserve">
+    <value>Press {0} to switch selected offset</value>
+  </data>
+  <data name="Mode_Info_UndergroundMode" xml:space="preserve">
+    <value>Hold {0} to underground mode</value>
+  </data>
+  <data name="Mode_Info_WrongShape" xml:space="preserve">
+    <value>Wrong shape</value>
+  </data>
+  <data name="Mode_IntersectSegment" xml:space="preserve">
+    <value>Intersect segments mode</value>
+  </data>
+  <data name="Mode_IntersectSegment_Info_CommonNode" xml:space="preserve">
+    <value>These segments have common node</value>
+  </data>
+  <data name="Mode_IntersectSegment_Info_EdgeTooClose" xml:space="preserve">
+    <value>Edge of one segment is too close to end of second segment</value>
+  </data>
+  <data name="Mode_IntersectSegment_Info_NotIntersect" xml:space="preserve">
+    <value>These segments don’t intersect</value>
+  </data>
+  <data name="Mode_InvertSegment" xml:space="preserve">
+    <value>Invert segment mode</value>
+  </data>
+  <data name="Mode_InvertSegment_Info_ClickToReverse" xml:space="preserve">
+    <value>Click to invert segment</value>
+  </data>
+  <data name="Mode_InvertSegment_Info_SelectToReverse" xml:space="preserve">
+    <value>Select segment to invert it</value>
+  </data>
+  <data name="Mode_NodeLine_Info_NotConnected" xml:space="preserve">
+    <value>This node can't be selected
+because not connected with others</value>
+  </data>
+  <data name="Mode_NodeLine_Info_SelectNode" xml:space="preserve">
+    <value>Select node to add it to order</value>
+  </data>
+  <data name="Mode_PercentagesFormat" xml:space="preserve">
+    <value>{0}%</value>
+  </data>
+  <data name="Mode_RadiusFormat" xml:space="preserve">
+    <value>{0}m</value>
+  </data>
+  <data name="Mode_RemoveNode" xml:space="preserve">
+    <value>Remove node mode</value>
+  </data>
+  <data name="Mode_RemoveNode_Info_NotAllow" xml:space="preserve">
+    <value>Not possible to remove this node</value>
+  </data>
+  <data name="Mode_SlopeNode" xml:space="preserve">
+    <value>Set slope mode</value>
+  </data>
+  <data name="Mode_SplitNode" xml:space="preserve">
+    <value>Split node mode</value>
+  </data>
+  <data name="Mode_SplitNode_Info_ClickFromOrder" xml:space="preserve">
+    <value>Click to remove segment from split order</value>
+  </data>
+  <data name="Mode_SplitNode_Info_ClickToOrder" xml:space="preserve">
+    <value>Click to add segment to split order</value>
+  </data>
+  <data name="Mode_SplitNode_Info_ClickToSplit" xml:space="preserve">
+    <value>Click to split node and align to terrain height
+Click with {0} to split node and align to source height</value>
+  </data>
+  <data name="Mode_SplitNode_Info_NotAllowedSplit" xml:space="preserve">
+    <value>Not possible split node with only one segment</value>
+  </data>
+  <data name="Mode_SplitNode_Info_OrderIsFull" xml:space="preserve">
+    <value>Not possible add more segments to split order</value>
+  </data>
+  <data name="Mode_SplitNode_Info_SelectToSplit" xml:space="preserve">
+    <value>Select segments to split</value>
+  </data>
+  <data name="Mode_SplitNode_Info_TooFar" xml:space="preserve">
+    <value>Position is too far from source node</value>
+  </data>
+  <data name="Mode_UnionNode" xml:space="preserve">
+    <value>Union nodes mode</value>
+  </data>
+  <data name="Mode_UnionNode_Info_ClickSource" xml:space="preserve">
+    <value>Click to select source node</value>
+  </data>
+  <data name="Mode_UnionNode_Info_ClickUnion" xml:space="preserve">
+    <value>Click to unite nodes</value>
+  </data>
+  <data name="Mode_UnionNode_Info_NoCommon" xml:space="preserve">
+    <value>These nodes have common segment</value>
+  </data>
+  <data name="Mode_UnionNode_Info_Overflow" xml:space="preserve">
+    <value>Total number of nodes must be no more then 8</value>
+  </data>
+  <data name="Mode_UnionNode_Info_SelectSource" xml:space="preserve">
+    <value>Select source node</value>
+  </data>
+  <data name="Mode_UnionNode_Info_SelectTarget" xml:space="preserve">
+    <value>Select target node</value>
+  </data>
+  <data name="Mode_UnionNode_Info_TooFar" xml:space="preserve">
+    <value>Nodes too far from each other</value>
+  </data>
+  <data name="Mode_UnitsFormat" xml:space="preserve">
+    <value>{0}U</value>
+  </data>
+  <data name="Mode_UnlockSegment" xml:space="preserve">
+    <value>Unlock segment mode</value>
+  </data>
+  <data name="Mode_UnlockSegment_Info_ChangeLock" xml:space="preserve">
+    <value>Select segment to
+lock or unlock it</value>
+  </data>
+  <data name="Mode_UnlockSegment_Info_ClickToLock" xml:space="preserve">
+    <value>Click to lock this segment</value>
+  </data>
+  <data name="Mode_UnlockSegment_Info_ClickToUnlock" xml:space="preserve">
+    <value>Click to unlock this segment</value>
+  </data>
+  <data name="Mod_Description" xml:space="preserve">
+    <value>Many different tools for working with networks</value>
+  </data>
+  <data name="Mod_WhatsNewMessage1_1" xml:space="preserve">
+    <value>[NEW] Added Split node mode: Select segments and split it to new node.
+[NEW] Added Unlock segment mode: Unlock building's segments to change it, or lock segments to prevent delete it.
+[NEW] Added Invert segment mode: Ability to invert non-symmetrical segments.
+[UPDATED] Updated Arrange in line mode: Added overlay of arrange result; Added ability to set arrange direction by choose guide segment; Line calculated more smooth; Height of nodes no more changing; Pillars moving with nodes; Fixed segment directions after move nodes.
+[NEW] Added the ability to change binding keys for all functions.
+[NEW] Added overlay for nearest nodes to cursor.
+[NEW] Added the ability select many nodes at one time in Slope and Arrange modes.
+[NEW] Added the ability to add curves additional curves in Create connection mode.
+[NEW] Added curve start offset to Create connection mode.
+[NEW] Added the ability to change curve's radius and start offset by dragging in Create loop and connection modes.
+[UPDATED] Create loop and connection modes will select road types dependence of terrain and water like default net tool does it. To build specific type of road, you need select it in Fine Road Tool.
+[NEW] Create loop and connection modes will auto unite too short segments in one.
+[NEW] Added display of length of straight road parts in Create loop and connection modes.
+[NEW] Added the ability to change created segments max length by change value in Node Spacer mod.
+[FIXED] Fixed interaction with Fine Road Tool: its button will not show at center of screen anymore.
+[FIXED] Fixed segment direction when slope road.
+[FIXED] Fixed overlay in underground mode.
+[TRANSLATION] Added Hungarian and Korean translations.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage1_2" xml:space="preserve">
+    <value>[NEW] Added Create parallel mode: Select exist network nodes and create new network parallel them. Possible set offset, height and side of parallel networks.
+[NEW] Added Arrange at circle mode: Select nodes and arrange them at perfect circle. Possible set circle radius and position; Move nodes by circe; Distribute intersection and nodes evenly in circle.
+[NEW] Added Create curve mode: Create smooth curve connection between two segments.
+[NEW] Added network visualisation to Connection, Loop, Parallel and Curve modes. Can be disabled in mod settings.
+[NEW] Added snapping to Connection mode: circles will be magnetized to the neighboring circles when changing their radius or position. Can be disabled in mod settings.
+[NEW] Added follow terrain option to Connection, Loop, Parallel and Curve modes. Follow terrain possible only if both ends are on ground networks. Default value can be set in mod settings and change by Ctrl+F while network creating.
+[NEW] Added audio and visual effects on modes actions, like effects when network creating. It should help to understand that action was done. Can be disabled in mod settings.
+[NEW] Added requires money to build to Connect, Loop, Parallel, Curve and Arrange at line modes. Can be disabled in mod settings.
+[NEW] Added the ability to change column count in modes panel (from 1 to 5).
+[NEW] Added colors to tooltips text, it should help to reading them.
+[NEW] Added the ability to select locked segments in Connection, Loop, Parallel and Curve modes.
+[FIXED] Fixed immediately tool close when selected underground mode in Fine Road Tool.
+[FIXED] Fixed not updated zones when segment moved in Arrange at line mode.
+[TRANSLATION] Added Danish and Turkish translations.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage1_3" xml:space="preserve">
+    <value>[NEW] Added option for auto connecting ends of new parallel network to existing network of same type. can be disabled in mod options.
+[FIXED] Fixed problem with duplicates of networks in parallel mode.
+[UPDATED] Create/Loop/Curve mode will automatically select build direction where node has minimum segments.
+[NEW] Added ability to change start angle to Connection and Loop modes. To change angel press O or P (can be rebinded in mod settings).
+[NEW] Added the ability to invert one way roads in creation modes.
+[NEW] Added direction arrows.
+[NEW] Added the ability to switch between meters and units.
+[NEW] Added colors to slope labels depending on the value.
+[NEW] Added selected segment highlight to loop mode.
+[UPDATED] Max circle radius in Connection and loop modes was increased to 5km.
+[UPDATED] Max straight part length in connection mode was increased from 500m to 5000m .
+[NEW] Added the ability to hide original mod button in toolbar and use only UUI button.
+[NEW] Added the ability to set panel open side.
+[NEW] Modes panel will be at the front of all other UI elements.
+[TRANSLATION] Added Dutch translation.
+[FIXED] Fixed bug with not working right click to disable tool. Now all modes on first click reset selection (if it exists), and on second click disable tool.
+[FIXED] Fixed some problems with input on mac os.
+[FIXED] Fixed slope value calculation.
+[FIXED] Fixed error in Arrange at circle mode when selected circle without intersections.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage1_3_1" xml:space="preserve">
+    <value>[FIXED] Returned the ability to invert any network, not only one direction roads.
+[NEW] Tool does not close when you select another network.
+[FIXED] Mode's buttons react again on click.
+[TRANSLATION] Added Romanian translation.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage1_3_2" xml:space="preserve">
+    <value>[UPDATED] Added Plazas &amp; Promenades DLC Support.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage1_3_3" xml:space="preserve">
+    <value>[NEW] Added Network Anarchy Support.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage1_3_4" xml:space="preserve">
+    <value>[UPDATED] New settings UI</value>
+  </data>
+  <data name="Mod_WhatsNewMessage1_3_5" xml:space="preserve">
+    <value>[UPDATED] Added Hotels&amp;Retreats DLC support.
+[TRANSLATION] Added Chinese traditional and Thai translations.</value>
+  </data>
+  <data name="Settings_ActivationShortcuts" xml:space="preserve">
+    <value>Activation shortcuts</value>
+  </data>
+  <data name="Settings_AutoConnect" xml:space="preserve">
+    <value>Connect parallel road to nearest nodes automatically</value>
+  </data>
+  <data name="Settings_AutoHideModePanel" xml:space="preserve">
+    <value>Auto hide modes panel</value>
+  </data>
+  <data name="Settings_CommonCreateShortcuts" xml:space="preserve">
+    <value>Creation modes' common shortcuts</value>
+  </data>
+  <data name="Settings_CommonShortcuts" xml:space="preserve">
+    <value>Modes' common shortcuts</value>
+  </data>
+  <data name="Settings_FollowTerrain" xml:space="preserve">
+    <value>Ground roads follow terrain</value>
+  </data>
+  <data name="Settings_Gameplay" xml:space="preserve">
+    <value>Gameplay</value>
+  </data>
+  <data name="Settings_Interface" xml:space="preserve">
+    <value>Interface</value>
+  </data>
+  <data name="Settings_LengthUnit" xml:space="preserve">
+    <value>Length unit of measurement</value>
+  </data>
+  <data name="Settings_LengthUniteMeters" xml:space="preserve">
+    <value>Meters</value>
+  </data>
+  <data name="Settings_LengthUniteUnits" xml:space="preserve">
+    <value>Game units (1U = 8m)</value>
+  </data>
+  <data name="Settings_NeedMoney" xml:space="preserve">
+    <value>Requires money to build</value>
+  </data>
+  <data name="Settings_PanelColumns" xml:space="preserve">
+    <value>Panel columns count</value>
+  </data>
+  <data name="Settings_PanelOpenSide" xml:space="preserve">
+    <value>Panel opening side</value>
+  </data>
+  <data name="Settings_PanelOpenSideDown" xml:space="preserve">
+    <value>Down</value>
+  </data>
+  <data name="Settings_PanelOpenSideUp" xml:space="preserve">
+    <value>Up</value>
+  </data>
+  <data name="Settings_PlayEffects" xml:space="preserve">
+    <value>Play audio and visual effects</value>
+  </data>
+  <data name="Settings_PreviewType" xml:space="preserve">
+    <value>Creation preview</value>
+  </data>
+  <data name="Settings_PreviewTypeBoth" xml:space="preserve">
+    <value>Both</value>
+  </data>
+  <data name="Settings_PreviewTypeMesh" xml:space="preserve">
+    <value>Network visualization</value>
+  </data>
+  <data name="Settings_PreviewTypeOverlay" xml:space="preserve">
+    <value>Overlay</value>
+  </data>
+  <data name="Settings_SegmentLength" xml:space="preserve">
+    <value>Max Segment Length</value>
+  </data>
+  <data name="Settings_Shortcut_Apply" xml:space="preserve">
+    <value>Apply mode action</value>
+  </data>
+  <data name="Settings_Shortcut_DecreaseAngle" xml:space="preserve">
+    <value>Decrease start angle</value>
+  </data>
+  <data name="Settings_Shortcut_DecreaseHeight" xml:space="preserve">
+    <value>Decrease height</value>
+  </data>
+  <data name="Settings_Shortcut_DecreaseOffset" xml:space="preserve">
+    <value>Decrease circle start offset</value>
+  </data>
+  <data name="Settings_Shortcut_DecreaseOneRadius" xml:space="preserve">
+    <value>Decrease one radius</value>
+  </data>
+  <data name="Settings_Shortcut_DecreaseRadii" xml:space="preserve">
+    <value>Decrease radii</value>
+  </data>
+  <data name="Settings_Shortcut_DecreaseRadius" xml:space="preserve">
+    <value>Decrease radius</value>
+  </data>
+  <data name="Settings_Shortcut_DecreaseShift" xml:space="preserve">
+    <value>Decrease offset</value>
+  </data>
+  <data name="Settings_Shortcut_DistributeBetweenIntersections" xml:space="preserve">
+    <value>Distribute nodes evenly between intersections</value>
+  </data>
+  <data name="Settings_Shortcut_DistributeEvenly" xml:space="preserve">
+    <value>Distribute nodes evenly on circle</value>
+  </data>
+  <data name="Settings_Shortcut_DistributeIntersections" xml:space="preserve">
+    <value>Distribute intersections evenly on circle</value>
+  </data>
+  <data name="Settings_Shortcut_IncreaseAngle" xml:space="preserve">
+    <value>Increase start angle</value>
+  </data>
+  <data name="Settings_Shortcut_IncreaseHeight" xml:space="preserve">
+    <value>Increase height</value>
+  </data>
+  <data name="Settings_Shortcut_IncreaseOffset" xml:space="preserve">
+    <value>Increase circle start offset</value>
+  </data>
+  <data name="Settings_Shortcut_IncreaseOneRadius" xml:space="preserve">
+    <value>Increase one radius</value>
+  </data>
+  <data name="Settings_Shortcut_IncreaseRadii" xml:space="preserve">
+    <value>Increase radii</value>
+  </data>
+  <data name="Settings_Shortcut_IncreaseRadius" xml:space="preserve">
+    <value>Increase radius</value>
+  </data>
+  <data name="Settings_Shortcut_IncreaseShift" xml:space="preserve">
+    <value>Increase offset</value>
+  </data>
+  <data name="Settings_Shortcut_InvertNetwork" xml:space="preserve">
+    <value>Invert network</value>
+  </data>
+  <data name="Settings_Shortcut_InvertShift" xml:space="preserve">
+    <value>Switch creation side</value>
+  </data>
+  <data name="Settings_Shortcut_ResetArrangeCircle" xml:space="preserve">
+    <value>Reset to default circle</value>
+  </data>
+  <data name="Settings_Shortcut_SwitchFollowTerrain" xml:space="preserve">
+    <value>Switch follow terrain</value>
+  </data>
+  <data name="Settings_Shortcut_SwitchIsLoop" xml:space="preserve">
+    <value>Switch loop direction</value>
+  </data>
+  <data name="Settings_Shortcut_SwitchOffset" xml:space="preserve">
+    <value>Switch selected offset</value>
+  </data>
+  <data name="Settings_Shortcut_SwitchSelect" xml:space="preserve">
+    <value>Switch selected circle</value>
+  </data>
+  <data name="Settings_SlopeColors" xml:space="preserve">
+    <value>Set color to slope label depending on the value</value>
+  </data>
+  <data name="Settings_SlopeUnit" xml:space="preserve">
+    <value>Slope unit of measurement</value>
+  </data>
+  <data name="Settings_SlopeUnitDegrees" xml:space="preserve">
+    <value>Degrees</value>
+  </data>
+  <data name="Settings_SlopeUnitPercentages" xml:space="preserve">
+    <value>Percentages</value>
+  </data>
+  <data name="Tool_RemoveNode_Info_ClickToRemove" xml:space="preserve">
+    <value>Click to remove</value>
+  </data>
+  <data name="Tool_RemoveNode_Info_Select" xml:space="preserve">
+    <value>Select node to remove it</value>
+  </data>
+</root>

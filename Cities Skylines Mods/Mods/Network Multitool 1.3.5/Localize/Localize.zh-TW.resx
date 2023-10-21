@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Mode_AddNode" xml:space="preserve">
+    <value>新增節點模式</value>
+  </data>
+  <data name="Mode_AddNode_Info_ClickToAdd" xml:space="preserve">
+    <value>點擊新增節點</value>
+  </data>
+  <data name="Mode_AddNode_Info_PreciseMeasurement" xml:space="preserve">
+    <value>按住 {0} 以進行精確測量</value>
+  </data>
+  <data name="Mode_AddNode_Info_SelectToAdd" xml:space="preserve">
+    <value>選擇要新增節點的部分</value>
+  </data>
+  <data name="Mode_AddNode_Info_TooCloseNode" xml:space="preserve">
+    <value>無法插入節點
+節點間距過短</value>
+  </data>
+  <data name="Mode_AngleFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Mode_ArrangeAtCircle" xml:space="preserve">
+    <value>圓圈對齊模式</value>
+  </data>
+  <data name="Mode_ArrangeAtLine" xml:space="preserve">
+    <value>多點均勻功能</value>
+  </data>
+  <data name="Mode_ArrangeCircle_Info_ClickToComplite" xml:space="preserve">
+    <value>點擊以完成圓圈選擇</value>
+  </data>
+  <data name="Mode_ArrangeLine_Info_ClickToSelectDirection" xml:space="preserve">
+    <value>點擊以選擇對齊方向</value>
+  </data>
+  <data name="Mode_ArrangeLine_Info_SelectDirection" xml:space="preserve">
+    <value>選擇線段以設定對齊方向</value>
+  </data>
+  <data name="Mode_Connection_Info_DoubleClickOnCenterToChangeDir" xml:space="preserve">
+    <value>按兩下圓心
+以改變曲線方向</value>
+  </data>
+  <data name="Mode_Connection_Info_DoubleClickToAdd" xml:space="preserve">
+    <value>按兩下左鍵在此線新增曲線</value>
+  </data>
+  <data name="Mode_Connection_Info_DoubleClickToRemove" xml:space="preserve">
+    <value>按兩下右鍵刪除此曲線</value>
+  </data>
+  <data name="Mode_Connection_Info_DragToChangeRadius" xml:space="preserve">
+    <value>拖動以改變半徑</value>
+  </data>
+  <data name="Mode_Connection_Info_DragToMove" xml:space="preserve">
+    <value>拖移以移動圓</value>
+  </data>
+  <data name="Mode_CreateConnection" xml:space="preserve">
+    <value>創建連接模式</value>
+  </data>
+  <data name="Mode_CreateCurve" xml:space="preserve">
+    <value>創建曲線模式</value>
+  </data>
+  <data name="Mode_CreateLoop" xml:space="preserve">
+    <value>創建環形模式</value>
+  </data>
+  <data name="Mode_CreateLoop_Info_Change" xml:space="preserve">
+    <value>按 {0} 以更改環形</value>
+  </data>
+  <data name="Mode_CreateParallerl" xml:space="preserve">
+    <value>創建並行模式</value>
+  </data>
+  <data name="Mode_Info_Apply" xml:space="preserve">
+    <value>按 {0} 以應用</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_Apply" xml:space="preserve">
+    <value>按 {0} 以圓圈對齊</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_BigDelta" xml:space="preserve">
+    <value>節點間角度太大
+會導致圓形形狀缺陷</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_DoubleClickToResetCenter" xml:space="preserve">
+    <value>按兩下重置中心位置</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_DoubleClickToResetNode" xml:space="preserve">
+    <value>按兩下重置節點位置</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_DragToChangeRadius" xml:space="preserve">
+    <value>拖動以改變半徑</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_DragToMoveCenter" xml:space="preserve">
+    <value>拖動以移動圓圈</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_DragToMoveNode" xml:space="preserve">
+    <value>拖動以移動節點</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_MoveAll" xml:space="preserve">
+    <value>按住 {0} 鍵
+同時移動所有節點</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_PressToDistributeBetweenIntersections" xml:space="preserve">
+    <value>按 {0} 以在交叉口之間
+平均分佈節點</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_PressToDistributeEvenly" xml:space="preserve">
+    <value>按 {0} 以在圓圈上平均分佈節點</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_PressToDistributeIntersections" xml:space="preserve">
+    <value>按 {0} 以在圓圈上
+平均分佈交叉口</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_PressToReset" xml:space="preserve">
+    <value>按 {0} 以重置參數</value>
+  </data>
+  <data name="Mode_Info_ArrangeCircle_WrongOrder" xml:space="preserve">
+    <value>錯誤的節點順序</value>
+  </data>
+  <data name="Mode_Info_ArrangeLine_Apply" xml:space="preserve">
+    <value>按 {0} 以按直線對齊</value>
+  </data>
+  <data name="Mode_Info_ChangeAllRadius" xml:space="preserve">
+    <value>按 {0} 或 {1} 以更改所有半徑</value>
+  </data>
+  <data name="Mode_Info_ChangeBothRadius" xml:space="preserve">
+    <value>按 {0} 或 {1} 以更改兩個半徑</value>
+  </data>
+  <data name="Mode_Info_ChangeCircle" xml:space="preserve">
+    <value>按 {0} 以切換到選中的圓</value>
+  </data>
+  <data name="Mode_Info_ChangeOffset" xml:space="preserve">
+    <value>按 {0} 或 {1} 以更改曲線起始偏移</value>
+  </data>
+  <data name="Mode_Info_ChangeOneRadius" xml:space="preserve">
+    <value>按 {0} 或 {1} 以更改一個半徑</value>
+  </data>
+  <data name="Mode_Info_ChangeRadius" xml:space="preserve">
+    <value>按 {0} 或 {1} 以更改半徑</value>
+  </data>
+  <data name="Mode_Info_ChangeShift" xml:space="preserve">
+    <value>按 {0} 或 {1} 以更改偏移</value>
+  </data>
+  <data name="Mode_Info_ClickFirstSegment" xml:space="preserve">
+    <value>點擊選擇第一線段</value>
+  </data>
+  <data name="Mode_Info_ClickOnNodeToChangeCreateDir" xml:space="preserve">
+    <value>點擊節點來改變創建方向</value>
+  </data>
+  <data name="Mode_Info_ClickSecondSegment" xml:space="preserve">
+    <value>點擊選擇第二線段</value>
+  </data>
+  <data name="Mode_Info_ClickSelectNode" xml:space="preserve">
+    <value>點擊選擇節點</value>
+  </data>
+  <data name="Mode_Info_ClickToChangeCreateDir" xml:space="preserve">
+    <value>點擊來改變創建方向</value>
+  </data>
+  <data name="Mode_Info_ClickUnselectNode" xml:space="preserve">
+    <value>點擊撤銷選擇節點</value>
+  </data>
+  <data name="Mode_Info_Connection_Create" xml:space="preserve">
+    <value>按 {0} 以創建連接</value>
+  </data>
+  <data name="Mode_Info_ConstructionCost" xml:space="preserve">
+    <value>建造成本: {0}</value>
+  </data>
+  <data name="Mode_Info_Create" xml:space="preserve">
+    <value>按下 {0} 以創建</value>
+  </data>
+  <data name="Mode_Info_HoldToMoveSlower" xml:space="preserve">
+    <value>按住 {0} 鍵以 {1} 倍慢速移動。</value>
+  </data>
+  <data name="Mode_Info_HoldToStep" xml:space="preserve">
+    <value>按住 {0} 鍵以快進 {1}</value>
+  </data>
+  <data name="Mode_Info_InvertNetwork" xml:space="preserve">
+    <value>按 {0} 以反轉網路</value>
+  </data>
+  <data name="Mode_Info_Loop_Create" xml:space="preserve">
+    <value>按 {0} 創建環形</value>
+  </data>
+  <data name="Mode_Info_NotEnoughMoney" xml:space="preserve">
+    <value>資金不足</value>
+  </data>
+  <data name="Mode_Info_OutOfMap" xml:space="preserve">
+    <value>超出地圖</value>
+  </data>
+  <data name="Mode_Info_Parallel_ChangeHeight" xml:space="preserve">
+    <value>按 {0} 或 {1} 更改高度</value>
+  </data>
+  <data name="Mode_Info_Parallel_ChangeShift" xml:space="preserve">
+    <value>按 {0} 以切換創建邊</value>
+  </data>
+  <data name="Mode_Info_Parallel_Create" xml:space="preserve">
+    <value>按 {0} 以創建平行</value>
+  </data>
+  <data name="Mode_Info_RadiusTooBig" xml:space="preserve">
+    <value>半徑過大</value>
+  </data>
+  <data name="Mode_Info_RadiusTooSmall" xml:space="preserve">
+    <value>半徑過小</value>
+  </data>
+  <data name="Mode_Info_Refund" xml:space="preserve">
+    <value>退款：{0}</value>
+  </data>
+  <data name="Mode_Info_SelectFirstSegment" xml:space="preserve">
+    <value>選擇第一線段</value>
+  </data>
+  <data name="Mode_Info_SelectSecondSegment" xml:space="preserve">
+    <value>選擇第二線段</value>
+  </data>
+  <data name="Mode_Info_SelectSegment" xml:space="preserve">
+    <value>選擇線段</value>
+  </data>
+  <data name="Mode_Info_Slope_Apply" xml:space="preserve">
+    <value>按 {0} 以應用斜坡</value>
+  </data>
+  <data name="Mode_Info_Step" xml:space="preserve">
+    <value>Shift - 10倍, Ctrl - 0.1倍, Alt - 0.01倍</value>
+  </data>
+  <data name="Mode_Info_SwitchFollowTerrain" xml:space="preserve">
+    <value>按 {0} 以切換至「跟隨地形」模式。</value>
+  </data>
+  <data name="Mode_Info_SwitchOffset" xml:space="preserve">
+    <value>按 {0} 以切換選中偏移</value>
+  </data>
+  <data name="Mode_Info_UndergroundMode" xml:space="preserve">
+    <value>按住 {0} 以進入地下模式</value>
+  </data>
+  <data name="Mode_Info_WrongShape" xml:space="preserve">
+    <value>形狀錯誤</value>
+  </data>
+  <data name="Mode_IntersectSegment" xml:space="preserve">
+    <value>交叉線段模式</value>
+  </data>
+  <data name="Mode_IntersectSegment_Info_CommonNode" xml:space="preserve">
+    <value>這些線段有共同節點</value>
+  </data>
+  <data name="Mode_IntersectSegment_Info_EdgeTooClose" xml:space="preserve">
+    <value>一個線段的邊緣離另一線段終點過近</value>
+  </data>
+  <data name="Mode_IntersectSegment_Info_NotIntersect" xml:space="preserve">
+    <value>這些線段並不相交</value>
+  </data>
+  <data name="Mode_InvertSegment" xml:space="preserve">
+    <value>反轉線段模式</value>
+  </data>
+  <data name="Mode_InvertSegment_Info_ClickToReverse" xml:space="preserve">
+    <value>點擊以反轉線段</value>
+  </data>
+  <data name="Mode_InvertSegment_Info_SelectToReverse" xml:space="preserve">
+    <value>選擇要反轉的線段</value>
+  </data>
+  <data name="Mode_NodeLine_Info_NotConnected" xml:space="preserve">
+    <value>不能選擇此節點
+原因：未與其他節點連接</value>
+  </data>
+  <data name="Mode_NodeLine_Info_SelectNode" xml:space="preserve">
+    <value>選擇要均勻的節點</value>
+  </data>
+  <data name="Mode_PercentagesFormat" xml:space="preserve">
+    <value>{0}%</value>
+  </data>
+  <data name="Mode_RadiusFormat" xml:space="preserve">
+    <value>{0}公尺</value>
+  </data>
+  <data name="Mode_RemoveNode" xml:space="preserve">
+    <value>刪除節點模式</value>
+  </data>
+  <data name="Mode_RemoveNode_Info_NotAllow" xml:space="preserve">
+    <value>不可刪除此節點</value>
+  </data>
+  <data name="Mode_SlopeNode" xml:space="preserve">
+    <value>設置斜坡模式</value>
+  </data>
+  <data name="Mode_SplitNode" xml:space="preserve">
+    <value>拆分節點模式</value>
+  </data>
+  <data name="Mode_SplitNode_Info_ClickFromOrder" xml:space="preserve">
+    <value>按一下以從就序列表中移除線段</value>
+  </data>
+  <data name="Mode_SplitNode_Info_ClickToOrder" xml:space="preserve">
+    <value>按一下以新增線段到就序列表中</value>
+  </data>
+  <data name="Mode_SplitNode_Info_ClickToSplit" xml:space="preserve">
+    <value>點擊以分割節點並設置為地形高度
+按 {0} 以分割節點並設置為原高度</value>
+  </data>
+  <data name="Mode_SplitNode_Info_NotAllowedSplit" xml:space="preserve">
+    <value>無法分割只與一個線段相交的節點</value>
+  </data>
+  <data name="Mode_SplitNode_Info_OrderIsFull" xml:space="preserve">
+    <value>無法往就序列表中新增更多線段</value>
+  </data>
+  <data name="Mode_SplitNode_Info_SelectToSplit" xml:space="preserve">
+    <value>選擇要拆分的線段</value>
+  </data>
+  <data name="Mode_SplitNode_Info_TooFar" xml:space="preserve">
+    <value>位置離源節點太遠</value>
+  </data>
+  <data name="Mode_UnionNode" xml:space="preserve">
+    <value>合併節點模式</value>
+  </data>
+  <data name="Mode_UnionNode_Info_ClickSource" xml:space="preserve">
+    <value>點擊選擇源節點</value>
+  </data>
+  <data name="Mode_UnionNode_Info_ClickUnion" xml:space="preserve">
+    <value>點擊以合併節點</value>
+  </data>
+  <data name="Mode_UnionNode_Info_NoCommon" xml:space="preserve">
+    <value>節點間需存在通用線段</value>
+  </data>
+  <data name="Mode_UnionNode_Info_Overflow" xml:space="preserve">
+    <value>節點總數不能超過 8 個</value>
+  </data>
+  <data name="Mode_UnionNode_Info_SelectSource" xml:space="preserve">
+    <value>選擇源節點</value>
+  </data>
+  <data name="Mode_UnionNode_Info_SelectTarget" xml:space="preserve">
+    <value>選擇目標節點</value>
+  </data>
+  <data name="Mode_UnionNode_Info_TooFar" xml:space="preserve">
+    <value>節點間距離太遠</value>
+  </data>
+  <data name="Mode_UnitsFormat" xml:space="preserve">
+    <value>{0}U</value>
+  </data>
+  <data name="Mode_UnlockSegment" xml:space="preserve">
+    <value>解/鎖線段模式</value>
+  </data>
+  <data name="Mode_UnlockSegment_Info_ChangeLock" xml:space="preserve">
+    <value>選擇要鎖定或解鎖的線段</value>
+  </data>
+  <data name="Mode_UnlockSegment_Info_ClickToLock" xml:space="preserve">
+    <value>點擊鎖定此線段</value>
+  </data>
+  <data name="Mode_UnlockSegment_Info_ClickToUnlock" xml:space="preserve">
+    <value>點擊解鎖此線段</value>
+  </data>
+  <data name="Mod_Description" xml:space="preserve">
+    <value>修改道路網路的許多小工具</value>
+  </data>
+  
+  
+  
+  
+  <data name="Mod_WhatsNewMessage1_3_2" xml:space="preserve">
+    <value>【更新】新增對「Plazas &amp; Promenades」DLC 的支援。</value>
+  </data>
+  <data name="Mod_WhatsNewMessage1_3_3" xml:space="preserve">
+    <value>【更新】新增了對「Network Anarchy」的支援。</value>
+  </data>
+  <data name="Mod_WhatsNewMessage1_3_4" xml:space="preserve">
+    <value>【更新】新的設定UI</value>
+  </data>
+  <data name="Mod_WhatsNewMessage1_3_5" xml:space="preserve">
+    <value>[UPDATED] 新增了對 Hotels &amp; Retreats DLC 更新的支援。
+[TRANSLATION] 新增了繁體中文和泰語翻譯。</value>
+  </data>
+  <data name="Settings_ActivationShortcuts" xml:space="preserve">
+    <value>啟動快速鍵</value>
+  </data>
+  <data name="Settings_AutoConnect" xml:space="preserve">
+    <value>平行道路自動連接到相鄰節點</value>
+  </data>
+  <data name="Settings_AutoHideModePanel" xml:space="preserve">
+    <value>自動隱藏模式面板</value>
+  </data>
+  <data name="Settings_CommonCreateShortcuts" xml:space="preserve">
+    <value>創建模式的通用快捷方式</value>
+  </data>
+  <data name="Settings_CommonShortcuts" xml:space="preserve">
+    <value>模組共同快速鍵</value>
+  </data>
+  <data name="Settings_FollowTerrain" xml:space="preserve">
+    <value>創建「跟隨地形」模式的地面道路</value>
+  </data>
+  <data name="Settings_Gameplay" xml:space="preserve">
+    <value>遊戲設置</value>
+  </data>
+  <data name="Settings_Interface" xml:space="preserve">
+    <value>介面</value>
+  </data>
+  <data name="Settings_LengthUnit" xml:space="preserve">
+    <value>測量長度單位</value>
+  </data>
+  <data name="Settings_LengthUniteMeters" xml:space="preserve">
+    <value>公尺</value>
+  </data>
+  <data name="Settings_LengthUniteUnits" xml:space="preserve">
+    <value>遊戲單位 (1U = 8公尺)</value>
+  </data>
+  <data name="Settings_NeedMoney" xml:space="preserve">
+    <value>需要金錢建設</value>
+  </data>
+  <data name="Settings_PanelColumns" xml:space="preserve">
+    <value>面板欄數</value>
+  </data>
+  <data name="Settings_PanelOpenSide" xml:space="preserve">
+    <value>面板打開方向</value>
+  </data>
+  <data name="Settings_PanelOpenSideDown" xml:space="preserve">
+    <value>向下</value>
+  </data>
+  <data name="Settings_PanelOpenSideUp" xml:space="preserve">
+    <value>向上</value>
+  </data>
+  <data name="Settings_PlayEffects" xml:space="preserve">
+    <value>開啟音訊和視覺效果</value>
+  </data>
+  <data name="Settings_PreviewType" xml:space="preserve">
+    <value>創建預覽</value>
+  </data>
+  <data name="Settings_PreviewTypeBoth" xml:space="preserve">
+    <value>同時啟用</value>
+  </data>
+  <data name="Settings_PreviewTypeMesh" xml:space="preserve">
+    <value>網路視覺化</value>
+  </data>
+  <data name="Settings_PreviewTypeOverlay" xml:space="preserve">
+    <value>覆蓋</value>
+  </data>
+  <data name="Settings_SegmentLength" xml:space="preserve">
+    <value>最大線段長度</value>
+  </data>
+  <data name="Settings_Shortcut_Apply" xml:space="preserve">
+    <value>應用模式</value>
+  </data>
+  <data name="Settings_Shortcut_DecreaseAngle" xml:space="preserve">
+    <value>減少起始角度</value>
+  </data>
+  <data name="Settings_Shortcut_DecreaseHeight" xml:space="preserve">
+    <value>降低高度</value>
+  </data>
+  <data name="Settings_Shortcut_DecreaseOffset" xml:space="preserve">
+    <value>減少圓形起點偏移</value>
+  </data>
+  <data name="Settings_Shortcut_DecreaseOneRadius" xml:space="preserve">
+    <value>減少一個半徑</value>
+  </data>
+  <data name="Settings_Shortcut_DecreaseRadii" xml:space="preserve">
+    <value>減少半徑</value>
+  </data>
+  <data name="Settings_Shortcut_DecreaseRadius" xml:space="preserve">
+    <value>減少半徑</value>
+  </data>
+  <data name="Settings_Shortcut_DecreaseShift" xml:space="preserve">
+    <value>減少偏移</value>
+  </data>
+  <data name="Settings_Shortcut_DistributeBetweenIntersections" xml:space="preserve">
+    <value>在交叉口之間平均分佈節點</value>
+  </data>
+  <data name="Settings_Shortcut_DistributeEvenly" xml:space="preserve">
+    <value>在圓圈上平均分佈節點</value>
+  </data>
+  <data name="Settings_Shortcut_DistributeIntersections" xml:space="preserve">
+    <value>在圓圈上平均分佈交叉口</value>
+  </data>
+  <data name="Settings_Shortcut_IncreaseAngle" xml:space="preserve">
+    <value>增大起始角度</value>
+  </data>
+  <data name="Settings_Shortcut_IncreaseHeight" xml:space="preserve">
+    <value>增高高度</value>
+  </data>
+  <data name="Settings_Shortcut_IncreaseOffset" xml:space="preserve">
+    <value>增加圓形起點偏移</value>
+  </data>
+  <data name="Settings_Shortcut_IncreaseOneRadius" xml:space="preserve">
+    <value>增大一個半徑</value>
+  </data>
+  <data name="Settings_Shortcut_IncreaseRadii" xml:space="preserve">
+    <value>增大半徑</value>
+  </data>
+  <data name="Settings_Shortcut_IncreaseRadius" xml:space="preserve">
+    <value>增大半徑</value>
+  </data>
+  <data name="Settings_Shortcut_IncreaseShift" xml:space="preserve">
+    <value>增加偏移</value>
+  </data>
+  <data name="Settings_Shortcut_InvertNetwork" xml:space="preserve">
+    <value>反轉網路</value>
+  </data>
+  <data name="Settings_Shortcut_InvertShift" xml:space="preserve">
+    <value>切換創建邊</value>
+  </data>
+  <data name="Settings_Shortcut_ResetArrangeCircle" xml:space="preserve">
+    <value>重置為預設圓形</value>
+  </data>
+  <data name="Settings_Shortcut_SwitchFollowTerrain" xml:space="preserve">
+    <value>切換「跟隨地形」模式</value>
+  </data>
+  <data name="Settings_Shortcut_SwitchIsLoop" xml:space="preserve">
+    <value>切換回環方向</value>
+  </data>
+  <data name="Settings_Shortcut_SwitchOffset" xml:space="preserve">
+    <value>切換選中偏移</value>
+  </data>
+  <data name="Settings_Shortcut_SwitchSelect" xml:space="preserve">
+    <value>切換選中的圓</value>
+  </data>
+  <data name="Settings_SlopeColors" xml:space="preserve">
+    <value>根據值設定斜坡標籤顏色</value>
+  </data>
+  <data name="Settings_SlopeUnit" xml:space="preserve">
+    <value>斜坡度量單位</value>
+  </data>
+  <data name="Settings_SlopeUnitDegrees" xml:space="preserve">
+    <value>度</value>
+  </data>
+  <data name="Settings_SlopeUnitPercentages" xml:space="preserve">
+    <value>百分比</value>
+  </data>
+  <data name="Tool_RemoveNode_Info_ClickToRemove" xml:space="preserve">
+    <value>點擊以刪除</value>
+  </data>
+  <data name="Tool_RemoveNode_Info_Select" xml:space="preserve">
+    <value>選擇要刪除的節點</value>
+  </data>
+</root>

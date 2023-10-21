@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MessageBox_CantUndone" xml:space="preserve">
+    <value>Bu işlem geri alınamaz.</value>
+  </data>
+  <data name="Mod_BackwardCompatibilityMessage" xml:space="preserve">
+    <value>Orijinal Node Controller verileri içe aktarıldı.
+Geriye dönük uyumluluk tüm verilerin aktarımını sağlamaz, manuel ayarlamalar gerekebilir.</value>
+  </data>
+  <data name="Mod_BackwardCompatibilityWarning" xml:space="preserve">
+    <value>UYARI: Yeni bir kayıt yaparsanız, artık bu haritada orijinal Node Controller'ı kullanamazsınız.</value>
+  </data>
+  <data name="Mod_Description" xml:space="preserve">
+    <value>Düğüm tipi ve şeklini kontrol edin</value>
+  </data>
+  <data name="Mod_LoadFailed" xml:space="preserve">
+    <value>Yükleme hatalarla tamamlandı.
+{0} düğüm için veri yüklenemedi.</value>
+  </data>
+  <data name="Mod_LoadFailedAll" xml:space="preserve">
+    <value>Yükleme hatalarla tamamlandı.
+Tüm düğümler için veri yüklenemedi.</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="NodeStyle_Bend" xml:space="preserve">
+    <value>Eğim</value>
+  </data>
+  <data name="NodeStyle_Crossing" xml:space="preserve">
+    <value>Kavşak</value>
+  </data>
+  <data name="NodeStyle_Custom" xml:space="preserve">
+    <value>Özel</value>
+  </data>
+  <data name="NodeStyle_End" xml:space="preserve">
+    <value>Uç</value>
+  </data>
+  <data name="NodeStyle_Middle" xml:space="preserve">
+    <value>Orta</value>
+  </data>
+  <data name="NodeStyle_Stretch" xml:space="preserve">
+    <value>Esnetilmiş</value>
+  </data>
+  <data name="NodeStyle_UTurn" xml:space="preserve">
+    <value>U dönüşü</value>
+  </data>
+  <data name="Options_All" xml:space="preserve">
+    <value>Tamamı</value>
+  </data>
+  <data name="Option_CalculateShiftByIntersections" xml:space="preserve">
+    <value>Kesişimlerdeki değişimi hesapla</value>
+  </data>
+  <data name="Option_CalculateShiftByNearby" xml:space="preserve">
+    <value>Düğümlerin arasındaki değişimi hesapla</value>
+  </data>
+  <data name="Option_CalculateTwistByIntersections" xml:space="preserve">
+    <value>Kesişimlerdeki değişimi hesapla</value>
+  </data>
+  <data name="Option_CalculateTwistByNearby" xml:space="preserve">
+    <value>Düğümlerin arasındaki değişimi hesapla</value>
+  </data>
+  <data name="Option_Collision" xml:space="preserve">
+    <value>Çarpışma</value>
+  </data>
+  <data name="Option_DeltaHeight" xml:space="preserve">
+    <value>Delta yüksekliği</value>
+  </data>
+  <data name="Option_Direction" xml:space="preserve">
+    <value>Yön</value>
+  </data>
+  <data name="Option_Distance" xml:space="preserve">
+    <value>Mesafe</value>
+  </data>
+  <data name="Option_Elevation" xml:space="preserve">
+    <value>Yükseklik</value>
+  </data>
+  
+  <data name="Option_FollowSlope" xml:space="preserve">
+    <value>Ana eğimi takip et</value>
+  </data>
+  <data name="Option_HideCrosswalkModRequired" xml:space="preserve">
+    <value>Yaya geçitlerini gizleme modu gerekli</value>
+  </data>
+  <data name="Option_Horizontal" xml:space="preserve">
+    <value>Yatay</value>
+  </data>
+  <data name="Option_KeepDefault" xml:space="preserve">
+    <value>Merkezi sıfırla</value>
+  </data>
+  <data name="Option_LeftCorner" xml:space="preserve">
+    <value>Sol köşe</value>
+  </data>
+  <data name="Option_LeftCornerDirection" xml:space="preserve">
+    <value>Sol köşe yönü</value>
+  </data>
+  
+  <data name="Option_LeftCornerPosition" xml:space="preserve">
+    <value>Sol köşe konumu</value>
+  </data>
+  <data name="Option_MainSlopeDirection" xml:space="preserve">
+    <value>Ana eğim yönü</value>
+  </data>
+  <data name="Option_MainSlopeDirectionAuto" xml:space="preserve">
+    <value>Otomatik</value>
+  </data>
+  <data name="Option_MainSlopeDirectionManually" xml:space="preserve">
+    <value>Elle</value>
+  </data>
+  <data name="Option_MakeStraightEnds" xml:space="preserve">
+    <value>Uçları düz yap</value>
+  </data>
+  <data name="Option_Marking" xml:space="preserve">
+    <value>İşaretleniyor</value>
+  </data>
+  <data name="Option_Mode" xml:space="preserve">
+    <value>Mod</value>
+  </data>
+  <data name="Option_ModeFlat" xml:space="preserve">
+    <value>Düz</value>
+  </data>
+  <data name="Option_ModeFreeForm" xml:space="preserve">
+    <value>Serbest Form</value>
+  </data>
+  <data name="Option_ModeSlope" xml:space="preserve">
+    <value>Eğim</value>
+  </data>
+  <data name="Option_MoreOptions" xml:space="preserve">
+    <value>Daha fazla seçenek</value>
+  </data>
+  <data name="Option_NodeLess" xml:space="preserve">
+    <value>Düğümsüz</value>
+  </data>
+  <data name="Option_Offset" xml:space="preserve">
+    <value>Dengele</value>
+  </data>
+  <data name="Option_OffsetFormat" xml:space="preserve">
+    <value>{0}m</value>
+  </data>
+  <data name="Option_Position" xml:space="preserve">
+    <value>Konum</value>
+  </data>
+  <data name="Option_ResetToDefault" xml:space="preserve">
+    <value>Varsayılanlara sıfırla</value>
+  </data>
+  <data name="Option_RightCorner" xml:space="preserve">
+    <value>Sağ köşe</value>
+  </data>
+  <data name="Option_RightCornerDirection" xml:space="preserve">
+    <value>Sağ köşe yönü</value>
+  </data>
+  
+  <data name="Option_RightCornerPosition" xml:space="preserve">
+    <value>Sağ köşe konumu</value>
+  </data>
+  <data name="Option_Rotate" xml:space="preserve">
+    <value>Döndür</value>
+  </data>
+  <data name="Option_RotateFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_SetShiftBetweenIntersections" xml:space="preserve">
+    <value>Kesişimler arasındaki değişimi hesapla</value>
+  </data>
+  <data name="Option_SetTwistBetweenIntersections" xml:space="preserve">
+    <value>Kesişimler arasında değişimi uygula</value>
+  </data>
+  <data name="Option_Shift" xml:space="preserve">
+    <value>Değişim</value>
+  </data>
+  <data name="Option_ShiftFormat" xml:space="preserve">
+    <value>{0}m</value>
+  </data>
+  <data name="Option_Slope" xml:space="preserve">
+    <value>Eğim</value>
+  </data>
+  <data name="Option_SlopeFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_Stretch" xml:space="preserve">
+    <value>Genişlet</value>
+  </data>
+  <data name="Option_StretchFormat" xml:space="preserve">
+    <value>{0}%</value>
+  </data>
+  <data name="Option_Twist" xml:space="preserve">
+    <value>Bükük</value>
+  </data>
+  <data name="Option_TwistFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_Type" xml:space="preserve">
+    <value>Düğüm tipi</value>
+  </data>
+  <data name="Option_Vertical" xml:space="preserve">
+    <value>Dikey</value>
+  </data>
+  <data name="Panel_NodeId" xml:space="preserve">
+    <value>#{0} nolu düğüm</value>
+  </data>
+  <data name="Settings_ApplyAfterRestart" xml:space="preserve">
+    <value>Oyun yeniden başlatıldıktan sonra geçerlidir</value>
+  </data>
+  <data name="Settings_BackupTab" xml:space="preserve">
+    <value>Yedekleme</value>
+  </data>
+  <data name="Settings_CopyPathToClipboard" xml:space="preserve">
+    <value>Yolu panoya kopyala</value>
+  </data>
+  <data name="Settings_DeleteDataButton" xml:space="preserve">
+    <value>Tüm düğümlerden verileri sil</value>
+  </data>
+  <data name="Settings_DeleteDataCaption" xml:space="preserve">
+    <value>Tüm verileri sil</value>
+  </data>
+  <data name="Settings_DeleteDataMessage" xml:space="preserve">
+    <value>Tüm verileri gerçekten kaldırmak istiyor musunuz?</value>
+  </data>
+  <data name="Settings_DumpDataButton" xml:space="preserve">
+    <value>Düğüm verilerini dosyaya dök</value>
+  </data>
+  <data name="Settings_DumpDataCaption" xml:space="preserve">
+    <value>Düğüm verilerini dökümü</value>
+  </data>
+  <data name="Settings_DumpMessageFailed" xml:space="preserve">
+    <value>Döküm başarısız oldu</value>
+  </data>
+  <data name="Settings_DumpMessageSuccess" xml:space="preserve">
+    <value>Döküm başarıyla dosyaya kaydedildi</value>
+  </data>
+  <data name="Settings_InsertNode" xml:space="preserve">
+    <value>Düğüm ekle</value>
+  </data>
+  <data name="Settings_InsertNodeDisabled" xml:space="preserve">
+    <value>Engelli</value>
+  </data>
+  <data name="Settings_InsertNodeEnabled" xml:space="preserve">
+    <value>Segmente tıklayarak</value>
+  </data>
+  <data name="Settings_InsertNodeWithModifier" xml:space="preserve">
+    <value>Segmentte {0} ile tıklayarak</value>
+  </data>
+  <data name="Settings_LongIntersectionFix" xml:space="preserve">
+    <value>Uzun kavşaklarda sıkışan yayaları düzeltin</value>
+  </data>
+  <data name="Settings_LongIntersectionFixWarning" xml:space="preserve">
+    <value>Bu seçenek, kavşakta maksimum yol bulma mesafesini artırarak bu kadar uzun kavşaklarda sıkışan yayaları önler, ancak bu seçenek simülasyon hızını etkileyebilir</value>
+  </data>
+  <data name="Settings_NodeIsSlopedByDefault" xml:space="preserve">
+    <value>Düğüm varsayılan olarak eğim verildi</value>
+  </data>
+  <data name="Settings_OptionsVisibility" xml:space="preserve">
+    <value>Seçenekler görünürlüğü</value>
+  </data>
+  <data name="Settings_Option_Disabled" xml:space="preserve">
+    <value>Engelli</value>
+  </data>
+  <data name="Settings_Option_Hidden" xml:space="preserve">
+    <value>Çökmüş</value>
+  </data>
+  <data name="Settings_Option_Visible" xml:space="preserve">
+    <value>Her zaman görünür</value>
+  </data>
+  
+  <data name="Settings_RenderNearNode" xml:space="preserve">
+    <value>Yakındaki kesişen düğümleri göster</value>
+  </data>
+  <data name="Settings_Restore" xml:space="preserve">
+    <value>Geri yükle</value>
+  </data>
+  <data name="Settings_RestoreDataButton" xml:space="preserve">
+    <value>Düğüm verilerini dosyadan geri yükle</value>
+  </data>
+  <data name="Settings_RestoreDataCaption" xml:space="preserve">
+    <value>Düğüm verilerini geri yükle</value>
+  </data>
+  <data name="Settings_RestoreDataMessage" xml:space="preserve">
+    <value>Düğüm verilerini gerçekten geri yüklemek istiyor musunuz?
+Geri yüklenen veriler, mevcut tüm düğüm verilerinin yerini alacaktır.</value>
+  </data>
+  <data name="Settings_RestoreDataMessageFailed" xml:space="preserve">
+    <value>Düğüm verileri geri yükleme başarısız oldu</value>
+  </data>
+  <data name="Settings_RestoreDataMessageSuccess" xml:space="preserve">
+    <value>Düğüm verileri başarıyla geri yüklendi</value>
+  </data>
+  <data name="Settings_SelectMiddleNodes" xml:space="preserve">
+    <value>Orta düğümü seç</value>
+  </data>
+  <data name="Settings_SelectMiddleNodesDiscription" xml:space="preserve">
+    <value>Eğer bu özellik kapalıysa, orta düğümler tıklanılan konuma taşınır</value>
+  </data>
+  <data name="Settings_ShortcutEnterUnderground" xml:space="preserve">
+    <value>Yeraltı moduna girin</value>
+  </data>
+  <data name="Settings_ShortcutExitUnderground" xml:space="preserve">
+    <value>Yeraltı modundan çık</value>
+  </data>
+  <data name="Settings_ToggleUnderground" xml:space="preserve">
+    <value>Yeraltında geçiş yap</value>
+  </data>
+  <data name="Settings_ToggleUndergroundButtons" xml:space="preserve">
+    <value>Girmek için {0} ve çıkmak için {1} tuşuna basın</value>
+  </data>
+  <data name="Settings_ToggleUndergroundHold" xml:space="preserve">
+    <value>{0} basılı tutun</value>
+  </data>
+  <data name="Setting_ShortcutCalculateShiftByIntersections" xml:space="preserve">
+    <value>Kesişimlerdeki değişimi hesapla</value>
+  </data>
+  <data name="Setting_ShortcutCalculateShiftByNearby" xml:space="preserve">
+    <value>Düğümlerin arasındaki değişimi hesapla</value>
+  </data>
+  <data name="Setting_ShortcutCalculateTwistByIntersections" xml:space="preserve">
+    <value>Kesişimlerdeki değişimi hesapla</value>
+  </data>
+  <data name="Setting_ShortcutCalculateTwistByNearby" xml:space="preserve">
+    <value>Düğümlerin arasındaki değişimi hesapla</value>
+  </data>
+  <data name="Setting_ShortcutChangeMainRoadMode" xml:space="preserve">
+    <value>Ana eğim yönünü değiştir</value>
+  </data>
+  <data name="Setting_ShortcutChangeNodeStyle" xml:space="preserve">
+    <value>Düğüm biçimini değiştir</value>
+  </data>
+  <data name="Setting_ShortcutKeepDefault" xml:space="preserve">
+    <value>Merkezi sıfırla</value>
+  </data>
+  <data name="Setting_ShortcutMakeStraightEnds" xml:space="preserve">
+    <value>Uçları düz hale getir</value>
+  </data>
+  <data name="Setting_ShortcutResetToDefault" xml:space="preserve">
+    <value>Varsayılanlara sıfırla</value>
+  </data>
+  <data name="Setting_ShortcutSetShiftBetweenIntersections" xml:space="preserve">
+    <value>Kesişimler arasındaki değişimi hesapla</value>
+  </data>
+  <data name="Setting_ShortcutSetTwistBetweenIntersections" xml:space="preserve">
+    <value>Kesişimler arasındaki değişimi uygula</value>
+  </data>
+  <data name="Tool_EnterUnderground" xml:space="preserve">
+    <value>Girmek için {0} tuşuna basın
+Yeraltı Modu</value>
+  </data>
+  <data name="Tool_ExitUnderground" xml:space="preserve">
+    <value>Çıkmak için {0} tuşuna basın
+yeraltı modu</value>
+  </data>
+  <data name="Tool_InfoAlignMode" xml:space="preserve">
+    <value>{0}'e basılı tutarak yolları ayarlayın</value>
+  </data>
+  <data name="Tool_InfoApplyAlign" xml:space="preserve">
+    <value>Köşeyle doğrultmak için tıklayın</value>
+  </data>
+  <data name="Tool_InfoChangeMainMode" xml:space="preserve">
+    <value>Eğim yönünü değiştirmek için {0} tuşuna basılı tutun</value>
+  </data>
+  <data name="Tool_InfoClickNode" xml:space="preserve">
+    <value>#{0} Birleşimi
+Ayarlamak için tıklayın</value>
+  </data>
+  <data name="Tool_InfoClickToSelectFirstAlign" xml:space="preserve">
+    <value>Ayarlamak istediğiniz köşeyi seçmek için tıklayın</value>
+  </data>
+  <data name="Tool_InfoDragCenter" xml:space="preserve">
+    <value>Merkez noktayı ayarlamak için tutup çekin</value>
+  </data>
+  <data name="Tool_InfoDragCenterFree" xml:space="preserve">
+    <value>Konumu değiştirmek için sürükleyin
+Yüksekliği değiştirmek için {0} tuşunu basılı tutun</value>
+  </data>
+  <data name="Tool_InfoDragCircle" xml:space="preserve">
+    <value>Açıyı ayarlamak için tutup çekin</value>
+  </data>
+  <data name="Tool_InfoDragCorner" xml:space="preserve">
+    <value>Köşelerin çıkıntısını ayarlamak için tutup çekin</value>
+  </data>
+  <data name="Tool_InfoDragCornerFree" xml:space="preserve">
+    <value>Köşe konumunu değiştirmek için sürükleyin
+Köşe yüksekliğini değiştirmek için {0} tuşunu basılı tutun</value>
+  </data>
+  <data name="Tool_InfoDragMainSlopeDirectionEnd" xml:space="preserve">
+    <value>Ana eğim yönünü değiştirmek için bu uçtan tutup çekin</value>
+  </data>
+  <data name="Tool_InfoDropMainSlopeDirectionEnd" xml:space="preserve">
+    <value>Ana eğim yönünü ayarlamak için ucu bırakın</value>
+  </data>
+  <data name="Tool_InfoInsertCrossingNode" xml:space="preserve">
+    <value>Kesişimlere düğüm bölgesi eklemek için tıklayın</value>
+  </data>
+  <data name="Tool_InfoInsertCrossingNodeWithModifier" xml:space="preserve">
+    <value>Geçiş düğümü eklemek için {0} ile tıklayın</value>
+  </data>
+  <data name="Tool_InfoInsertNode" xml:space="preserve">
+    <value>Düğüm bölgesi eklemek için tıklayın</value>
+  </data>
+  <data name="Tool_InfoInsertNodeWithModifier" xml:space="preserve">
+    <value>Düğüm eklemek için {0} ile tıklayın</value>
+  </data>
+  <data name="Tool_InfoSelectAlignRelative" xml:space="preserve">
+    <value>Ayarlamak istediğiniz köşeyi seçin</value>
+  </data>
+  <data name="Tool_InfoSelectMainSlopeDirection" xml:space="preserve">
+    <value>Seçilen eğim yönüne doğru değiştir</value>
+  </data>
+  <data name="Tool_InfoSelectNewMainSlopeDirectionEnd" xml:space="preserve">
+    <value>Ana eğim yönünün bitme konumunu seçiniz</value>
+  </data>
+  <data name="Tool_InfoSelectNode" xml:space="preserve">
+    <value>Düğüm seçin</value>
+  </data>
+  <data name="Tool_InfoSelectToAlign" xml:space="preserve">
+    <value>Hizalanacak köşeleri seçin</value>
+  </data>
+  <data name="Tool_InfoTooCloseNode" xml:space="preserve">
+    <value>Düğüm konulamadı
+Yakındaki düğüme çok yakın</value>
+  </data>
+  <data name="Tool_InfoUnderground" xml:space="preserve">
+    <value>Yeraltı modu için {0}'e basılı tutun</value>
+  </data>
+</root>

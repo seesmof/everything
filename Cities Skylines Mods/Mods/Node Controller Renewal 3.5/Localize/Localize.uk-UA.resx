@@ -1,0 +1,571 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MessageBox_CantUndone" xml:space="preserve">
+    <value>Цю дію не можна скасувати.</value>
+  </data>
+  <data name="Mod_BackwardCompatibilityMessage" xml:space="preserve">
+    <value>Дані оригінального Node Controller були імпортовані.
+Зворотна сумісність не забезпечує передачу всіх даних, може бути необхідне ручне коригування.</value>
+  </data>
+  <data name="Mod_BackwardCompatibilityWarning" xml:space="preserve">
+    <value>УВАГА: Якщо Ви створите нове збереження, то більше не зможете використовувати оригінальний Node Controller на цій мапі.</value>
+  </data>
+  <data name="Mod_Description" xml:space="preserve">
+    <value>Керування типом та формою вузла</value>
+  </data>
+  <data name="Mod_LoadFailed" xml:space="preserve">
+    <value>Завантаження було завершено з помилками.
+Не вдалося завантажити дані для {0} вузлів.</value>
+  </data>
+  <data name="Mod_LoadFailedAll" xml:space="preserve">
+    <value>Завантаження було завершено з помилками.
+Не вдалося завантажити дані для всіх вузлів.</value>
+  </data>
+  <data name="Mod_WhatsNewMessage3_0" xml:space="preserve">
+    <value>[RELEASE] Вийшла нова версія</value>
+  </data>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <data name="Mod_WhatsNewMessage3_4" xml:space="preserve">
+    <value>[NEW] Доданий режим вільної форми, який дозволяє задати положення і поворот кута без обмежень.
+[NEW] Додана можливість відключити "Дотримуватися основного нахилу" для сегментів, що дозволяє робити сегменти похилими незалежно.
+[NEW] Додана можливість задавати відхилення по висоті для кожного сегменту.
+[UPDATED] Вузли "Вигін" дотримуються нахилу найближчих вузлів, що робить сегмент між ними гладкішим.
+[FIXED] Значення за замовчуванням для колії не відновлюється до 0.</value>
+  </data>
+  
+  <data name="NodeStyle_Bend" xml:space="preserve">
+    <value>Вигін</value>
+  </data>
+  <data name="NodeStyle_Crossing" xml:space="preserve">
+    <value>Перехід</value>
+  </data>
+  <data name="NodeStyle_Custom" xml:space="preserve">
+    <value>Власний</value>
+  </data>
+  <data name="NodeStyle_End" xml:space="preserve">
+    <value>Кінець</value>
+  </data>
+  <data name="NodeStyle_Middle" xml:space="preserve">
+    <value>Середній</value>
+  </data>
+  <data name="NodeStyle_Stretch" xml:space="preserve">
+    <value>Розтягнутий</value>
+  </data>
+  <data name="NodeStyle_UTurn" xml:space="preserve">
+    <value>Розворот</value>
+  </data>
+  <data name="Options_All" xml:space="preserve">
+    <value>Всі</value>
+  </data>
+  <data name="Option_CalculateShiftByIntersections" xml:space="preserve">
+    <value>Розрахувати зрушення між перехрестями</value>
+  </data>
+  <data name="Option_CalculateShiftByNearby" xml:space="preserve">
+    <value>Розрахувати зрушення по сусідніх вузлах</value>
+  </data>
+  <data name="Option_CalculateTwistByIntersections" xml:space="preserve">
+    <value>Розрахувати скручування між перехрестями</value>
+  </data>
+  <data name="Option_CalculateTwistByNearby" xml:space="preserve">
+    <value>Розрахувати скручування по сусідніх вузлах</value>
+  </data>
+  <data name="Option_Collision" xml:space="preserve">
+    <value>Колізія</value>
+  </data>
+  <data name="Option_DeltaHeight" xml:space="preserve">
+    <value>Зміна висоти</value>
+  </data>
+  <data name="Option_Direction" xml:space="preserve">
+    <value>Напрям</value>
+  </data>
+  <data name="Option_Distance" xml:space="preserve">
+    <value>Відстань</value>
+  </data>
+  <data name="Option_Elevation" xml:space="preserve">
+    <value>Підйом</value>
+  </data>
+  <data name="Option_FlatEnd" xml:space="preserve">
+    <value>Плоский кінець</value>
+  </data>
+  <data name="Option_FollowSlope" xml:space="preserve">
+    <value>Дотримуватись основного нахилу</value>
+  </data>
+  <data name="Option_HideCrosswalkModRequired" xml:space="preserve">
+    <value>Необхідний мод Hide Crosswalks</value>
+  </data>
+  <data name="Option_Horizontal" xml:space="preserve">
+    <value>Горизонталь</value>
+  </data>
+  <data name="Option_KeepDefault" xml:space="preserve">
+    <value>Відступ за замовчуванням</value>
+  </data>
+  <data name="Option_LeftCorner" xml:space="preserve">
+    <value>Лівий кут</value>
+  </data>
+  <data name="Option_LeftCornerDirection" xml:space="preserve">
+    <value>Напрямок лівого кута</value>
+  </data>
+  <data name="Option_LeftCornerFlatEnd" xml:space="preserve">
+    <value>Плоский кінець лівого кута</value>
+  </data>
+  <data name="Option_LeftCornerPosition" xml:space="preserve">
+    <value>Позиція лівого кута</value>
+  </data>
+  <data name="Option_MainSlopeDirection" xml:space="preserve">
+    <value>Основний напрямок нахилу</value>
+  </data>
+  <data name="Option_MainSlopeDirectionAuto" xml:space="preserve">
+    <value>Авто</value>
+  </data>
+  <data name="Option_MainSlopeDirectionManually" xml:space="preserve">
+    <value>Вручну</value>
+  </data>
+  <data name="Option_MakeStraightEnds" xml:space="preserve">
+    <value>Зробити кінці прямими</value>
+  </data>
+  <data name="Option_Marking" xml:space="preserve">
+    <value>Розмітка</value>
+  </data>
+  <data name="Option_Mode" xml:space="preserve">
+    <value>Режим</value>
+  </data>
+  <data name="Option_ModeFlat" xml:space="preserve">
+    <value>Плоский</value>
+  </data>
+  <data name="Option_ModeFreeForm" xml:space="preserve">
+    <value>Вільна форма</value>
+  </data>
+  <data name="Option_ModeSlope" xml:space="preserve">
+    <value>Нахил</value>
+  </data>
+  <data name="Option_MoreOptions" xml:space="preserve">
+    <value>Інші параметри</value>
+  </data>
+  <data name="Option_NodeLess" xml:space="preserve">
+    <value>Без вузла</value>
+  </data>
+  <data name="Option_Offset" xml:space="preserve">
+    <value>Відступ</value>
+  </data>
+  <data name="Option_OffsetFormat" xml:space="preserve">
+    <value>{0}m</value>
+  </data>
+  <data name="Option_Position" xml:space="preserve">
+    <value>Позиція</value>
+  </data>
+  <data name="Option_ResetToDefault" xml:space="preserve">
+    <value>Відновити налаштування за замовчанням</value>
+  </data>
+  <data name="Option_RightCorner" xml:space="preserve">
+    <value>Правий кут</value>
+  </data>
+  <data name="Option_RightCornerDirection" xml:space="preserve">
+    <value>Напрямок правого кута</value>
+  </data>
+  <data name="Option_RightCornerFlatEnd" xml:space="preserve">
+    <value>Плоский кінець правого кута</value>
+  </data>
+  <data name="Option_RightCornerPosition" xml:space="preserve">
+    <value>Позиція правого кута</value>
+  </data>
+  <data name="Option_Rotate" xml:space="preserve">
+    <value>Обернути</value>
+  </data>
+  <data name="Option_RotateFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_SetShiftBetweenIntersections" xml:space="preserve">
+    <value>Задати зрушення між перехрестями</value>
+  </data>
+  <data name="Option_SetTwistBetweenIntersections" xml:space="preserve">
+    <value>Задати скручування між перехрестями</value>
+  </data>
+  <data name="Option_Shift" xml:space="preserve">
+    <value>Зрушення</value>
+  </data>
+  <data name="Option_ShiftFormat" xml:space="preserve">
+    <value>{0}m</value>
+  </data>
+  <data name="Option_Slope" xml:space="preserve">
+    <value>Нахил</value>
+  </data>
+  <data name="Option_SlopeFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_Stretch" xml:space="preserve">
+    <value>Розтягування</value>
+  </data>
+  <data name="Option_StretchFormat" xml:space="preserve">
+    <value>{0}%</value>
+  </data>
+  <data name="Option_Twist" xml:space="preserve">
+    <value>Скручування</value>
+  </data>
+  <data name="Option_TwistFormat" xml:space="preserve">
+    <value>{0}°</value>
+  </data>
+  <data name="Option_Type" xml:space="preserve">
+    <value>Тип вузла</value>
+  </data>
+  <data name="Option_Vertical" xml:space="preserve">
+    <value>Вертикаль</value>
+  </data>
+  <data name="Panel_NodeId" xml:space="preserve">
+    <value>Вузол #{0}</value>
+  </data>
+  <data name="Settings_ApplyAfterRestart" xml:space="preserve">
+    <value>Застосовується після перезавантаження гри</value>
+  </data>
+  <data name="Settings_BackupTab" xml:space="preserve">
+    <value>Резервне копіювання</value>
+  </data>
+  <data name="Settings_CopyPathToClipboard" xml:space="preserve">
+    <value>Копіювати шлях до буфера обміну</value>
+  </data>
+  <data name="Settings_DeleteDataButton" xml:space="preserve">
+    <value>Видалити дані з усіх вузлів</value>
+  </data>
+  <data name="Settings_DeleteDataCaption" xml:space="preserve">
+    <value>Видалити всі дані</value>
+  </data>
+  <data name="Settings_DeleteDataMessage" xml:space="preserve">
+    <value>Ви дійсно хочете видалити всі дані?</value>
+  </data>
+  <data name="Settings_DumpDataButton" xml:space="preserve">
+    <value>Зберегти дані вузлів до файлу</value>
+  </data>
+  <data name="Settings_DumpDataCaption" xml:space="preserve">
+    <value>Зберегти дані вузлів</value>
+  </data>
+  <data name="Settings_DumpMessageFailed" xml:space="preserve">
+    <value>Не вдалося зберегти</value>
+  </data>
+  <data name="Settings_DumpMessageSuccess" xml:space="preserve">
+    <value>Збереження успішно скопійовано до файлу</value>
+  </data>
+  <data name="Settings_InsertNode" xml:space="preserve">
+    <value>Додання вузла</value>
+  </data>
+  <data name="Settings_InsertNodeDisabled" xml:space="preserve">
+    <value>Вимкнено</value>
+  </data>
+  <data name="Settings_InsertNodeEnabled" xml:space="preserve">
+    <value>При натисканні на сегмент</value>
+  </data>
+  <data name="Settings_InsertNodeWithModifier" xml:space="preserve">
+    <value>При натисканні на сегмент утримуючи {0}</value>
+  </data>
+  <data name="Settings_LongIntersectionFix" xml:space="preserve">
+    <value>Виправити застрягання пішоходів на довгих перехрестях</value>
+  </data>
+  <data name="Settings_LongIntersectionFixWarning" xml:space="preserve">
+    <value>Опція збільшує максимальну відстань до перетину шляхів, що запобігають застряганню пішоходів на
+довгих перехрестях, однак ця опція може вплинути на швидкість моделювання</value>
+  </data>
+  <data name="Settings_NodeIsSlopedByDefault" xml:space="preserve">
+    <value>Вузол нахилений за замовчуванням</value>
+  </data>
+  <data name="Settings_OptionsVisibility" xml:space="preserve">
+    <value>Відображення опцій</value>
+  </data>
+  <data name="Settings_Option_Disabled" xml:space="preserve">
+    <value>Вимкнено</value>
+  </data>
+  <data name="Settings_Option_Hidden" xml:space="preserve">
+    <value>Згорнуто</value>
+  </data>
+  <data name="Settings_Option_Visible" xml:space="preserve">
+    <value>Завжди відображати</value>
+  </data>
+  <data name="Settings_OverlayOpacity" xml:space="preserve">
+    <value>Непрозорість оверлею</value>
+  </data>
+  <data name="Settings_RenderNearNode" xml:space="preserve">
+    <value>Підсвічувати найближчі вузли</value>
+  </data>
+  <data name="Settings_Restore" xml:space="preserve">
+    <value>Відновлення</value>
+  </data>
+  <data name="Settings_RestoreDataButton" xml:space="preserve">
+    <value>Відновити дані вузлів із файлу</value>
+  </data>
+  <data name="Settings_RestoreDataCaption" xml:space="preserve">
+    <value>Відновити дані вузлів</value>
+  </data>
+  <data name="Settings_RestoreDataMessage" xml:space="preserve">
+    <value>Ви дійсно хочете відновити дані вузлів?
+Відновлення даних призведе до заміни всіх існуючих вузлів.</value>
+  </data>
+  <data name="Settings_RestoreDataMessageFailed" xml:space="preserve">
+    <value>Не вдалося відновити дані вузлів</value>
+  </data>
+  <data name="Settings_RestoreDataMessageSuccess" xml:space="preserve">
+    <value>Дані вузлів успішно відновлені</value>
+  </data>
+  <data name="Settings_SelectMiddleNodes" xml:space="preserve">
+    <value>Вибирати середні вузли</value>
+  </data>
+  <data name="Settings_SelectMiddleNodesDiscription" xml:space="preserve">
+    <value>Якщо цей параметр вимкнено, середні вузли перемістяться у вибрану позицію</value>
+  </data>
+  <data name="Settings_ShortcutEnterUnderground" xml:space="preserve">
+    <value>Увійти в підземний режим</value>
+  </data>
+  <data name="Settings_ShortcutExitUnderground" xml:space="preserve">
+    <value>Вийти з підземного режиму</value>
+  </data>
+  <data name="Settings_ToggleUnderground" xml:space="preserve">
+    <value>Перемикання підземного режиму</value>
+  </data>
+  <data name="Settings_ToggleUndergroundButtons" xml:space="preserve">
+    <value>Натисніть {0} для входу та {1} для виходу</value>
+  </data>
+  <data name="Settings_ToggleUndergroundHold" xml:space="preserve">
+    <value>Утримувати {0}</value>
+  </data>
+  <data name="Setting_ShortcutCalculateShiftByIntersections" xml:space="preserve">
+    <value>Розрахувати зрушення між перехрестями</value>
+  </data>
+  <data name="Setting_ShortcutCalculateShiftByNearby" xml:space="preserve">
+    <value>Розрахувати зрушення по сусідніх вузлах</value>
+  </data>
+  <data name="Setting_ShortcutCalculateTwistByIntersections" xml:space="preserve">
+    <value>Розрахувати скручування між перехрестями</value>
+  </data>
+  <data name="Setting_ShortcutCalculateTwistByNearby" xml:space="preserve">
+    <value>Розрахувати скручування по сусідніх вузлах</value>
+  </data>
+  <data name="Setting_ShortcutChangeMainRoadMode" xml:space="preserve">
+    <value>Змінити режим основного напрямку нахилу</value>
+  </data>
+  <data name="Setting_ShortcutChangeNodeStyle" xml:space="preserve">
+    <value>Змінити вид вузла</value>
+  </data>
+  <data name="Setting_ShortcutKeepDefault" xml:space="preserve">
+    <value>Відступ за замовчуванням</value>
+  </data>
+  <data name="Setting_ShortcutMakeStraightEnds" xml:space="preserve">
+    <value>Зробити кінці прямими</value>
+  </data>
+  <data name="Setting_ShortcutResetToDefault" xml:space="preserve">
+    <value>Відновити налаштування за замовчуванням</value>
+  </data>
+  <data name="Setting_ShortcutSetShiftBetweenIntersections" xml:space="preserve">
+    <value>Задати зрушення між перехрестями</value>
+  </data>
+  <data name="Setting_ShortcutSetTwistBetweenIntersections" xml:space="preserve">
+    <value>Задати скручування між перехрестями</value>
+  </data>
+  <data name="Tool_EnterUnderground" xml:space="preserve">
+    <value>Натисніть {0}, щоб увійти в
+підземний режим</value>
+  </data>
+  <data name="Tool_ExitUnderground" xml:space="preserve">
+    <value>Натисніть {0}, щоб вийти з
+підземного режиму</value>
+  </data>
+  <data name="Tool_InfoAlignMode" xml:space="preserve">
+    <value>Утримуйте {0}, щоб вирівняти дороги</value>
+  </data>
+  <data name="Tool_InfoApplyAlign" xml:space="preserve">
+    <value>Натисніть, щоб вирівняти з цим кутом</value>
+  </data>
+  <data name="Tool_InfoChangeMainMode" xml:space="preserve">
+    <value>Утримуйте {0}, щоб змінити основний кут нахилу</value>
+  </data>
+  <data name="Tool_InfoClickNode" xml:space="preserve">
+    <value>Вузол #{0}
+Натисніть, щоб редагувати</value>
+  </data>
+  <data name="Tool_InfoClickToSelectFirstAlign" xml:space="preserve">
+    <value>Натисніть щоб вибрати кут, який Ви хочете вирівняти</value>
+  </data>
+  <data name="Tool_InfoDragCenter" xml:space="preserve">
+    <value>Перетягніть для зміни відступу</value>
+  </data>
+  <data name="Tool_InfoDragCenterFree" xml:space="preserve">
+    <value>Перетягніть для зміни позиції
+Утримуйте {0} для зміни висоти</value>
+  </data>
+  <data name="Tool_InfoDragCircle" xml:space="preserve">
+    <value>Перетягніть для зміни повороту</value>
+  </data>
+  <data name="Tool_InfoDragCorner" xml:space="preserve">
+    <value>Перетягніть, щоб змінити відступу кута</value>
+  </data>
+  <data name="Tool_InfoDragCornerFree" xml:space="preserve">
+    <value>Перетягніть для зміни позиції кута
+Утримуйте {0} для зміни висоти кута</value>
+  </data>
+  <data name="Tool_InfoDragMainSlopeDirectionEnd" xml:space="preserve">
+    <value>Перетягніть цей кінець для зміни основного напряму нахилу</value>
+  </data>
+  <data name="Tool_InfoDropMainSlopeDirectionEnd" xml:space="preserve">
+    <value>Відпустіть цей кінець для зміни основного напряму нахилу</value>
+  </data>
+  <data name="Tool_InfoInsertCrossingNode" xml:space="preserve">
+    <value>Натисніть, щоб додати перехід</value>
+  </data>
+  <data name="Tool_InfoInsertCrossingNodeWithModifier" xml:space="preserve">
+    <value>Натисніть з {0} , щоб додати перехід</value>
+  </data>
+  <data name="Tool_InfoInsertNode" xml:space="preserve">
+    <value>Нажміть для додання вузла</value>
+  </data>
+  <data name="Tool_InfoInsertNodeWithModifier" xml:space="preserve">
+    <value>Натисніть з {0} , щоб додати вузол</value>
+  </data>
+  <data name="Tool_InfoSelectAlignRelative" xml:space="preserve">
+    <value>Виберіть кут, з котрим хочете вирівняти</value>
+  </data>
+  <data name="Tool_InfoSelectMainSlopeDirection" xml:space="preserve">
+    <value>Виберіть основний напрям нахилу</value>
+  </data>
+  <data name="Tool_InfoSelectNewMainSlopeDirectionEnd" xml:space="preserve">
+    <value>Виберіть кінцеву позицію основного напрямку нахилу</value>
+  </data>
+  <data name="Tool_InfoSelectNode" xml:space="preserve">
+    <value>Виберіть вузол</value>
+  </data>
+  <data name="Tool_InfoSelectToAlign" xml:space="preserve">
+    <value>Виберіть кути, котрі хочете вирівняти</value>
+  </data>
+  <data name="Tool_InfoTooCloseNode" xml:space="preserve">
+    <value>Неможливо додати вузол
+Надто близько до сусіднього вузла</value>
+  </data>
+  <data name="Tool_InfoUnderground" xml:space="preserve">
+    <value>Утримуйте {0} для
+підземного режиму</value>
+  </data>
+</root>
