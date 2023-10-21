@@ -1,0 +1,76 @@
+# Video Notes
+
+- writing a professional resume
+  - three steps
+    - format and layour
+      - existing formats
+        - chronological format
+          - go with this one
+        - skill based or functional
+        - combined
+    - header
+      - must have info
+        - name
+        - phone
+        - email
+        - location
+        - job title
+      - optional info
+        - linkedin [[URL]]
+        - social media
+        - website / blog / portfolio
+      - do not include
+        - birth date
+        - non professional email address
+        - photos - not in US, UK, Ireland
+      - include a brief resume summary
+        - sometimes resume objective is better
+    - resume sections
+      - most important part
+      - structure
+        - job title
+        - company name
+        - dates emploed
+        - achievements and responsibilities
+        - company description (optional)
+      - use percentages and numbers as much as possible
+      - listing education
+        - program name
+        - university name
+        - years attended
+        - optional
+          - courses
+          - awards
+          - GPA
+          - academic achievements
+      - listing top skills
+        - hard skills
+          - examples
+            - google analytics
+            - adobe photoshop
+            - french cuisine
+            - engineering
+        - soft skills
+          - examples
+            - leadership
+            - critical thinking
+            - empathy
+            - adaptability
+      - other sections
+        - languages
+        - volunteering experience
+        - certificates
+        - awards or achievements
+        - relevant projects
+        - hobbies and interests
+  - conclusion
+    - structure
+      - header
+        - name and title
+        - summary and objectives
+        - contact information
+      - resume sections
+        - work experience
+        - education
+        - skills
+        - additional sections
