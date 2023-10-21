@@ -1,0 +1,23 @@
+iPhone 8
+399.99
+23
+
+iPhone 10 Pro
+499.99
+17
+
+iPhone 12 Pro Max
+899.99
+43
+
+Apple Watch
+299.99
+16
+
+iPad Mini
+399.99
+25
+
+iMac Pro
+499.99
+31
