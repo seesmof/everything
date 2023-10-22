@@ -11,11 +11,9 @@
             "id": "5123e1b0ad4d5fb9",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "University/Year 2 Term 1/Дисципліни.md",
-                "mode": "source",
-                "source": false
+                "file": "Library/Бойко _ Історія України.pdf"
               }
             }
           }
@@ -85,7 +83,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/Year 2 Term 1/Дисципліни.md",
+                "file": "Library/Бойко _ Історія України.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +100,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/Year 2 Term 1/Дисципліни.md",
+                "file": "Library/Бойко _ Історія України.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +123,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/Year 2 Term 1/Дисципліни.md"
+                "file": "Library/Бойко _ Історія України.pdf"
               }
             }
           },
@@ -170,21 +168,23 @@
   },
   "active": "5123e1b0ad4d5fb9",
   "lastOpenFiles": [
+    "Quick Links Extension/README.md",
+    "Quick Links Extension/manifest.json",
+    "Quick Links Extension/LICENSE",
+    "Quick Links Extension/icon.png",
+    "Quick Links Extension/background.js",
+    "Quick Links Extension",
+    "University/Year 2 Term 1/Дисципліни.md",
+    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb2/test.py",
+    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb2/main.py",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/lb2/test.py",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/lb2/task.md",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/lb2/main.py",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/lb2",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb2/lb2/test.py",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb2/lb2/task.md",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb2/lb2/main.py",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb2/lb2",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb2/task.md",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/звіт.pdf",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/звіт.docx",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/main.py",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/Lab1.zip",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/АСД.Лаб1. Лінійні структури даних.md",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/employees.json",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/АСД,Лек6.md",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/АСД.Лек5..md",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/АСД.Лек4..md",
@@ -205,7 +205,6 @@
     "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/tasks/lb5/dev/task.md",
     "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/tasks/lb5/dev/lab3/img/table_mobile.png",
     "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/tasks/lb5/dev/lab3/img/table_desktop.png",
-    "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/tasks/lb5/dev/lab3/img/main_mobile.png",
     "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/tasks/lb5/dev/lab3/завдання.md",
     "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/tasks/lb6/dev/task.md",
     "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/tasks/lb6/dev/lab4/lab3/завдання.md",
@@ -214,7 +213,6 @@
     "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/tasks/lb4/dev/task.md",
     "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/tasks/lb4/dev/lab3/завдання.md",
     "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/tasks/lb3/dev/завдання.md",
-    "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/tasks/lb4/lab3/завдання.md",
-    "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/tasks/lb7/dev/task.md"
+    "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/tasks/lb4/lab3/завдання.md"
   ]
 }
