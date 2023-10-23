@@ -11,9 +11,11 @@
             "id": "5123e1b0ad4d5fb9",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "Library/Бойко _ Історія України.pdf"
+                "file": "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/task.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Library/Бойко _ Історія України.pdf",
+                "file": "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/task.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Library/Бойко _ Історія України.pdf",
+                "file": "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/task.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Library/Бойко _ Історія України.pdf"
+                "file": "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/task.md"
               }
             }
           },
@@ -168,6 +170,11 @@
   },
   "active": "5123e1b0ad4d5fb9",
   "lastOpenFiles": [
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/solutions/1a.jpg",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/solutions/IMG_20231023_105218.jpg",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/solutions",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/IMG_20231023_105218.jpg",
+    "Library/Бойко _ Історія України.pdf",
     "Python Automations/rename_files.py",
     "Python Twitch AI Chatbot/notifications/icon.png",
     "Python Twitch AI Chatbot/notifications/sound.wav",
@@ -182,9 +189,6 @@
     "Python Twitch AI Chatbot/logs/seesmof_log_11-04-2023.txt",
     "Python Twitch AI Chatbot/logs/seesmof_log_10-04-2023.txt",
     "Python Twitch AI Chatbot/logs/seesmof_log_09-04-2023.txt",
-    "Python Twitch AI Chatbot/logs/seesmof_log_08-04-2023.txt",
-    "Python Twitch AI Chatbot/logs/seesmof_log_07-04-2023.txt",
-    "Python Twitch AI Chatbot/logs/seesmof_log_05-04-2023.txt",
     "Python Twitch AI Chatbot/logs/seesmof-log_30-06-2023.md",
     "Python Twitch AI Chatbot/logs/seesmof-log_30-04-2023.md",
     "Python Twitch AI Chatbot/logs/seesmof-log_27-06-2023.md",
@@ -211,8 +215,6 @@
     "Library/НМТ-2022-Документи/Math/ЗНО онлайн 2018 року з математики – основна сесія – сайт ЗНО.Освіта.UA.png",
     "Library/logo.png",
     "Library/lib/НМТ-2022-Документи/Math/ЗНО онлайн 2021 року з математики – додаткова сесія – сайт ЗНО.Освіта.UA.png",
-    "Library/lib/НМТ-2022-Документи/Math/ЗНО онлайн 2021 року з математики – демонстраційний варіант – сайт ЗНО.Освіта.UA.png",
-    "Library/lib/НМТ-2022-Документи/Math/ЗНО онлайн 2018 року з математики – основна сесія – сайт ЗНО.Освіта.UA.png",
-    "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/tasks/lb5/dev/lab3/img/table_mobile.png"
+    "Library/lib/НМТ-2022-Документи/Math/ЗНО онлайн 2021 року з математики – демонстраційний варіант – сайт ЗНО.Освіта.UA.png"
   ]
 }
