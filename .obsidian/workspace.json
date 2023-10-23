@@ -11,8 +11,12 @@
             "id": "46f9b68b7eb00386",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md"
+              }
             }
           },
           {
@@ -143,7 +151,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -161,51 +170,51 @@
   },
   "active": "46f9b68b7eb00386",
   "lastOpenFiles": [
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2_1.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/3 copy.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/3.jpg",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/IMG_20231023_194843.jpg",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.pdf",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/1d.jpg",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/1c.jpg",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/1b.jpg",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/1a.jpg",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/solutions/1d.jpg",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/solutions/1c.jpg",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/solutions/1b.jpg",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/solutions/1a.jpg",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/solutions",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/task.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/3.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/1.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/1_4.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/1_3.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/1_2.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/1_1.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/task.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_4.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_3.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_2.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_1.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/docs/методичка.pdf",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/solution",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/3.md",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1 copy.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/solutions/1d.jpg",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/solutions/IMG_20231023_190306.jpg",
     "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/notes/Жовт 23, 2023.md",
     "Competitive Programming/Algorithms/shellSort.py",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/task.md",
     "Code Doodles/Create and visualize a complex graph/Mandelbrot set.py",
     "Code Doodles/Create and visualize a complex graph/map.py",
     "Code Doodles/Create and visualize a complex graph",
-    "Code Doodles/Spotify Playlist Automation Attempt/search-for-song.py",
-    "Code Doodles/Spotify Playlist Automation Attempt/main.py",
-    "Code Doodles/Spotify Playlist Automation Attempt",
-    "Code Doodles/Letterbox Movie Scraping Attempt/script.py",
-    "Code Doodles/Letterbox Movie Scraping Attempt/script.js",
-    "Code Doodles/Letterbox Movie Scraping Attempt",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_4.md",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_3 copy.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/solutions/1c.jpg",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/solutions/IMG_20231023_114553.jpg",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/solutions/1b.jpg",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/solutions/IMG_20231023_112152.jpg",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_3.md",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_2 copy.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_2.md",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_1 copy.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/solutions/1a.jpg",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/solutions/IMG_20231023_105218.jpg",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/IMG_20231023_105218.jpg",
-    "Python Twitch AI Chatbot/notifications/icon.png",
     "Python Twitch AI Chatbot/logs/worstTyler-log_25-05-2023.md",
     "Python Twitch AI Chatbot/logs/volodar_it-log_29-06-2023.md",
-    "Python Twitch AI Chatbot/logs/unjustfridgesmod-log_27-06-2023.md",
-    "Python Twitch AI Chatbot/logs/unjustfridgesmod-log_23-06-2023.md",
-    "Python Twitch AI Chatbot/logs/unjustfridgesmod-log_19-06-2023.md",
-    "Python Twitch AI Chatbot/logs/seesmof-log_30-06-2023.md",
-    "Python Twitch AI Chatbot/logs/seesmof-log_30-04-2023.md",
-    "Python Twitch AI Chatbot/logs/seesmof-log_27-06-2023.md",
-    "Python Twitch AI Chatbot/logs/seesmof-log_27-05-2023.md",
-    "Python Twitch AI Chatbot/logs/seesmof-log_27-04-2023.md",
-    "Python Twitch AI Chatbot/logs/seesmof-log_26-06-2023.md",
-    "Python Twitch AI Chatbot/logs/seesmof-log_26-04-2023.md",
-    "Python Twitch AI Chatbot/logs/seesmof-log_25-04-2023.md",
-    "Python Twitch AI Chatbot/logs/seesmof-log_24-04-2023.md",
-    "Python Twitch AI Chatbot/logs/seesmof-log_22-04-2023.md",
-    "Python Twitch AI Chatbot/logs/seesmof-log_21-04-2023.md"
+    "Python Twitch AI Chatbot/logs/unjustfridgesmod-log_27-06-2023.md"
   ]
 }
