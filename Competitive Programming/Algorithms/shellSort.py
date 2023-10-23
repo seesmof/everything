@@ -11,4 +11,5 @@ def shellSort(arr):
                 j -= gap
             arr[j] = temp
         gap //= 2
+
     return arr
