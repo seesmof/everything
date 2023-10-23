@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "f1223bd07b4a26be",
+        "id": "aad066c8cd74ad44",
         "type": "tabs",
         "children": [
           {
-            "id": "5123e1b0ad4d5fb9",
+            "id": "46f9b68b7eb00386",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/notes/Жовт 23, 2023.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/notes/Жовт 23, 2023.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/notes/Жовт 23, 2023.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/notes/Жовт 23, 2023.md"
-              }
+              "state": {}
             }
           },
           {
@@ -167,11 +159,11 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "5123e1b0ad4d5fb9",
+  "active": "46f9b68b7eb00386",
   "lastOpenFiles": [
+    "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/notes/Жовт 23, 2023.md",
     "Competitive Programming/Algorithms/shellSort.py",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/task.md",
-    "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/notes/Жовт 23, 2023.md",
     "Code Doodles/Create and visualize a complex graph/Mandelbrot set.py",
     "Code Doodles/Create and visualize a complex graph/map.py",
     "Code Doodles/Create and visualize a complex graph",
@@ -181,7 +173,6 @@
     "Code Doodles/Letterbox Movie Scraping Attempt/script.py",
     "Code Doodles/Letterbox Movie Scraping Attempt/script.js",
     "Code Doodles/Letterbox Movie Scraping Attempt",
-    "Code Doodles",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_4.md",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_3 copy.md",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/solutions/1c.jpg",
