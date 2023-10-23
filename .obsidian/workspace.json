@@ -4,8 +4,26 @@
     "type": "split",
     "children": [
       {
+        "id": "7b26d99849d6ff79",
+        "type": "tabs",
+        "dimension": 15.1356993736952,
+        "children": [
+          {
+            "id": "25bee9b3abcd4d55",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md"
+              }
+            }
+          }
+        ]
+      },
+      {
         "id": "aad066c8cd74ad44",
         "type": "tabs",
+        "dimension": 84.8643006263048,
         "children": [
           {
             "id": "46f9b68b7eb00386",
@@ -78,6 +96,7 @@
       {
         "id": "e344f97896106e3c",
         "type": "tabs",
+        "dimension": 74.65277777777779,
         "children": [
           {
             "id": "9d51936762f4a98c",
@@ -120,16 +139,6 @@
             }
           },
           {
-            "id": "25bee9b3abcd4d55",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md"
-              }
-            }
-          },
-          {
             "id": "39dd0029c99ffcd2",
             "type": "leaf",
             "state": {
@@ -138,7 +147,14 @@
                 "sortOrder": "frequency"
               }
             }
-          },
+          }
+        ]
+      },
+      {
+        "id": "564b38c3eb86bf3b",
+        "type": "tabs",
+        "dimension": 25.34722222222222,
+        "children": [
           {
             "id": "67df3ce513b54367",
             "type": "leaf",
@@ -151,7 +167,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 438.5,
     "collapsed": true
   },
   "left-ribbon": {
@@ -170,6 +186,8 @@
   },
   "active": "46f9b68b7eb00386",
   "lastOpenFiles": [
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2_3.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2_2 copy.md",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2_2.md",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2_1 copy.md",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2_1.md",
@@ -213,8 +231,6 @@
     "Code Doodles/Create and visualize a complex graph/map.py",
     "Code Doodles/Create and visualize a complex graph",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_3 copy.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_2 copy.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_1 copy.md",
-    "Python Twitch AI Chatbot/logs/worstTyler-log_25-05-2023.md"
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_2 copy.md"
   ]
 }
