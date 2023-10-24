@@ -14,7 +14,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md"
+                "file": "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/data.md"
               }
             }
           }
@@ -43,7 +43,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md",
+                "file": "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/data.md",
                 "mode": "source",
                 "source": false
               }
@@ -117,7 +117,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md",
+                "file": "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/data.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -134,7 +134,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md",
+                "file": "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/data.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -197,8 +197,12 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "d785a87909210767",
+  "active": "b21fc18328ac102a",
   "lastOpenFiles": [
+    "University/Year 2 Term 1/ООП_КП - Об'єктно Орієнтоване Програмування Курсач/Exceptions/FormWelcome.cs",
+    "University/Year 2 Term 1/ООП_КП - Об'єктно Орієнтоване Програмування Курсач/Exceptions/GeneralException.cs",
+    "University/Year 2 Term 1/ООП_КП - Об'єктно Орієнтоване Програмування Курсач/Exceptions",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/prod/Lab1.zip",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/prod/звіт.pdf",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/prod/звіт.docx",
@@ -210,12 +214,8 @@
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/notes/АСД.Лек5..md",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/notes/АСД.Лек4..md",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/notes/АСД,Лек6.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/рішення.zip",
     "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/notes/Жовт 24, 2023.md",
     "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/data.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/docs/мет.pdf",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/docs/Непідтверджений 608663.crdownload",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2_3.md",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2_2 copy.md",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2_2.md",
