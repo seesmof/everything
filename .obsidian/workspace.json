@@ -31,13 +31,26 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/notes/Жовт 24, 2023.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "b21fc18328ac102a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -184,8 +197,11 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "46f9b68b7eb00386",
+  "active": "b21fc18328ac102a",
   "lastOpenFiles": [
+    "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/notes/Жовт 24, 2023.md",
+    "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/data.md",
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/docs/мет.pdf",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/docs/Непідтверджений 608663.crdownload",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2_3.md",
@@ -198,7 +214,6 @@
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/3.jpg",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/IMG_20231023_194843.jpg",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.pdf",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/1d.jpg",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/1c.jpg",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/1b.jpg",
@@ -229,8 +244,6 @@
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1 copy.md",
     "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/notes/Жовт 23, 2023.md",
     "Competitive Programming/Algorithms/shellSort.py",
-    "Code Doodles/Create and visualize a complex graph/Mandelbrot set.py",
-    "Code Doodles/Create and visualize a complex graph/map.py",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_3 copy.md"
+    "Code Doodles/Create and visualize a complex graph/Mandelbrot set.py"
   ]
 }
