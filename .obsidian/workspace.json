@@ -13,9 +13,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/Класична модель української ідентичності..md"
-              }
+              "state": {}
             }
           }
         ]
@@ -29,28 +27,11 @@
             "id": "48d262eaf4f19fd6",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/data.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "7b1294fadc80b075",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/Класична модель української ідентичності..md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -117,7 +98,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/Класична модель української ідентичності..md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -134,7 +114,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/Класична модель української ідентичності..md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -197,53 +176,53 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "7b1294fadc80b075",
+  "active": "48d262eaf4f19fd6",
   "lastOpenFiles": [
-    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/Культура України в другій половині XIX – на початку XX ст..md",
-    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/Україна в подіях російської революції 1905 – 1907 рр. та Першої світової війни (1914 – 1917 рр.)..md",
-    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/Формування українських політичних партій..md",
-    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/«Громадівський» період українського національного руху..md",
-    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/data.md",
-    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/Класична модель української ідентичності..md",
-    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/data.md",
-    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/Україна в подіях російської революції 1905 – 1907 рр. та Першої світової війни (1914 – 1917 рр.). copy.md",
-    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/Формування українських політичних партій. copy.md",
-    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/«Громадівський» період українського національного руху. copy.md",
-    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/ІУ.Лек2..md",
-    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем3/main.md",
-    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем3/Слобідське козацтво (1651 – 1765 рр.) та його історична доля..md",
-    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем3/Ліквідація Запорозької Січі 1775 р. та Задунайська Січ (1776 – 1828 рр.)..md",
-    "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/notes/Жовт 24, 2023.md",
-    "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/data.md",
-    "University/Year 2 Term 1/ТЙ - Теорія Ймовірностей/data.md",
-    "University/Year 2 Term 1/ОПІ - Основи Програмної Інженерії/data.md",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/data.md",
-    "University/Year 2 Term 1/ООП_КП - Об'єктно Орієнтоване Програмування Курсач/Exceptions/FormWelcome.cs",
-    "University/Year 2 Term 1/ООП_КП - Об'єктно Орієнтоване Програмування Курсач/Exceptions/GeneralException.cs",
-    "University/Year 2 Term 1/ООП_КП - Об'єктно Орієнтоване Програмування Курсач/Exceptions",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/звіт.md",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/prod/Lab1.zip",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/prod/звіт.pdf",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/prod/звіт.docx",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/prod",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/dev/employees.json",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/dev/main.py",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/dev",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/notes/АСД.Лек5..md",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/notes/АСД.Лек4..md",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/notes/АСД,Лек6.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2_3.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2_2 copy.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2_2.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/3.jpg",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/IMG_20231023_194843.jpg",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/1d.jpg",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/1c.jpg",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/1b.jpg",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/img/1a.jpg",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/solutions/1d.jpg",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/solutions/1c.jpg",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/solutions/1b.jpg",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/solutions/1a.jpg"
+    "University/Year 2 Term 1/OPI/tasks/lb2/dev/TaskA.resx~RF217c15.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb2/dev/TaskA.cs~RF1ebe3d.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb2/dev/TaskA.resx~RF1cfa46.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb2/dev/TaskA.Designer.cs~RF1c92b2.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb2/dev/TaskA.Designer.cs~RF1c7fb7.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb2/dev/TaskA.resx~RF1c169c.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb2/dev/TaskA.resx~RF1bcbc8.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb2/dev/TaskA.resx~RF1b2c8b.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb2/dev/TaskA.resx~RF1a1907.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb2/dev/TaskA.Designer.cs~RF19cc9d.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb2/dev/TaskA.resx~RF19840b.TMP",
+    "University/Year 2 Term 1/VM/tasks/lb1/рішення/img/3.jpg",
+    "University/Year 2 Term 1/VM/tasks/lb1/рішення/img/1d.jpg",
+    "University/Year 2 Term 1/VM/tasks/lb1/рішення/img/1c.jpg",
+    "University/Year 2 Term 1/VM/tasks/lb1/рішення/img/1b.jpg",
+    "University/Year 2 Term 1/VM/tasks/lb1/рішення/img/1a.jpg",
+    "University/Year 2 Term 1/VM/tasks/lb1/рішення/task.md",
+    "University/Year 2 Term 1/VM/tasks/lb1/рішення/3.md",
+    "University/Year 2 Term 1/VM/tasks/lb1/рішення/2_3.md",
+    "University/Year 2 Term 1/VM/tasks/lb1/рішення/1_4.md",
+    "University/Year 2 Term 1/VM/tasks/lb1/рішення/2_2.md",
+    "University/Year 2 Term 1/VM/tasks/lb1/рішення/1_3.md",
+    "University/Year 2 Term 1/VM/tasks/lb1/рішення/2_1.md",
+    "University/Year 2 Term 1/VM/tasks/lb1/рішення/1_2.md",
+    "University/Year 2 Term 1/VM/tasks/lb1/рішення/1_1.md",
+    "University/Year 2 Term 1/VM/tasks/lb1/images/2 (3).jpg",
+    "University/Year 2 Term 1/VM/tasks/lb1/рішення/1.md",
+    "University/Year 2 Term 1/VM/tasks/lb1/images/2 (7).jpg",
+    "University/Year 2 Term 1/VM/tasks/lb1/images/2 (6).jpg",
+    "University/Year 2 Term 1/VM/tasks/lb1/images/2 (5).jpg",
+    "University/Year 2 Term 1/VM/tasks/lb1/images/2 (4).jpg",
+    "University/Year 2 Term 1/VM/tasks/test-Oct-20/try2/template.md",
+    "University/Year 2 Term 1/VM/tasks/test-Oct-20/try2/1.md",
+    "University/Year 2 Term 1/VM/tasks/test-Oct-20/try1/tasks.md",
+    "University/Year 2 Term 1/VM/tasks/test-Oct-20/try1/5.md",
+    "University/Year 2 Term 1/VM/tasks/test-Oct-20/try1/4.md",
+    "University/Year 2 Term 1/VM/tasks/test-Oct-20/try1/2.md",
+    "University/Year 2 Term 1/VM/tasks/test-Oct-20/try1/3.md",
+    "University/Year 2 Term 1/VM/tasks/test-Oct-20/try1/1.md",
+    "University/Year 2 Term 1/VM/tasks/lb1/звіт.md",
+    "University/Year 2 Term 1/VM/tasks/lb2/task.md",
+    "University/Year 2 Term 1/VM/tasks/test-Oct-20/answers.md",
+    "University/Year 2 Term 1/VM/notes/ВМСР.Пра3.md",
+    "University/Year 2 Term 1/VM/notes/Розв'язок Claude.md",
+    "University/Year 2 Term 1/VM/notes/ВМСР.Пра2..md",
+    "University/Year 2 Term 1/VM/notes/ВМСР.Лек3.md"
   ]
 }
