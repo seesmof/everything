@@ -1,8 +1,9 @@
 ```
-CONTEXT: Seminar on the "History, culture and identity of Ukraine" university course.
-SEMINAR TOPIC: The National Revival of Ukraine: From the Cultural and Educational to the Political Stage (the Second Half of the Nineteenth - the Beginning of the Twentieth Century)
-TASK: Write an essay on the topic below. Make sure it is as accurate and truthful as possible. Length: long.
-ESSAY TOPIC:
+КОНТЕКСТ: Семінар з університетського курсу "Історія, культура та ідентичність України".
+ТЕМА СЕМІНАРУ: Національне відродження України: Від культурно-просвітницького до політичного етапу (друга половина ХІХ - початок ХХ століття)
+ЗАВДАННЯ: Напишіть повне розгорнуте есе на зазначену нижче тему. Переконайтеся, що воно є максимально точним і правдивим. Обсяг - чим більше, тим краще.
+СТРУКТУРА: Вступ - розмір довільний, себто скільки потрібно. Головні абзаци - розмір мінімум 5-6 речень, але чим більше тим краще. Висновки - розмір довільний, себто скільки потрібно.
+ТЕМА ЕСЕ:
 ```
 
 # Семінар №4. Національне відродження України: від культурно-просвітницького до політичного етапу (друга половина ХІХ – початок ХХ століття)
