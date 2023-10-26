@@ -4,9 +4,9 @@
     "type": "split",
     "children": [
       {
-        "id": "7b26d99849d6ff79",
+        "id": "e47126a7304b5ea3",
         "type": "tabs",
-        "dimension": 15.1356993736952,
+        "dimension": 16.15523465703971,
         "children": [
           {
             "id": "25bee9b3abcd4d55",
@@ -14,36 +14,36 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/data.md"
+                "file": "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/«Громадівський» період українського національного руху..md"
               }
             }
           }
         ]
       },
       {
-        "id": "aad066c8cd74ad44",
+        "id": "7b26d99849d6ff79",
         "type": "tabs",
-        "dimension": 84.8643006263048,
+        "dimension": 83.84476534296029,
         "children": [
           {
-            "id": "46f9b68b7eb00386",
+            "id": "48d262eaf4f19fd6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/notes/Жовт 24, 2023.md",
+                "file": "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/data.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "b21fc18328ac102a",
+            "id": "cd53801b8bc32d3f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/data.md",
+                "file": "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/«Громадівський» період українського національного руху..md",
                 "mode": "source",
                 "source": false
               }
@@ -117,7 +117,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/data.md",
+                "file": "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/«Громадівський» період українського національного руху..md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -134,7 +134,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/data.md",
+                "file": "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/«Громадівський» період українського національного руху..md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -197,8 +197,21 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "b21fc18328ac102a",
+  "active": "cd53801b8bc32d3f",
   "lastOpenFiles": [
+    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/Формування українських політичних партій..md",
+    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/«Громадівський» період українського національного руху. copy.md",
+    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/data.md",
+    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем4/«Громадівський» період українського національного руху..md",
+    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/ІУ.Лек2..md",
+    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем3/main.md",
+    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем3/Слобідське козацтво (1651 – 1765 рр.) та його історична доля..md",
+    "University/Year 2 Term 1/ІУ - Історія, культура та ідентичність України/tasks/Сем3/Ліквідація Запорозької Січі 1775 р. та Задунайська Січ (1776 – 1828 рр.)..md",
+    "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/notes/Жовт 24, 2023.md",
+    "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/data.md",
+    "University/Year 2 Term 1/ТЙ - Теорія Ймовірностей/data.md",
+    "University/Year 2 Term 1/ОПІ - Основи Програмної Інженерії/data.md",
+    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/data.md",
     "University/Year 2 Term 1/ООП_КП - Об'єктно Орієнтоване Програмування Курсач/Exceptions/FormWelcome.cs",
     "University/Year 2 Term 1/ООП_КП - Об'єктно Орієнтоване Програмування Курсач/Exceptions/GeneralException.cs",
     "University/Year 2 Term 1/ООП_КП - Об'єктно Орієнтоване Програмування Курсач/Exceptions",
@@ -210,12 +223,9 @@
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/dev/employees.json",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/dev/main.py",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/dev",
-    "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/tasks/lb1/звіт.docx",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/notes/АСД.Лек5..md",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/notes/АСД.Лек4..md",
     "University/Year 2 Term 1/АСД - Алгоритми та Структури Даних/notes/АСД,Лек6.md",
-    "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/notes/Жовт 24, 2023.md",
-    "University/Year 2 Term 1/ВЕБ - Веб технологій та Веб дизайн/data.md",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2_3.md",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2_2 copy.md",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/2_2.md",
@@ -234,16 +244,6 @@
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/solutions/1b.jpg",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/solutions/1a.jpg",
     "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/task.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/3.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/1.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/1_4.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/1_3.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/1_2.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/1_1.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/task.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_4.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_3.md",
-    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/1_2.md"
+    "University/Year 2 Term 1/СРВМ - Спеціальні Розділи Вищої Математики/tasks/lb1/рішення/3.md"
   ]
 }
