@@ -19,24 +19,20 @@ namespace dev
 
         private void btnRun_Click(object sender, EventArgs e)
         {
-            tableList.Items.Clear();
-            progressOutput.Value = 0;
-
             int maxMultiplier = (int)inputMultiplier.Value;
+            tableList.Items.Clear();
 
+            progressOutput.Maximum = 0;
             progressOutput.Maximum = maxMultiplier;
 
             for (int i = 1; i <= maxMultiplier; i++)
             {
-                ListViewItem item = new ListViewItem(i.ToString());
-
                 for (int j = 1; j <= maxMultiplier; j++)
                 {
-                    item.SubItems.Add((i * j).ToString());
+                    tableList.Items.Add($"{i} * {j} = {i * j}");
                 }
-
-                tableList.Items.Add(item);
                 progressOutput.Value = i;
+                tableList.Items.Add("");
             }
         }
     }

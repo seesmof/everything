@@ -43,6 +43,7 @@
             this.tableList.Name = "tableList";
             this.tableList.Size = new System.Drawing.Size(560, 259);
             this.tableList.TabIndex = 0;
+            this.tableList.TileSize = new System.Drawing.Size(60, 30);
             this.tableList.UseCompatibleStateImageBehavior = false;
             // 
             // inputMultiplier
