@@ -7,4 +7,4 @@ D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb2\dev\obj\Debug\dev.csp
 D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb2\dev\obj\Debug\dev.csproj.CoreCompileInputs.cache
 D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb2\dev\obj\Debug\dev.exe
 D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb2\dev\obj\Debug\dev.pdb
-D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb2\dev\obj\Debug\dev.FormA.resources
+D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb2\dev\obj\Debug\dev.MainForm.resources

@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace dev
 {
-    public partial class FormA : Form
+    public partial class MainForm : Form
     {
-        public FormA()
+        public MainForm()
         {
             InitializeComponent();
+
+            lblOutput.Text = "";
         }
 
         private void btnRun_Click(object sender, EventArgs e)
