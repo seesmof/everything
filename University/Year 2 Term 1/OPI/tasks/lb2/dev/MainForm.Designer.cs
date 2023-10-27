@@ -28,124 +28,92 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.leftList = new System.Windows.Forms.ListView();
-            this.rightList = new System.Windows.Forms.ListView();
-            this.btnAddL = new System.Windows.Forms.Button();
-            this.btnRemoveL = new System.Windows.Forms.Button();
-            this.btnMoveLeft = new System.Windows.Forms.Button();
-            this.btnAddR = new System.Windows.Forms.Button();
-            this.btnRemoveR = new System.Windows.Forms.Button();
-            this.btnMoveRight = new System.Windows.Forms.Button();
+            this.tableList = new System.Windows.Forms.ListView();
+            this.inputMultiplier = new System.Windows.Forms.NumericUpDown();
+            this.btnRun = new System.Windows.Forms.Button();
+            this.lblMultiplier = new System.Windows.Forms.Label();
+            this.progressOutput = new System.Windows.Forms.ProgressBar();
+            ((System.ComponentModel.ISupportInitialize)(this.inputMultiplier)).BeginInit();
             this.SuspendLayout();
             // 
-            // leftList
+            // tableList
             // 
-            this.leftList.HideSelection = false;
-            this.leftList.Location = new System.Drawing.Point(12, 12);
-            this.leftList.Name = "leftList";
-            this.leftList.Size = new System.Drawing.Size(271, 246);
-            this.leftList.TabIndex = 0;
-            this.leftList.UseCompatibleStateImageBehavior = false;
+            this.tableList.HideSelection = false;
+            this.tableList.Location = new System.Drawing.Point(12, 90);
+            this.tableList.Name = "tableList";
+            this.tableList.Size = new System.Drawing.Size(560, 259);
+            this.tableList.TabIndex = 0;
+            this.tableList.UseCompatibleStateImageBehavior = false;
             // 
-            // rightList
+            // inputMultiplier
             // 
-            this.rightList.HideSelection = false;
-            this.rightList.Location = new System.Drawing.Point(312, 12);
-            this.rightList.Name = "rightList";
-            this.rightList.Size = new System.Drawing.Size(260, 246);
-            this.rightList.TabIndex = 0;
-            this.rightList.UseCompatibleStateImageBehavior = false;
+            this.inputMultiplier.Location = new System.Drawing.Point(12, 25);
+            this.inputMultiplier.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.inputMultiplier.Name = "inputMultiplier";
+            this.inputMultiplier.Size = new System.Drawing.Size(479, 20);
+            this.inputMultiplier.TabIndex = 1;
+            this.inputMultiplier.Value = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
             // 
-            // btnAddL
+            // btnRun
             // 
-            this.btnAddL.Location = new System.Drawing.Point(12, 264);
-            this.btnAddL.Name = "btnAddL";
-            this.btnAddL.Size = new System.Drawing.Size(136, 33);
-            this.btnAddL.TabIndex = 1;
-            this.btnAddL.Text = "Add";
-            this.btnAddL.UseVisualStyleBackColor = true;
-            this.btnAddL.Click += new System.EventHandler(this.btnAddL_Click);
+            this.btnRun.Location = new System.Drawing.Point(497, 25);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(75, 20);
+            this.btnRun.TabIndex = 2;
+            this.btnRun.Text = "Run";
+            this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
-            // btnRemoveL
+            // lblMultiplier
             // 
-            this.btnRemoveL.Location = new System.Drawing.Point(154, 264);
-            this.btnRemoveL.Name = "btnRemoveL";
-            this.btnRemoveL.Size = new System.Drawing.Size(129, 33);
-            this.btnRemoveL.TabIndex = 1;
-            this.btnRemoveL.Text = "Remove";
-            this.btnRemoveL.UseVisualStyleBackColor = true;
-            this.btnRemoveL.Click += new System.EventHandler(this.btnRemoveL_Click);
+            this.lblMultiplier.AutoSize = true;
+            this.lblMultiplier.Location = new System.Drawing.Point(9, 9);
+            this.lblMultiplier.Name = "lblMultiplier";
+            this.lblMultiplier.Size = new System.Drawing.Size(78, 13);
+            this.lblMultiplier.TabIndex = 3;
+            this.lblMultiplier.Text = "Multiplier Value";
             // 
-            // btnMoveLeft
+            // progressOutput
             // 
-            this.btnMoveLeft.Location = new System.Drawing.Point(312, 303);
-            this.btnMoveLeft.Name = "btnMoveLeft";
-            this.btnMoveLeft.Size = new System.Drawing.Size(260, 33);
-            this.btnMoveLeft.TabIndex = 1;
-            this.btnMoveLeft.Text = "Move left";
-            this.btnMoveLeft.UseVisualStyleBackColor = true;
-            this.btnMoveLeft.Click += new System.EventHandler(this.btnMoveLeft_Click);
-            // 
-            // btnAddR
-            // 
-            this.btnAddR.Location = new System.Drawing.Point(312, 264);
-            this.btnAddR.Name = "btnAddR";
-            this.btnAddR.Size = new System.Drawing.Size(125, 33);
-            this.btnAddR.TabIndex = 1;
-            this.btnAddR.Text = "Add";
-            this.btnAddR.UseVisualStyleBackColor = true;
-            this.btnAddR.Click += new System.EventHandler(this.btnAddR_Click);
-            // 
-            // btnRemoveR
-            // 
-            this.btnRemoveR.Location = new System.Drawing.Point(443, 264);
-            this.btnRemoveR.Name = "btnRemoveR";
-            this.btnRemoveR.Size = new System.Drawing.Size(129, 33);
-            this.btnRemoveR.TabIndex = 1;
-            this.btnRemoveR.Text = "Remove";
-            this.btnRemoveR.UseVisualStyleBackColor = true;
-            this.btnRemoveR.Click += new System.EventHandler(this.btnRemoveR_Click);
-            // 
-            // btnMoveRight
-            // 
-            this.btnMoveRight.Location = new System.Drawing.Point(12, 303);
-            this.btnMoveRight.Name = "btnMoveRight";
-            this.btnMoveRight.Size = new System.Drawing.Size(271, 33);
-            this.btnMoveRight.TabIndex = 1;
-            this.btnMoveRight.Text = "Move right";
-            this.btnMoveRight.UseVisualStyleBackColor = true;
-            this.btnMoveRight.Click += new System.EventHandler(this.btnMoveRight_Click);
+            this.progressOutput.Location = new System.Drawing.Point(12, 61);
+            this.progressOutput.Name = "progressOutput";
+            this.progressOutput.Size = new System.Drawing.Size(560, 23);
+            this.progressOutput.TabIndex = 4;
             // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(584, 361);
-            this.Controls.Add(this.btnMoveRight);
-            this.Controls.Add(this.btnMoveLeft);
-            this.Controls.Add(this.btnRemoveR);
-            this.Controls.Add(this.btnAddR);
-            this.Controls.Add(this.btnRemoveL);
-            this.Controls.Add(this.btnAddL);
-            this.Controls.Add(this.rightList);
-            this.Controls.Add(this.leftList);
+            this.Controls.Add(this.progressOutput);
+            this.Controls.Add(this.lblMultiplier);
+            this.Controls.Add(this.btnRun);
+            this.Controls.Add(this.inputMultiplier);
+            this.Controls.Add(this.tableList);
             this.MaximumSize = new System.Drawing.Size(600, 400);
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "MainForm";
             this.Text = "Task A";
+            ((System.ComponentModel.ISupportInitialize)(this.inputMultiplier)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListView leftList;
-        private System.Windows.Forms.ListView rightList;
-        private System.Windows.Forms.Button btnAddL;
-        private System.Windows.Forms.Button btnRemoveL;
-        private System.Windows.Forms.Button btnMoveLeft;
-        private System.Windows.Forms.Button btnAddR;
-        private System.Windows.Forms.Button btnRemoveR;
-        private System.Windows.Forms.Button btnMoveRight;
+        private System.Windows.Forms.ListView tableList;
+        private System.Windows.Forms.NumericUpDown inputMultiplier;
+        private System.Windows.Forms.Button btnRun;
+        private System.Windows.Forms.Label lblMultiplier;
+        private System.Windows.Forms.ProgressBar progressOutput;
     }
 }
 

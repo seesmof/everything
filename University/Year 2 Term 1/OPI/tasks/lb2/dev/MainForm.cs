@@ -17,49 +17,26 @@ namespace dev
             InitializeComponent();
         }
 
-        private void btnMoveRight_Click(object sender, EventArgs e)
+        private void btnRun_Click(object sender, EventArgs e)
         {
-            if (leftList.Items.Count > 0)
+            tableList.Items.Clear();
+            progressOutput.Value = 0;
+
+            int maxMultiplier = (int)inputMultiplier.Value;
+
+            progressOutput.Maximum = maxMultiplier;
+
+            for (int i = 1; i <= maxMultiplier; i++)
             {
-                ListViewItem item = leftList.Items[leftList.Items.Count - 1];
-                leftList.Items.RemoveAt(leftList.Items.Count - 1);
-                rightList.Items.Add(item);
-            }
-        }
+                ListViewItem item = new ListViewItem(i.ToString());
 
-        private void btnMoveLeft_Click(object sender, EventArgs e)
-        {
-            if (rightList.Items.Count > 0)
-            {
-                ListViewItem item = rightList.Items[rightList.Items.Count - 1];
-                rightList.Items.RemoveAt(rightList.Items.Count - 1);
-                leftList.Items.Add(item);
-            }
-        }
+                for (int j = 1; j <= maxMultiplier; j++)
+                {
+                    item.SubItems.Add((i * j).ToString());
+                }
 
-        private void btnAddL_Click(object sender, EventArgs e)
-        {
-            leftList.Items.Add($"Item {leftList.Items.Count}");
-        }
-
-        private void btnAddR_Click(object sender, EventArgs e)
-        {
-            rightList.Items.Add($"Item {rightList.Items.Count}");
-        }
-
-        private void btnRemoveL_Click(object sender, EventArgs e)
-        {
-            if (leftList.Items.Count > 0)
-            {
-                leftList.Items.RemoveAt(leftList.Items.Count - 1);
-            }
-        }
-
-        private void btnRemoveR_Click(object sender, EventArgs e)
-        {
-            if (rightList.Items.Count > 0)
-            {
-                rightList.Items.RemoveAt(rightList.Items.Count - 1);
+                tableList.Items.Add(item);
+                progressOutput.Value = i;
             }
         }
     }
