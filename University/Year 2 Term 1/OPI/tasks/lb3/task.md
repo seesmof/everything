@@ -13,6 +13,20 @@
 
 - Продемонструвати роботу таких функцій: Chars, Remove, Insert.
 
+## Конртольні питання
+
+#### Які основні функції роботи з рядками?
+
+Основні функції роботи з рядками в C# включають Length (для отримання довжини рядка), Substring (для вирізання підрядка з рядка), та Contains (для перевірки, чи містить рядок певний підрядок).
+
+#### Які основні функції порівняння рядків?
+
+Функції порівняння рядків в C# включають Equals (для перевірки рівності двох рядків), Compare (для порівняння двох рядків з урахуванням регістру), та CompareTo (для порівняння поточного рядка з іншим рядком).
+
+#### Які основні функції модифікаторів рядка?
+
+Функції модифікації рядків в C# включають Insert (для вставки підрядка в певну позицію рядка), Remove (для видалення підрядка з рядка), та Replace (для заміни всіх входжень підрядка на інший підрядок).
+
 ---
 
 Task A: Develop an archiver. This involves creating a function that takes a string and replaces repeating characters with a sequence of the character followed by the number of repetitions. For example, "fehhh eryaaa" should be transformed into "feh3 erya3". You also need to implement a function that can reverse this process.
