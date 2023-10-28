@@ -15,25 +15,32 @@ namespace dev
         public MainForm()
         {
             InitializeComponent();
+
+            lblOutput.Text = "";
         }
 
         private void btnRun_Click(object sender, EventArgs e)
         {
-            var maxMultiplier = (int)inputMultiplier.Value;
-            tableList.Items.Clear();
+            var exp = (int)expInput.Value;
+            var baseVal = (int)baseInput.Value;
+            var result = 1;
 
-            progressOutput.Maximum = 0;
-            progressOutput.Maximum = maxMultiplier;
+            progressOutput.Value = 0;
+            progressOutput.Maximum = exp;
 
-            for (var i = 1; i <= maxMultiplier; i++)
+            for (var i = 0; i < exp; i++)
             {
-                for (var j = 1; j <= maxMultiplier; j++)
-                {
-                    tableList.Items.Add($"{i} * {j} = {i * j}");
-                }
-                progressOutput.Value = i;
-                tableList.Items.Add("");
+                result *= baseVal;
+                progressOutput.Value++;
             }
+
+            lblOutput.Text = $"Result: {result}";
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            expInput.Value = 1;
+            baseInput.Value = 1;
         }
     }
 }

@@ -28,81 +28,125 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableList = new System.Windows.Forms.ListView();
-            this.inputMultiplier = new System.Windows.Forms.NumericUpDown();
+            this.btnReset = new System.Windows.Forms.Button();
             this.btnRun = new System.Windows.Forms.Button();
-            this.lblMultiplier = new System.Windows.Forms.Label();
+            this.baseInput = new System.Windows.Forms.NumericUpDown();
+            this.lblBaseInput = new System.Windows.Forms.Label();
+            this.expInput = new System.Windows.Forms.NumericUpDown();
+            this.lblExpInput = new System.Windows.Forms.Label();
             this.progressOutput = new System.Windows.Forms.ProgressBar();
-            ((System.ComponentModel.ISupportInitialize)(this.inputMultiplier)).BeginInit();
+            this.lblOutput = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.baseInput)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.expInput)).BeginInit();
             this.SuspendLayout();
             // 
-            // tableList
+            // btnReset
             // 
-            this.tableList.HideSelection = false;
-            this.tableList.Location = new System.Drawing.Point(12, 90);
-            this.tableList.Name = "tableList";
-            this.tableList.Size = new System.Drawing.Size(560, 259);
-            this.tableList.TabIndex = 0;
-            this.tableList.TileSize = new System.Drawing.Size(60, 30);
-            this.tableList.UseCompatibleStateImageBehavior = false;
-            // 
-            // inputMultiplier
-            // 
-            this.inputMultiplier.Location = new System.Drawing.Point(12, 25);
-            this.inputMultiplier.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.inputMultiplier.Name = "inputMultiplier";
-            this.inputMultiplier.Size = new System.Drawing.Size(479, 20);
-            this.inputMultiplier.TabIndex = 1;
-            this.inputMultiplier.Value = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
+            this.btnReset.Location = new System.Drawing.Point(497, 35);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 20);
+            this.btnReset.TabIndex = 0;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnRun
             // 
-            this.btnRun.Location = new System.Drawing.Point(497, 25);
+            this.btnRun.Location = new System.Drawing.Point(416, 35);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(75, 20);
-            this.btnRun.TabIndex = 2;
+            this.btnRun.TabIndex = 0;
             this.btnRun.Text = "Run";
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
-            // lblMultiplier
+            // baseInput
             // 
-            this.lblMultiplier.AutoSize = true;
-            this.lblMultiplier.Location = new System.Drawing.Point(9, 9);
-            this.lblMultiplier.Name = "lblMultiplier";
-            this.lblMultiplier.Size = new System.Drawing.Size(78, 13);
-            this.lblMultiplier.TabIndex = 3;
-            this.lblMultiplier.Text = "Multiplier Value";
+            this.baseInput.Location = new System.Drawing.Point(12, 35);
+            this.baseInput.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.baseInput.Name = "baseInput";
+            this.baseInput.Size = new System.Drawing.Size(212, 20);
+            this.baseInput.TabIndex = 1;
+            this.baseInput.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // lblBaseInput
+            // 
+            this.lblBaseInput.AutoSize = true;
+            this.lblBaseInput.Location = new System.Drawing.Point(9, 19);
+            this.lblBaseInput.Name = "lblBaseInput";
+            this.lblBaseInput.Size = new System.Drawing.Size(71, 13);
+            this.lblBaseInput.TabIndex = 2;
+            this.lblBaseInput.Text = "Base Number";
+            // 
+            // expInput
+            // 
+            this.expInput.Location = new System.Drawing.Point(230, 35);
+            this.expInput.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.expInput.Name = "expInput";
+            this.expInput.Size = new System.Drawing.Size(180, 20);
+            this.expInput.TabIndex = 1;
+            this.expInput.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // lblExpInput
+            // 
+            this.lblExpInput.AutoSize = true;
+            this.lblExpInput.Location = new System.Drawing.Point(227, 19);
+            this.lblExpInput.Name = "lblExpInput";
+            this.lblExpInput.Size = new System.Drawing.Size(71, 13);
+            this.lblExpInput.TabIndex = 2;
+            this.lblExpInput.Text = "Base Number";
             // 
             // progressOutput
             // 
-            this.progressOutput.Location = new System.Drawing.Point(12, 61);
+            this.progressOutput.Location = new System.Drawing.Point(12, 71);
             this.progressOutput.Name = "progressOutput";
             this.progressOutput.Size = new System.Drawing.Size(560, 23);
-            this.progressOutput.TabIndex = 4;
+            this.progressOutput.TabIndex = 3;
+            // 
+            // lblOutput
+            // 
+            this.lblOutput.AutoSize = true;
+            this.lblOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOutput.Location = new System.Drawing.Point(9, 171);
+            this.lblOutput.Name = "lblOutput";
+            this.lblOutput.Size = new System.Drawing.Size(166, 25);
+            this.lblOutput.TabIndex = 4;
+            this.lblOutput.Text = "Results here...";
             // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.lblOutput);
             this.Controls.Add(this.progressOutput);
-            this.Controls.Add(this.lblMultiplier);
+            this.Controls.Add(this.lblExpInput);
+            this.Controls.Add(this.lblBaseInput);
+            this.Controls.Add(this.expInput);
+            this.Controls.Add(this.baseInput);
             this.Controls.Add(this.btnRun);
-            this.Controls.Add(this.inputMultiplier);
-            this.Controls.Add(this.tableList);
+            this.Controls.Add(this.btnReset);
             this.MaximumSize = new System.Drawing.Size(600, 400);
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "MainForm";
             this.Text = "Task A";
-            ((System.ComponentModel.ISupportInitialize)(this.inputMultiplier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.baseInput)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.expInput)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,11 +154,14 @@
 
         #endregion
 
-        private System.Windows.Forms.ListView tableList;
-        private System.Windows.Forms.NumericUpDown inputMultiplier;
+        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnRun;
-        private System.Windows.Forms.Label lblMultiplier;
+        private System.Windows.Forms.NumericUpDown baseInput;
+        private System.Windows.Forms.Label lblBaseInput;
+        private System.Windows.Forms.NumericUpDown expInput;
+        private System.Windows.Forms.Label lblExpInput;
         private System.Windows.Forms.ProgressBar progressOutput;
+        private System.Windows.Forms.Label lblOutput;
     }
 }
 
