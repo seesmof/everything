@@ -17,14 +17,20 @@ The only line of each test case contains two space-separated integers A and B.
 OUTPUT:
 For each test case, output a single integer  — the largest number of minutes out of all A minutes that Howard could spend running in a fast mode.
 
-TEST CASES (: symbolises input, > symbolises output):
-: 3
-: 3 1
-> 2
-: 10 10
-> 10
-: 69 42
-> 55
+TEST CASES:
+IN:
+    4
+    3 1
+    10 10
+    69 42
+    5 1
+    5 2
+OUT:
+    1
+    5
+    34
+    3
+    2
 
 NOTE:
 In the first test case, Howard can run for the first minute in the fast mode, then run for the second minute in the slow mode, and then run for the third minute in fast mode again.
@@ -39,21 +45,5 @@ for _ in range(t):
         print(a // 2)
     else:
         print((a + 1) // 2)
-
-"""
-TEST CASES:
-IN:
-    4
-    3 1
-    10 10
-    69 42
-    5 1
-    5 2
-OUT:
-    1
-    5
-    34
-    3
-"""
 
 # FAILED
