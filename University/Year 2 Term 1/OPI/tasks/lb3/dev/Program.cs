@@ -10,69 +10,38 @@ namespace dev
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter a string: ");
+            Console.Write("Enter an expression: ");
             string input = Console.ReadLine();
-            string compressed = Compress(input);
-            Console.WriteLine($"Compressed: {compressed}");
-            string decompressed = Decompress(compressed);
-            Console.WriteLine($"Decompressed: {decompressed}");
+            double result = Calculate(input);
+            Console.WriteLine($"Result: {result}");
         }
 
-        private static string Compress(string input)
+        private static double Calculate(string input)
         {
-            StringBuilder sb = new StringBuilder();
-            int count = 1;
-            for (int i = 1; i < input.Length; i++)
-            {
-                if (input[i] == input[i - 1] && !Char.IsWhiteSpace(input[i]))
-                {
-                    count++;
-                }
-                else
-                {
-                    if (count > 1)
-                    {
-                        sb.Append(input[i - 1].ToString() + count);
-                    }
-                    else
-                    {
-                        sb.Append(input[i - 1]);
-                    }
-                    count = 1;
-                }
-            }
-            if (count > 1)
-            {
-                sb.Append(input[input.Length - 1].ToString() + count);
-            }
-            else
-            {
-                sb.Append(input[input.Length - 1]);
-            }
-            return sb.ToString();
-        }
+            string[] parts = input.Split(' ');
+            double num1 = double.Parse(parts[0]);
+            string operation = parts[1];
+            double num2 = double.Parse(parts[2]);
 
-        private static string Decompress(string input)
-        {
-            StringBuilder sb = new StringBuilder();
-            int count = 0;
-            for (int i = 0; i < input.Length; i++)
+            switch (operation)
             {
-                if (Char.IsDigit(input[i]))
-                {
-                    count = int.Parse(input[i].ToString());
-                    while (count > 1)
-                    {
-                        sb.Append(input[i - 1]);
-                        count--;
-                    }
-                }
-                else
-                {
-                    sb.Append(input[i]);
-                }
+                case "+":
+                case "plus":
+                    return num1 + num2;
+                case "-":
+                case "minus":
+                    return num1 - num2;
+                case "*":
+                case "multiply":
+                case "times":
+                    return num1 * num2;
+                case "/":
+                case "divide":
+                case "by":
+                    return num1 / num2;
+                default:
+                    throw new Exception("Invalid operation");
             }
-            return sb.ToString();
         }
     }
 }
