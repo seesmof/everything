@@ -6,7 +6,7 @@
       {
         "id": "e47126a7304b5ea3",
         "type": "tabs",
-        "dimension": 16.15523465703971,
+        "dimension": 20.3037120359955,
         "children": [
           {
             "id": "25bee9b3abcd4d55",
@@ -23,7 +23,7 @@
       {
         "id": "7b26d99849d6ff79",
         "type": "tabs",
-        "dimension": 83.84476534296029,
+        "dimension": 79.6962879640045,
         "children": [
           {
             "id": "48d262eaf4f19fd6",
@@ -32,7 +32,7 @@
               "type": "markdown",
               "state": {
                 "file": "University/Year 2 Term 1/CP/Жовт 28, 2023 - Порядок денний на зустріч.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               }
             }
@@ -185,17 +185,18 @@
   },
   "active": "48d262eaf4f19fd6",
   "lastOpenFiles": [
+    "University/Year 2 Term 1/CP/test.md",
+    "University/Year 2 Term 1/OPI/tasks/lb4/~$звіт.docx",
+    "University/Year 2 Term 1/OPI/tasks/lb4/звіт.docx",
+    "University/Year 2 Term 1/OPI/tasks/lb3/~WRL0002.tmp",
+    "University/Year 2 Term 1/OPI/tasks/lb3/~WRD0001.tmp",
+    "University/Year 2 Term 1/OPI/tasks/lb3/~WRD0000.tmp",
+    "University/Year 2 Term 1/OPI/tasks/lb4/prod",
+    "University/Year 2 Term 1/OPI/tasks/lb4/task.md",
     "University/Year 2 Term 1/OPI/tasks/lb3/prod.zip",
     "University/Year 2 Term 1/OPI/tasks/lb3/звіт.pdf",
     "University/Year 2 Term 1/OPI/tasks/lb3/mso150A.tmp",
     "University/Year 2 Term 1/OPI/tasks/lb3/mso11FB.tmp",
-    "University/Year 2 Term 1/OPI/tasks/lb3/dev/Program.cs~RF94a8686.TMP",
-    "University/Year 2 Term 1/OPI/tasks/lb3/dev/Program.cs~RF94a4612.TMP",
-    "University/Year 2 Term 1/OPI/tasks/lb3/dev/Program.cs~RF9494c22.TMP",
-    "University/Year 2 Term 1/OPI/tasks/lb3/~$звіт.docx",
-    "University/Year 2 Term 1/OPI/tasks/lb3/prod/TaskC.cs",
-    "University/Year 2 Term 1/OPI/tasks/lb3/prod/Program.cs",
-    "University/Year 2 Term 1/OPI/tasks/lb3/prod/TaskB.cs",
     "University/Year 2 Term 1/OPI/tasks/lb3/task.md",
     "Competitive Programming/ICPC_stage-2/dev/A.md",
     "University/Year 2 Term 1/CP/Жовт 28, 2023 - Порядок денний на зустріч.md",
@@ -229,7 +230,6 @@
     "University/Year 2 Term 1/VM/tasks/test-Oct-20/try1/3.md",
     "University/Year 2 Term 1/VM/tasks/test-Oct-20/try1/1.md",
     "University/Year 2 Term 1/VM/tasks/lb1/звіт.md",
-    "University/Year 2 Term 1/VM/tasks/lb2/task.md",
-    "University/Year 2 Term 1/VM/tasks/test-Oct-20/answers.md"
+    "University/Year 2 Term 1/VM/tasks/lb2/task.md"
   ]
 }
