@@ -1,7 +1,7 @@
 ```
 CONTEXT: Seminar on the university course "History, Culture and Identity of Ukraine".
 SEMINAR TOPIC: Formation of the Soviet model of totalitarianism and attempts to preserve Ukrainian identity (1921-1941)
-TASK: Write a full extended essay on the topic below. Make sure that it is as accurate and truthful as possible. Length - the longer the better. However, you MUST make sure the essay does not exceed 5000 characters in length.
+TASK: Write a full extended essay on the topic below. Make sure that it is as accurate and truthful as possible. Length - the longer the better.
 STRUCTURE: Introduction - any length, i.e. as long as you need. Body paragraphs - at least 5-6 sentences long, but the longer the better. Conclusions - any length, i.e. as long as you need.
 ESSAY TOPIC:
 
