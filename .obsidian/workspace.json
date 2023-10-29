@@ -4,26 +4,8 @@
     "type": "split",
     "children": [
       {
-        "id": "e47126a7304b5ea3",
-        "type": "tabs",
-        "dimension": 20.3037120359955,
-        "children": [
-          {
-            "id": "25bee9b3abcd4d55",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "University/Year 2 Term 1/CP/Жовт 28, 2023 - Порядок денний на зустріч.md"
-              }
-            }
-          }
-        ]
-      },
-      {
         "id": "7b26d99849d6ff79",
         "type": "tabs",
-        "dimension": 79.6962879640045,
         "children": [
           {
             "id": "48d262eaf4f19fd6",
@@ -31,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/Year 2 Term 1/CP/Жовт 28, 2023 - Порядок денний на зустріч.md",
+                "file": "University/Year 2 Term 1/IY/tasks/Сем5/data.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "f86745b361dbd8eb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "University/Year 2 Term 1/IY/tasks/Сем5/Нова економічна політика (1921 – 1928 рр.) та кампанія сталінської індустріалізації України (1927-1941 рр.)..md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -87,7 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 265.5
   },
   "right": {
     "id": "e3d233ea96fb0411",
@@ -104,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/Year 2 Term 1/CP/Жовт 28, 2023 - Порядок денний на зустріч.md",
+                "file": "University/Year 2 Term 1/IY/tasks/Сем5/Нова економічна політика (1921 – 1928 рр.) та кампанія сталінської індустріалізації України (1927-1941 рр.)..md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -121,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/Year 2 Term 1/CP/Жовт 28, 2023 - Порядок денний на зустріч.md",
+                "file": "University/Year 2 Term 1/IY/tasks/Сем5/Нова економічна політика (1921 – 1928 рр.) та кампанія сталінської індустріалізації України (1927-1941 рр.)..md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -167,7 +162,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 438.5
+    "width": 438.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -183,8 +179,24 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "48d262eaf4f19fd6",
+  "active": "f86745b361dbd8eb",
   "lastOpenFiles": [
+    "University/Year 2 Term 1/IY/tasks/Сем5/data.md",
+    "University/Year 2 Term 1/IY/tasks/Сем5/Нова економічна політика (1921 – 1928 рр.) та кампанія сталінської індустріалізації України (1927-1941 рр.)..md",
+    "University/Year 2 Term 1/CP/Жовт 28, 2023 - Порядок денний на зустріч.md",
+    "University/Year 2 Term 1/IY/tasks/Сем5/Формування українських політичних партій..md",
+    "University/Year 2 Term 1/IY/tasks/Сем5/Україна в подіях російської революції 1905 – 1907 рр. та Першої світової війни (1914 – 1917 рр.)..md",
+    "University/Year 2 Term 1/IY/tasks/Сем5/Культура України в другій половині XIX – на початку XX ст..md",
+    "University/Year 2 Term 1/IY/tasks/Сем5/Класична модель української ідентичності..md",
+    "University/Year 2 Term 1/IY/tasks/Сем5/«Громадівський» період українського національного руху..md",
+    "University/Year 2 Term 1/IY/tasks/Сем5",
+    "University/Year 2 Term 1/IY/tasks/Сем4 copy/Формування українських політичних партій..md",
+    "University/Year 2 Term 1/IY/tasks/Сем4 copy/Україна в подіях російської революції 1905 – 1907 рр. та Першої світової війни (1914 – 1917 рр.)..md",
+    "University/Year 2 Term 1/IY/tasks/Сем4 copy/Класична модель української ідентичності..md",
+    "University/Year 2 Term 1/IY/tasks/Сем4 copy/Культура України в другій половині XIX – на початку XX ст..md",
+    "University/Year 2 Term 1/IY/tasks/Сем4 copy/«Громадівський» період українського національного руху..md",
+    "University/Year 2 Term 1/IY/tasks/Сем4 copy/data.md",
+    "University/Year 2 Term 1/IY/tasks/Сем4 copy",
     "University/Year 2 Term 1/CP/test.md",
     "University/Year 2 Term 1/OPI/tasks/lb4/~$звіт.docx",
     "University/Year 2 Term 1/OPI/tasks/lb4/звіт.docx",
@@ -195,11 +207,8 @@
     "University/Year 2 Term 1/OPI/tasks/lb4/task.md",
     "University/Year 2 Term 1/OPI/tasks/lb3/prod.zip",
     "University/Year 2 Term 1/OPI/tasks/lb3/звіт.pdf",
-    "University/Year 2 Term 1/OPI/tasks/lb3/mso150A.tmp",
-    "University/Year 2 Term 1/OPI/tasks/lb3/mso11FB.tmp",
     "University/Year 2 Term 1/OPI/tasks/lb3/task.md",
     "Competitive Programming/ICPC_stage-2/dev/A.md",
-    "University/Year 2 Term 1/CP/Жовт 28, 2023 - Порядок денний на зустріч.md",
     "Competitive Programming/ICPC_stage-2/data.md",
     "University/Year 2 Term 1/VM/tasks/lb1/рішення/img/3.jpg",
     "University/Year 2 Term 1/VM/tasks/lb1/рішення/img/1d.jpg",
@@ -213,23 +222,10 @@
     "University/Year 2 Term 1/VM/tasks/lb1/рішення/2_2.md",
     "University/Year 2 Term 1/VM/tasks/lb1/рішення/1_3.md",
     "University/Year 2 Term 1/VM/tasks/lb1/рішення/2_1.md",
-    "University/Year 2 Term 1/VM/tasks/lb1/рішення/1_2.md",
-    "University/Year 2 Term 1/VM/tasks/lb1/рішення/1_1.md",
     "University/Year 2 Term 1/VM/tasks/lb1/images/2 (3).jpg",
-    "University/Year 2 Term 1/VM/tasks/lb1/рішення/1.md",
     "University/Year 2 Term 1/VM/tasks/lb1/images/2 (7).jpg",
     "University/Year 2 Term 1/VM/tasks/lb1/images/2 (6).jpg",
     "University/Year 2 Term 1/VM/tasks/lb1/images/2 (5).jpg",
-    "University/Year 2 Term 1/VM/tasks/lb1/images/2 (4).jpg",
-    "University/Year 2 Term 1/VM/tasks/test-Oct-20/try2/template.md",
-    "University/Year 2 Term 1/VM/tasks/test-Oct-20/try2/1.md",
-    "University/Year 2 Term 1/VM/tasks/test-Oct-20/try1/tasks.md",
-    "University/Year 2 Term 1/VM/tasks/test-Oct-20/try1/5.md",
-    "University/Year 2 Term 1/VM/tasks/test-Oct-20/try1/4.md",
-    "University/Year 2 Term 1/VM/tasks/test-Oct-20/try1/2.md",
-    "University/Year 2 Term 1/VM/tasks/test-Oct-20/try1/3.md",
-    "University/Year 2 Term 1/VM/tasks/test-Oct-20/try1/1.md",
-    "University/Year 2 Term 1/VM/tasks/lb1/звіт.md",
-    "University/Year 2 Term 1/VM/tasks/lb2/task.md"
+    "University/Year 2 Term 1/VM/tasks/lb1/images/2 (4).jpg"
   ]
 }
