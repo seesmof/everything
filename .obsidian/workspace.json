@@ -18,21 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "9a02773256035601",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем7/Російсько-українська війна..md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -99,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем7/Російсько-українська війна..md",
+                "file": "University/Year 2 Term 1/IY/tasks/Сем7/data.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем7/Російсько-українська війна..md",
+                "file": "University/Year 2 Term 1/IY/tasks/Сем7/data.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем7/Російсько-українська війна..md"
+                "file": "University/Year 2 Term 1/IY/tasks/Сем7/data.md"
               }
             }
           }
@@ -189,8 +176,9 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "9a02773256035601",
+  "active": "48d262eaf4f19fd6",
   "lastOpenFiles": [
+    "University/Year 2 Term 1/IY/tasks/Сем7/Сучасний стан української культури - проблеми і перспективи..md",
     "University/Year 2 Term 1/IY/tasks/Сем7/data.md",
     "University/Year 2 Term 1/IY/tasks/Сем7/Російсько-українська війна..md",
     "University/Year 2 Term 1/IY/tasks/Сем7/Українські революції ХХІ ст. - причини, перебіг, наслідки..md",
@@ -218,7 +206,6 @@
     "University/Year 2 Term 1/IY/tasks/Сем6/Сталінські репресії в Україні 20-х – 30-х років..md",
     "University/Year 2 Term 1/IY/tasks/Сем6/Розмивання української ідентичності як складова асиміляторської політики російського більшовизму..md",
     "University/Year 2 Term 1/IY/tasks/Сем6/Нова економічна політика (1921 – 1928 рр.) та кампанія сталінської індустріалізації України (1927-1941 рр.)..md",
-    "University/Year 2 Term 1/IY/tasks/Сем6/Культура Радянської України в довоєнний період..md",
     "University/Year 2 Term 1/IY/tasks/Сем6",
     "University/Year 2 Term 1/IY/tasks/Сем5 copy",
     "University/Year 2 Term 1/IY/tasks/Сем5",
