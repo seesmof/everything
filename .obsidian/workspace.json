@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем6/data.md",
+                "file": "University/Year 2 Term 1/IY/tasks/Сем7/data.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "dd734ba589e9780e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "University/Year 2 Term 1/IY/tasks/Сем7/Політична, соціальна та економічна еволюція української держави (від 1991 по сучасність)..md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем6/data.md",
+                "file": "University/Year 2 Term 1/IY/tasks/Сем7/Політична, соціальна та економічна еволюція української держави (від 1991 по сучасність)..md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем6/data.md",
+                "file": "University/Year 2 Term 1/IY/tasks/Сем7/Політична, соціальна та економічна еволюція української держави (від 1991 по сучасність)..md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем6/data.md"
+                "file": "University/Year 2 Term 1/IY/tasks/Сем7/Політична, соціальна та економічна еволюція української держави (від 1991 по сучасність)..md"
               }
             }
           }
@@ -176,10 +189,24 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "48d262eaf4f19fd6",
+  "active": "dd734ba589e9780e",
   "lastOpenFiles": [
-    "University/Year 2 Term 1/IY/tasks/Сем6/Доля мовно-культурної ідентичності українства в світлі остаточних результатів Другої світової війни..md",
+    "University/Year 2 Term 1/IY/tasks/Сем7/data.md",
+    "University/Year 2 Term 1/IY/tasks/Сем7/Політична, соціальна та економічна еволюція української держави (від 1991 по сучасність)..md",
     "University/Year 2 Term 1/IY/tasks/Сем6/data.md",
+    "University/Year 2 Term 1/IY/tasks/Сем7/data copy.md",
+    "University/Year 2 Term 1/IY/tasks/Сем7/Причини Другої світової війни та її початок. Приєднання західноукраїнських земель до УРСР (1939-1941 рр.)..md",
+    "University/Year 2 Term 1/IY/tasks/Сем7/Німецько-радянська війна (1941-1945 рр.). Катастрофічні поразки РСЧА 1941-1942 рр. та встановлення в Україні нацистського окупаційного режиму..md",
+    "University/Year 2 Term 1/IY/tasks/Сем7/Генеза української культури в роки Другої світової війни..md",
+    "University/Year 2 Term 1/IY/tasks/Сем7/Доля мовно-культурної ідентичності українства в світлі остаточних результатів Другої світової війни..md",
+    "University/Year 2 Term 1/IY/tasks/Сем7/Відвоювання України радянськими військами в 1943-1944 рр. Внесок українців у перемогу над нацизмом і боротьбу з комуністичним авторитаризмом..md",
+    "University/Year 2 Term 1/IY/tasks/Сем7",
+    "University/Year 2 Term 1/IY/tasks/Сем6 copy/Генеза української культури в роки Другої світової війни..md",
+    "University/Year 2 Term 1/IY/tasks/Сем6 copy/Доля мовно-культурної ідентичності українства в світлі остаточних результатів Другої світової війни..md",
+    "University/Year 2 Term 1/IY/tasks/Сем6 copy/Відвоювання України радянськими військами в 1943-1944 рр. Внесок українців у перемогу над нацизмом і боротьбу з комуністичним авторитаризмом..md",
+    "University/Year 2 Term 1/IY/tasks/Сем6 copy/data.md",
+    "University/Year 2 Term 1/IY/tasks/Сем6 copy",
+    "University/Year 2 Term 1/IY/tasks/Сем6/Доля мовно-культурної ідентичності українства в світлі остаточних результатів Другої світової війни..md",
     "University/Year 2 Term 1/IY/tasks/Сем6/Генеза української культури в роки Другої світової війни..md",
     "University/Year 2 Term 1/IY/tasks/Сем6/Відвоювання України радянськими військами в 1943-1944 рр. Внесок українців у перемогу над нацизмом і боротьбу з комуністичним авторитаризмом..md",
     "University/Year 2 Term 1/IY/tasks/Сем6/Німецько-радянська війна (1941-1945 рр.). Катастрофічні поразки РСЧА 1941-1942 рр. та встановлення в Україні нацистського окупаційного режиму..md",
@@ -193,27 +220,13 @@
     "University/Year 2 Term 1/IY/tasks/Сем6",
     "University/Year 2 Term 1/IY/tasks/Сем5 copy/Сталінські репресії в Україні 20-х – 30-х років..md",
     "University/Year 2 Term 1/IY/tasks/Сем5 copy/Розмивання української ідентичності як складова асиміляторської політики російського більшовизму..md",
-    "University/Year 2 Term 1/IY/tasks/Сем5 copy/Нова економічна політика (1921 – 1928 рр.) та кампанія сталінської індустріалізації України (1927-1941 рр.)..md",
-    "University/Year 2 Term 1/IY/tasks/Сем5 copy/Культура Радянської України в довоєнний період..md",
-    "University/Year 2 Term 1/IY/tasks/Сем5 copy/Колективізація сільського господарства та Голодомор 1932-1933 рр..md",
-    "University/Year 2 Term 1/IY/tasks/Сем5 copy/data.md",
     "University/Year 2 Term 1/IY/tasks/Сем5 copy",
-    "University/Year 2 Term 1/IY/tasks/Сем5/Розмивання української ідентичності як складова асиміляторської політики російського більшовизму..md",
-    "University/Year 2 Term 1/IY/tasks/Сем5/Культура Радянської України в довоєнний період..md",
-    "University/Year 2 Term 1/IY/tasks/Сем5/Сталінські репресії в Україні 20-х – 30-х років..md",
-    "University/Year 2 Term 1/IY/tasks/Сем5/Колективізація сільського господарства та Голодомор 1932-1933 рр..md",
-    "University/Year 2 Term 1/IY/tasks/Сем5/Нова економічна політика (1921 – 1928 рр.) та кампанія сталінської індустріалізації України (1927-1941 рр.)..md",
-    "University/Year 2 Term 1/CP/Жовт 28, 2023 - Порядок денний на зустріч.md",
-    "University/Year 2 Term 1/IY/tasks/Сем5/Формування українських політичних партій..md",
-    "University/Year 2 Term 1/IY/tasks/Сем5/Україна в подіях російської революції 1905 – 1907 рр. та Першої світової війни (1914 – 1917 рр.)..md",
     "University/Year 2 Term 1/IY/tasks/Сем5",
     "University/Year 2 Term 1/IY/tasks/Сем4 copy",
     "University/Year 2 Term 1/OPI/tasks/lb4/~$звіт.docx",
     "University/Year 2 Term 1/OPI/tasks/lb4/звіт.docx",
     "University/Year 2 Term 1/OPI/tasks/lb3/~WRL0002.tmp",
     "University/Year 2 Term 1/OPI/tasks/lb3/~WRD0001.tmp",
-    "University/Year 2 Term 1/OPI/tasks/lb3/~WRD0000.tmp",
-    "University/Year 2 Term 1/OPI/tasks/lb4/prod",
     "University/Year 2 Term 1/VM/tasks/lb1/рішення/img/3.jpg",
     "University/Year 2 Term 1/VM/tasks/lb1/рішення/img/1d.jpg",
     "University/Year 2 Term 1/VM/tasks/lb1/рішення/img/1c.jpg",
