@@ -1,5 +1,6 @@
 ```
-CONTEXT: lab on Probability Theory course. You must solve the given problem in an identical fassion as in the example below it.
+CONTEXT:
+Lab on Probability Theory course. You must solve the given problem in an identical fassion as in the example below it.
 
 PROBLEM:
 

@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "7b26d99849d6ff79",
+        "id": "e630d39764b27352",
         "type": "tabs",
         "children": [
           {
-            "id": "48d262eaf4f19fd6",
+            "id": "23f861ba2a0e43a1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем7/data.md",
+                "file": "University/Year 2 Term 1/TY/tasks/РГЗ/10.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем7/data.md",
+                "file": "University/Year 2 Term 1/TY/tasks/РГЗ/10.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем7/data.md",
+                "file": "University/Year 2 Term 1/TY/tasks/РГЗ/10.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем7/data.md"
+                "file": "University/Year 2 Term 1/TY/tasks/РГЗ/10.md"
               }
             }
           }
@@ -176,10 +176,10 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "48d262eaf4f19fd6",
+  "active": "23f861ba2a0e43a1",
   "lastOpenFiles": [
-    "University/Year 2 Term 1/IY/tasks/Сем7/Феномен української ідентичності перед викликами сучасності..md",
     "University/Year 2 Term 1/IY/tasks/Сем7/data.md",
+    "University/Year 2 Term 1/IY/tasks/Сем7/Феномен української ідентичності перед викликами сучасності..md",
     "University/Year 2 Term 1/IY/tasks/Сем7/Сучасний стан української культури - проблеми і перспективи..md",
     "University/Year 2 Term 1/IY/tasks/Сем7/Російсько-українська війна..md",
     "University/Year 2 Term 1/IY/tasks/Сем7/Українські революції ХХІ ст. - причини, перебіг, наслідки..md",
