@@ -1,6 +1,6 @@
 ```
 CONTEXT:
-Lab on Probability Theory course. You must solve the given problem in an identical fassion as in the example below it.
+Lab on Probability Theory course. You must solve the given problem in an identical fassion as in the example below it. Use LaTeX whenever possible for math notation.
 
 PROBLEM:
 

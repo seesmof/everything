@@ -1,0 +1,1 @@
+- we can create a user session class that might hold current user, listings and other stuff.
