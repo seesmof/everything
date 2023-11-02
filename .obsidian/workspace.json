@@ -4,22 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "e630d39764b27352",
+        "id": "66d8890974301a34",
         "type": "tabs",
         "children": [
           {
-            "id": "23f861ba2a0e43a1",
+            "id": "2fdc04d0a08d5041",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/Year 2 Term 1/TY/data.md",
+                "file": "University/Year 2 Term 1/IY/data.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6a4a6e9860597d76",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "University/Year 2 Term 1/IY/notes/ІУ.Лек5. Імперський період в історії України. 1775-1917 роки..md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/Year 2 Term 1/TY/data.md",
+                "file": "University/Year 2 Term 1/IY/notes/ІУ.Лек5. Імперський період в історії України. 1775-1917 роки..md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/Year 2 Term 1/TY/data.md",
+                "file": "University/Year 2 Term 1/IY/notes/ІУ.Лек5. Імперський період в історії України. 1775-1917 роки..md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/Year 2 Term 1/TY/data.md"
+                "file": "University/Year 2 Term 1/IY/notes/ІУ.Лек5. Імперський період в історії України. 1775-1917 роки..md"
               }
             }
           }
@@ -175,8 +188,12 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "23f861ba2a0e43a1",
+  "active": "d785a87909210767",
   "lastOpenFiles": [
+    "University/Year 2 Term 1/IY/data.md",
+    "University/Year 2 Term 1/IY/notes/ІУ.Лек5. Імперський період в історії України. 1775-1917 роки..md",
+    "University/Year 2 Term 1/TY/data.md",
+    "University/Year 2 Term 1/TY/notes/ТЙ.Лек3.md",
     "University/Year 2 Term 1/TY/tasks/РГЗ/12.py",
     "University/Year 2 Term 1/CP/Tasks, Notes and Ideas.md",
     "University/Year 2 Term 1/TY/tasks/РГЗ/рішення_1.zip",
@@ -208,11 +225,7 @@
     "University/Year 2 Term 1/IY/tasks/Сем7",
     "University/Year 2 Term 1/IY/tasks/Сем6 copy/Генеза української культури в роки Другої світової війни..md",
     "University/Year 2 Term 1/IY/tasks/Сем6 copy/Доля мовно-культурної ідентичності українства в світлі остаточних результатів Другої світової війни..md",
-    "University/Year 2 Term 1/IY/tasks/Сем6 copy/Відвоювання України радянськими військами в 1943-1944 рр. Внесок українців у перемогу над нацизмом і боротьбу з комуністичним авторитаризмом..md",
-    "University/Year 2 Term 1/IY/tasks/Сем6 copy/data.md",
     "University/Year 2 Term 1/IY/tasks/Сем6 copy",
-    "University/Year 2 Term 1/IY/tasks/Сем6/Доля мовно-культурної ідентичності українства в світлі остаточних результатів Другої світової війни..md",
-    "University/Year 2 Term 1/IY/tasks/Сем6",
     "University/Year 2 Term 1/VM/tasks/lb1/рішення/img/3.jpg",
     "University/Year 2 Term 1/VM/tasks/lb1/рішення/img/1d.jpg",
     "University/Year 2 Term 1/VM/tasks/lb1/рішення/img/1c.jpg",

@@ -20,9 +20,6 @@ from todoist_api_python.api import TodoistAPI
 from deep_translator import GoogleTranslator
 
 engine = pyttsx4.init()
-voices = engine.getProperty("voices")
-engine.setProperty("voice", voices[1].id)
-
 CARDIO_WORKOUT_LINK = "https://youtu.be/ylxSQ_5WbMQ?t=50"
 informal_greetings = [
     "Greetings",
