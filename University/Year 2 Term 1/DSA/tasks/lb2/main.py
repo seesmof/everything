@@ -132,12 +132,6 @@ class Subscriber:
         }
 
 
-# B-TREE INDIVIDUAL TASK
-
-# Create a BTree
-t = BTree(3)
-
-# Add some subscribers
 subscribers = [
     Subscriber("380679144750", "Mildred Carter", "basic"),
     Subscriber("380671323933", "Eugene Perry", "premium"),
@@ -152,17 +146,6 @@ subscribers = [
     Subscriber("380319496963", "Caleb Long", "basic"),
 ]
 
-for subscriber in subscribers:
-    t.insert_key((subscriber.phone, subscriber.to_dict()))
-
-# Search for a subscriber
-number_to_search = "380319496963"
-found, node, i = t.search_key(number_to_search)
-if found:
-    print("Subscriber found: ", node.keys[i][1])
-else:
-    print("Subscriber not found")
-
 
 def count_tariffs(node, tariff_counts):
     for key in node.keys:
@@ -176,35 +159,6 @@ def count_tariffs(node, tariff_counts):
             count_tariffs(child, tariff_counts)
 
 
-# Count tariffs
-tariff_counts = {}
-count_tariffs(t.root, tariff_counts)
-print("Tariff counts: ", tariff_counts)
-
-# HASH TABLE INDIVIDUAL TASK
-print()
-
-# Create the hash table
-hash_table = HashTable(200)
-
-# Read the employee data from the text file
-file_path = "D:/repos/everything/University/Year 2 Term 1/DSA/tasks/lb2/employees.txt"
-with open(file_path, "r") as file:
-    for line in file:
-        name, position = line.strip().split(",")
-        key = sum(ord(c) for c in name)
-        hash_table.insert(key, (name, position))
-
-# Search for an employee
-employee_name = "John Doe"
-key = sum(ord(c) for c in employee_name)
-position = hash_table.search(key)
-if position is not None:
-    print(f"{employee_name} is a {position}.")
-else:
-    print(f"No position found for {employee_name}.")
-
-
 def btree_task():
     # Create a BTree
     t = BTree(3)
@@ -212,10 +166,12 @@ def btree_task():
     # Add subscribers
     subscribers = []
     num_subscribers = int(input("Enter the number of subscribers: "))
+    print()
     for i in range(num_subscribers):
         phone = input("Enter the phone number: ")
         name = input("Enter the subscriber name: ")
         tariff = input("Enter the tariff: ")
+        print()
         subscribers.append(Subscriber(phone, name, tariff))
 
     for subscriber in subscribers:
@@ -260,10 +216,11 @@ def hashtable_task():
 
 def main():
     while True:
-        print("Menu:")
+        print("\nChoose an option from below:")
         print("1. B-Tree Task")
         print("2. Hash Table Task")
         print("3. Exit")
+        print()
 
         choice = input("Enter your choice: ")
 
