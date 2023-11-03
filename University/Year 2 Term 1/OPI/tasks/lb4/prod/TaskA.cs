@@ -1,15 +1,7 @@
-Додати зберігання та завантаження останнього вигляду програми у файлі. Порядок зберігання та завантаження інформації у файли реалізувати у наступний спосіб: зберігати кожну сесію роботи програми, нову сесію дописувати у кінець файлу. Під час роботи програми реалізувати завантаження збереженої сесії.
-
----
-
-Add saving and loading the last state of the program in a file. The procedure for saving and loading information into files should be implemented as follows: save each session of the program, add a new session to the end of the file. When the program is running, implement the loading of the saved session.
-
-```
-// Завдання 1
+﻿// Завдання 1
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,37 +12,12 @@ namespace dev
     {
         static void Main(string[] args)
         {
-            string loadedInput = LoadInput();
-            if (loadedInput != null)
-            {
-                Console.Write("Last input: ");
-                Console.WriteLine(loadedInput);
-            }
-
             Console.Write("Enter a string: ");
             string input = Console.ReadLine();
             string compressed = Compress(input);
             Console.WriteLine($"Compressed: {compressed}");
             string decompressed = Decompress(compressed);
             Console.WriteLine($"Decompressed: {decompressed}");
-
-            SaveInput(input);
-        }
-
-        private static string LoadInput()
-        {
-            string filename = "prevInput.txt";
-            if (File.Exists(filename))
-            {
-                return File.ReadAllLines(filename)?.Last();
-            }
-
-            return null;
-        }
-
-        private static void SaveInput(string input)
-        {
-            File.AppendAllText("prevInput.txt", input + Environment.NewLine);
         }
 
         private static string Compress(string input)
@@ -111,4 +78,3 @@ namespace dev
         }
     }
 }
-```
