@@ -1,0 +1,276 @@
+<!-- index.html tasks 2, 3 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Overview - Python Wiki</title>
+    <link rel="shortcut icon" href="./img/snake.png" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="vh-100 bg-white p-2">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="./index.html">Python Wiki</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html">Overview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./history.html">History</a>
+            </li>
+            <li class="nav-item">
+              <a href="./advantages.html" class="nav-link">Advantages</a>
+            </li>
+            <li class="nav-item">
+              <a href="./examples.html" class="nav-link">Examples</a>
+            </li>
+            <li class="nav-item">
+              <a href="./philosophy.html" class="nav-link">Philosophy</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="container">
+      <div>
+        <nav>
+          <h2>Table of Contents</h2>
+
+          <ol>
+            <li>
+              <a href="#variables-and-data-types">Variables and Data Types</a>
+            </li>
+            <li>
+              <a href="#conditional-statements">Conditional Statements</a>
+            </li>
+            <li><a href="#loops">Loops</a></li>
+            <li><a href="#functions">Functions</a></li>
+            <li><a href="#lists">Lists</a></li>
+            <li><a href="#dictionaries">Dictionaries</a></li>
+            <li><a href="#strings">Strings</a></li>
+            <li><a href="#file-handling">File Handling</a></li>
+          </ol>
+        </nav>
+
+        <aside>
+          <h2>Python Lanugage</h2>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Property</th>
+                <th scope="col">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Designed by:</th>
+                <td>Guido van Rossum</td>
+              </tr>
+              <tr>
+                <th>First appeared:</th>
+                <td>1991</td>
+              </tr>
+              <tr>
+                <th>Paradigms:</th>
+                <td>Object-oriented, procedural, functional</td>
+              </tr>
+              <tr>
+                <th>Typing discipline:</th>
+                <td>Duck, dynamic, strong typing</td>
+              </tr>
+              <tr>
+                <th>Website:</th>
+                <td>
+                  <a href="https://www.python.org/">www.python.org</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </aside>
+      </div>
+
+      <main>
+        <h1>Python Overview</h1>
+
+        <h2>Introduction</h2>
+
+        <p>
+          Python is a high-level, versatile programming language known for its
+          simplicity and readability. This quick reference provides an overview
+          of essential Python concepts and syntax.
+        </p>
+
+        <h2 id="variables-and-data-types">Variables and Data Types</h2>
+
+        <ul>
+          <li>
+            <strong>Variables:</strong> In Python, you can assign values to
+            variables using the <code>=</code> operator. Example:
+            <code>x = 10</code>.
+          </li>
+          <li>
+            <strong>Data Types:</strong> Python supports various data types,
+            including integers, floats, strings, booleans, and more.
+          </li>
+          <li>
+            <strong>Type Conversion:</strong> You can convert between data types
+            using functions like <code>int()</code>, <code>float()</code>, and
+            <code>str()</code>.
+          </li>
+        </ul>
+
+        <h2 id="conditional-statements">Conditional Statements</h2>
+
+        <ul>
+          <li>
+            <strong>if Statement:</strong> Use <code>if</code> to execute code
+            conditionally based on a Boolean expression.
+          </li>
+          <li>
+            <strong>elif and else:</strong> Extend <code>if</code> statements
+            with <code>elif</code> (else if) and <code>else</code> for multiple
+            branching.
+          </li>
+        </ul>
+
+        <h2 id="loops">Loops</h2>
+
+        <ul>
+          <li>
+            <strong>for Loop:</strong> Iterate over a sequence (e.g., list,
+            string) using a <code>for</code> loop.
+          </li>
+          <li>
+            <strong>while Loop:</strong> Execute code repeatedly as long as a
+            condition is true with a <code>while</code> loop.
+          </li>
+        </ul>
+
+        <h2 id="functions">Functions</h2>
+
+        <ul>
+          <li>
+            <strong>Defining Functions:</strong> Create reusable code blocks
+            using the <code>def</code> keyword.
+          </li>
+          <li>
+            <strong>Parameters:</strong> Pass arguments to functions, which can
+            be optional or required.
+          </li>
+          <li>
+            <strong>Return Values:</strong> Functions can return values using
+            the <code>return</code> statement.
+          </li>
+        </ul>
+
+        <h2 id="lists">Lists</h2>
+
+        <ul>
+          <li>
+            <strong>Creating Lists:</strong> Define lists using square brackets,
+            e.g., <code>my_list = [1, 2, 3]</code>.
+          </li>
+          <li>
+            <strong>Indexing:</strong> Access list elements using their index
+            (zero-based).
+          </li>
+          <li>
+            <strong>Slicing:</strong> Extract portions of a list using slicing,
+            e.g., <code>my_list[1:3]</code>.
+          </li>
+        </ul>
+
+        <h2 id="dictionaries">Dictionaries</h2>
+
+        <ul>
+          <li>
+            <strong>Creating Dictionaries:</strong> Define key-value pairs using
+            curly braces, e.g.,
+            <code>my_dict = {'name': 'John', 'age': 30}</code>.
+          </li>
+          <li>
+            <strong>Accessing Values:</strong> Retrieve values by specifying the
+            key.
+          </li>
+        </ul>
+
+        <h2 id="strings">Strings</h2>
+
+        <ul>
+          <li>
+            <strong>Creating Strings:</strong> Define strings with single or
+            double quotes, e.g., <code>"Hello, World!"</code>.
+          </li>
+          <li>
+            <strong>String Methods:</strong> Use built-in string methods for
+            operations like concatenation and splitting.
+          </li>
+        </ul>
+
+        <h2 id="file-handling">File Handling</h2>
+
+        <ul>
+          <li>
+            <strong>Opening Files:</strong> Use <code>open()</code> to open
+            files for reading or writing.
+          </li>
+          <li>
+            <strong>Reading and Writing:</strong> Read file contents with
+            <code>read()</code>, write data with <code>write()</code>.
+          </li>
+        </ul>
+
+        <h3 id="read-more">Read more</h3>
+
+        <ul>
+          <li><a href="./history.html">History</a></li>
+          <li><a href="./advantages.html">Advantages</a></li>
+          <li><a href="./philosophy.html">Philosophy</a></li>
+          <li><a href="./examples.html">Examples of programs</a></li>
+        </ul>
+      </main>
+    </section>
+
+    <footer>
+      <a href="./lab3/index.html">Onyshchenko - Resume Link</a>
+      <button id="quote-button">Quote of the Day</button>
+    </footer>
+
+    <script src="./js/toggleNavbar.js"></script>
+    <script type="module">
+      import { randomQuote } from "./js/randomQuote.js";
+
+      document.querySelector("#quote-button").addEventListener("click", () => {
+        const quote = randomQuote();
+        alert(quote);
+      });
+    </script>
+  </body>
+</html>
