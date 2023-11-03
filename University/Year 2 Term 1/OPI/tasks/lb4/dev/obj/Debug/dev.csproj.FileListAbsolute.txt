@@ -1,0 +1,7 @@
+D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb4\dev\bin\Debug\dev.exe.config
+D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb4\dev\bin\Debug\dev.exe
+D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb4\dev\bin\Debug\dev.pdb
+D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb4\dev\obj\Debug\dev.csproj.AssemblyReference.cache
+D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb4\dev\obj\Debug\dev.csproj.CoreCompileInputs.cache
+D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb4\dev\obj\Debug\dev.exe
+D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb4\dev\obj\Debug\dev.pdb
