@@ -1,4 +1,4 @@
-﻿// Завдання 1
+﻿// Завдання 2
 
 using System;
 using System.Collections.Generic;
@@ -11,96 +11,54 @@ namespace dev
 {
     internal class Program
     {
+        private const string SessionFile = "session.txt";
+
         static void Main(string[] args)
         {
-            string loadedInput = LoadInput();
-            if (loadedInput != null)
+            string input;
+
+            if (File.Exists(SessionFile))
             {
-                Console.Write("Last input: ");
-                Console.WriteLine(loadedInput);
-            }
-
-            Console.Write("Enter a string: ");
-            string input = Console.ReadLine();
-            string compressed = Compress(input);
-            Console.WriteLine($"Compressed: {compressed}");
-            string decompressed = Decompress(compressed);
-            Console.WriteLine($"Decompressed: {decompressed}");
-
-            SaveInput(input);
-        }
-
-        private static string LoadInput()
-        {
-            string filename = "prevInput.txt";
-            if (File.Exists(filename))
-            {
-                return File.ReadAllLines(filename)?.Last();
-            }
-
-            return null;
-        }
-
-        private static void SaveInput(string input)
-        {
-            File.AppendAllText("prevInput.txt", input + Environment.NewLine);
-        }
-
-        private static string Compress(string input)
-        {
-            StringBuilder sb = new StringBuilder();
-            int count = 1;
-            for (int i = 1; i < input.Length; i++)
-            {
-                if (input[i] == input[i - 1] && !Char.IsWhiteSpace(input[i]))
-                {
-                    count++;
-                }
-                else
-                {
-                    if (count > 1)
-                    {
-                        sb.Append(input[i - 1].ToString() + count);
-                    }
-                    else
-                    {
-                        sb.Append(input[i - 1]);
-                    }
-                    count = 1;
-                }
-            }
-            if (count > 1)
-            {
-                sb.Append(input[input.Length - 1].ToString() + count);
+                input = File.ReadAllLines(SessionFile).Last();
             }
             else
             {
-                sb.Append(input[input.Length - 1]);
+                Console.Write("Enter an expression: ");
+                input = Console.ReadLine();
             }
-            return sb.ToString();
+
+            double result = Calculate(input);
+            Console.WriteLine($"Result: {result}");
+
+            File.AppendAllLines(SessionFile, new[] { input });
         }
 
-        private static string Decompress(string input)
+        private static double Calculate(string input)
         {
-            StringBuilder sb = new StringBuilder();
-            int count = 0;
-            for (int i = 0; i < input.Length; i++)
+            string[] parts = input.Split(' ');
+            double num1 = double.Parse(parts[0]);
+            string operation = parts[1];
+            double num2 = double.Parse(parts[2]);
+
+            switch (operation)
             {
-                if (Char.IsDigit(input[i]))
-                {
-                    count = int.Parse(input[i].ToString());
-                    while (count > 1)
-                    {
-                        sb.Append(input[i - 1]);
-                        count--;
-                    }
-                }
-                else
-                {
-                    sb.Append(input[i]);
-                }
+                case "+":
+                case "plus":
+                    return num1 + num2;
+                case "-":
+                case "minus":
+                    return num1 - num2;
+                case "*":
+                case "multiply":
+                case "times":
+                    return num1 * num2;
+                case "/":
+                case "divide":
+                case "by":
+                    return num1 / num2;
+                default:
+                    throw new Exception("Invalid operation");
             }
-            return sb.ToString();
         }
     }
 }

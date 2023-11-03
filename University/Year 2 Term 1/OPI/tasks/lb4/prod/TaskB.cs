@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,12 +11,26 @@ namespace dev
 {
     internal class Program
     {
+        private const string SessionFile = "session.txt";
+
         static void Main(string[] args)
         {
-            Console.Write("Enter an expression: ");
-            string input = Console.ReadLine();
+            string input;
+
+            if (File.Exists(SessionFile))
+            {
+                input = File.ReadAllLines(SessionFile).Last();
+            }
+            else
+            {
+                Console.Write("Enter an expression: ");
+                input = Console.ReadLine();
+            }
+
             double result = Calculate(input);
             Console.WriteLine($"Result: {result}");
+
+            File.AppendAllLines(SessionFile, new[] { input });
         }
 
         private static double Calculate(string input)
