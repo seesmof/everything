@@ -1,10 +1,9 @@
-﻿// Завдання 3
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace dev
 {
@@ -12,8 +11,22 @@ namespace dev
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter a string: ");
-            string input = Console.ReadLine();
+            string stateFilePath = "state.txt";
+            string input = "";
+
+            if (File.Exists(stateFilePath))
+            {
+                string[] previousState = File.ReadAllLines(stateFilePath);
+                if (previousState.Length > 0)
+                    input = previousState[previousState.Length - 1];
+            }
+
+            if (string.IsNullOrEmpty(input))
+            {
+                Console.Write("Enter a string: ");
+                input = Console.ReadLine();
+            }
+
             Console.WriteLine("Original string: " + input);
 
             // Chars
@@ -30,6 +43,8 @@ namespace dev
             // Insert
             string inserted = input.Insert(input.Length - 1, " there");
             Console.WriteLine("String after inserting ' there' before last character: " + inserted);
+
+            File.AppendAllText(stateFilePath, input + Environment.NewLine);
         }
     }
 }

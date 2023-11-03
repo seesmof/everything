@@ -1,64 +1,50 @@
-﻿// Завдання 2
-
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace dev
 {
     internal class Program
     {
-        private const string SessionFile = "session.txt";
-
         static void Main(string[] args)
         {
-            string input;
+            string stateFilePath = "state.txt";
+            string input = "";
 
-            if (File.Exists(SessionFile))
+            if (File.Exists(stateFilePath))
             {
-                input = File.ReadAllLines(SessionFile).Last();
+                string[] previousState = File.ReadAllLines(stateFilePath);
+                if (previousState.Length > 0)
+                    input = previousState[previousState.Length - 1];
             }
-            else
+
+            if (string.IsNullOrEmpty(input))
             {
-                Console.Write("Enter an expression: ");
+                Console.Write("Enter a string: ");
                 input = Console.ReadLine();
             }
 
-            double result = Calculate(input);
-            Console.WriteLine($"Result: {result}");
+            Console.WriteLine("Original string: " + input);
 
-            File.AppendAllLines(SessionFile, new[] { input });
-        }
-
-        private static double Calculate(string input)
-        {
-            string[] parts = input.Split(' ');
-            double num1 = double.Parse(parts[0]);
-            string operation = parts[1];
-            double num2 = double.Parse(parts[2]);
-
-            switch (operation)
+            // Chars
+            Console.WriteLine("Chars:");
+            for (int i = 0; i < input.Length; i++)
             {
-                case "+":
-                case "plus":
-                    return num1 + num2;
-                case "-":
-                case "minus":
-                    return num1 - num2;
-                case "*":
-                case "multiply":
-                case "times":
-                    return num1 * num2;
-                case "/":
-                case "divide":
-                case "by":
-                    return num1 / num2;
-                default:
-                    throw new Exception("Invalid operation");
+                Console.WriteLine("Char at index " + i + ": " + input[i]);
             }
+
+            // Remove
+            string removed = input.Remove(input.Length - 1, 1);
+            Console.WriteLine("String after removing last character: " + removed);
+
+            // Insert
+            string inserted = input.Insert(input.Length - 1, " there");
+            Console.WriteLine("String after inserting ' there' before last character: " + inserted);
+
+            File.AppendAllText(stateFilePath, input + Environment.NewLine);
         }
     }
 }
