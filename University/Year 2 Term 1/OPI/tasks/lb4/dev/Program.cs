@@ -1,9 +1,11 @@
-﻿using System;
+﻿// Завдання 1
+
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 
 namespace dev
 {
@@ -11,40 +13,94 @@ namespace dev
     {
         static void Main(string[] args)
         {
-            string stateFilePath = "state.txt";
-            string input = "";
-
-            if (File.Exists(stateFilePath))
+            string loadedInput = LoadInput();
+            if (loadedInput != null)
             {
-                string[] previousState = File.ReadAllLines(stateFilePath);
-                if (previousState.Length > 0)
-                    input = previousState[previousState.Length - 1];
+                Console.Write("Last input: ");
+                Console.WriteLine(loadedInput);
             }
 
-            if (string.IsNullOrEmpty(input))
+            Console.Write("Enter a string: ");
+            string input = Console.ReadLine();
+            string compressed = Compress(input);
+            Console.WriteLine($"Compressed: {compressed}");
+            string decompressed = Decompress(compressed);
+            Console.WriteLine($"Decompressed: {decompressed}");
+
+            SaveInput(input);
+        }
+
+        private static string LoadInput()
+        {
+            string filename = "prevInput.txt";
+            if (File.Exists(filename))
             {
-                Console.Write("Enter a string: ");
-                input = Console.ReadLine();
+                return File.ReadAllLines(filename)?.Last();
             }
 
-            Console.WriteLine("Original string: " + input);
+            return null;
+        }
 
-            // Chars
-            Console.WriteLine("Chars:");
+        private static void SaveInput(string input)
+        {
+            File.AppendAllText("prevInput.txt", input + Environment.NewLine);
+        }
+
+        private static string Compress(string input)
+        {
+            StringBuilder sb = new StringBuilder();
+            int count = 1;
+            for (int i = 1; i < input.Length; i++)
+            {
+                if (input[i] == input[i - 1] && !Char.IsWhiteSpace(input[i]))
+                {
+                    count++;
+                }
+                else
+                {
+                    if (count > 1)
+                    {
+                        sb.Append(input[i - 1].ToString() + count);
+                    }
+                    else
+                    {
+                        sb.Append(input[i - 1]);
+                    }
+                    count = 1;
+                }
+            }
+            if (count > 1)
+            {
+                sb.Append(input[input.Length - 1].ToString() + count);
+            }
+            else
+            {
+                sb.Append(input[input.Length - 1]);
+            }
+            return sb.ToString();
+        }
+
+        private static string Decompress(string input)
+        {
+            StringBuilder sb = new StringBuilder();
+            int count = 0;
             for (int i = 0; i < input.Length; i++)
             {
-                Console.WriteLine("Char at index " + i + ": " + input[i]);
+                if (Char.IsDigit(input[i]))
+                {
+                    count = int.Parse(input[i].ToString());
+                    while (count > 1)
+                    {
+                        sb.Append(input[i - 1]);
+                        count--;
+                    }
+                }
+                else
+                {
+                    sb.Append(input[i]);
+                }
             }
-
-            // Remove
-            string removed = input.Remove(input.Length - 1, 1);
-            Console.WriteLine("String after removing last character: " + removed);
-
-            // Insert
-            string inserted = input.Insert(input.Length - 1, " there");
-            Console.WriteLine("String after inserting ' there' before last character: " + inserted);
-
-            File.AppendAllText(stateFilePath, input + Environment.NewLine);
+            return sb.ToString();
         }
     }
 }

@@ -1,5 +1,24 @@
 Додати зберігання та завантаження останнього вигляду програми у файлі. Порядок зберігання та завантаження інформації у файли реалізувати у наступний спосіб: зберігати кожну сесію роботи програми, нову сесію дописувати у кінець файлу. Під час роботи програми реалізувати завантаження збереженої сесії.
 
+Add saving and loading the last state of the program in a file. The procedure for saving and loading information into files should be implemented as follows: save each session of the program, add a new session to the end of the file. When the program is running, implement the loading of the saved session.
+
 ---
 
-Add saving and loading the last state of the program in a file. The procedure for saving and loading information into files should be implemented as follows: save each session of the program, add a new session to the end of the file. When the program is running, implement the loading of the saved session.
+#### Що таке файловий потік?
+
+Файловий потік - це послідовність байтів, яку можна використовувати для читання з файлу та запису до нього. Це клас, який використовується для читання та запису файлів у C#. Він є частиною простору імен System.IO.
+
+#### Які класи є основними для роботи з файлами та потоками у Visual Studio С#?
+
+Нижче наведено кілька найпоширеніших класів потоків у Visual Studio C#:
+
+1. FileStream - для читання та запису у файл.
+2. IsolatedStorageFileStream - для читання та запису до файлу в ізольованому сховищі.
+3. MemoryStream - для читання і запису в пам'ять як резервне сховище.
+4. BufferedStream - для підвищення продуктивності операцій читання та запису.
+5. NetworkStream - для читання та запису через мережеві сокети.
+6. PipeStream - для читання та запису через анонімні та іменовані канали.
+
+#### Поясніть призначення та використання об’єкту типуFilestream.
+
+Щоб маніпулювати файлами за допомогою FileStream, потрібно створити об'єкт класу FileStream. Цей об'єкт має чотири параметри: ім'я файлу, режим файлу, доступ до файлу та спільний доступ до файлу. Клас FileStream підтримує як синхронні, так і асинхронні операції запису та читання файлів. Ви можете використовувати його для читання, запису, відкриття і закриття файлів у файловій системі, а також для маніпулювання іншими дескрипторами операційної системи, пов'язаними з файлами, зокрема каналами, стандартним введенням і стандартним виведенням. Ви можете використовувати методи Read, Write, CopyTo і Flush для виконання синхронних операцій або методи ReadAsync, WriteAsync, CopyToAsync і FlushAsync для виконання асинхронних операцій. Використовуйте асинхронні методи для виконання ресурсоємних файлових операцій без блокування основного потоку.
