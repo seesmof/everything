@@ -60,22 +60,46 @@ class BuildingArrangement:
         return count
 
 
-# Example usage
-num_robots = 5
-speeds = [2, 3, 1, 4, 2]
-num_groups = 3
+def main_menu():
+    while True:
+        print("\n1. Robots\n2. Building Arrangements\n3. Exit")
+        choice = input("Enter your choice: ")
+        print()
 
-robot_group = RobotGroup(num_robots, speeds, num_groups)
-num_ways = robot_group.count_ways()
-print(f"Number of ways to start the robots: {num_ways}")
+        if choice == "1":
+            num_robots = int(input("Enter the number of robots: "))
+            speeds = list(
+                map(
+                    int,
+                    input(
+                        "Enter the speeds of the robots, separated by spaces: "
+                    ).split(),
+                )
+            )
+            num_groups = int(input("Enter the number of groups: "))
+            robot_group = RobotGroup(num_robots, speeds, num_groups)
+            num_ways = robot_group.count_ways()
+            print(f"\nNumber of ways to start the robots: {num_ways}")
 
-print()
-matrix = {
-    "A": {"A": True, "B": True, "C": False},
-    "B": {"A": True, "B": True, "C": True},
-    "C": {"A": False, "B": True, "C": True},
-}
+        elif choice == "2":
+            matrix = {}
+            for building_type in ["A", "B", "C"]:
+                matrix[building_type] = {}
+                for other_building_type in ["A", "B", "C"]:
+                    can_be_next_to = input(
+                        f"Can building type {building_type} be next to building type {other_building_type}? (yes/no): "
+                    )
+                    matrix[building_type][other_building_type] = (
+                        can_be_next_to.lower() == "yes"
+                    )
+            num_buildings = int(input("Enter the number of buildings: "))
+            arrangement = BuildingArrangement(matrix)
+            num_arrangements = arrangement.count_arrangements(num_buildings)
+            print(f"\nNumber of arrangements: {num_arrangements}")
 
-arrangement = BuildingArrangement(matrix)
-num_arrangements = arrangement.count_arrangements(5)
-print(f"Number of arrangements: {num_arrangements}")  # Output: 18
+        else:
+            break
+
+
+if __name__ == "__main__":
+    main_menu()
