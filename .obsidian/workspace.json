@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/Year 2 Term 1/IY/notes/ІУ.Лек5. Імперський період в історії України. 1775-1917 роки..md",
+                "file": "University/Year 2 Term 1/WEB/data.md",
                 "mode": "source",
                 "source": false
               }
@@ -99,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/Year 2 Term 1/IY/data.md",
+                "file": "University/Year 2 Term 1/WEB/data.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/Year 2 Term 1/IY/data.md",
+                "file": "University/Year 2 Term 1/WEB/data.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -149,7 +149,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/Year 2 Term 1/IY/data.md"
+                "file": "University/Year 2 Term 1/WEB/data.md"
               }
             }
           }
@@ -188,19 +188,25 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "d785a87909210767",
+  "active": "6a4a6e9860597d76",
   "lastOpenFiles": [
-    "University/Year 2 Term 1/OPI/tasks/lb4/prod.zip",
-    "University/Year 2 Term 1/OPI/tasks/lb4/mso420A.tmp",
-    "University/Year 2 Term 1/OPI/tasks/lb4/mso3ECD.tmp",
-    "University/Year 2 Term 1/OPI/tasks/lb4/звіт.pdf",
-    "University/Year 2 Term 1/OPI/tasks/lb4/msoC7A8.tmp",
-    "University/Year 2 Term 1/OPI/tasks/lb4/msoC3B0.tmp",
-    "University/Year 2 Term 1/OPI/tasks/lb4/dev/bin/Debug/prevInput.txt",
-    "University/Year 2 Term 1/OPI/tasks/lb4/dev/bin/Debug/session.txt",
-    "University/Year 2 Term 1/OPI/tasks/lb4/dev/bin/Debug/state.txt",
-    "University/Year 2 Term 1/OPI/tasks/lb4/dev/Program.cs~RF571d970.TMP",
-    "University/Year 2 Term 1/OPI/tasks/lb4/~$звіт.docx",
+    "University/Year 2 Term 1/OPI/tasks/lb5/dev/FormMain.cs~RF8cc5809.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb5/dev/FormMain.cs~RF8cbce47.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb5/dev/FormMain.cs~RF8cb6c03.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb5/dev/FormMain.cs~RF8cb09ce.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb5/dev/FormMain.cs~RF8caee96.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb5/dev/FormMain.resx~RF8c9e340.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb5/dev/FormMain.resx~RF8c957b9.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb5/dev/FormMain.cs~RF8c7dc54.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb5/dev/FormMain.cs~RF8c6bbd1.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb5/dev/FormMain.resx~RF8c69aad.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb5/dev/FormMain.resx~RF8c51d25.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb5/icon.png",
+    "University/Year 2 Term 1/OPI/tasks/lb5/mouse.png",
+    "University/Year 2 Term 1/OPI/tasks/lb5/task.md",
+    "University/Year 2 Term 1/OPI/tasks/lb5/tas.md",
+    "University/Year 2 Term 1/WEB/notes/ВЕБ.Лек3..md",
+    "University/Year 2 Term 1/IY/data.md",
     "University/Year 2 Term 1/TY/tasks/РГЗ/рішення/10.jpg",
     "University/Year 2 Term 1/TY/tasks/РГЗ/рішення/IMG_20231103_163556.jpg",
     "University/Year 2 Term 1/WEB/tasks/lb8/lab3/img/table_mobile.png",
@@ -210,8 +216,6 @@
     "University/Year 2 Term 1/WEB/tasks/lb8/lab3/завдання.md",
     "University/Year 2 Term 1/WEB/tasks/lb8/lab3/logo.jpg",
     "University/Year 2 Term 1/WEB/tasks/lb8/lab3/favicon.png",
-    "University/Year 2 Term 1/WEB/tasks/lb8/img/snake.png",
-    "University/Year 2 Term 1/WEB/tasks/lb8/img/philosophy.png",
     "University/Year 2 Term 1/WEB/tasks/lb8/lb6/dev/task.md",
     "University/Year 2 Term 1/WEB/tasks/lb8/lb6/dev/lab4/lab3/завдання.md",
     "University/Year 2 Term 1/WEB/tasks/lb8/lb6/dev/lab4/task.md",
@@ -231,10 +235,6 @@
     "University/Year 2 Term 1/DSA/lb2/task.md",
     "University/Year 2 Term 1/DSA/lb2/employees.md",
     "University/Year 2 Term 1/DSA/tasks/lb2/prod/employees.md",
-    "University/Year 2 Term 1/DSA/tasks/lb2/employees.md",
-    "University/Year 2 Term 1/IY/data.md",
-    "University/Year 2 Term 1/IY/notes/ІУ.Лек5. Імперський період в історії України. 1775-1917 роки..md",
-    "University/Year 2 Term 1/TY/data.md",
-    "University/Year 2 Term 1/TY/notes/ТЙ.Лек3.md"
+    "University/Year 2 Term 1/DSA/tasks/lb2/employees.md"
   ]
 }
