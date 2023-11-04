@@ -1,4 +1,6 @@
-﻿namespace dev
+﻿// Завдання 2
+
+namespace dev
 {
     partial class FormMain
     {
