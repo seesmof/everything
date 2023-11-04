@@ -4,35 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "66d8890974301a34",
+        "id": "b552a1e237ad03ac",
         "type": "tabs",
         "children": [
           {
-            "id": "2fdc04d0a08d5041",
+            "id": "e9e747a86d9acd42",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/Year 2 Term 1/IY/data.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "6a4a6e9860597d76",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/Year 2 Term 1/WEB/data.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -99,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/Year 2 Term 1/WEB/data.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/Year 2 Term 1/WEB/data.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,9 +129,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "University/Year 2 Term 1/WEB/data.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -188,8 +167,14 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "6a4a6e9860597d76",
+  "active": "e9e747a86d9acd42",
   "lastOpenFiles": [
+    "University/Year 1 Term 2/АМ/notes/23.06.2023 - Cover Letter.md",
+    "HTML.md",
+    "University/Year 2 Term 1/IY/data.md",
+    "University/Розклад дзвінків.md",
+    "University/Year 2 Term 1/WEB/data.md",
+    "University/Year 2 Term 1/OPI/tasks/lb5/prod.zip",
     "University/Year 2 Term 1/OPI/tasks/lb5/звіт.pdf",
     "University/Year 2 Term 1/OPI/tasks/lb5/msoC81.tmp",
     "University/Year 2 Term 1/OPI/tasks/lb5/mso973.tmp",
@@ -199,14 +184,11 @@
     "University/Year 2 Term 1/OPI/tasks/lb5/prod/FormMain.cs",
     "University/Year 2 Term 1/OPI/tasks/lb5/dev/FormMain.cs~RF92bd3a3.TMP",
     "University/Year 2 Term 1/OPI/tasks/lb5/dev/FormMain.cs~RF92b8eea.TMP",
-    "University/Year 2 Term 1/OPI/tasks/lb5/dev/FormMain.cs~RF92af886.TMP",
-    "University/Year 2 Term 1/OPI/tasks/lb5/dev/FormMain.cs~RF91f207b.TMP",
     "University/Year 2 Term 1/OPI/tasks/lb5/icon.png",
     "University/Year 2 Term 1/OPI/tasks/lb5/mouse.png",
     "University/Year 2 Term 1/OPI/tasks/lb5/task.md",
     "University/Year 2 Term 1/OPI/tasks/lb5/tas.md",
     "University/Year 2 Term 1/WEB/notes/ВЕБ.Лек3..md",
-    "University/Year 2 Term 1/IY/data.md",
     "University/Year 2 Term 1/TY/tasks/РГЗ/рішення/10.jpg",
     "University/Year 2 Term 1/TY/tasks/РГЗ/рішення/IMG_20231103_163556.jpg",
     "University/Year 2 Term 1/WEB/tasks/lb8/lab3/img/table_mobile.png",
@@ -232,9 +214,6 @@
     "University/Year 2 Term 1/DSA/tasks/lb3/employees.md",
     "University/Year 2 Term 1/DSA/tasks/lb2 copy/task.md",
     "University/Year 2 Term 1/DSA/tasks/lb2 copy/employees.md",
-    "University/Year 2 Term 1/DSA/lb2/task.md",
-    "University/Year 2 Term 1/DSA/lb2/employees.md",
-    "University/Year 2 Term 1/DSA/tasks/lb2/prod/employees.md",
-    "University/Year 2 Term 1/DSA/tasks/lb2/employees.md"
+    "University/Year 2 Term 1/DSA/lb2/task.md"
   ]
 }
