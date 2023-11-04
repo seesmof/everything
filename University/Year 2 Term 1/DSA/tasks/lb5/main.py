@@ -5,6 +5,7 @@ class Graph:
     def __init__(self, edges, directed=False):
         self.adj_list = {}
         self.directed = directed
+
         for u, v in edges:
             if u not in self.adj_list:
                 self.adj_list[u] = []
