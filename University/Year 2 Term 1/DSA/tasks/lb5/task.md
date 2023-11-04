@@ -1,5 +1,5 @@
 - Розробити програмне забезпечення, в якому реалізується алгоритм обходу графу на основі пошуку в глибину. Передбачити, що граф може бути як орієнтований, так і неорієнтований. В процесі пошуку має бути сформовано ліс пошуку в глибину. Для реалізації має використовуватися стек. Програмне забезпечення має бути побудовано на основі відповідного класу, який повинен дозволяти визначати граф, виконувати пошук в глибину, виводити побудований ліс пошуку в глибину, виводити результат обходу тощо.
-- Розробити програмне забезпечення, в якому реалізується алгоритм обходу графу на основі пошуку в ширину. Передбачити, що граф може бути як орієнтований, так і неорієнтований. В процесі пошуку має бути сформовано дерево пошуку в ширину. Для реалізації має використовуватися черга. Програмне забезпечення має бути побудовано на основі відповідного класу, який повинен дозволяти виз ачати граф, виконувати пошук в ширину, виводити побудоване дерево пошуку в ширину, виводити результат обходу тощо.
+- Розробити програмне забезпечення, в якому реалізується алгоритм обходу графу на основі пошуку в ширину. Передбачити, що граф може бути як орієнтований, так і неорієнтований. В процесі пошуку має бути сформовано дерево пошуку в ширину. Для реалізації має використовуватися черга. Програмне забезпечення має бути побудовано на основі відповідного класу, який повинен дозволяти визначати граф, виконувати пошук в ширину, виводити побудоване дерево пошуку в ширину, виводити результат обходу тощо.
 - Виконати тестування розробленого програмного забезпечення.
 - Використовуючи розроблене програмне забезпечення, розробити окремі модулі, які використовуються для розв’язання задач у відповідності з індивідуальним завданням з таблиці 5.1, що складається з трьох задач, наведених нижче, і реалізують інтерфейсну взаємодію користувача з програмою, та виконати відповідне тестування. Обґрунтувати вибір алгоритму обходу графа для кожної задачі, де це не задано явно
 - У заданому користувачем графі поставлено у відповідність кожній вершині деяке ціле число (може бути як від’ємним, так і додатним). Визначити такі шляхи між парами вершин, які в результаті додавання всіх чисел з кожної вершини дозволяють отримати задане користувачем значення.
@@ -8,3 +8,18 @@
 - Порівняти одержані результати виконаних тестів, провести аналіз вірності, коректності та адекватності роботи розробленого пр ограмного забезпечення.
 - Оформити звіт з роботи.
 - Відповісти на контрольні запитання
+
+---
+
+```
+Above is the task you are to complete. Complete it with Python and using as little code as you possibly can.
+```
+
+---
+
+- Develop software that implements a graph traversal algorithm based on depth-first search. Assume that the graph can be either oriented or undirected. In the process of searching, a depth search forest should be formed. A stack should be used for implementation. The software should be built on the basis of an appropriate class that should allow you to define a graph, perform a depth search, display the constructed depth search forest, display the result of a traversal, etc.
+- Develop software that implements a graph traversal algorithm based on a breadth-first search. Assume that the graph can be both oriented and undirected. In the process of searching, a search tree should be formed in width. A queue should be used for implementation. The software should be built on the basis of an appropriate class that should allow you to define a graph, perform a breadth-first search, display the constructed breadth-first search tree, display the result of a traversal, etc.
+- Using the developed software, develop individual modules that are used to solve problems in accordance with the individual task given below, and perform appropriate testing.
+- In a user-defined graph, each vertex is assigned an integer (can be either negative or positive). Determine the paths between pairs of vertices that result in the addition of all the numbers from each vertex to get the value specified by the user.
+- Given a set of arithmetic operations (for example, add 3, multiply by 2) that can be performed on the operand. Determine the minimal set of operations that can be used to get from one given number a number b. If such a conversion cannot be performed using the set of operations specified by the user, print a corresponding message.
+- Hampton Court Maze, a 60-acre maze, attracts many tourists. Before entering one of these mazes and demonstrating his skills, your friend decided to study the maze plan and asked you for help in finding his way through the maze. Model the maze using vertices corresponding to the entrance to the maze, the exit, dead ends, all points in the maze where there is a choice of paths, and connect these vertices with edges corresponding to the paths in the maze
