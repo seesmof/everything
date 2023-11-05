@@ -18,6 +18,13 @@
         "mac": "Alt+Z"
       },
       "description": "Opens Bing Chat in a new tab."
+    },
+    "open-phind": {
+      "suggested_key": {
+        "default": "Alt+C",
+        "mac": "Alt+C"
+      },
+      "description": "Opens Phind in a new tab."
     }
   },
   "background": {
