@@ -1,5 +1,3 @@
-<!-- index.html tasks 2, 3 -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,57 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Overview - Python Wiki</title>
     <link rel="shortcut icon" href="./img/snake.png" type="image/x-icon" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
   </head>
-  <body class="vh-100 bg-white p-2">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="./index.html">Python Wiki</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  <body>
+    <div
+      style="background-color: antiquewhite; min-height: 100vh"
+      class="container-fluid p-3"
+    >
+      <!-- PAGE CONTAINER -->
+      <div class="container">
+        <!-- NAVBAR CONTAINER -->
+        <div class="row mb-3">
+          <nav class="navbar navbar-expand-lg navbar-light bg-white rounded">
+            <!-- LOGO -->
+            <a class="navbar-brand" href="./index.html" style="font-weight: 500"
+              >Python Wiki</a
+            >
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="./index.html">Overview</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./history.html">History</a>
-            </li>
-            <li class="nav-item">
-              <a href="./advantages.html" class="nav-link">Advantages</a>
-            </li>
-            <li class="nav-item">
-              <a href="./examples.html" class="nav-link">Examples</a>
-            </li>
-            <li class="nav-item">
-              <a href="./philosophy.html" class="nav-link">Philosophy</a>
-            </li>
-          </ul>
+            <!-- TOGGLE BUTTON -->
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- NAVIGATION CONTAINER -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a href="./index.html" class="nav-link" title="Overview">
+                    Overview
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="./history.html" class="nav-link" title="History">
+                    History
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a
+                    href="./advantages.html"
+                    class="nav-link"
+                    title="Advantages"
+                  >
+                    Advantages
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a
+                    href="./philosophy.html"
+                    class="nav-link"
+                    title="Philosophy"
+                  >
+                    Philosophy
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a
+                    href="./examples.html"
+                    class="nav-link"
+                    title="Code examples"
+                  >
+                    Apps
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    href="./lab3/index.html"
+                    class="nav-link"
+                    title="View resume"
+                  >
+                    View Resume
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+
+        <!-- MAIN CONTENTS -->
+        <div class="row mb-3">
+          <!-- SIDEBAR -->
+          <div
+            class="col-sm-12 col-lg-4 p-3 bg-white rounded mb-3 mb-lg-0"
+          ></div>
+          <!-- MAIN CONTAINER -->
+          <div class="col-sm-12 col-lg-7 p-3 bg-white rounded ms-lg-3"></div>
+        </div>
+
+        <div class="row">
+          <div
+            class="col-12 p-3 bg-white rounded d-flex align-items-center justify-content-between"
+          >
+            <a href="./lab3/index.html" class="link-dark"
+              >Onyshchenko - Resume Link</a
+            >
+            <button
+              id="quote-button"
+              class="btn btn-primary"
+              style="font-weight: 500"
+            >
+              Quote of the Day
+            </button>
+          </div>
         </div>
       </div>
-    </nav>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
 
-    <section class="container">
+    <section>
       <div>
         <nav>
           <h2>Table of Contents</h2>
@@ -79,40 +155,26 @@
         </nav>
 
         <aside>
-          <h2>Python Lanugage</h2>
+          <div>
+            <img src="./img/overview.png" alt="python logo image" />
+            <h2>Python Lanugage</h2>
+          </div>
 
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Property</th>
-                <th scope="col">Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th>Designed by:</th>
-                <td>Guido van Rossum</td>
-              </tr>
-              <tr>
-                <th>First appeared:</th>
-                <td>1991</td>
-              </tr>
-              <tr>
-                <th>Paradigms:</th>
-                <td>Object-oriented, procedural, functional</td>
-              </tr>
-              <tr>
-                <th>Typing discipline:</th>
-                <td>Duck, dynamic, strong typing</td>
-              </tr>
-              <tr>
-                <th>Website:</th>
-                <td>
-                  <a href="https://www.python.org/">www.python.org</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <ul>
+            <li><strong>Designed by:</strong> Guido van Rossum</li>
+            <li><strong>First appeared:</strong> 1991</li>
+            <li>
+              <strong>Paradigms:</strong> Object-oriented, procedural,
+              functional
+            </li>
+            <li>
+              <strong>Typing discipline:</strong> Duck, dynamic, strong typing
+            </li>
+            <li>
+              <strong>Website:</strong>
+              <a href="https://www.python.org/">www.python.org</a>
+            </li>
+          </ul>
         </aside>
       </div>
 
@@ -246,30 +308,18 @@
             <code>read()</code>, write data with <code>write()</code>.
           </li>
         </ul>
-
-        <h3 id="read-more">Read more</h3>
-
-        <ul>
-          <li><a href="./history.html">History</a></li>
-          <li><a href="./advantages.html">Advantages</a></li>
-          <li><a href="./philosophy.html">Philosophy</a></li>
-          <li><a href="./examples.html">Examples of programs</a></li>
-        </ul>
       </main>
     </section>
-
-    <footer>
-      <a href="./lab3/index.html">Onyshchenko - Resume Link</a>
-      <button id="quote-button">Quote of the Day</button>
-    </footer>
 
     <script src="./js/toggleNavbar.js"></script>
     <script type="module">
       import { randomQuote } from "./js/randomQuote.js";
 
-      document.querySelector("#quote-button").addEventListener("click", () => {
-        const quote = randomQuote();
-        alert(quote);
+      $(document).ready(function () {
+        $("#quote-button").on("click", function () {
+          const quote = randomQuote();
+          alert(quote);
+        });
       });
     </script>
   </body>
