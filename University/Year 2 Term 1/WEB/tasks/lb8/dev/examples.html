@@ -105,9 +105,214 @@
           <div
             style="height: max-content"
             class="col-sm-12 col-lg-4 p-3 bg-white rounded mb-3 mb-lg-0"
-          ></div>
+          >
+            <nav>
+              <h2 class="h4">Table of Contents</h2>
+              <ol>
+                <li>
+                  <a class="link-dark" href="#hello-world">Hello, World!</a>
+                </li>
+                <li>
+                  <a class="link-dark" href="#web-development"
+                    >Web Development</a
+                  >
+                </li>
+                <li>
+                  <a class="link-dark" href="#data-analysis">Data Analysis</a>
+                </li>
+                <li>
+                  <a class="link-dark" href="#machine-learning"
+                    >Machine Learning</a
+                  >
+                </li>
+                <li>
+                  <a class="link-dark" href="#automation">Automation</a>
+                </li>
+                <li>
+                  <a class="link-dark" href="#game-development"
+                    >Game Development</a
+                  >
+                </li>
+              </ol>
+            </nav>
+
+            <aside>
+              <div>
+                <img
+                  src="./img/apps.png"
+                  alt="python logo image"
+                  class="img-fluid"
+                  style="height: 4rem; margin-top: 1rem; margin-bottom: 0.6rem"
+                />
+                <h2 class="h4">Apps with Python</h2>
+              </div>
+
+              <ul>
+                <li>
+                  <strong>Popular Libraries:</strong> Django, Flask, NumPy,
+                  SciPy, TensorFlow
+                </li>
+                <li>
+                  <strong>Common Use Cases:</strong> Web Development, Data
+                  Analysis, Machine Learning, AI
+                </li>
+                <li>
+                  <strong>Notable Python Programs:</strong> YouTube, Instagram,
+                  Spotify, Reddit
+                </li>
+                <li><strong>Python Version:</strong> Python 3.x</li>
+                <li>
+                  <strong>Official Python Documentation:</strong>
+                  <a class="link-dark" href="https://docs.python.org/3/"
+                    >docs.python.org/3</a
+                  >
+                </li>
+              </ul>
+            </aside>
+          </div>
           <!-- MAIN CONTAINER -->
-          <div class="col-sm-12 col-lg-7 p-3 bg-white rounded ms-lg-3"></div>
+          <div class="col-sm-12 col-lg-7 p-3 bg-white rounded ms-lg-3">
+            <h1 class="h2">Python Examples of Programs</h1>
+
+            <h2 class="h4">Introduction</h2>
+            <p>
+              Python is a versatile programming language that can be used for a
+              wide range of applications. This quick reference provides examples
+              of Python programs across various domains to showcase its
+              practicality and versatility.
+            </p>
+
+            <h2 class="h4" id="hello-world">Hello, World!</h2>
+            <p>
+              <strong>Hello, World!</strong>: The classic introductory program
+              that displays "Hello, World!" on the screen.
+            </p>
+            <code>
+              <pre>
+print("Hello, World!")
+        </pre
+              >
+            </code>
+
+            <h2 class="h4" id="web-development">Web Development</h2>
+            <p>
+              <strong>Simple Web Server</strong>: Create a basic web server
+              using Python's built-in <code>http.server</code> module.
+            </p>
+            <code>
+              <pre>
+import http.server
+import socketserver
+
+PORT = 8000
+
+with socketserver.TCPServer(
+  ("", PORT), 
+  http.server.SimpleHTTPRequestHandler
+) as httpd:
+    print("Serving at port", PORT)
+    httpd.serve_forever()
+        </pre
+              >
+            </code>
+
+            <h2 class="h4" id="data-analysis">Data Analysis</h2>
+            <p>
+              <strong>Data Visualization</strong>: Use libraries like Matplotlib
+              and Pandas to create interactive data visualizations.
+            </p>
+            <code>
+              <pre>
+import matplotlib.pyplot as plt
+import pandas as pd
+
+# Create a simple plot
+data = {'x': [1, 2, 3, 4, 5], 
+  'y': [10, 12, 5, 8, 7]}
+df = pd.DataFrame(data)
+plt.plot(df['x'], df['y'])
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+plt.title('Simple Data Plot')
+plt.show()
+        </pre
+              >
+            </code>
+
+            <h2 class="h4" id="machine-learning">Machine Learning</h2>
+            <p>
+              <strong>Linear Regression</strong>: Implement a simple linear
+              regression model using Scikit-Learn.
+            </p>
+            <code>
+              <pre>
+from sklearn import linear_model
+
+# Sample data
+X = [[1], [2], [3], [4], [5]]
+y = [10, 12, 5, 8, 7]
+
+# Create a linear regression model
+model = linear_model.LinearRegression()
+model.fit(X, y)
+
+# Predict values
+predicted = model.predict([[6]])
+print("Predicted:", predicted[0])
+        </pre
+              >
+            </code>
+
+            <h2 class="h4" id="automation">Automation</h2>
+            <p>
+              <strong>File Backup Script</strong>: Create a Python script to
+              automate file backups to a specified location.
+            </p>
+            <code>
+              <pre>
+import shutil
+
+source_dir = '/path/to/source'
+backup_dir = '/path/to/backup'
+
+shutil.copytree(source_dir, backup_dir)
+        </pre
+              >
+            </code>
+
+            <h2 class="h4" id="game-development">Game Development</h2>
+            <p>
+              <strong>Simple Game Using Pygame</strong>: Develop a basic game
+              using the Pygame library.
+            </p>
+            <code>
+              <pre>
+import pygame
+import sys
+
+# Initialize Pygame
+pygame.init()
+
+# Create a game window
+screen = pygame.display.set_mode(
+  (800, 600)
+)
+pygame.display.set_caption(
+  "Simple Game"
+)
+
+# Main game loop
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
+    pygame.display.update()
+        </pre
+              >
+            </code>
+          </div>
         </div>
 
         <div class="row">
@@ -133,213 +338,6 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-
-    <section>
-      <div>
-        <nav>
-          <h2 class="h4">Table of Contents</h2>
-          <ol>
-            <li>
-              <a class="link-danger" href="#hello-world">Hello, World!</a>
-            </li>
-            <li>
-              <a class="link-danger" href="#web-development">Web Development</a>
-            </li>
-            <li>
-              <a class="link-danger" href="#data-analysis">Data Analysis</a>
-            </li>
-            <li>
-              <a class="link-danger" href="#machine-learning"
-                >Machine Learning</a
-              >
-            </li>
-            <li><a class="link-danger" href="#automation">Automation</a></li>
-            <li>
-              <a class="link-danger" href="#game-development"
-                >Game Development</a
-              >
-            </li>
-          </ol>
-        </nav>
-
-        <aside>
-          <div>
-            <img
-              src="./img/apps.png"
-              alt="python logo image"
-              class="img-fluid"
-              style="height: 4rem; margin-top: 1rem; margin-bottom: 0.6rem"
-            />
-            <h2 class="h4">Apps with Python</h2>
-          </div>
-
-          <ul>
-            <li>
-              <strong>Popular Libraries:</strong> Django, Flask, NumPy, SciPy,
-              TensorFlow
-            </li>
-            <li>
-              <strong>Common Use Cases:</strong> Web Development, Data Analysis,
-              Machine Learning, AI
-            </li>
-            <li>
-              <strong>Notable Python Programs:</strong> YouTube, Instagram,
-              Spotify, Reddit
-            </li>
-            <li><strong>Python Version:</strong> Python 3.x</li>
-            <li>
-              <strong>Official Python Documentation:</strong>
-              <a class="link-danger" href="https://docs.python.org/3/"
-                >docs.python.org/3</a
-              >
-            </li>
-          </ul>
-        </aside>
-      </div>
-
-      <main>
-        <h1 class="h2">Python Examples of Programs</h1>
-
-        <h2 class="h4">Introduction</h2>
-        <p>
-          Python is a versatile programming language that can be used for a wide
-          range of applications. This quick reference provides examples of
-          Python programs across various domains to showcase its practicality
-          and versatility.
-        </p>
-
-        <h2 class="h4" id="hello-world">Hello, World!</h2>
-        <p>
-          <strong>Hello, World!</strong>: The classic introductory program that
-          displays "Hello, World!" on the screen.
-        </p>
-        <code>
-          <pre>
-print("Hello, World!")
-        </pre
-          >
-        </code>
-
-        <h2 class="h4" id="web-development">Web Development</h2>
-        <p>
-          <strong>Simple Web Server</strong>: Create a basic web server using
-          Python's built-in <code>http.server</code> module.
-        </p>
-        <code>
-          <pre>
-import http.server
-import socketserver
-
-PORT = 8000
-
-with socketserver.TCPServer(
-  ("", PORT), 
-  http.server.SimpleHTTPRequestHandler
-) as httpd:
-    print("Serving at port", PORT)
-    httpd.serve_forever()
-        </pre
-          >
-        </code>
-
-        <h2 class="h4" id="data-analysis">Data Analysis</h2>
-        <p>
-          <strong>Data Visualization</strong>: Use libraries like Matplotlib and
-          Pandas to create interactive data visualizations.
-        </p>
-        <code>
-          <pre>
-import matplotlib.pyplot as plt
-import pandas as pd
-
-# Create a simple plot
-data = {'x': [1, 2, 3, 4, 5], 
-  'y': [10, 12, 5, 8, 7]}
-df = pd.DataFrame(data)
-plt.plot(df['x'], df['y'])
-plt.xlabel('X-axis')
-plt.ylabel('Y-axis')
-plt.title('Simple Data Plot')
-plt.show()
-        </pre
-          >
-        </code>
-
-        <h2 class="h4" id="machine-learning">Machine Learning</h2>
-        <p>
-          <strong>Linear Regression</strong>: Implement a simple linear
-          regression model using Scikit-Learn.
-        </p>
-        <code>
-          <pre>
-from sklearn import linear_model
-
-# Sample data
-X = [[1], [2], [3], [4], [5]]
-y = [10, 12, 5, 8, 7]
-
-# Create a linear regression model
-model = linear_model.LinearRegression()
-model.fit(X, y)
-
-# Predict values
-predicted = model.predict([[6]])
-print("Predicted:", predicted[0])
-        </pre
-          >
-        </code>
-
-        <h2 class="h4" id="automation">Automation</h2>
-        <p>
-          <strong>File Backup Script</strong>: Create a Python script to
-          automate file backups to a specified location.
-        </p>
-        <code>
-          <pre>
-import shutil
-
-source_dir = '/path/to/source'
-backup_dir = '/path/to/backup'
-
-shutil.copytree(source_dir, backup_dir)
-        </pre
-          >
-        </code>
-
-        <h2 class="h4" id="game-development">Game Development</h2>
-        <p>
-          <strong>Simple Game Using Pygame</strong>: Develop a basic game using
-          the Pygame library.
-        </p>
-        <code>
-          <pre>
-import pygame
-import sys
-
-# Initialize Pygame
-pygame.init()
-
-# Create a game window
-screen = pygame.display.set_mode(
-  (800, 600)
-)
-pygame.display.set_caption(
-  "Simple Game"
-)
-
-# Main game loop
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-
-    pygame.display.update()
-        </pre
-          >
-        </code>
-      </main>
-    </section>
 
     <script src="./js/toggleNavbar.js"></script>
     <script type="module">
