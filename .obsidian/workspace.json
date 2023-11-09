@@ -4,22 +4,47 @@
     "type": "split",
     "children": [
       {
-        "id": "b552a1e237ad03ac",
+        "id": "234a9dcfd1c7bdb7",
         "type": "tabs",
         "children": [
           {
-            "id": "e9e747a86d9acd42",
+            "id": "e92aa1ff8e7ab641",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/Year 2 Term 1/WEB/tasks/lb7/prod/questions.md",
+                "file": "University/Year 2 Term 1/IY/tasks/Сем5/data.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "03abcf0a11cb2887",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "University/Year 2 Term 1/IY/tasks/Сем5/Розмивання української ідентичності як складова асиміляторської політики російського більшовизму..md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "2dcf60e6d5bfa190",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "University/Year 2 Term 1/IY/tasks/Сем5/Культура Радянської України в довоєнний період..md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -86,7 +111,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/Year 2 Term 1/WEB/tasks/lb7/prod/questions.md",
+                "file": "University/Year 2 Term 1/IY/tasks/Сем5/Розмивання української ідентичності як складова асиміляторської політики російського більшовизму..md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +128,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/Year 2 Term 1/WEB/tasks/lb7/prod/questions.md",
+                "file": "University/Year 2 Term 1/IY/tasks/Сем5/Розмивання української ідентичності як складова асиміляторської політики російського більшовизму..md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/Year 2 Term 1/WEB/tasks/lb7/prod/questions.md"
+                "file": "University/Year 2 Term 1/IY/tasks/Сем5/Розмивання української ідентичності як складова асиміляторської політики російського більшовизму..md"
               }
             }
           }
@@ -175,8 +200,20 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "e9e747a86d9acd42",
+  "active": "03abcf0a11cb2887",
   "lastOpenFiles": [
+    "Python Automations/tempCodeRunnerFile.py",
+    "University/Year 2 Term 1/IY/tasks/Сем5/data.md",
+    "University/Year 2 Term 1/IY/tasks/Сем5/Розмивання української ідентичності як складова асиміляторської політики російського більшовизму..md",
+    "University/Year 2 Term 1/IY/tasks/Сем5/Культура Радянської України в довоєнний період..md",
+    "University/Year 2 Term 1/IY/tasks/Сем5/Сталінські репресії в Україні 20-х – 30-х років..md",
+    "University/Year 2 Term 1/IY/tasks/Сем5/Колективізація сільського господарства та Голодомор 1932-1933 рр..md",
+    "University/Year 2 Term 1/IY/tasks/Сем5/Нова економічна політика (1921 – 1928 рр.) та кампанія сталінської індустріалізації України (1927-1941 рр.)..md",
+    "Competitive Programming/LeetCode Solutions/26.remove-duplicates-from-sorted-array.py",
+    "University/Year 2 Term 1/IY/tasks/Сем6/data.md",
+    "University/Year 2 Term 1/IY/tasks/Сем4/data.md",
+    "University/Year 2 Term 1/IY/tasks/Сем4/«Громадівський» період українського національного руху..md",
+    "University/Year 2 Term 1/WEB/tasks/lb7/prod/questions.md",
     "Competitive Programming/LeetCode Solutions/21.merge-two-sorted-lists.py",
     "Competitive Programming/LeetCode Solutions/20.valid-parentheses.py",
     "Competitive Programming/LeetCode Solutions/1759.count-number-of-homogenous-substrings.py",
@@ -189,8 +226,6 @@
     "Competitive Programming/LeetCode Solutions/643.maximum-average-subarray-i.py",
     "Competitive Programming/LeetCode Solutions/1929.concatenation-of-array.py",
     "Competitive Programming/Archive/old python/1929.concatenation-of-array.py",
-    "Competitive Programming/Archive/old python/1920.build-array-from-permutation.py",
-    "Competitive Programming/Archive/old python/1299.replace-elements-with-greatest-element-on-right-side.py",
     "University/Year 2 Term 1/VM/tasks/lb2/1.md",
     "University/Year 2 Term 1/VM/tasks/lb2/task.md",
     "University/Year 2 Term 1/OPI/tasks/lb6/logo.png",
@@ -212,16 +247,6 @@
     "University/Year 1 Term 2/АМ/notes/23.06.2023 - Cover Letter.md",
     "HTML.md",
     "University/Year 2 Term 1/IY/data.md",
-    "University/Розклад дзвінків.md",
-    "University/Year 2 Term 1/OPI/tasks/lb5/task.md",
-    "University/Year 2 Term 1/OPI/tasks/lb5/tas.md",
-    "University/Year 2 Term 1/WEB/notes/ВЕБ.Лек3..md",
-    "University/Year 2 Term 1/WEB/tasks/lb8/lab3/завдання.md",
-    "University/Year 2 Term 1/WEB/tasks/lb8/lb6/dev/task.md",
-    "University/Year 2 Term 1/WEB/tasks/lb8/lb6/dev/lab4/lab3/завдання.md",
-    "University/Year 2 Term 1/WEB/tasks/lb8/lb6/dev/lab4/task.md",
-    "University/Year 2 Term 1/WEB/tasks/lb8/lb6/dev/lab2/task.md",
-    "University/Year 2 Term 1/WEB/tasks/lb8/task.md",
-    "University/Year 2 Term 1/CT/Шаблон групи.md"
+    "University/Розклад дзвінків.md"
   ]
 }
