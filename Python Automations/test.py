@@ -1,30 +1,22 @@
 import string
 
 
-def countHomogenous(s: str) -> int:
-    alphabet = {letter: [] for letter in string.ascii_lowercase}
-    givenLetters = {}
-    givenArray = []
-    s = sorted(s)
+def isValid(s: str) -> bool:
+    stack = []
+    correspondings = {"{": "}", "(": ")", "[": "]"}
 
-    for _, letter in enumerate(s):
-        givenArray.append(letter)
+    for letter in s:
+        if letter in correspondings:
+            stack.append(letter)
+        elif len(stack) == 0 or letter != correspondings[stack.pop()]:
+            return False
 
-    for index, letter in enumerate(givenArray):
-        if letter in givenLetters.keys():
-            givenLetters[letter] += 1
-        else:
-            givenLetters[letter] = 1
-
-    print(givenLetters)
+    return len(stack) == 0
 
 
-s = "aabbbbccddddd"
-res = countHomogenous(s)
+s = "[(){()}]({[()](){}})"
+res = isValid(s)
 print(res)
-s = "aaabbccc"
-res = countHomogenous(s)
-print(res)
-s = "aaa"
-res = countHomogenous(s)
+s = "(]"
+res = isValid(s)
 print(res)
