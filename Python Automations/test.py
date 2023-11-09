@@ -1,16 +1,30 @@
-import g4f
+import string
 
-g4f.debug.logging = True  # enable logging
-g4f.check_version = False  # Disable automatic version checking
-print(g4f.version)  # check version
-print(g4f.Provider.Ails.params)  # supported args
 
-# Automatic selection of provider
+def countHomogenous(s: str) -> int:
+    alphabet = {letter: [] for letter in string.ascii_lowercase}
+    givenLetters = {}
+    givenArray = []
+    s = sorted(s)
 
-# normal response
-response = g4f.ChatCompletion.create(
-    model=g4f.models.gpt_4,
-    messages=[{"role": "user", "content": "Hello"}],
-)  # alternative model setting
+    for _, letter in enumerate(s):
+        givenArray.append(letter)
 
-print(response)
+    for index, letter in enumerate(givenArray):
+        if letter in givenLetters.keys():
+            givenLetters[letter] += 1
+        else:
+            givenLetters[letter] = 1
+
+    print(givenLetters)
+
+
+s = "aabbbbccddddd"
+res = countHomogenous(s)
+print(res)
+s = "aaabbccc"
+res = countHomogenous(s)
+print(res)
+s = "aaa"
+res = countHomogenous(s)
+print(res)
