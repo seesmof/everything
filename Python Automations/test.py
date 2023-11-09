@@ -1,6 +1,3 @@
-import string
-
-
 def isValid(s: str) -> bool:
     stack = []
     correspondings = {"{": "}", "(": ")", "[": "]"}
