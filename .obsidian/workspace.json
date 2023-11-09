@@ -4,47 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "234a9dcfd1c7bdb7",
+        "id": "6147dd3e9e89a11b",
         "type": "tabs",
         "children": [
           {
-            "id": "e92aa1ff8e7ab641",
+            "id": "7047b3550653ccd4",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем5/data.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "03abcf0a11cb2887",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем5/Розмивання української ідентичності як складова асиміляторської політики російського більшовизму..md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "2dcf60e6d5bfa190",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем5/Культура Радянської України в довоєнний період..md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -111,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем5/Розмивання української ідентичності як складова асиміляторської політики російського більшовизму..md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -128,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем5/Розмивання української ідентичності як складова асиміляторської політики російського більшовизму..md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -160,9 +129,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "University/Year 2 Term 1/IY/tasks/Сем5/Розмивання української ідентичності як складова асиміляторської політики російського більшовизму..md"
-              }
+              "state": {}
             }
           }
         ]
@@ -200,12 +167,13 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "03abcf0a11cb2887",
+  "active": "d785a87909210767",
   "lastOpenFiles": [
-    "Competitive Programming/LeetCode Solutions/28.find-the-index-of-the-first-occurrence-in-a-string.py",
-    "Python Automations/tempCodeRunnerFile.py",
+    "Competitive Programming/LeetCode Solutions/35.search-insert-position.py",
     "University/Year 2 Term 1/IY/tasks/Сем5/data.md",
     "University/Year 2 Term 1/IY/tasks/Сем5/Розмивання української ідентичності як складова асиміляторської політики російського більшовизму..md",
+    "Competitive Programming/LeetCode Solutions/28.find-the-index-of-the-first-occurrence-in-a-string.py",
+    "Python Automations/tempCodeRunnerFile.py",
     "University/Year 2 Term 1/IY/tasks/Сем5/Культура Радянської України в довоєнний період..md",
     "University/Year 2 Term 1/IY/tasks/Сем5/Сталінські репресії в Україні 20-х – 30-х років..md",
     "University/Year 2 Term 1/IY/tasks/Сем5/Колективізація сільського господарства та Голодомор 1932-1933 рр..md",
@@ -225,7 +193,6 @@
     "Competitive Programming/LeetCode Solutions/9.palindrome-number.py",
     "Competitive Programming/LeetCode Solutions/1.two-sum.py",
     "Competitive Programming/LeetCode Solutions/643.maximum-average-subarray-i.py",
-    "Competitive Programming/LeetCode Solutions/1929.concatenation-of-array.py",
     "University/Year 2 Term 1/VM/tasks/lb2/1.md",
     "University/Year 2 Term 1/VM/tasks/lb2/task.md",
     "University/Year 2 Term 1/OPI/tasks/lb6/logo.png",

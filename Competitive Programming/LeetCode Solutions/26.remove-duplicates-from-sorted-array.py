@@ -14,7 +14,11 @@ class Solution:
             nums[i + 1] = tmp
         return nums
 
-    def removeDups(self, nums, met):
+    def removeDuplicates(self, nums: [int]) -> int:
+        neededSize = len(set(nums))
+        met = {}
+        res = 0
+
         for _, el in enumerate(nums):
             met[el] = 0
 
@@ -25,26 +29,11 @@ class Solution:
                 continue
             elif met[element] > 0:
                 self.mooveToBack(nums, i)
+                for j in range(len(nums)):
+                    if nums[j] == element:
+                        self.mooveToBack(nums, j)
             else:
                 met[element] += 1
-
-    def removeDuplicates(self, nums: [int]) -> int:
-        neededSize = len(set(nums))
-        met = {}
-        res = 0
-
-        self.removeDups(nums, met)
-        self.removeDups(nums, met)
-        self.removeDups(nums, met)
-        self.removeDups(nums, met)
-        self.removeDups(nums, met)
-        self.removeDups(nums, met)
-        self.removeDups(nums, met)
-        self.removeDups(nums, met)
-        self.removeDups(nums, met)
-        self.removeDups(nums, met)
-        self.removeDups(nums, met)
-        self.removeDups(nums, met)
 
         for _ in range(len(nums) - neededSize):
             nums.pop()
