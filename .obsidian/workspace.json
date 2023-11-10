@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "d43732db46998db0",
+        "id": "7bca990ae890aff4",
         "type": "tabs",
         "children": [
           {
-            "id": "e44e2535b5d5e8c3",
+            "id": "165cb1e73bd0bdac",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -167,8 +167,10 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "e44e2535b5d5e8c3",
+  "active": "165cb1e73bd0bdac",
   "lastOpenFiles": [
+    "University/Year 2 Term 1/VM/tasks/lb2/solution.md",
+    "University/Year 2 Term 1/VM/tasks/lb2/звіт.pdf",
     "University/Year 2 Term 1/VM/tasks/lb2/6.md",
     "University/Year 2 Term 1/VM/tasks/lb2/5 copy.md",
     "University/Year 2 Term 1/VM/tasks/lb2/3.md",
@@ -185,7 +187,6 @@
     "Competitive Programming/NeetCode _ DSA for Beginners/10 HASHING/28 Hash Implementation",
     "Competitive Programming/NeetCode _ DSA for Beginners/10 HASHING/27 Hash Usage/PYTHON CODE.txt",
     "Competitive Programming/NeetCode _ DSA for Beginners/10 HASHING/27 Hash Usage/LEETCODE CHALLENGES.txt",
-    "Competitive Programming/NeetCode _ DSA for Beginners/10 HASHING/27 Hash Usage/JAVASCRIPT CODE.txt",
     "University/Year 2 Term 1/VM/tasks/nov-10-in-class-task/task.md",
     "University/Year 2 Term 1/IY/tasks/Сем1/Монголо-татарське нашестя.md",
     "University/Year 2 Term 1/IY/tasks/Сем5/data.md",
@@ -212,8 +213,6 @@
     "University/Year 2 Term 1/WEB/tasks/lb8/dev/lab3/img/table_desktop.png",
     "University/Year 2 Term 1/WEB/tasks/lb8/dev/lab3/img/main_desktop.png",
     "University/Year 2 Term 1/WEB/tasks/lb8/dev/lab3/завдання.md",
-    "University/Year 2 Term 1/WEB/tasks/lb8/lab4/lab3/завдання.md",
-    "University/Year 2 Term 1/WEB/data.md",
-    "University/Year 2 Term 1/SP/tasks/lb3/task.md"
+    "University/Year 2 Term 1/WEB/tasks/lb8/lab4/lab3/завдання.md"
   ]
 }
