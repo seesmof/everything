@@ -8,7 +8,8 @@
 # @lc code=start
 class Solution:
     def getConcatenation(self, nums: [int]) -> [int]:
-        return nums * 2
+        ans = nums + nums
+        return ans
 
 
 # @lc code=end
