@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "6147dd3e9e89a11b",
+        "id": "d43732db46998db0",
         "type": "tabs",
         "children": [
           {
-            "id": "7047b3550653ccd4",
+            "id": "e44e2535b5d5e8c3",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -167,8 +167,10 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "d785a87909210767",
+  "active": "e44e2535b5d5e8c3",
   "lastOpenFiles": [
+    "University/Year 2 Term 1/SP/tasks/lb3/1.py",
+    "University/Year 2 Term 1/IY/tasks/Сем1/Монголо-татарське нашестя.md",
     "Competitive Programming/LeetCode Solutions/66.plus-one.py",
     "Competitive Programming/LeetCode Solutions/58.length-of-last-word.py",
     "Competitive Programming/LeetCode Solutions/35.search-insert-position.py",
@@ -192,7 +194,6 @@
     "University/Year 2 Term 1/VM/tasks/lb2/task copy.md",
     "University/Year 2 Term 1/VM/tasks/lb2/2.md",
     "Competitive Programming/LeetCode Solutions/13.roman-to-integer.py",
-    "Competitive Programming/LeetCode Solutions/9.palindrome-number.py",
     "University/Year 2 Term 1/VM/tasks/lb2/1.md",
     "University/Year 2 Term 1/VM/tasks/lb2/task.md",
     "University/Year 2 Term 1/OPI/tasks/lb6/logo.png",
@@ -213,7 +214,6 @@
     "University/Year 2 Term 1/VM/tasks/test-Oct-20/try1/tasks.md",
     "University/Year 1 Term 2/АМ/notes/23.06.2023 - Cover Letter.md",
     "HTML.md",
-    "University/Year 2 Term 1/IY/data.md",
-    "University/Розклад дзвінків.md"
+    "University/Year 2 Term 1/IY/data.md"
   ]
 }
