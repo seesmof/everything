@@ -1,25 +1,19 @@
 """
-- Дано цілі M і N та масив дійсних чисел X[1..N]. Знайти ціле число для якого сума x[i]+...+ x[i+M] найближче до нуля.
+- Впорядкувати за не зростанням 5 чисел за 7 операцій порівняння.
 - Є два відсортованих за не зростанням масиви A[1,N] і B[1,M]. Отримати відсортований за не зростанням масив C[1, N+M], що складається з елементів масивів A і B ("злити" разом масиви A і B).
 """
 
 
-def selectionSort(arr):
+def sortFive(arr):
     # Впорядкувати за не зростанням 5 чисел за 7 операцій порівняння.
 
-    # if the array is empty or has only one element, it means its already sorted
-    if len(arr) <= 1:
-        # so we just return it
-        return arr
-    else:
-        # getting the minimum value from the array
-        minValue = min(arr)
-        # and the index of it
-        minIndex = arr.index(minValue)
-        # placing the minimum element at the end of the array
-        arr[-1], arr[minIndex] = arr[minIndex], arr[-1]
-        # recursively sorting the array without the last element and appending the last one after the sorted array
-        return selectionSort(arr[:-1]) + [arr[-1]]
+    for i in range(5):
+        max_idx = i
+        for j in range(i + 1, 5):
+            if arr[j] > arr[max_idx]:
+                max_idx = j
+        arr[i], arr[max_idx] = arr[max_idx], arr[i]
+    return arr
 
 
 def mergeArrays(A, B, C):
@@ -43,13 +37,13 @@ def mergeArrays(A, B, C):
         return mergeArrays(A, B[:-1], C + [B[-1]])
 
 
-def testSelectionSort():
-    assert selectionSort([5, 3, 8, 2, 1]) == [8, 5, 3, 2, 1]
-    assert selectionSort([1, 2, 3, 4, 5]) == [5, 4, 3, 2, 1]
-    assert selectionSort([5, 5, 5, 5, 5]) == [5, 5, 5, 5, 5]
-    assert selectionSort([-1, -2, -3, -4, -5]) == [-1, -2, -3, -4, -5]
-    assert selectionSort([0, 0, 0, 0, 0]) == [0, 0, 0, 0, 0]
-    assert selectionSort([22, 30, 94, 55, 71]) == [
+def testSortFive():
+    assert sortFive([5, 3, 8, 2, 1]) == [8, 5, 3, 2, 1]
+    assert sortFive([1, 2, 3, 4, 5]) == [5, 4, 3, 2, 1]
+    assert sortFive([5, 5, 5, 5, 5]) == [5, 5, 5, 5, 5]
+    assert sortFive([-1, -2, -3, -4, -5]) == [-1, -2, -3, -4, -5]
+    assert sortFive([0, 0, 0, 0, 0]) == [0, 0, 0, 0, 0]
+    assert sortFive([22, 30, 94, 55, 71]) == [
         94,
         71,
         55,
@@ -107,10 +101,10 @@ def menu():
 
             if localChoice == 1:
                 arr = list(map(int, input("Enter the array elements: ").split()))
-                res = selectionSort(arr)
+                res = sortFive(arr)
                 print(f"\nSorted array: {res}")
             elif localChoice == 2:
-                testSelectionSort()
+                testSortFive()
 
         elif choice == 2:
             print("\nTASK TWO")
@@ -137,4 +131,5 @@ def menu():
 
 
 if __name__ == "__main__":
-    menu()
+    # menu()
+    testSortFive()

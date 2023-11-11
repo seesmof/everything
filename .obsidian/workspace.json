@@ -11,8 +11,12 @@
             "id": "165cb1e73bd0bdac",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "University/Year 2 Term 1/SP/data.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -82,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "University/Year 2 Term 1/SP/data.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "University/Year 2 Term 1/SP/data.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -129,7 +135,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "University/Year 2 Term 1/SP/data.md"
+              }
             }
           }
         ]
@@ -169,21 +177,22 @@
   },
   "active": "165cb1e73bd0bdac",
   "lastOpenFiles": [
-    "University/Year 2 Term 1/OPI/tasks/lb6/dev/FormMain.resx~RFa948de4.TMP",
-    "University/Year 2 Term 1/OPI/tasks/lb6/dev/FormMain.Designer.cs~RFa938bb6.TMP",
-    "University/Year 2 Term 1/OPI/tasks/lb6/dev/FormMain.Designer.cs~RFa926509.TMP",
-    "University/Year 2 Term 1/OPI/tasks/lb6/dev/FormMain.Designer.cs~RFa923166.TMP",
-    "University/Year 2 Term 1/OPI/tasks/lb6/dev/FormMain.Designer.cs~RFa8f53e1.TMP",
-    "University/Year 2 Term 1/OPI/tasks/lb6/dev/FormMain.Designer.cs~RFa8f453b.TMP",
-    "University/Year 2 Term 1/OPI/tasks/lb6/dev/FormMain.Designer.cs~RFa8e816e.TMP",
-    "University/Year 2 Term 1/OPI/tasks/lb6/dev/FormMain.resx~RFa8dfc21.TMP",
-    "University/Year 2 Term 1/OPI/tasks/lb6/dev/FormMain.resx~RFa8d9d96.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb6/prod/TaskA.Designer.cs",
+    "University/Year 2 Term 1/OPI/tasks/lb6/prod/TaskA.cs",
+    "University/Year 2 Term 1/OPI/tasks/lb6/prod/FormMain.Designer.cs",
+    "University/Year 2 Term 1/OPI/tasks/lb6/prod/FormMain.cs",
+    "University/Year 2 Term 1/OPI/tasks/lb6/prod",
+    "University/Year 2 Term 1/OPI/tasks/lb6/dev/FormMain.resx~RFe37631b.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb6/dev/FormMain.cs~RFe35f429.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb6/dev/FormMain.cs~RFe34a86f.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb6/dev/FormMain.cs~RFe349c4a.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb6/dev/FormMain.cs~RFe34823a.TMP",
+    "University/Year 2 Term 1/OPI/tasks/lb6/dev/FormMain.Designer.cs~RFe312f27.TMP",
     "University/Year 2 Term 1/OPI/tasks/lb6/3.md",
     "University/Year 2 Term 1/OPI/tasks/lb6/task copy.md",
     "University/Year 2 Term 1/OPI/tasks/lb6/2.md",
     "University/Year 2 Term 1/OPI/tasks/lb6/1.md",
     "University/Year 2 Term 1/VM/tasks/lb2/solution.md",
-    "University/Year 2 Term 1/VM/tasks/lb2/звіт.pdf",
     "University/Year 2 Term 1/VM/tasks/lb2/6.md",
     "University/Year 2 Term 1/VM/tasks/lb2/5 copy.md",
     "University/Year 2 Term 1/VM/tasks/lb2/3.md",
@@ -191,7 +200,6 @@
     "University/Year 2 Term 1/VM/tasks/lb2/4.md",
     "University/Year 2 Term 1/VM/tasks/lb2/5.md",
     "University/Year 2 Term 1/VM/tasks/lb2/task copy.md",
-    "Competitive Programming/LeetCode Solutions/27.remove-element.py",
     "University/Year 2 Term 1/VM/tasks/nov-10-in-class-task/task.md",
     "University/Year 2 Term 1/IY/tasks/Сем1/Монголо-татарське нашестя.md",
     "University/Year 2 Term 1/IY/tasks/Сем5/data.md",
