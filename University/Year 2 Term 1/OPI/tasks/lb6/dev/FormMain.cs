@@ -13,22 +13,34 @@ namespace dev
 {
     public partial class FormMain : Form
     {
+        private string message;
+
         public FormMain()
         {
             InitializeComponent();
-
-            this.KeyPreview = true;
         }
 
-        private void FormMain_KeyPress(object sender, KeyPressEventArgs e)
+        private void buttonSetAlarm_Click(object sender, EventArgs e)
         {
-            int keyCode = (int)e.KeyChar;
-            labelKeyCode.Text = $"Key Code: {keyCode}\nKey Name: {e.KeyChar}";
+            DateTime alarmTime = dateTimePickerAlarm.Value;
+            string dayOfWeek = comboBoxDayOfWeek.SelectedItem.ToString();
+            this.message = textBoxMessage.Text;
 
-            using (StreamWriter writer = new StreamWriter("log.txt", true))
+            timerAlarm.Interval = (int)(alarmTime - DateTime.Now).TotalMilliseconds;
+            timerAlarm.Start();
+
+            using (StreamWriter writer = new StreamWriter("alarm.txt", true))
             {
-                writer.WriteLine($"Key Code: {keyCode} - Key Name: {e.KeyChar}");
+                writer.WriteLine($"Alarm time: {alarmTime} - Day of week: {dayOfWeek} - Message: {message}");
             }
+
+            MessageBox.Show($"Alarm set for {dayOfWeek} at {alarmTime}", "Alamr Set", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void timerAlarm_Tick(object sender, EventArgs e)
+        {
+            MessageBox.Show($"Alarm!\n{this.message}");
+            timerAlarm.Stop();
         }
     }
 }
