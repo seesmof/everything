@@ -4,16 +4,30 @@
 """
 
 
-def sortFive(arr):
-    # Впорядкувати за не зростанням 5 чисел за 7 операцій порівняння.
+def can_meet_all(n, A):
+    # Є N осіб і цілі числа А1,..., AN; людину i необхідно познайомити з Аi людьми. Чи можна це зробити?
 
-    for i in range(5):
-        max_idx = i
-        for j in range(i + 1, 5):
-            if arr[j] > arr[max_idx]:
-                max_idx = j
-        arr[i], arr[max_idx] = arr[max_idx], arr[i]
-    return arr
+    visited = [False] * n
+
+    def dfs(i):
+        if visited[i] or A[i] > n - 1 or A[i] < 0:
+            return False
+        if A[i] == 0:
+            visited[i] = True
+            return True
+
+        visited[i] = True
+        for j in range(n):
+            if not visited[j] and dfs(j):
+                A[i] -= 1
+                if A[i] == 0:
+                    return True
+        return False
+
+    for i in range(n):
+        if not visited[i] and not dfs(i):
+            return False
+    return True
 
 
 def mergeArrays(A, B, C):
