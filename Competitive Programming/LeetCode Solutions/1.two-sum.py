@@ -8,14 +8,12 @@
 # @lc code=start
 class Solution:
     def twoSum(self, nums: [int], target: int) -> [int]:
-        complements = {}
-        for i, num in enumerate(nums):
-            complements[num] = i
-        print(complements)
-        for i, num in enumerate(nums):
-            diff = target - num
-            if diff in complements and complements[diff] != i:
-                return [complements[diff], i]
+        elements = {}
+        for i, el in enumerate(nums):
+            diff = target - el
+            if diff in elements:
+                return [elements[diff], i]
+            elements[el] = i
 
 
 # @lc code=end
