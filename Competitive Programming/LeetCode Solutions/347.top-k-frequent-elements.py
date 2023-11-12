@@ -4,23 +4,36 @@
 # [347] Top K Frequent Elements
 #
 
-import heapq
-
 
 # @lc code=start
 class Solution:
     def topKFrequent(self, nums: [int], k: int) -> [int]:
-        freq = {el: 0 for el in nums}
-        pairs = []
-        ans = []
+        if len(nums) < 2:
+            return nums
 
+        freq = {el: 0 for el in nums}
         for num in nums:
             freq[num] += 1
+
+        buckets = [[] for num in nums]
+
         for key, value in freq.items():
-            pair = (-value, key)
-            heapq.heappush(pairs, pair)
-        for _ in range(k):
-            ans.append(heapq.heappop(pairs)[1])
+            buckets[value].append(key)
+
+        print(buckets)
+
+        ans = []
+        for i in reversed(range(len(buckets))):
+            if len(ans) == k:
+                break
+
+            bucket = buckets[i]
+            if bucket != []:
+                while bucket != []:
+                    if len(ans) == k:
+                        break
+                    ans.append(bucket.pop())
+
         return ans
 
 
