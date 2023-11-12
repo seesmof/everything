@@ -38,3 +38,9 @@ CURRENT TASK:
 
 List a full complete step-by-step instruction on how to fully complete the given task. Do not skip anything and list every step one needs to take in order to complete CURRENT TASK using C# WinForms.
 ```
+
+## Завдання
+
+- [ ] 1
+- [ ] 2
+- [x] 3

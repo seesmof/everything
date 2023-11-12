@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5F1CE17F-D05F-4AF2-B060-AD47B6857BFD}</ProjectGuid>
+    <ProjectGuid>{09558574-88B9-44F7-9444-E5866A5535DB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>dev</RootNamespace>
     <AssemblyName>dev</AssemblyName>
@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlarmClock.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
