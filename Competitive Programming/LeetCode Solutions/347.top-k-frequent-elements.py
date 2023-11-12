@@ -5,34 +5,24 @@
 #
 
 
+import heapq
+
+
 # @lc code=start
 class Solution:
     def topKFrequent(self, nums: [int], k: int) -> [int]:
-        if len(nums) < 2:
-            return nums
-
-        freq = {el: 0 for el in nums}
+        frequencies = {num: 0 for num in nums}
         for num in nums:
-            freq[num] += 1
+            frequencies[num] += 1
 
-        buckets = [[] for num in nums]
-
-        for key, value in freq.items():
-            buckets[value].append(key)
-
-        print(buckets)
+        heap = []
+        for key, value in frequencies.items():
+            pair = (-value, key)
+            heapq.heappush(heap, pair)
 
         ans = []
-        for i in reversed(range(len(buckets))):
-            if len(ans) == k:
-                break
-
-            bucket = buckets[i]
-            if bucket != []:
-                while bucket != []:
-                    if len(ans) == k:
-                        break
-                    ans.append(bucket.pop())
+        for _ in range(k):
+            ans.append(heapq.heappop(heap)[1])
 
         return ans
 
