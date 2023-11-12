@@ -10,25 +10,21 @@ import heapq
 # @lc code=start
 class Solution:
     def topKFrequent(self, nums: [int], k: int) -> [int]:
-        if len(nums) < 2:
-            return nums
-        print()
         freq = {el: 0 for el in nums}
-        for el in nums:
-            freq[el] += 1
-        print(f"FREQUENCIES: {freq}")
         pairs = []
-        for key, value in freq.items():
-            pair = (key, -value)
-            heapq.heappush(pairs, pair)
-        print(f"PAIRS: {pairs}")
         ans = []
-        for i in range(k):
-            tmp = heapq.heappop(pairs)
-            ans.append(tmp[0])
-        print(f"ANS: {ans}")
-        print()
+
+        for num in nums:
+            freq[num] += 1
+        for key, value in freq.items():
+            pair = (-value, key)
+            heapq.heappush(pairs, pair)
+        for _ in range(k):
+            ans.append(heapq.heappop(pairs)[1])
         return ans
 
 
 # @lc code=end
+
+# [4,1,-1,2,-1,2,3]\n2
+# [5,3,1,1,1,3,73,1]\n2
