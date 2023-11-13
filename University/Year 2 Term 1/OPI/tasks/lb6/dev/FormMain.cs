@@ -22,33 +22,46 @@ namespace dev
             InitializeComponent();
         }
 
+        private bool ValidateAlarm()
+        {
+            if (dateTimePickerTime.Value < DateTime.Now || !Enum.IsDefined(typeof(DayOfWeek), comboBoxDayOfWeek.SelectedItem) || string.IsNullOrEmpty(textBoxMessage.Text))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         private void CreateAlarm()
         {
-            AlarmClock alarmClock = new AlarmClock(alarmTime, alarmDay);
+            AlarmClock alarmClock = new AlarmClock(this.alarmTime, this.alarmDay);
             alarmClock.Alarm += () =>
             {
-                MessageBox.Show(alarmText, "Alarm");
+                MessageBox.Show(this.alarmText, "Alarm");
                 lblStatus.Text = "Status: Not Set";
-            }
-            lblStatus.Text = $"Status: Set to {alarmTime} on {alarmDay}";
+            };
+            lblStatus.Text = $"Status: Set to {this.alarmTime} on {this.alarmDay}";
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            alarmTime = dateTimePickerTime.Value;
-            alarmDay = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), comboBoxDayOfWeek.SelectedItem.ToString());
-            alarmText = textBoxMessage.Text;
+            this.alarmTime = dateTimePickerTime.Value;
+            this.alarmDay = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), comboBoxDayOfWeek.SelectedItem.ToString());
+            this.alarmText = textBoxMessage.Text;
 
-            CreateAlarm();
+            if (ValidateAlarm())
+            {
+                CreateAlarm();
+            }
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             using (StreamWriter sw = new StreamWriter("alarm.txt"))
             {
-                sw.WriteLine(alarmTime);
-                sw.WriteLine(alarmDay);
-                sw.WriteLine(alarmText);
+                sw.WriteLine(this.alarmTime);
+                sw.WriteLine(this.alarmDay);
+                sw.WriteLine(this.alarmText);
             }
         }
 
@@ -62,10 +75,29 @@ namespace dev
                     string alarmDayString = sr.ReadLine();
                     string message = sr.ReadLine();
 
-                    alarmTime = DateTime.Parse(alarmTimeString);
-                    alarmDay = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), alarmDayString);
+                    this.alarmTime = DateTime.Parse(alarmTimeString);
+                    this.alarmDay = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), alarmDayString);
+                    this.alarmText = message;
 
+                    if (ValidateAlarm())
+                    {
+                        CreateAlarm();
+                    }
+                }
+            }
+        }
+
+        private void FormMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (ValidateAlarm())
+                {
                     CreateAlarm();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid alarm setting. Please check your inputs and try again...")
                 }
             }
         }

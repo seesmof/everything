@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/Year 2 Term 1/SP/data.md",
+                "file": "University/Year 2 Term 1/Дисципліни.md",
                 "mode": "source",
                 "source": false
               }
@@ -86,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/Year 2 Term 1/SP/data.md",
+                "file": "University/Year 2 Term 1/Дисципліни.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/Year 2 Term 1/SP/data.md",
+                "file": "University/Year 2 Term 1/Дисципліни.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/Year 2 Term 1/SP/data.md"
+                "file": "University/Year 2 Term 1/Дисципліни.md"
               }
             }
           }
@@ -177,6 +177,11 @@
   },
   "active": "165cb1e73bd0bdac",
   "lastOpenFiles": [
+    "Minecraft Mods/1.19.2/resourcepacks",
+    "Minecraft Mods/1.19.2/Нова папка",
+    "Minecraft Mods/1.19.2",
+    "Minecraft Mods/Нова папка",
+    "University/Year 2 Term 1/SP/data.md",
     "University/Year 2 Term 1/SP/tasks/lb3/~WRL0004.tmp",
     "University/Year 2 Term 1/SP/tasks/lb3/~WRD0003.tmp",
     "University/Year 2 Term 1/SP/tasks/lb3/~WRD0002.tmp",
@@ -184,10 +189,6 @@
     "University/Year 2 Term 1/SP/tasks/lb3/mso4B4E.tmp",
     "University/Year 2 Term 1/SP/tasks/lb3/mso7936.tmp",
     "University/Year 2 Term 1/SP/tasks/lb3/mso7780.tmp",
-    "University/Year 2 Term 1/SP/tasks/lb3/звіт.pdf",
-    "University/Year 2 Term 1/SP/tasks/lb3/mso2877.tmp",
-    "University/Year 2 Term 1/SP/tasks/lb3/mso2615.tmp",
-    "Competitive Programming/Competitions/ICPC Team Fall 2023 - Stage 1/test.py",
     "Competitive Programming/Competitions/ICPC Team Fall 2023 - Stage 2/dev/A.md",
     "Competitive Programming/Competitions/ICPC Team Fall 2023 - Stage 2/data.md",
     "Competitive Programming/ICPC Team Fall 2023 - Stage 2/dev/A.md",
@@ -212,7 +213,6 @@
     "University/Year 2 Term 1/IY/tasks/Сем5/Розмивання української ідентичності як складова асиміляторської політики російського більшовизму..md",
     "University/Year 2 Term 1/IY/tasks/Сем5/Культура Радянської України в довоєнний період..md",
     "University/Year 2 Term 1/IY/tasks/Сем5/Сталінські репресії в Україні 20-х – 30-х років..md",
-    "University/Year 2 Term 1/IY/tasks/Сем5/Колективізація сільського господарства та Голодомор 1932-1933 рр..md",
     "University/Year 2 Term 1/OPI/tasks/lb6/logo.png",
     "University/Year 2 Term 1/OPI/tasks/lb6/keyboard.png",
     "University/Year 2 Term 1/WEB/tasks/lb8/img/Overview - Python Wiki.png",

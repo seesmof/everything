@@ -136,6 +136,7 @@
             this.Text = "Робота з клавіатурою - ОПІ Лабораторна 6";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormMain_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
