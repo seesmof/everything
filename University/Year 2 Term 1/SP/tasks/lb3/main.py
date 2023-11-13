@@ -30,23 +30,23 @@ def compareTables(A: [[int]], B: [[int]]):
 def mergeArrays(A, B, C):
     # Є два відсортованих за не зростанням масиви A[1,N] і B[1,M]. Отримати відсортований за не зростанням масив C[1, N+M], що складається з елементів масивів A і B ("злити" разом масиви A і B).
 
-    # if the first array is empty
+    # if the first array becomes empty
     if not A:
-        # we append our second array reversed, because the arrays are sorted in descending order
-        return C + B[::-1]
-    # if the second array is empty
+        # we just append our second array to result
+        return C + B
+    # if the second array becomes empty
     if not B:
-        # same deal, appending the reversed first array to our resulting array
-        return C + A[::-1]
+        # same deal, appending the first array to our result
+        return C + A
 
-    # if the last element, which is the smallest one, from first array is larger than the smallest element from second array
-    if A[-1] > B[-1]:
-        # we recursively merge them, but take out the last element from first array and append it to the resulting array
-        return mergeArrays(A[:-1], B, C + [A[-1]])
-    # if its not
+    # compare the two largest elements in the arrays, which are the first ones
+    if A[0] > B[0]:
+        # now recursively merge the two arrays while removing the larger element from array A and appending it to array result
+        return mergeArrays(A[1:], B, C + [A[0]])
+    # if an element from the second array is larger
     else:
-        # we recursively merge our arrays, but now taking out the last element from second array and appending it to the resutling array
-        return mergeArrays(A, B[:-1], C + [B[-1]])
+        # then recursively merge the arrays, but remove the first element from array B and append it to our result
+        return mergeArrays(A, B[1:], C + [B[0]])
 
 
 def testCompareTables():
@@ -106,7 +106,7 @@ def testCompareTables():
 
 
 def testMergeArrays():
-    assert mergeArrays([1, 3, 5, 7], [2, 4, 6, 8], []) == [
+    assert mergeArrays([7, 5, 3, 1], [8, 6, 4, 2], []) == [
         8,
         7,
         6,
@@ -116,11 +116,11 @@ def testMergeArrays():
         2,
         1,
     ], "Test 1 failed"
-    assert mergeArrays([1, 2, 3], [4, 5, 6], []) == [6, 5, 4, 3, 2, 1], "Test 2 failed"
+    assert mergeArrays([3, 2, 1], [6, 5, 4], []) == [6, 5, 4, 3, 2, 1], "Test 2 failed"
     assert mergeArrays([1, 1, 1], [1, 1, 1], []) == [1, 1, 1, 1, 1, 1], "Test 3 failed"
-    assert mergeArrays([1, 2, 3], [], []) == [3, 2, 1], "Test 4 failed"
-    assert mergeArrays([], [4, 5, 6], []) == [6, 5, 4], "Test 5 failed"
-    assert mergeArrays([20, 30, 90, 120, 240, 965], [], []) == [
+    assert mergeArrays([3, 2, 1], [], []) == [3, 2, 1], "Test 4 failed"
+    assert mergeArrays([], [6, 5, 4], []) == [6, 5, 4], "Test 5 failed"
+    assert mergeArrays([965, 240, 120, 90, 30, 20], [], []) == [
         965,
         240,
         120,
@@ -129,7 +129,7 @@ def testMergeArrays():
         20,
     ], "Test 6 failed"
     assert mergeArrays([], [], []) == [], "Test 7 failed"
-    assert mergeArrays([10, 20, 30, 40, 50], [15, 25, 35, 45, 55], []) == [
+    assert mergeArrays([50, 40, 30, 20, 10], [55, 45, 35, 25, 15], []) == [
         55,
         50,
         45,
