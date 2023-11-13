@@ -199,6 +199,9 @@ def menu():
                 B = list(
                     map(int, input("Enter the elements of the second array: ").split())
                 )
+                if A != sorted(A, reverse=True) or B != sorted(B, reverse=True):
+                    A = sorted(A, reverse=True)
+                    B = sorted(B, reverse=True)
                 res = mergeArrays(A, B, [])
                 print(f"\nMerged arrays: {res}")
             elif localChoice == 2:
