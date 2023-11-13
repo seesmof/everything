@@ -7,12 +7,13 @@ using System.Windows.Forms;
 
 namespace dev
 {
+    [Serializable]
     public class AlarmClock
     {
-        private Timer timer;
-        private DateTime alarmTime;
-        private DayOfWeek alarmDay;
-        private bool hasAlarmWentOff;
+        public Timer timer;
+        public DateTime alarmTime;
+        public DayOfWeek alarmDay;
+        public bool hasAlarmWentOff;
 
         public AlarmClock(DateTime alarmTime, DayOfWeek alarmDay)
         {

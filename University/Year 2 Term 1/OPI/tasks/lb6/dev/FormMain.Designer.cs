@@ -134,6 +134,8 @@
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "FormMain";
             this.Text = "Робота з клавіатурою - ОПІ Лабораторна 6";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
