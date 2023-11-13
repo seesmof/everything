@@ -29,8 +29,8 @@ namespace dev
         {
             if (!hasAlarmWentOff && DateTime.Now.DayOfWeek == alarmDay && DateTime.Now.TimeOfDay >= alarmTime.TimeOfDay)
             {
-                OnAlarm();
                 timer.Stop();
+                OnAlarm();
                 hasAlarmWentOff = true;
             }
         }

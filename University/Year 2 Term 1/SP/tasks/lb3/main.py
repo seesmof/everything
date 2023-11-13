@@ -4,30 +4,35 @@
 """
 
 
-def can_meet_all(n, A):
-    # Є N осіб і цілі числа А1,..., AN; людину i необхідно познайомити з Аi людьми. Чи можна це зробити?
+def sortFive(nums):
+    def tournament(arr, i, j):
+        if i == j:
+            return [arr[i]]
 
-    visited = [False] * n
+        mid = (i + j) // 2
+        left = tournament(arr, i, mid)
+        right = tournament(arr, mid + 1, j)
 
-    def dfs(i):
-        if visited[i] or A[i] > n - 1 or A[i] < 0:
-            return False
-        if A[i] == 0:
-            visited[i] = True
-            return True
+        return merge(left, right)
 
-        visited[i] = True
-        for j in range(n):
-            if not visited[j] and dfs(j):
-                A[i] -= 1
-                if A[i] == 0:
-                    return True
-        return False
+    def merge(left, right):
+        result = []
+        i = j = 0
 
-    for i in range(n):
-        if not visited[i] and not dfs(i):
-            return False
-    return True
+        while i < len(left) and j < len(right):
+            if left[i] >= right[j]:
+                result.append(left[i])
+                i += 1
+            else:
+                result.append(right[j])
+                j += 1
+
+        result.extend(left[i:])
+        result.extend(right[j:])
+        return result
+
+    sorted_nums = tournament(nums, 0, len(nums) - 1)[:5]
+    return sorted_nums
 
 
 def mergeArrays(A, B, C):
@@ -146,4 +151,7 @@ def menu():
 
 if __name__ == "__main__":
     # menu()
-    testSortFive()
+    # testSortFive()
+    numbers = [5, 3, 8, 1, 7]
+    sorted_numbers = sortFive(numbers)
+    print("Sorted numbers in non-increasing order:", sorted_numbers)
