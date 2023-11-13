@@ -4,15 +4,15 @@
 # [125] Valid Palindrome
 #
 
-import re
-
 
 # @lc code=start
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        strippedString = re.sub(r"\W+", "", s)
+        strippedString = ""
+        for character in s:
+            if character.isalnum():
+                strippedString += character
         strippedString = strippedString.lower()
-        strippedString = strippedString.replace("_", "")
         return strippedString == strippedString[::-1]
 
 
