@@ -21,7 +21,7 @@ namespace dev
         int maxChars; // The maximum number of characters to be entered based on the difficulty level
         int minWords; // The minimum number of words to be entered based on the difficulty level
         int maxWords; // The maximum number of words to be entered based on the difficulty level
-        Random random; // A random number generator object
+        Random random = new Random(); // A random number generator object
         BestResults bestResults; // A best results object
 
 
@@ -31,7 +31,7 @@ namespace dev
 
             // Adjust the timer
             tmrGame.Interval = 1000;
-            tmrGame.Tick += TmrGame_Tick;
+            tmrGame.Tick += tmrGame_Tick;
             // Load the best results from the file
             bestResults = new BestResults("bestresults.txt");
             bestResults.Load();
@@ -201,35 +201,41 @@ namespace dev
 
         private void tmrGame_Tick(object sender, EventArgs e)
         {
-            // Decrement the time variable
+            // Decrement the time by 1
             time--;
-            // Set the timer label to "Time: " + time
+            // Update the timer label
             lblTimer.Text = "Time: " + time;
-            // If the time variable is 0
+            // If the time is up
             if (time == 0)
             {
+                // Show a message box with the game over message and the correct score
+                MessageBox.Show("Time is up! Your score is " + lblScore.Text, "Game Over");
                 // Stop the game
                 StopGame();
-                // Show a message box with the game over message
-                MessageBox.Show("Time is up! Your score is " + score, "Game Over");
             }
         }
 
         private void txtInput_TextChanged(object sender, EventArgs e)
         {
-            // If the input text is equal to the character
-            if (txtInput.Text == character.ToString())
+            // If the input text is not empty
+            if (txtInput.Text != "")
             {
-                // Increment the score by 1
-                score++;
-                // Update the score label
-                lblScore.Text = "Score: " + score;
-                // Generate a new character
-                GenerateCharacter();
-                // Reset the time to maxTime
-                time = maxTime;
-                // Update the timer label
-                lblTimer.Text = "Time: " + time;
+                // Get the last character of the input text
+                char input = txtInput.Text[txtInput.Text.Length - 1];
+                // If the input character is equal to the character
+                if (input == character)
+                {
+                    // Increment the score by 1
+                    score++;
+                    // Update the score label
+                    lblScore.Text = "Score: " + score;
+                    // Generate a new character
+                    GenerateCharacter();
+                    // Reset the time to maxTime
+                    time = maxTime;
+                    // Update the timer label
+                    lblTimer.Text = "Time: " + time;
+                }
             }
         }
     }
