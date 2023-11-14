@@ -21,16 +21,28 @@
 
 ### Опис команд
 
-- CLS: This command is used to clear the screen of the console. It doesn't take any arguments and simply clears all the text from the console window.
-- COPY: This command is used to copy files from one location to another. It takes two arguments: the source file and the destination location.
-- DIR: This command is used to display a list of files and subdirectories in a directory. It can take various switches to modify its output, such as /w for wide listing format or /p to pause after each screenful of output.
-- ECHO: This command is used to display a message on the screen or to turn on or off the echoing of commands in a batch file. For example, ECHO Hello, World! would display "Hello, World!" on the console.
-- GOTO: This command is used in batch files to direct the command processor to a labelled line in the script. For example, GOTO END would jump to a line labelled :END.
-- EXIT: This command is used to end a command processor session, or to close a script or batch file.
-- IF: This command is used to perform conditional processing in batch files. For example, IF EXIST filename (DEL filename) would delete the specified file if it exists.
-- MD: This command is used to create a directory. For example, MD new_directory would create a new directory named "new_directory".
+- CLS: Ця команда використовується для очищення екрана консолі. Вона не потребує жодних аргументів і просто видаляє весь текст з вікна консолі.
+- COPY: Ця команда використовується для копіювання файлів з одного місця в інше. Їй потрібні два аргументи: файл-джерело і місце призначення.
+- DIR: Ця команда використовується для відображення списку файлів і підкаталогів у каталозі. Вона може приймати різні перемикачі для зміни виводу, наприклад, /w для широкого формату виводу або /p для паузи після кожного виводу на екран.
+- ECHO: Ця команда використовується для виведення повідомлення на екран або для увімкнення чи вимкнення відлуння команд у командному файлі. Наприклад, ECHO Hello, World! виведе на консоль повідомлення "Hello, World!".
+- GOTO: Ця команда використовується у командних файлах, щоб спрямувати командний процесор на позначений рядок скрипта. Наприклад, GOTO END призведе до переходу на рядок з міткою :END.
+- EXIT: Ця команда використовується для завершення сеансу командного процесора, закриття скрипта або пакетного файлу.
+- IF: Ця команда використовується для виконання умовної обробки в пакетних файлах. Наприклад, IF EXIST ім'я файлу (DEL ім'я файлу) видалить вказаний файл, якщо він існує.
+- MD: Ця команда використовується для створення каталогу. Наприклад, MD new_directory створить новий каталог з назвою "new_directory".
 
 ### Розробка пакетного файлу
+
+```bat
+@ECHO OFF
+MD newLocation
+COPY main.bat newLocation
+ECHO The file has been copied!
+PAUSE
+```
+
+#### Результати виконання
+
+![1699996950764](image/main/1699996950764.png)
 
 ## Висновки
 
