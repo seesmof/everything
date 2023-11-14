@@ -28,8 +28,10 @@ namespace dev
         public FormMain()
         {
             InitializeComponent();
-            tmrGame.Interval = 1000;
 
+            // Adjust the timer
+            tmrGame.Interval = 1000;
+            tmrGame.Tick += TmrGame_Tick;
             // Load the best results from the file
             bestResults = new BestResults("bestresults.txt");
             bestResults.Load();
@@ -132,7 +134,7 @@ namespace dev
                 }
             }
             // Set the character variable to the string
-            character = str;
+            character = str[0];
             // Set the character label to the character
             lblCharacter.Text = character.ToString();
         }
@@ -176,7 +178,7 @@ namespace dev
             // Enable the difficulty combo box
             cmbDifficulty.Enabled = true;
             // Create a new result object with the user's name, score, and difficulty level
-            Result result = new Result(InputBox("Enter your name", "Name"), score, cmbDifficulty.SelectedItem.ToString());
+            Result result = new Result("CurrentUser", score, cmbDifficulty.SelectedItem.ToString());
             // Add the result to the best results list
             bestResults.Add(result);
             // Save the best results to the file
@@ -184,4 +186,51 @@ namespace dev
             // Reset the game variables and controls
             ResetGame();
         }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            // Start the game
+            StartGame();
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            // Stop the game
+            StopGame();
+        }
+
+        private void tmrGame_Tick(object sender, EventArgs e)
+        {
+            // Decrement the time variable
+            time--;
+            // Set the timer label to "Time: " + time
+            lblTimer.Text = "Time: " + time;
+            // If the time variable is 0
+            if (time == 0)
+            {
+                // Stop the game
+                StopGame();
+                // Show a message box with the game over message
+                MessageBox.Show("Time is up! Your score is " + score, "Game Over");
+            }
+        }
+
+        private void txtInput_TextChanged(object sender, EventArgs e)
+        {
+            // If the input text is equal to the character
+            if (txtInput.Text == character.ToString())
+            {
+                // Increment the score by 1
+                score++;
+                // Update the score label
+                lblScore.Text = "Score: " + score;
+                // Generate a new character
+                GenerateCharacter();
+                // Reset the time to maxTime
+                time = maxTime;
+                // Update the timer label
+                lblTimer.Text = "Time: " + time;
+            }
+        }
     }
+}
