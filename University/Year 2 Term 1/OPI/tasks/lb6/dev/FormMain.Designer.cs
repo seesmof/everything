@@ -37,19 +37,26 @@
             this.btnStop = new System.Windows.Forms.Button();
             this.cmbDifficulty = new System.Windows.Forms.ComboBox();
             this.lblScore = new System.Windows.Forms.Label();
+            this.dgvScores = new System.Windows.Forms.DataGridView();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ScoreHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DifficultyHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvScores)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCharacter
             // 
-            this.lblCharacter.Location = new System.Drawing.Point(12, 50);
+            this.lblCharacter.AutoSize = true;
+            this.lblCharacter.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCharacter.Location = new System.Drawing.Point(12, 48);
             this.lblCharacter.Name = "lblCharacter";
-            this.lblCharacter.Size = new System.Drawing.Size(560, 71);
+            this.lblCharacter.Size = new System.Drawing.Size(12, 18);
             this.lblCharacter.TabIndex = 1;
-            this.lblCharacter.Text = "Char...";
+            this.lblCharacter.Text = "f";
             // 
             // txtInput
             // 
-            this.txtInput.Location = new System.Drawing.Point(15, 135);
+            this.txtInput.Location = new System.Drawing.Point(15, 78);
             this.txtInput.Name = "txtInput";
             this.txtInput.Size = new System.Drawing.Size(406, 22);
             this.txtInput.TabIndex = 2;
@@ -71,7 +78,7 @@
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStart.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnStart.Location = new System.Drawing.Point(427, 135);
+            this.btnStart.Location = new System.Drawing.Point(427, 78);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(77, 22);
             this.btnStart.TabIndex = 4;
@@ -86,7 +93,7 @@
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStop.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnStop.Location = new System.Drawing.Point(510, 135);
+            this.btnStop.Location = new System.Drawing.Point(510, 78);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(62, 22);
             this.btnStop.TabIndex = 4;
@@ -118,10 +125,48 @@
             this.lblScore.TabIndex = 3;
             this.lblScore.Text = "Score: 0";
             // 
+            // dgvScores
+            // 
+            this.dgvScores.AllowUserToAddRows = false;
+            this.dgvScores.AllowUserToDeleteRows = false;
+            this.dgvScores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvScores.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvScores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvScores.ColumnHeadersHeight = 28;
+            this.dgvScores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Name,
+            this.ScoreHeader,
+            this.DifficultyHeader});
+            this.dgvScores.Location = new System.Drawing.Point(15, 118);
+            this.dgvScores.Name = "dgvScores";
+            this.dgvScores.ReadOnly = true;
+            this.dgvScores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvScores.Size = new System.Drawing.Size(557, 231);
+            this.dgvScores.TabIndex = 6;
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
+            this.Name.ReadOnly = true;
+            // 
+            // ScoreHeader
+            // 
+            this.ScoreHeader.HeaderText = "Score";
+            this.ScoreHeader.Name = "ScoreHeader";
+            this.ScoreHeader.ReadOnly = true;
+            // 
+            // DifficultyHeader
+            // 
+            this.DifficultyHeader.HeaderText = "Difficulty";
+            this.DifficultyHeader.Name = "DifficultyHeader";
+            this.DifficultyHeader.ReadOnly = true;
+            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.dgvScores);
             this.Controls.Add(this.cmbDifficulty);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
@@ -135,6 +180,7 @@
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "FormMain";
             this.Text = "Робота з клавіатурою - ОПІ Лабораторна 6";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvScores)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,6 +195,10 @@
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.ComboBox cmbDifficulty;
         private System.Windows.Forms.Label lblScore;
+        private System.Windows.Forms.DataGridView dgvScores;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ScoreHeader;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DifficultyHeader;
     }
 }
 

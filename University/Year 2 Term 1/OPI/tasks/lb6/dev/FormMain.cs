@@ -39,6 +39,8 @@ namespace dev
             cmbDifficulty.SelectedIndex = 0;
             // Reset the game variables and controls
             ResetGame();
+            // Load the scores from the best results list to the grid view table
+            LoadScores();
         }
 
         // A method to reset the game variables and controls
@@ -183,6 +185,8 @@ namespace dev
             bestResults.Add(result);
             // Save the best results to the file
             bestResults.Save();
+            // Load the scores from the best results list to the grid view table
+            LoadScores();
             // Reset the game variables and controls
             ResetGame();
         }
@@ -236,6 +240,18 @@ namespace dev
                     // Update the timer label
                     lblTimer.Text = "Time: " + time;
                 }
+            }
+        }
+
+        private void LoadScores()
+        {
+            // Clear the rows of the grid view table
+            dgvScores.Rows.Clear();
+            // Loop through each result in the best results list
+            foreach (Result result in bestResults.Results)
+            {
+                // Add a new row to the grid view table with the result properties
+                dgvScores.Rows.Add(result.Name, result.Score, result.Difficulty);
             }
         }
     }
