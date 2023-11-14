@@ -1,0 +1,22 @@
+{
+    "ModSettings": {
+        "include_hotbar_modifier": {
+            "main": {
+                "keys": "LEFT_CONTROL,LEFT_SHIFT"
+            }
+        },
+        "first_run": false
+    },
+    "Hotkeys": {
+        "move_all_items": {
+            "main": {
+                "keys": "LEFT_SHIFT,R"
+            }
+        },
+        "throw_all_items": {
+            "main": {
+                "keys": "LEFT_SHIFT,T"
+            }
+        }
+    }
+}

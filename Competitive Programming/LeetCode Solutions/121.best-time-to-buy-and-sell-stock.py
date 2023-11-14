@@ -11,8 +11,6 @@ class Solution:
         if prices == sorted(prices, reverse=True):
             return 0
 
-        minValue, minIndex = min(prices), prices.index
-
         return
 
 
