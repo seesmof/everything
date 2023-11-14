@@ -19,6 +19,19 @@
 
 ## Результати виконання роботи
 
+### Опис команд
+
+- CLS: This command is used to clear the screen of the console. It doesn't take any arguments and simply clears all the text from the console window.
+- COPY: This command is used to copy files from one location to another. It takes two arguments: the source file and the destination location.
+- DIR: This command is used to display a list of files and subdirectories in a directory. It can take various switches to modify its output, such as /w for wide listing format or /p to pause after each screenful of output.
+- ECHO: This command is used to display a message on the screen or to turn on or off the echoing of commands in a batch file. For example, ECHO Hello, World! would display "Hello, World!" on the console.
+- GOTO: This command is used in batch files to direct the command processor to a labelled line in the script. For example, GOTO END would jump to a line labelled :END.
+- EXIT: This command is used to end a command processor session, or to close a script or batch file.
+- IF: This command is used to perform conditional processing in batch files. For example, IF EXIST filename (DEL filename) would delete the specified file if it exists.
+- MD: This command is used to create a directory. For example, MD new_directory would create a new directory named "new_directory".
+
+### Розробка пакетного файлу
+
 ## Висновки
 
 Таким чином, ми дослідили основні команди консолі Microsoft Windows, а також створили пакетний файл, який виконав функції автоматизації деяких процесів у командному середовищі операційної системи Microsoft Windows.
