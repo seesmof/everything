@@ -28,129 +28,124 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dateTimePickerTime = new System.Windows.Forms.DateTimePicker();
-            this.lblTime = new System.Windows.Forms.Label();
-            this.comboBoxDayOfWeek = new System.Windows.Forms.ComboBox();
-            this.lblDayOfWeek = new System.Windows.Forms.Label();
-            this.textBoxMessage = new System.Windows.Forms.TextBox();
-            this.lblMessage = new System.Windows.Forms.Label();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.lblStatus = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
+            this.lblCharacter = new System.Windows.Forms.Label();
+            this.txtInput = new System.Windows.Forms.TextBox();
+            this.lblTimer = new System.Windows.Forms.Label();
+            this.tmrGame = new System.Windows.Forms.Timer(this.components);
+            this.btnStart = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.cmbDifficulty = new System.Windows.Forms.ComboBox();
+            this.lblScore = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // dateTimePickerTime
+            // lblCharacter
             // 
-            this.dateTimePickerTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerTime.Location = new System.Drawing.Point(15, 37);
-            this.dateTimePickerTime.Name = "dateTimePickerTime";
-            this.dateTimePickerTime.Size = new System.Drawing.Size(84, 22);
-            this.dateTimePickerTime.TabIndex = 0;
+            this.lblCharacter.Location = new System.Drawing.Point(12, 50);
+            this.lblCharacter.Name = "lblCharacter";
+            this.lblCharacter.Size = new System.Drawing.Size(560, 71);
+            this.lblCharacter.TabIndex = 1;
+            this.lblCharacter.Text = "Char...";
             // 
-            // lblTime
+            // txtInput
             // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(12, 18);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(38, 16);
-            this.lblTime.TabIndex = 1;
-            this.lblTime.Text = "Time";
+            this.txtInput.Location = new System.Drawing.Point(15, 135);
+            this.txtInput.Name = "txtInput";
+            this.txtInput.Size = new System.Drawing.Size(406, 22);
+            this.txtInput.TabIndex = 2;
             // 
-            // comboBoxDayOfWeek
+            // lblTimer
             // 
-            this.comboBoxDayOfWeek.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDayOfWeek.FormattingEnabled = true;
-            this.comboBoxDayOfWeek.Items.AddRange(new object[] {
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"});
-            this.comboBoxDayOfWeek.Location = new System.Drawing.Point(105, 37);
-            this.comboBoxDayOfWeek.Name = "comboBoxDayOfWeek";
-            this.comboBoxDayOfWeek.Size = new System.Drawing.Size(150, 24);
-            this.comboBoxDayOfWeek.TabIndex = 2;
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.Location = new System.Drawing.Point(12, 20);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(51, 16);
+            this.lblTimer.TabIndex = 3;
+            this.lblTimer.Text = "Time: 0";
             // 
-            // lblDayOfWeek
+            // btnStart
             // 
-            this.lblDayOfWeek.AutoSize = true;
-            this.lblDayOfWeek.Location = new System.Drawing.Point(105, 18);
-            this.lblDayOfWeek.Name = "lblDayOfWeek";
-            this.lblDayOfWeek.Size = new System.Drawing.Size(106, 16);
-            this.lblDayOfWeek.TabIndex = 1;
-            this.lblDayOfWeek.Text = "Day of the Week";
+            this.btnStart.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnStart.FlatAppearance.BorderSize = 0;
+            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStart.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnStart.Location = new System.Drawing.Point(427, 135);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(77, 22);
+            this.btnStart.TabIndex = 4;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = false;
             // 
-            // textBoxMessage
+            // btnStop
             // 
-            this.textBoxMessage.Location = new System.Drawing.Point(261, 37);
-            this.textBoxMessage.Name = "textBoxMessage";
-            this.textBoxMessage.Size = new System.Drawing.Size(230, 22);
-            this.textBoxMessage.TabIndex = 3;
+            this.btnStop.BackColor = System.Drawing.Color.DarkRed;
+            this.btnStop.FlatAppearance.BorderSize = 0;
+            this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStop.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnStop.Location = new System.Drawing.Point(510, 135);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(62, 22);
+            this.btnStop.TabIndex = 4;
+            this.btnStop.Text = "Stop";
+            this.btnStop.UseVisualStyleBackColor = false;
             // 
-            // lblMessage
+            // cmbDifficulty
             // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(258, 18);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(64, 16);
-            this.lblMessage.TabIndex = 1;
-            this.lblMessage.Text = "Message";
+            this.cmbDifficulty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDifficulty.FormattingEnabled = true;
+            this.cmbDifficulty.Items.AddRange(new object[] {
+            "Easy",
+            "Medium",
+            "High",
+            "Expert",
+            "Master"});
+            this.cmbDifficulty.Location = new System.Drawing.Point(427, 20);
+            this.cmbDifficulty.Name = "cmbDifficulty";
+            this.cmbDifficulty.Size = new System.Drawing.Size(145, 24);
+            this.cmbDifficulty.TabIndex = 5;
             // 
-            // btnCreate
+            // lblScore
             // 
-            this.btnCreate.Location = new System.Drawing.Point(497, 37);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 22);
-            this.btnCreate.TabIndex = 4;
-            this.btnCreate.Text = "Create";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(12, 76);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(131, 24);
-            this.lblStatus.TabIndex = 5;
-            this.lblStatus.Text = "Status: Not Set";
+            this.lblScore.AutoSize = true;
+            this.lblScore.Location = new System.Drawing.Point(69, 20);
+            this.lblScore.Name = "lblScore";
+            this.lblScore.Size = new System.Drawing.Size(56, 16);
+            this.lblScore.TabIndex = 3;
+            this.lblScore.Text = "Score: 0";
             // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(584, 361);
-            this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.btnCreate);
-            this.Controls.Add(this.textBoxMessage);
-            this.Controls.Add(this.comboBoxDayOfWeek);
-            this.Controls.Add(this.lblMessage);
-            this.Controls.Add(this.lblDayOfWeek);
-            this.Controls.Add(this.lblTime);
-            this.Controls.Add(this.dateTimePickerTime);
+            this.Controls.Add(this.cmbDifficulty);
+            this.Controls.Add(this.btnStop);
+            this.Controls.Add(this.btnStart);
+            this.Controls.Add(this.lblScore);
+            this.Controls.Add(this.lblTimer);
+            this.Controls.Add(this.txtInput);
+            this.Controls.Add(this.lblCharacter);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(600, 400);
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "FormMain";
             this.Text = "Робота з клавіатурою - ОПІ Лабораторна 6";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
-            this.Load += new System.EventHandler(this.FormMain_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormMain_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DateTimePicker dateTimePickerTime;
-        private System.Windows.Forms.Label lblTime;
-        private System.Windows.Forms.ComboBox comboBoxDayOfWeek;
-        private System.Windows.Forms.Label lblDayOfWeek;
-        private System.Windows.Forms.TextBox textBoxMessage;
-        private System.Windows.Forms.Label lblMessage;
-        private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label lblCharacter;
+        private System.Windows.Forms.TextBox txtInput;
+        private System.Windows.Forms.Label lblTimer;
+        private System.Windows.Forms.Timer tmrGame;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.ComboBox cmbDifficulty;
+        private System.Windows.Forms.Label lblScore;
     }
 }
+
