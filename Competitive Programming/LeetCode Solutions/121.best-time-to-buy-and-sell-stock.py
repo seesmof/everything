@@ -11,7 +11,11 @@ class Solution:
         if prices == sorted(prices, reverse=True):
             return 0
 
-        return
+        minValue = min(prices)
+        minIndex = prices.index(minValue)
+        maxValue = max(prices[minIndex:])
+
+        return maxValue - minValue
 
 
 # @lc code=end

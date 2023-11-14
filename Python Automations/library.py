@@ -16,8 +16,6 @@ import re
 import json
 import ctypes
 import wmi
-from todoist_api_python.api import TodoistAPI
-from deep_translator import GoogleTranslator
 
 engine = pyttsx4.init()
 CARDIO_WORKOUT_LINK = "https://youtu.be/ylxSQ_5WbMQ?t=50"

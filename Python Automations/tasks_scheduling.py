@@ -23,10 +23,6 @@ classFourTime_early = "13:20"
 classFiveTime_early = "14:50"
 classSixTime_early = "16:40"
 
-try:
-    clear_downloads_folder()
-except Exception:
-    speak_text("Couldn't clear downloads folder. Take a look at it yourself.")
 speak_text("124 UAH daily donate.")
 
 weekNominationStatus = ""
