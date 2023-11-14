@@ -6,19 +6,19 @@
 
 
 # @lc code=start
+from math import prod
+
+
 class Solution:
     def productExceptSelf(self, nums: [int]) -> [int]:
-        if len(nums) < 2:
-            return nums
-        if len(nums) == 2 and nums[0] == 0 and nums[1] == 0:
-            return [0, 0]
         ans = []
-        for i in range(len(nums)):
-            prod = 1
-            for j, num in enumerate(nums):
-                if nums[j] != nums[i] and i != j:
-                    prod *= num
-            ans.append(prod)
+        for index, num in enumerate(nums):
+            exceptSelfArray = []
+            for i, n in enumerate(nums):
+                if i != index:
+                    exceptSelfArray.append(n)
+            sum = prod(exceptSelfArray)
+            ans.append(sum)
         return ans
 
 
