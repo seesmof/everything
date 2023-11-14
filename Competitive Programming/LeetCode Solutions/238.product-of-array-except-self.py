@@ -11,11 +11,8 @@ from math import prod
 
 class Solution:
     def productExceptSelf(self, nums: [int]) -> [int]:
-        generalProduct = prod(nums)
         ans = []
-        for index, num in enumerate(nums):
-            currentProduct = generalProduct // num
-            ans.append(currentProduct)
+
         return ans
 
 

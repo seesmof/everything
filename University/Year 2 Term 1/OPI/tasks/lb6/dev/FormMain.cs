@@ -22,16 +22,6 @@ namespace dev
             InitializeComponent();
         }
 
-        private bool ValidateAlarm()
-        {
-            if (dateTimePickerTime.Value < DateTime.Now || !Enum.IsDefined(typeof(DayOfWeek), comboBoxDayOfWeek.SelectedItem) || string.IsNullOrEmpty(textBoxMessage.Text))
-            {
-                return false;
-            }
-
-            return true;
-        }
-
         private void CreateAlarm()
         {
             AlarmClock alarmClock = new AlarmClock(this.alarmTime, this.alarmDay);
@@ -49,10 +39,7 @@ namespace dev
             this.alarmDay = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), comboBoxDayOfWeek.SelectedItem.ToString());
             this.alarmText = textBoxMessage.Text;
 
-            if (ValidateAlarm())
-            {
-                CreateAlarm();
-            }
+            CreateAlarm();
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -79,10 +66,12 @@ namespace dev
                     this.alarmDay = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), alarmDayString);
                     this.alarmText = message;
 
-                    if (ValidateAlarm())
+                    if (this.alarmTime < DateTime.Now || this.alarmDay < DateTime.Now.DayOfWeek || this.alarmText == "")
                     {
-                        CreateAlarm();
+                        return;
                     }
+
+                    CreateAlarm();
                 }
             }
         }
@@ -91,14 +80,7 @@ namespace dev
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (ValidateAlarm())
-                {
-                    CreateAlarm();
-                }
-                else
-                {
-                    MessageBox.Show("Invalid alarm setting. Please check your inputs and try again...")
-                }
+                CreateAlarm();
             }
         }
     }

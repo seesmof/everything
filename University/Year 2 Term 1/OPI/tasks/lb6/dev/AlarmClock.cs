@@ -7,7 +7,6 @@ using System.Windows.Forms;
 
 namespace dev
 {
-    [Serializable]
     public class AlarmClock
     {
         public Timer timer;
