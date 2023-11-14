@@ -11,14 +11,11 @@ from math import prod
 
 class Solution:
     def productExceptSelf(self, nums: [int]) -> [int]:
+        generalProduct = prod(nums)
         ans = []
         for index, num in enumerate(nums):
-            exceptSelfArray = []
-            for i, n in enumerate(nums):
-                if i != index:
-                    exceptSelfArray.append(n)
-            sum = prod(exceptSelfArray)
-            ans.append(sum)
+            currentProduct = generalProduct // num
+            ans.append(currentProduct)
         return ans
 
 
