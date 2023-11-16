@@ -1,29 +1,29 @@
-"""
-атом
-вулиця
-хвіст
-бавовна
-вівця
-плакат
-зоопарк
-стіл
-"""
+class MinStack:
+    def __init__(self):
+        self.stack = []
+        self.minValues = []
+
+    def push(self, val: int) -> None:
+        self.stack.append(val)
+        if val < self.minValues[-1]:
+            self.minValues.append(val)
+
+    def pop(self) -> None:
+        self.stack.pop()
+        self.minValues.pop()
+
+    def top(self) -> int:
+        return self.stack[-1]
+
+    def getMin(self) -> int:
+        return self.minValues[-1]
 
 
-def longestConsecutive(nums):
-    nums = set(nums)
-    largestLength = 0
-    print(nums)
-
-
-nums = [0, 3, 7, 2, 5, 8, 4, 6, 0, 1]
-res = longestConsecutive(nums)
-print(res, res == 9)
-
-nums = [100, 4, 200, 1, 3, 2]
-res = longestConsecutive(nums)
-print(res, res == 4)
-
-nums = [9, 1, 4, 7, 3, -1, 0, 5, 8, -1, 6]
-res = longestConsecutive(nums)
-print(res, res == 7)
+m = MinStack()
+print(m.push(-2))
+print(m.push(0))
+print(m.push(-3))
+print(m.getMin())
+print(m.pop())
+print(m.top())
+print(m.getMin())
