@@ -14,9 +14,11 @@
 
 def longestConsecutive(nums):
     nums = sorted(nums)
+    print(nums)
 
     for i in range(len(nums)):
         r = list(range(min(nums), max(nums) + 1))
+        print(r)
         if set(r).issubset(set(nums)):
             return len(r)
         else:
@@ -31,4 +33,6 @@ nums = [100, 4, 200, 1, 3, 2]
 res = longestConsecutive(nums)
 print(res, res == 4)
 
-print(len([]))
+nums = [9, 1, 4, 7, 3, -1, 0, 5, 8, -1, 6]
+res = longestConsecutive(nums)
+print(res, res == 7)
