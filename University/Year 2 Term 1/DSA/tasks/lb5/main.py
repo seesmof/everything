@@ -1,73 +1,56 @@
-from collections import deque
+"""
+- Розробити програмне забезпечення, в якому реалізується алгоритм обходу графу на основі пошуку в глибину. Передбачити, що граф може бути як орієнтований, так і неорієнтований. В процесі пошуку має бути сформовано ліс пошуку в глибину. Для реалізації має використовуватися стек. Програмне забезпечення має бути побудовано на основі відповідного класу, який повинен дозволяти визначати граф, виконувати пошук в глибину, виводити побудований ліс пошуку в глибину, виводити результат обходу тощо.
+- Розробити програмне забезпечення, в якому реалізується алгоритм обходу графу на основі пошуку в ширину. Передбачити, що граф може бути як орієнтований, так і неорієнтований. В процесі пошуку має бути сформовано дерево пошуку в ширину. Для реалізації має використовуватися черга. Програмне забезпечення має бути побудовано на основі відповідного класу, який повинен дозволяти визначати граф, виконувати пошук в ширину, виводити побудоване дерево пошуку в ширину, виводити результат обходу тощо.
+- У заданому користувачем графі поставлено у відповідність кожній вершині деяке ціле число (може бути як від’ємним, так і додатним). Визначити такі шляхи між парами вершин, які в результаті додавання всіх чисел з кожної вершини дозволяють отримати задане користувачем значення.
+- Задано деякий набір арифметичних операцій (наприклад, додати 3, помножити на 2), які можуть бути виконані над операндом. Визначити мінімальний набір операцій, за допомогою якого можна отримати з одного заданого числа а число b. Якщо таке перетворення за допомогою заданого користувачем набору операцій виконати неможливо, то вивести відповідне повідомлення.
+- Гемптон-Кортський лабіринт площею у 60 акрів привертає увагу багатьох туристів. Ваш товариш перед тим, як потрапити до одного з таких лабіринтів і продемонструвати свої здібності, вирішив вивчити план лабіринту та запитав Вас про допомогу, яким чином знайти шлях у лабіринті. Змоделюйте лабіринт за допомогою вершин, що відповідають входу в лабіринт, виходу, глухим кутам, всім точкам лабіринту, в яких є можливість вибору шляху, та з’єднань даних вершин ребрами, що відповідають шляхам у лабіринті
+- Порівняти одержані результати виконаних тестів, провести аналіз вірності, коректності та адекватності роботи розробленого пр ограмного забезпечення.
+"""
 
 
-class Graph:
-    def __init__(self, edges, directed=False):
-        self.adj_list = {}
-        self.directed = directed
-
-        for u, v in edges:
-            if u not in self.adj_list:
-                self.adj_list[u] = []
-            if v not in self.adj_list:
-                self.adj_list[v] = []
-            self.add_edge(u, v)
-
-    def add_edge(self, u, v):
-        self.adj_list[u].append(v)
-        if not self.directed:
-            self.adj_list[v].append(u)
-
-    def depth_first_search(self, start):
-        visited = {node: False for node in self.adj_list}
-        traversal = []
-        forest = []
-
-        def dfs(node):
-            visited[node] = True
-            traversal.append(node)
-
-            for neighbour in self.adj_list[node]:
-                if not visited[neighbour]:
-                    forest.append((node, neighbour))
-                    dfs(neighbour)
-
-        dfs(start)
-        return traversal, forest
-
-    def breadth_first_search(self, start):
-        visited = {node: False for node in self.adj_list}
-        traversal = []
-        tree = []
-        queue = deque([start])
-
-        while queue:
-            node = queue.popleft()
-            if visited[node]:
-                continue
-
-            visited[node] = True
-            traversal.append(node)
-
-            for neighbour in self.adj_list[node]:
-                if not visited[neighbour]:
-                    tree.append((node, neighbour))
-                    queue.append(neighbour)
-
-        return traversal, tree
+def breadth_first_search():
+    pass
 
 
-edges = [(1, 2), (1, 3), (2, 4), (2, 5), (3, 6), (3, 7)]
-
-g = Graph(edges, directed=True)
-traversal, forest = g.depth_first_search(1)
-
-print(f"\nDFS traversal: {traversal}")
-print(f"\nDFS forest: {forest}")
+def depth_first_search():
+    pass
 
 
-g = Graph(edges, directed=True)
-traversal, tree = g.breadth_first_search(1)
+def get_number_by_sum_of_paths():
+    pass
 
-print(f"\nBFS traversal: {traversal}")
-print(f"\nBFS tree: {tree}")
+
+def get_minimal_number_of_operations():
+    pass
+
+
+def hampton_maze():
+    pass
+
+
+def menu():
+    while True:
+        print("\nMake your choice")
+        print("1. Show Breadth-First Search demonstration")
+        print("2. Show Depth-First Search demonstration")
+        print("3. Get the specified number by sum of paths")
+        print("4. Get minimal number of operations")
+        print("5. Hampton Court Maze")
+        print("6. Exit")
+        choice = int(input(": "))
+
+        if choice == 1:
+            breadth_first_search()
+        elif choice == 2:
+            depth_first_search()
+        elif choice == 3:
+            get_number_by_sum_of_paths()
+        elif choice == 4:
+            get_minimal_number_of_operations()
+        elif choice == 5:
+            hampton_maze()
+        else:
+            break
+
+
+menu()
