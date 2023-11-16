@@ -1,6 +1,4 @@
 """
-кінь
-дах
 атом
 вулиця
 хвіст
@@ -13,16 +11,9 @@
 
 
 def longestConsecutive(nums):
-    nums = sorted(nums)
+    nums = set(nums)
+    largestLength = 0
     print(nums)
-
-    for i in range(len(nums)):
-        r = list(range(min(nums), max(nums) + 1))
-        print(r)
-        if set(r).issubset(set(nums)):
-            return len(r)
-        else:
-            nums = nums[:-1]
 
 
 nums = [0, 3, 7, 2, 5, 8, 4, 6, 0, 1]
