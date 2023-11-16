@@ -30,7 +30,6 @@ def isValidSudoku(board: [[str]]) -> bool:
             identifier = (i // 3, j // 3)
             squares[identifier].append(board[i][j])
     for _, value in squares.items():
-        print(value)
         if not validateLine(value):
             return False
 
