@@ -4,27 +4,33 @@
 - У заданому користувачем графі поставлено у відповідність кожній вершині деяке ціле число (може бути як від’ємним, так і додатним). Визначити такі шляхи між парами вершин, які в результаті додавання всіх чисел з кожної вершини дозволяють отримати задане користувачем значення.
 - Задано деякий набір арифметичних операцій (наприклад, додати 3, помножити на 2), які можуть бути виконані над операндом. Визначити мінімальний набір операцій, за допомогою якого можна отримати з одного заданого числа а число b. Якщо таке перетворення за допомогою заданого користувачем набору операцій виконати неможливо, то вивести відповідне повідомлення.
 - Гемптон-Кортський лабіринт площею у 60 акрів привертає увагу багатьох туристів. Ваш товариш перед тим, як потрапити до одного з таких лабіринтів і продемонструвати свої здібності, вирішив вивчити план лабіринту та запитав Вас про допомогу, яким чином знайти шлях у лабіринті. Змоделюйте лабіринт за допомогою вершин, що відповідають входу в лабіринт, виходу, глухим кутам, всім точкам лабіринту, в яких є можливість вибору шляху, та з’єднань даних вершин ребрами, що відповідають шляхам у лабіринті
-- Порівняти одержані результати виконаних тестів, провести аналіз вірності, коректності та адекватності роботи розробленого пр ограмного забезпечення.
 """
 
 
-def breadth_first_search():
+def breadthFirstSearch():
+    from collections import defaultdict
+
+    class Graph:
+        def __init__(self) -> None:
+            self.container = defaultdict(list)
+
+    g = Graph()
+    print(g.container)
+
+
+def depthFirstSearch():
     pass
 
 
-def depth_first_search():
+def getNumberBySumOfPaths():
     pass
 
 
-def get_number_by_sum_of_paths():
+def getMinimalNumberOfOperations():
     pass
 
 
-def get_minimal_number_of_operations():
-    pass
-
-
-def hampton_maze():
+def hamptonMaze():
     pass
 
 
@@ -40,15 +46,15 @@ def menu():
         choice = int(input(": "))
 
         if choice == 1:
-            breadth_first_search()
+            breadthFirstSearch()
         elif choice == 2:
-            depth_first_search()
+            depthFirstSearch()
         elif choice == 3:
-            get_number_by_sum_of_paths()
+            getNumberBySumOfPaths()
         elif choice == 4:
-            get_minimal_number_of_operations()
+            getMinimalNumberOfOperations()
         elif choice == 5:
-            hampton_maze()
+            hamptonMaze()
         else:
             break
 
