@@ -15,10 +15,6 @@ class Graph:
         if not self.directed:
             self.graph[v].append(u)
 
-    def displayGraph(self):
-        for key, value in self.graph.items():
-            print(f"{key} 🔗 {', '.join(map(str, value))}")
-
     def loadFromFile(self, filename):
         with open(filename, "r") as file:
             for line in file:
@@ -33,7 +29,7 @@ class Graph:
             for edge in edges:
                 G.add_edge(node, edge)
 
-        nx.draw(G, with_labels=True)
+        nx.draw(G, with_labels=True, node_color="lightblue", edge_color="gray")
         plt.show()
 
 
