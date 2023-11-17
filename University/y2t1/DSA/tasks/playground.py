@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-from tasks.lb5.main import GRAPH_FILE_PATH
+GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb5/input.txt"
 
 
 class Graph:
@@ -13,22 +13,17 @@ class Graph:
         if not self.directed:
             self.graph[v].append(u)
 
-    def DFS(self, v, visited=None):
-        if visited is None:
-            visited = set()
-        stack = [v]
+    def findPaths(self, start, targetSum):
+        visited = set()
+        stack = [(start, [start])]
         while stack:
-            vertex = stack.pop()
+            (vertex, path) = stack.pop()
             if vertex not in visited:
                 visited.add(vertex)
-                print(vertex, end=" ")
-                stack.extend(set(self.graph[vertex]) - visited)
-        return visited
-
-    def displayForest(self, v):
-        print("Depth-first search forest:")
-        self.DFS(v)
-        print()
+                if sum(path) == targetSum:
+                    print(path)
+                for nextVertex in set(self.graph[vertex]) - visited:
+                    stack.append((nextVertex, path + [nextVertex]))
 
     def displayGraph(self):
         for key, value in self.graph.items():
@@ -48,8 +43,7 @@ def main():
         print("1. Create a new graph")
         print("2. Add an edge")
         print("3. Display graph")
-        print("3. Perform depth-first search")
-        print("4. Display depth-first search forest")
+        print("4. Find paths to target sum")
         print("5. Exit")
         choice = int(input(": "))
         print()
@@ -57,7 +51,8 @@ def main():
         if choice == 1:
             print("1. Load from file")
             print("2. Create a new graph")
-            choice = int(input(": "))
+            # choice = int(input(": "))
+            choice = 1
 
             if choice == 1:
                 # filename = input("Enter the filename: ")
@@ -78,12 +73,9 @@ def main():
 
         elif choice == 4:
             v = int(input("Enter the starting vertex: "))
-            g.DFS(v)
-            print()
-        elif choice == 5:
-            v = int(input("Enter the starting vertex: "))
-            print()
-            g.displayForest(v)
+            targetSum = int(input("Enter the target sum: "))
+            g.findPaths(v, targetSum)
+
         else:
             break
 
