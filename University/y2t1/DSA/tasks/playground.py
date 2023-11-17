@@ -16,14 +16,18 @@ class Graph:
     def findPaths(self, start, targetSum):
         visited = set()
         stack = [(start, [start])]
+        pathFound = False
         while stack:
             (vertex, path) = stack.pop()
             if vertex not in visited:
                 visited.add(vertex)
                 if sum(path) == targetSum:
                     print(path)
-                for nextVertex in set(self.graph[vertex]) - visited:
-                    stack.append((nextVertex, path + [nextVertex]))
+                    pathFound = True
+            for nextVertex in set(self.graph[vertex]) - visited:
+                stack.append((nextVertex, path + [nextVertex]))
+        if not pathFound:
+            print("No path found with the given target sum.")
 
     def displayGraph(self):
         for key, value in self.graph.items():
