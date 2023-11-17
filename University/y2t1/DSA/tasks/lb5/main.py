@@ -71,16 +71,17 @@ def breadthFirstSearch():
             print("1. Create a new graph")
             print("2. Add an edge")
             print("3. Display graph")
-            print("3. Perform breadth-first search")
-            print("4. Display breadth-first search tree")
-            print("5. Exit")
+            print("4. Perform breadth-first search")
+            print("5. Display breadth-first search tree")
+            print("6. Exit")
             choice = int(input(": "))
             print()
 
             if choice == 1:
                 print("1. Load from file")
                 print("2. Create a new graph")
-                choice = int(input(": "))
+                # choice = int(input(": "))
+                choice = 1
 
                 if choice == 1:
                     # filename = input("Enter the filename: ")
@@ -163,16 +164,17 @@ def depthFirstSearch():
             print("1. Create a new graph")
             print("2. Add an edge")
             print("3. Display graph")
-            print("3. Perform depth-first search")
-            print("4. Display depth-first search forest")
-            print("5. Exit")
+            print("4. Perform depth-first search")
+            print("5. Display depth-first search forest")
+            print("6. Exit")
             choice = int(input(": "))
             print()
 
             if choice == 1:
                 print("1. Load from file")
                 print("2. Create a new graph")
-                choice = int(input(": "))
+                # choice = int(input(": "))
+                choice = 1
 
                 if choice == 1:
                     # filename = input("Enter the filename: ")
@@ -195,10 +197,12 @@ def depthFirstSearch():
                 v = int(input("Enter the starting vertex: "))
                 g.DFS(v)
                 print()
+
             elif choice == 5:
                 v = int(input("Enter the starting vertex: "))
                 print()
                 g.displayForest(v)
+
             else:
                 break
 
