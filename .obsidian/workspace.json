@@ -175,6 +175,7 @@
   },
   "active": "165cb1e73bd0bdac",
   "lastOpenFiles": [
+    "University/y2t1/DSA/tasks/lb6/input.txt",
     "University/y2t1/DSA/tasks/lb6/task.md",
     "University/y2t1/DSA/tasks/lb6/main.py",
     "University/y2t1/DSA/tasks/lb6",
@@ -219,7 +220,6 @@
     "University/y1t2/ФІ/tasks/17-05-lab/task.md",
     "University/y1t2/ООП/tasks/lb7/task.md",
     "University/y1t2/КДМ/tasks/Довідник/Кільцева сума графів.md",
-    "University/y1t2/КДМ/tasks/Довідник/Добуток графів.md",
-    "University/y1t2/КДМ/tasks/Довідник/Finding maximum flow in a network.md"
+    "University/y1t2/КДМ/tasks/Довідник/Добуток графів.md"
   ]
 }

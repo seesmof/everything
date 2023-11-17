@@ -1,473 +1,65 @@
-def breadthFirstSearch():
-    from collections import defaultdict, deque
-
-    class Graph:
-        def __init__(self, directed=False):
-            self.graph = defaultdict(list)
-            self.directed = directed
-
-        def addEdge(self, u, v):
-            self.graph[u].append(v)
-            if not self.directed:
-                self.graph[v].append(u)
-
-        def BFS(self, start):
-            visited = set()
-            queue = deque([start])
-
-            while queue:
-                vertex = queue.popleft()
-                if vertex not in visited:
-                    visited.add(vertex)
-                    queue.extend(set(self.graph[vertex]) - visited)
-
-            return visited
-
-        def displayTree(self, start):
-            visited = set()
-            queue = deque([start])
-            tree = defaultdict(list)
-
-            while queue:
-                vertex = queue.popleft()
-                if vertex not in visited:
-                    visited.add(vertex)
-                    for neighbor in self.graph[vertex]:
-                        if neighbor not in visited:
-                            tree[vertex].append(neighbor)
-                            queue.append(neighbor)
-
-            return tree
-
-        def displayResults(self, start):
-            visited = self.BFS(start)
-            print(f"BFS traversal: {visited}")
-
-        def displayGraph(self):
-            for key, value in self.graph.items():
-                print(f"{key} 🔗 {', '.join(map(str, value))}")
-
-        def loadFromFile(self, filename):
-            with open(filename, "r") as file:
-                for line in file:
-                    u, v = line.strip().split()
-                    self.addEdge(int(u), int(v))
-
-    def main():
-        g = None
-        while True:
-            print("\nBFS")
-            print("1. Create a new graph")
-            print("2. Add an edge")
-            print("3. Display graph")
-            print("4. Perform breadth-first search")
-            print("5. Display breadth-first search tree")
-            print("6. Exit")
-            choice = int(input(": "))
-            print()
-
-            if choice == 1:
-                print("1. Load from file")
-                print("2. Create a new graph")
-                choice = int(input(": "))
-                choice = 1
-
-                if choice == 1:
-                    filename = input("Enter the filename: ")
-                    g = Graph()
-                    g.loadFromFile(filename)
-                elif choice == 2:
-                    directed = input("Is the graph directed? (y/n): ") == "y"
-                    g = Graph(directed)
-
-            elif choice == 2:
-                u = int(input("Enter the first vertex: "))
-                v = int(input("Enter the second vertex: "))
-                g.addEdge(u, v)
-
-            elif choice == 3:
-                g.displayGraph()
-
-            elif choice == 4:
-                v = int(input("Enter the starting vertex: "))
-                g.displayResults(v)
-
-            elif choice == 5:
-                v = int(input("Enter the starting vertex: "))
-                print()
-                tree = dict(g.displayTree(v))
-                for key, value in tree.items():
-                    print(f"{key}: {value}")
-
-            else:
-                break
-
-    main()
-
-
-def depthFirstSearch():
-    from collections import defaultdict
-
-    class Graph:
-        def __init__(self, directed=False):
-            self.graph = defaultdict(list)
-            self.directed = directed
-
-        def addEdge(self, u, v):
-            self.graph[u].append(v)
-            if not self.directed:
-                self.graph[v].append(u)
-
-        def DFS(self, v, visited=None):
-            if visited is None:
-                visited = set()
-            stack = [v]
-            while stack:
-                vertex = stack.pop()
-                if vertex not in visited:
-                    visited.add(vertex)
-                    print(vertex, end=" ")
-                    stack.extend(set(self.graph[vertex]) - visited)
-            return visited
-
-        def displayForest(self, v):
-            print("Depth-first search forest:")
-            self.DFS(v)
-            print()
-
-        def displayGraph(self):
-            for key, value in self.graph.items():
-                print(f"{key} 🔗 {', '.join(map(str, value))}")
-
-        def loadFromFile(self, filename):
-            with open(filename, "r") as file:
-                for line in file:
-                    u, v = line.strip().split()
-                    self.addEdge(int(u), int(v))
-
-    def main():
-        g = None
-        while True:
-            print("\nDFS")
-            print("1. Create a new graph")
-            print("2. Add an edge")
-            print("3. Display graph")
-            print("4. Perform depth-first search")
-            print("5. Display depth-first search forest")
-            print("6. Exit")
-            choice = int(input(": "))
-            print()
-
-            if choice == 1:
-                print("1. Load from file")
-                print("2. Create a new graph")
-                choice = int(input(": "))
-                choice = 1
-
-                if choice == 1:
-                    filename = input("Enter the filename: ")
-                    g = Graph()
-                    g.loadFromFile(filename)
-                elif choice == 2:
-                    directed = input("Is the graph directed? (y/n): ") == "y"
-                    g = Graph(directed)
-
-            elif choice == 2:
-                u = int(input("Enter the first vertex: "))
-                v = int(input("Enter the second vertex: "))
-                g.addEdge(u, v)
-
-            elif choice == 3:
-                g.displayGraph()
-
-            elif choice == 4:
-                v = int(input("Enter the starting vertex: "))
-                g.DFS(v)
-                print()
-
-            elif choice == 5:
-                v = int(input("Enter the starting vertex: "))
-                print()
-                g.displayForest(v)
-
-            else:
-                break
-
-    main()
-
-
-def getNumberBySumOfPaths():
-    from collections import defaultdict
-
-    class Graph:
-        def __init__(self, directed=False):
-            self.graph = defaultdict(list)
-            self.directed = directed
-
-        def addEdge(self, u, v):
-            self.graph[u].append(v)
-            if not self.directed:
-                self.graph[v].append(u)
-
-        def findPaths(self, start, targetSum):
-            visited = set()
-            path = []
-            self._findPathsHelper(start, targetSum, visited, path)
-
-        def _findPathsHelper(self, vertex, targetSum, visited, path):
-            visited.add(vertex)
-            path.append(vertex)
-
-            if sum(path) == targetSum:
-                print(path)
-
-            for neighbor in self.graph[vertex]:
-                if neighbor not in visited:
-                    self._findPathsHelper(neighbor, targetSum, visited, path)
-
-            path.pop()
-            visited.remove(vertex)
-
-        def displayGraph(self):
-            for key, value in self.graph.items():
-                print(f"{key} 🔗 {', '.join(map(str, value))}")
-
-        def loadFromFile(self, filename):
-            with open(filename, "r") as file:
-                for line in file:
-                    u, v = line.strip().split()
-                    self.addEdge(int(u), int(v))
-
-    def main():
-        g = None
-        while True:
-            print("\nSUM")
-            print("1. Create a new graph")
-            print("2. Add an edge")
-            print("3. Display graph")
-            print("4. Find paths to target sum")
-            print("5. Exit")
-            choice = int(input(": "))
-            print()
-
-            if choice == 1:
-                print("1. Load from file")
-                print("2. Create a new graph")
-                choice = int(input(": "))
-                choice = 1
-
-                if choice == 1:
-                    filename = input("Enter the filename: ")
-                    g = Graph()
-                    g.loadFromFile(filename)
-                elif choice == 2:
-                    directed = input("Is the graph directed? (y/n): ") == "y"
-                    g = Graph(directed)
-
-            elif choice == 2:
-                u = int(input("Enter the first vertex: "))
-                v = int(input("Enter the second vertex: "))
-                g.addEdge(u, v)
-
-            elif choice == 3:
-                g.displayGraph()
-
-            elif choice == 4:
-                v = int(input("Enter the starting vertex: "))
-                targetSum = int(input("Enter the target sum: "))
-                g.findPaths(v, targetSum)
-
-            else:
-                break
-
-    main()
-
-
-def getMinimalNumberOfOperations():
-    from collections import defaultdict, deque
-
-    class Graph:
-        def __init__(self, directed=False):
-            self.graph = defaultdict(list)
-            self.directed = directed
-
-        def addEdge(self, u, v):
-            self.graph[u].append(v)
-            if not self.directed:
-                self.graph[v].append(u)
-
-        def minOperations(self, a, b, maxNumber=None):
-            queue = deque([a])
-            length = {a: 0}
-            previous = {a: None}
-
-            while queue:
-                currentValue = queue.popleft()
-
-                def tryPerforming(nextValue):
-                    if maxNumber is not None and nextValue > maxNumber:
-                        return
-                    if nextValue in length:
-                        return
-                    queue.append(nextValue)
-                    length[nextValue] = length[currentValue] + 1
-                    previous[nextValue] = currentValue
-
-                tryPerforming(currentValue + 1)
-                tryPerforming(currentValue - 1)
-                tryPerforming(currentValue * 2)
-                if currentValue % 2 == 0:
-                    tryPerforming(currentValue // 2)
-
-                tryPerforming(currentValue * 3)
-                if currentValue % 3 == 0:
-                    tryPerforming(currentValue // 3)
-
-                if b in length:
-                    break
-
-            path = [b]
-            while path[-1] != a:
-                path.append(previous[path[-1]])
-
-            path.reverse()
-            return path
-
-        def displayGraph(self):
-            for key, value in self.graph.items():
-                print(f"{key} 🔗 {', '.join(map(str, value))}")
-
-        def loadFromFile(self, filename):
-            with open(filename, "r") as file:
-                for line in file:
-                    u, v = line.strip().split()
-                    self.addEdge(int(u), int(v))
-
-    def main():
-        g = None
-        while True:
-            print("\nMIN")
-            print("1. Create a new graph")
-            print("2. Add an edge")
-            print("3. Display graph")
-            print("4. Determine min number of operations")
-            print("5. Exit")
-            choice = int(input(": "))
-            print()
-
-            if choice == 1:
-                print("1. Load from file")
-                print("2. Create a new graph")
-                choice = int(input(": "))
-                choice = 1
-
-                if choice == 1:
-                    filename = input("Enter the filename: ")
-                    g = Graph()
-                    g.loadFromFile(filename)
-                elif choice == 2:
-                    directed = input("Is the graph directed? (y/n): ") == "y"
-                    g = Graph(directed)
-
-            elif choice == 2:
-                u = int(input("Enter the first vertex: "))
-                v = int(input("Enter the second vertex: "))
-                g.addEdge(u, v)
-
-            elif choice == 3:
-                g.displayGraph()
-
-            elif choice == 4:
-                if g is not None:
-                    a = int(input("Enter the starting number: "))
-                    b = int(input("Enter the ending number: "))
-                    path = g.minOperations(a, b)
-                    print(f"{len(path)}: {path}")
-                else:
-                    print("No graph loaded.")
-
-            else:
-                break
-
-    main()
-
-
-def hamptonMaze():
-    from collections import defaultdict, deque
-    import networkx as nx
-    import matplotlib.pyplot as plt
-
-    class Graph:
-        def __init__(self, directed=False):
-            self.graph = defaultdict(list)
-            self.directed = directed
-
-        def addEdge(self, u, v):
-            self.graph[u].append(v)
-            if not self.directed:
-                self.graph[v].append(u)
-
-        def loadFromFile(self, filename):
-            with open(filename, "r") as file:
-                for line in file:
-                    u, v = line.strip().split()
-                    self.addEdge(u, v)
-
-        def drawGraph(self):
-            G = nx.Graph()
-            for node in self.graph:
-                G.add_node(node)
-            for node, edges in self.graph.items():
-                for edge in edges:
-                    G.add_edge(node, edge)
-
-            nx.draw(G, with_labels=True, node_color="lightblue", edge_color="gray")
-            plt.show()
-
-    def main():
-        g = None
-        while True:
-            print("\nMAZE")
-            print("1. Display the maze")
-            print("2. Exit")
-            choice = int(input(": "))
-            print()
-
-            if choice == 1:
-                g = Graph()
-                filename = input("Enter the filename: ")
-                g.loadFromFile(filename)
-                g.drawGraph()
-
-            else:
-                break
-
-    main()
-
-
-def menu():
-    while True:
-        print("\nMake your choice")
-        print("1. Show Breadth-First Search demonstration")
-        print("2. Show Depth-First Search demonstration")
-        print("3. Get the specified number by sum of paths")
-        print("4. Get minimal number of operations")
-        print("5. Hampton Court Maze")
-        print("6. Exit")
-        choice = int(input(": "))
-
-        if choice == 1:
-            breadthFirstSearch()
-        elif choice == 2:
-            depthFirstSearch()
-        elif choice == 3:
-            getNumberBySumOfPaths()
-        elif choice == 4:
-            getMinimalNumberOfOperations()
-        elif choice == 5:
-            hamptonMaze()
-        else:
-            break
-
-
-menu()
+import networkx as nx
+import sys
+
+
+def dijkstra(graph, start):
+    n = len(graph)
+    dist = [sys.maxsize] * n
+    dist[start] = 0
+    queue = [start]
+    while queue:
+        u = min(queue, key=lambda x: dist[x])
+        queue.remove(u)
+        for v, w in graph[u]:
+            if dist[u] + w < dist[v]:
+                dist[v] = dist[u] + w
+    return dist
+
+
+def floyd_warshall(graph):
+    n = len(graph)
+    dist = [[sys.maxsize] * n for _ in range(n)]
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                dist[i][j] = 0
+            elif graph[i][j] != 0:
+                dist[i][j] = graph[i][j]
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+    return dist
+
+
+def bellman_ford(graph, start):
+    n = len(graph)
+    dist = [sys.maxsize] * n
+    dist[start] = 0
+    for _ in range(n - 1):
+        for u in range(n):
+            for v, w in graph[u]:
+                if dist[u] + w < dist[v]:
+                    dist[v] = dist[u] + w
+    return dist
+
+
+# Create an empty graph
+G = nx.Graph()
+
+# Add nodes to the graph
+G.add_node(1)
+G.add_node(2)
+G.add_node(3)
+
+# Add edges to the graph
+G.add_edge(1, 2, weight=6)
+G.add_edge(1, 3, weight=1)
+G.add_edge(2, 3, weight=5)
+# Get the adjacency list of the graph
+graph = nx.to_dict_of_lists(G)
+
+# Now you can use the graph in your algorithms
+print(dijkstra(graph, 1))
+print(floyd_warshall(graph))
+print(bellman_ford(graph, 1))
