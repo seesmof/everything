@@ -161,13 +161,13 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "audio-recorder:Start/stop recording": false,
+      "switcher:Відкрити провідник файлів": false,
+      "graph:Граф": false,
+      "canvas:Створити нове полотно": false,
+      "daily-notes:Сьогоднішня нотатка": false,
+      "templates:Вставити шаблон": false,
+      "command-palette:Відкрити меню команд": false,
+      "audio-recorder:Почати/зупинити запис": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "open-vscode:VSCode": false,
       "omnisearch:Omnisearch": false
@@ -175,6 +175,7 @@
   },
   "active": "165cb1e73bd0bdac",
   "lastOpenFiles": [
+    "Competitive Programming/LeetCode Solutions/150.evaluate-reverse-polish-notation.py",
     "Competitive Programming/LeetCode Solutions/155.min-stack.py",
     "Competitive Programming/LeetCode Solutions/128.longest-consecutive-sequence.py",
     "Competitive Programming/playground.py",
@@ -186,7 +187,6 @@
     "University/Year 2 Term 1/OPI/tasks/pr4/prod/звіт.pdf",
     "University/Year 2 Term 1/OPI/tasks/pr4/prod/звіт.docx",
     "University/Year 2 Term 1/OPI/tasks/pr4/dev/main.md",
-    "University/Year 2 Term 1/OPI/tasks/pr4/prod",
     "University/Year 2 Term 1/OPI/tasks/pr3 copy/dev/main.md",
     "University/Year 2 Term 1/OPI/pr3/dev/main.md",
     "University/Year 2 Term 1/OPI/tasks/pr3/dev/dev/forArchiving-3.md",

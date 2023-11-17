@@ -1,29 +1,17 @@
-class MinStack:
-    def __init__(self):
-        self.stack = []
-        self.minValues = []
+def longestConsecutive(nums: [int]) -> int:
+    nums = set(nums)
+    longest = 0
 
-    def push(self, val: int) -> None:
-        self.stack.append(val)
-        if val < self.minValues[-1]:
-            self.minValues.append(val)
+    for num in nums:
+        if num - 1 not in nums:
+            length = 0
+            while num + length in nums:
+                length += 1
+            longest = max(length, longest)
 
-    def pop(self) -> None:
-        self.stack.pop()
-        self.minValues.pop()
-
-    def top(self) -> int:
-        return self.stack[-1]
-
-    def getMin(self) -> int:
-        return self.minValues[-1]
+    return longest
 
 
-m = MinStack()
-print(m.push(-2))
-print(m.push(0))
-print(m.push(-3))
-print(m.getMin())
-print(m.pop())
-print(m.top())
-print(m.getMin())
+arr = [100, 4, 200, 1, 3, 2]
+res = longestConsecutive(arr)
+print(res)

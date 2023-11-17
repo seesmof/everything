@@ -8,20 +8,17 @@
 # @lc code=start
 class Solution:
     def longestConsecutive(self, nums: [int]) -> int:
-        if len(nums) == 0:
-            return 0
-        if len(nums) < 2:
-            return 1
-        nums = sorted(nums)
+        nums = set(nums)
+        longest = 0
 
-        for _ in range(len(nums)):
-            r = list(range(min(nums), max(nums) + 1))
-            if set(r).issubset(set(nums)):
-                return len(r)
-            else:
-                nums = nums[:-1]
+        for num in nums:
+            if num - 1 not in nums:
+                length = 0
+                while num + length in nums:
+                    length += 1
+                longest = max(length, longest)
 
-        return 0
+        return longest
 
 
 # @lc code=end
