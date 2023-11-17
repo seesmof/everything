@@ -1,5 +1,7 @@
 from collections import defaultdict
 
+from tasks.lb5.main import GRAPH_FILE_PATH
+
 
 class Graph:
     def __init__(self, directed=False):
@@ -28,6 +30,16 @@ class Graph:
         self.DFS(v)
         print()
 
+    def displayGraph(self):
+        for key, value in self.graph.items():
+            print(f"{key} 🔗 {', '.join(map(str, value))}")
+
+    def loadFromFile(self, filename):
+        with open(filename, "r") as file:
+            for line in file:
+                u, v = line.strip().split()
+                self.addEdge(int(u), int(v))
+
 
 def main():
     g = None
@@ -35,6 +47,7 @@ def main():
         print("\nDFS")
         print("1. Create a new graph")
         print("2. Add an edge")
+        print("3. Display graph")
         print("3. Perform depth-first search")
         print("4. Display depth-first search forest")
         print("5. Exit")
@@ -42,17 +55,32 @@ def main():
         print()
 
         if choice == 1:
-            directed = input("Is the graph directed? (y/n): ") == "y"
-            g = Graph(directed)
+            print("1. Load from file")
+            print("2. Create a new graph")
+            choice = int(input(": "))
+
+            if choice == 1:
+                # filename = input("Enter the filename: ")
+                filename = GRAPH_FILE_PATH
+                g = Graph()
+                g.loadFromFile(filename)
+            elif choice == 2:
+                directed = input("Is the graph directed? (y/n): ") == "y"
+                g = Graph(directed)
+
         elif choice == 2:
             u = int(input("Enter the first vertex: "))
             v = int(input("Enter the second vertex: "))
             g.addEdge(u, v)
+
         elif choice == 3:
+            g.displayGraph()
+
+        elif choice == 4:
             v = int(input("Enter the starting vertex: "))
             g.DFS(v)
             print()
-        elif choice == 4:
+        elif choice == 5:
             v = int(input("Enter the starting vertex: "))
             print()
             g.displayForest(v)
