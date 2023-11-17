@@ -8,6 +8,7 @@
 
 
 GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb5/input.txt"
+MAZE_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb5/maze.txt"
 
 
 def breadthFirstSearch():
@@ -255,7 +256,7 @@ def getNumberBySumOfPaths():
     def main():
         g = None
         while True:
-            print("\nDFS")
+            print("\nSUM")
             print("1. Create a new graph")
             print("2. Add an edge")
             print("3. Display graph")
@@ -299,7 +300,113 @@ def getNumberBySumOfPaths():
 
 
 def getMinimalNumberOfOperations():
-    pass
+    from collections import defaultdict, deque
+
+    class Graph:
+        def __init__(self, directed=False):
+            self.graph = defaultdict(list)
+            self.directed = directed
+
+        def addEdge(self, u, v):
+            self.graph[u].append(v)
+            if not self.directed:
+                self.graph[v].append(u)
+
+        def minOperations(self, a, b, maxNumber=None):
+            queue = deque([a])
+            length = {a: 0}
+            previous = {a: None}
+
+            while queue:
+                currentValue = queue.popleft()
+
+                def tryPerforming(nextValue):
+                    if maxNumber is not None and nextValue > maxNumber:
+                        return
+                    if nextValue in length:
+                        return
+                    queue.append(nextValue)
+                    length[nextValue] = length[currentValue] + 1
+                    previous[nextValue] = currentValue
+
+                tryPerforming(currentValue + 1)
+                tryPerforming(currentValue - 1)
+                tryPerforming(currentValue * 2)
+                if currentValue % 2 == 0:
+                    tryPerforming(currentValue // 2)
+
+                tryPerforming(currentValue * 3)
+                if currentValue % 3 == 0:
+                    tryPerforming(currentValue // 3)
+
+                if b in length:
+                    break
+
+            path = [b]
+            while path[-1] != a:
+                path.append(previous[path[-1]])
+
+            path.reverse()
+            return path
+
+        def displayGraph(self):
+            for key, value in self.graph.items():
+                print(f"{key} 🔗 {', '.join(map(str, value))}")
+
+        def loadFromFile(self, filename):
+            with open(filename, "r") as file:
+                for line in file:
+                    u, v = line.strip().split()
+                    self.addEdge(int(u), int(v))
+
+    def main():
+        g = None
+        while True:
+            print("\nMIN")
+            print("1. Create a new graph")
+            print("2. Add an edge")
+            print("3. Display graph")
+            print("4. Determine min number of operations")
+            print("5. Exit")
+            choice = int(input(": "))
+            print()
+
+            if choice == 1:
+                print("1. Load from file")
+                print("2. Create a new graph")
+                # choice = int(input(": "))
+                choice = 1
+
+                if choice == 1:
+                    # filename = input("Enter the filename: ")
+                    filename = GRAPH_FILE_PATH
+                    g = Graph()
+                    g.loadFromFile(filename)
+                elif choice == 2:
+                    directed = input("Is the graph directed? (y/n): ") == "y"
+                    g = Graph(directed)
+
+            elif choice == 2:
+                u = int(input("Enter the first vertex: "))
+                v = int(input("Enter the second vertex: "))
+                g.addEdge(u, v)
+
+            elif choice == 3:
+                g.displayGraph()
+
+            elif choice == 4:
+                if g is not None:
+                    a = int(input("Enter the starting number: "))
+                    b = int(input("Enter the ending number: "))
+                    path = g.minOperations(a, b)
+                    print(f"{len(path)}: {path}")
+                else:
+                    print("No graph loaded.")
+
+            else:
+                break
+
+    main()
 
 
 def hamptonMaze():
