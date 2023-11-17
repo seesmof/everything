@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, deque
 
 
 class Graph:
@@ -11,57 +11,51 @@ class Graph:
         if not self.directed:
             self.graph[v].append(u)
 
-    def DFS(self, v, visited=None):
-        if visited is None:
-            visited = set()
-        stack = [v]
-        while stack:
-            vertex = stack.pop()
+    def BFS(self, start):
+        visited = set()
+        queue = deque([start])
+
+        while queue:
+            vertex = queue.popleft()
             if vertex not in visited:
                 visited.add(vertex)
-                print(vertex, end=" ")
-                stack.extend(set(self.graph[vertex]) - visited)
+                queue.extend(set(self.graph[vertex]) - visited)
+
         return visited
 
-    def displayForest(self, v):
-        print("Depth-first search forest:")
-        self.DFS(v)
-        print()
+    def displayTree(self, start):
+        visited = set()
+        queue = deque([start])
+        tree = defaultdict(list)
+
+        while queue:
+            vertex = queue.popleft()
+            if vertex not in visited:
+                visited.add(vertex)
+                for neighbor in self.graph[vertex]:
+                    if neighbor not in visited:
+                        tree[vertex].append(neighbor)
+                        queue.append(neighbor)
+
+        return tree
+
+    def displayResults(self, start):
+        visited = self.BFS(start)
+        print(f"BFS traversal: {visited}")
 
 
-def menu():
-    print()
-    print("1. Create a new graph")
-    print("2. Add an edge")
-    print("3. Perform depth-first search")
-    print("4. Display depth-first search forest")
-    print("5. Exit")
-    choice = input("Enter your choice: ")
-    print()
-    return choice
+g = Graph()
 
-
-def main():
-    g = None
-    while True:
-        choice = menu()
-        if choice == "1":
-            directed = input("Is the graph directed? (y/n): ") == "y"
-            g = Graph(directed)
-        elif choice == "2":
-            u = int(input("Enter the first vertex: "))
-            v = int(input("Enter the second vertex: "))
-            g.addEdge(u, v)
-        elif choice == "3":
-            v = int(input("Enter the starting vertex: "))
-            g.DFS(v)
-            print()
-        elif choice == "4":
-            v = int(input("Enter the starting vertex: "))
-            print()
-            g.displayForest(v)
-        else:
-            break
-
-
-main()
+# Add edges to the graph
+g.addEdge(1, 2)
+g.addEdge(1, 3)
+g.addEdge(2, 4)
+g.addEdge(2, 5)
+g.addEdge(3, 6)
+g.addEdge(3, 7)
+# Perform a BFS traversal starting from vertex 1
+g.displayResults(1)
+# Display the BFS tree
+tree = dict(g.displayTree(1))
+for key, value in tree.items():
+    print(f"{key}: {value}")

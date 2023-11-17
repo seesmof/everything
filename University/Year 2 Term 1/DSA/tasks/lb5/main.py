@@ -8,7 +8,82 @@
 
 
 def breadthFirstSearch():
-    pass
+    from collections import defaultdict, deque
+
+    class Graph:
+        def __init__(self, directed=False):
+            self.graph = defaultdict(list)
+            self.directed = directed
+
+        def addEdge(self, u, v):
+            self.graph[u].append(v)
+            if not self.directed:
+                self.graph[v].append(u)
+
+        def BFS(self, start):
+            visited = set()
+            queue = deque([start])
+
+            while queue:
+                vertex = queue.popleft()
+                if vertex not in visited:
+                    visited.add(vertex)
+                    queue.extend(set(self.graph[vertex]) - visited)
+
+            return visited
+
+        def displayTree(self, start):
+            visited = set()
+            queue = deque([start])
+            tree = defaultdict(list)
+
+            while queue:
+                vertex = queue.popleft()
+                if vertex not in visited:
+                    visited.add(vertex)
+                    for neighbor in self.graph[vertex]:
+                        if neighbor not in visited:
+                            tree[vertex].append(neighbor)
+                            queue.append(neighbor)
+
+            return tree
+
+        def displayResults(self, start):
+            visited = self.BFS(start)
+            print(f"BFS traversal: {visited}")
+
+    def main():
+        g = None
+        while True:
+            print("\nBFS")
+            print("1. Create a new graph")
+            print("2. Add an edge")
+            print("3. Perform breadth-first search")
+            print("4. Display breadth-first search tree")
+            print("5. Exit")
+            choice = int(input(": "))
+            print()
+
+            if choice == 1:
+                directed = input("Is the graph directed? (y/n): ") == "y"
+                g = Graph(directed)
+            elif choice == 2:
+                u = int(input("Enter the first vertex: "))
+                v = int(input("Enter the second vertex: "))
+                g.addEdge(u, v)
+            elif choice == 3:
+                v = int(input("Enter the starting vertex: "))
+                g.displayResults(v)
+            elif choice == 4:
+                v = int(input("Enter the starting vertex: "))
+                print()
+                tree = dict(g.displayTree(v))
+                for key, value in tree.items():
+                    print(f"{key}: {value}")
+            else:
+                break
+
+    main()
 
 
 def depthFirstSearch():
