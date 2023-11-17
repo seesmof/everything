@@ -15,19 +15,22 @@ class Graph:
 
     def findPaths(self, start, targetSum):
         visited = set()
-        stack = [(start, [start])]
-        pathFound = False
-        while stack:
-            (vertex, path) = stack.pop()
-            if vertex not in visited:
-                visited.add(vertex)
-                if sum(path) == targetSum:
-                    print(path)
-                    pathFound = True
-            for nextVertex in set(self.graph[vertex]) - visited:
-                stack.append((nextVertex, path + [nextVertex]))
-        if not pathFound:
-            print("No path found with the given target sum.")
+        path = []
+        self._findPathsHelper(start, targetSum, visited, path)
+
+    def _findPathsHelper(self, vertex, targetSum, visited, path):
+        visited.add(vertex)
+        path.append(vertex)
+
+        if sum(path) == targetSum:
+            print(path)
+
+        for neighbor in self.graph[vertex]:
+            if neighbor not in visited:
+                self._findPathsHelper(neighbor, targetSum, visited, path)
+
+        path.pop()
+        visited.remove(vertex)
 
     def displayGraph(self):
         for key, value in self.graph.items():
