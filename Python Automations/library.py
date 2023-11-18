@@ -7,8 +7,18 @@ import datetime
 from datetime import date
 import time
 import ctypes
+import os
 
 engine = pyttsx4.init()
+
+classTimes = {
+    "1": "08:30",
+    "2": "10:05",
+    "3": "11:55",
+    "4": "13:25",
+    "5": "14:55",
+    "6": "16:45",
+}
 
 
 def getSunset():

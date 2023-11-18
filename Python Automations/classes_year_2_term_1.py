@@ -10,6 +10,51 @@ disciplineNames = {
     "VM": "Calculus",
 }
 
+currentSchedule = {
+    "Чисельник": {
+        "Monday": {
+            classTimes["3"]: "DSA Lecture",
+            classTimes["4"]: "TY Practice",
+            classTimes["5"]: "SP Lecture",
+        },
+        "Tuesday": {
+            classTimes["1"]: "WEB Practice",
+            classTimes["2"]: "DSA Practice",
+            classTimes["5"]: "OPI Practice",
+        },
+        "Wednesday": {
+            classTimes["1"]: "TY Lecture",
+            classTimes["2"]: "WEB Lecture",
+        },
+        "Thursday": {
+            classTimes["5"]: "IY Practice",
+        },
+        "Friday": {
+            classTimes["2"]: "VM Lecture",
+            classTimes["3"]: "VM Practice",
+        },
+    },
+    "Знаменник": {
+        "Monday": {
+            classTimes["3"]: "DSA Lecture",
+            classTimes["4"]: "SP Practice",
+        },
+        "Tuesday": {
+            classTimes["1"]: "WEB Practice",
+            classTimes["2"]: "DSA Practice",
+            classTimes["4"]: "OPI Practice",
+            classTimes["5"]: "OPI Practice",
+        },
+        "Wednesday": {
+            classTimes["2"]: "WEB Lecture",
+        },
+        "Thursday": {
+            classTimes["2"]: "OPI Lecture",
+            classTimes["5"]: "IY Lecture",
+        },
+    },
+}
+
 
 def DSA_lecture():
     speak(f"Opening {disciplineNames["DSA"]} Lecture.")
