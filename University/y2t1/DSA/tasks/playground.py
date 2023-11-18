@@ -48,9 +48,10 @@ def main():
         print("1. Create a new graph")
         print("2. Add an edge")
         print("3. Display graph")
-        print("4. Perform breadth-first search")
-        print("5. Display breadth-first search tree")
-        print("6. Exit")
+        print("4. Dijkstra")
+        print("5. Floid-Warshall")
+        print("6. Bellman-Ford")
+        print("7. Exit")
         choice = int(input(": "))
         print()
 
@@ -76,17 +77,6 @@ def main():
 
         elif choice == 3:
             g.displayGraph()
-
-        elif choice == 4:
-            v = int(input("Enter the starting vertex: "))
-            g.displayResults(v)
-
-        elif choice == 5:
-            v = int(input("Enter the starting vertex: "))
-            print()
-            tree = dict(g.displayTree(v))
-            for key, value in tree.items():
-                print(f"{key}: {value}")
 
         else:
             break
