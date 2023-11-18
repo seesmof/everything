@@ -1,14 +1,6 @@
 from library import *
 from year2term1classes import *
 
-current_time = datetime.datetime.now()
-current_hour = current_time.hour
-current_minute = current_time.minute
-today = date.today()
-dayName = today.strftime("%A")
-current_week = datetime.date.today().isocalendar()[1]
-weather = f"Outside its {get_weather()} degrees"
-
 classOneTime = "08:30"
 classTwoTime = "10:05"
 classThreeTime = "11:55"
@@ -16,74 +8,87 @@ classFourTime = "13:25"
 classFiveTime = "14:55"
 classSixTime = "16:45"
 
-classOneTime_early = "08:25"
-classTwoTime_early = "10:00"
-classThreeTime_early = "11:50"
-classFourTime_early = "13:20"
-classFiveTime_early = "14:50"
-classSixTime_early = "16:40"
+classTimes = {
+    "Чисельник": {
+        "Monday": {
+            classThreeTime: "DSA Lecture",
+            classFourTime: "TY Practice",
+            classFiveTime: "SP Lecture",
+        },
+        "Tuesday": {
+            classOneTime: "WEB Practice",
+            classTwoTime: "DSA Practice",
+            classFiveTime: "OPI Practice",
+        },
+        "Wednesday": {
+            classOneTime: "TY Lecture",
+            classTwoTime: "WEB Lecture",
+        },
+        "Thursday": {
+            classFiveTime: "IY Practice",
+        },
+        "Friday": {
+            classTwoTime: "VM Lecture",
+            classThreeTime: "VM Practice",
+        },
+    },
+    "Знаменник": {
+        "Monday": {
+            classThreeTime: "DSA Lecture",
+            classFourTime: "SP Practice",
+        },
+        "Tuesday": {
+            classOneTime: "WEB Practice",
+            classTwoTime: "DSA Practice",
+            classFourTime: "OPI Practice",
+            classFiveTime: "OPI Practice",
+        },
+        "Wednesday": {
+            classTwoTime: "WEB Lecture",
+        },
+        "Thursday": {
+            classTwoTime: "OPI Lecture",
+            classFiveTime: "IY Lecture",
+        },
+    },
+}
 
-speak_text("124 UAH daily donate.")
+
+def scheduleClasses(day, week):
+    classes = classTimes[week].get(day, {})
+    if not classes:
+        speak("No classes.")
+        return
+
+    for time, description in classes.items():
+        discipline, type = description.split(" ")
+        fullName = disciplineNames.get(discipline, discipline)
+        speak(f"{fullName} {type} at {time}")
+
+        funcName = f"{discipline}_{type.lower()}"
+        func = globals().get(funcName)
+
+        hour, minute = map(int, time.split(":"))
+        minute -= 5
+        time = f"{hour:02d}:{minute:02d}"
+
+        schedule.every().day.at(time).do(func)
+
 
 weekNominationStatus = ""
-if current_week % 2 == 0:
+if datetime.date.today().isocalendar()[1] % 2 == 0:
     weekNominationStatus = "Знаменник"
-    speak_text("This week is a Denominator.")
+    speak("Week is Denominator.")
 else:
     weekNominationStatus = "Чисельник"
-    speak_text("This week is a Numerator.")
+    speak("Week is Numerator.")
 
-if dayName == "Saturday" or dayName == "Sunday":
-    speak_text("No classes today!")
-else:
-    speak_text("Today's classes:")
+dayName = date.today().strftime("%A")
+scheduleClasses(dayName, weekNominationStatus)
 
-if dayName == "Monday":
-    speak_text(f"{ASD} Lecture at {classThreeTime}")
-    schedule.every().day.at(classThreeTime_early).do(ASD_lecture)
-    if weekNominationStatus == "Чисельник":
-        speak_text(f"{TY} Practice at {classFourTime}")
-        schedule.every().day.at(classFourTime_early).do(TY_practice)
-        speak_text(f"{SP} Lecture at {classFiveTime}")
-        schedule.every().day.at(classFiveTime_early).do(SP_lecture)
-    else:
-        speak_text(f"{SP} Lab at {classFourTime}")
-        schedule.every().day.at(classFourTime_early).do(SP_practice)
-elif dayName == "Tuesday":
-    speak_text(f"{WEB} Lab at {classOneTime}")
-    schedule.every().day.at(classOneTime_early).do(WEB_practice)
-    speak_text(f"{ASD} Lab at {classTwoTime}")
-    schedule.every().day.at(classTwoTime_early).do(ASD_practice)
-    speak_text(f"{OPI} Lab at {classFiveTime}")
-    schedule.every().day.at(classFiveTime_early).do(OPI_practice)
-    if weekNominationStatus == "Знаменник":
-        speak_text(f"{OPI} Practice at {classFourTime}")
-        schedule.every().day.at(classFourTime_early).do(OPI_practice)
-elif dayName == "Wednesday":
-    speak_text(f"{WEB} Lecture at {classTwoTime}")
-    schedule.every().day.at(classTwoTime_early).do(WEB_lecture)
-    if weekNominationStatus == "Чисельник":
-        speak_text(f"{TY} Lecture at {classOneTime}")
-        schedule.every().day.at(classOneTime_early).do(TY_lecture)
-elif dayName == "Thursday":
-    if weekNominationStatus == "Чисельник":
-        speak_text(f"{IY} Practice at {classFiveTime}")
-        schedule.every().day.at(classFiveTime_early).do(IY_practice)
-    else:
-        speak_text(f"{OPI} Lecture at {classTwoTime}")
-        schedule.every().day.at(classTwoTime_early).do(OPI_lecture)
-        speak_text(f"{IY} Lecture at {classFiveTime}")
-        schedule.every().day.at(classFiveTime_early).do(IY_lecture)
-elif dayName == "Friday":
-    if weekNominationStatus == "Чисельник":
-        speak_text(f"{VM} Lecture at {classTwoTime}")
-        schedule.every().day.at(classTwoTime_early).do(VM_lecture)
-        speak_text(f"{VM} Practice at {classThreeTime}")
-        schedule.every().day.at(classThreeTime_early).do(VM_practice)
-
-
-sunsetTime = get_sunset()
-schedule.every().day.at(sunsetTime).do(close_window)
+sunsetTime = getSunset()
+schedule.every().day.at(sunsetTime).do(closeWindow)
+schedule.every().day.at("21:30").do(sleep)
 
 while True:
     schedule.run_pending()
