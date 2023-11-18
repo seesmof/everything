@@ -46,8 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlarmClock.cs" />
-    <Compile Include="BestResults.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
