@@ -5,90 +5,75 @@
 - Визначити найкоротші шляхи між всіма точками на мапі міста Запоріжжя, використовуючи обмеження попереднього завдання.
 """
 
+
 GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/input.txt"
 
 
 def dijkstra():
-    import networkx as nx
+    from collections import defaultdict, deque
 
     class Graph:
         def __init__(self, directed=False):
-            self.graph = nx.Graph() if not directed else nx.DiGraph()
+            self.graph = defaultdict(list)
             self.directed = directed
 
-        def addEdge(self, u, v, w):
-            if not self.graph.has_node(u):
-                self.graph.add_node(u)
-            if not self.graph.has_node(v):
-                self.graph.add_node(v)
-            self.graph.add_edge(u, v, weight=w)
+        def addEdge(self, u, v):
+            self.graph[u].append(v)
             if not self.directed:
-                self.graph.add_edge(v, u, weight=w)
+                self.graph[v].append(u)
+
+        def BFS(self, start):
+            visited = set()
+            queue = deque([start])
+
+            while queue:
+                vertex = queue.popleft()
+                if vertex not in visited:
+                    visited.add(vertex)
+                    queue.extend(set(self.graph[vertex]) - visited)
+
+            return visited
+
+        def displayTree(self, start):
+            visited = set()
+            queue = deque([start])
+            tree = defaultdict(list)
+
+            while queue:
+                vertex = queue.popleft()
+                if vertex not in visited:
+                    visited.add(vertex)
+                    for neighbor in self.graph[vertex]:
+                        if neighbor not in visited:
+                            tree[vertex].append(neighbor)
+                            queue.append(neighbor)
+
+            return tree
+
+        def displayResults(self, start):
+            visited = self.BFS(start)
+            print(f"BFS traversal: {visited}")
+
+        def displayGraph(self):
+            for key, value in self.graph.items():
+                print(f"{key} 🔗 {', '.join(map(str, value))}")
 
         def loadFromFile(self, filename):
             with open(filename, "r") as file:
                 for line in file:
-                    u, v, w = line.strip().split()
-                    self.addEdge(int(u), int(v), int(w))
-
-        def displayGraph(self):
-            print("Nodes:")
-            for node in self.graph.nodes():
-                print(node)
-            print("\nEdges:")
-            for u, v, data in self.graph.edges(data=True):
-                print(f"{u} 🔗 {v} - {data['weight']}")
-
-        def dijkstra(self, start):
-            n = len(self.graph)
-            dist = [sys.maxsize] * n
-            dist[start] = 0
-            queue = [start]
-            while queue:
-                u = min(queue, key=lambda x: dist[x])
-                queue.remove(u)
-                for v, w in self.graph[u].items():
-                    if dist[u] + w["weight"] < dist[v]:
-                        dist[v] = dist[u] + w["weight"]
-            return dist
-
-        def floyed_warshall(self):
-            n = len(self.graph)
-            dist = [[sys.maxsize] * n for _ in range(n)]
-            for i in range(n):
-                for j in range(n):
-                    if i == j:
-                        dist[i][j] = 0
-                    elif self.graph[i][j] != 0:
-                        dist[i][j] = self.graph[i][j]
-            for k in range(n):
-                for i in range(n):
-                    for j in range(n):
-                        dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
-            return dist
-
-        def bellman_ford(self, start):
-            n = len(self.graph)
-            dist = [sys.maxsize] * n
-            dist[start] = 0
-            for _ in range(n - 1):
-                for u in range(n):
-                    for v, w in self.graph[u].items():
-                        if dist[u] + w["weight"] < dist[v]:
-                            dist[v] = dist[u] + w["weight"]
-            return dist
+                    u, v = line.strip().split()
+                    self.addEdge(int(u), int(v))
 
     def main():
         g = None
         while True:
-            print("\nAlgorithms")
-            print("1. Create graph")
-            print("2. Add edge")
+            print("\nBFS")
+            print("1. Create a new graph")
+            print("2. Add an edge")
             print("3. Display graph")
-            print("4. Dijkstra")
-            print("5. Floyd-Warshell")
-            print("6. Bellman-Ford")
-            print("7. Exit")
+            print("4. Perform breadth-first search")
+            print("5. Display breadth-first search tree")
+            print("6. Exit")
             choice = int(input(": "))
             print()
 
@@ -97,10 +82,9 @@ def dijkstra():
                 print("2. Create a new graph")
                 # choice = int(input(": "))
                 choice = 1
-                print()
 
                 if choice == 1:
-                    # filename = input("Enter filename: ")
+                    # filename = input("Enter the filename: ")
                     filename = GRAPH_FILE_PATH
                     g = Graph()
                     g.loadFromFile(filename)
@@ -109,24 +93,23 @@ def dijkstra():
                     g = Graph(directed)
 
             elif choice == 2:
-                u = input("Enter first vertex: ")
-                v = input("Enter second vertex: ")
-                w = int(input("Enter weight: "))
-                g.addEdge(u, v, w)
+                u = int(input("Enter the first vertex: "))
+                v = int(input("Enter the second vertex: "))
+                g.addEdge(u, v)
 
             elif choice == 3:
                 g.displayGraph()
 
             elif choice == 4:
-                start = int(input("Enter start vertex: "))
-                g.dijkstra(start)
+                v = int(input("Enter the starting vertex: "))
+                g.displayResults(v)
 
             elif choice == 5:
-                g.floyd_warshell()
-
-            elif choice == 6:
-                start = int(input("Enter start vertex: "))
-                g.bellman_ford(start)
+                v = int(input("Enter the starting vertex: "))
+                print()
+                tree = dict(g.displayTree(v))
+                for key, value in tree.items():
+                    print(f"{key}: {value}")
 
             else:
                 break

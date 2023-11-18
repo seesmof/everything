@@ -1,6 +1,12 @@
+class Node:
+    def __init__(self, val: int):
+        self.val = val
+        self.next = None
+
+
 class LinkedList:
     def __init__(self):
-        pass
+        self.head = None
 
     def get(self, index: int) -> int:
         pass

@@ -1,30 +1,95 @@
-import networkx as nx
+GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/input.txt"
+
+
+from collections import defaultdict, deque
 
 
 class Graph:
     def __init__(self, directed=False):
-        self.graph = nx.Graph() if not directed else nx.DiGraph()
+        self.graph = defaultdict(list)
         self.directed = directed
 
     def addEdge(self, u, v, w):
-        if not self.graph.has_node(u):
-            self.graph.add_node(u)
-        if not self.graph.has_node(v):
-            self.graph.add_node(v)
-        self.graph.add_edge(u, v, weight=w)
+        self.graph[u].append((v, w))
         if not self.directed:
-            self.graph.add_edge(v, u, weight=w)
+            self.graph[v].append((u, w))
+
+    def displayGraph(self):
+        for key, value in self.graph.items():
+            if self.directed:
+                print(f"{key} → {', '.join(map(str, value))}")
+            else:
+                print(f"{key} 🔗 {', '.join(map(str, value))}")
 
     def loadFromFile(self, filename):
         with open(filename, "r") as file:
             for line in file:
-                u, v, w = line.strip().split()
-                self.addEdge(int(u), int(v), int(w))
+                try:
+                    u, v, w = line.strip().split()
+                    self.addEdge(int(u), int(v), int(w))
+                except ValueError:
+                    print(f"Skipping line {line}")
 
-    def displayGraph(self):
-        print("Nodes:")
-        for node in self.graph.nodes():
-            print(node)
-        print("\nEdges:")
-        for u, v, data in self.graph.edges(data=True):
-            print(f"{u} 🔗 {v} - {data['weight']}")
+    def dfs(self, start):
+        visited = set()
+        stack = [start]
+        while stack:
+            vertex = stack.pop()
+            if vertex not in visited:
+                visited.add(vertex)
+                stack.extend(set(self.graph[vertex]) - visited)
+        return visited
+
+
+def main():
+    g = None
+    while True:
+        print("\nALGORITHMS")
+        print("1. Create a new graph")
+        print("2. Add an edge")
+        print("3. Display graph")
+        print("4. Perform breadth-first search")
+        print("5. Display breadth-first search tree")
+        print("6. Exit")
+        choice = int(input(": "))
+        print()
+
+        if choice == 1:
+            print("1. Load from file")
+            print("2. Create a new graph")
+            # choice = int(input(": "))
+            choice = 1
+
+            if choice == 1:
+                # filename = input("Enter the filename: ")
+                filename = GRAPH_FILE_PATH
+                g = Graph()
+                g.loadFromFile(filename)
+            elif choice == 2:
+                directed = input("Is the graph directed? (y/n): ") == "y"
+                g = Graph(directed)
+
+        elif choice == 2:
+            u = int(input("Enter the first vertex: "))
+            v = int(input("Enter the second vertex: "))
+            g.addEdge(u, v)
+
+        elif choice == 3:
+            g.displayGraph()
+
+        elif choice == 4:
+            v = int(input("Enter the starting vertex: "))
+            g.displayResults(v)
+
+        elif choice == 5:
+            v = int(input("Enter the starting vertex: "))
+            print()
+            tree = dict(g.displayTree(v))
+            for key, value in tree.items():
+                print(f"{key}: {value}")
+
+        else:
+            break
+
+
+main()
