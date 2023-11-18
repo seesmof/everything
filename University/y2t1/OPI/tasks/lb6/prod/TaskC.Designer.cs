@@ -55,7 +55,6 @@ namespace dev
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FormMain_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
