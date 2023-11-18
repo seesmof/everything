@@ -2,6 +2,7 @@ GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/input.txt"
 
 
 from collections import defaultdict, deque
+import heapq
 
 
 class Graph:
@@ -40,6 +41,21 @@ class Graph:
                 stack.extend(set(self.graph[vertex]) - visited)
         return visited
 
+    def dijkstra(self, start):
+        distances = {vertex: float("inf") for vertex in self.graph}
+        distances[start] = 0
+        queue = [(0, start)]
+        while queue:
+            currentDistance, currentVertex = heapq.heappop(queue)
+            if currentDistance > distances[currentVertex]:
+                continue
+            for neighbor, weight in self.graph[currentVertex]:
+                distance = currentDistance + weight
+                if distance < distances[neighbor]:
+                    distances[neighbor] = distance
+                    heapq.heappush(queue, (distance, neighbor))
+        return distances
+
 
 def main():
     g = None
@@ -49,7 +65,7 @@ def main():
         print("2. Add an edge")
         print("3. Display graph")
         print("4. Dijkstra")
-        print("5. Floid-Warshall")
+        print("5. Floyd-Warshell")
         print("6. Bellman-Ford")
         print("7. Exit")
         choice = int(input(": "))
@@ -77,6 +93,13 @@ def main():
 
         elif choice == 3:
             g.displayGraph()
+
+        elif choice == 4:
+            v = int(input("Enter the starting vertex: "))
+            print()
+            tree = dict(g.dijkstra(v))
+            for key, value in tree.items():
+                print(f"{key}: {value}")
 
         else:
             break
