@@ -1,4 +1,5 @@
-﻿namespace dev
+﻿// Task C - Designer
+namespace dev
 {
     partial class FormMain
     {

@@ -8,3 +8,13 @@ D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb6\dev\obj\Debug\dev.csp
 D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb6\dev\obj\Debug\dev.exe
 D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb6\dev\obj\Debug\dev.pdb
 D:\repos\everything\University\Year 2 Term 1\OPI\tasks\lb6\dev\obj\Debug\dev.FormMain.resources
+D:\code\everything\University\y2t1\OPI\tasks\lb6\dev\obj\Debug\dev.csproj.AssemblyReference.cache
+D:\code\everything\University\y2t1\OPI\tasks\lb6\dev\obj\Debug\dev.FormMain.resources
+D:\code\everything\University\y2t1\OPI\tasks\lb6\dev\obj\Debug\dev.Properties.Resources.resources
+D:\code\everything\University\y2t1\OPI\tasks\lb6\dev\obj\Debug\dev.csproj.GenerateResource.cache
+D:\code\everything\University\y2t1\OPI\tasks\lb6\dev\obj\Debug\dev.csproj.CoreCompileInputs.cache
+D:\code\everything\University\y2t1\OPI\tasks\lb6\dev\obj\Debug\dev.exe
+D:\code\everything\University\y2t1\OPI\tasks\lb6\dev\obj\Debug\dev.pdb
+D:\code\everything\University\y2t1\OPI\tasks\lb6\dev\bin\Debug\dev.exe.config
+D:\code\everything\University\y2t1\OPI\tasks\lb6\dev\bin\Debug\dev.exe
+D:\code\everything\University\y2t1\OPI\tasks\lb6\dev\bin\Debug\dev.pdb

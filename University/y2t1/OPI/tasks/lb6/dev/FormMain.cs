@@ -254,5 +254,48 @@ namespace dev
                 dgvScores.Rows.Add(result.Name, result.Score, result.Difficulty);
             }
         }
+
+        private void cmbDifficulty_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Update the game variables according to the new difficulty level
+            switch (cmbDifficulty.SelectedIndex)
+            {
+                case 0: // Easy
+                    maxTime = 10;
+                    minChars = 1;
+                    maxChars = 1;
+                    minWords = 1;
+                    maxWords = 1;
+                    break;
+                case 1: // Medium
+                    maxTime = 8;
+                    minChars = 1;
+                    maxChars = 2;
+                    minWords = 1;
+                    maxWords = 2;
+                    break;
+                case 2: // Hard
+                    maxTime = 6;
+                    minChars = 1;
+                    maxChars = 3;
+                    minWords = 1;
+                    maxWords = 3;
+                    break;
+                case 3: // Expert
+                    maxTime = 4;
+                    minChars = 2;
+                    maxChars = 4;
+                    minWords = 2;
+                    maxWords = 4;
+                    break;
+                case 4: // Master
+                    maxTime = 2;
+                    minChars = 3;
+                    maxChars = 5;
+                    minWords = 3;
+                    maxWords = 5;
+                    break;
+            }
+        }
     }
 }

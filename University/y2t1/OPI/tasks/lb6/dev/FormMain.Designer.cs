@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblCharacter = new System.Windows.Forms.Label();
             this.txtInput = new System.Windows.Forms.TextBox();
             this.lblTimer = new System.Windows.Forms.Label();
@@ -38,9 +39,9 @@
             this.cmbDifficulty = new System.Windows.Forms.ComboBox();
             this.lblScore = new System.Windows.Forms.Label();
             this.dgvScores = new System.Windows.Forms.DataGridView();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ScoreHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DifficultyHeader = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResultName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResultScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResultDifficulty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvScores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,6 +116,7 @@
             this.cmbDifficulty.Name = "cmbDifficulty";
             this.cmbDifficulty.Size = new System.Drawing.Size(145, 24);
             this.cmbDifficulty.TabIndex = 5;
+            this.cmbDifficulty.SelectedIndexChanged += new System.EventHandler(this.cmbDifficulty_SelectedIndexChanged);
             // 
             // lblScore
             // 
@@ -130,37 +132,50 @@
             this.dgvScores.AllowUserToAddRows = false;
             this.dgvScores.AllowUserToDeleteRows = false;
             this.dgvScores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvScores.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvScores.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvScores.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvScores.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlLightLight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvScores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvScores.ColumnHeadersHeight = 28;
             this.dgvScores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Name,
-            this.ScoreHeader,
-            this.DifficultyHeader});
+            this.ResultName,
+            this.ResultScore,
+            this.ResultDifficulty});
+            this.dgvScores.EnableHeadersVisualStyles = false;
             this.dgvScores.Location = new System.Drawing.Point(15, 118);
             this.dgvScores.Name = "dgvScores";
             this.dgvScores.ReadOnly = true;
+            this.dgvScores.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvScores.RowHeadersVisible = false;
             this.dgvScores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvScores.Size = new System.Drawing.Size(557, 231);
             this.dgvScores.TabIndex = 6;
             // 
-            // Name
+            // ResultName
             // 
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
+            this.ResultName.HeaderText = "Name";
+            this.ResultName.Name = "ResultName";
+            this.ResultName.ReadOnly = true;
             // 
-            // ScoreHeader
+            // ResultScore
             // 
-            this.ScoreHeader.HeaderText = "Score";
-            this.ScoreHeader.Name = "ScoreHeader";
-            this.ScoreHeader.ReadOnly = true;
+            this.ResultScore.HeaderText = "Score";
+            this.ResultScore.Name = "ResultScore";
+            this.ResultScore.ReadOnly = true;
             // 
-            // DifficultyHeader
+            // ResultDifficulty
             // 
-            this.DifficultyHeader.HeaderText = "Difficulty";
-            this.DifficultyHeader.Name = "DifficultyHeader";
-            this.DifficultyHeader.ReadOnly = true;
+            this.ResultDifficulty.HeaderText = "Difficulty";
+            this.ResultDifficulty.Name = "ResultDifficulty";
+            this.ResultDifficulty.ReadOnly = true;
             // 
             // FormMain
             // 
@@ -196,9 +211,9 @@
         private System.Windows.Forms.ComboBox cmbDifficulty;
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.DataGridView dgvScores;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ScoreHeader;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DifficultyHeader;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResultName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResultScore;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ResultDifficulty;
     }
 }
 

@@ -1,4 +1,4 @@
-﻿// Task B - Alarm Clock
+﻿// Task A - Alarm Clock
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,5 @@
-﻿namespace dev
+﻿// Task B - Designer
+namespace dev
 {
     partial class FormMain
     {
