@@ -1,65 +1,30 @@
 import networkx as nx
-import sys
 
 
-def dijkstra(graph, start):
-    n = len(graph)
-    dist = [sys.maxsize] * n
-    dist[start] = 0
-    queue = [start]
-    while queue:
-        u = min(queue, key=lambda x: dist[x])
-        queue.remove(u)
-        for v, w in graph[u]:
-            if dist[u] + w < dist[v]:
-                dist[v] = dist[u] + w
-    return dist
+class Graph:
+    def __init__(self, directed=False):
+        self.graph = nx.Graph() if not directed else nx.DiGraph()
+        self.directed = directed
 
+    def addEdge(self, u, v, w):
+        if not self.graph.has_node(u):
+            self.graph.add_node(u)
+        if not self.graph.has_node(v):
+            self.graph.add_node(v)
+        self.graph.add_edge(u, v, weight=w)
+        if not self.directed:
+            self.graph.add_edge(v, u, weight=w)
 
-def floyd_warshall(graph):
-    n = len(graph)
-    dist = [[sys.maxsize] * n for _ in range(n)]
-    for i in range(n):
-        for j in range(n):
-            if i == j:
-                dist[i][j] = 0
-            elif graph[i][j] != 0:
-                dist[i][j] = graph[i][j]
-    for k in range(n):
-        for i in range(n):
-            for j in range(n):
-                dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
-    return dist
+    def loadFromFile(self, filename):
+        with open(filename, "r") as file:
+            for line in file:
+                u, v, w = line.strip().split()
+                self.addEdge(int(u), int(v), int(w))
 
-
-def bellman_ford(graph, start):
-    n = len(graph)
-    dist = [sys.maxsize] * n
-    dist[start] = 0
-    for _ in range(n - 1):
-        for u in range(n):
-            for v, w in graph[u]:
-                if dist[u] + w < dist[v]:
-                    dist[v] = dist[u] + w
-    return dist
-
-
-# Create an empty graph
-G = nx.Graph()
-
-# Add nodes to the graph
-G.add_node(1)
-G.add_node(2)
-G.add_node(3)
-
-# Add edges to the graph
-G.add_edge(1, 2, weight=6)
-G.add_edge(1, 3, weight=1)
-G.add_edge(2, 3, weight=5)
-# Get the adjacency list of the graph
-graph = nx.to_dict_of_lists(G)
-
-# Now you can use the graph in your algorithms
-print(dijkstra(graph, 1))
-print(floyd_warshall(graph))
-print(bellman_ford(graph, 1))
+    def displayGraph(self):
+        print("Nodes:")
+        for node in self.graph.nodes():
+            print(node)
+        print("\nEdges:")
+        for u, v, data in self.graph.edges(data=True):
+            print(f"{u} 🔗 {v} - {data['weight']}")
