@@ -134,7 +134,6 @@
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.drawingCanvas);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaximumSize = new System.Drawing.Size(600, 400);
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "FormMain";
             this.Text = "Робота з зображеннями - ОПІ Лаба 7";

@@ -57,7 +57,6 @@ namespace dev
             if (currentTool == "Line")
             {
                 g = drawingCanvas.CreateGraphics();
-                g.Clear(Color.White);
                 startPoint = e.Location;
             }
         }
