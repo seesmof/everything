@@ -3,7 +3,7 @@
 - Shows Categories - Page for each category with filtering and sorting options
 - Page for each movie with description, rating, cast, year, and poster
 - A search bar, persistent across the app, and a page that will show the search results
-- To reduce the amount of work we need to do, lets create one global page for all the movies and TV shows that will allow to sort, filter and search our movies. This is where we'll be redirected from categories page, from the main page and from the search page. We will need to include sorting, filtering based on category, based on the type of media and based on the search (if it was envoced this way)
+- To reduce the amount of work we need to do, lets create one global page for all the movies and TV shows that will allow to sort, filter and search our movies. This is where we'll be redirected from categories page, from the main page and from the search page. We will need to include sorting, filtering based on category, based on the type of media and based on the search (if it was evoked this way)
 
 ---
 
@@ -17,3 +17,27 @@ Your plan for the app sounds solid and well-structured. Here's a quick rundown o
 6. **Global Page**: This page will display all movies and TV shows, with sorting, filtering, and search functionality. It will serve as a central hub for users to browse and search for content.
 
 This plan provides a clear structure for your application and covers the main features you want to include. It's a good idea to start with the basic structure and then gradually add features and functionality. Good luck with your project!
+
+---
+
+- app
+  - favicon.ico
+  - global.css
+  - layout.jsx
+  - page.jsx
+- components
+- lib
+  - utils.js
+- public
+  - logo.png
+- .gitignore
+- components.json
+- jsconfig.json
+- next.config.js
+- package.json
+- README.md
+- tailwind.config.js
+
+---
+
+TMDb API - e87b47516389ca897c5e6acdc3068cc2
