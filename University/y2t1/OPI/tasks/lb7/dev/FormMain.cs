@@ -28,31 +28,19 @@ namespace dev
         {
             ToolStripButton button = (ToolStripButton)sender;
             currentTool = button.Tag.ToString();
+
+            if (currentTool == "Text")
+            {
+                currentText = "";
+                showInputDialog();
+            }
         }
 
-        private void toolStripButtonLine_Click(object sender, EventArgs e)
+        private void showInputDialog()
         {
-            selectTool(sender, e);
-        }
-
-        private void toolStripButtonEllipse_Click(object sender, EventArgs e)
-        {
-            selectTool(sender, e);
-        }
-
-        private void toolStripButtonPencil_Click(object sender, EventArgs e)
-        {
-            selectTool(sender, e);
-        }
-
-        private void toolStripButtonRectangle_Click(object sender, EventArgs e)
-        {
-            selectTool(sender, e);
-        }
-
-        private void toolStripButtonText_Click(object sender, EventArgs e)
-        {
-            selectTool(sender, e);
+            InputDialog dialog = new InputDialog();
+            dialog.ShowDialog();
+            currentText = dialog.InputText;
         }
 
         private void drawingCanvas_MouseDown(object sender, MouseEventArgs e)
@@ -76,6 +64,11 @@ namespace dev
             {
                 g = drawingCanvas.CreateGraphics();
                 startPoint = e.Location;
+            }
+            else if (currentTool == "Text")
+            {
+                g = drawingCanvas.CreateGraphics();
+                g.DrawString(currentText, new Font("Arial", 12), Brushes.Black, e.Location);
             }
         }
 
@@ -136,6 +129,31 @@ namespace dev
             // TODO: Unselect all other tool buttons when a new one is selected
             // TODO: Add color change
             // TODO: Add line thickness change
+        }
+
+        private void toolStripButtonLine_Click(object sender, EventArgs e)
+        {
+            selectTool(sender, e);
+        }
+
+        private void toolStripButtonEllipse_Click(object sender, EventArgs e)
+        {
+            selectTool(sender, e);
+        }
+
+        private void toolStripButtonPencil_Click(object sender, EventArgs e)
+        {
+            selectTool(sender, e);
+        }
+
+        private void toolStripButtonRectangle_Click(object sender, EventArgs e)
+        {
+            selectTool(sender, e);
+        }
+
+        private void toolStripButtonText_Click(object sender, EventArgs e)
+        {
+            selectTool(sender, e);
         }
     }
 }
