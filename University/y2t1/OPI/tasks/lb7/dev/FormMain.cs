@@ -60,11 +60,20 @@ namespace dev
                 g = drawingCanvas.CreateGraphics();
                 startPoint = e.Location;
             }
+            else if (currentTool == "Ellipse")
+            {
+                g = drawingCanvas.CreateGraphics();
+                startPoint = e.Location;
+            }
         }
 
         private void drawingCanvas_MouseMove(object sender, MouseEventArgs e)
         {
             if (currentTool == "Line" && g != null)
+            {
+                endPoint = e.Location;
+            }
+            else if (currentTool == "Ellipse" && g != null)
             {
                 endPoint = e.Location;
             }
@@ -75,6 +84,16 @@ namespace dev
             if (currentTool == "Line" && g != null)
             {
                 g.DrawLine(Pens.Black, startPoint, endPoint);
+                g.Dispose();
+                g = null;
+            }
+            else if (currentTool == "Ellipse" && g != null)
+            {
+                int width = Math.Abs(endPoint.X - startPoint.X);
+                int height = Math.Abs(endPoint.Y - startPoint.Y);
+
+                g.DrawEllipse(Pens.Black, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), width, height);
+
                 g.Dispose();
                 g = null;
             }
