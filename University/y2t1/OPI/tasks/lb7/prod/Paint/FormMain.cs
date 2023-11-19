@@ -51,9 +51,16 @@ namespace dev
 
         private void showInputDialog()
         {
-            InputDialog dialog = new InputDialog();
-            dialog.ShowDialog();
-            currentText = dialog.InputText;
+            try
+            {
+                InputDialog dialog = new InputDialog();
+                dialog.ShowDialog();
+                currentText = dialog.InputText;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void drawingCanvas_MouseDown(object sender, MouseEventArgs e)
@@ -87,22 +94,29 @@ namespace dev
 
         private void drawingCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-            if (currentTool == "Line" && g != null)
+            try
             {
-                endPoint = e.Location;
+                if (currentTool == "Line" && g != null)
+                {
+                    endPoint = e.Location;
+                }
+                else if (currentTool == "Ellipse" && g != null)
+                {
+                    endPoint = e.Location;
+                }
+                else if (currentTool == "Pencil" && g != null)
+                {
+                    g.DrawLine(Pens.Black, currentPoint, e.Location);
+                    currentPoint = e.Location;
+                }
+                else if (currentTool == "Rectangle" && g != null)
+                {
+                    endPoint = e.Location;
+                }
             }
-            else if (currentTool == "Ellipse" && g != null)
+            catch (Exception ex)
             {
-                endPoint = e.Location;
-            }
-            else if (currentTool == "Pencil" && g != null)
-            {
-                g.DrawLine(Pens.Black, currentPoint, e.Location);
-                currentPoint = e.Location;
-            }
-            else if (currentTool == "Rectangle" && g != null)
-            {
-                endPoint = e.Location;
+                MessageBox.Show(ex.Message);
             }
         }
 
