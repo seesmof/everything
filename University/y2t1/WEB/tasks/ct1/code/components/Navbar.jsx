@@ -3,20 +3,32 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     <>
-      <nav className="bg-slate-800 fixed bottom-0 left-0 right-0 md:sticky md:top-0">
+      <nav className="bg-slate-800 text-slate-300 fixed bottom-0 left-0 right-0 md:sticky md:top-0">
         <div className="flex items-center justify-between p-2 gap-2 md:hidden">
-          <button className="p-2 grow rounded-md hover:bg-slate-700 active:bg-slate-600 duration-300">
+          <Link
+            href={"/"}
+            className="p-2 grow rounded-md hover:bg-slate-700 hover:text-white active:text-white active:bg-slate-600 duration-300"
+          >
             Home
-          </button>
-          <button className="p-2 grow rounded-md hover:bg-slate-700 active:bg-slate-600 duration-300">
+          </Link>
+          <Link
+            href={"/catalog"}
+            className="p-2 grow rounded-md hover:bg-slate-700 hover:text-white active:text-white active:bg-slate-600 duration-300"
+          >
             Catalog
-          </button>
-          <button className="p-2 grow rounded-md hover:bg-slate-700 active:bg-slate-600 duration-300">
+          </Link>
+          <Link
+            href={"/movies"}
+            className="p-2 grow rounded-md hover:bg-slate-700 hover:text-white active:text-white active:bg-slate-600 duration-300"
+          >
             Movies
-          </button>
-          <button className="p-2 grow rounded-md hover:bg-slate-700 active:bg-slate-600 duration-300">
+          </Link>
+          <Link
+            href={"/shows"}
+            className="p-2 grow rounded-md hover:bg-slate-700 hover:text-white active:text-white active:bg-slate-600 duration-300"
+          >
             Shows
-          </button>
+          </Link>
         </div>
         <div className="hidden md:flex max-w-6xl mx-auto justify-between items-center p-4">
           <Link
