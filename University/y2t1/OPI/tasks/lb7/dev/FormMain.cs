@@ -17,6 +17,7 @@ namespace dev
         Point endPoint;
         Point currentPoint;
         Graphics g;
+        string currentText = "";
 
         public FormMain()
         {
@@ -71,6 +72,11 @@ namespace dev
                 g = drawingCanvas.CreateGraphics();
                 currentPoint = e.Location;
             }
+            else if (currentTool == "Rectangle")
+            {
+                g = drawingCanvas.CreateGraphics();
+                startPoint = e.Location;
+            }
         }
 
         private void drawingCanvas_MouseMove(object sender, MouseEventArgs e)
@@ -87,6 +93,10 @@ namespace dev
             {
                 g.DrawLine(Pens.Black, currentPoint, e.Location);
                 currentPoint = e.Location;
+            }
+            else if (currentTool == "Rectangle" && g != null)
+            {
+                endPoint = e.Location;
             }
         }
 
@@ -113,6 +123,19 @@ namespace dev
                 g.Dispose();
                 g = null;
             }
+            else if (currentTool == "Rectangle" && g != null)
+            {
+                int width = Math.Abs(endPoint.X - startPoint.X);
+                int height = Math.Abs(endPoint.Y - startPoint.Y);
+
+                g.DrawRectangle(Pens.Black, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), width, height);
+
+                g.Dispose();
+                g = null;
+            }
+            // TODO: Unselect all other tool buttons when a new one is selected
+            // TODO: Add color change
+            // TODO: Add line thickness change
         }
     }
 }
