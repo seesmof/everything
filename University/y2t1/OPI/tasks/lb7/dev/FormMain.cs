@@ -14,6 +14,7 @@ namespace dev
     {
         string currentTool = null;
         Point startPoint;
+        Point endPoint;
         Graphics g;
 
         public FormMain()
@@ -65,7 +66,7 @@ namespace dev
         {
             if (currentTool == "Line" && g != null)
             {
-                g.DrawLine(Pens.Black, startPoint, e.Location);
+                endPoint = e.Location;
             }
         }
 
@@ -73,7 +74,7 @@ namespace dev
         {
             if (currentTool == "Line" && g != null)
             {
-                g.DrawLine(Pens.Black, startPoint, e.Location);
+                g.DrawLine(Pens.Black, startPoint, endPoint);
                 g.Dispose();
                 g = null;
             }
