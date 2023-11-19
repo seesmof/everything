@@ -24,10 +24,21 @@ namespace dev
             InitializeComponent();
         }
 
+        private void unselectAllTools()
+        {
+            foreach (ToolStripButton button in this.toolStrip.Items)
+            {
+                button.Checked = false;
+            }
+        }
+
         private void selectTool(object sender, EventArgs e)
         {
             ToolStripButton button = (ToolStripButton)sender;
             currentTool = button.Tag.ToString();
+
+            unselectAllTools();
+            button.Checked = true;
 
             if (currentTool == "Text")
             {
@@ -126,7 +137,6 @@ namespace dev
                 g.Dispose();
                 g = null;
             }
-            // TODO: Unselect all other tool buttons when a new one is selected
             // TODO: Add color change
             // TODO: Add line thickness change
         }
