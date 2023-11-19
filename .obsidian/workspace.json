@@ -8,13 +8,11 @@
         "type": "tabs",
         "children": [
           {
-            "id": "165cb1e73bd0bdac",
+            "id": "6b8f645feb56a2d2",
             "type": "leaf",
             "state": {
-              "type": "image",
-              "state": {
-                "file": "logo.png"
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -84,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "logo.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -101,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "logo.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,9 +129,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "logo.png"
-              }
+              "state": {}
             }
           }
         ]
@@ -173,19 +167,41 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "165cb1e73bd0bdac",
+  "active": "6b8f645feb56a2d2",
   "lastOpenFiles": [
+    "University/y2t1/WEB/tasks/ct1/docs/stack.md",
+    "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report/Розробити абстрактну модель системи за обраною темою на основі обраного архітектурного патерну (архітектурного шаблону програмного забезпечення).md",
+    "University/y2t1/WEB/tasks/ct1/Провести документування специфікації вимог до проєкту - сформулювати цілі та межі проєкту, аналіз функціональних вимог.md",
+    "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report/Провести документування специфікації вимог до проєкту - сформулювати цілі та межі проєкту, аналіз функціональних вимог.md",
+    "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report/Порядок виконання самостійного завдання.md",
+    "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report/Обрати тему для подальшого проєктування системи.md",
+    "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report/Вступ.md",
+    "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report",
+    "University/y2t1/WEB/tasks/ct1/docs/Вступ.md",
+    "University/y2t1/WEB/tasks/ct1/docs/prod/docs/task.pdf",
+    "University/y2t1/WEB/tasks/ct1/docs/prod/docs/task.md",
+    "University/y2t1/WEB/tasks/ct1/docs/prod/docs/res.pdf",
+    "University/y2t1/WEB/tasks/ct1/docs/prod/docs",
+    "University/y2t1/WEB/tasks/ct1/docs/prod/task.md",
+    "University/y2t1/WEB/tasks/ct1/docs/prod/task.pdf",
+    "University/y2t1/WEB/tasks/ct1/docs/prod/res.pdf",
+    "University/y2t1/WEB/tasks/ct1/docs/prod/res.docx",
+    "University/y2t1/WEB/tasks/ct1/docs/prod",
+    "University/y2t1/WEB/tasks/ct1/docs/irrelevant/Potential pages layout.md",
+    "University/y2t1/WEB/tasks/ct1/docs/irrelevant/Options for API.md",
+    "University/y2t1/WEB/tasks/ct1/docs/irrelevant",
+    "University/y2t1/WEB/tasks/ct1/docs/old/Potential pages layout.md",
+    "University/y2t1/WEB/tasks/ct1/docs/old/Options for API.md",
+    "University/y2t1/WEB/tasks/ct1/docs/old",
+    "University/y2t1/WEB/tasks/ct1/docs/pages.md",
+    "University/y2t1/WEB/tasks/ct1/pages.md",
+    "University/y2t1/WEB/tasks/ct1/Порядок виконання самостійного завдання.md",
+    "University/y2t1/WEB/tasks/ct1/Вступ.md",
+    "University/y2t1/WEB/tasks/ct1/Розробити абстрактну модель системи за обраною темою на основі обраного архітектурного патерну (архітектурного шаблону програмного забезпечення).md",
+    "University/y2t1/WEB/tasks/ct1/Обрати тему для подальшого проєктування системи.md",
+    "University/y2t1/WEB/tasks/ct1/task.md",
+    "logo.png",
     "University/y2t1/OPI/tasks/lb7/prod/res.md",
-    "University/y2t1/OPI/tasks/lb7/dev/obj/Debug/TempPE",
-    "University/y2t1/OPI/tasks/lb7/dev/obj/Debug/dev.Properties.Resources.resources",
-    "University/y2t1/OPI/tasks/lb7/dev/obj/Debug/dev.pdb",
-    "University/y2t1/OPI/tasks/lb7/dev/obj/Debug/dev.FormMain.resources",
-    "University/y2t1/OPI/tasks/lb7/dev/obj/Debug/dev.csproj.GenerateResource.cache",
-    "University/y2t1/OPI/tasks/lb7/dev/obj/Debug/dev.exe",
-    "University/y2t1/OPI/tasks/lb7/dev/obj/Debug/dev.csproj.FileListAbsolute.txt",
-    "University/y2t1/OPI/tasks/lb7/dev/obj/Debug/dev.csproj.CoreCompileInputs.cache",
-    "University/y2t1/OPI/tasks/lb7/dev/obj/Debug/dev.csproj.AssemblyReference.cache",
-    "University/y2t1/OPI/tasks/lb7/dev/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache",
     "University/y2t1/OPI/tasks/lb7/prod/TaskC.gif",
     "University/y2t1/OPI/tasks/lb7/prod/TaskB.gif",
     "University/y2t1/OPI/tasks/lb7/prod/TaskA.gif",
@@ -194,32 +210,10 @@
     "University/y2t1/OPI/tasks/lb7/3.md",
     "University/y2t1/OPI/tasks/lb7/2.md",
     "University/y2t1/OPI/tasks/lb7/1.md",
-    "University/y2t1/OPI/tasks/lb6 copy/task.md",
     "University/y2t1/OPI/tasks/lb6 copy/prod/TaskC.gif",
     "University/y2t1/OPI/tasks/lb6 copy/prod/TaskB.gif",
     "University/y2t1/OPI/tasks/lb6 copy/prod/TaskA.gif",
     "University/y2t1/OPI/tasks/lb6 copy/logo.png",
-    "University/y2t1/OPI/tasks/lb6 copy/3.md",
-    "University/y2t1/OPI/tasks/lb6 copy/1.md",
-    "University/y2t1/OPI/tasks/lb6 copy/2.md",
-    "University/y2t1/OPI/tasks/pr4/main.md",
-    "Playing Exapunks/GIFs/EXAPUNKS - TRASH WORLD NEWS (405, 18, 3, 2023-11-18-18-34-29).gif",
-    "Playing Exapunks/GIFs/EXAPUNKS - TRASH WORLD NEWS (12, 16, 4, 2023-11-18-18-24-22).gif",
-    "University/y2t1/DSA/tasks/lb6/task.md",
-    "University/y2t1/DSA/tasks/lb5/prod.md",
-    "University/y2t2/Дисципліни.md",
-    "University/y1t1/УМ/Ukrainian-RKR/answers.md",
-    "University/y1t1/ОП/control2/task.md",
-    "University/y1t1/Дисципліни.md",
-    "University/y1t2/КДМ/tasks/lb3/tsk1/subtsk1/tsk.md",
-    "University/y1t2/ВММА/tasks/exam/new/lecture-notes/02-28.md",
-    "University/y1t2/ВММА/tasks/exam/old/prepar.md",
-    "University/y1t2/ВММА/tasks/exam/new/tasks_list.md",
-    "University/y1t2/ВММА/tasks/exam/new/old_questions.md",
-    "University/y1t2/ВММА/tasks/exam/new/important_topics.md",
-    "University/y1t2/SSГДтаК/tasks/lb4/FTP-server-local/example_two.md",
-    "University/y1t2/SSГДтаК/tasks/lb4/FTP-server-local/example_one.md",
-    "University/y1t2/ФП/tasks/essay-12-05-2023/drafts.md",
-    "University/y1t2/ФІ/tasks/Лекція 04.05.2023/text.md"
+    "Playing Exapunks/GIFs/EXAPUNKS - TRASH WORLD NEWS (405, 18, 3, 2023-11-18-18-34-29).gif"
   ]
 }

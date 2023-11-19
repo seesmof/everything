@@ -1,0 +1,6 @@
+- JavaScript
+- React
+- Next.JS
+- TailwindCSS
+- ShadCN
+- TMDb API
