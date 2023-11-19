@@ -1,4 +1,6 @@
-﻿namespace dev
+﻿// Paint - Designer
+
+namespace dev
 {
     partial class FormMain
     {
@@ -28,113 +30,118 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.button = new System.Windows.Forms.Button();
-            this.previousButton = new System.Windows.Forms.Button();
-            this.btnZoom = new System.Windows.Forms.Button();
-            this.lblEmpty = new System.Windows.Forms.Label();
-            this.nextButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
+            this.drawingCanvas = new System.Windows.Forms.PictureBox();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonLine = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonEllipse = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonPencil = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonRectangle = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonText = new System.Windows.Forms.ToolStripButton();
+            ((System.ComponentModel.ISupportInitialize)(this.drawingCanvas)).BeginInit();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pictureBox
+            // drawingCanvas
             // 
-            this.pictureBox.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pictureBox.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(560, 305);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox.TabIndex = 0;
-            this.pictureBox.TabStop = false;
+            this.drawingCanvas.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.drawingCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.drawingCanvas.Location = new System.Drawing.Point(0, 0);
+            this.drawingCanvas.Name = "drawingCanvas";
+            this.drawingCanvas.Size = new System.Drawing.Size(584, 361);
+            this.drawingCanvas.TabIndex = 0;
+            this.drawingCanvas.TabStop = false;
+            this.drawingCanvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.drawingCanvas_MouseDown);
+            this.drawingCanvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.drawingCanvas_MouseMove);
+            this.drawingCanvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.drawingCanvas_MouseUp);
             // 
-            // button
+            // toolStrip
             // 
-            this.button.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.button.FlatAppearance.BorderSize = 0;
-            this.button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button.Location = new System.Drawing.Point(453, 323);
-            this.button.Name = "button";
-            this.button.Size = new System.Drawing.Size(119, 26);
-            this.button.TabIndex = 1;
-            this.button.Text = "Open Image";
-            this.button.UseVisualStyleBackColor = false;
-            this.button.Click += new System.EventHandler(this.button_Click);
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonLine,
+            this.toolStripButtonEllipse,
+            this.toolStripButtonPencil,
+            this.toolStripButtonRectangle,
+            this.toolStripButtonText});
+            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(584, 25);
+            this.toolStrip.TabIndex = 1;
+            this.toolStrip.Text = "toolStrip";
             // 
-            // previousButton
+            // toolStripButtonLine
             // 
-            this.previousButton.BackColor = System.Drawing.Color.SteelBlue;
-            this.previousButton.FlatAppearance.BorderSize = 0;
-            this.previousButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previousButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.previousButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.previousButton.Location = new System.Drawing.Point(12, 323);
-            this.previousButton.Name = "previousButton";
-            this.previousButton.Size = new System.Drawing.Size(98, 26);
-            this.previousButton.TabIndex = 1;
-            this.previousButton.Text = "Previous";
-            this.previousButton.UseVisualStyleBackColor = false;
-            this.previousButton.Click += new System.EventHandler(this.previousButton_Click);
+            this.toolStripButtonLine.CheckOnClick = true;
+            this.toolStripButtonLine.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonLine.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonLine.Image")));
+            this.toolStripButtonLine.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonLine.Name = "toolStripButtonLine";
+            this.toolStripButtonLine.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonLine.Tag = "Line";
+            this.toolStripButtonLine.Text = "Line";
+            this.toolStripButtonLine.Click += new System.EventHandler(this.toolStripButtonLine_Click);
             // 
-            // btnZoom
+            // toolStripButtonEllipse
             // 
-            this.btnZoom.BackColor = System.Drawing.Color.SlateBlue;
-            this.btnZoom.FlatAppearance.BorderSize = 0;
-            this.btnZoom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZoom.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnZoom.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnZoom.Location = new System.Drawing.Point(370, 323);
-            this.btnZoom.Name = "btnZoom";
-            this.btnZoom.Size = new System.Drawing.Size(77, 26);
-            this.btnZoom.TabIndex = 1;
-            this.btnZoom.Text = "Zoom";
-            this.btnZoom.UseVisualStyleBackColor = false;
-            this.btnZoom.Click += new System.EventHandler(this.btnZoom_Click);
+            this.toolStripButtonEllipse.CheckOnClick = true;
+            this.toolStripButtonEllipse.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonEllipse.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEllipse.Image")));
+            this.toolStripButtonEllipse.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonEllipse.Name = "toolStripButtonEllipse";
+            this.toolStripButtonEllipse.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonEllipse.Tag = "Ellipse";
+            this.toolStripButtonEllipse.Text = "Ellipse";
+            this.toolStripButtonEllipse.Click += new System.EventHandler(this.toolStripButtonEllipse_Click);
             // 
-            // lblEmpty
+            // toolStripButtonPencil
             // 
-            this.lblEmpty.AutoSize = true;
-            this.lblEmpty.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.lblEmpty.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmpty.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblEmpty.Location = new System.Drawing.Point(223, 163);
-            this.lblEmpty.Name = "lblEmpty";
-            this.lblEmpty.Size = new System.Drawing.Size(165, 25);
-            this.lblEmpty.TabIndex = 2;
-            this.lblEmpty.Text = "Select an image...";
+            this.toolStripButtonPencil.CheckOnClick = true;
+            this.toolStripButtonPencil.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonPencil.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonPencil.Image")));
+            this.toolStripButtonPencil.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonPencil.Name = "toolStripButtonPencil";
+            this.toolStripButtonPencil.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonPencil.Tag = "Pencil";
+            this.toolStripButtonPencil.Text = "Pencil";
+            this.toolStripButtonPencil.Click += new System.EventHandler(this.toolStripButtonPencil_Click);
             // 
-            // nextButton
+            // toolStripButtonRectangle
             // 
-            this.nextButton.BackColor = System.Drawing.Color.SteelBlue;
-            this.nextButton.FlatAppearance.BorderSize = 0;
-            this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nextButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.nextButton.Location = new System.Drawing.Point(116, 323);
-            this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(82, 26);
-            this.nextButton.TabIndex = 1;
-            this.nextButton.Text = "Next";
-            this.nextButton.UseVisualStyleBackColor = false;
-            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
+            this.toolStripButtonRectangle.CheckOnClick = true;
+            this.toolStripButtonRectangle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonRectangle.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonRectangle.Image")));
+            this.toolStripButtonRectangle.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonRectangle.Name = "toolStripButtonRectangle";
+            this.toolStripButtonRectangle.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonRectangle.Tag = "Rectangle";
+            this.toolStripButtonRectangle.Text = "Rectangle";
+            this.toolStripButtonRectangle.Click += new System.EventHandler(this.toolStripButtonRectangle_Click);
+            // 
+            // toolStripButtonText
+            // 
+            this.toolStripButtonText.CheckOnClick = true;
+            this.toolStripButtonText.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonText.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonText.Image")));
+            this.toolStripButtonText.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonText.Name = "toolStripButtonText";
+            this.toolStripButtonText.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButtonText.Tag = "Text";
+            this.toolStripButtonText.Text = "Text";
+            this.toolStripButtonText.Click += new System.EventHandler(this.toolStripButtonText_Click);
             // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(584, 361);
-            this.Controls.Add(this.lblEmpty);
-            this.Controls.Add(this.btnZoom);
-            this.Controls.Add(this.nextButton);
-            this.Controls.Add(this.previousButton);
-            this.Controls.Add(this.button);
-            this.Controls.Add(this.pictureBox);
+            this.Controls.Add(this.toolStrip);
+            this.Controls.Add(this.drawingCanvas);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MaximumSize = new System.Drawing.Size(600, 400);
             this.MinimumSize = new System.Drawing.Size(600, 400);
             this.Name = "FormMain";
             this.Text = "Робота з зображеннями - ОПІ Лаба 7";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drawingCanvas)).EndInit();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,11 +149,12 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox;
-        private System.Windows.Forms.Button button;
-        private System.Windows.Forms.Button previousButton;
-        private System.Windows.Forms.Button btnZoom;
-        private System.Windows.Forms.Label lblEmpty;
-        private System.Windows.Forms.Button nextButton;
+        private System.Windows.Forms.PictureBox drawingCanvas;
+        private System.Windows.Forms.ToolStrip toolStrip;
+        private System.Windows.Forms.ToolStripButton toolStripButtonLine;
+        private System.Windows.Forms.ToolStripButton toolStripButtonEllipse;
+        private System.Windows.Forms.ToolStripButton toolStripButtonPencil;
+        private System.Windows.Forms.ToolStripButton toolStripButtonRectangle;
+        private System.Windows.Forms.ToolStripButton toolStripButtonText;
     }
 }

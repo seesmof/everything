@@ -1,4 +1,6 @@
-﻿namespace dev
+﻿// Image Viewer - Designer
+
+namespace dev
 {
     partial class FormMain
     {

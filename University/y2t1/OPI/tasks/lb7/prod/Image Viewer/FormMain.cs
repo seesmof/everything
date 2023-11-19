@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Image Viewer - Main
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

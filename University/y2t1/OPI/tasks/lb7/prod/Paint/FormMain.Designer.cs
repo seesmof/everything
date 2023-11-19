@@ -1,4 +1,6 @@
-﻿namespace dev
+﻿// Paint - Designer
+
+namespace dev
 {
     partial class FormMain
     {
@@ -36,8 +38,6 @@
             this.toolStripButtonPencil = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRectangle = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonText = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonColor = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonThickness = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.drawingCanvas)).BeginInit();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -62,9 +62,7 @@
             this.toolStripButtonEllipse,
             this.toolStripButtonPencil,
             this.toolStripButtonRectangle,
-            this.toolStripButtonText,
-            this.toolStripButtonColor,
-            this.toolStripButtonThickness});
+            this.toolStripButtonText});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(584, 25);
@@ -158,7 +156,5 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonPencil;
         private System.Windows.Forms.ToolStripButton toolStripButtonRectangle;
         private System.Windows.Forms.ToolStripButton toolStripButtonText;
-        private System.Windows.Forms.ToolStripButton toolStripButtonColor;
-        private System.Windows.Forms.ToolStripButton toolStripButtonThickness;
     }
 }
