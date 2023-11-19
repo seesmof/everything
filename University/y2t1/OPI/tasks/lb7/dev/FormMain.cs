@@ -15,6 +15,7 @@ namespace dev
         string currentTool = null;
         Point startPoint;
         Point endPoint;
+        Point currentPoint;
         Graphics g;
 
         public FormMain()
@@ -65,6 +66,11 @@ namespace dev
                 g = drawingCanvas.CreateGraphics();
                 startPoint = e.Location;
             }
+            else if (currentTool == "Pencil")
+            {
+                g = drawingCanvas.CreateGraphics();
+                currentPoint = e.Location;
+            }
         }
 
         private void drawingCanvas_MouseMove(object sender, MouseEventArgs e)
@@ -76,6 +82,11 @@ namespace dev
             else if (currentTool == "Ellipse" && g != null)
             {
                 endPoint = e.Location;
+            }
+            else if (currentTool == "Pencil" && g != null)
+            {
+                g.DrawLine(Pens.Black, currentPoint, e.Location);
+                currentPoint = e.Location;
             }
         }
 
@@ -94,6 +105,11 @@ namespace dev
 
                 g.DrawEllipse(Pens.Black, Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y), width, height);
 
+                g.Dispose();
+                g = null;
+            }
+            else if (currentTool == "Pencil" && g != null)
+            {
                 g.Dispose();
                 g = null;
             }
