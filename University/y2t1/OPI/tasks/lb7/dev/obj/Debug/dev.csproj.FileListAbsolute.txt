@@ -1,0 +1,10 @@
+D:\code\everything\University\y2t1\OPI\tasks\lb7\dev\obj\Debug\dev.csproj.AssemblyReference.cache
+D:\code\everything\University\y2t1\OPI\tasks\lb7\dev\obj\Debug\dev.Properties.Resources.resources
+D:\code\everything\University\y2t1\OPI\tasks\lb7\dev\obj\Debug\dev.csproj.GenerateResource.cache
+D:\code\everything\University\y2t1\OPI\tasks\lb7\dev\obj\Debug\dev.csproj.CoreCompileInputs.cache
+D:\code\everything\University\y2t1\OPI\tasks\lb7\dev\bin\Debug\dev.exe.config
+D:\code\everything\University\y2t1\OPI\tasks\lb7\dev\bin\Debug\dev.exe
+D:\code\everything\University\y2t1\OPI\tasks\lb7\dev\bin\Debug\dev.pdb
+D:\code\everything\University\y2t1\OPI\tasks\lb7\dev\obj\Debug\dev.FormMain.resources
+D:\code\everything\University\y2t1\OPI\tasks\lb7\dev\obj\Debug\dev.exe
+D:\code\everything\University\y2t1\OPI\tasks\lb7\dev\obj\Debug\dev.pdb
