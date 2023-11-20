@@ -15,7 +15,6 @@ const MovieTemplate = ({
   genres,
   id,
   imdbId,
-  fetchMovie,
 }) => {
   const [similarMovies, setSimilarMovies] = useState([]);
 
@@ -23,7 +22,14 @@ const MovieTemplate = ({
     const data = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/similar?api_key=e87b47516389ca897c5e6acdc3068cc2`
     ).then((res) => res.json());
-    setSimilarMovies(data.results.slice(0, 4));
+    setSimilarMovies(
+      data.results
+        .filter((result) => result.original_language !== "ru")
+        .filter((result) => result.backdrop_path && result.poster_path)
+        .filter((result) => result.overview && result.overview.trim() !== "")
+        .filter((result) => result.vote_average > 0)
+        .slice(0, 4)
+    );
   };
 
   useEffect(() => {
@@ -36,14 +42,14 @@ const MovieTemplate = ({
         <img
           src={backdrop}
           alt="Movie backdrop"
-          className="w-full max-h-96 object-cover object-top rounded-md"
+          className="w-full max-h-96 object-cover object-top rounded-xl"
         />
         <div className="grid gap-4 lg:gap-6 xl:gap-8 md:flex md:pt-4 lg:pt-6">
           <div className="grid">
             <img
               src={image}
               alt="Movie poster"
-              className="w-full hidden md:block max-h-96 max-w-sm md:max-h-max object-cover rounded-md"
+              className="w-full hidden md:block max-h-96 max-w-sm md:max-h-max object-cover rounded-xl"
             />
           </div>
           <div className="grid flex-1">
@@ -57,7 +63,7 @@ const MovieTemplate = ({
                 {name}
               </h1>
               <p
-                className={`text-neutral-50 font-medium rounded-md p-1 px-4 ${
+                className={`text-neutral-50 font-medium rounded-xl p-1 px-4 ${
                   rating >= 8
                     ? "bg-green-600"
                     : rating <= 3
@@ -77,12 +83,12 @@ const MovieTemplate = ({
                 href={`https://letterboxd.com/film/${name
                   .replace(" ", "-")
                   .toLowerCase()}/`}
-                className="bg-indigo-900 font-medium px-4 py-2 rounded-md duration-300 hover:text-white text-neutral-50 hover:bg-indigo-700"
+                className="bg-indigo-900 font-medium px-4 py-2 rounded-xl duration-300 hover:text-white text-neutral-50 hover:bg-indigo-700"
               >
                 Letterboxd
               </Link>
               <Link
-                className="bg-indigo-900 font-medium px-4 py-2 rounded-md duration-300 hover:text-white text-neutral-50 hover:bg-indigo-700"
+                className="bg-indigo-900 font-medium px-4 py-2 rounded-xl duration-300 hover:text-white text-neutral-50 hover:bg-indigo-700"
                 href={`https://www.imdb.com/title/${imdbId}/`}
               >
                 IMDb
@@ -100,6 +106,7 @@ const MovieTemplate = ({
                   media_type={movie.media_type}
                   release_year={movie.release_date?.slice(0, 4)}
                   id={movie.id}
+                  rating={movie.vote_average}
                 />
               ))}
             </div>

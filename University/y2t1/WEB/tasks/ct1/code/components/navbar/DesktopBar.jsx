@@ -22,7 +22,7 @@ const DesktopBar = ({ links, pathname }) => {
       </div>
       <input
         type="text"
-        className="bg-inherit rounded-md border-2 p-1 px-4 border-neutral-700 hover:border-indigo-500 max-w-[16rem] focus:outline-none focus:border-indigo-600"
+        className="bg-inherit rounded-xl border-2 p-1 px-4 border-neutral-700 hover:border-indigo-500 max-w-[16rem] focus:outline-none focus:border-indigo-600"
         placeholder="Search..."
       />
     </div>

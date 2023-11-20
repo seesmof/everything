@@ -27,6 +27,7 @@ const HomeSection = ({ heading, isLoading, movies }) => {
               name={movie.title}
               release_year={movie.release_date.slice(0, 4)}
               media_type="movie"
+              rating={movie.vote_average}
             />
           ))}
         </div>
@@ -34,7 +35,7 @@ const HomeSection = ({ heading, isLoading, movies }) => {
       <div className="flex md:justify-end mt-2 mb-2">
         <Link
           href={"/movies"}
-          className="bg-indigo-800 text-indigo-100 p-2 px-4 w-full md:w-max text-center rounded-md duration-300 hover:bg-indigo-700 font-medium"
+          className="bg-indigo-800 text-indigo-100 p-2 px-4 w-full md:w-max text-center rounded-xl duration-300 hover:bg-indigo-700 font-medium"
         >
           View All
         </Link>
