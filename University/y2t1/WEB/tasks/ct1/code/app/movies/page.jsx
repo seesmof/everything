@@ -24,7 +24,7 @@ const Catalog = () => {
     <>
       <div className="max-w-6xl mx-auto p-4">
         {isLoading ? (
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {Array.from({ length: 20 }).map((_, index) => (
               <div
                 key={index}
@@ -33,7 +33,7 @@ const Catalog = () => {
             ))}
           </div>
         ) : (
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {genres.map((genre) => (
               <Link
                 key={genre.id}
