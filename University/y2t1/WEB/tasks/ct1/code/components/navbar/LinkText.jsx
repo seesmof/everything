@@ -3,8 +3,10 @@ import Link from "next/link";
 const LinkText = ({ href, children, active }) => {
   return (
     <Link
-      className={`duration-300 ${
-        active ? "text-slate-100" : "hover:text-slate-200 active:text-slate-300"
+      className={`font-medium ${
+        active
+          ? "text-indigo-100 underline underline-offset-4 decoration-indigo-600 decoration-2"
+          : "hover:underline hover:underline-offset-4 hover:decoration-indigo-600 hover:decoration-2"
       }`}
       href={href}
     >

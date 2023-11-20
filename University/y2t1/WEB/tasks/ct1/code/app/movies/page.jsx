@@ -27,7 +27,7 @@ const Catalog = () => {
         <div className="flex items-center justify-between mb-4">
           <input
             type="text"
-            className="w-full bg-inherit border-2 border-slate-700 rounded-md p-2"
+            className="w-full bg-inherit border-2 border-neutral-700 rounded-md p-2"
             placeholder="Category search..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -39,7 +39,7 @@ const Catalog = () => {
             {Array.from({ length: 20 }).map((_, index) => (
               <div
                 key={index}
-                className="flex aspect-square items-center justify-center rounded-md bg-slate-700 animate-pulse"
+                className="flex aspect-square items-center justify-center rounded-md bg-neutral-700 animate-pulse"
               ></div>
             ))}
           </div>
@@ -53,7 +53,7 @@ const Catalog = () => {
                 <Link
                   key={genre.id}
                   href={`/catalog/${genre.id}`}
-                  className="flex aspect-square items-center justify-center rounded-md bg-slate-700 duration-300 hover:bg-slate-600"
+                  className="flex aspect-square items-center justify-center rounded-md bg-neutral-700 duration-300 hover:bg-neutral-600"
                 >
                   <p className="text-2xl">{genre.name}</p>
                 </Link>

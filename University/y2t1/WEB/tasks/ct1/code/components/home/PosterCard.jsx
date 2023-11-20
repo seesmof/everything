@@ -11,13 +11,13 @@ const PosterCard = ({ image, name, media_type, release_year, id }) => {
             alt="Poster image"
           />
         </div>
-        <div className="flex flex-col text-slate-200">
+        <div className="flex flex-col text-neutral-200">
           <div className="flex flex-row gap-2 mt-1 text-sm">
             <p>{media_type === "tv" ? "Show" : "Movie"}</p>
-            <p className="text-slate-300 scale-90">•</p>
+            <p className="text-indigo-500 scale-90">•</p>
             <p>{release_year}</p>
           </div>
-          <p className="text-lg md:text-xl font-medium text-slate-100 md:mt-1">
+          <p className="text-lg md:text-xl font-medium text-neutral-100 md:mt-1">
             {name}
           </p>
         </div>

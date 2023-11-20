@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-slate-800 text-slate-300 z-50 fixed bottom-0 left-0 right-0 md:sticky md:top-0">
+      <nav className="bg-neutral-800 text-neutral-300 z-50 fixed bottom-0 left-0 right-0 md:sticky md:top-0">
         <div className="flex items-center justify-between p-2 gap-2 md:hidden">
           {links.map((link) => {
             const isActive = pathname === link.href;
@@ -31,7 +31,7 @@ const Navbar = () => {
         <div className="hidden md:flex max-w-6xl mx-auto justify-between items-center p-4">
           <Link
             href={"/"}
-            className="font-medium text-xl duration-300 text-white hover:text-slate-200 active:text-slate-300"
+            className="font-medium text-xl duration-300 text-white hover:text-indigo-400 active:text-indigo-300"
           >
             Flickster
           </Link>
@@ -48,7 +48,7 @@ const Navbar = () => {
           </div>
           <input
             type="text"
-            className="bg-inherit rounded-md border-2 p-1 px-4 border-slate-700 hover:border-slate-500 duration-300 max-w-[16rem]"
+            className="bg-inherit rounded-md border-2 p-1 px-4 border-neutral-700 hover:border-indigo-500 max-w-[16rem] focus:outline-none focus:border-indigo-600"
             placeholder="Search..."
           />
         </div>
