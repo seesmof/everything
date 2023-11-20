@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-slate-800 text-slate-300 fixed bottom-0 left-0 right-0 md:sticky md:top-0">
+      <nav className="bg-slate-800 text-slate-300 z-50 fixed bottom-0 left-0 right-0 md:sticky md:top-0">
         <div className="flex items-center justify-between p-2 gap-2 md:hidden">
           {links.map((link) => {
             const isActive = pathname === link.href;
