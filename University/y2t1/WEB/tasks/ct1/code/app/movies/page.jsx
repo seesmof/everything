@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const Catalog = () => {
   const [genres, setGenres] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const fetchMovieGenres = async () => {
     const res = await fetch(
@@ -23,6 +24,16 @@ const Catalog = () => {
   return (
     <>
       <div className="max-w-6xl mx-auto p-4">
+        <div className="flex items-center justify-between mb-4">
+          <input
+            type="text"
+            className="w-full bg-inherit border-2 border-slate-700 rounded-md p-2"
+            placeholder="Category search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+
         {isLoading ? (
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {Array.from({ length: 20 }).map((_, index) => (
@@ -34,15 +45,19 @@ const Catalog = () => {
           </div>
         ) : (
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {genres.map((genre) => (
-              <Link
-                key={genre.id}
-                href={`/catalog/${genre.id}`}
-                className="flex aspect-square items-center justify-center rounded-md bg-slate-700 duration-300 hover:bg-slate-600"
-              >
-                <p className="text-2xl">{genre.name}</p>
-              </Link>
-            ))}
+            {genres
+              .filter((genre) =>
+                genre.name.toLowerCase().includes(searchQuery.toLowerCase())
+              )
+              .map((genre) => (
+                <Link
+                  key={genre.id}
+                  href={`/catalog/${genre.id}`}
+                  className="flex aspect-square items-center justify-center rounded-md bg-slate-700 duration-300 hover:bg-slate-600"
+                >
+                  <p className="text-2xl">{genre.name}</p>
+                </Link>
+              ))}
           </div>
         )}
       </div>

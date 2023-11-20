@@ -24,22 +24,10 @@ const Catalog = () => {
   return (
     <>
       <div className="max-w-6xl mx-auto p-4 grid">
-        <div className="flex gap-2 md:flex-row flex-col items-center justify-between mb-4">
-          <select
-            name="sortingOptions"
-            id="sortingOptions"
-            className="w-full md:w-max bg-inherit border-2 border-slate-700 rounded-md p-2"
-          >
-            <option className="bg-slate-800" value="Ascending">
-              Ascending
-            </option>
-            <option className="bg-slate-800" value="Descending">
-              Descending
-            </option>
-          </select>
+        <div className="flex items-center justify-between mb-4">
           <input
             type="text"
-            className="w-full md:w-max bg-inherit border-2 border-slate-700 rounded-md p-2"
+            className="w-full bg-inherit border-2 border-slate-700 rounded-md p-2"
             placeholder="Category search..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}

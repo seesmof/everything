@@ -9,7 +9,7 @@ const PosterCard = ({ image, name, media_type, release_year }) => {
         <div className="w-full rounded-md overflow-hidden">
           <img
             src={image}
-            className="w-full max-h-96 md:max-h-[22rem] object-cover object-bottom"
+            className="w-full max-h-96 md:max-h-[22rem] object-cover"
             alt="Poster image"
           />
         </div>
