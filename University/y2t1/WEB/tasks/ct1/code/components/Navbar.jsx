@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import LinkText from "./navbar-related/LinkText";
-import LinkButton from "./navbar-related/LinkButton";
+import LinkText from "./navbar/LinkText";
+import LinkButton from "./navbar/LinkButton";
 
 const Navbar = () => {
   const pathname = usePathname();
