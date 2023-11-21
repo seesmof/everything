@@ -60,7 +60,7 @@ const MovieTemplate = ({
               <p>{year}</p>
             </div>
             <div className="flex items-center justify-between pb-4 pt-2 md:pt-1">
-              <h1 className="font-bold md:text-4xl text-2xl text-neutral-50">
+              <h1 className="font-bold md:text-4xl sm:text-2xl text-xl text-neutral-50">
                 {name}
               </h1>
               <p
