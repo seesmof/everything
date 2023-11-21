@@ -7,8 +7,8 @@ const Navbar = () => {
   const pathname = usePathname();
   const links = [
     { href: "/", label: "Home" },
-    { href: "/catalog", label: "Catalog" },
     { href: "/movies", label: "Movies" },
+    { href: "/genres", label: "Genres" },
     { href: "/about", label: "About" },
   ];
 

@@ -2,6 +2,7 @@
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import PageContainer from "@/components/PageContainer";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 

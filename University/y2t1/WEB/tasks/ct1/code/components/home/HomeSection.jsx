@@ -13,7 +13,7 @@ const HomeSection = ({ heading, isLoading, movies }) => {
           {heading}
         </h2>
         <Link
-          href={`/catalog`}
+          href={`/movies`}
           className="text-sm text-neutral-300 duration-300 hover:text-neutral-50"
         >
           View All
