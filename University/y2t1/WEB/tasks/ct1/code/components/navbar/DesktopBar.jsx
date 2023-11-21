@@ -11,7 +11,7 @@ const DesktopBar = ({ links, pathname }) => {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    router.push(`/catalog?query=${searchQuery}`);
+    router.push(`/search/${searchQuery}`);
     setSearchQuery("");
   };
 

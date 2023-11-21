@@ -34,7 +34,7 @@ const HomeSection = ({ heading, isLoading, movies }) => {
         </div>
       )}
       <div className="flex md:justify-end mt-2 mb-2">
-        <Button className="w-full md:w-max bg-indigo-800 hover:bg-indigo-700 md:mt-2">
+        <Button className="w-full md:w-max bg-indigo-800 hover:bg-indigo-700 border-indigo-800 hover:border-indigo-700 md:mt-2">
           <Link href={"/movies"}>View All</Link>
         </Button>
       </div>
