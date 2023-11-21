@@ -1,6 +1,7 @@
 import Link from "next/link";
 import PosterCard from "../poster/PosterCard";
 import PosterCardSkeleton from "../poster/PosterCardSkeleton";
+import Button from "../Button";
 
 const HomeSection = ({ heading, isLoading, movies }) => {
   const gridClasses =
@@ -33,12 +34,9 @@ const HomeSection = ({ heading, isLoading, movies }) => {
         </div>
       )}
       <div className="flex md:justify-end mt-2 mb-2">
-        <Link
-          href={"/movies"}
-          className="bg-indigo-800 text-indigo-100 p-2 px-4 w-full md:w-max text-center rounded-xl duration-300 hover:bg-indigo-700 font-medium"
-        >
-          View All
-        </Link>
+        <Button className="w-full md:w-max bg-indigo-800 hover:bg-indigo-700 md:mt-2">
+          <Link href={"/movies"}>View All</Link>
+        </Button>
       </div>
     </section>
   );

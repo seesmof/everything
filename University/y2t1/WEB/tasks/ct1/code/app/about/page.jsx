@@ -1,4 +1,6 @@
 "use client";
+import Button from "@/components/Button";
+import Input from "@/components/Input";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -111,10 +113,9 @@ const About = () => {
               <label htmlFor="name" className="font-medium cursor-pointer">
                 Name
               </label>
-              <input
+              <Input
                 type="text"
                 id="name"
-                className="rounded-xl p-2 px-3 bg-inherit border-2 border-neutral-700 hover:border-indigo-600 focus:outline-none focus:border-indigo-600"
                 placeholder="Your name..."
                 value={nameInput}
                 onChange={(e) => setNameInput(e.target.value)}
@@ -124,10 +125,9 @@ const About = () => {
               <label htmlFor="email" className="font-medium cursor-pointer">
                 Email
               </label>
-              <input
+              <Input
                 type="email"
                 id="email"
-                className="rounded-xl p-2 px-3 bg-inherit border-2 border-neutral-700 hover:border-indigo-600 focus:outline-none focus:border-indigo-600"
                 placeholder="Your email..."
                 value={emailInput}
                 onChange={(e) => setEmailInput(e.target.value)}
@@ -137,22 +137,21 @@ const About = () => {
               <label htmlFor="message" className="font-medium cursor-pointer">
                 Message
               </label>
-              <input
+              <Input
                 type="text"
                 id="message"
-                className="rounded-xl p-2 px-3 bg-inherit border-2 border-neutral-700 hover:border-indigo-600 focus:outline-none focus:border-indigo-600"
                 placeholder="Your message..."
                 value={messageInput}
                 onChange={(e) => setMessageInput(e.target.value)}
               />
             </div>
-            <button
-              className="bg-indigo-600 hover:bg-indigo-500 duration-300 text-white font-medium rounded-xl p-2 px-4 md:px-6 w-full sm:w-max active:scale-95"
+            <Button
+              className="w-full sm:w-max"
               type="submit"
               onClick={handleSubmit}
             >
               Submit
-            </button>
+            </Button>
           </div>
           <p className="text-slate-300 text-sm text-center hidden sm:block">
             Web technology and design @2023

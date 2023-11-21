@@ -1,4 +1,5 @@
 "use client";
+import Input from "@/components/Input";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -25,12 +26,12 @@ const Catalog = () => {
     <>
       <div className="max-w-6xl mx-auto p-4">
         <div className="flex items-center justify-between mb-4">
-          <input
+          <Input
             type="text"
-            className="w-full bg-inherit border-2 border-neutral-700 rounded-xl p-2"
-            placeholder="Category search..."
+            placeholder="Category Search..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full"
           />
         </div>
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import LinkText from "./LinkText";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Input from "../Input";
 
 const DesktopBar = ({ links, pathname }) => {
   const router = useRouter();
@@ -33,9 +34,8 @@ const DesktopBar = ({ links, pathname }) => {
         })}
       </div>
       <form onSubmit={handleSearchSubmit}>
-        <input
+        <Input
           type="text"
-          className="bg-inherit rounded-xl border-2 p-1 px-4 border-neutral-700 hover:border-indigo-500 max-w-[16rem] focus:outline-none focus:border-indigo-600"
           placeholder="Search..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
