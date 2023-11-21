@@ -101,7 +101,7 @@ export default function Home() {
           <Input
             className="w-full"
             type="text"
-            placeholder="Search movies..."
+            placeholder="Search for movies..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onKeyPress={(e) => {
