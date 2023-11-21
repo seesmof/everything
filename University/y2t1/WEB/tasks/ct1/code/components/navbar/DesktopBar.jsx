@@ -36,7 +36,7 @@ const DesktopBar = ({ links, pathname }) => {
       <form onSubmit={handleSearchSubmit}>
         <Input
           type="text"
-          placeholder="Search..."
+          placeholder="Movies..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />

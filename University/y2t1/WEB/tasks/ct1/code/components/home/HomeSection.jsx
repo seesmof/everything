@@ -1,7 +1,6 @@
 import Link from "next/link";
 import PosterCard from "../poster/PosterCard";
 import PosterCardSkeleton from "../poster/PosterCardSkeleton";
-import Button from "../Button";
 
 const HomeSection = ({ heading, isLoading, movies }) => {
   const gridClasses =
@@ -9,9 +8,17 @@ const HomeSection = ({ heading, isLoading, movies }) => {
 
   return (
     <section className="grid">
-      <h2 className="font-bold pb-2 md:pb-4 md:pt-4 text-xl md:text-2xl text-neutral-50">
-        {heading}
-      </h2>
+      <div className="flex items-center justify-between">
+        <h2 className="font-bold pb-2 md:pb-4 md:pt-4 text-xl md:text-2xl text-neutral-50">
+          {heading}
+        </h2>
+        <Link
+          href={`/catalog`}
+          className="text-sm text-neutral-300 duration-300 hover:text-neutral-50"
+        >
+          View All
+        </Link>
+      </div>
       {isLoading ? (
         <div className={gridClasses}>
           {Array.from({ length: 8 }).map((_, index) => (
@@ -33,11 +40,6 @@ const HomeSection = ({ heading, isLoading, movies }) => {
           ))}
         </div>
       )}
-      <div className="flex md:justify-end mt-2 mb-2">
-        <Button className="w-full md:w-max bg-indigo-800 hover:bg-indigo-700 border-indigo-800 hover:border-indigo-700 md:mt-2">
-          <Link href={"/movies"}>View All</Link>
-        </Button>
-      </div>
     </section>
   );
 };

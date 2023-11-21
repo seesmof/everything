@@ -19,13 +19,13 @@ const SearchResults = () => {
     const data = await fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=e87b47516389ca897c5e6acdc3068cc2&query=${searchQuery}`
     ).then((res) => res.json());
-    const filtered = data.results
-      .filter((result) => result.original_language !== "ru")
-      .filter((result) => result.backdrop_path && result.poster_path)
-      .filter((result) => result.overview && result.overview.trim() !== "")
-      .filter((result) => result.vote_average > 0);
-    const sorted = filtered.sort((a, b) => b.vote_average - a.vote_average);
-    setSearchResults(sorted);
+    setSearchResults(
+      data.results
+        .filter((result) => result.original_language !== "ru")
+        .filter((result) => result.backdrop_path && result.poster_path)
+        .filter((result) => result.overview && result.overview.trim() !== "")
+        .filter((result) => result.vote_average > 0)
+    );
     setIsLoading(false);
   };
 

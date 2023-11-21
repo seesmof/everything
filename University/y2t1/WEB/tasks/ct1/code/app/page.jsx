@@ -1,7 +1,11 @@
 "use client";
+import Button from "@/components/Button";
+import Input from "@/components/Input";
 import HomeSection from "@/components/home/HomeSection";
 import PosterCard from "@/components/poster/PosterCard";
 import PosterCardSkeleton from "@/components/poster/PosterCardSkeleton";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -15,6 +19,14 @@ export default function Home() {
     "Popular Today": trendingMovies,
     Trending: popularMovies,
     "Top Rated": topRatedMovies,
+  };
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    router.push(`/search/${searchQuery}`);
+    setSearchQuery("");
   };
 
   const fetchData = async (endpoint) => {
@@ -84,6 +96,24 @@ export default function Home() {
               rating={movieOfDay.vote_average}
             />
           )}
+        </div>
+        <div className="flex items-center gap-2">
+          <Input
+            className="w-full"
+            type="text"
+            placeholder="Search movies..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                setSearchQuery(searchQuery);
+                router.push(`/search/${searchQuery}`);
+              }
+            }}
+          />
+          <Button type="submit" onClick={handleSearch}>
+            Search
+          </Button>
         </div>
         {Object.entries(sectionsData).map(([heading, movies]) => (
           <HomeSection
