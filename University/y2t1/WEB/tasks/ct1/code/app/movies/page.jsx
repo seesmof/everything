@@ -20,11 +20,10 @@ const Catalog = () => {
 
   const fetchMovies = async (page, sortBy, rating, inputGenres = []) => {
     setIsLoading(true);
-    let genresString = inputGenres.join(",");
+    let genresString = inputGenres.map((genre) => genre.id).join(",");
     if (genresString === "") {
       genresString = "all";
     }
-    console.log(genresString);
     const data = await fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=e87b47516389ca897c5e6acdc3068cc2&page=${page}&sort_by=${sortBy}&vote_average.gte=${rating}&with_genres=${genresString}`
     ).then((res) => res.json());
@@ -65,7 +64,6 @@ const Catalog = () => {
     if (genre) {
       setSelectedGenres([genre]);
     }
-    console.log(genre, selectedGenres);
     fetchMovies(page, sorting, ratingValue, selectedGenres);
   }, [genres]);
 
@@ -150,7 +148,7 @@ const Catalog = () => {
                     name={genre.name}
                     value={genre.name}
                     className="accent-indigo-600"
-                    checked={selectedGenres.includes(genre.id)}
+                    checked={selectedGenres.some((g) => g.id === genre.id)}
                     onChange={() => handleGenreClick(genre.id)}
                   />
                   <label htmlFor={genre.id} className="text-neutral-200">
