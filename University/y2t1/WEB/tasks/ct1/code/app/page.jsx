@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import PageContainer from "@/components/PageContainer";
 import HomeSection from "@/components/home/HomeSection";
 import PosterCard from "@/components/poster/PosterCard";
 import PosterCardSkeleton from "@/components/poster/PosterCardSkeleton";
@@ -79,7 +80,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="grid p-4 gap-4 lg:gap-6 pb-16 max-w-6xl mx-auto">
+      <PageContainer className="gap-4 lg:gap-6">
         <div className="grid">
           <h2 className="font-bold text-2xl md:text-3xl pb-2 md:pb-4">
             Movie of Today
@@ -123,7 +124,7 @@ export default function Home() {
             movies={movies}
           />
         ))}
-      </main>
+      </PageContainer>
     </>
   );
 }

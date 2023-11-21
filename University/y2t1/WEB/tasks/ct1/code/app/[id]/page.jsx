@@ -24,24 +24,22 @@ const Movie = () => {
 
   return (
     <>
-      <div className="mx-auto max-w-6xl">
-        {isLoading ? (
-          <MovieTemplateSkeleton />
-        ) : (
-          <MovieTemplate
-            name={movie.title}
-            description={movie.overview}
-            year={movie.release_date?.slice(0, 4)}
-            runtime={movie.runtime}
-            rating={movie.vote_average}
-            image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-            backdrop={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-            genres={movie.genres}
-            id={movie.id}
-            imdbId={movie.imdb_id}
-          />
-        )}
-      </div>
+      {isLoading ? (
+        <MovieTemplateSkeleton />
+      ) : (
+        <MovieTemplate
+          name={movie.title}
+          description={movie.overview}
+          year={movie.release_date?.slice(0, 4)}
+          runtime={movie.runtime}
+          rating={movie.vote_average}
+          image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+          backdrop={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+          genres={movie.genres}
+          id={movie.id}
+          imdbId={movie.imdb_id}
+        />
+      )}
     </>
   );
 };

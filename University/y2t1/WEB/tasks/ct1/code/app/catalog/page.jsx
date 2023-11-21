@@ -1,4 +1,5 @@
 "use client";
+import PageContainer from "@/components/PageContainer";
 import PosterCard from "@/components/poster/PosterCard";
 import PosterCardSkeleton from "@/components/poster/PosterCardSkeleton";
 import { useEffect, useState } from "react";
@@ -22,7 +23,7 @@ const Catalog = () => {
 
   return (
     <>
-      <main className="grid p-4 gap-4 lg:gap-6 pb-16 max-w-6xl mx-auto">
+      <PageContainer className="gap-4 lg:gap-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {isLoading
             ? Array.from({ length: 8 }).map((_, index) => (
@@ -40,7 +41,7 @@ const Catalog = () => {
                 />
               ))}
         </div>
-      </main>
+      </PageContainer>
     </>
   );
 };

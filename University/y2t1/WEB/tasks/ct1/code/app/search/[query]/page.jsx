@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import PageContainer from "@/components/PageContainer";
 import PosterCard from "@/components/poster/PosterCard";
 import PosterCardSkeleton from "@/components/poster/PosterCardSkeleton";
 import Link from "next/link";
@@ -37,7 +38,7 @@ const SearchResults = () => {
 
   return (
     <>
-      <div className="mx-auto max-w-6xl p-4 grid pb-20">
+      <PageContainer>
         <div className="flex items-center gap-2" id="page-top">
           <Input
             className="w-full"
@@ -92,7 +93,7 @@ const SearchResults = () => {
             </Link>
           </Button>
         </div>
-      </div>
+      </PageContainer>
     </>
   );
 };

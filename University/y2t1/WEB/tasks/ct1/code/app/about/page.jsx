@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import PageContainer from "@/components/PageContainer";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -25,7 +26,7 @@ const About = () => {
 
   return (
     <>
-      <div className="max-w-6xl mx-auto p-4 grid text-neutral-200 pb-20">
+      <PageContainer>
         <img
           src="https://blog.richersounds.com/wp-content/uploads/2016/02/matrix-reloaded-fight-scene-radically-recut-with-8-bit-sound1.png"
           alt="General Page Image - A scene from Interstellar"
@@ -157,7 +158,7 @@ const About = () => {
             Web technology and design @2023
           </p>
         </div>
-      </div>
+      </PageContainer>
     </>
   );
 };

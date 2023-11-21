@@ -1,5 +1,6 @@
 "use client";
 import Input from "@/components/Input";
+import PageContainer from "@/components/PageContainer";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -24,7 +25,7 @@ const Catalog = () => {
 
   return (
     <>
-      <div className="max-w-6xl mx-auto p-4">
+      <PageContainer>
         <div className="flex items-center justify-between mb-4">
           <Input
             type="text"
@@ -61,7 +62,7 @@ const Catalog = () => {
               ))}
           </div>
         )}
-      </div>
+      </PageContainer>
     </>
   );
 };

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import PosterCard from "../poster/PosterCard";
 import { useState } from "react";
+import PageContainer from "../PageContainer";
 
 const MovieTemplate = ({
   name,
@@ -38,7 +39,7 @@ const MovieTemplate = ({
 
   return (
     <>
-      <main className="grid p-4 text-neutral-200">
+      <PageContainer>
         <img
           src={backdrop}
           alt="Movie backdrop"
@@ -112,7 +113,7 @@ const MovieTemplate = ({
             </div>
           </div>
         </div>
-      </main>
+      </PageContainer>
     </>
   );
 };
