@@ -2,6 +2,7 @@
 import Input from "@/components/Input";
 import PageContainer from "@/components/PageContainer";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Catalog = () => {
@@ -12,6 +13,7 @@ const Catalog = () => {
     "grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4";
   const categorySquareClasses =
     "flex aspect-square items-center justify-center rounded-xl";
+  const router = useRouter();
 
   const fetchMovieGenres = async () => {
     const data = await fetch(
@@ -25,6 +27,11 @@ const Catalog = () => {
       setIsLoading(false);
     });
   }, []);
+
+  const handleGenreClick = (genre) => {
+    router.push(`/movies?genre=${genre.id}`);
+    setSearchQuery("");
+  };
 
   return (
     <>
@@ -53,17 +60,17 @@ const Catalog = () => {
                 genre.name.toLowerCase().includes(searchQuery.toLowerCase())
               )
               .map((genre, index) => (
-                <Link
+                <button
                   key={genre.id}
-                  href={`/movies`}
                   className={`${categorySquareClasses} duration-300 active:scale-95 ${
                     index % 2 !== 0 ? "bg-indigo-900/50" : "bg-indigo-800/50"
                   } hover:bg-indigo-700`}
+                  onClick={() => handleGenreClick(genre)}
                 >
                   <p className="text-xl md:text-2xl font-medium">
                     {genre.name}
                   </p>
-                </Link>
+                </button>
               ))}
           </div>
         )}

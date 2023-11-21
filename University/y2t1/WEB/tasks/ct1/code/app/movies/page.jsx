@@ -3,6 +3,7 @@ import Button from "@/components/Button";
 import PageContainer from "@/components/PageContainer";
 import PosterCard from "@/components/poster/PosterCard";
 import PosterCardSkeleton from "@/components/poster/PosterCardSkeleton";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
@@ -10,16 +11,22 @@ const Catalog = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [ratingValue, setRatingValue] = useState(5);
+  const [sorting, setSorting] = useState("popularity.desc");
   const [genres, setGenres] = useState([]);
-  const [isGenresCollapsed, setIsGenresCollapsed] = useState(true);
-  const [ratingMin, setRatingMin] = useState(0);
-  const [ratingMax, setRatingMax] = useState(10);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedGenres, setSelectedGenres] = useState([]);
+  const [isGenreHidden, setIsGenreHidden] = useState(true);
+  const searchParams = useSearchParams();
 
-  const fetchMovies = async (page) => {
+  const fetchMovies = async (page, sortBy, rating, inputGenres = []) => {
     setIsLoading(true);
+    let genresString = inputGenres.join(",");
+    if (genresString === "") {
+      genresString = "all";
+    }
+    console.log(genresString);
     const data = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=e87b47516389ca897c5e6acdc3068cc2&page=${page}`
+      `https://api.themoviedb.org/3/discover/movie?api_key=e87b47516389ca897c5e6acdc3068cc2&page=${page}&sort_by=${sortBy}&vote_average.gte=${rating}&with_genres=${genresString}`
     ).then((res) => res.json());
     setMovies(
       data.results
@@ -42,6 +49,26 @@ const Catalog = () => {
     setIsLoading(false);
   };
 
+  const handleGenreClick = (genre) => {
+    setSelectedGenres((prevGenres) => {
+      if (prevGenres.includes(genre)) {
+        return prevGenres.filter((g) => g !== genre);
+      } else {
+        return [...prevGenres, genre];
+      }
+    });
+  };
+
+  useEffect(() => {
+    const query = Number(searchParams.get("genre"));
+    const genre = genres.find((genre) => genre.id === query);
+    if (genre) {
+      setSelectedGenres([genre]);
+    }
+    console.log(genre, selectedGenres);
+    fetchMovies(page, sorting, ratingValue, selectedGenres);
+  }, [genres]);
+
   useEffect(() => {
     Promise.all([fetchGenres()]).then(() => {
       setIsLoading(false);
@@ -49,37 +76,17 @@ const Catalog = () => {
   }, []);
 
   useEffect(() => {
-    Promise.all([fetchMovies(page)]).then(() => {
-      setIsLoading(false);
-    });
-  }, [page]);
+    Promise.all([fetchMovies(page, sorting, ratingValue, selectedGenres)]).then(
+      () => {
+        setIsLoading(false);
+      }
+    );
+  }, [page, ratingValue, sorting, selectedGenres]);
 
   return (
     <>
       <PageContainer className="gap-4 lg:p-6 lg:gap-6 md:flex">
-        <div className="grid gap-4 w-full md:w-1/3 h-min">
-          <div className="grid gap-2">
-            <label htmlFor="search" className="text-neutral-200 font-medium">
-              Search
-            </label>
-            <input
-              id="search"
-              type="text"
-              className="w-full p-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 focus:bg-neutral-700"
-              placeholder="Movie name..."
-            />
-          </div>
-          <div className="grid gap-2">
-            <label htmlFor="year" className="text-neutral-200 font-medium">
-              Release Year
-            </label>
-            <input
-              id="year"
-              type="text"
-              className="w-full p-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 focus:bg-neutral-700"
-              placeholder="Release year..."
-            />
-          </div>
+        <div className="grid gap-4 w-full md:w-[24%] h-min">
           <div className="grid gap-2">
             <label htmlFor="sorting" className="text-neutral-200 font-medium">
               Sorting
@@ -88,16 +95,17 @@ const Catalog = () => {
               name="sorting"
               id="sorting"
               className="bg-neutral-800 hover:bg-neutral-700 focus:bg-neutral-700 p-2 rounded-lg"
+              onChange={(e) => setSorting(e.target.value)}
             >
               <option value="popularity.desc">Popularity</option>
-              <option value="release_date.desc">Release Date</option>
-              <option value="vote_average.desc">Rating</option>
+              <option value="vote_count.desc">Rating</option>
+              <option value="revenue.desc">Revenue</option>
             </select>
           </div>
           <div className="grid">
             <label
               htmlFor="rating"
-              className="text-neutral-200 font-medium pb-1"
+              className="text-neutral-200 font-medium pb-2"
             >
               Rating
             </label>
@@ -107,28 +115,19 @@ const Catalog = () => {
               min="0"
               max="10"
               step="1"
-              className="w-full p-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 focus:bg-neutral-700"
+              value={ratingValue}
+              onChange={(e) => setRatingValue(e.target.value)}
               placeholder="Rating..."
+              className="cursor-pointer"
             />
-            <div className="flex justify-between items-center text-sm text-neutral-300 font-medium">
-              <input
-                type="text"
-                value={ratingMin}
-                onChange={(e) => setRatingMin(e.target.value)}
-                className="bg-neutral-800 hover:bg-neutral-700 focus:bg-neutral-700 p-1.5 max-w-[2rem] rounded-lg"
-              />
-              <input
-                type="text"
-                value={ratingMax}
-                onChange={(e) => setRatingMin(e.target.value)}
-                className="bg-neutral-800 hover:bg-neutral-700 focus:bg-neutral-700 p-1.5 max-w-[2rem] rounded-lg"
-              />
-            </div>
+            <p className="text-neutral-300 text-sm font-medium pt-1">
+              Starting from {ratingValue}/10
+            </p>
           </div>
           <div className="grid gap-2">
             <div
               className="flex justify-between items-center cursor-pointer group"
-              onClick={() => setIsGenresCollapsed(!isGenresCollapsed)}
+              onClick={() => setIsGenreHidden(!isGenreHidden)}
             >
               <label
                 htmlFor="genres"
@@ -136,13 +135,13 @@ const Catalog = () => {
               >
                 Genres
               </label>
-              {isGenresCollapsed ? (
+              {isGenreHidden ? (
                 <FaChevronUp className="text-neutral-200" />
               ) : (
                 <FaChevronDown className="text-neutral-200" />
               )}
             </div>
-            <div className={`grid gap-2 ${isGenresCollapsed ? "hidden" : ""}`}>
+            <div className={`grid gap-2 ${isGenreHidden ? "hidden" : ""}`}>
               {genres.map((genre) => (
                 <div key={genre.id} className="flex gap-2">
                   <input
@@ -151,6 +150,8 @@ const Catalog = () => {
                     name={genre.name}
                     value={genre.name}
                     className="accent-indigo-600"
+                    checked={selectedGenres.includes(genre.id)}
+                    onChange={() => handleGenreClick(genre.id)}
                   />
                   <label htmlFor={genre.id} className="text-neutral-200">
                     {genre.name}
@@ -160,23 +161,23 @@ const Catalog = () => {
             </div>
           </div>
         </div>
-        <div className="gap-4 lg:gap-6 lg:p-6 grid">
+        <div className="gap-4 lg:gap-6 lg:p-6 grid flex-1">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {isLoading
-              ? Array.from({ length: 8 }).map((_, index) => (
-                  <PosterCardSkeleton key={index} />
-                ))
-              : movies.map((movie) => (
-                  <PosterCard
-                    key={movie.id}
-                    id={movie.id}
-                    image={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-                    name={movie.title}
-                    release_year={movie.release_date.slice(0, 4)}
-                    media_type="movie"
-                    rating={movie.vote_average}
-                  />
-                ))}
+            {isLoading ? (
+              <div className="h-[110vh] w-full"></div>
+            ) : (
+              movies.map((movie) => (
+                <PosterCard
+                  key={movie.id}
+                  id={movie.id}
+                  image={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+                  name={movie.title}
+                  release_year={movie.release_date.slice(0, 4)}
+                  media_type="movie"
+                  rating={movie.vote_average}
+                />
+              ))
+            )}
           </div>
           <div className="flex items-center justify-between mt-2">
             <Button
