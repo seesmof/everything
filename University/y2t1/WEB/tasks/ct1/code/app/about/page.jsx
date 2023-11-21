@@ -154,7 +154,7 @@ const About = () => {
               Submit
             </Button>
           </div>
-          <p className="text-slate-300 text-sm text-center hidden sm:block">
+          <p className="text-neutral-300 text-sm text-center hidden sm:block">
             Web technology and design @2023
           </p>
         </div>

@@ -8,12 +8,15 @@ const Catalog = () => {
   const [genres, setGenres] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const gridContainerClasses =
+    "grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4";
+  const categorySquareClasses =
+    "flex aspect-square items-center justify-center rounded-xl";
 
   const fetchMovieGenres = async () => {
-    const res = await fetch(
+    const data = await fetch(
       `https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=e87b47516389ca897c5e6acdc3068cc2`
-    );
-    const data = await res.json();
+    ).then((res) => res.json());
     setGenres(data.genres);
   };
 
@@ -26,38 +29,40 @@ const Catalog = () => {
   return (
     <>
       <PageContainer>
-        <div className="flex items-center justify-between mb-4">
-          <Input
-            type="text"
-            placeholder="Category Search..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full"
-          />
-        </div>
+        <Input
+          type="text"
+          placeholder="Category Search..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full mb-4"
+        />
 
         {isLoading ? (
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <div className={gridContainerClasses}>
             {Array.from({ length: 20 }).map((_, index) => (
               <div
                 key={index}
-                className="flex aspect-square items-center justify-center rounded-xl bg-neutral-700 animate-pulse"
+                className={`${categorySquareClasses} animate-pulse`}
               ></div>
             ))}
           </div>
         ) : (
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+          <div className={gridContainerClasses}>
             {genres
               .filter((genre) =>
                 genre.name.toLowerCase().includes(searchQuery.toLowerCase())
               )
-              .map((genre) => (
+              .map((genre, index) => (
                 <Link
                   key={genre.id}
-                  href={`/catalog/${genre.id}`}
-                  className="flex aspect-square items-center justify-center rounded-xl bg-neutral-700 duration-300 hover:bg-neutral-600"
+                  href={`/catalog`}
+                  className={`${categorySquareClasses} duration-300 active:scale-95 ${
+                    index % 2 !== 0 ? "bg-indigo-900/50" : "bg-indigo-800/50"
+                  } hover:bg-indigo-700`}
                 >
-                  <p className="text-2xl">{genre.name}</p>
+                  <p className="text-xl md:text-2xl font-medium">
+                    {genre.name}
+                  </p>
                 </Link>
               ))}
           </div>

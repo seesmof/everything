@@ -5,7 +5,6 @@ import PageContainer from "@/components/PageContainer";
 import HomeSection from "@/components/home/HomeSection";
 import PosterCard from "@/components/poster/PosterCard";
 import PosterCardSkeleton from "@/components/poster/PosterCardSkeleton";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -82,7 +81,7 @@ export default function Home() {
     <>
       <PageContainer className="gap-4 lg:gap-6">
         <div className="grid">
-          <h2 className="font-bold text-2xl md:text-3xl pb-2 md:pb-4">
+          <h2 className="font-bold text-2xl md:text-3xl pb-2 md:pb-4 text-neutral-50">
             Movie of Today
           </h2>
           {isLoading ? (
