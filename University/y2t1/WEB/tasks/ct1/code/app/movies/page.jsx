@@ -62,14 +62,12 @@ const Catalog = () => {
     Promise.all([fetchGenres()]).then(() => {
       setIsLoading(false);
     });
-  }, []);
 
-  useEffect(() => {
     const inputGenre = Number(searchParams.get("genre"));
     if (inputGenre) {
       setSelectedGenres([inputGenre]);
     }
-  }, [genres]);
+  }, []);
 
   useEffect(() => {
     Promise.all([fetchMovies(page, sorting, ratingValue, selectedGenres)]).then(
@@ -138,6 +136,7 @@ const Catalog = () => {
               )}
             </div>
             <div className={`grid gap-2 ${isGenreHidden ? "hidden" : ""}`}>
+              {console.log(selectedGenres, selectedGenres.includes(99))}
               {genres.map((genre) => (
                 <div key={genre.id} className="flex gap-2">
                   <input
