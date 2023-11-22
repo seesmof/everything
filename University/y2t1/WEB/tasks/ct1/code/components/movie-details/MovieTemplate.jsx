@@ -43,13 +43,15 @@ const MovieTemplate = ({
         <img
           src={backdrop}
           alt="Movie backdrop"
-          className="w-full max-h-96 object-cover object-top rounded-xl"
+          className="w-full max-h-96 object-cover rounded-xl"
+          loading="lazy"
         />
         <div className="grid gap-4 lg:gap-6 xl:gap-8 md:flex pt-4 lg:pt-6">
           <img
             src={image}
             alt="Movie poster"
             className="w-full hidden md:block max-w-sm max-h-[60vh] object-cover rounded-xl"
+            loading="lazy"
           />
           <div className="grid flex-1">
             <div className="flex items-center gap-3">

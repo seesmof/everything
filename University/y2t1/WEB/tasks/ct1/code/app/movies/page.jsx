@@ -140,7 +140,6 @@ const Catalog = () => {
               )}
             </div>
             <div className={`grid gap-2 ${isGenreHidden ? "hidden" : ""}`}>
-              {console.log(selectedGenres, selectedGenres.includes(99))}
               {genres.map((genre) => (
                 <div key={genre.id} className="flex gap-2">
                   <input

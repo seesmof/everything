@@ -46,9 +46,6 @@ const About = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Name:", nameInput);
-    console.log("Email:", emailInput);
-    console.log("Message:", messageInput);
     clearInputs();
   };
 
@@ -57,7 +54,8 @@ const About = () => {
       <PageContainer>
         <img
           src="https://blog.richersounds.com/wp-content/uploads/2016/02/matrix-reloaded-fight-scene-radically-recut-with-8-bit-sound1.png"
-          alt="General Page Image - A scene from Interstellar"
+          alt="General Page Image - A scene from Matrix Reloaded"
+          loading="lazy"
           className="rounded-xl w-full object-cover"
         />
         <div className="grid space-y-3 md:space-y-4">

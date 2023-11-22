@@ -19,6 +19,7 @@ const PosterCard = ({ image, name, media_type, release_year, id, rating }) => {
             src={image}
             className="w-full max-h-96 object-cover z-20"
             alt="Poster image"
+            loading="lazy"
           />
         </div>
         <main className="grid text-neutral-200">
