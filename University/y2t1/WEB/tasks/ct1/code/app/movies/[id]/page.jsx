@@ -1,6 +1,5 @@
 "use client";
 import MovieTemplate from "@/components/movie-details/MovieTemplate";
-import MovieTemplateSkeleton from "@/components/movie-details/MovieTemplateSkeleton";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -25,7 +24,7 @@ const Movie = () => {
   return (
     <>
       {isLoading ? (
-        <MovieTemplateSkeleton />
+        <div className="w-full h-[110vh]"></div>
       ) : (
         <MovieTemplate
           name={movie.title}
