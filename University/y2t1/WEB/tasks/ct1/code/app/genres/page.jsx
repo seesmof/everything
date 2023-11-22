@@ -57,7 +57,7 @@ const Catalog = () => {
                   key={genre.id}
                   className={`${categorySquareClasses} duration-300 active:scale-95 ${
                     index % 2 !== 0 ? "bg-indigo-900/50" : "bg-indigo-800/50"
-                  } hover:bg-indigo-700`}
+                  } hover:bg-indigo-700/80`}
                   onClick={() => handleGenreClick(genre)}
                 >
                   <p className="text-xl md:text-2xl font-medium">

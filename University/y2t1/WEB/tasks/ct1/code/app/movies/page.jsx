@@ -137,7 +137,7 @@ const Catalog = () => {
                     id={genre.id}
                     name={genre.name}
                     value={genre.name}
-                    className="accent-indigo-600"
+                    className="accent-indigo-600/70"
                     checked={selectedGenres.includes(genre.id)}
                     onChange={() => handleGenreClick(genre.id)}
                   />

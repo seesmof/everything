@@ -59,7 +59,7 @@ const MovieTemplate = ({
               <p className="text-indigo-500 scale-90">•</p>
               <p>{year}</p>
             </div>
-            <div className="flex items-center justify-between pb-4 pt-2 md:pt-1">
+            <div className="flex items-center justify-between pb-4 pt-2 md:pt-1 gap-4">
               <h1 className="font-bold lg:text-4xl md:text-2xl text-xl text-neutral-50">
                 {name}
               </h1>
@@ -69,7 +69,7 @@ const MovieTemplate = ({
                     ? "bg-green-600"
                     : rating <= 3
                     ? "bg-red-600"
-                    : "bg-indigo-700"
+                    : "bg-indigo-700/90"
                 }`}
               >
                 {Math.round(rating * 10) / 10}
@@ -84,12 +84,12 @@ const MovieTemplate = ({
                 href={`https://letterboxd.com/film/${name
                   .replace(" ", "-")
                   .toLowerCase()}/`}
-                className="bg-indigo-900 font-medium px-4 py-2 rounded-xl duration-300 hover:text-white text-neutral-50 hover:bg-indigo-700"
+                className="bg-indigo-700/60 font-medium px-4 py-2 rounded-xl duration-300 hover:text-white text-neutral-50 hover:bg-indigo-700"
               >
                 Letterboxd
               </Link>
               <Link
-                className="bg-indigo-900 font-medium px-4 py-2 rounded-xl duration-300 hover:text-white text-neutral-50 hover:bg-indigo-700"
+                className="bg-indigo-700/60 font-medium px-4 py-2 rounded-xl duration-300 hover:text-white text-neutral-50 hover:bg-indigo-700"
                 href={`https://www.imdb.com/title/${imdbId}/`}
               >
                 IMDb

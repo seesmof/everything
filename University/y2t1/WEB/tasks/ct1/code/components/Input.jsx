@@ -11,7 +11,7 @@ const Input = ({
     <input
       type={type}
       placeholder={placeholder}
-      className={`${className} rounded-xl p-2 px-3 bg-inherit border-2 border-neutral-700 hover:border-indigo-600 focus:outline-none focus:border-indigo-600`}
+      className={`${className} rounded-xl p-2 px-3 bg-inherit border-2 border-neutral-700 hover:border-indigo-600/90 focus:outline-none focus:border-indigo-600/90`}
       id={id}
       value={value}
       onChange={onChange}

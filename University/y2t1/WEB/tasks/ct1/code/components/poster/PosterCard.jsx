@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 const PosterCard = ({ image, name, media_type, release_year, id, rating }) => {
