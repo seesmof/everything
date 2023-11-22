@@ -1,8 +1,7 @@
 "use client";
 import Button from "@/components/Button";
-import Input from "@/components/Input";
 import PageContainer from "@/components/PageContainer";
-import Image from "next/image";
+import FormSection from "@/components/about/FormSection";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -10,6 +9,34 @@ const About = () => {
   const [nameInput, setNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
   const [messageInput, setMessageInput] = useState("");
+  const linkClasses =
+    "underline underline-offset-2 decoration-2 decoration-indigo-500 hover:text-white hover:decoration-indigo-400 duration-300";
+  const formSections = [
+    {
+      labelText: "Name",
+      inputName: "name",
+      inputType: "text",
+      inputPlaceholder: "Your Name...",
+      inputValue: nameInput,
+      inputOnChange: (e) => setNameInput(e.target.value),
+    },
+    {
+      labelText: "Email",
+      inputName: "email",
+      inputType: "email",
+      inputPlaceholder: "Your Email...",
+      inputValue: emailInput,
+      inputOnChange: (e) => setEmailInput(e.target.value),
+    },
+    {
+      labelText: "Message",
+      inputName: "message",
+      inputType: "text",
+      inputPlaceholder: "Your Message...",
+      inputValue: messageInput,
+      inputOnChange: (e) => setMessageInput(e.target.value),
+    },
+  ];
 
   const clearInputs = () => {
     setNameInput("");
@@ -92,16 +119,10 @@ const About = () => {
             or comments, feel free to contact us.
           </p>
           <div className="flex items-center gap-2">
-            <Link
-              className="underline underline-offset-2 decoration-2 decoration-indigo-500 hover:text-white hover:decoration-indigo-400 duration-300"
-              href="https://github.com/seesmof"
-            >
+            <Link className={linkClasses} href="https://github.com/seesmof">
               GitHub
             </Link>
-            <Link
-              className="underline underline-offset-2 decoration-2 decoration-indigo-500 hover:text-white hover:decoration-indigo-400 duration-300"
-              href="mailto:seesmwork@gmail.com"
-            >
+            <Link className={linkClasses} href="mailto:seesmwork@gmail.com">
               Email
             </Link>
           </div>
@@ -111,42 +132,9 @@ const About = () => {
             we'll get back to you.
           </p>
           <div className="grid gap-4">
-            <div className="grid gap-2">
-              <label htmlFor="name" className="font-medium cursor-pointer">
-                Name
-              </label>
-              <Input
-                type="text"
-                id="name"
-                placeholder="Your name..."
-                value={nameInput}
-                onChange={(e) => setNameInput(e.target.value)}
-              />
-            </div>
-            <div className="grid gap-2">
-              <label htmlFor="email" className="font-medium cursor-pointer">
-                Email
-              </label>
-              <Input
-                type="email"
-                id="email"
-                placeholder="Your email..."
-                value={emailInput}
-                onChange={(e) => setEmailInput(e.target.value)}
-              />
-            </div>
-            <div className="grid gap-2">
-              <label htmlFor="message" className="font-medium cursor-pointer">
-                Message
-              </label>
-              <Input
-                type="text"
-                id="message"
-                placeholder="Your message..."
-                value={messageInput}
-                onChange={(e) => setMessageInput(e.target.value)}
-              />
-            </div>
+            {formSections.map((section) => (
+              <FormSection key={section.inputName} {...section} />
+            ))}
             <Button
               className="w-full sm:w-max"
               type="submit"

@@ -4,7 +4,6 @@ import Link from "next/link";
 import PosterCard from "../poster/PosterCard";
 import { useState } from "react";
 import PageContainer from "../PageContainer";
-import Image from "next/image";
 
 const MovieTemplate = ({
   name,
