@@ -18,12 +18,14 @@ const Catalog = () => {
   const [isGenreHidden, setIsGenreHidden] = useState(true);
   const searchParams = useSearchParams();
 
-  const fetchMovies = async (page, sortBy, rating, inputGenres = []) => {
+  const fetchMovies = async (page, sortBy, rating, inputGenres) => {
     setIsLoading(true);
-    let genresString = inputGenres.map((genre) => genre.id).join(",");
+    console.log(inputGenres);
+    let genresString = inputGenres.join(",");
     if (genresString === "") {
       genresString = "all";
     }
+    console.log(genresString);
     const data = await fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=e87b47516389ca897c5e6acdc3068cc2&page=${page}&sort_by=${sortBy}&vote_average.gte=${rating}&with_genres=${genresString}`
     ).then((res) => res.json());
@@ -48,24 +50,15 @@ const Catalog = () => {
     setIsLoading(false);
   };
 
-  const handleGenreClick = (genre) => {
+  const handleGenreClick = (genreId) => {
     setSelectedGenres((prevGenres) => {
-      if (prevGenres.includes(genre)) {
-        return prevGenres.filter((g) => g !== genre);
+      if (prevGenres.includes(genreId)) {
+        return prevGenres.filter((genre) => genre !== genreId);
       } else {
-        return [...prevGenres, genre];
+        return [...prevGenres, genreId];
       }
     });
   };
-
-  useEffect(() => {
-    const query = Number(searchParams.get("genre"));
-    const genre = genres.find((genre) => genre.id === query);
-    if (genre) {
-      setSelectedGenres([genre]);
-    }
-    fetchMovies(page, sorting, ratingValue, selectedGenres);
-  }, [genres]);
 
   useEffect(() => {
     Promise.all([fetchGenres()]).then(() => {
@@ -84,7 +77,7 @@ const Catalog = () => {
   return (
     <>
       <PageContainer className="gap-4 lg:p-6 lg:gap-6 md:flex">
-        <div className="grid gap-4 w-full md:w-[24%] h-min">
+        <div className="flex flex-col gap-4 w-full h-full md:w-[24%] md:sticky md:top-[6.3rem]">
           <div className="grid gap-2">
             <label htmlFor="sorting" className="text-neutral-200 font-medium">
               Sorting
@@ -148,7 +141,7 @@ const Catalog = () => {
                     name={genre.name}
                     value={genre.name}
                     className="accent-indigo-600"
-                    checked={selectedGenres.some((g) => g.id === genre.id)}
+                    checked={selectedGenres.includes(genre.id)}
                     onChange={() => handleGenreClick(genre.id)}
                   />
                   <label htmlFor={genre.id} className="text-neutral-200">
