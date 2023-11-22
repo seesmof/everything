@@ -121,6 +121,7 @@ export default function Home() {
             heading={heading}
             isLoading={isLoading}
             movies={movies}
+            sectionLink={heading.toLowerCase().replace(/ /g, "_")}
           />
         ))}
       </PageContainer>

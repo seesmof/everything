@@ -2,8 +2,7 @@
 import Button from "@/components/Button";
 import PageContainer from "@/components/PageContainer";
 import PosterCard from "@/components/poster/PosterCard";
-import PosterCardSkeleton from "@/components/poster/PosterCardSkeleton";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
@@ -11,7 +10,7 @@ const Catalog = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const [ratingValue, setRatingValue] = useState(5);
+  const [ratingValue, setRatingValue] = useState(0);
   const [sorting, setSorting] = useState("popularity.desc");
   const [genres, setGenres] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState([]);
@@ -25,7 +24,7 @@ const Catalog = () => {
       genresString = "all";
     }
     const data = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=e87b47516389ca897c5e6acdc3068cc2&page=${page}&sort_by=${sortBy}&vote_average.gte=${rating}&with_genres=${genresString}`
+      `https://api.themoviedb.org/3/discover/movie?api_key=e87b47516389ca897c5e6acdc3068cc2&page=${page}&sort_by=${sortBy}&vote_average.gte=${rating}&with_genres=${genresString}&include_adult=false`
     ).then((res) => res.json());
     setMovies(
       data.results
@@ -67,6 +66,10 @@ const Catalog = () => {
     if (inputGenre) {
       setSelectedGenres([inputGenre]);
     }
+    const inputSorting = searchParams.get("sort_by");
+    if (inputSorting) {
+      setSorting(inputSorting);
+    }
   }, []);
 
   useEffect(() => {
@@ -79,7 +82,7 @@ const Catalog = () => {
 
   return (
     <>
-      <PageContainer className="gap-4 lg:p-6 lg:gap-6 md:flex">
+      <PageContainer className="gap-4 lg:pt-6 lg:gap-6 md:flex">
         <div className="flex flex-col gap-4 w-full h-full md:w-[24%] md:sticky md:top-[6.3rem]">
           <div className="grid gap-2">
             <label htmlFor="sorting" className="text-neutral-200 font-medium">
@@ -90,6 +93,7 @@ const Catalog = () => {
               id="sorting"
               className="bg-neutral-800 hover:bg-neutral-700 focus:bg-neutral-700 p-2 rounded-lg"
               onChange={(e) => setSorting(e.target.value)}
+              value={sorting}
             >
               <option value="popularity.desc">Popularity</option>
               <option value="vote_count.desc">Rating</option>
@@ -156,7 +160,7 @@ const Catalog = () => {
             </div>
           </div>
         </div>
-        <div className="gap-4 lg:gap-6 lg:p-6 grid flex-1">
+        <div className="gap-4 lg:gap-6 lg:pt-6 grid flex-1">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
             {isLoading ? (
               <div className="h-[110vh] w-full"></div>

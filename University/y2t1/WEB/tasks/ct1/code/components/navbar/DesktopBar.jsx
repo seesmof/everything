@@ -16,7 +16,7 @@ const DesktopBar = ({ links, pathname }) => {
   };
 
   return (
-    <div className="hidden md:flex max-w-6xl mx-auto justify-between items-center p-4">
+    <div className="hidden md:flex max-w-7xl mx-auto justify-between items-center p-4">
       <Link
         href={"/"}
         className="font-medium text-xl duration-300 text-white hover:text-indigo-400 active:text-indigo-300"

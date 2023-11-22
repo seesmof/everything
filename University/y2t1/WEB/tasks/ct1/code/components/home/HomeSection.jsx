@@ -2,9 +2,14 @@ import Link from "next/link";
 import PosterCard from "../poster/PosterCard";
 import PosterCardSkeleton from "../poster/PosterCardSkeleton";
 
-const HomeSection = ({ heading, isLoading, movies }) => {
+const HomeSection = ({ heading, isLoading, movies, sectionLink }) => {
   const gridClasses =
     "grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 items-start";
+  const links = {
+    top_rated: "revenue.desc",
+    popular_today: "popularity.desc",
+    trending: "vote_count.desc",
+  };
 
   return (
     <section className="grid">
@@ -13,7 +18,7 @@ const HomeSection = ({ heading, isLoading, movies }) => {
           {heading}
         </h2>
         <Link
-          href={`/movies`}
+          href={`/movies?sort_by=${links[sectionLink]}`}
           className="text-sm text-neutral-300 duration-300 hover:text-neutral-50"
         >
           View All

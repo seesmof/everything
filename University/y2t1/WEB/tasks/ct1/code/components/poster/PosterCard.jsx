@@ -4,7 +4,7 @@ import Link from "next/link";
 const PosterCard = ({ image, name, media_type, release_year, id, rating }) => {
   return (
     <>
-      <Link href="/[id]" as={`/${id}`} className="grid gap-2">
+      <Link href="/movies/[id]" as={`/movies/${id}`} className="grid gap-2">
         <div className="relative duration-300 active:scale-95 group w-full rounded-xl overflow-hidden mb-1">
           <div className="absolute inset-0 bg-neutral-800 group-hover:bg-opacity-50 bg-opacity-0 duration-300 w-full h-full flex items-center justify-center">
             <p
