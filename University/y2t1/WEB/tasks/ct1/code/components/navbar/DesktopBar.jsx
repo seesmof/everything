@@ -9,12 +9,6 @@ const DesktopBar = ({ links, pathname }) => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    router.push(`/search/${searchQuery}`);
-    setSearchQuery("");
-  };
-
   return (
     <div className="hidden md:flex max-w-7xl mx-auto justify-between items-center p-4">
       <Link
@@ -33,14 +27,18 @@ const DesktopBar = ({ links, pathname }) => {
           );
         })}
       </div>
-      <form onSubmit={handleSearchSubmit}>
-        <Input
-          type="text"
-          placeholder="Search for movies..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-      </form>
+      <Input
+        type="text"
+        placeholder="Search for movies..."
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        onKeyPress={(e) => {
+          if (e.key === "Enter") {
+            setSearchQuery(searchQuery);
+            router.push(`/search/${searchQuery}`);
+          }
+        }}
+      />
     </div>
   );
 };
