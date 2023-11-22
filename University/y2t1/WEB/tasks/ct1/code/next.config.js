@@ -5,6 +5,7 @@ const nextConfig = {
   },
   env: {
     TMDB_API_KEY: "e87b47516389ca897c5e6acdc3068cc2",
+    API_BASE_URL: "https://api.themoviedb.org/3",
   },
 };
 

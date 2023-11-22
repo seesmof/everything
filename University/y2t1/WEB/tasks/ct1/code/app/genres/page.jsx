@@ -1,7 +1,7 @@
 "use client";
 import Input from "@/components/Input";
 import PageContainer from "@/components/PageContainer";
-import Link from "next/link";
+import fetchGenres from "@/lib/fetchGenres";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -15,15 +15,8 @@ const Catalog = () => {
     "flex aspect-square items-center justify-center rounded-xl";
   const router = useRouter();
 
-  const fetchMovieGenres = async () => {
-    const data = await fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=${process.env.TMDB_API_KEY}`
-    ).then((res) => res.json());
-    setGenres(data.genres);
-  };
-
   useEffect(() => {
-    Promise.all([fetchMovieGenres()]).then(() => {
+    Promise.all([fetchGenres({ setGenres, setIsLoading })]).then(() => {
       setIsLoading(false);
     });
   }, []);

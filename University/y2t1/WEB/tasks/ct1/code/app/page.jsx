@@ -32,7 +32,7 @@ export default function Home() {
     try {
       const data =
         (await fetch(
-          `https://api.themoviedb.org/3${endpoint}?api_key=${process.env.TMDB_API_KEY}`
+          `${process.env.API_BASE_URL}${endpoint}?api_key=${process.env.TMDB_API_KEY}&include_adult=false`
         ).then((res) => res.json())) || [];
       return data.results
         .filter((result) => result.original_language !== "ru")

@@ -18,7 +18,7 @@ const SearchResults = () => {
   const fetchSearch = async () => {
     setIsLoading(true);
     const data = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${searchQuery}`
+      `${process.env.API_BASE_URL}/search/movie?api_key=${process.env.TMDB_API_KEY}&query=${searchQuery}`
     ).then((res) => res.json());
     setSearchResults(
       data.results

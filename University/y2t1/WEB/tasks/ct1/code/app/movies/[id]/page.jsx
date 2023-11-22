@@ -11,7 +11,7 @@ const Movie = () => {
 
   const fetchMovie = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.TMDB_API_KEY}`
+      `${process.env.API_BASE_URL}/movie/${id}?api_key=${process.env.TMDB_API_KEY}`
     ).then((res) => res.json());
     setMovie(data);
   };

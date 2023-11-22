@@ -2,6 +2,7 @@
 import Button from "@/components/Button";
 import PageContainer from "@/components/PageContainer";
 import PosterCard from "@/components/poster/PosterCard";
+import fetchGenres from "@/lib/fetchGenres";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
@@ -24,7 +25,7 @@ const Catalog = () => {
       genresString = "all";
     }
     const data = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&page=${page}&sort_by=${sortBy}&vote_average.gte=${rating}&with_genres=${genresString}&include_adult=false`
+      `${process.env.API_BASE_URL}/discover/movie?api_key=${process.env.TMDB_API_KEY}&page=${page}&sort_by=${sortBy}&vote_average.gte=${rating}&with_genres=${genresString}&include_adult=false`
     ).then((res) => res.json());
     setMovies(
       data.results
@@ -33,17 +34,6 @@ const Catalog = () => {
         .filter((result) => result.overview && result.overview.trim() !== "")
         .filter((result) => result.vote_average > 0)
     );
-    setIsLoading(false);
-  };
-
-  const fetchGenres = async () => {
-    setIsLoading(true);
-    const data = (
-      await fetch(
-        `https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=${process.env.TMDB_API_KEY}`
-      ).then((res) => res.json())
-    ).genres;
-    setGenres(data);
     setIsLoading(false);
   };
 
@@ -58,7 +48,7 @@ const Catalog = () => {
   };
 
   useEffect(() => {
-    Promise.all([fetchGenres()]).then(() => {
+    Promise.all([fetchGenres({ setGenres, setIsLoading })]).then(() => {
       setIsLoading(false);
     });
 
