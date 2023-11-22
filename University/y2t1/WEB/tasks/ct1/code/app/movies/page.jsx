@@ -20,12 +20,10 @@ const Catalog = () => {
 
   const fetchMovies = async (page, sortBy, rating, inputGenres) => {
     setIsLoading(true);
-    console.log(inputGenres);
     let genresString = inputGenres.join(",");
     if (genresString === "") {
       genresString = "all";
     }
-    console.log(genresString);
     const data = await fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=e87b47516389ca897c5e6acdc3068cc2&page=${page}&sort_by=${sortBy}&vote_average.gte=${rating}&with_genres=${genresString}`
     ).then((res) => res.json());
@@ -65,6 +63,13 @@ const Catalog = () => {
       setIsLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    const inputGenre = Number(searchParams.get("genre"));
+    if (inputGenre) {
+      setSelectedGenres([inputGenre]);
+    }
+  }, [genres]);
 
   useEffect(() => {
     Promise.all([fetchMovies(page, sorting, ratingValue, selectedGenres)]).then(
@@ -153,7 +158,7 @@ const Catalog = () => {
           </div>
         </div>
         <div className="gap-4 lg:gap-6 lg:p-6 grid flex-1">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
             {isLoading ? (
               <div className="h-[110vh] w-full"></div>
             ) : (
