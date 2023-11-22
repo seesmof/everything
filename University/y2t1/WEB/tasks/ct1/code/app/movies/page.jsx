@@ -106,7 +106,7 @@ const Catalog = () => {
               value={ratingValue}
               onChange={(e) => setRatingValue(e.target.value)}
               placeholder="Rating..."
-              className="cursor-pointer"
+              className="cursor-pointer accent-indigo-600/70"
             />
             <p className="text-neutral-300 text-sm font-medium pt-1">
               Starting from {ratingValue}/10
