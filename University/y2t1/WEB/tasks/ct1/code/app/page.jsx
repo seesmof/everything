@@ -14,7 +14,6 @@ export default function Home() {
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [movieOfDay, setMovieOfDay] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const API_KEY = "e87b47516389ca897c5e6acdc3068cc2";
   const sectionsData = {
     "Popular Today": trendingMovies,
     Trending: popularMovies,
@@ -33,7 +32,7 @@ export default function Home() {
     try {
       const data =
         (await fetch(
-          `https://api.themoviedb.org/3${endpoint}?api_key=${API_KEY}`
+          `https://api.themoviedb.org/3${endpoint}?api_key=${process.env.TMDB_API_KEY}`
         ).then((res) => res.json())) || [];
       return data.results
         .filter((result) => result.original_language !== "ru")

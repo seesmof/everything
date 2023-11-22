@@ -24,7 +24,7 @@ const Catalog = () => {
       genresString = "all";
     }
     const data = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=e87b47516389ca897c5e6acdc3068cc2&page=${page}&sort_by=${sortBy}&vote_average.gte=${rating}&with_genres=${genresString}&include_adult=false`
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.TMDB_API_KEY}&page=${page}&sort_by=${sortBy}&vote_average.gte=${rating}&with_genres=${genresString}&include_adult=false`
     ).then((res) => res.json());
     setMovies(
       data.results
@@ -40,7 +40,7 @@ const Catalog = () => {
     setIsLoading(true);
     const data = (
       await fetch(
-        `https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=e87b47516389ca897c5e6acdc3068cc2`
+        `https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=${process.env.TMDB_API_KEY}`
       ).then((res) => res.json())
     ).genres;
     setGenres(data);

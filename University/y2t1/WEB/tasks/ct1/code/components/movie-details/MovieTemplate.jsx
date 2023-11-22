@@ -22,7 +22,7 @@ const MovieTemplate = ({
 
   const fetchSimilarMovies = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/similar?api_key=e87b47516389ca897c5e6acdc3068cc2`
+      `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.TMDB_API_KEY}`
     ).then((res) => res.json());
     setSimilarMovies(
       data.results
