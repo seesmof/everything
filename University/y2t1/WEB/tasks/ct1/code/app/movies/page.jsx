@@ -149,8 +149,8 @@ const Catalog = () => {
             </div>
           </div>
         </div>
-        <div className="gap-4 lg:gap-6 lg:pt-6 grid flex-1">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
+        <div className="gap-4 lg:pt-6 grid flex-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 items-start">
             {isLoading ? (
               <div className="h-[110vh] w-full"></div>
             ) : (
