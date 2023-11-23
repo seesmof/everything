@@ -11,11 +11,13 @@ const DesktopBar = ({ links, pathname }) => {
 
   return (
     <div className="hidden md:flex max-w-7xl mx-auto justify-between items-center p-4">
-      <Link
-        href={"/"}
-        className="font-medium text-xl duration-300 text-white hover:text-indigo-400 active:text-indigo-300"
-      >
-        Flickster
+      <Link href={"/"}>
+        <img
+          src="/cinema.png"
+          alt="Website logo"
+          loading="lazy"
+          className="h-10 w-10 hover:scale-105 duration-300 active:scale-100"
+        />
       </Link>
       <div className="flex items-center justify-center gap-4">
         {links.map((link) => {

@@ -11,11 +11,28 @@
             "id": "6b8f645feb56a2d2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "University/y2t1/IY/tasks/Сем6/data.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0f975b21804c1565",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "University/y2t1/IY/tasks/Сем6/Причини Другої світової війни та її початок. Приєднання західноукраїнських земель до УРСР (1939-1941 рр.)..md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -82,6 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "University/y2t1/IY/tasks/Сем6/Причини Другої світової війни та її початок. Приєднання західноукраїнських земель до УРСР (1939-1941 рр.)..md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "University/y2t1/IY/tasks/Сем6/Причини Другої світової війни та її початок. Приєднання західноукраїнських земель до УРСР (1939-1941 рр.)..md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -129,7 +148,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "University/y2t1/IY/tasks/Сем6/Причини Другої світової війни та її початок. Приєднання західноукраїнських земель до УРСР (1939-1941 рр.)..md"
+              }
             }
           }
         ]
@@ -167,8 +188,15 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "6b8f645feb56a2d2",
+  "active": "0f975b21804c1565",
   "lastOpenFiles": [
+    "University/y2t1/WEB/tasks/ct1/code/app/favicon.ico",
+    "University/y2t1/WEB/tasks/ct1/code/app/cinema.ico",
+    "University/y2t1/WEB/tasks/ct1/code/public/cinema.png",
+    "University/y2t1/WEB/tasks/ct1/code/public/cinema.ico",
+    "University/y2t1/IY/tasks/Сем6/data.md",
+    "University/y2t1/IY/tasks/Сем4/data.md",
+    "University/y2t1/IY/tasks/Сем5/data.md",
     "University/y2t1/WEB/tasks/ct1/code/lib/fetchMovieDetails.js",
     "University/y2t1/WEB/tasks/ct1/code/lib/fetchGenres.js",
     "University/y2t1/WEB/tasks/ct1/code/lib",
@@ -178,9 +206,6 @@
     "University/y2t1/WEB/tasks/ct1/code/app/movies/[id]/page.jsx",
     "University/y2t1/WEB/tasks/ct1/code/app/movies/[id]",
     "University/y2t1/WEB/tasks/ct1/code/public/blur.jpg",
-    "University/y2t1/WEB/tasks/ct1/code/public/blur.jpg.crdownload",
-    "University/y2t1/WEB/tasks/ct1/code/app/genres/page.jsx",
-    "University/y2t1/WEB/tasks/ct1/code/app/genres",
     "University/y2t1/WEB/tasks/ct1/code/node_modules/punycode/README.md",
     "University/y2t1/WEB/tasks/ct1/code/public/about-general.jpg",
     "University/y2t1/WEB/tasks/ct1/code/public/logo.png",
@@ -205,15 +230,11 @@
     "University/y2t1/WEB/tasks/ct1/code/node_modules/fastq/README.md",
     "University/y2t1/WEB/tasks/ct1/code/node_modules/function-bind/CHANGELOG.md",
     "University/y2t1/WEB/tasks/ct1/code/node_modules/chokidar/README.md",
-    "University/y2t1/WEB/tasks/ct1/code/node_modules/is-core-module/CHANGELOG.md",
-    "University/y2t1/WEB/tasks/ct1/code/node_modules/@jridgewell/gen-mapping/README.md",
-    "University/y2t1/WEB/tasks/ct1/code/node_modules/postcss-load-config/README.md",
     "University/y2t1/WEB/tasks/ct1/code/public/vercel.svg",
     "University/y2t1/WEB/tasks/ct1/code/public/next.svg",
     "University/y2t1/WEB/tasks/ct1/docs/code/public/vercel.svg",
     "University/y2t1/WEB/tasks/ct1/docs/code/public/next.svg",
     "University/y2t1/WEB/tasks/ct1/docs/logo.png",
-    "University/y2t1/WEB/tasks/ct1/code/public/navigation-icons/home.png",
-    "University/y2t1/WEB/tasks/ct1/code/public/home.png"
+    "University/y2t1/WEB/tasks/ct1/code/public/navigation-icons/home.png"
   ]
 }

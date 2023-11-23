@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Flickster",
+  title: "Flickster - The Ultimate Movie Picker",
   description:
     "An app for movie enthusiasts that aims to streamline movie finding and picking process.",
 };

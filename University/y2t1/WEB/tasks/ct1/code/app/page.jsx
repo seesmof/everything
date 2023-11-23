@@ -80,7 +80,7 @@ export default function Home() {
     <>
       <PageContainer className="gap-4 lg:gap-6">
         <div className="grid">
-          <h2 className="font-bold text-2xl md:text-3xl pb-2 md:pb-4 text-neutral-50">
+          <h2 className="font-bold text-2xl md:text-3xl pb-4 text-neutral-50">
             Movie of Today
           </h2>
           {isLoading ? (
