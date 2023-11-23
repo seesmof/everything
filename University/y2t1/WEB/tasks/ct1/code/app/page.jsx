@@ -79,7 +79,7 @@ export default function Home() {
   return (
     <>
       <PageContainer className="gap-4 lg:gap-6">
-        <div className="grid">
+        <div className="flex flex-col">
           <h2 className="font-bold text-2xl md:text-3xl pb-4 text-neutral-50">
             Movie of Today
           </h2>

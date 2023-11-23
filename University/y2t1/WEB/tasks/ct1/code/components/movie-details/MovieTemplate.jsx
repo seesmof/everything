@@ -53,7 +53,7 @@ const MovieTemplate = ({
             className="w-full hidden md:block max-w-sm max-h-[60vh] object-cover rounded-xl"
             loading="lazy"
           />
-          <div className="grid flex-1">
+          <div className="flex flex-col flex-1">
             <div className="flex items-center gap-3">
               <p>{genres[0].name}</p>
               <p className="text-indigo-500 scale-90">•</p>

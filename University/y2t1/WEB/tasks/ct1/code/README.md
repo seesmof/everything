@@ -2,7 +2,7 @@
 
 <div align="center">
   <a href="https://github.com/seesmof/">
-    <img src="./public/logo.png" alt="Logo" height="80">
+    <img src="./public/cinema.png" alt="Logo" height="80">
   </a>
 
 <h1 align="center">Flickster - Movie Catalog</h1>
