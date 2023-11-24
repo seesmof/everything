@@ -4,59 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "7bca990ae890aff4",
+        "id": "2f56ff1fa84fe7fe",
         "type": "tabs",
         "children": [
           {
-            "id": "6b8f645feb56a2d2",
+            "id": "7acb755791467c36",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/y2t1/IY/tasks/Сем6/data.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "b9ea3763fef3e8bd",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/y2t1/IY/tasks/Сем6/Доля мовно-культурної ідентичності українства в світлі остаточних результатів Другої світової війни..md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "b5d9d749e060e7be",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/y2t1/IY/tasks/Сем6/Генеза української культури в роки Другої світової війни..md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "5626ec2d0f43c835",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/y2t1/IY/tasks/Сем6/Відвоювання України радянськими військами в 1943-1944 рр. Внесок українців у перемогу над нацизмом і боротьбу з комуністичним авторитаризмом..md",
+                "file": "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report/Експлуатація, тестування та експериментальне дослідження програми.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -123,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t1/IY/tasks/Сем6/Відвоювання України радянськими військами в 1943-1944 рр. Внесок українців у перемогу над нацизмом і боротьбу з комуністичним авторитаризмом..md",
+                "file": "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report/Експлуатація, тестування та експериментальне дослідження програми.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t1/IY/tasks/Сем6/Відвоювання України радянськими військами в 1943-1944 рр. Внесок українців у перемогу над нацизмом і боротьбу з комуністичним авторитаризмом..md",
+                "file": "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report/Експлуатація, тестування та експериментальне дослідження програми.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -173,7 +136,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/y2t1/IY/tasks/Сем6/Відвоювання України радянськими військами в 1943-1944 рр. Внесок українців у перемогу над нацизмом і боротьбу з комуністичним авторитаризмом..md"
+                "file": "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report/Експлуатація, тестування та експериментальне дослідження програми.md"
               }
             }
           }
@@ -212,8 +175,16 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "5626ec2d0f43c835",
+  "active": "7acb755791467c36",
   "lastOpenFiles": [
+    "University/y2t1/WEB/tasks/ct1/docs/stack.md",
+    "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report/Висновки за розробкою програми.md",
+    "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report/Експлуатація, тестування та експериментальне дослідження програми.md",
+    "University/y2t1/DSA/tasks/ct1/task.md",
+    "University/y2t1/IY/tasks/Сем6/data.md",
+    "University/y2t1/IY/tasks/Сем6/Доля мовно-культурної ідентичності українства в світлі остаточних результатів Другої світової війни..md",
+    "University/y2t1/IY/tasks/Сем6/Генеза української культури в роки Другої світової війни..md",
+    "University/y2t1/IY/tasks/Сем6/Відвоювання України радянськими військами в 1943-1944 рр. Внесок українців у перемогу над нацизмом і боротьбу з комуністичним авторитаризмом..md",
     "University/y2t1/WEB/tasks/ct1/docs/prod/images/genres_wireframe.png",
     "University/y2t1/WEB/tasks/ct1/docs/prod/images/info_wireframe.png",
     "University/y2t1/WEB/tasks/ct1/docs/prod/images/catalog_prototype.jpg",
@@ -228,12 +199,8 @@
     "University/y2t1/WEB/tasks/ct1/docs/prod/~WRD0002.tmp",
     "University/y2t1/WEB/tasks/ct1/docs/prod/~$res.docx",
     "journal/лист 23, 2023.md",
-    "University/y2t1/IY/tasks/Сем6/Відвоювання України радянськими військами в 1943-1944 рр. Внесок українців у перемогу над нацизмом і боротьбу з комуністичним авторитаризмом..md",
     "journal",
     "University/y2t1/IY/tasks/Сем6/Німецько-радянська війна (1941-1945 рр.). Катастрофічні поразки РСЧА 1941-1942 рр. та встановлення в Україні нацистського окупаційного режиму..md",
-    "University/y2t1/IY/tasks/Сем6/data.md",
-    "University/y2t1/IY/tasks/Сем6/Доля мовно-культурної ідентичності українства в світлі остаточних результатів Другої світової війни..md",
-    "University/y2t1/IY/tasks/Сем6/Генеза української культури в роки Другої світової війни..md",
     "University/y2t1/IY/tasks/Сем6/Причини Другої світової війни та її початок. Приєднання західноукраїнських земель до УРСР (1939-1941 рр.)..md",
     "University/y2t1/WEB/tasks/ct1/code/LICENSE",
     "University/y2t1/WEB/tasks/ct1/code/app/favicon.ico",
@@ -244,7 +211,6 @@
     "University/y2t1/IY/tasks/Сем5/data.md",
     "University/y2t1/WEB/tasks/ct1/code/public/blur.jpg",
     "University/y2t1/WEB/tasks/ct1/code/node_modules/punycode/README.md",
-    "University/y2t1/WEB/tasks/ct1/code/public/about-general.jpg",
     "University/y2t1/WEB/tasks/ct1/code/node_modules/next/README.md",
     "University/y2t1/WEB/tasks/ct1/code/node_modules/next/dist/compiled/regenerator-runtime/README.md",
     "University/y2t1/WEB/tasks/ct1/code/node_modules/next/dist/compiled/@babel/runtime/README.md",
@@ -256,9 +222,6 @@
     "University/y2t1/WEB/tasks/ct1/code/node_modules/next/dist/compiled/react-is/README.md",
     "University/y2t1/WEB/tasks/ct1/code/node_modules/resolve/SECURITY.md",
     "University/y2t1/WEB/tasks/ct1/code/node_modules/autoprefixer/README.md",
-    "University/y2t1/WEB/tasks/ct1/code/node_modules/tailwindcss/lib/postcss-plugins/nesting/README.md",
-    "University/y2t1/WEB/tasks/ct1/code/node_modules/tailwindcss/lib/value-parser/README.md",
-    "University/y2t1/WEB/tasks/ct1/code/node_modules/postcss-selector-parser/CHANGELOG.md",
-    "University/y2t1/WEB/tasks/ct1/code/node_modules/styled-jsx/license.md"
+    "University/y2t1/WEB/tasks/ct1/code/node_modules/tailwindcss/lib/postcss-plugins/nesting/README.md"
   ]
 }
