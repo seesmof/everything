@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report/Експлуатація, тестування та експериментальне дослідження програми.md",
+                "file": "University/y2t1/Дисципліни.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5
+    "width": 265.5,
+    "collapsed": true
   },
   "right": {
     "id": "e3d233ea96fb0411",
@@ -86,7 +87,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report/Експлуатація, тестування та експериментальне дослідження програми.md",
+                "file": "University/y2t1/Дисципліни.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +104,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report/Експлуатація, тестування та експериментальне дослідження програми.md",
+                "file": "University/y2t1/Дисципліни.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report/Експлуатація, тестування та експериментальне дослідження програми.md"
+                "file": "University/y2t1/Дисципліни.md"
               }
             }
           }
@@ -159,7 +160,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 438.5
+    "width": 438.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -177,17 +179,35 @@
   },
   "active": "7acb755791467c36",
   "lastOpenFiles": [
-    "University/y2t1/WEB/tasks/ct1/docs/prod/~WRL0002.tmp",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/~WRD0001.tmp",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/~WRD0000.tmp",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/__rzi_17540.30529",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code.zip",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/mso97CA.tmp",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/mso9028.tmp",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/~$res.docx",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/~WRL1858.tmp",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/~WRD1835.tmp",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/~WRD1811.tmp",
+    "University/y2t1/CT/docs/Архів/Ідеї та поточні завдання.md",
+    "University/y2t1/CT/docs/Архів/Шаблон групи.md",
+    "University/y2t1/CT/docs/Архів",
+    "University/y2t1/CT/docs/Зустрічі/Ідеї для проєкту до зустрічі - етап планування.md",
+    "University/y2t1/CT/docs/Зустрічі/Жовт 28, 2023 - Порядок денний на зустріч.md",
+    "University/y2t1/CT/docs/Зустрічі",
+    "University/y2t1/CT/docs/Інформація на захист.md",
+    "University/y2t1/CT/docs/Ідеї та поточні завдання.md",
+    "University/y2t1/CT/docs/Загальні вимоги до проєкту.md",
+    "University/y2t1/CT/Інформація на захист.md",
+    "University/y2t1/CT/Ідеї та поточні завдання.md",
+    "University/y2t1/CT/Загальні вимоги до проєкту.md",
+    "University/y2t1/CT/docs/Тексти секцій/Help Section Text.md",
+    "University/y2t1/CT/docs/Тексти секцій/Developers Info Section Text.md",
+    "University/y2t1/CT/docs/Тексти секцій",
+    "University/y2t1/CT/docs/Результати/Пояснювальна-записка_шаблон.docx",
+    "University/y2t1/CT/docs/Результати/Пояснювальна-записка.docx",
+    "University/y2t1/CT/docs/Результати/Методичні-вказівки.pdf",
+    "University/y2t1/CT/docs/Результати/Names.md",
+    "University/y2t1/CT/docs/Результати",
+    "University/y2t1/CT/docs/Шаблон групи.md",
+    "University/y2t1/CT/docs/Ідеї для проєкту до зустрічі - етап планування.md",
+    "University/y2t1/CT/docs/Жовт 28, 2023 - Порядок денний на зустріч.md",
+    "University/y2t1/CT/docs/Tasks, Notes and Ideas.md",
+    "University/y2t1/CT/docs/Вимоги.md",
+    "University/y2t1/CT/docs/given/Організація_роботи_Курсовий_ООП_2023.pdf",
+    "University/y2t1/CT/docs/given",
+    "University/y2t1/CT/docs/prod",
+    "University/y2t1/WEB/tasks/ct1/docs/irrelevant/report/Експлуатація, тестування та експериментальне дослідження програми.md",
     "University/y2t1/WEB/tasks/ct1/docs/prod/code/public/cinema.png",
     "University/y2t1/WEB/tasks/ct1/docs/prod/code/public/about-general.jpg",
     "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/yaml/README.md",
@@ -197,24 +217,6 @@
     "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/util-deprecate/History.md",
     "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/update-browserslist-db/README.md",
     "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/tslib/SECURITY.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/tslib/README.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/ts-interface-checker/README.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/to-regex-range/README.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/thenify-all/README.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/thenify-all/History.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/thenify/README.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/thenify/History.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/tailwindcss/src/postcss-plugins/nesting/README.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/tailwindcss/lib/postcss-plugins/nesting/README.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/tailwindcss/src/value-parser/README.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/tailwindcss/lib/value-parser/README.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/tailwindcss/README.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/tailwindcss/CHANGELOG.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/supports-preserve-symlinks-flag/README.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/supports-preserve-symlinks-flag/CHANGELOG.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/sucrase/README.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/styled-jsx/readme.md",
-    "University/y2t1/WEB/tasks/ct1/docs/prod/code/node_modules/styled-jsx/license.md",
     "University/y2t1/WEB/tasks/ct1/docs/prod/images/genres_wireframe.png",
     "University/y2t1/WEB/tasks/ct1/docs/prod/images/info_wireframe.png",
     "University/y2t1/WEB/tasks/ct1/docs/prod/images/catalog_prototype.jpg",
