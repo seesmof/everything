@@ -57,7 +57,7 @@ currentSchedule = {
 
 
 def DSA_lecture():
-    speak(f"Opening {disciplineNames["DSA"]} Lecture.")
+    speak(f"Opening {disciplineNames['DSA']} Lecture.")
     webbrowser.open_new_tab(
         "https://us04web.zoom.us/j/79660602873?pwd=Dd2sGFxKZNePIGtiA32VhpzlmrfyKx.1"
     )
@@ -67,7 +67,7 @@ def DSA_lecture():
 
 
 def DSA_practice():
-    speak(f"Opening {disciplineNames["DSA"]} Practice.")
+    speak(f"Opening {disciplineNames['DSA']} Practice.")
     webbrowser.open_new_tab("https://meet.google.com/kwk-xiup-fvf")
     webbrowser.open_new_tab(
         "obsidian://open?vault=everything&file=University%2FYear%202%20Term%201%2F%D0%90%D0%A1%D0%94%20-%20%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D0%B8%20%D1%82%D0%B0%20%D0%A1%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%B8%20%D0%94%D0%B0%D0%BD%D0%B8%D1%85%2Fdata"
@@ -75,7 +75,7 @@ def DSA_practice():
 
 
 def TY_lecture():
-    speak(f"Opening {disciplineNames["TY"]} Lecture.")
+    speak(f"Opening {disciplineNames['TY']} Lecture.")
     webbrowser.open_new_tab("https://meet.google.com/arg-syjc-vcz")
     webbrowser.open_new_tab(
         "obsidian://open?vault=everything&file=University%2FYear%202%20Term%201%2F%D0%A2%D0%99%20-%20%D0%A2%D0%B5%D0%BE%D1%80%D1%96%D1%8F%20%D0%99%D0%BC%D0%BE%D0%B2%D1%96%D1%80%D0%BD%D0%BE%D1%81%D1%82%D0%B5%D0%B9%2Fdata"
@@ -83,7 +83,7 @@ def TY_lecture():
 
 
 def TY_practice():
-    speak(f"Opening {disciplineNames["TY"]} Practice.")
+    speak(f"Opening {disciplineNames['TY']} Practice.")
     webbrowser.open_new_tab("https://meet.google.com/arg-syjc-vcz")
     webbrowser.open_new_tab(
         "obsidian://open?vault=everything&file=University%2FYear%202%20Term%201%2F%D0%A2%D0%99%20-%20%D0%A2%D0%B5%D0%BE%D1%80%D1%96%D1%8F%20%D0%99%D0%BC%D0%BE%D0%B2%D1%96%D1%80%D0%BD%D0%BE%D1%81%D1%82%D0%B5%D0%B9%2Fdata"
@@ -91,7 +91,7 @@ def TY_practice():
 
 
 def SP_lecture():
-    speak(f"Opening {disciplineNames["SP"]} Lecture.")
+    speak(f"Opening {disciplineNames['SP']} Lecture.")
     webbrowser.open_new_tab("https://meet.google.com/dxa-pjjr-byx")
     webbrowser.open_new_tab(
         "obsidian://open?vault=everything&file=University%2FYear%202%20Term%201%2F%D0%A1%D0%9F%20-%20%D0%A1%D0%BF%D0%BE%D1%80%D1%82%D0%B8%D0%B2%D0%BD%D0%B5%20%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F%2Fdata"
@@ -99,7 +99,7 @@ def SP_lecture():
 
 
 def SP_practice():
-    speak(f"Opening {disciplineNames["SP"]} Practice.")
+    speak(f"Opening {disciplineNames['SP']} Practice.")
     webbrowser.open_new_tab("https://meet.google.com/dxa-pjjr-byx")
     webbrowser.open_new_tab(
         "obsidian://open?vault=everything&file=University%2FYear%202%20Term%201%2F%D0%A1%D0%9F%20-%20%D0%A1%D0%BF%D0%BE%D1%80%D1%82%D0%B8%D0%B2%D0%BD%D0%B5%20%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D1%83%D0%B2%D0%B0%D0%BD%D0%BD%D1%8F%2Fdata"
@@ -107,7 +107,7 @@ def SP_practice():
 
 
 def WEB_lecture():
-    speak(f"Opening {disciplineNames["WEB"]} Lecture.")
+    speak(f"Opening {disciplineNames['WEB']} Lecture.")
     webbrowser.open_new_tab("https://meet.google.com/igt-rmni-ftk")
     webbrowser.open_new_tab(
         "obsidian://open?vault=everything&file=University%2FYear%202%20Term%201%2F%D0%92%D0%95%D0%91%20-%20%D0%92%D0%B5%D0%B1%20%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D0%B9%20%D1%82%D0%B0%20%D0%92%D0%B5%D0%B1%20%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD%2Fdata"
@@ -115,7 +115,7 @@ def WEB_lecture():
 
 
 def WEB_practice():
-    speak(f"Opening {disciplineNames["WEB"]} Practice.")
+    speak(f"Opening {disciplineNames['WEB']} Practice.")
     webbrowser.open_new_tab("https://meet.google.com/igt-rmni-ftk")
     webbrowser.open_new_tab(
         "obsidian://open?vault=everything&file=University%2FYear%202%20Term%201%2F%D0%92%D0%95%D0%91%20-%20%D0%92%D0%B5%D0%B1%20%D1%82%D0%B5%D1%85%D0%BD%D0%BE%D0%BB%D0%BE%D0%B3%D1%96%D0%B9%20%D1%82%D0%B0%20%D0%92%D0%B5%D0%B1%20%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD%2Fdata"
@@ -123,7 +123,7 @@ def WEB_practice():
 
 
 def OPI_practice():
-    speak(f"Opening {disciplineNames["OPI"]} Practice.")
+    speak(f"Opening {disciplineNames['OPI']} Practice.")
     webbrowser.open_new_tab("https://us02web.zoom.us/j/5151534723")
     pyperclip.copy("152334")
     webbrowser.open_new_tab(
@@ -132,7 +132,7 @@ def OPI_practice():
 
 
 def OPI_lecture():
-    speak(f"Opening {disciplineNames["OPI"]} Lecture.")
+    speak(f"Opening {disciplineNames['OPI']} Lecture.")
     webbrowser.open_new_tab("https://us02web.zoom.us/j/71772651691")
     pyperclip.copy("2023")
     webbrowser.open_new_tab(
@@ -141,7 +141,7 @@ def OPI_lecture():
 
 
 def IY_practice():
-    speak(f"Opening {disciplineNames["IY"]} Practice.")
+    speak(f"Opening {disciplineNames['IY']} Practice.")
     webbrowser.open_new_tab(
         "https://us05web.zoom.us/j/82941381946?pwd=fWODT5tAqYogAMAfDpkTQf6aWp1IRF.1"
     )
@@ -151,7 +151,7 @@ def IY_practice():
 
 
 def IY_lecture():
-    speak(f"Opening {disciplineNames["IY"]} Lecture.")
+    speak(f"Opening {disciplineNames['IY']} Lecture.")
     webbrowser.open_new_tab(
         "https://us05web.zoom.us/j/82941381946?pwd=fWODT5tAqYogAMAfDpkTQf6aWp1IRF.1"
     )
@@ -161,7 +161,7 @@ def IY_lecture():
 
 
 def VM_lecture():
-    speak(f"Opening {disciplineNames["VM"]} Lecture.")
+    speak(f"Opening {disciplineNames['VM']} Lecture.")
     webbrowser.open_new_tab(
         "https://us05web.zoom.us/j/4344130497?pwd=Z05oUnB4RDJGTGRWeEFaNlRsVDlBZz09"
     )
@@ -171,7 +171,7 @@ def VM_lecture():
 
 
 def VM_practice():
-    speak(f"Opening {disciplineNames["VM"]} Practice.")
+    speak(f"Opening {disciplineNames['VM']} Practice.")
     webbrowser.open_new_tab("https://meet.google.com/neu-xwef-ivi")
     webbrowser.open_new_tab(
         "obsidian://open?vault=everything&file=University%2FYear%202%20Term%201%2F%D0%A1%D0%A0%D0%92%D0%9C%20-%20%D0%A1%D0%BF%D0%B5%D1%86%D1%96%D0%B0%D0%BB%D1%8C%D0%BD%D1%96%20%D0%A0%D0%BE%D0%B7%D0%B4%D1%96%D0%BB%D0%B8%20%D0%92%D0%B8%D1%89%D0%BE%D1%97%20%D0%9C%D0%B0%D1%82%D0%B5%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B8%2Fdata"
