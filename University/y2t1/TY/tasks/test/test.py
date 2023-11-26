@@ -1,9 +1,10 @@
-P1 = 1 - 0.6
-P2 = 1 - 0.8
-P3 = 1 - 0.9
+def calculate_accuracy(measured_value, true_value):
+    accuracy = abs((measured_value - true_value) / true_value)
+    return accuracy
 
-P_not_fail = P1 * P2 * P3
 
-P_fail = 1 - P_not_fail
-
-print(P_not_fail)
+# Example usage:
+measured_value = 99.5
+true_value = 100
+accuracy = calculate_accuracy(measured_value, true_value)
+print(f"The accuracy of the measurement is {accuracy * 100}%")
