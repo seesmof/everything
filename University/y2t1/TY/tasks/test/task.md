@@ -15,13 +15,13 @@ Please complete the given {TASK} and give me the final answer.
 
 ---
 
-- [ ] 1
-- [x] 2
-- [ ] 3
-- [x] 4
-- [x] 5
-- [ ] 6
-- [x] 7
-- [x] 8
-- [x] 9
-- [x] 10
+- 1 =
+- 2 =
+- 3 = 0,582
+- 4 =
+- 5 =
+- 6 = 5,16
+- 7 =
+- 8 =
+- 9 =
+- 10 =
