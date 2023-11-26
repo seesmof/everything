@@ -1,10 +1,14 @@
-def calculate_accuracy(measured_value, true_value):
-    accuracy = abs((measured_value - true_value) / true_value)
-    return accuracy
+import math
+from scipy.special import comb
 
+# Calculate binomial coefficient
+binomial_coefficient = comb(70, 30, exact=True)
 
-# Example usage:
-measured_value = 99.5
-true_value = 100
-accuracy = calculate_accuracy(measured_value, true_value)
-print(f"The accuracy of the measurement is {accuracy * 100}%")
+# Calculate powers
+power1 = math.pow(0.4, 30)
+power2 = math.pow(0.6, 40)
+
+power1 = 0.4**30
+power2 = 0.6**40
+
+print(binomial_coefficient * power1 * power2)

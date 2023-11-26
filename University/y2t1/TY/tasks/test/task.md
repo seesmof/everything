@@ -15,11 +15,11 @@ Please complete the given {TASK} and give me the final answer.
 
 ---
 
-- 1 =
-- 2 =
+- 1 = 1/42
+- 2 = 0,992
 - 3 = 0,582
-- 4 =
-- 5 =
+- 4 = 0,265
+- 5 = 0,086
 - 6 = 5,16
 - 7 =
 - 8 =
