@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "2f56ff1fa84fe7fe",
+        "id": "1613b60d8bd87a48",
         "type": "tabs",
         "children": [
           {
-            "id": "7acb755791467c36",
+            "id": "561558065e51dcf5",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/y2t1/Дисципліни.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -69,8 +65,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265.5,
-    "collapsed": true
+    "width": 265.5
   },
   "right": {
     "id": "e3d233ea96fb0411",
@@ -87,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t1/Дисципліни.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t1/Дисципліни.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,9 +129,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "University/y2t1/Дисципліни.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -177,13 +168,16 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "7acb755791467c36",
+  "active": "561558065e51dcf5",
   "lastOpenFiles": [
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/2_old.md",
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/2.md",
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/data copy.md",
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/data.md",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/prod/Практичне заняття 1.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/1.md",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/2.md",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/prod/Практичне заняття 1.pdf",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/data.md",
+    "University/y2t1/Дисципліни.md",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/2_old.md",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/data copy.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/task1.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/data1.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1",
@@ -199,7 +193,6 @@
     "Training GPT",
     "Нова папка",
     "Python Automations/__pycache__/classes_year_2_term_1.cpython-310.pyc",
-    "Python Automations/__pycache__/library.cpython-310.pyc",
     "University/y2t1/CT/test.md",
     "University/y2t1/CT/docs/Результати/секції/Основні рішення з реалізації компонентів системи.md",
     "University/y2t1/CT/docs/Результати/секції/Аналіз програмних засобів.md",
@@ -212,9 +205,6 @@
     "University/y2t1/CT/docs/Зустрічі/Ідеї для проєкту до зустрічі - етап планування.md",
     "University/y2t1/CT/docs/Зустрічі/Жовт 28, 2023 - Порядок денний на зустріч.md",
     "University/y2t1/CT/docs/Інформація на захист.md",
-    "University/y2t1/CT/docs/Ідеї та поточні завдання.md",
-    "University/y2t1/CT/docs/Загальні вимоги до проєкту.md",
-    "University/y2t1/CT/Інформація на захист.md",
     "University/y2t1/WEB/tasks/ct1/docs/prod/code/public/cinema.png",
     "University/y2t1/WEB/tasks/ct1/docs/prod/code/public/about-general.jpg",
     "University/y2t1/WEB/tasks/ct1/docs/prod/images/genres_wireframe.png",
