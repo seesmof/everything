@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "1613b60d8bd87a48",
+        "id": "ad5a42b976571ac8",
         "type": "tabs",
         "children": [
           {
-            "id": "561558065e51dcf5",
+            "id": "2485d35d6cf6548b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2/prod/Практичне заняття 2.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -86,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2/prod/Практичне заняття 2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2/prod/Практичне заняття 2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,9 +129,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2/prod/Практичне заняття 2.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -176,9 +168,21 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "561558065e51dcf5",
+  "active": "2485d35d6cf6548b",
   "lastOpenFiles": [
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra3/prod/Практичне заняття 2.md",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/prod/Практичне заняття 3.md",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/prod/Практичне заняття 3.pdf",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/prod/Практичне заняття 2.pdf",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/prod/Практичне заняття 2.md",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/prod/Практичне заняття 1.pdf",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/prod/Практичне заняття 1.md",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/prod/Практичне заняття 1.pdf",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/prod/Практичне заняття 1.md",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/prod",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2/prod/Практичне заняття 2.md",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2/prod/Практичне заняття 2.pdf",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra3/prod/Практичне заняття 3.md",
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra3/prod/Практичне заняття 3.pdf",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra3/prod",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra3/data.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra3/2.md",
@@ -189,31 +193,19 @@
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2 copy/data.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2 copy/2.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2 copy/1.md",
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2 copy",
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2/prod/Практичне заняття 2.md",
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2/prod/Практичне заняття 1.pdf",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2/prod/Практичне заняття 1.md",
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2/prod",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2/2.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2/data copy.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2/1.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2/data.md",
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra2",
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/prod/Практичне заняття 1.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/1.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/2.md",
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/prod/Практичне заняття 1.pdf",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/data.md",
     "University/y2t1/Дисципліни.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/2_old.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/data copy.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/task1.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/data1.md",
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1",
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/data1.md",
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/task1.md",
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/1 copy.md",
-    "University/y2t1/_ Other Files and Docs/Христя-ДЗ",
     "University/y2t1/WEB/tasks/ct1/docs/prod/code/public/cinema.png",
     "University/y2t1/WEB/tasks/ct1/docs/prod/code/public/about-general.jpg",
     "University/y2t1/WEB/tasks/ct1/docs/prod/images/genres_wireframe.png",
