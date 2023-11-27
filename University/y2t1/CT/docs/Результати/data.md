@@ -241,3 +241,7 @@ Now, the current section template is listed below. Please fill it in very formal
 ## Довідка програми
 
 Якась довідкова інформація щодо програми.
+
+# Висновки
+
+Загальні висновки з проєкту.
