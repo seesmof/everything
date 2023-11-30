@@ -46,15 +46,6 @@ I am responsible for interface development. Right now the task is to create a pr
   - Program.cs
 - docs
   - ...document files and folders
-
-System/IDE files and folders are not included above, only custom files. An explanation of how everything works:
-
-FormMenu is an entry point to our app, it includes a sidebar with buttons for each page and a main panel container that contains all the pages; Initially it opens a FormWelcome, showing a logo, a welcome message and a random tip; The form is responsible for filling in the GlobalData static public class and a LoginManager with current user which is set to null and unauthorized by default; It also fills in the images for each listing in FormMarket listings and User's bough and added listings; And the class has methods for activating/deactivating a button, and opening child forms in the panel container.
-
-Advertisement class is public and is used to create objects with all the necessary data for a real estate listing. Has no methods, only values.
-
-AlgorithmManager is a public static class housing all sorts of algorithms methods. It contains getting dollar ratio for listing price, showing listing's location on the map, and sorting listings by different parameters in the market.
-
 ```
 
 ---
