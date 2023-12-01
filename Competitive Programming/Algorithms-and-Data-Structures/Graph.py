@@ -13,7 +13,7 @@ class Graph:
 
     def displayGraph(self):
         for key, value in self.graph.items():
-            print(f"{key} 🔗 {", ".join(map(str,value))}")
+            print(f"{key} 🔗 {', '.join(map(str,value))}")
 
     def loadFromFile(self, filename):
         with open(filename, "r") as file:
