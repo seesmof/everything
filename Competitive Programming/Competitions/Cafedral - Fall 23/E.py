@@ -9,5 +9,5 @@ else:
         counts[cube] += 1
 
     for cube, count in counts.items():
-        if count == 1:
+        if count % 2 == 1:
             print(cube)
