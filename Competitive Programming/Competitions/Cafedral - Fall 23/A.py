@@ -1,14 +1,6 @@
-def root(n):
-    nums = list(map(int, str(n)))
-    sum = 0
-    for i in nums:
-        sum += i
-    return sum
+def digitalroot(n):
+    return n if n < 10 else digitalroot(sum(int(digit) for digit in str(n)))
 
 
 n = int(input())
-res = root(n)
-if res < 10:
-    print(res)
-else:
-    print(root(res))
+print(digitalroot(n))
