@@ -56,7 +56,7 @@ discipline: Fundementals of Programming Engineering
 ![1701501072015](image/main/1701501072015.png)
 ![1701501103143](image/main/1701501103143.png)
 
-##### Можливості підтримки плігінів
+##### Можливості підтримки плагінів
 
 FAR Manager пропонує безліч попередньо встановлених плагінів для зручності користувачів. Для цієї демонстрації ми зосередимося на плагіні Case Conversion.
 
@@ -80,7 +80,9 @@ FAR Manager пропонує безліч попередньо встановл�
 
 Приклади використання функції пошуку у Midnight Commander наведені нижче у вигляді знімків екрана.
 
-##### Можливості підтримки плігінів
+##### Можливості підтримки плагінів
+
+Midnight Commander is a visual file manager that features a dual-panel interface. However, unlike some other file managers, it does not support plugins or any extensions to expand its functionalities. Its operations are primarily keyboard-based, with key combinations for common file operations such as copy, move, and delete. For example, to delete a file, you highlight it and press the F8 key. For copying files, you can use the F5 key.
 
 #### Total Commander
 
@@ -88,7 +90,7 @@ FAR Manager пропонує безліч попередньо встановл�
 
 Приклади використання функції пошуку у Total Commander наведені нижче у вигляді знімків екрана.
 
-##### Можливості підтримки плігінів
+##### Можливості підтримки плагінів
 
 ## Висновки
 
