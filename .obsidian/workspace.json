@@ -18,6 +18,16 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "79e03726cfe9accd",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "University/y2t1/OPI/docs/методичка_практики.pdf"
+              }
+            }
           }
         ]
       }
@@ -178,10 +188,19 @@
   },
   "active": "7bf5f725100517d7",
   "lastOpenFiles": [
-    "University/y2t1/OPI/tasks/pr5/flocharts/edraw-max.png",
-    "University/y2t1/OPI/tasks/pr5/flocharts/msedge_F21KKH1jrn.png",
+    "University/y2t1/OPI/tasks/pr5/prod/msoE5A5.tmp",
+    "University/y2t1/OPI/tasks/pr5/prod/msoE381.tmp",
+    "University/y2t1/OPI/tasks/pr5/prod/звіт.pdf",
+    "University/y2t1/OPI/tasks/pr5/prod/mso618D.tmp",
+    "University/y2t1/OPI/tasks/pr5/prod/mso5EDC.tmp",
+    "University/y2t1/OPI/tasks/pr5/prod/~$звіт.docx",
+    "University/y2t1/OPI/tasks/pr5/flocharts/yEd.png",
     "University/y2t1/OPI/docs/методичка_практики.pdf",
     "University/y2t1/OPI/tasks/pr5/data.md",
+    "University/y2t1/OPI/tasks/pr5/flocharts/cacoo.png",
+    "University/y2t1/OPI/tasks/pr5/flocharts/Untitled.png",
+    "University/y2t1/OPI/tasks/pr5/flocharts/edraw-max.png",
+    "University/y2t1/OPI/tasks/pr5/flocharts/msedge_F21KKH1jrn.png",
     "University/y2t1/OPI/tasks/pr5/flocharts/lucid-chart.png",
     "University/y2t1/OPI/tasks/pr5/flocharts/lucidcharts.png",
     "University/y2t1/OPI/tasks/pr5/flocharts/Flowcharts.png",
@@ -196,19 +215,10 @@
     "University/y2t1/OPI/tasks/pr5/docs/guidelines-for-a-flowchart.md",
     "University/y2t1/OPI/tasks/pr5/docs/algorithm.py",
     "University/y2t1/OPI/tasks/pr5/docs/algorithm-creation.md",
-    "University/y2t1/OPI/tasks/pr5/docs",
     "University/y2t1/OPI/tasks/pr5/guidelines-for-a-flowchart.md",
     "University/y2t1/OPI/tasks/pr5/algorithm-creation.md",
-    "University/y2t1/OPI/tasks/pr5/algorithm-creation.py",
-    "University/y2t1/OPI/tasks/pr5/algorithm.py",
-    "University/y2t1/OPI/tasks/pr4/prod/~WRL2314.tmp",
-    "University/y2t1/OPI/tasks/pr4/prod/~WRD2302.tmp",
     "University/y2t1/OPI/tasks/pr5/test/data.md",
     "University/y2t1/OPI/tasks/pr5/image/search_TC_2.png",
-    "University/y2t1/OPI/tasks/pr5/image/search_TC_1.png",
-    "University/y2t1/OPI/tasks/pr5/image/6.png",
-    "University/y2t1/OPI/tasks/pr5/image/4.png",
-    "University/y2t1/OPI/tasks/pr5/image/3.png",
     "University/y2t1/OPI/tasks/pr5/step-by-step-guide-on-completing.md",
     "University/y2t1/OPI/tasks/pr5/step-3.2.md",
     "University/y2t1/OPI/tasks/pr5/step-3.md",
