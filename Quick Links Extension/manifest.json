@@ -25,6 +25,13 @@
         "mac": "Alt+C"
       },
       "description": "Opens Phind in a new tab."
+    },
+    "open-monkeytype": {
+      "suggested_key": {
+        "default": "Alt+G",
+        "mac": "Alt+G"
+      },
+      "description": "Opens MonkeyType in a new tab."
     }
   },
   "background": {

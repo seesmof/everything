@@ -3,6 +3,7 @@ chrome.commands.onCommand.addListener((command) => {
     "open-chat-gpt": "https://chat.openai.com/",
     "open-bing-chat": "https://copilot.microsoft.com/",
     "open-phind": "https://phind.com/",
+    "open-monkeytype": "https://monkeytype.com/",
   };
 
   if (commandsMap[command]) {
