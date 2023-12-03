@@ -1,6 +1,5 @@
 # Step 1: Ask the user for a number
 try:
-    print()
     num = int(input("Enter a positive integer to generate a multiplication table: "))
 except ValueError:
     print("ERROR: Please enter a valid positive integer.")
@@ -13,4 +12,3 @@ else:
         print(f"\nMultiplication table for {num}:")
         for i in range(1, 9 + 1):
             print(f"{num} * {i} = {num * i}")
-        print()

@@ -17,7 +17,7 @@ discipline: Fundementals of Programming Engineering
 - Серед усіх наведених програмних продуктів обрати для себе п'ять
   - Draw.io
   - Lucid Chart
-  - Microsoft Visio
+  - Edraw Max
   - Gliffy
   - Pencil Project
 - Знайти для обраних інструментальних середовищ сайти для завантаження інсталяторів або офіційні сайти для реєстрації користувачів
@@ -34,7 +34,7 @@ discipline: Fundementals of Programming Engineering
 - Download the following
   - Draw.io
   - Lucid Chart
-  - Microsoft Visio
+  - Edraw Max
   - Gliffy
   - Pencil Project
 - Create a flowchart for the algorithm
@@ -45,9 +45,15 @@ discipline: Fundementals of Programming Engineering
 
 **Draw.io**
 
+![](https://i.imgur.com/kzJvEHe.png)
+
 **Lucid Chart**
 
-**Microsoft Visio**
+![](https://i.imgur.com/7RHugbv.png)
+
+**Edraw Max**
+
+![](https://i.imgur.com/L8hWLFB.png)
 
 **Gliffy**
 
@@ -57,7 +63,7 @@ discipline: Fundementals of Programming Engineering
 
 **Таблиця порівняння**
 
-| Функція                | Draw.io                                                    | Lucid Chart                                    | Microsoft Visio                          | Gliffy                               | Pencil Project                       |
+| Функція                | Draw.io                                                    | Lucid Chart                                    | Edraw Max                                | Gliffy                               | Pencil Project                       |
 | ---------------------- | ---------------------------------------------------------- | ---------------------------------------------- | ---------------------------------------- | ------------------------------------ | ------------------------------------ |
 | Інтерфейс              | Інтуїтивно зрозумілий інтерфейс з можливістю перетягування | Зручний, інтуїтивно зрозумілий інтерфейс       | Професійний, звичний інтерфейс           | Простий, зручний інтерфейс           | Зручний, базовий інтерфейс           |
 | Елементи блок-схеми    | Багата бібліотека, різноманітні фігури                     | Велика бібліотека фігур                        | Велика кількість фігур і символів        | Оптимальні варіанти фігур            | Обмежені, але фігур достатньо        |
@@ -79,7 +85,7 @@ discipline: Fundementals of Programming Engineering
 - Переваги: Зручна співпраця в режимі реального часу, підтримка різних платформ.
 - Недоліки: Деякі розширені функції можуть бути недоступні через платну платформу.
 
-3. **Microsoft Visio:**
+3. **Edraw Max:**
 
 - Переваги: Професійний інтерфейс, велика бібліотека фігур, універсальні можливості експорту/імпорту.
 - Недоліки: Ціноутворення на основі передплати, може мати крутішу криву навчання.

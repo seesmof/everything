@@ -82,52 +82,6 @@ please walk me through creating a correct flowchart for each of those apps.
 
 1. Open Gliffy and initiate a new document.
 2. Use shapes to represent each step in the algorithm.
-3. Connect the shapes to depict the
-
-**user**: please continue
-
-**chatgpt**: Certainly! Now, let's continue the walkthrough for each of the selected software products:
-
-### Draw.io
-
-1. Open Draw.io and create a new document.
-2. Drag and drop shapes to represent each step in the algorithm.
-3. Connect the shapes with arrows to indicate the flow of the algorithm.
-4. Label each shape with the corresponding step in the algorithm.
-5. Add a decision shape to represent the input validation.
-6. Add connectors to represent the branching logic.
-7. Add a loop shape to represent the multiplication table generation.
-8. Adjust the layout for clarity.
-9. Save and export the flowchart.
-
-### Lucid Chart
-
-1. Open Lucid Chart and start a new document.
-2. Use shapes to represent each step in the algorithm.
-3. Connect the shapes to show the flow of the algorithm.
-4. Label each shape with the corresponding algorithm step.
-5. Include a decision shape for input validation.
-6. Use connectors to illustrate the branching logic.
-7. Incorporate a loop shape for the multiplication table generation.
-8. Arrange the elements for clarity.
-9. Save and export the flowchart.
-
-### Microsoft Visio
-
-1. Open Microsoft Visio and create a new document.
-2. Utilize shapes to depict each step in the algorithm.
-3. Connect the shapes to indicate the algorithm's flow.
-4. Add text to label each shape with the respective algorithm step.
-5. Integrate a decision shape for input validation.
-6. Use connectors to illustrate the decision-making process.
-7. Integrate a loop shape for the multiplication table generation.
-8. Arrange the elements for clarity.
-9. Save and export the flowchart.
-
-### Gliffy
-
-1. Open Gliffy and initiate a new document.
-2. Use shapes to represent each step in the algorithm.
 3. Connect the shapes to depict the flow of the algorithm.
 4. Label each shape with the corresponding step in the algorithm.
 5. Add a decision shape for input validation.
@@ -170,27 +124,28 @@ After creating the flowcharts, you can take screenshots of each one to include i
 
 1. **Draw.io:**
 
-   - _Advantages:_ Intuitive interface, rich library of shapes, diverse platform support.
-   - _Disadvantages:_ Collaboration features may require a subscription.
+- Advantages: Intuitive interface, rich library of shapes, diverse platform support.
+- Disadvantages: Collaboration features may require a subscription.
 
 2. **Lucid Chart:**
 
-   - _Advantages:_ User-friendly, real-time collaboration, diverse platform support.
-   - _Disadvantages:_ Some advanced features may be behind a paywall.
+- Advantages: User-friendly, real-time collaboration, diverse platform support.
+- Disadvantages: Some advanced features may be behind a paywall.
 
 3. **Microsoft Visio:**
 
-   - _Advantages:_ Professional interface, extensive shape library, versatile export/import capabilities.
-   - _Disadvantages:_ Subscription-based pricing, may have a steeper learning curve.
+- Advantages: Professional interface, extensive shape library, versatile export/import capabilities.
+- Disadvantages: Subscription-based pricing, may have a steeper learning curve.
 
 4. **Gliffy:**
 
-   - _Advantages:_ Simple and easy-to-use interface, supports basic needs.
-   - _Disadvantages:_ Limited collaboration features, export options, and shapes.
+- Advantages: Simple and easy-to-use interface, supports basic needs.
+- Disadvantages: Limited collaboration features, export options, and shapes.
 
 5. **Pencil Project:**
-   - _Advantages:_ Open source, free, easy to learn.
-   - _Disadvantages:_ Limited shapes, basic interface, lacks advanced features.
+
+- Advantages: Open source, free, easy to learn.
+- Disadvantages: Limited shapes, basic interface, lacks advanced features.
 
 Consider these points when summarizing the analysis in your report. You may also want to provide additional context based on your specific observations and preferences. If you have any questions or need further assistance, feel free to ask!
 
