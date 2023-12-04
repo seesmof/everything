@@ -26,4 +26,6 @@ p_4 = Fraction(math.comb(5, 4), math.comb(15, 4))
 print(
     f"p4 = {getC(5, 4)} / {getC(15, 4)} = {math.comb(5, 4)}/{math.comb(15, 4)} = {p_4}"
 )
-print(p_0 + p_1 + p_2 + p_3 + p_4)
+
+print()
+print(p_0 + p_1 + p_2 + p_3 + p_4 == 1)
