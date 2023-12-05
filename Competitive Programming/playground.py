@@ -1,17 +1,17 @@
-def longestConsecutive(nums: [int]) -> int:
-    nums = set(nums)
-    longest = 0
+def toGoatLatin(sentence):
+    vowels = ["a", "e", "i", "o", "u"]
+    words = sentence.split()
+    for i in range(len(words)):
+        if words[i][0].lower() in vowels:
+            words[i] += "ma"
+        elif words[i][0].lower() not in vowels:
+            words[i] = words[i][1:] + words[i][0] + "ma"
+        for _ in range(i + 1):
+            words[i] += "a"
 
-    for num in nums:
-        if num - 1 not in nums:
-            length = 0
-            while num + length in nums:
-                length += 1
-            longest = max(length, longest)
-
-    return longest
+    return " ".join(words)
 
 
-arr = [100, 4, 200, 1, 3, 2]
-res = longestConsecutive(arr)
-print(res)
+sentence = "I speak Goat Latin"
+res = toGoatLatin(sentence)
+print(res, res == "Imaa peaksmaaa oatGmaaaa atinLmaaaaa")

@@ -17,10 +17,10 @@ class Graph:
         self.graph = defaultdict(list)
         self.directed = directed
 
-    def addEdge(self, u, v, w):
-        self.graph[u].append((v, w))
+    def addEdge(self, u, v, weight):
+        self.graph[u].append((v, weight))
         if not self.directed:
-            self.graph[v].append((u, w))
+            self.graph[v].append((u, weight))
 
     def displayGraph(self):
         for key, value in self.graph.items():
@@ -38,41 +38,17 @@ class Graph:
                 except ValueError:
                     print(f"Skipping line {line}")
 
-    def dijkstra(self, src):
-        dist = [float("inf")] * len(self.graph)
-        dist[src] = 0
-        queue = [(0, src)]
 
-        while queue:
-            d, node = heapq.heappop(queue)
-            if d != dist[node]:
-                continue
-            for neighbor, weight in self.graph[node]:
-                if dist[node] + weight < dist[neighbor]:
-                    dist[neighbor] = dist[node] + weight
-                    heapq.heappush(queue, (dist[neighbor], neighbor))
-        return dist
+def dijkstra(graph, start):
+    pass
 
-    def floyd_warshall(self):
-        dist = [[float("inf")] * len(self.graph) for _ in range(len(self.graph))]
-        for i in range(len(self.graph)):
-            for j, weight in self.graph[i]:
-                dist[i][j] = weight
-        for k in range(len(self.graph)):
-            for i in range(len(self.graph)):
-                for j in range(len(self.graph)):
-                    dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
-        return dist
 
-    def bellman_ford(self, src):
-        dist = [float("inf")] * len(self.graph)
-        dist[src] = 0
-        for _ in range(len(self.graph) - 1):
-            for node in range(len(self.graph)):
-                for neighbor, weight in self.graph[node]:
-                    if dist[node] + weight < dist[neighbor]:
-                        dist[neighbor] = dist[node] + weight
-        return dist
+def floydWarshall(graph):
+    pass
+
+
+def bellmanFord(graph, start):
+    pass
 
 
 def algorithms():
