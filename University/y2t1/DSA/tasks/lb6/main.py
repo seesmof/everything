@@ -6,64 +6,76 @@
 """
 
 
+from collections import defaultdict, deque
+import heapq
+
 GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/input.txt"
 
 
+class Graph:
+    def __init__(self, directed=False):
+        self.graph = defaultdict(list)
+        self.directed = directed
+
+    def addEdge(self, u, v, w):
+        self.graph[u].append((v, w))
+        if not self.directed:
+            self.graph[v].append((u, w))
+
+    def displayGraph(self):
+        for key, value in self.graph.items():
+            if self.directed:
+                print(f"{key} → {', '.join(map(str, value))}")
+            else:
+                print(f"{key} 🔗 {', '.join(map(str, value))}")
+
+    def loadFromFile(self, filename):
+        with open(filename, "r") as file:
+            for line in file:
+                try:
+                    u, v, w = line.strip().split()
+                    self.addEdge(int(u), int(v), int(w))
+                except ValueError:
+                    print(f"Skipping line {line}")
+
+    def dijkstra(self, src):
+        dist = [float("inf")] * len(self.graph)
+        dist[src] = 0
+        queue = [(0, src)]
+
+        while queue:
+            d, node = heapq.heappop(queue)
+            if d != dist[node]:
+                continue
+            for neighbor, weight in self.graph[node]:
+                if dist[node] + weight < dist[neighbor]:
+                    dist[neighbor] = dist[node] + weight
+                    heapq.heappush(queue, (dist[neighbor], neighbor))
+        return dist
+
+    def floyd_warshall(self):
+        dist = [[float("inf")] * len(self.graph) for _ in range(len(self.graph))]
+        for i in range(len(self.graph)):
+            for j, weight in self.graph[i]:
+                dist[i][j] = weight
+        for k in range(len(self.graph)):
+            for i in range(len(self.graph)):
+                for j in range(len(self.graph)):
+                    dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+        return dist
+
+    def bellman_ford(self, src):
+        dist = [float("inf")] * len(self.graph)
+        dist[src] = 0
+        for _ in range(len(self.graph) - 1):
+            for node in range(len(self.graph)):
+                for neighbor, weight in self.graph[node]:
+                    if dist[node] + weight < dist[neighbor]:
+                        dist[neighbor] = dist[node] + weight
+        return dist
+
+
 def algorithms():
-    from collections import defaultdict, deque
-    import heapq
-
-    class Graph:
-        def __init__(self, directed=False):
-            self.graph = defaultdict(list)
-            self.directed = directed
-
-        def addEdge(self, u, v, w):
-            self.graph[u].append((v, w))
-            if not self.directed:
-                self.graph[v].append((u, w))
-
-        def displayGraph(self):
-            for key, value in self.graph.items():
-                if self.directed:
-                    print(f"{key} → {', '.join(map(str, value))}")
-                else:
-                    print(f"{key} 🔗 {', '.join(map(str, value))}")
-
-        def loadFromFile(self, filename):
-            with open(filename, "r") as file:
-                for line in file:
-                    try:
-                        u, v, w = line.strip().split()
-                        self.addEdge(int(u), int(v), int(w))
-                    except ValueError:
-                        print(f"Skipping line {line}")
-
-        def dfs(self, start):
-            visited = set()
-            stack = [start]
-            while stack:
-                vertex = stack.pop()
-                if vertex not in visited:
-                    visited.add(vertex)
-                    stack.extend(set(self.graph[vertex]) - visited)
-            return visited
-
-        def dijkstra(self, start):
-            distances = {vertex: float("inf") for vertex in self.graph}
-            distances[start] = 0
-            queue = [(0, start)]
-            while queue:
-                currentDistance, currentVertex = heapq.heappop(queue)
-                if currentDistance > distances[currentVertex]:
-                    continue
-                for neighbor, weight in self.graph[currentVertex]:
-                    distance = currentDistance + weight
-                    if distance < distances[neighbor]:
-                        distances[neighbor] = distance
-                        heapq.heappush(queue, (distance, neighbor))
-            return distances
-
     def main():
         g = None
         while True:
@@ -72,7 +84,7 @@ def algorithms():
             print("2. Add an edge")
             print("3. Display graph")
             print("4. Dijkstra")
-            print("5. Floyd-Warshell")
+            print("5. Floyd-Warshall")
             print("6. Bellman-Ford")
             print("7. Exit")
             choice = int(input(": "))
@@ -102,11 +114,18 @@ def algorithms():
                 g.displayGraph()
 
             elif choice == 4:
-                v = int(input("Enter the starting vertex: "))
-                print()
-                tree = dict(g.dijkstra(v))
-                for key, value in tree.items():
-                    print(f"{key}: {value}")
+                src = int(input("Enter the source vertex: "))
+                dist = g.dijkstra(src)
+                print(dist)
+
+            elif choice == 5:
+                dist = g.floyd_warshall()
+                print(dist)
+
+            elif choice == 6:
+                src = int(input("Enter the source vertex: "))
+                dist = g.bellman_ford(src)
+                print(dist)
 
             else:
                 break
@@ -115,11 +134,19 @@ def algorithms():
 
 
 def project_minimal_times():
-    pass
+    # create graph
+    g = Graph()
+    # take in the number of tasks
+    numTasks = int(input("Enter the number of tasks: "))
+    # define the connections between tasks and time to complete each
+    # find the shortest path among all paths
+    # print the total time it takes to complete all tasks
 
 
 def shortest_path_from_a_to_b():
-    pass
+    # create a graph
+    g = Graph()
+    # take in the graph of roads
 
 
 def shortest_path_from_all_points():
@@ -129,12 +156,13 @@ def shortest_path_from_all_points():
 def menu():
     while True:
         print("\nMake your choice")
-        print("1. See Dijkstra, Floyd-Warshell or Bellman-Ford")
+        print("1. See Dijkstra, Floyd-Warshall or Bellman-Ford")
         print("2. Project minimal times")
         print("3. Shortest path from A to B")
         print("4. Shortest path from all points")
         print("5. Exit")
-        choice = int(input(": "))
+        # choice = int(input(": "))
+        choice = 1
 
         if choice == 1:
             algorithms()
