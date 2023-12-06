@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/y2t1/OPI/tasks/pr5/data.md",
+                "file": "University/y2t1/Дисципліни.md",
                 "mode": "source",
                 "source": false
               }
@@ -96,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t1/OPI/tasks/pr5/data.md",
+                "file": "University/y2t1/Дисципліни.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t1/OPI/tasks/pr5/data.md",
+                "file": "University/y2t1/Дисципліни.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -146,7 +146,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/y2t1/OPI/tasks/pr5/data.md"
+                "file": "University/y2t1/Дисципліни.md"
               }
             }
           }
@@ -188,19 +188,20 @@
   },
   "active": "7bf5f725100517d7",
   "lastOpenFiles": [
-    "journal/груд 05, 2023.md",
+    "University/y2t1/TY/tasks/РГЗ/~WRL0906.tmp",
+    "University/y2t1/TY/tasks/РГЗ/~WRD0005.tmp",
+    "University/y2t1/TY/tasks/РГЗ/~WRD0004.tmp",
     "University/y2t1/OPI/tasks/pr5/data.md",
+    "University/y2t1/TY/tasks/РГЗ/mso28AC.tmp",
+    "University/y2t1/TY/tasks/РГЗ/mso18EC.tmp",
+    "University/y2t1/TY/tasks/РГЗ/~$звіт_2.docx",
+    "journal/груд 05, 2023.md",
     "journal",
     "University/y2t1/OPI/tasks/pr7/res/~$звіт.docx",
     "University/y2t1/OPI/tasks/pr7/res/звіт.docx",
     "University/y2t1/OPI/tasks/pr7/res/res.docx",
     "University/y2t1/OPI/tasks/pr7/res",
     "University/y2t1/OPI/tasks/pr7/docs/university-gpt-on-poe-helping.md",
-    "University/y2t1/OPI/tasks/pr7/docs",
-    "Code Doodles/Conway's Game of Life/test.py",
-    "Code Doodles/Conway's Game of Life/main.py",
-    "Code Doodles/Conway's Game of Life/main.pt",
-    "Code Doodles/Conway's Game of Life",
     "Playing Exapunks/GIFs/EXAPUNKS - TRASH WORLD NEWS (5, 5, 2, 2023-11-18-18-09-34).gif",
     "Playing Exapunks/GIFs/EXAPUNKS - TRASH WORLD NEWS (405, 18, 3, 2023-11-18-18-34-29).gif",
     "Playing Exapunks/GIFs/EXAPUNKS - Euclid's Pizza (114, 23, 1, 2023-11-19-13-34-04).gif",
@@ -232,7 +233,6 @@
     "University/y2t1/OPI/tasks/pr6/docs/вірші/Жадан _ Їй-15.md",
     "University/y2t1/OPI/tasks/pr6/docs/вірші/Володимир-Сосюра _ Любіть Україну, як сонце любіть.md",
     "University/y2t1/OPI/tasks/pr6/docs/Володимир-Сосюра _ Любіть Україну, як сонце любіть.md",
-    "University/y2t1/OPI/tasks/pr6/docs/Жадан _ Їй-15.md",
-    "University/y2t1/OPI/tasks/pr6/docs/guidelines-for-a-flowchart.md"
+    "University/y2t1/OPI/tasks/pr6/docs/Жадан _ Їй-15.md"
   ]
 }

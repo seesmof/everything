@@ -14,7 +14,7 @@ p_1 = math.comb(5, 1) * Fraction(math.comb(10, 3), math.comb(15, 4))
 print(
     f"p1 = {getC(5, 1)} * {getC(10, 3)} / {getC(15, 4)} = {math.comb(5, 1)}*{math.comb(10, 3)}/{math.comb(15, 4)} = {p_1}"
 )
-p_2 = math.comb(5, 2) * Fraction(math.comb(10, 2), math.comb(15, 4))
+p_2 = Fraction(math.comb(5, 2) * math.comb(10, 2), math.comb(15, 4))
 print(
     f"p2 = {getC(5, 2)} * {getC(10, 2)} / {getC(15, 4)} = {math.comb(5, 2)}*{math.comb(10, 2)}/{math.comb(15, 4)} = {p_2}"
 )
