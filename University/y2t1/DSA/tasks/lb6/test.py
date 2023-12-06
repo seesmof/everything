@@ -125,6 +125,30 @@ class Graph:
             path.append(start)
         return path
 
+    def bellman_ford(self, start, end):
+        distance = defaultdict(lambda: float("inf"))
+        predecessor = {}
+        distance[start] = 0
+
+        for _ in range(len(self.edges) - 1):
+            for node in self.edges:
+                for neighbor, weight in self.edges[node]:
+                    if distance[node] + weight < distance[neighbor]:
+                        distance[neighbor] = distance[node] + weight
+                        predecessor[neighbor] = node
+
+        for node in self.edges:
+            for neighbor, weight in self.edges[node]:
+                assert (
+                    distance[node] + weight >= distance[neighbor]
+                ), "Graph contains a negative-weight cycle"
+
+        path = []
+        while end:
+            path.append(end)
+            end = predecessor.get(end)
+        return path[::-1]
+
 
 GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/graph.txt"
 ROADS_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/roads.txt"
@@ -146,5 +170,10 @@ res = g.dijkstra(3, 2)
 g.drawGraph(res)
 res = g.floyd_warshall(3, 2)
 g.drawGraph(res)
+res = g.bellman_ford(3, 2)
+g.drawGraph(res)
 
 # ! OKAY DONT TOUCH THIS
+
+newSet = {}
+newSet.add(1)
