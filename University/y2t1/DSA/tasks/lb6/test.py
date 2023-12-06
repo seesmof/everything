@@ -28,7 +28,19 @@ class Graph:
             for v, weight in edges:
                 G.add_edge(u, v, weight=weight)
         pos = nx.spring_layout(G)
-        nx.draw_networkx_nodes(G, pos, node_color="lightblue")
+
+        if shortest_path:
+            node_colors = [
+                "red"
+                if node == shortest_path[-1]
+                else "lightgreen"
+                if node == shortest_path[0]
+                else "lightgray"
+                for node in G.nodes()
+            ]
+            nx.draw_networkx_nodes(G, pos, node_color=node_colors)
+        else:
+            nx.draw_networkx_nodes(G, pos, node_color="lightblue")
         nx.draw_networkx_edges(G, pos)
         nx.draw_networkx_labels(G, pos, font_weight="bold")
         labels = nx.get_edge_attributes(G, "weight")
