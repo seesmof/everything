@@ -102,6 +102,8 @@ class Graph:
         return distance, nextNode
 
     def getShortestPath(self, start, end, nextNode):
+        if nextNode[start][end] is None:
+            return f"There is no path from {start} to {end}"
         path = [start]
         while start != end:
             start = nextNode[start][end]
@@ -225,5 +227,7 @@ print(f"{g.dijkstra(1, 10)}\n")
 print(f"{g.dijkstra(3, 8)}\n")
 
 print()
-print(f"{g.floydWarshall()}\n")
 print(f"{g.getShortestPath(1, 6, g.floydWarshall()[1])}\n")
+print(f"{g.getShortestPath(1, 8, g.floydWarshall()[1])}\n")
+print(f"{g.getShortestPath(1, 10, g.floydWarshall()[1])}\n")
+print(f"{g.getShortestPath(3, 8, g.floydWarshall()[1])}\n")
