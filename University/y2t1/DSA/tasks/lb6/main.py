@@ -38,16 +38,6 @@ class Graph:
                 except ValueError:
                     print(f"Skipping line {line}")
 
-    def DFS(self, start):
-        visited = set()
-        stack = [start]
-        while stack:
-            node = stack.pop()
-            if node not in visited:
-                visited.add(node)
-                stack.extend(set(self.edges[node]) - visited)
-        return visited
-
     def dijkstra(self, start, end):
         shortestPaths = {start: (None, 0)}
         currentNode = start
@@ -87,7 +77,7 @@ class Graph:
         path = path[::-1]
         return path
 
-    def floydWarshall(self):
+    def floydWarshall(self, start):
         pass
 
     def bellmanFord(self, start):
@@ -196,12 +186,4 @@ def menu():
             break
 
 
-# menu()
-g = Graph()
-g.loadFromFile(GRAPH_FILE_PATH)
-
-print()
-print(f"{g.dijkstra(1, 6)}\n")
-print(f"{g.dijkstra(1, 8)}\n")
-print(f"{g.dijkstra(1, 10)}\n")
-print(f"{g.dijkstra(3, 8)}\n")
+menu()
