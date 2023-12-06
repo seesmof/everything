@@ -98,6 +98,33 @@ class Graph:
                         heappush(queue, (cost + c, next_node, path))
         return []
 
+    def floyd_warshall(self, start, end):
+        dist = defaultdict(lambda: defaultdict(lambda: float("inf")))
+        next_node = defaultdict(dict)
+
+        for node in self.edges:
+            dist[node][node] = 0
+
+        for node, edges in self.edges.items():
+            for neighbor, weight in edges:
+                dist[node][neighbor] = weight
+                next_node[node][neighbor] = neighbor
+
+        for k in self.edges:
+            for i in self.edges:
+                for j in self.edges:
+                    if dist[i][k] + dist[k][j] < dist[i][j]:
+                        dist[i][j] = dist[i][k] + dist[k][j]
+                        next_node[i][j] = next_node[i][k]
+
+        if next_node[start][end] is None:
+            return []
+        path = [start]
+        while start != end:
+            start = next_node[start][end]
+            path.append(start)
+        return path
+
 
 GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/graph.txt"
 ROADS_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/roads.txt"
@@ -116,6 +143,8 @@ g.loadFromFile(ROADS_FILE_PATH)
 g.displayGraph()
 g.drawGraph()
 res = g.dijkstra(3, 2)
+g.drawGraph(res)
+res = g.floyd_warshall(3, 2)
 g.drawGraph(res)
 
 # ! OKAY DONT TOUCH THIS
