@@ -1,5 +1,7 @@
 from collections import defaultdict
 from json import dumps
+import matplotlib.pyplot as plt
+import networkx as nx
 
 
 class Graph:
@@ -19,6 +21,19 @@ class Graph:
             else:
                 print(f"{key} 🔗 {', '.join(map(str, value))}")
 
+    def drawGraph(self):
+        G = nx.Graph()
+        for u, edges in self.edges.items():
+            for v, weight in edges:
+                G.add_edge(u, v, weight=weight)
+        pos = nx.spring_layout(G)
+        nx.draw_networkx_nodes(G, pos, node_color="lightblue")
+        nx.draw_networkx_edges(G, pos)
+        nx.draw_networkx_labels(G, pos, font_weight="bold")
+        labels = nx.get_edge_attributes(G, "weight")
+        nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
+        plt.show()
+
     def loadFromFile(self, filename):
         with open(filename, "r") as file:
             for line in file:
@@ -28,46 +43,11 @@ class Graph:
                 except ValueError:
                     print(f"Skipping line {line}")
 
-    def bellmanFord(self, start):
-        distance = {node: float("infinity") for node in self.edges}
-        distance[start] = 0
 
-        for _ in range(len(self.edges) - 1):
-            for node in self.edges:
-                for neighbour, weight in self.edges[node]:
-                    if (
-                        distance[node] != float("infinity")
-                        and distance[node] + weight < distance[neighbour]
-                    ):
-                        distance[neighbour] = distance[node] + weight
-
-        for node in self.edges:
-            for neighbour, weight in self.edges[node]:
-                if (
-                    distance[node] != float("infinity")
-                    and distance[node] + weight < distance[neighbour]
-                ):
-                    return "Graph contains a negative-weight cycle"
-
-        return distance
-
-    def getShortestPath(self, start, end, nextNode):
-        if nextNode[start][end] is None:
-            return f"There is no path from {start} to {end}"
-        path = [start]
-        while start != end:
-            start = nextNode[start][end]
-            path.append(start)
-        return path
-
-
-GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/input.txt"
-g = Graph()
+GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/graph.txt"
+g = Graph(directed=True)
 g.loadFromFile(GRAPH_FILE_PATH)
 g.displayGraph()
+g.drawGraph()
 
 # ! OKAY DONT TOUCH THIS
-
-start = 1
-print(g.bellmanFord(start))
-print(dumps(g.bellmanFord(start), indent=2))
