@@ -83,12 +83,39 @@ class Graph:
                 except ValueError:
                     print(f"Skipping line {line}")
 
+    def dijkstra(self, start, end):
+        queue = [(0, start, [])]
+        seen = set()
+        while queue:
+            (cost, node, path) = heappop(queue)
+            if node not in seen:
+                seen.add(node)
+                path = path + [node]
+                if node == end:
+                    return path
+                for next_node, c in self.edges[node]:
+                    if next_node not in seen:
+                        heappush(queue, (cost + c, next_node, path))
+        return []
+
 
 GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/graph.txt"
+ROADS_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/roads.txt"
+
+"""
 g = Graph(directed=True)
 g.loadFromFile(GRAPH_FILE_PATH)
 g.displayGraph()
 g.drawGraph()
-g.drawGraph([3, 2, 1, 0, 4])
+res = g.dijkstra(0, 2)
+g.drawGraph(res)
+"""
+
+g = Graph(directed=False)
+g.loadFromFile(ROADS_FILE_PATH)
+g.displayGraph()
+g.drawGraph()
+res = g.dijkstra(3, 2)
+g.drawGraph(res)
 
 # ! OKAY DONT TOUCH THIS
