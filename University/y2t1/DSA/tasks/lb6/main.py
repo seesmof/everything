@@ -14,16 +14,16 @@ GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/input.txt"
 
 class Graph:
     def __init__(self, directed=False):
-        self.graph = defaultdict(list)
+        self.edges = defaultdict(list)
         self.directed = directed
 
     def addEdge(self, u, v, weight):
-        self.graph[u].append((v, weight))
+        self.edges[u].append((v, weight))
         if not self.directed:
-            self.graph[v].append((u, weight))
+            self.edges[v].append((u, weight))
 
     def displayGraph(self):
-        for key, value in self.graph.items():
+        for key, value in self.edges.items():
             if self.directed:
                 print(f"{key} → {', '.join(map(str, value))}")
             else:
@@ -45,42 +45,45 @@ class Graph:
             node = stack.pop()
             if node not in visited:
                 visited.add(node)
-                stack.extend(set(self.graph[node]) - visited)
+                stack.extend(set(self.edges[node]) - visited)
         return visited
 
     def dijkstra(self, start, end):
-        shortest_paths = {start: (None, 0)}
-        current_node = start
+        shortestPaths = {start: (None, 0)}
+        currentNode = start
         visited = set()
 
-        while current_node != end:
-            visited.add(current_node)
-            destinations = self.graph[current_node]
-            weight_to_current_node = shortest_paths[current_node][1]
+        while currentNode != end:
+            visited.add(currentNode)
+            destinations = self.edges[currentNode]
+            currentWeight = shortestPaths[currentNode][1]
 
-            for next_node, weight in destinations:
-                weight = weight + weight_to_current_node
-                if next_node not in shortest_paths:
-                    shortest_paths[next_node] = (current_node, weight)
+            for nextNode, weight in destinations:
+                weight += currentWeight
+                if nextNode not in shortestPaths:
+                    shortestPaths[nextNode] = (currentNode, weight)
                 else:
-                    current_shortest_weight = shortest_paths[next_node][1]
-                    if current_shortest_weight > weight:
-                        shortest_paths[next_node] = (current_node, weight)
+                    currentShortestWeight = shortestPaths[nextNode][1]
+                    if currentShortestWeight > weight:
+                        shortestPaths[nextNode] = (currentNode, weight)
 
-            next_destinations = {
-                node: shortest_paths[node]
-                for node in shortest_paths
+            nextDestinations = {
+                node: shortestPaths[node]
+                for node in shortestPaths
                 if node not in visited
             }
-            if not next_destinations:
+            if not nextDestinations:
                 break
-            current_node = min(next_destinations, key=lambda k: next_destinations[k][1])
+            currentNode = min(nextDestinations, key=lambda k: nextDestinations[k][1])
+
+        if end not in shortestPaths:
+            return f"There is no path from {start} to {end}"
 
         path = []
-        while current_node is not None:
-            path.append(current_node)
-            next_node = shortest_paths[current_node][0]
-            current_node = next_node
+        while currentNode is not None:
+            path.append(currentNode)
+            nextNode = shortestPaths[currentNode][0]
+            currentNode = nextNode
         path = path[::-1]
         return path
 
@@ -120,6 +123,7 @@ def algorithms():
                 elif choice == 2:
                     directed = input("Is the graph directed? (y/n): ") == "y"
                     g = Graph(directed)
+                g.displayGraph()
 
             elif choice == 2:
                 u = int(input("Enter the first vertex: "))
@@ -192,4 +196,12 @@ def menu():
             break
 
 
-menu()
+# menu()
+g = Graph()
+g.loadFromFile(GRAPH_FILE_PATH)
+
+print()
+print(f"{g.dijkstra(1, 6)}\n")
+print(f"{g.dijkstra(1, 8)}\n")
+print(f"{g.dijkstra(1, 10)}\n")
+print(f"{g.dijkstra(3, 8)}\n")
