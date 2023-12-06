@@ -38,17 +38,57 @@ class Graph:
                 except ValueError:
                     print(f"Skipping line {line}")
 
+    def DFS(self, start):
+        visited = set()
+        stack = [start]
+        while stack:
+            node = stack.pop()
+            if node not in visited:
+                visited.add(node)
+                stack.extend(set(self.graph[node]) - visited)
+        return visited
 
-def dijkstra(graph, start):
-    pass
+    def dijkstra(self, start, end):
+        shortest_paths = {start: (None, 0)}
+        current_node = start
+        visited = set()
 
+        while current_node != end:
+            visited.add(current_node)
+            destinations = self.graph[current_node]
+            weight_to_current_node = shortest_paths[current_node][1]
 
-def floydWarshall(graph):
-    pass
+            for next_node, weight in destinations:
+                weight = weight + weight_to_current_node
+                if next_node not in shortest_paths:
+                    shortest_paths[next_node] = (current_node, weight)
+                else:
+                    current_shortest_weight = shortest_paths[next_node][1]
+                    if current_shortest_weight > weight:
+                        shortest_paths[next_node] = (current_node, weight)
 
+            next_destinations = {
+                node: shortest_paths[node]
+                for node in shortest_paths
+                if node not in visited
+            }
+            if not next_destinations:
+                break
+            current_node = min(next_destinations, key=lambda k: next_destinations[k][1])
 
-def bellmanFord(graph, start):
-    pass
+        path = []
+        while current_node is not None:
+            path.append(current_node)
+            next_node = shortest_paths[current_node][0]
+            current_node = next_node
+        path = path[::-1]
+        return path
+
+    def floydWarshall(self):
+        pass
+
+    def bellmanFord(self, start):
+        pass
 
 
 def algorithms():
@@ -90,18 +130,18 @@ def algorithms():
                 g.displayGraph()
 
             elif choice == 4:
-                src = int(input("Enter the source vertex: "))
-                dist = g.dijkstra(src)
+                start = int(input("Enter the source vertex: "))
+                end = int(input("Enter the destination vertex: "))
+                dist = g.dijkstra(start, end)
                 print(dist)
 
             elif choice == 5:
-                dist = g.floyd_warshall()
-                print(dist)
+                # TODO implement floyd-warshall
+                print("WHAT?")
 
             elif choice == 6:
-                src = int(input("Enter the source vertex: "))
-                dist = g.bellman_ford(src)
-                print(dist)
+                # TODO implement bellman-ford
+                print("WHUT?")
 
             else:
                 break
