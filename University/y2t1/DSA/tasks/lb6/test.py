@@ -93,14 +93,14 @@ class Graph:
                 path = path + [node]
                 if node == end:
                     return path
-                for next_node, c in self.edges[node]:
-                    if next_node not in seen:
-                        heappush(queue, (cost + c, next_node, path))
+                for nextNode, c in self.edges[node]:
+                    if nextNode not in seen:
+                        heappush(queue, (cost + c, nextNode, path))
         return []
 
-    def floyd_warshall(self, start, end):
+    def floydWarshall(self, start, end):
         dist = defaultdict(lambda: defaultdict(lambda: float("inf")))
-        next_node = defaultdict(dict)
+        nextNode = defaultdict(dict)
 
         for node in self.edges:
             dist[node][node] = 0
@@ -108,20 +108,20 @@ class Graph:
         for node, edges in self.edges.items():
             for neighbor, weight in edges:
                 dist[node][neighbor] = weight
-                next_node[node][neighbor] = neighbor
+                nextNode[node][neighbor] = neighbor
 
         for k in self.edges:
             for i in self.edges:
                 for j in self.edges:
                     if dist[i][k] + dist[k][j] < dist[i][j]:
                         dist[i][j] = dist[i][k] + dist[k][j]
-                        next_node[i][j] = next_node[i][k]
+                        nextNode[i][j] = nextNode[i][k]
 
-        if next_node[start][end] is None:
+        if nextNode[start][end] is None:
             return []
         path = [start]
         while start != end:
-            start = next_node[start][end]
+            start = nextNode[start][end]
             path.append(start)
         return path
 
@@ -168,12 +168,9 @@ g.displayGraph()
 g.drawGraph()
 res = g.dijkstra(3, 2)
 g.drawGraph(res)
-res = g.floyd_warshall(3, 2)
+res = g.floydWarshall(3, 2)
 g.drawGraph(res)
 res = g.bellman_ford(3, 2)
 g.drawGraph(res)
 
 # ! OKAY DONT TOUCH THIS
-
-newSet = {}
-newSet.add(1)
