@@ -43,8 +43,6 @@ class Graph:
             nx.draw_networkx_nodes(G, pos, node_color="lightblue")
         nx.draw_networkx_edges(G, pos)
         nx.draw_networkx_labels(G, pos, font_weight="bold")
-        labels = nx.get_edge_attributes(G, "weight")
-        nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
 
         if shortest_path:
             edges = [
@@ -53,6 +51,8 @@ class Graph:
             ]
             nx.draw_networkx_edges(G, pos, edgelist=edges, edge_color="red", width=2)
 
+        labels = nx.get_edge_attributes(G, "weight")
+        nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
         plt.show()
 
     def loadFromFile(self, filename):
@@ -70,6 +70,6 @@ g = Graph(directed=True)
 g.loadFromFile(GRAPH_FILE_PATH)
 g.displayGraph()
 g.drawGraph()
-g.drawGraph([0, 1, 2])
+g.drawGraph([3, 2, 1, 0, 4])
 
 # ! OKAY DONT TOUCH THIS
