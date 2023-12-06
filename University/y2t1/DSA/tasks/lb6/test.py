@@ -1,4 +1,5 @@
 from collections import defaultdict
+from heapq import heappop, heappush
 from json import dumps
 import matplotlib.pyplot as plt
 import networkx as nx
@@ -21,7 +22,7 @@ class Graph:
             else:
                 print(f"{key} 🔗 {', '.join(map(str, value))}")
 
-    def drawGraph(self):
+    def drawGraph(self, shortest_path=None):
         G = nx.Graph()
         for u, edges in self.edges.items():
             for v, weight in edges:
@@ -32,6 +33,14 @@ class Graph:
         nx.draw_networkx_labels(G, pos, font_weight="bold")
         labels = nx.get_edge_attributes(G, "weight")
         nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
+
+        if shortest_path:
+            edges = [
+                (shortest_path[i], shortest_path[i + 1])
+                for i in range(len(shortest_path) - 1)
+            ]
+            nx.draw_networkx_edges(G, pos, edgelist=edges, edge_color="red", width=2)
+
         plt.show()
 
     def loadFromFile(self, filename):
@@ -49,5 +58,6 @@ g = Graph(directed=True)
 g.loadFromFile(GRAPH_FILE_PATH)
 g.displayGraph()
 g.drawGraph()
+g.drawGraph([0, 1, 2])
 
 # ! OKAY DONT TOUCH THIS
