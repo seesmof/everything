@@ -29,7 +29,36 @@ class Graph:
                     print(f"Skipping line {line}")
 
     def bellmanFord(self, start):
-        pass
+        distance = {node: float("infinity") for node in self.edges}
+        distance[start] = 0
+
+        for _ in range(len(self.edges) - 1):
+            for node in self.edges:
+                for neighbour, weight in self.edges[node]:
+                    if (
+                        distance[node] != float("infinity")
+                        and distance[node] + weight < distance[neighbour]
+                    ):
+                        distance[neighbour] = distance[node] + weight
+
+        for node in self.edges:
+            for neighbour, weight in self.edges[node]:
+                if (
+                    distance[node] != float("infinity")
+                    and distance[node] + weight < distance[neighbour]
+                ):
+                    return "Graph contains a negative-weight cycle"
+
+        return distance
+
+    def getShortestPath(self, start, end, nextNode):
+        if nextNode[start][end] is None:
+            return f"There is no path from {start} to {end}"
+        path = [start]
+        while start != end:
+            start = nextNode[start][end]
+            path.append(start)
+        return path
 
 
 GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/input.txt"
@@ -38,3 +67,6 @@ g.loadFromFile(GRAPH_FILE_PATH)
 g.displayGraph()
 
 # ! OKAY DONT TOUCH THIS
+
+start = 1
+print(dumps(g.bellmanFord(start), indent=2))
