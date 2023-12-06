@@ -77,8 +77,36 @@ class Graph:
         path = path[::-1]
         return path
 
-    def floydWarshall(self, start):
-        pass
+    def floydWarshall(self):
+        distance = {
+            node: {neighbor: float("inf") for neighbor in self.edges}
+            for node in self.edges
+        }
+        nextNode = {
+            node: {neighbor: None for neighbor in self.edges} for node in self.edges
+        }
+
+        for node in self.edges:
+            distance[node][node] = 0
+            for neighbor, weight in self.edges[node]:
+                distance[node][neighbor] = weight
+                nextNode[node][neighbor] = neighbor
+
+        for k in self.edges:
+            for i in self.edges:
+                for j in self.edges:
+                    if distance[i][k] + distance[k][j] < distance[i][j]:
+                        distance[i][j] = distance[i][k] + distance[k][j]
+                        nextNode[i][j] = nextNode[i][k]
+
+        return distance, nextNode
+
+    def getShortestPath(self, start, end, nextNode):
+        path = [start]
+        while start != end:
+            start = nextNode[start][end]
+            path.append(start)
+        return path
 
     def bellmanFord(self, start):
         pass
@@ -186,4 +214,16 @@ def menu():
             break
 
 
-menu()
+# menu()
+g = Graph()
+g.loadFromFile(GRAPH_FILE_PATH)
+
+print()
+print(f"{g.dijkstra(1, 6)}\n")
+print(f"{g.dijkstra(1, 8)}\n")
+print(f"{g.dijkstra(1, 10)}\n")
+print(f"{g.dijkstra(3, 8)}\n")
+
+print()
+print(f"{g.floydWarshall()}\n")
+print(f"{g.getShortestPath(1, 6, g.floydWarshall()[1])}\n")

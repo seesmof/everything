@@ -33,20 +33,31 @@ class Graph:
             node: {neighbor: float("inf") for neighbor in self.edges}
             for node in self.edges
         }
+        nextNode = {
+            node: {neighbor: None for neighbor in self.edges} for node in self.edges
+        }
+
         for node in self.edges:
             distance[node][node] = 0
             for neighbor, weight in self.edges[node]:
                 distance[node][neighbor] = weight
+                nextNode[node][neighbor] = neighbor
 
-        # Update the distance matrix
         for k in self.edges:
             for i in self.edges:
                 for j in self.edges:
-                    distance[i][j] = min(
-                        distance[i][j], distance[i][k] + distance[k][j]
-                    )
+                    if distance[i][k] + distance[k][j] < distance[i][j]:
+                        distance[i][j] = distance[i][k] + distance[k][j]
+                        nextNode[i][j] = nextNode[i][k]
 
-        return distance
+        return distance, nextNode
+
+    def getShortestPath(self, start, end, nextNode):
+        path = [start]
+        while start != end:
+            start = nextNode[start][end]
+            path.append(start)
+        return path
 
 
 GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/input.txt"
@@ -56,12 +67,15 @@ g = Graph()
 g.loadFromFile(GRAPH_FILE_PATH)
 g.displayGraph()
 
-res = g.floydWarshall()
+
+# Run the Floyd-Warshall algorithm
+distance, next_node = g.floydWarshall()
+
 # Define your points
 pointA = 1
-pointB = 5
+pointB = 6
 
 # Get the shortest path from point A to point B
-shortest_path = res[pointA][pointB]
+shortest_path = g.getShortestPath(pointA, pointB, next_node)
 
 print(f"The shortest path from point {pointA} to point {pointB} is {shortest_path}")
