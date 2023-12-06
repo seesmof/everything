@@ -39,6 +39,25 @@ class Graph:
                 for node in G.nodes()
             ]
             nx.draw_networkx_nodes(G, pos, node_color=node_colors)
+
+            plt.text(
+                0.00,
+                1.13,
+                "Red: End",
+                transform=plt.gca().transAxes,
+                fontsize=10,
+                verticalalignment="top",
+                bbox=dict(boxstyle="round", facecolor="red", alpha=0.5),
+            )
+            plt.text(
+                0.00,
+                1.06,
+                "Green: Start",
+                transform=plt.gca().transAxes,
+                fontsize=10,
+                verticalalignment="top",
+                bbox=dict(boxstyle="round", facecolor="lightgreen", alpha=0.5),
+            )
         else:
             nx.draw_networkx_nodes(G, pos, node_color="lightblue")
         nx.draw_networkx_edges(G, pos)
