@@ -101,6 +101,15 @@ class Graph:
 
         return distance, nextNode
 
+    def getShortestPath(self, start, end, nextNode):
+        if nextNode[start][end] is None:
+            return f"There is no path from {start} to {end}"
+        path = [start]
+        while start != end:
+            start = nextNode[start][end]
+            path.append(start)
+        return path
+
     def bellmanFord(self, start):
         distance = {node: float("infinity") for node in self.edges}
         distance[start] = 0
@@ -123,15 +132,6 @@ class Graph:
                     return "Graph contains a negative-weight cycle"
 
         return distance
-
-    def getShortestPath(self, start, end, nextNode):
-        if nextNode[start][end] is None:
-            return f"There is no path from {start} to {end}"
-        path = [start]
-        while start != end:
-            start = nextNode[start][end]
-            path.append(start)
-        return path
 
 
 def algorithms():

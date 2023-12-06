@@ -69,4 +69,5 @@ g.displayGraph()
 # ! OKAY DONT TOUCH THIS
 
 start = 1
+print(g.bellmanFord(start))
 print(dumps(g.bellmanFord(start), indent=2))
