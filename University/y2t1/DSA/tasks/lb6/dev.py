@@ -1,23 +1,12 @@
-"""
-- Розробити програмне забезпечення, в якому реалізується алгоритми Дейкстри, Флойда-Уоршелла та Беллмана-Форда на основі створеного відповідного класу для виконання всіх необхідних обчислень, визначення параметрів (в тому числі безпосередньо визначення графа) та отримання та виведення результатів.
-- Перелік завдань, які мають бути виконані в процесі роботи над деяким проєктом групою спеціалістів, та їх запланована тривалість визначаються користувачем. Після цього користувач визначає зв’язок між даними завданнями, визначаючи завдання, які мають завершитися до початку кожного завдання. Визначити мінімальний період часу, який знадобиться на виконання проєкту.
-- Мапа визначає автомобільні шляхи деякої частини міста Запоріжжя. Деякі вулиці мають односторонній рух, а на деяких можуть зустрічатися затори. Використовуючи дану інформацію та враховуючи обмеження швидкості на вулицях, визначити найкоротший шлях, яким можна дістатися з однієї заданої точки у Запоріжжі до іншої в заданий момент часу.
-- Визначити найкоротші шляхи між всіма точками на мапі міста Запоріжжя, використовуючи обмеження попереднього завдання.
-"""
-
-
-from collections import defaultdict
+from collections import defaultdict, deque
 from heapq import heappop, heappush
 from json import dumps
 import matplotlib.pyplot as plt
 import networkx as nx
-
-GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/graph.txt"
-ROADS_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/roads.txt"
-TASKS_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/tasks.txt"
+from numpy import average
 
 
-def algorithms():
+def shortest_path_from_a_to_b():
     class Graph:
         def __init__(self, directed=False):
             self.edges = defaultdict(list)
@@ -36,11 +25,11 @@ def algorithms():
                     print(f"{key} 🔗 {', '.join(map(str, value))}")
 
         def drawGraph(self, shortest_path=None):
-            G = nx.Graph()
+            G = nx.DiGraph() if self.directed else nx.Graph()
             for u, edges in self.edges.items():
                 for v, weight in edges:
                     G.add_edge(u, v, weight=weight)
-            pos = nx.spring_layout(G, k=0.15)
+            pos = nx.spring_layout(G, k=0.5)
 
             if shortest_path:
                 node_colors = [
@@ -73,7 +62,9 @@ def algorithms():
                 )
             else:
                 nx.draw_networkx_nodes(G, pos, node_color="lightblue")
-            nx.draw_networkx_edges(G, pos)
+            nx.draw_networkx_edges(
+                G, pos, arrowstyle="->"
+            ) if self.directed else nx.draw_networkx_edges(G, pos)
             nx.draw_networkx_labels(G, pos, font_weight="bold")
 
             if shortest_path:
@@ -82,6 +73,8 @@ def algorithms():
                     for i in range(len(shortest_path) - 1)
                 ]
                 nx.draw_networkx_edges(
+                    G, pos, edgelist=edges, edge_color="red", arrowstyle="->", width=2
+                ) if self.directed else nx.draw_networkx_edges(
                     G, pos, edgelist=edges, edge_color="red", width=2
                 )
 
@@ -96,175 +89,115 @@ def algorithms():
                         u, v, w = line.strip().split()
                         self.addEdge(int(u), int(v), int(w))
                     except ValueError:
-                        print(f"Skipping line {line}")
+                        pass
 
         def floydWarshall(self):
+            # Initialize a defaultdict to store the shortest distances between nodes
             dist = defaultdict(lambda: defaultdict(lambda: float("inf")))
-            next_node = defaultdict(dict)
+            # Initialize a defaultdict to store the next node in the shortest path
+            nextNode = defaultdict(dict)
+
+            # Iterate over each node in the graph
             for u in self.edges:
+                # Set the distance from a node to itself as 0
                 dist[u][u] = 0
+                # Iterate over each neighbor of the current node
                 for v, weight in self.edges[u]:
+                    # Set the distance to the neighbor node
                     dist[u][v] = weight
-                    next_node[u][v] = v
+                    # Set the next node in the shortest path to be the neighbor node
+                    nextNode[u][v] = v
 
+            # Iterate over each intermediate node
             for k in self.edges:
+                # Iterate over each source node
                 for i in self.edges:
+                    # Iterate over each destination node
                     for j in self.edges:
+                        # If the distance from i to k plus the distance from k to j is smaller than the current distance from i to j
                         if dist[i][k] + dist[k][j] < dist[i][j]:
+                            # Update the distance from i to j
                             dist[i][j] = dist[i][k] + dist[k][j]
-                            next_node[i][j] = next_node[i][k]
+                            # Update the next node in the shortest path from i to j
+                            nextNode[i][j] = nextNode[i][k]
 
-            return dist, next_node
+            # Return the shortest distances and next nodes
+            return dist, nextNode
 
         def shortestPath(self, start, end):
-            _, next_node = self.floydWarshall()
-            if next_node[start][end] is None:
+            # Run the Floyd-Warshall algorithm to get the nextNode matrix
+            distances, nextNode = self.floydWarshall()
+
+            # If there is no path from start to end, return None
+            if nextNode[start][end] is None:
                 return None
 
+            # Create a list to store the path
             path = [start]
+
+            # Traverse the nextNode matrix to find the shortest path from start to end
             while start != end:
-                start = next_node[start][end]
-                path.append(start)
+                start = nextNode[start][
+                    end
+                ]  # Update the current node to the next node in the path
+                path.append(start)  # Add the current node to the path
 
+            # Return the shortest path
             return path
 
-        def dijkstra(self, start, end):
-            queue = [(0, start, [])]
-            seen = set()
-            while queue:
-                (cost, node, path) = heappop(queue)
-                if node not in seen:
-                    seen.add(node)
-                    path = path + [node]
-                    if node == end:
-                        return path
-                    for nextNode, c in self.edges[node]:
-                        if nextNode not in seen:
-                            heappush(queue, (cost + c, nextNode, path))
-            return []
+    GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/roads.txt"
+    g = Graph(directed=True)
+    g.loadFromFile(GRAPH_FILE_PATH)
+    g.drawGraph(g.shortestPath(6, 5))
+    return
 
-        def bellmanFord(self, start, end):
-            distance = {node: float("infinity") for node in self.edges}
-            distance[start] = 0
-            predecessor = {node: None for node in self.edges}
+    while True:
+        print("\nROUTE")
+        print("1. Add Edge")
+        print("2. Display Graph")
+        print("3. Find Shortest Path")
+        print("4. Exit")
+        choice = int(input("Enter your choice: "))
+        print()
 
-            for _ in range(len(self.edges) - 1):
-                for node in self.edges:
-                    for neighbour, weight in self.edges[node]:
-                        if distance[node] + weight < distance[neighbour]:
-                            distance[neighbour] = distance[node] + weight
-                            predecessor[neighbour] = node
+        if choice == 1:
+            print(
+                "Enter the starting node, ending node and weight. Separate them with a space"
+            )
+            u, v, weight = map(
+                int,
+                input(": ").split(),
+            )
 
-            for node in self.edges:
-                for neighbour, weight in self.edges[node]:
-                    assert (
-                        distance[node] + weight >= distance[neighbour]
-                    ), "Graph contains a negative-weight cycle"
+            isOneWay = input("Is this a one-way road? (y/n): ") == "y"
+            doesHaveTraffic = input("Does this road have a traffic jam? (y/n): ") == "y"
 
-            path = []
-            current_node = end
-            while current_node is not None:
-                path.append(current_node)
-                current_node = predecessor[current_node]
-            path.reverse()
+            weight += 5 if doesHaveTraffic else 0
 
-            return path
+            if isOneWay:
+                g.addEdge(u, v, weight)
+            else:
+                g.addEdge(u, v, weight)
+                g.addEdge(v, u, weight)
 
-    def main():
-        g = None
-        while True:
-            print("\nALGORITHMS")
-            print("1. Create a new graph")
-            print("2. Add an edge")
-            print("3. Display graph")
-            print("4. Dijkstra")
-            print("5. Floyd-Warshall")
-            print("6. Bellman-Ford")
-            print("7. Exit")
-            choice = int(input(": "))
-            print()
+        elif choice == 2:
+            print("How to display?")
+            print("1. Console")
+            print("2. Graph")
+            choice = int(input("Enter your choice: "))
 
             if choice == 1:
-                print("1. Load from file")
-                print("2. Create a new graph")
-                # choice = int(input(": "))
-                choice = 1
-
-                if choice == 1:
-                    # filename = input("Enter the filename: ")
-                    filename = GRAPH_FILE_PATH
-                    g = Graph()
-                    g.loadFromFile(filename)
-                elif choice == 2:
-                    directed = input("Is the graph directed? (y/n): ") == "y"
-                    g = Graph(directed)
                 g.displayGraph()
 
             elif choice == 2:
-                u = int(input("Enter the first vertex: "))
-                v = int(input("Enter the second vertex: "))
-                g.addEdge(u, v)
+                g.drawGraph()
 
-            elif choice == 3:
-                g.displayGraph()
-
-            elif choice == 4:
-                start = int(input("Enter the source vertex: "))
-                end = int(input("Enter the destination vertex: "))
-                res = g.dijkstra(start, end)
-                g.drawGraph(res)
-
-            elif choice == 5:
-                start = int(input("Enter the source vertex: "))
-                end = int(input("Enter the destination vertex: "))
-                res = g.shortestPath(start, end)
-                g.drawGraph(res)
-
-            elif choice == 6:
-                start = int(input("Enter the source vertex: "))
-                end = int(input("Enter the destination vertex: "))
-                res = g.bellmanFord(start, end)
-                g.drawGraph(res)
-
-            else:
-                break
-
-    main()
-
-
-def project_minimal_times():
-    pass
-
-
-def shortest_path_from_a_to_b():
-    pass
-
-
-def shortest_path_from_all_points():
-    pass
-
-
-def menu():
-    while True:
-        print("\nMake your choice")
-        print("1. See Dijkstra, Floyd-Warshall or Bellman-Ford")
-        print("2. Project minimal times")
-        print("3. Shortest path from A to B")
-        print("4. Shortest path from all points")
-        print("5. Exit")
-        # choice = int(input(": "))
-        choice = 1
-
-        if choice == 1:
-            algorithms()
-        elif choice == 2:
-            project_minimal_times()
         elif choice == 3:
-            shortest_path_from_a_to_b()
-        elif choice == 4:
-            shortest_path_from_all_points()
-        else:
-            break
+            start = int(input("Enter the starting node: "))
+            end = int(input("Enter the destination vertex: "))
+            res = g.shortestPath(start, end)
+            print(res)
+            g.drawGraph(res)
 
 
-menu()
+shortest_path_from_a_to_b()
