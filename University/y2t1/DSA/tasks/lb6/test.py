@@ -83,19 +83,8 @@ class Graph:
                 except ValueError:
                     print(f"Skipping line {line}")
 
-    def floydWarshall(self):
-        dist = defaultdict(lambda: defaultdict(lambda: float("inf")))
-        for u in self.edges:
-            dist[u][u] = 0
-            for v, weight in self.edges[u]:
-                dist[u][v] = weight
-
-        for k in self.edges:
-            for i in self.edges:
-                for j in self.edges:
-                    dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
-
-        return dist
+    def bellmanFord(self, start, end):
+        pass
 
 
 GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/graph.txt"
@@ -103,11 +92,5 @@ ROADS_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/roads.t
 
 g = Graph(directed=False)
 g.loadFromFile(GRAPH_FILE_PATH)
-dist = g.floydWarshall()
-print("Shortest distances:")
-for i in dist:
-    for j in dist[i]:
-        print(f"{i} → {j}: {dist[i][j]}") if dist[i][j] != float("inf") else print(
-            f"{i} → {j}: ∞"
-        )
-g.drawGraph()
+start_node = 4
+end_node = 2

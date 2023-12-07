@@ -34,7 +34,6 @@ class Graph:
                 print(f"{key} 🔗 {', '.join(map(str, value))}")
 
     def drawGraph(self, shortest_path=None):
-        plt.figure(figsize=(15, 10))
         G = nx.Graph()
         for u, edges in self.edges.items():
             for v, weight in edges:
@@ -95,9 +94,37 @@ class Graph:
                 except ValueError:
                     print(f"Skipping line {line}")
 
+    def floydWarshall(self):
+        dist = defaultdict(lambda: defaultdict(lambda: float("inf")))
+        next_node = defaultdict(dict)
+        for u in self.edges:
+            dist[u][u] = 0
+            for v, weight in self.edges[u]:
+                dist[u][v] = weight
+                next_node[u][v] = v
 
-def algorithms():
-    def dijkstra(edges, start, end):
+        for k in self.edges:
+            for i in self.edges:
+                for j in self.edges:
+                    if dist[i][k] + dist[k][j] < dist[i][j]:
+                        dist[i][j] = dist[i][k] + dist[k][j]
+                        next_node[i][j] = next_node[i][k]
+
+        return dist, next_node
+
+    def shortestPath(self, start, end):
+        _, next_node = self.floydWarshall()
+        if next_node[start][end] is None:
+            return None  # No path exists
+
+        path = [start]
+        while start != end:
+            start = next_node[start][end]
+            path.append(start)
+
+        return path
+
+    def dijkstra(self, start, end):
         queue = [(0, start, [])]
         seen = set()
         while queue:
@@ -107,50 +134,16 @@ def algorithms():
                 path = path + [node]
                 if node == end:
                     return path
-                for nextNode, c in edges[node]:
+                for nextNode, c in self.edges[node]:
                     if nextNode not in seen:
                         heappush(queue, (cost + c, nextNode, path))
         return []
 
-    def floydWarshall(edges):
-        dist = defaultdict(lambda: defaultdict(lambda: float("inf")))
-        for u in edges:
-            dist[u][u] = 0
-            for v, weight in edges[u]:
-                dist[u][v] = weight
+    def bellmanFord(self, start, end):
+        pass
 
-        # Improve the distance matrix
-        for k in edges:
-            for i in edges:
-                for j in edges:
-                    dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
 
-        return dist
-
-    def bellmanFord(edges, start, end):
-        distance = defaultdict(lambda: float("inf"))
-        predecessor = {}
-        distance[start] = 0
-
-        for _ in range(len(edges) - 1):
-            for node in edges:
-                for neighbor, weight in edges[node]:
-                    if distance[node] + weight < distance[neighbor]:
-                        distance[neighbor] = distance[node] + weight
-                        predecessor[neighbor] = node
-
-        for node in edges:
-            for neighbor, weight in edges[node]:
-                assert (
-                    distance[node] + weight >= distance[neighbor]
-                ), "Graph contains a negative-weight cycle"
-
-        path = []
-        while end:
-            path.append(end)
-            end = predecessor.get(end)
-        return path[::-1]
-
+def algorithms():
     def main():
         g = None
         while True:
@@ -192,22 +185,19 @@ def algorithms():
             elif choice == 4:
                 start = int(input("Enter the source vertex: "))
                 end = int(input("Enter the destination vertex: "))
-                res = dijkstra(g.edges, start, end)
+                res = g.dijkstra(start, end)
                 g.drawGraph(res)
 
             elif choice == 5:
-                res = floydWarshall(g.edges)
-                print("Shortest distances:")
-                for i in res:
-                    for j in res[i]:
-                        print(f"{i} → {j}: {res[i][j]}") if res[i][j] != float(
-                            "inf"
-                        ) else print(f"{i} → {j}: ∞")
+                start = int(input("Enter the source vertex: "))
+                end = int(input("Enter the destination vertex: "))
+                res = g.shortestPath(start, end)
+                g.drawGraph(res)
 
             elif choice == 6:
                 start = int(input("Enter the source vertex: "))
                 end = int(input("Enter the destination vertex: "))
-                res = bellmanFord(g.edges, start, end)
+                res = g.bellmanFord(start, end)
                 g.drawGraph(res)
 
             else:
