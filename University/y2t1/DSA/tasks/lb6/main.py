@@ -243,7 +243,6 @@ def algorithms():
                 elif choice == 2:
                     directed = input("Is the graph directed? (y/n): ") == "y"
                     g = Graph(directed)
-                g.displayGraph()
 
             elif choice == 2:
                 u, v, weight = map(
@@ -599,6 +598,9 @@ def shortest_path_from_a_to_b():
                 print(res)
                 g.drawGraph(res)
 
+            else:
+                break
+
     main()
 
 
@@ -742,43 +744,55 @@ def shortest_path_from_all_points():
             return path
 
     def main():
-        g = Graph(directed=True)
+        g = Graph(directed=False)
         while True:
             print("\nALL THE ROUTES")
             print("1. Add Edge")
             print("2. Display Graph")
-            print("3. Find Shortest Path")
+            print("3. Display Shortest Paths")
             print("4. Exit")
             choice = int(input("Enter your choice: "))
             print()
 
             if choice == 1:
-                print(
-                    "Enter the starting node, ending node and weight. Separate them with a space"
-                )
-                u, v, weight = map(
-                    int,
-                    input(": ").split(),
-                )
+                print("How to add an edge?")
+                print("1. Manually")
+                print("2. From File")
+                choice = int(input("Enter your choice: "))
+                print()
 
-                isOneWay = input("Is this a one-way road? (y/n): ") == "y"
-                doesHaveTraffic = (
-                    input("Does this road have a traffic jam? (y/n): ") == "y"
-                )
+                if choice == 1:
+                    print(
+                        "Enter the starting node, ending node and weight. Separate them with a space"
+                    )
+                    u, v, weight = map(
+                        int,
+                        input(": ").split(),
+                    )
 
-                weight += 5 if doesHaveTraffic else 0
+                    isOneWay = input("Is this a one-way road? (y/n): ") == "y"
+                    doesHaveTraffic = (
+                        input("Does this road have a traffic jam? (y/n): ") == "y"
+                    )
 
-                if isOneWay:
-                    g.addEdge(u, v, weight)
-                else:
-                    g.addEdge(u, v, weight)
-                    g.addEdge(v, u, weight)
+                    weight += 5 if doesHaveTraffic else 0
+
+                    if isOneWay:
+                        g.addEdge(u, v, weight)
+                    else:
+                        g.addEdge(u, v, weight)
+                        g.addEdge(v, u, weight)
+
+                elif choice == 2:
+                    filename = input("Enter the filename: ")
+                    g.loadFromFile(filename)
 
             elif choice == 2:
                 print("How to display?")
                 print("1. Console")
                 print("2. Graph")
                 choice = int(input("Enter your choice: "))
+                print()
 
                 if choice == 1:
                     g.displayGraph()
@@ -788,10 +802,15 @@ def shortest_path_from_all_points():
 
             elif choice == 3:
                 start = int(input("Enter the starting node: "))
-                end = int(input("Enter the destination vertex: "))
-                res = g.shortestPath(start, end)
-                print(res)
-                g.drawGraph(res)
+
+                for currentNode in g.edges:
+                    if start != currentNode:
+                        res = g.shortestPath(start, currentNode)
+                        print(f"{start} -> {currentNode}: {res}")
+                        g.drawGraph(res)
+
+            else:
+                break
 
     main()
 

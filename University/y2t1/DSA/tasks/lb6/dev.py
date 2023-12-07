@@ -6,7 +6,7 @@ import networkx as nx
 from numpy import average
 
 
-def shortest_path_from_a_to_b():
+def shortest_path_from_all_points():
     class Graph:
         def __init__(self, directed=False):
             self.edges = defaultdict(list)
@@ -145,59 +145,75 @@ def shortest_path_from_a_to_b():
             # Return the shortest path
             return path
 
-    GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/roads.txt"
-    g = Graph(directed=True)
-    g.loadFromFile(GRAPH_FILE_PATH)
-    g.drawGraph(g.shortestPath(6, 5))
-    return
-
-    while True:
-        print("\nROUTE")
-        print("1. Add Edge")
-        print("2. Display Graph")
-        print("3. Find Shortest Path")
-        print("4. Exit")
-        choice = int(input("Enter your choice: "))
-        print()
-
-        if choice == 1:
-            print(
-                "Enter the starting node, ending node and weight. Separate them with a space"
-            )
-            u, v, weight = map(
-                int,
-                input(": ").split(),
-            )
-
-            isOneWay = input("Is this a one-way road? (y/n): ") == "y"
-            doesHaveTraffic = input("Does this road have a traffic jam? (y/n): ") == "y"
-
-            weight += 5 if doesHaveTraffic else 0
-
-            if isOneWay:
-                g.addEdge(u, v, weight)
-            else:
-                g.addEdge(u, v, weight)
-                g.addEdge(v, u, weight)
-
-        elif choice == 2:
-            print("How to display?")
-            print("1. Console")
-            print("2. Graph")
+    def main():
+        g = Graph()
+        g.loadFromFile(
+            "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/simple.txt"
+        )
+        while True:
+            print("\nALL THE ROUTES")
+            print("1. Add Edge")
+            print("2. Display Graph")
+            print("3. Display Shortest Paths")
+            print("4. Exit")
             choice = int(input("Enter your choice: "))
+            print()
 
             if choice == 1:
-                g.displayGraph()
+                print("How to add an edge?")
+                print("1. Manually")
+                print("2. From File")
+                choice = int(input("Enter your choice: "))
+                print()
+
+                if choice == 1:
+                    print(
+                        "Enter the starting node, ending node and weight. Separate them with a space"
+                    )
+                    u, v, weight = map(
+                        int,
+                        input(": ").split(),
+                    )
+
+                    isOneWay = input("Is this a one-way road? (y/n): ") == "y"
+                    doesHaveTraffic = (
+                        input("Does this road have a traffic jam? (y/n): ") == "y"
+                    )
+
+                    weight += 5 if doesHaveTraffic else 0
+
+                    if isOneWay:
+                        g.addEdge(u, v, weight)
+                    else:
+                        g.addEdge(u, v, weight)
+                        g.addEdge(v, u, weight)
+
+                elif choice == 2:
+                    filename = input("Enter the filename: ")
+                    g.loadFromFile(filename)
 
             elif choice == 2:
-                g.drawGraph()
+                print("How to display?")
+                print("1. Console")
+                print("2. Graph")
+                choice = int(input("Enter your choice: "))
 
-        elif choice == 3:
-            start = int(input("Enter the starting node: "))
-            end = int(input("Enter the destination vertex: "))
-            res = g.shortestPath(start, end)
-            print(res)
-            g.drawGraph(res)
+                if choice == 1:
+                    g.displayGraph()
+
+                elif choice == 2:
+                    g.drawGraph()
+
+            elif choice == 3:
+                start = int(input("Enter the starting node: "))
+
+                for currentNode in g.edges:
+                    if start != currentNode:
+                        res = g.shortestPath(start, currentNode)
+                        print(f"{start} -> {currentNode}: {res}")
+                        g.drawGraph(res)
+
+    main()
 
 
-shortest_path_from_a_to_b()
+shortest_path_from_all_points()
