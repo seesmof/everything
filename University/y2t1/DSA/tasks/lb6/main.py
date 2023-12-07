@@ -140,7 +140,31 @@ class Graph:
         return []
 
     def bellmanFord(self, start, end):
-        pass
+        distance = {node: float("infinity") for node in self.edges}
+        distance[start] = 0
+        predecessor = {node: None for node in self.edges}
+
+        for _ in range(len(self.edges) - 1):
+            for node in self.edges:
+                for neighbour, weight in self.edges[node]:
+                    if distance[node] + weight < distance[neighbour]:
+                        distance[neighbour] = distance[node] + weight
+                        predecessor[neighbour] = node
+
+        for node in self.edges:
+            for neighbour, weight in self.edges[node]:
+                assert (
+                    distance[node] + weight >= distance[neighbour]
+                ), "Graph contains a negative-weight cycle"
+
+        path = []
+        current_node = end
+        while current_node is not None:
+            path.append(current_node)
+            current_node = predecessor[current_node]
+        path.reverse()
+
+        return path
 
 
 def algorithms():
