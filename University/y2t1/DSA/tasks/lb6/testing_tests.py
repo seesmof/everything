@@ -3,6 +3,7 @@ from heapq import heappop, heappush
 from json import dumps
 import matplotlib.pyplot as plt
 import networkx as nx
+from numpy import average
 
 
 def shortest_path_from_a_to_b():
@@ -28,7 +29,7 @@ def shortest_path_from_a_to_b():
             for u, edges in self.edges.items():
                 for v, weight in edges:
                     G.add_edge(u, v, weight=weight)
-            pos = nx.spring_layout(G, k=0.15)
+            pos = nx.spring_layout(G, k=0.5)
 
             if shortest_path:
                 node_colors = [
@@ -84,7 +85,7 @@ def shortest_path_from_a_to_b():
                         u, v, w = line.strip().split()
                         self.addEdge(int(u), int(v), int(w))
                     except ValueError:
-                        print(f"Skipping line {line}")
+                        pass
 
         def dijkstra(self, start, end):
             # Initialize a priority queue with a tuple containing the cost, the current node, and the path taken so far
@@ -124,7 +125,12 @@ def shortest_path_from_a_to_b():
             # If the destination node cannot be reached, return an empty path
             return []
 
+    GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/roads.txt"
     g = Graph(True)
+    g.loadFromFile(GRAPH_FILE_PATH)
+    g.drawGraph()
+    return
+
     while True:
         print("\nROUTE")
         print("1. Add Edge")
@@ -134,13 +140,42 @@ def shortest_path_from_a_to_b():
         choice = int(input("Enter your choice: "))
 
         if choice == 1:
-            u = int(input("Enter the starting node: "))
-            v = int(input("Enter the ending node: "))
+            print(
+                "\nEnter the starting node, ending node and weight. Separate them with a space"
+            )
+            u, v, weight = map(
+                int,
+                input(": ").split(),
+            )
+
+            isOneWay = input("Is this a one-way road? (y/n): ") == "y"
+            doesHaveTraffic = input("Does this road have a traffic jam? (y/n): ") == "y"
+
+            weight += 5 if doesHaveTraffic else 0
+
+            if isOneWay:
+                g.addEdge(u, v, weight)
+            else:
+                g.addEdge(u, v, weight)
+                g.addEdge(v, u, weight)
+
+        elif choice == 2:
+            print("\nHow to display?")
+            print("1. Console")
+            print("2. Graph")
+            choice = int(input("Enter your choice: "))
+
+            if choice == 1:
+                g.displayGraph()
+
+            elif choice == 2:
+                g.drawGraph()
 
         elif choice == 3:
             start = int(input("Enter the starting node: "))
             end = int(input("Enter the destination vertex: "))
             res = g.dijkstra(start, end)
+            print(res)
             g.drawGraph(res)
 
 
