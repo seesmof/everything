@@ -8,7 +8,10 @@
 # @lc code=start
 class Solution:
     def containsDuplicate(self, nums: [int]) -> bool:
-        return len(nums) != len(set(nums))
+        seen = {element for element in nums}
+        print(seen)
+
+        return len(seen) != len(nums)
 
 
 # @lc code=end

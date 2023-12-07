@@ -356,65 +356,72 @@ def project_minimal_times():
                     totalTime += edge[1]
             return totalTime
 
-    g = Graph(directed=True)
-    ADD_TASKS_MESSAGE = "\nPlease add tasks first. The graph is empty now."
+    def main():
+        ERROR_ADD_TASKS = "\nPlease add tasks first. The graph is empty now."
+        g = Graph(directed=True)
 
-    while True:
-        print("\nTASKS")
-        print("1. Add tasks")
-        print("2. Display graph")
-        print("3. Calculate minimal time")
-        print("4. Exit")
-        choice = int(input(": "))
-
-        if choice == 1:
-            print("\nHow would you like to add tasks?")
-            print("1. Manually")
-            print("2. Load from file")
+        while True:
+            print("\nTASKS")
+            print("1. Add tasks")
+            print("2. Display graph")
+            print("3. Calculate minimal time")
+            print("4. Exit")
             choice = int(input(": "))
 
             if choice == 1:
-                print("\nEnter the total number of tasks the team has to complete")
-                numberOfTasks = int(input(": "))
-                for i in range(numberOfTasks):
-                    taskNumber = i + 1
-                    timeToComplete = int(
-                        input(f"Enter time it takes to complete task {taskNumber}: ")
-                    )
-                    g.addEdge(taskNumber, taskNumber + 1, timeToComplete) if i != (
-                        numberOfTasks - 1
-                    ) else g.addEdge(taskNumber, 0, timeToComplete)
+                print("\nHow would you like to add tasks?")
+                print("1. Manually")
+                print("2. Load from file")
+                choice = int(input(": "))
+                print()
+
+                if choice == 1:
+                    print("Enter the total number of tasks the team has to complete")
+                    numberOfTasks = int(input(": "))
+                    for i in range(numberOfTasks):
+                        taskNumber = i + 1
+                        timeToComplete = int(
+                            input(
+                                f"Enter time it takes to complete task {taskNumber}: "
+                            )
+                        )
+                        g.addEdge(taskNumber, taskNumber + 1, timeToComplete) if i != (
+                            numberOfTasks - 1
+                        ) else g.addEdge(taskNumber, 0, timeToComplete)
+
+                elif choice == 2:
+                    filename = input("Enter the filename: ")
+                    g.loadFromFile(filename)
+
             elif choice == 2:
-                filename = input("\nEnter the filename: ")
-                g.loadFromFile(filename)
+                if not g.edges:
+                    print(ERROR_ADD_TASKS)
+                    continue
 
-        elif choice == 2:
-            if not g.edges:
-                print(ADD_TASKS_MESSAGE)
-                continue
+                print("\nWhere to display?")
+                print("1. Console")
+                print("2. Graph")
+                choice = int(input(": "))
 
-            print("\nWhere to display?")
-            print("1. Console")
-            print("2. Graph")
-            choice = int(input(": "))
+                if choice == 1:
+                    g.displayGraph()
+                elif choice == 2:
+                    g.drawGraph([1, 0])
 
-            if choice == 1:
-                g.displayGraph()
-            elif choice == 2:
-                g.drawGraph([1, 0])
+            elif choice == 3:
+                if not g.edges:
+                    print(ERROR_ADD_TASKS)
+                    continue
 
-        elif choice == 3:
-            if not g.edges:
-                print(ADD_TASKS_MESSAGE)
-                continue
+                res = g.calculateMinimumTime()
+                print(
+                    f"\nThe minimum time it will take to complete all tasks is {res} hours."
+                )
 
-            res = g.calculateMinimumTime()
-            print(
-                f"\nThe minimum time it will take to complete all tasks is {res} hours."
-            )
+            else:
+                break
 
-        else:
-            break
+    main()
 
 
 def shortest_path_from_a_to_b():
@@ -540,54 +547,59 @@ def shortest_path_from_a_to_b():
             # If the destination node cannot be reached, return an empty path
             return []
 
-    g = Graph(directed=True)
-    while True:
-        print("\nROUTE")
-        print("1. Add Edge")
-        print("2. Display Graph")
-        print("3. Find Shortest Path")
-        print("4. Exit")
-        choice = int(input("Enter your choice: "))
-        print()
-
-        if choice == 1:
-            print(
-                "Enter the starting node, ending node and weight. Separate them with a space"
-            )
-            u, v, weight = map(
-                int,
-                input(": ").split(),
-            )
-
-            isOneWay = input("Is this a one-way road? (y/n): ") == "y"
-            doesHaveTraffic = input("Does this road have a traffic jam? (y/n): ") == "y"
-
-            weight += 5 if doesHaveTraffic else 0
-
-            if isOneWay:
-                g.addEdge(u, v, weight)
-            else:
-                g.addEdge(u, v, weight)
-                g.addEdge(v, u, weight)
-
-        elif choice == 2:
-            print("How to display?")
-            print("1. Console")
-            print("2. Graph")
+    def main():
+        g = Graph(directed=True)
+        while True:
+            print("\nROUTE")
+            print("1. Add Edge")
+            print("2. Display Graph")
+            print("3. Find Shortest Path")
+            print("4. Exit")
             choice = int(input("Enter your choice: "))
+            print()
 
             if choice == 1:
-                g.displayGraph()
+                print(
+                    "Enter the starting node, ending node and weight. Separate them with a space"
+                )
+                u, v, weight = map(
+                    int,
+                    input(": ").split(),
+                )
+
+                isOneWay = input("Is this a one-way road? (y/n): ") == "y"
+                doesHaveTraffic = (
+                    input("Does this road have a traffic jam? (y/n): ") == "y"
+                )
+
+                weight += 5 if doesHaveTraffic else 0
+
+                if isOneWay:
+                    g.addEdge(u, v, weight)
+                else:
+                    g.addEdge(u, v, weight)
+                    g.addEdge(v, u, weight)
 
             elif choice == 2:
-                g.drawGraph()
+                print("How to display?")
+                print("1. Console")
+                print("2. Graph")
+                choice = int(input("Enter your choice: "))
 
-        elif choice == 3:
-            start = int(input("Enter the starting node: "))
-            end = int(input("Enter the destination vertex: "))
-            res = g.dijkstra(start, end)
-            print(res)
-            g.drawGraph(res)
+                if choice == 1:
+                    g.displayGraph()
+
+                elif choice == 2:
+                    g.drawGraph()
+
+            elif choice == 3:
+                start = int(input("Enter the starting node: "))
+                end = int(input("Enter the destination vertex: "))
+                res = g.dijkstra(start, end)
+                print(res)
+                g.drawGraph(res)
+
+    main()
 
 
 def shortest_path_from_all_points():
@@ -729,54 +741,59 @@ def shortest_path_from_all_points():
             # Return the shortest path
             return path
 
-    g = Graph(directed=True)
-    while True:
-        print("\nALL THE ROUTES")
-        print("1. Add Edge")
-        print("2. Display Graph")
-        print("3. Find Shortest Path")
-        print("4. Exit")
-        choice = int(input("Enter your choice: "))
-        print()
-
-        if choice == 1:
-            print(
-                "Enter the starting node, ending node and weight. Separate them with a space"
-            )
-            u, v, weight = map(
-                int,
-                input(": ").split(),
-            )
-
-            isOneWay = input("Is this a one-way road? (y/n): ") == "y"
-            doesHaveTraffic = input("Does this road have a traffic jam? (y/n): ") == "y"
-
-            weight += 5 if doesHaveTraffic else 0
-
-            if isOneWay:
-                g.addEdge(u, v, weight)
-            else:
-                g.addEdge(u, v, weight)
-                g.addEdge(v, u, weight)
-
-        elif choice == 2:
-            print("How to display?")
-            print("1. Console")
-            print("2. Graph")
+    def main():
+        g = Graph(directed=True)
+        while True:
+            print("\nALL THE ROUTES")
+            print("1. Add Edge")
+            print("2. Display Graph")
+            print("3. Find Shortest Path")
+            print("4. Exit")
             choice = int(input("Enter your choice: "))
+            print()
 
             if choice == 1:
-                g.displayGraph()
+                print(
+                    "Enter the starting node, ending node and weight. Separate them with a space"
+                )
+                u, v, weight = map(
+                    int,
+                    input(": ").split(),
+                )
+
+                isOneWay = input("Is this a one-way road? (y/n): ") == "y"
+                doesHaveTraffic = (
+                    input("Does this road have a traffic jam? (y/n): ") == "y"
+                )
+
+                weight += 5 if doesHaveTraffic else 0
+
+                if isOneWay:
+                    g.addEdge(u, v, weight)
+                else:
+                    g.addEdge(u, v, weight)
+                    g.addEdge(v, u, weight)
 
             elif choice == 2:
-                g.drawGraph()
+                print("How to display?")
+                print("1. Console")
+                print("2. Graph")
+                choice = int(input("Enter your choice: "))
 
-        elif choice == 3:
-            start = int(input("Enter the starting node: "))
-            end = int(input("Enter the destination vertex: "))
-            res = g.shortestPath(start, end)
-            print(res)
-            g.drawGraph(res)
+                if choice == 1:
+                    g.displayGraph()
+
+                elif choice == 2:
+                    g.drawGraph()
+
+            elif choice == 3:
+                start = int(input("Enter the starting node: "))
+                end = int(input("Enter the destination vertex: "))
+                res = g.shortestPath(start, end)
+                print(res)
+                g.drawGraph(res)
+
+    main()
 
 
 def menu():
