@@ -83,94 +83,32 @@ class Graph:
                 except ValueError:
                     print(f"Skipping line {line}")
 
-    def dijkstra(self, start, end):
-        queue = [(0, start, [])]
-        seen = set()
-        while queue:
-            (cost, node, path) = heappop(queue)
-            if node not in seen:
-                seen.add(node)
-                path = path + [node]
-                if node == end:
-                    return path
-                for nextNode, c in self.edges[node]:
-                    if nextNode not in seen:
-                        heappush(queue, (cost + c, nextNode, path))
-        return []
-
-    def floydWarshall(self, start, end):
+    def floydWarshall(self):
+        # Initialize the distance matrix
         dist = defaultdict(lambda: defaultdict(lambda: float("inf")))
-        nextNode = defaultdict(dict)
+        for u in self.edges:
+            for v, weight in self.edges[u]:
+                dist[u][v] = weight
 
-        for node in self.edges:
-            dist[node][node] = 0
-
-        for node, edges in self.edges.items():
-            for neighbor, weight in edges:
-                dist[node][neighbor] = weight
-                nextNode[node][neighbor] = neighbor
-
+        # Improve the distance matrix
         for k in self.edges:
             for i in self.edges:
                 for j in self.edges:
-                    if dist[i][k] + dist[k][j] < dist[i][j]:
-                        dist[i][j] = dist[i][k] + dist[k][j]
-                        nextNode[i][j] = nextNode[i][k]
+                    dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
 
-        if nextNode[start][end] is None:
-            return []
-        path = [start]
-        while start != end:
-            start = nextNode[start][end]
-            path.append(start)
-        return path
-
-    def bellman_ford(self, start, end):
-        distance = defaultdict(lambda: float("inf"))
-        predecessor = {}
-        distance[start] = 0
-
-        for _ in range(len(self.edges) - 1):
-            for node in self.edges:
-                for neighbor, weight in self.edges[node]:
-                    if distance[node] + weight < distance[neighbor]:
-                        distance[neighbor] = distance[node] + weight
-                        predecessor[neighbor] = node
-
-        for node in self.edges:
-            for neighbor, weight in self.edges[node]:
-                assert (
-                    distance[node] + weight >= distance[neighbor]
-                ), "Graph contains a negative-weight cycle"
-
-        path = []
-        while end:
-            path.append(end)
-            end = predecessor.get(end)
-        return path[::-1]
+        return dist
 
 
 GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/graph.txt"
 ROADS_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/roads.txt"
 
-"""
 g = Graph(directed=True)
 g.loadFromFile(GRAPH_FILE_PATH)
-g.displayGraph()
+dist = g.floydWarshall()
+print("Shortest distances:")
+for i in dist:
+    for j in dist[i]:
+        print(f"{i} → {j}: {dist[i][j]}") if dist[i][j] != float("inf") else print(
+            f"{i} → {j}: ∞"
+        )
 g.drawGraph()
-res = g.dijkstra(0, 2)
-g.drawGraph(res)
-"""
-
-g = Graph(directed=False)
-g.loadFromFile(ROADS_FILE_PATH)
-g.displayGraph()
-g.drawGraph()
-res = g.dijkstra(3, 2)
-g.drawGraph(res)
-res = g.floydWarshall(3, 2)
-g.drawGraph(res)
-res = g.bellman_ford(3, 2)
-g.drawGraph(res)
-
-# ! OKAY DONT TOUCH THIS

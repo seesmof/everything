@@ -6,10 +6,14 @@
 """
 
 
-from collections import defaultdict, deque
-import heapq
+from collections import defaultdict
+from heapq import heappop, heappush
+from json import dumps
+import matplotlib.pyplot as plt
+import networkx as nx
 
-GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/input.txt"
+GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/graph.txt"
+ROADS_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/roads.txt"
 
 
 class Graph:
@@ -29,6 +33,59 @@ class Graph:
             else:
                 print(f"{key} 🔗 {', '.join(map(str, value))}")
 
+    def drawGraph(self, shortest_path=None):
+        plt.figure(figsize=(15, 10))
+        G = nx.Graph()
+        for u, edges in self.edges.items():
+            for v, weight in edges:
+                G.add_edge(u, v, weight=weight)
+        pos = nx.spring_layout(G, k=0.15)
+
+        if shortest_path:
+            node_colors = [
+                "red"
+                if node == shortest_path[-1]
+                else "lightgreen"
+                if node == shortest_path[0]
+                else "lightgray"
+                for node in G.nodes()
+            ]
+            nx.draw_networkx_nodes(G, pos, node_color=node_colors)
+
+            plt.text(
+                0.00,
+                1.13,
+                "Red: End",
+                transform=plt.gca().transAxes,
+                fontsize=10,
+                verticalalignment="top",
+                bbox=dict(boxstyle="round", facecolor="red", alpha=0.5),
+            )
+            plt.text(
+                0.00,
+                1.06,
+                "Green: Start",
+                transform=plt.gca().transAxes,
+                fontsize=10,
+                verticalalignment="top",
+                bbox=dict(boxstyle="round", facecolor="lightgreen", alpha=0.5),
+            )
+        else:
+            nx.draw_networkx_nodes(G, pos, node_color="lightblue")
+        nx.draw_networkx_edges(G, pos)
+        nx.draw_networkx_labels(G, pos, font_weight="bold")
+
+        if shortest_path:
+            edges = [
+                (shortest_path[i], shortest_path[i + 1])
+                for i in range(len(shortest_path) - 1)
+            ]
+            nx.draw_networkx_edges(G, pos, edgelist=edges, edge_color="red", width=2)
+
+        labels = nx.get_edge_attributes(G, "weight")
+        nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
+        plt.show()
+
     def loadFromFile(self, filename):
         with open(filename, "r") as file:
             for line in file:
@@ -38,103 +95,74 @@ class Graph:
                 except ValueError:
                     print(f"Skipping line {line}")
 
-    def dijkstra(self, start, end):
-        shortestPaths = {start: (None, 0)}
-        currentNode = start
-        visited = set()
 
-        while currentNode != end:
-            visited.add(currentNode)
-            destinations = self.edges[currentNode]
-            currentWeight = shortestPaths[currentNode][1]
+def algorithms():
+    def dijkstra(edges, start, end):
+        queue = [(0, start, [])]
+        seen = set()
+        while queue:
+            (cost, node, path) = heappop(queue)
+            if node not in seen:
+                seen.add(node)
+                path = path + [node]
+                if node == end:
+                    return path
+                for nextNode, c in edges[node]:
+                    if nextNode not in seen:
+                        heappush(queue, (cost + c, nextNode, path))
+        return []
 
-            for nextNode, weight in destinations:
-                weight += currentWeight
-                if nextNode not in shortestPaths:
-                    shortestPaths[nextNode] = (currentNode, weight)
-                else:
-                    currentShortestWeight = shortestPaths[nextNode][1]
-                    if currentShortestWeight > weight:
-                        shortestPaths[nextNode] = (currentNode, weight)
+    def floydWarshall(edges, start, end):
+        dist = defaultdict(lambda: defaultdict(lambda: float("inf")))
+        nextNode = defaultdict(dict)
 
-            nextDestinations = {
-                node: shortestPaths[node]
-                for node in shortestPaths
-                if node not in visited
-            }
-            if not nextDestinations:
-                break
-            currentNode = min(nextDestinations, key=lambda k: nextDestinations[k][1])
+        for node in edges:
+            dist[node][node] = 0
 
-        if end not in shortestPaths:
-            return f"There is no path from {start} to {end}"
-
-        path = []
-        while currentNode is not None:
-            path.append(currentNode)
-            nextNode = shortestPaths[currentNode][0]
-            currentNode = nextNode
-        path = path[::-1]
-        return path
-
-    def floydWarshall(self):
-        distance = {
-            node: {neighbor: float("inf") for neighbor in self.edges}
-            for node in self.edges
-        }
-        nextNode = {
-            node: {neighbor: None for neighbor in self.edges} for node in self.edges
-        }
-
-        for node in self.edges:
-            distance[node][node] = 0
-            for neighbor, weight in self.edges[node]:
-                distance[node][neighbor] = weight
+        for node, edges in edges.items():
+            for neighbor, weight in edges:
+                dist[node][neighbor] = weight
                 nextNode[node][neighbor] = neighbor
 
-        for k in self.edges:
-            for i in self.edges:
-                for j in self.edges:
-                    if distance[i][k] + distance[k][j] < distance[i][j]:
-                        distance[i][j] = distance[i][k] + distance[k][j]
+        for k in edges:
+            for i in edges:
+                for j in edges:
+                    if dist[i][k] + dist[k][j] < dist[i][j]:
+                        dist[i][j] = dist[i][k] + dist[k][j]
                         nextNode[i][j] = nextNode[i][k]
 
-        return distance, nextNode
-
-    def getShortestPath(self, start, end, nextNode):
         if nextNode[start][end] is None:
-            return f"There is no path from {start} to {end}"
+            return []
         path = [start]
         while start != end:
             start = nextNode[start][end]
             path.append(start)
         return path
 
-    def bellmanFord(self, start):
-        distance = {node: float("infinity") for node in self.edges}
+    def bellmanFord(edges, start, end):
+        distance = defaultdict(lambda: float("inf"))
+        predecessor = {}
         distance[start] = 0
 
-        for _ in range(len(self.edges) - 1):
-            for node in self.edges:
-                for neighbour, weight in self.edges[node]:
-                    if (
-                        distance[node] != float("infinity")
-                        and distance[node] + weight < distance[neighbour]
-                    ):
-                        distance[neighbour] = distance[node] + weight
+        for _ in range(len(edges) - 1):
+            for node in edges:
+                for neighbor, weight in edges[node]:
+                    if distance[node] + weight < distance[neighbor]:
+                        distance[neighbor] = distance[node] + weight
+                        predecessor[neighbor] = node
 
-        for node in self.edges:
-            for neighbour, weight in self.edges[node]:
-                if (
-                    distance[node] != float("infinity")
-                    and distance[node] + weight < distance[neighbour]
-                ):
-                    return "Graph contains a negative-weight cycle"
+        for node in edges:
+            for neighbor, weight in edges[node]:
+                assert (
+                    distance[node] + weight >= distance[neighbor]
+                ), "Graph contains a negative-weight cycle"
 
-        return distance
+        path = []
+        while end:
+            path.append(end)
+            end = predecessor.get(end)
+        return path[::-1]
 
-
-def algorithms():
     def main():
         g = None
         while True:
@@ -176,16 +204,20 @@ def algorithms():
             elif choice == 4:
                 start = int(input("Enter the source vertex: "))
                 end = int(input("Enter the destination vertex: "))
-                dist = g.dijkstra(start, end)
-                print(dist)
+                res = dijkstra(g.edges, start, end)
+                g.drawGraph(res)
 
             elif choice == 5:
-                # TODO implement floyd-warshall
-                print("WHAT?")
+                start = int(input("Enter the source vertex: "))
+                end = int(input("Enter the destination vertex: "))
+                res = floydWarshall(g.edges, start, end)
+                g.drawGraph(res)
 
             elif choice == 6:
-                # TODO implement bellman-ford
-                print("WHUT?")
+                start = int(input("Enter the source vertex: "))
+                end = int(input("Enter the destination vertex: "))
+                res = bellmanFord(g.edges, start, end)
+                g.drawGraph(res)
 
             else:
                 break
@@ -236,18 +268,4 @@ def menu():
             break
 
 
-# menu()
-g = Graph()
-g.loadFromFile(GRAPH_FILE_PATH)
-
-print()
-print(f"{g.dijkstra(1, 6)}\n")
-print(f"{g.dijkstra(1, 8)}\n")
-print(f"{g.dijkstra(1, 10)}\n")
-print(f"{g.dijkstra(3, 8)}\n")
-
-print()
-print(f"{g.getShortestPath(1, 6, g.floydWarshall()[1])}\n")
-print(f"{g.getShortestPath(1, 8, g.floydWarshall()[1])}\n")
-print(f"{g.getShortestPath(1, 10, g.floydWarshall()[1])}\n")
-print(f"{g.getShortestPath(3, 8, g.floydWarshall()[1])}\n")
+menu()
