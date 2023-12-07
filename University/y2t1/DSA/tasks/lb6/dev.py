@@ -14,6 +14,7 @@ import networkx as nx
 
 GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/graph.txt"
 ROADS_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/roads.txt"
+TASKS_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/tasks.txt"
 
 
 def algorithms():
