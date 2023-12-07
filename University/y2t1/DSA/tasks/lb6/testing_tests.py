@@ -25,7 +25,7 @@ def shortest_path_from_a_to_b():
                     print(f"{key} 🔗 {', '.join(map(str, value))}")
 
         def drawGraph(self, shortest_path=None):
-            G = nx.Graph()
+            G = nx.DiGraph() if self.directed else nx.Graph()
             for u, edges in self.edges.items():
                 for v, weight in edges:
                     G.add_edge(u, v, weight=weight)
@@ -62,7 +62,9 @@ def shortest_path_from_a_to_b():
                 )
             else:
                 nx.draw_networkx_nodes(G, pos, node_color="lightblue")
-            nx.draw_networkx_edges(G, pos)
+            nx.draw_networkx_edges(
+                G, pos, arrowstyle="->"
+            ) if self.directed else nx.draw_networkx_edges(G, pos)
             nx.draw_networkx_labels(G, pos, font_weight="bold")
 
             if shortest_path:
@@ -71,6 +73,8 @@ def shortest_path_from_a_to_b():
                     for i in range(len(shortest_path) - 1)
                 ]
                 nx.draw_networkx_edges(
+                    G, pos, edgelist=edges, edge_color="red", arrowstyle="->", width=2
+                ) if self.directed else nx.draw_networkx_edges(
                     G, pos, edgelist=edges, edge_color="red", width=2
                 )
 
@@ -126,10 +130,9 @@ def shortest_path_from_a_to_b():
             return []
 
     GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/roads.txt"
-    g = Graph(True)
+    g = Graph(directed=True)
     g.loadFromFile(GRAPH_FILE_PATH)
-    g.drawGraph()
-    return
+    # g.drawGraph(g.dijkstra(6, 5))
 
     while True:
         print("\nROUTE")
@@ -138,10 +141,11 @@ def shortest_path_from_a_to_b():
         print("3. Find Shortest Path")
         print("4. Exit")
         choice = int(input("Enter your choice: "))
+        print()
 
         if choice == 1:
             print(
-                "\nEnter the starting node, ending node and weight. Separate them with a space"
+                "Enter the starting node, ending node and weight. Separate them with a space"
             )
             u, v, weight = map(
                 int,
@@ -160,7 +164,7 @@ def shortest_path_from_a_to_b():
                 g.addEdge(v, u, weight)
 
         elif choice == 2:
-            print("\nHow to display?")
+            print("How to display?")
             print("1. Console")
             print("2. Graph")
             choice = int(input("Enter your choice: "))
