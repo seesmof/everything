@@ -84,13 +84,12 @@ class Graph:
                     print(f"Skipping line {line}")
 
     def floydWarshall(self):
-        # Initialize the distance matrix
         dist = defaultdict(lambda: defaultdict(lambda: float("inf")))
         for u in self.edges:
+            dist[u][u] = 0
             for v, weight in self.edges[u]:
                 dist[u][v] = weight
 
-        # Improve the distance matrix
         for k in self.edges:
             for i in self.edges:
                 for j in self.edges:
@@ -102,7 +101,7 @@ class Graph:
 GRAPH_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/graph.txt"
 ROADS_FILE_PATH = "D:/code/everything/University/y2t1/DSA/tasks/lb6/data/roads.txt"
 
-g = Graph(directed=True)
+g = Graph(directed=False)
 g.loadFromFile(GRAPH_FILE_PATH)
 dist = g.floydWarshall()
 print("Shortest distances:")

@@ -112,32 +112,20 @@ def algorithms():
                         heappush(queue, (cost + c, nextNode, path))
         return []
 
-    def floydWarshall(edges, start, end):
+    def floydWarshall(edges):
         dist = defaultdict(lambda: defaultdict(lambda: float("inf")))
-        nextNode = defaultdict(dict)
+        for u in edges:
+            dist[u][u] = 0
+            for v, weight in edges[u]:
+                dist[u][v] = weight
 
-        for node in edges:
-            dist[node][node] = 0
-
-        for node, edges in edges.items():
-            for neighbor, weight in edges:
-                dist[node][neighbor] = weight
-                nextNode[node][neighbor] = neighbor
-
+        # Improve the distance matrix
         for k in edges:
             for i in edges:
                 for j in edges:
-                    if dist[i][k] + dist[k][j] < dist[i][j]:
-                        dist[i][j] = dist[i][k] + dist[k][j]
-                        nextNode[i][j] = nextNode[i][k]
+                    dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
 
-        if nextNode[start][end] is None:
-            return []
-        path = [start]
-        while start != end:
-            start = nextNode[start][end]
-            path.append(start)
-        return path
+        return dist
 
     def bellmanFord(edges, start, end):
         distance = defaultdict(lambda: float("inf"))
@@ -208,10 +196,13 @@ def algorithms():
                 g.drawGraph(res)
 
             elif choice == 5:
-                start = int(input("Enter the source vertex: "))
-                end = int(input("Enter the destination vertex: "))
-                res = floydWarshall(g.edges, start, end)
-                g.drawGraph(res)
+                res = floydWarshall(g.edges)
+                print("Shortest distances:")
+                for i in res:
+                    for j in res[i]:
+                        print(f"{i} → {j}: {res[i][j]}") if res[i][j] != float(
+                            "inf"
+                        ) else print(f"{i} → {j}: ∞")
 
             elif choice == 6:
                 start = int(input("Enter the source vertex: "))
