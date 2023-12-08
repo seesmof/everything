@@ -1,10 +1,12 @@
 CONTEXT:
 Lectures on a university discipline called "History, culture and identity of Ukraine"
 
-TASK:
-Given the provided lecture structure, provide a summary for each of the sections. Fill in each sections with notes on it, include only the most important information. Output in a markdown format.
+LECTURE TOPIC:
 
-LECTURE STRUCTURE:
+SECTION TOPIC:
+
+TASK:
+Consider the given lecture topic. You are given a section with its topic specified above. Write an essay on this section. Follow the structure: abstract, main sections - provide names for each subsection, and conclusion. Output your final answer in Markdown format.
 
 ---
 
