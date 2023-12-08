@@ -1,12 +1,10 @@
-from sympy import symbols, limit, oo
+import sympy as sp
 
-# Define the variable
-n = symbols("n")
+t = sp.symbols("t")
+f = 5 * t + 3
 
-# Define the series sum
-s_n = 2 * n / (n + 3)
+a_2 = sp.integrate(f * sp.cos(2 * t), (t, -sp.pi, sp.pi)) / sp.pi
+b_2 = sp.integrate(f * sp.sin(2 * t), (t, -sp.pi, sp.pi)) / sp.pi
 
-# Calculate the limit as n approaches infinity
-s = limit(s_n, n, oo)
-
-print(s)
+diff = a_2 - b_2
+print(diff)
