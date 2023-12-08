@@ -1,10 +1,7 @@
 import sympy as sp
 
-t = sp.symbols("t")
-f = 5 * t + 3
+n = sp.symbols("n")
+a_n = (2**n + 3) / (3**n + 2)
+L = sp.limit(a_n ** (1 / n), n, sp.oo)
 
-a_2 = sp.integrate(f * sp.cos(2 * t), (t, -sp.pi, sp.pi)) / sp.pi
-b_2 = sp.integrate(f * sp.sin(2 * t), (t, -sp.pi, sp.pi)) / sp.pi
-
-diff = a_2 - b_2
-print(diff)
+print(L)
