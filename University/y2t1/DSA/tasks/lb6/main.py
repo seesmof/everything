@@ -257,18 +257,21 @@ def algorithms():
                 start = int(input("Enter the source vertex: "))
                 end = int(input("Enter the destination vertex: "))
                 res = g.dijkstra(start, end)
+                print(res)
                 g.drawGraph(res)
 
             elif choice == 5:
                 start = int(input("Enter the source vertex: "))
                 end = int(input("Enter the destination vertex: "))
                 res = g.shortestPath(start, end)
+                print(res)
                 g.drawGraph(res)
 
             elif choice == 6:
                 start = int(input("Enter the source vertex: "))
                 end = int(input("Enter the destination vertex: "))
                 res = g.bellmanFord(start, end)
+                print(res)
                 g.drawGraph(res)
 
             else:
@@ -366,9 +369,10 @@ def project_minimal_times():
             print("3. Calculate minimal time")
             print("4. Exit")
             choice = int(input(": "))
+            print()
 
             if choice == 1:
-                print("\nHow would you like to add tasks?")
+                print("How would you like to add tasks?")
                 print("1. Manually")
                 print("2. Load from file")
                 choice = int(input(": "))
@@ -397,10 +401,11 @@ def project_minimal_times():
                     print(ERROR_ADD_TASKS)
                     continue
 
-                print("\nWhere to display?")
+                print("Where to display?")
                 print("1. Console")
                 print("2. Graph")
                 choice = int(input(": "))
+                print()
 
                 if choice == 1:
                     g.displayGraph()
@@ -414,7 +419,7 @@ def project_minimal_times():
 
                 res = g.calculateMinimumTime()
                 print(
-                    f"\nThe minimum time it will take to complete all tasks is {res} hours."
+                    f"The minimum time it will take to complete all tasks is {res} hours."
                 )
 
             else:
@@ -558,32 +563,44 @@ def shortest_path_from_a_to_b():
             print()
 
             if choice == 1:
-                print(
-                    "Enter the starting node, ending node and weight. Separate them with a space"
-                )
-                u, v, weight = map(
-                    int,
-                    input(": ").split(),
-                )
+                print("How to add an edge?")
+                print("1. Manually")
+                print("2. From File")
+                choice = int(input("Enter your choice: "))
+                print()
 
-                isOneWay = input("Is this a one-way road? (y/n): ") == "y"
-                doesHaveTraffic = (
-                    input("Does this road have a traffic jam? (y/n): ") == "y"
-                )
+                if choice == 1:
+                    print(
+                        "Enter the starting node, ending node and weight. Separate them with a space"
+                    )
+                    u, v, weight = map(
+                        int,
+                        input(": ").split(),
+                    )
 
-                weight += 5 if doesHaveTraffic else 0
+                    isOneWay = input("Is this a one-way road? (y/n): ") == "y"
+                    doesHaveTraffic = (
+                        input("Does this road have a traffic jam? (y/n): ") == "y"
+                    )
 
-                if isOneWay:
-                    g.addEdge(u, v, weight)
-                else:
-                    g.addEdge(u, v, weight)
-                    g.addEdge(v, u, weight)
+                    weight += 5 if doesHaveTraffic else 0
+
+                    if isOneWay:
+                        g.addEdge(u, v, weight)
+                    else:
+                        g.addEdge(u, v, weight)
+                        g.addEdge(v, u, weight)
+
+                elif choice == 2:
+                    filename = input("Enter the filename: ")
+                    g.loadFromFile(filename)
 
             elif choice == 2:
                 print("How to display?")
                 print("1. Console")
                 print("2. Graph")
                 choice = int(input("Enter your choice: "))
+                print()
 
                 if choice == 1:
                     g.displayGraph()
