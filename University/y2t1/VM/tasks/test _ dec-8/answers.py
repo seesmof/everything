@@ -1,14 +1,12 @@
-import sympy as sp
+from sympy import symbols, limit, oo
 
-x = sp.symbols("x")
-f = sp.tan(x) ** 2
+# Define the variable
+n = symbols("n")
 
-# calculate the first two derivatives
-f1 = sp.diff(f, x)
-f2 = sp.diff(f1, x)
+# Define the series sum
+s_n = 2 * n / (n + 3)
 
-# evaluate the derivatives at 0
-c1 = f1.subs(x, 0)
-c2 = f2.subs(x, 0) / 2  # divide by 2! to get the coefficient
+# Calculate the limit as n approaches infinity
+s = limit(s_n, n, oo)
 
-print(c1 + c2)
+print(s)
