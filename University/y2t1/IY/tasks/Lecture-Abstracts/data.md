@@ -65,3 +65,7 @@ Consider the given lecture topic. You are given a section with its topic specifi
 3. Російсько-українська війна.
 4. Сучасний стан української культури - проблеми і перспективи.
 5. Феномен української ідентичності перед викликами сучасності.
+
+---
+
+Send to: chopvolodimir@ukr.net
