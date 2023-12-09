@@ -6,7 +6,7 @@ LECTURE TOPIC:
 SECTION TOPIC:
 
 TASK:
-Consider the given lecture topic. You are given a section with its topic specified above. Write an essay on this section. Follow the structure: abstract, main sections - provide names for each subsection, and conclusion. Output your final answer in Markdown format.
+Consider the given lecture topic. You are given a section with its topic specified above. Write an essay on this section. Follow the structure: abstract, main sections - provide names for each subsection, and conclusion. Make sure is logically structured and doesn't miss anything important. Avoid repeating yourself. Avoid the text being diluted, always include only the factual information. For each section include at least 5 sentences. Output your final answer in Markdown format.
 
 ---
 
