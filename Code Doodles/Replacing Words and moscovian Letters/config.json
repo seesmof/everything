@@ -39,27 +39,6 @@
     {
       "active": true,
       "case": "Override",
-      "repA": "спасибо",
-      "repB": "дякую",
-      "type": "Swap"
-    },
-    {
-      "active": true,
-      "case": "Override",
-      "repA": "привет",
-      "repB": "привіт",
-      "type": "Swap"
-    },
-    {
-      "active": true,
-      "case": "Override",
-      "repA": "отлично",
-      "repB": "чудово",
-      "type": "Swap"
-    },
-    {
-      "active": true,
-      "case": "Override",
       "repA": "росій",
       "repB": "кацап",
       "type": "Swap"
@@ -117,14 +96,14 @@
       "active": true,
       "case": "Override",
       "repA": ".ru",
-      "repB": "!КАЦАПИ!",
+      "repB": " !КАЦАПИ!",
       "type": "Swap"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "ru.",
-      "repB": "!КАЦАПИ!",
+      "repB": "!КАЦАПИ! ",
       "type": "Swap"
     },
     {
@@ -132,6 +111,20 @@
       "case": "Override",
       "repA": "росію",
       "repB": "московію",
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "киев",
+      "repB": "Київ",
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "kiev",
+      "repB": "Kyiv",
       "type": "Swap"
     }
   ]
