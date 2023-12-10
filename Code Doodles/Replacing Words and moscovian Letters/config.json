@@ -4,93 +4,135 @@
     {
       "active": true,
       "case": "Override",
-      "repA": "ё",
-      "repB": "ї",
-      "type": "Simple"
-    },
-    {
-      "active": true,
-      "case": "Override",
-      "repA": "ы",
-      "repB": "і",
-      "type": "Simple"
-    },
-    {
-      "active": true,
-      "case": "Override",
-      "repA": "э",
-      "repB": "є",
-      "type": "Simple"
-    },
-    {
-      "active": true,
-      "case": "Override",
-      "repA": "россия",
-      "repB": "московія",
-      "type": "Simple"
-    },
-    {
-      "active": true,
-      "case": "Override",
-      "repA": "росія",
-      "repB": "московія",
-      "type": "Simple"
-    },
-    {
-      "active": true,
-      "case": "Override",
       "repA": "русский",
       "repB": "москаль",
-      "type": "Simple"
+      "type": "Swap"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "росіянин",
       "repB": "кацап",
-      "type": "Simple"
+      "type": "Swap"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "росиянен",
       "repB": "кацап",
-      "type": "Simple"
-    },
-    {
-      "active": true,
-      "case": "Override",
-      "repA": "росі",
-      "repB": "кацап",
-      "type": "Simple"
-    },
-    {
-      "active": true,
-      "case": "Override",
-      "repA": "путін",
-      "repB": "хуйло",
-      "type": "Simple"
-    },
-    {
-      "active": true,
-      "case": "Override",
-      "repA": ".ru",
-      "repB": "!КАЦАПИ!",
-      "type": "Simple"
-    },
-    {
-      "active": true,
-      "case": "Override",
-      "repA": "ru.",
-      "repB": "!КАЦАПИ!",
-      "type": "Simple"
+      "type": "Swap"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "Украї",
       "repB": "Украї",
-      "type": "Simple"
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "russia",
+      "repB": "moscovia",
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "спасибо",
+      "repB": "дякую",
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "привет",
+      "repB": "привіт",
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "отлично",
+      "repB": "чудово",
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "росій",
+      "repB": "кацап",
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "росії",
+      "repB": "московії",
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "путі",
+      "repB": "путі",
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "моск",
+      "repB": "моск",
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "росією",
+      "repB": "московією",
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "росіяни",
+      "repB": "кацапи",
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "россия",
+      "repB": "московія",
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "росія",
+      "repB": "московія",
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": ".ru",
+      "repB": "!КАЦАПИ!",
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "ru.",
+      "repB": "!КАЦАПИ!",
+      "type": "Swap"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "росію",
+      "repB": "московію",
+      "type": "Swap"
     }
   ]
 }
