@@ -29,14 +29,14 @@ app.resizable(False, False)
 tabsContainer = CTkTabview(app)
 tabsContainer.pack(expand=1, fill="both")
 
-tabsContainer.add("Heap Sort")
+tabsContainer.add("Heap")
 tabsContainer.add("Data Structures")
 tabsContainer.add("Greedy Algorithms")
 tabsContainer.add("Dynamic Programming")
 tabsContainer.add("Graph Traversal")
 tabsContainer.add("Graph Shortest Path")
 
-heapTab = tabsContainer.tab("Heap Sort")
+heapTab = tabsContainer.tab("Heap")
 dataStructuresTab = tabsContainer.tab("Data Structures")
 greedyAlgosTab = tabsContainer.tab("Greedy Algorithms")
 dynamicProgrammingTab = tabsContainer.tab("Dynamic Programming")
@@ -47,7 +47,6 @@ graphShortestPathTab = tabsContainer.tab("Graph Shortest Path")
 # ! HEAP
 # TODO add files for storing elements
 # TODO time the time it takes to sort and output - for each sorting
-# TODO perhaps figure out how to lay out heap elements horizontally
 class Heap:
     def __init__(self):
         self.heap = []
@@ -179,6 +178,20 @@ addHeapElementButton = CTkButton(
     text="Add",
     command=lambda: addHeapElement(int(addHeapElementInput.get())),
     width=60,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+)
+deleteHeapElementButton = CTkButton(
+    heapTab,
+    text="Delete Element",
+    command=lambda: deleteHeapElement(),
+    width=120,
+    fg_color="#BF181D",
+    hover_color="#961316",
+    text_color="white",
+    font=("Arial", 12, "bold"),
 )
 sortHeap_DefaultSortButton = CTkButton(
     heapSortingButtonsContainer,
@@ -197,12 +210,6 @@ sortHeap_HeapSortButton = CTkButton(
     text="Heap Sort",
     command=lambda: sortHeap_HeapSort(),
     width=60,
-)
-deleteHeapElementButton = CTkButton(
-    heapTab,
-    text="Delete Element",
-    command=lambda: deleteHeapElement(),
-    width=120,
 )
 
 addHeapElementHeading.place(x=5, y=5)
