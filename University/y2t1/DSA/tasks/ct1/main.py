@@ -200,15 +200,30 @@ def loadHeapOnStart():
         pass
 
 
-heapElementsContainer = CTkScrollableFrame(heapTab, width=200, height=300)
-heapSortingButtonsContainer = CTkFrame(heapTab, fg_color="transparent", width=300)
+outputBoxesContainer = CTkTabview(heapTab, width=200, height=290)
+outputBoxesContainer.add("Heap")
+outputBoxesContainer.add("Linked List")
+outputBoxesContainer.place(x=440, y=5)
+
+heapElementsTab = outputBoxesContainer.tab("Heap")
+linkedListElementsTab = outputBoxesContainer.tab("Linked List")
+
+heapElementsContainer = CTkScrollableFrame(heapElementsTab, width=200, height=260)
+heapElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
+
+linkedListElementsContainer = CTkScrollableFrame(
+    linkedListElementsTab, width=200, height=260
+)
+linkedListElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
+
 addHeapElementHeading = CTkLabel(
     heapTab, text="Add Heap Element", font=("Arial", 14, "bold")
 )
-heapElementsHeading = CTkLabel(
-    heapTab, text="Heap Elements", font=("Arial", 14, "bold")
-)
+addHeapElementHeading.place(x=5, y=5)
+
 addHeapElementInput = CTkEntry(heapTab, placeholder_text="Enter element...", width=350)
+addHeapElementInput.place(x=5, y=35)
+
 addHeapElementButton = CTkButton(
     heapTab,
     text="Add",
@@ -219,6 +234,8 @@ addHeapElementButton = CTkButton(
     text_color="white",
     font=("Arial", 12, "bold"),
 )
+addHeapElementButton.place(x=360, y=35)
+
 deleteHeapElementButton = CTkButton(
     heapTab,
     text="Delete Element",
@@ -229,38 +246,185 @@ deleteHeapElementButton = CTkButton(
     text_color="white",
     font=("Arial", 12, "bold"),
 )
+deleteHeapElementButton.place(x=300, y=80)
+
+heapSortingButtonsContainer = CTkFrame(heapTab, fg_color="transparent", width=300)
+heapSortingButtonsContainer.place(x=0, y=80)
+
 sortHeap_DefaultSortButton = CTkButton(
     heapSortingButtonsContainer,
     text="Default Sort",
     command=lambda: sortHeap_DefaultSort(),
     width=60,
 )
+sortHeap_DefaultSortButton.pack(padx=5, side="left")
+
 sortHeap_QuickSortButton = CTkButton(
     heapSortingButtonsContainer,
     text="Quick Sort",
     command=lambda: sortHeap_QuickSort(),
     width=60,
 )
+sortHeap_QuickSortButton.pack(padx=5, side="left")
+
 sortHeap_HeapSortButton = CTkButton(
     heapSortingButtonsContainer,
     text="Heap Sort",
     command=lambda: sortHeap_HeapSort(),
     width=60,
 )
-
-addHeapElementHeading.place(x=5, y=5)
-addHeapElementInput.place(x=5, y=35)
-addHeapElementButton.place(x=360, y=35)
-deleteHeapElementButton.place(x=300, y=80)
-heapSortingButtonsContainer.place(x=0, y=80)
-sortHeap_DefaultSortButton.pack(padx=5, side="left")
-sortHeap_QuickSortButton.pack(padx=5, side="left")
 sortHeap_HeapSortButton.pack(padx=5, side="left")
-heapElementsHeading.place(x=440, y=5)
-heapElementsContainer.place(x=440, y=35)
 
 heapElements = Heap()
 loadHeapOnStart()
 
+
+# ! DOUBLY LINKED LIST
+class DoublyLinkedList:
+    class LinkedListNode:
+        def __init__(self, data=None):
+            self.data = data
+            self.next = None
+            self.prev = None
+
+    def __init__(self):
+        self.head = None
+
+    def append(self, data):
+        if self.head is None:
+            self.head = self.LinkedListNode(data)
+        else:
+            currentNode = self.head
+            while currentNode.next is not None:
+                currentNode = currentNode.next
+            newNode = self.LinkedListNode(data)
+            currentNode.next = newNode
+            newNode.prev = currentNode
+
+    def search(self, data) -> bool:
+        currentNode = self.head
+        while currentNode is not None:
+            if currentNode.data == data:
+                return True
+            currentNode = currentNode.next
+        return False
+
+    def delete(self, data) -> bool:
+        currentNode = self.head
+        while currentNode is not None:
+            if currentNode.data == data:
+                if currentNode.prev is not None:
+                    currentNode.prev.next = currentNode.next
+                if currentNode.next is not None:
+                    currentNode.next.prev = currentNode.prev
+                if currentNode == self.head:
+                    self.head = currentNode.next
+                return True
+            currentNode = currentNode.next
+        return False
+
+    def getList(self):
+        list = []
+        currentNode = self.head
+        while currentNode is not None:
+            list.append(currentNode.data)
+            currentNode = currentNode.next
+        return list
+
+    def buildList(self, list):
+        for element in list:
+            self.append(element)
+
+
+def updateLinkedListElementsContainer():
+    for widget in linkedListElementsContainer.winfo_children():
+        widget.destroy()
+
+    for _, element in enumerate(linkedListElements.getList()):
+        currentLabel = CTkLabel(linkedListElementsContainer, text=element)
+        currentLabel.pack(padx=5, anchor="w")
+
+
+def addLinkedListNode(data):
+    if linkedListElements.search(data):
+        return
+
+    linkedListElements.append(data)
+    updateLinkedListElementsContainer()
+
+
+def deleteLinkedListNode(data):
+    if not linkedListElements.delete(data):
+        AlertPopup(f"Element {data} not found in linked list")
+        return
+
+    updateLinkedListElementsContainer()
+
+
+def saveLinkedListOnExit():
+    if len(linkedListElements.getList()) == 0:
+        return
+    with open("linkedList.json", "w") as f:
+        json.dump(linkedListElements.getList(), f)
+
+
+def loadLinkedListOnStart():
+    try:
+        with open("linkedList.json", "r") as f:
+            list = json.load(f)
+            linkedListElements.buildList(list)
+            updateLinkedListElementsContainer()
+    except FileNotFoundError:
+        pass
+
+
+addLinkedListNodeHeading = CTkLabel(
+    heapTab, text="Add Linked List Node", font=("Arial", 14, "bold")
+)
+addLinkedListNodeHeading.place(x=5, y=130)
+
+addLinkedListNodeInput = CTkEntry(
+    heapTab, placeholder_text="Enter element...", width=350
+)
+addLinkedListNodeInput.place(x=5, y=160)
+
+addLinkedListNodeButton = CTkButton(
+    heapTab,
+    text="Add",
+    command=lambda: addLinkedListNode(int(addLinkedListNodeInput.get())),
+    width=60,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+)
+addLinkedListNodeButton.place(x=360, y=160)
+
+deleteHeapNodeHeading = CTkLabel(
+    heapTab, text="Delete Linked List Node", font=("Arial", 14, "bold")
+)
+deleteHeapNodeHeading.place(x=5, y=200)
+
+deleteLinkedListNodeInput = CTkEntry(
+    heapTab, placeholder_text="Enter element...", width=350
+)
+deleteLinkedListNodeInput.place(x=5, y=230)
+
+deleteLinkedListNodeButton = CTkButton(
+    heapTab,
+    text="Delete",
+    command=lambda: deleteLinkedListNode(int(deleteLinkedListNodeInput.get())),
+    width=60,
+    fg_color="#D32F2F",
+    hover_color="#B71C1C",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+)
+deleteLinkedListNodeButton.place(x=360, y=230)
+
+linkedListElements = DoublyLinkedList()
+loadLinkedListOnStart()
+
 app.mainloop()
 saveHeapOnExit()
+saveLinkedListOnExit()
