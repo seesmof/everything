@@ -1,4 +1,5 @@
 from customtkinter import *
+from Heap import *
 
 app = CTk()
 app.title("Data Structures and Algorithms")
@@ -23,6 +24,25 @@ graphTraversalTab = tabsContainer.tab("Graph Traversal")
 graphShortestPathTab = tabsContainer.tab("Graph Shortest Path")
 
 
+class AlertPopup(CTkToplevel):
+    def __init__(self, message: str):
+        super().__init__()
+        self.resizable(False, False)
+
+        label = CTkLabel(master=self, text=message)
+        label.pack(padx=10, pady=10, anchor="center")
+
+        button = CTkButton(master=self, text="Close", command=self.close_dialog)
+        button.pack(padx=10, pady=10, anchor="center")
+
+        self.grab_set()
+        self.lift()
+        self.bind("<Escape>", self.close_dialog)
+
+    def close_dialog(self, event=None):
+        self.destroy()
+
+
 def updateHeapElementsContainer(newLabels: [int]):
     for widget in heapElementsContainer.winfo_children():
         widget.destroy()
@@ -43,6 +63,43 @@ def deleteHeapElement(element):
     else:
         print(f"{element} not in heap")
     updateHeapElementsContainer(heapElements)
+
+
+def _heapSort():
+    if len(heapElements) == 0:
+        return
+
+    sortedHeap = heapSort(heapElements)
+    updateHeapElementsContainer(sortedHeap)
+
+
+def quickSort():
+    if len(heapElements) == 0:
+        return
+
+    sortedHeap = _quickSort(heapElements)
+    updateHeapElementsContainer(sortedHeap)
+
+
+def _quickSort(arr):
+    n = len(arr)
+    if n < 2:
+        return arr
+
+    pivot = arr[n // 2]
+    less = [x for x in arr if x < pivot]
+    equal = [x for x in arr if x == pivot]
+    more = [x for x in arr if x > pivot]
+
+    return quickSort(less) + equal + quickSort(more)
+
+
+def defaultSort():
+    if len(heapElements) == 0:
+        return
+
+    sortedHeap = sorted(heapElements)
+    updateHeapElementsContainer(sortedHeap)
 
 
 heapElements = []
@@ -74,6 +131,28 @@ deleteHeapElementButton = CTkButton(
     width=60,
 )
 deleteHeapElementButton.place(x=360, y=110)
+
+heapSortButton = CTkButton(
+    heapTab,
+    text="Heap Sort",
+    command=lambda: _heapSort(),
+    width=60,
+)
+heapSortButton.place(x=5, y=160)
+quickSortButton = CTkButton(
+    heapTab,
+    text="Quick Sort",
+    command=lambda: quickSort(),
+    width=60,
+)
+quickSortButton.place(x=90, y=160)
+basicSortButton = CTkButton(
+    heapTab,
+    text="Default Sort",
+    command=lambda: defaultSort(),
+    width=60,
+)
+basicSortButton.place(x=175, y=160)
 
 heapElementsHeading = CTkLabel(
     heapTab, text="Heap Elements", font=("Arial", 14, "bold")
