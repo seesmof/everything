@@ -1,6 +1,6 @@
 from customtkinter import *
-from Heap import *
 import time
+import json
 
 
 class AlertPopup(CTkToplevel):
@@ -46,8 +46,6 @@ graphShortestPathTab = tabsContainer.tab("Graph Shortest Path")
 
 
 # ! HEAP
-# TODO add files for storing elements
-# TODO time the time it takes to sort and output - for each sorting
 class Heap:
     def __init__(self):
         self.heap = []
@@ -185,7 +183,23 @@ def sortHeap_DefaultSort():
     showSortingTimeAlert(sortingTime=sortingTime)
 
 
-heapElements = Heap()
+def saveHeapOnExit():
+    if len(heapElements.heap) == 0:
+        return
+    with open("heap.json", "w") as file:
+        json.dump(heapElements.heap, file)
+
+
+def loadHeapOnStart():
+    try:
+        with open("heap.json", "r") as file:
+            heapArray = json.load(file)
+            heapElements.buildHeap(arr=heapArray)
+            updateHeapElementsContainer()
+    except FileNotFoundError:
+        pass
+
+
 heapElementsContainer = CTkScrollableFrame(heapTab, width=200, height=300)
 heapSortingButtonsContainer = CTkFrame(heapTab, fg_color="transparent", width=300)
 addHeapElementHeading = CTkLabel(
@@ -245,4 +259,8 @@ sortHeap_HeapSortButton.pack(padx=5, side="left")
 heapElementsHeading.place(x=440, y=5)
 heapElementsContainer.place(x=440, y=35)
 
+heapElements = Heap()
+loadHeapOnStart()
+
 app.mainloop()
+saveHeapOnExit()
