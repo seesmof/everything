@@ -1,85 +1,147 @@
-import tkinter as tk
-from tkinter import ttk
+from customtkinter import *
+from Heap import *
 
-# Root Window
-root = tk.Tk()
-root.geometry("600x400")
-root.resizable(False, False)
-root.title("Data Structures and Algorithms")
-root.wm_iconphoto(False, tk.PhotoImage(file="./images/logo.png"))
+app = CTk()
+app.title("Data Structures and Algorithms")
+app.geometry("700x400")
+app.resizable(False, False)
 
-# Main Container
-mainContainer = ttk.Notebook(root)
-mainContainer.pack(expand=1, fill="both")
+tabsContainer = CTkTabview(app)
+tabsContainer.pack(expand=1, fill="both")
 
-# ! Heap Sort Frame
-heapSortFrame = ttk.Frame(mainContainer)
-mainContainer.add(heapSortFrame, text="Heap Sort")
-heapSortHeading = ttk.Label(heapSortFrame, text="Heap Sort", font=("Arial", 18, "bold"))
-heapSortHeading.pack(pady=10, padx=10, anchor="w")
+tabsContainer.add("Heap Sort")
+tabsContainer.add("Data Structures")
+tabsContainer.add("Greedy Algorithms")
+tabsContainer.add("Dynamic Programming")
+tabsContainer.add("Graph Traversal")
+tabsContainer.add("Graph Shortest Path")
 
-someRandomHeapJustForDemo = [
-    31,
-    59,
-    61,
-    12,
-    60,
-    71,
-    45,
-    82,
-    92,
-    43,
-    56,
-    71,
-    42,
-    65,
-    17,
-    34,
-    78,
-]
-heapElementsList = tk.Listbox(heapSortFrame)
-heapElementsList.pack(padx=10, anchor="e")
-for element in someRandomHeapJustForDemo:
-    heapElementsList.insert(tk.END, element)
+heapTab = tabsContainer.tab("Heap Sort")
+dataStructuresTab = tabsContainer.tab("Data Structures")
+greedyAlgosTab = tabsContainer.tab("Greedy Algorithms")
+dynamicProgrammingTab = tabsContainer.tab("Dynamic Programming")
+graphTraversalTab = tabsContainer.tab("Graph Traversal")
+graphShortestPathTab = tabsContainer.tab("Graph Shortest Path")
 
-# ! Data Structures Frame
-dataStructuresFrame = ttk.Frame(mainContainer)
-mainContainer.add(dataStructuresFrame, text="Data Structures")
-dataStructuresHeading = ttk.Label(
-    dataStructuresFrame, text="Data Structures", font=("Arial", 18, "bold")
+
+def updateHeapElementsContainer(newLabels: [int]):
+    for widget in heapElementsContainer.winfo_children():
+        widget.destroy()
+
+    for _, element in enumerate(newLabels):
+        currentLabel = CTkLabel(heapElementsContainer, text=element)
+        currentLabel.pack(padx=5, anchor="w")
+
+
+def addHeapElement(element):
+    heapElements.append(element)
+    updateHeapElementsContainer(heapElements)
+
+
+def deleteHeapElement(element):
+    if element in heapElements:
+        heapElements.remove(element)
+    else:
+        print(f"{element} not in heap")
+    updateHeapElementsContainer(heapElements)
+
+
+def _heapSort():
+    if len(heapElements) == 0:
+        return
+
+    sortedHeap = heapSort(heapElements)
+    updateHeapElementsContainer(sortedHeap)
+
+
+def quickSort():
+    if len(heapElements) == 0:
+        return
+
+    sortedHeap = _quickSort(heapElements)
+    updateHeapElementsContainer(sortedHeap)
+
+
+def _quickSort(arr):
+    n = len(arr)
+    if n < 2:
+        return arr
+
+    pivot = arr[n // 2]
+    less = [x for x in arr if x < pivot]
+    equal = [x for x in arr if x == pivot]
+    more = [x for x in arr if x > pivot]
+
+    return quickSort(less) + equal + quickSort(more)
+
+
+def defaultSort():
+    if len(heapElements) == 0:
+        return
+
+    sortedHeap = sorted(heapElements)
+    updateHeapElementsContainer(sortedHeap)
+
+
+heapElements = []
+
+addHeapElementHeading = CTkLabel(
+    heapTab, text="Add Heap Element", font=("Arial", 14, "bold")
 )
-dataStructuresHeading.pack(pady=10, padx=10, anchor="w")
-
-# ! Greedy Algorithms Frame
-greedyAlgosFrame = ttk.Frame(mainContainer)
-mainContainer.add(greedyAlgosFrame, text="Greedy Algorithms")
-greedyAlgosHeading = ttk.Label(
-    greedyAlgosFrame, text="Greedy Algorithms", font=("Arial", 18, "bold")
+addHeapElementHeading.place(x=5, y=5)
+addHeapElementInput = CTkEntry(heapTab, placeholder_text="Enter element", width=350)
+addHeapElementInput.place(x=5, y=35)
+addHeapElementButton = CTkButton(
+    heapTab,
+    text="Add",
+    command=lambda: addHeapElement(int(addHeapElementInput.get())),
+    width=60,
 )
-greedyAlgosHeading.pack(pady=10, padx=10, anchor="w")
+addHeapElementButton.place(x=360, y=35)
 
-# ! Dynamic Programming Frame
-dynamicProgrammingFrame = ttk.Frame(mainContainer)
-mainContainer.add(dynamicProgrammingFrame, text="Dynamic Programming")
-dynamicProgrammingHeading = ttk.Label(
-    dynamicProgrammingFrame, text="Dynamic Programming", font=("Arial", 18, "bold")
+deleteHeapElementHeading = CTkLabel(
+    heapTab, text="Delete Heap Element", font=("Arial", 14, "bold")
 )
-dynamicProgrammingHeading.pack(pady=10, padx=10, anchor="w")
-
-# ! Graph Traversal Frame
-graphTraversalFrame = ttk.Frame(mainContainer)
-mainContainer.add(graphTraversalFrame, text="Graph Traversal")
-graphTraversalHeading = ttk.Label(
-    graphTraversalFrame, text="Graph Traversal", font=("Arial", 18, "bold")
+deleteHeapElementHeading.place(x=5, y=80)
+deleteHeapElementInput = CTkEntry(heapTab, placeholder_text="Enter index", width=350)
+deleteHeapElementInput.place(x=5, y=110)
+deleteHeapElementButton = CTkButton(
+    heapTab,
+    text="Delete",
+    command=lambda: deleteHeapElement(int(deleteHeapElementInput.get())),
+    width=60,
 )
-graphTraversalHeading.pack(pady=10, padx=10, anchor="w")
+deleteHeapElementButton.place(x=360, y=110)
 
-# ! Graph Shortest Paths Frame
-graphShortestPathFrame = ttk.Frame(mainContainer)
-mainContainer.add(graphShortestPathFrame, text="Graph Shortest Path")
-graphShortestPathHeading = ttk.Label(
-    graphShortestPathFrame, text="Graph Shortest Path", font=("Arial", 18, "bold")
+heapSortButton = CTkButton(
+    heapTab,
+    text="Heap Sort",
+    command=lambda: _heapSort(),
+    width=60,
 )
-graphShortestPathHeading.pack(pady=10, padx=10, anchor="w")
+heapSortButton.place(x=5, y=160)
+quickSortButton = CTkButton(
+    heapTab,
+    text="Quick Sort",
+    command=lambda: quickSort(),
+    width=60,
+)
+quickSortButton.place(x=90, y=160)
+basicSortButton = CTkButton(
+    heapTab,
+    text="Default Sort",
+    command=lambda: defaultSort(),
+    width=60,
+)
+basicSortButton.place(x=175, y=160)
 
-root.mainloop()
+heapElementsHeading = CTkLabel(
+    heapTab, text="Heap Elements", font=("Arial", 14, "bold")
+)
+heapElementsHeading.place(x=440, y=5)
+heapElementsContainer = CTkScrollableFrame(heapTab, width=200, height=300)
+heapElementsContainer.place(x=440, y=35)
+
+updateHeapElementsContainer(heapElements)
+
+app.mainloop()
