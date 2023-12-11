@@ -38,7 +38,7 @@ someRandomHeapJustForDemo = [
     78,
 ]
 heapElementsList = tk.Listbox(heapSortFrame)
-heapElementsList.pack(padx=10, anchor="")
+heapElementsList.pack(padx=10, anchor="e")
 for element in someRandomHeapJustForDemo:
     heapElementsList.insert(tk.END, element)
 
