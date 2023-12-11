@@ -23,15 +23,25 @@ graphTraversalTab = tabsContainer.tab("Graph Traversal")
 graphShortestPathTab = tabsContainer.tab("Graph Shortest Path")
 
 
-def updateHeapElementsContainer(newLabels):
+def updateHeapElementsContainer(newLabels: [int]):
+    for widget in heapElementsContainer.winfo_children():
+        widget.destroy()
+
     for _, element in enumerate(newLabels):
         currentLabel = CTkLabel(heapElementsContainer, text=element)
         currentLabel.pack(padx=5, anchor="w")
 
 
+def addHeapElement(element):
+    heapElements.append(element)
+    updateHeapElementsContainer(heapElements)
+
+
 def deleteHeapElement(element):
-    print(element)
-    heapElements.remove(element)
+    if element in heapElements:
+        heapElements.remove(element)
+    else:
+        print(f"{element} not in heap")
     updateHeapElementsContainer(heapElements)
 
 
@@ -41,23 +51,21 @@ addHeapElementHeading = CTkLabel(
     heapTab, text="Add Heap Element", font=("Arial", 14, "bold")
 )
 addHeapElementHeading.place(x=5, y=5)
-addHeapElementInput = CTkEntry(heapTab, placeholder_text="Enter element", width=200)
+addHeapElementInput = CTkEntry(heapTab, placeholder_text="Enter element", width=350)
 addHeapElementInput.place(x=5, y=35)
 addHeapElementButton = CTkButton(
     heapTab,
     text="Add",
-    command=lambda: updateHeapElementsContainer(
-        [addHeapElementInput.get()] + heapElements
-    ),
+    command=lambda: addHeapElement(int(addHeapElementInput.get())),
     width=60,
 )
-addHeapElementButton.place(x=210, y=35)
+addHeapElementButton.place(x=360, y=35)
 
 deleteHeapElementHeading = CTkLabel(
     heapTab, text="Delete Heap Element", font=("Arial", 14, "bold")
 )
 deleteHeapElementHeading.place(x=5, y=80)
-deleteHeapElementInput = CTkEntry(heapTab, placeholder_text="Enter index", width=200)
+deleteHeapElementInput = CTkEntry(heapTab, placeholder_text="Enter index", width=350)
 deleteHeapElementInput.place(x=5, y=110)
 deleteHeapElementButton = CTkButton(
     heapTab,
@@ -65,7 +73,7 @@ deleteHeapElementButton = CTkButton(
     command=lambda: deleteHeapElement(int(deleteHeapElementInput.get())),
     width=60,
 )
-deleteHeapElementButton.place(x=210, y=110)
+deleteHeapElementButton.place(x=360, y=110)
 
 heapElementsHeading = CTkLabel(
     heapTab, text="Heap Elements", font=("Arial", 14, "bold")
