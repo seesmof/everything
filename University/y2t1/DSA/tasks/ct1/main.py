@@ -347,6 +347,7 @@ def updateLinkedListElementsContainer():
 
 def addLinkedListNode(data):
     if linkedListElements.search(data):
+        AlertPopup(f"Element {data} already exists in linked list")
         return
 
     linkedListElements.append(data)
@@ -359,6 +360,13 @@ def deleteLinkedListNode(data):
         return
 
     updateLinkedListElementsContainer()
+
+
+def searchLinkedListNode(data):
+    if linkedListElements.search(data):
+        AlertPopup(f"Element {data} found in linked list")
+    else:
+        AlertPopup(f"Element {data} not found in linked list")
 
 
 def saveLinkedListOnExit():
@@ -421,6 +429,28 @@ deleteLinkedListNodeButton = CTkButton(
     font=("Arial", 12, "bold"),
 )
 deleteLinkedListNodeButton.place(x=360, y=230)
+
+searchLinkedListNodeHeading = CTkLabel(
+    heapTab, text="Search Linked List Node", font=("Arial", 14, "bold")
+)
+searchLinkedListNodeHeading.place(x=5, y=270)
+
+searchLinkedListNodeInput = CTkEntry(
+    heapTab, placeholder_text="Enter element...", width=350
+)
+searchLinkedListNodeInput.place(x=5, y=300)
+
+searchLinkedListNodeButton = CTkButton(
+    heapTab,
+    text="Search",
+    command=lambda: searchLinkedListNode(int(searchLinkedListNodeInput.get())),
+    width=60,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+)
+searchLinkedListNodeButton.place(x=360, y=300)
 
 linkedListElements = DoublyLinkedList()
 loadLinkedListOnStart()
