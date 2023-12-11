@@ -1,5 +1,6 @@
 from customtkinter import *
 from Heap import *
+import time
 
 
 class AlertPopup(CTkToplevel):
@@ -126,20 +127,10 @@ def deleteHeapElement():
     updateHeapElementsContainer()
 
 
-def sortHeap_HeapSort():
-    if len(heapElements.heap) == 0:
-        return
-
-    heapElements.heap = heapElements.sort()
-    updateHeapElementsContainer()
-
-
-def sortHeap_QuickSort():
-    if len(heapElements.heap) == 0:
-        return
-
-    heapElements.heap = _quickSortUtil(heapElements.heap)
-    updateHeapElementsContainer()
+def showSortingTimeAlert(sortingTime: str):
+    AlertPopup(
+        f"Sorting took {sortingTime:.2f} seconds or {sortingTime*1000:.2f} milliseconds"
+    )
 
 
 def _quickSortUtil(arr):
@@ -155,12 +146,43 @@ def _quickSortUtil(arr):
     return _quickSortUtil(more) + equal + _quickSortUtil(less)
 
 
+def sortHeap_HeapSort():
+    if len(heapElements.heap) == 0:
+        return
+
+    startTimer = time.time()
+    heapElements.heap = heapElements.sort()
+    time.sleep(0.1)
+    endTimer = time.time()
+    sortingTime = endTimer - startTimer
+    updateHeapElementsContainer()
+    showSortingTimeAlert(sortingTime=sortingTime)
+
+
+def sortHeap_QuickSort():
+    if len(heapElements.heap) == 0:
+        return
+
+    startTimer = time.time()
+    heapElements.heap = _quickSortUtil(heapElements.heap)
+    time.sleep(0.1)
+    endTimer = time.time()
+    sortingTime = endTimer - startTimer
+    updateHeapElementsContainer()
+    showSortingTimeAlert(sortingTime=sortingTime)
+
+
 def sortHeap_DefaultSort():
     if len(heapElements.heap) == 0:
         return
 
+    startTimer = time.time()
     heapElements.heap = sorted(heapElements.heap, reverse=True)
+    time.sleep(0.1)
+    endTimer = time.time()
+    sortingTime = endTimer - startTimer
     updateHeapElementsContainer()
+    showSortingTimeAlert(sortingTime=sortingTime)
 
 
 heapElements = Heap()
