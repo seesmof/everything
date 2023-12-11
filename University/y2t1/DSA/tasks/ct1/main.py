@@ -46,8 +46,8 @@ graphShortestPathTab = tabsContainer.tab("Graph Shortest Path")
 
 # ! HEAP
 # TODO add files for storing elements
-# TODO integrate heap class into it and use it to store heap
 # TODO time the time it takes to sort and output - for each sorting
+# TODO perhaps figure out how to lay out heap elements horizontally
 class Heap:
     def __init__(self):
         self.heap = []
@@ -66,8 +66,7 @@ class Heap:
 
     def sort(self):
         sortedItems = []
-        size = len(self.heap)
-        for _ in range(size):
+        for _ in range(len(self.heap)):
             sortedItems.append(self.delete())
         return sortedItems
 
@@ -108,9 +107,6 @@ class Heap:
     def _swap(self, i, j):
         self.heap[i], self.heap[j] = self.heap[j], self.heap[i]
 
-    def __len__(self):
-        return len(self.heap)
-
 
 def updateHeapElementsContainer():
     for widget in heapElementsContainer.winfo_children():
@@ -132,7 +128,7 @@ def deleteHeapElement():
 
 
 def sortHeap_HeapSort():
-    if len(heapElements) == 0:
+    if len(heapElements.heap) == 0:
         return
 
     heapElements.heap = heapElements.sort()
@@ -140,7 +136,7 @@ def sortHeap_HeapSort():
 
 
 def sortHeap_QuickSort():
-    if len(heapElements) == 0:
+    if len(heapElements.heap) == 0:
         return
 
     heapElements.heap = _quickSortUtil(heapElements.heap)
@@ -174,13 +170,10 @@ heapSortingButtonsContainer = CTkFrame(heapTab, fg_color="transparent", width=30
 addHeapElementHeading = CTkLabel(
     heapTab, text="Add Heap Element", font=("Arial", 14, "bold")
 )
-deleteHeapElementHeading = CTkLabel(
-    heapTab, text="Delete Heap Element", font=("Arial", 14, "bold")
-)
 heapElementsHeading = CTkLabel(
     heapTab, text="Heap Elements", font=("Arial", 14, "bold")
 )
-addHeapElementInput = CTkEntry(heapTab, placeholder_text="Enter element", width=350)
+addHeapElementInput = CTkEntry(heapTab, placeholder_text="Enter element...", width=350)
 addHeapElementButton = CTkButton(
     heapTab,
     text="Add",
@@ -207,17 +200,16 @@ sortHeap_HeapSortButton = CTkButton(
 )
 deleteHeapElementButton = CTkButton(
     heapTab,
-    text="Delete",
+    text="Delete Element",
     command=lambda: deleteHeapElement(),
-    width=60,
+    width=120,
 )
 
 addHeapElementHeading.place(x=5, y=5)
 addHeapElementInput.place(x=5, y=35)
 addHeapElementButton.place(x=360, y=35)
-deleteHeapElementHeading.place(x=5, y=80)
-deleteHeapElementButton.place(x=10, y=110)
-heapSortingButtonsContainer.place(x=5, y=160)
+deleteHeapElementButton.place(x=300, y=80)
+heapSortingButtonsContainer.place(x=0, y=80)
 sortHeap_DefaultSortButton.pack(padx=5, side="left")
 sortHeap_QuickSortButton.pack(padx=5, side="left")
 sortHeap_HeapSortButton.pack(padx=5, side="left")
