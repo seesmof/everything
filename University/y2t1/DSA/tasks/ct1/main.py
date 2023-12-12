@@ -455,6 +455,98 @@ searchLinkedListNodeButton.place(x=360, y=300)
 linkedListElements = DoublyLinkedList()
 loadLinkedListOnStart()
 
+
+# ! HASH TABLE
+class HashTable:
+    def __init__(self, size=10):
+        self.size = size
+        self.table = [[] for _ in range(self.size)]
+
+    def hash(self, key):
+        return int((key * ((5**0.5 - 1) / 2) % 1) * self.size)
+
+    def insert(self, key, value):
+        self.table[self.hash(key)].append((key, value))
+
+    def delete(self, key):
+        chain = self.table[self.hash(key)]
+        for i, kv in enumerate(chain):
+            if kv[0] == key:
+                del chain[i]
+                return True
+        return False
+
+    def search(self, key):
+        chain = self.table[self.hash(key)]
+        for kv in chain:
+            if kv[0] == key:
+                return kv[1]
+        return None
+
+
+addHashTableElementHeading = CTkLabel(
+    dataStructuresTab, text="Add Hash Table Element", font=("Arial", 14, "bold")
+)
+addHashTableElementHeading.place(x=5, y=5)
+
+addHashTableElementInput = CTkEntry(
+    dataStructuresTab, placeholder_text="Enter key and value...", width=350
+)
+addHashTableElementInput.place(x=5, y=35)
+
+addHashTableElementButton = CTkButton(
+    dataStructuresTab,
+    text="Add",
+    width=60,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+)
+addHashTableElementButton.place(x=360, y=35)
+
+deleteHashTableElementHeading = CTkLabel(
+    dataStructuresTab, text="Delete Hash Table Element", font=("Arial", 14, "bold")
+)
+deleteHashTableElementHeading.place(x=5, y=75)
+
+deleteHashTableElementInput = CTkEntry(
+    dataStructuresTab, placeholder_text="Enter key...", width=350
+)
+deleteHashTableElementInput.place(x=5, y=105)
+
+deleteHashTableElementButton = CTkButton(
+    dataStructuresTab,
+    text="Delete",
+    width=60,
+    fg_color="#D32F2F",
+    hover_color="#B71C1C",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+)
+deleteHashTableElementButton.place(x=360, y=105)
+
+searchHashTableElementHeading = CTkLabel(
+    dataStructuresTab, text="Search Hash Table Element", font=("Arial", 14, "bold")
+)
+searchHashTableElementHeading.place(x=5, y=145)
+
+searchHashTableElementInput = CTkEntry(
+    dataStructuresTab, placeholder_text="Enter key...", width=350
+)
+searchHashTableElementInput.place(x=5, y=175)
+
+searchHashTableElementButton = CTkButton(
+    dataStructuresTab,
+    text="Search",
+    width=60,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+)
+searchHashTableElementButton.place(x=360, y=175)
+
 app.mainloop()
 saveHeapOnExit()
 saveLinkedListOnExit()
