@@ -562,7 +562,7 @@ heapTaskEmployeesData = []
 
 
 #! HASH TABLE
-# TODO add backwards hash function to show the original key
+# TODO make a dictionary where you substitute the hash key with the original value and use that just for output instead
 class HashTable:
     def __init__(self, size=15):
         self.size = size
@@ -589,28 +589,20 @@ class HashTable:
                 return True
         return False
 
-    def getList(self):
-        res = []
-        for chain in self.table:
-            if chain:
-                for pair in chain:
-                    res.append(pair)
-        return res
-
 
 def updateHashTableElementsContainer():
     for widget in hashTableElementsContainer.winfo_children():
         widget.destroy()
 
-    for el in hashTableElements.getList():
-        elementText = f"{el[0]} - {el[1]}"
+    for key, value in hashTableElementsList.items():
+        elementText = f"{key} - {value}"
         currentLabel = CTkLabel(hashTableElementsContainer, text=elementText)
         currentLabel.pack(padx=5, anchor="w")
 
 
 def addHashTableElement(keyValuePair):
     key, value = keyValuePair.split(" ")
-    # TODO check if key contains letters, if so only then convert to this sum of values else write like that
+    hashTableElementsList[key] = value
     key = sum(ord(c) for c in key)
 
     hashTableElements.insert(key, value)
@@ -618,6 +610,7 @@ def addHashTableElement(keyValuePair):
 
 
 def deleteHashTableKey(key):
+    del hashTableElementsList[key]
     key = sum(ord(c) for c in key)
 
     res = hashTableElements.delete(key)
@@ -628,28 +621,31 @@ def deleteHashTableKey(key):
 
 
 def searchHashTableKey(key):
-    key = sum(ord(c) for c in key)
+    covertedKey = sum(ord(c) for c in key)
 
-    res = hashTableElements.search(key)
+    res = hashTableElements.search(covertedKey)
     AlertPopup(f"{key} is in the dictionary") if res else AlertPopup(
         f"{key} is NOT in the dictionary"
     )
 
 
 def saveHashTableOnExit():
-    if len(hashTableElements.getList()) == 0:
+    if len(hashTableElementsList) == 0:
         return
     with open("hashTable.json", "w") as f:
-        json.dump(hashTableElements.getList(), f)
+        json.dump(hashTableElementsList, f)
 
 
 def loadHashTableOnStart():
     try:
         with open("hashTable.json", "r") as f:
             res = json.load(f)
-            for pair in res:
-                hashTableElements.insert(pair[0], pair[1])
-            updateHashTableElementsContainer()
+            print(res)
+            for key, value in res.items():
+                pair = f"{key} {value}"
+                addHashTableElement(pair)
+
+                hashTableElementsList[key] = value
     except:
         AlertPopup("Failed to load Hash Table data")
 
@@ -758,6 +754,7 @@ searchHashTableElementButton = CTkButton(
 )
 searchHashTableElementButton.place(x=390, y=35)
 
+hashTableElementsList = dict()
 hashTableElements = HashTable()
 loadHashTableOnStart()
 
