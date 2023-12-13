@@ -164,6 +164,7 @@ def btree_task():
     t = BTree(3)
 
     # Add subscribers
+    """
     subscribers = []
     num_subscribers = int(input("Enter the number of subscribers: "))
     print()
@@ -173,7 +174,9 @@ def btree_task():
         tariff = input("Enter the tariff: ")
         print()
         subscribers.append(Subscriber(phone, name, tariff))
+    """
 
+    global subscribers
     for subscriber in subscribers:
         t.insert_key((subscriber.phone, subscriber.to_dict()))
 

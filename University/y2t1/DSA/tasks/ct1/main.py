@@ -200,15 +200,15 @@ def loadHeapOnStart():
         pass
 
 
-outputBoxesContainer = CTkTabview(heapTab, width=210, height=290)
-outputBoxesContainer.add("Heap")
-outputBoxesContainer.add("Linked List")
-outputBoxesContainer.add("Task")
-outputBoxesContainer.place(x=430, y=5)
+heapOutputBoxesContainer = CTkTabview(heapTab, width=210, height=290)
+heapOutputBoxesContainer.add("Heap")
+heapOutputBoxesContainer.add("Linked List")
+heapOutputBoxesContainer.add("Task")
+heapOutputBoxesContainer.place(x=430, y=5)
 
-heapElementsTab = outputBoxesContainer.tab("Heap")
-linkedListElementsTab = outputBoxesContainer.tab("Linked List")
-heapTaskElementsTab = outputBoxesContainer.tab("Task")
+heapElementsTab = heapOutputBoxesContainer.tab("Heap")
+linkedListElementsTab = heapOutputBoxesContainer.tab("Linked List")
+heapTaskElementsTab = heapOutputBoxesContainer.tab("Task")
 
 heapElementsContainer = CTkScrollableFrame(heapElementsTab, width=210, height=260)
 heapElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
@@ -587,6 +587,37 @@ class HashTable:
             if kv[0] == key:
                 return kv[1]
         return None
+
+
+hashOutputBoxesContainer = CTkTabview(dataStructuresTab, width=210, height=290)
+hashOutputBoxesContainer.add("Hash Table")
+hashOutputBoxesContainer.add("B-Tree")
+hashOutputBoxesContainer.add("Task A")
+hashOutputBoxesContainer.add("Task B")
+hashOutputBoxesContainer.place(x=430, y=5)
+
+hashTableElementsTab = hashOutputBoxesContainer.tab("Hash Table")
+bTreeElementsTab = hashOutputBoxesContainer.tab("B-Tree")
+hashTaskElementsTab = hashOutputBoxesContainer.tab("Task A")
+bTreeTaskElementsTab = hashOutputBoxesContainer.tab("Task B")
+
+hashTableElementsContainer = CTkScrollableFrame(
+    hashTableElementsTab, width=210, height=260
+)
+hashTableElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
+
+bTreeElementsContainer = CTkScrollableFrame(bTreeElementsTab, width=210, height=260)
+bTreeElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
+
+hashTaskElementsContainer = CTkScrollableFrame(
+    hashTaskElementsTab, width=210, height=260
+)
+hashTaskElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
+
+bTreeTaskElementsContainer = CTkScrollableFrame(
+    bTreeTaskElementsTab, width=210, height=260
+)
+bTreeTaskElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
 
 
 addHashTableElementHeading = CTkLabel(
