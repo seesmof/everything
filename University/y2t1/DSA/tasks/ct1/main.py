@@ -681,12 +681,12 @@ bTreeTaskElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
 
 
 addHashTableElementHeading = CTkLabel(
-    dataStructuresTab, text="Add Dictionary Element", font=("Arial", 14, "bold")
+    dataStructuresTab, text="Add Pair", font=("Arial", 14, "bold")
 )
 addHashTableElementHeading.place(x=5, y=5)
 
 addHashTableElementInput = CTkEntry(
-    dataStructuresTab, placeholder_text="Key & Value...", width=110
+    dataStructuresTab, placeholder_text="Key & Val...", width=75
 )
 addHashTableElementInput.place(x=5, y=35)
 
@@ -702,17 +702,17 @@ addHashTableElementButton = CTkButton(
     if addHashTableElementInput.get()
     else AlertPopup("Input box is empty"),
 )
-addHashTableElementButton.place(x=120, y=35)
+addHashTableElementButton.place(x=85, y=35)
 
 deleteHashTableElementHeading = CTkLabel(
     dataStructuresTab, text="Delete Key", font=("Arial", 14, "bold")
 )
-deleteHashTableElementHeading.place(x=180, y=5)
+deleteHashTableElementHeading.place(x=150, y=5)
 
 deleteHashTableElementInput = CTkEntry(
     dataStructuresTab, placeholder_text="Key...", width=75
 )
-deleteHashTableElementInput.place(x=180, y=35)
+deleteHashTableElementInput.place(x=150, y=35)
 
 deleteHashTableElementButton = CTkButton(
     dataStructuresTab,
@@ -726,23 +726,22 @@ deleteHashTableElementButton = CTkButton(
     if deleteHashTableElementInput.get()
     else AlertPopup("Input box is empty"),
 )
-deleteHashTableElementButton.place(x=260, y=35)
+deleteHashTableElementButton.place(x=230, y=35)
 
-# TODO replace this with just a button that would open an input field cause there's not enough horizontal space for it here
 searchHashTableElementHeading = CTkLabel(
     dataStructuresTab, text="Search Key", font=("Arial", 14, "bold")
 )
-searchHashTableElementHeading.place(x=320, y=5)
+searchHashTableElementHeading.place(x=295, y=5)
 
 searchHashTableElementInput = CTkEntry(
-    dataStructuresTab, placeholder_text="Key...", width=65
+    dataStructuresTab, placeholder_text="Key...", width=75
 )
-searchHashTableElementInput.place(x=320, y=35)
+searchHashTableElementInput.place(x=295, y=35)
 
 searchHashTableElementButton = CTkButton(
     dataStructuresTab,
-    text="Run",
-    width=40,
+    text="Search",
+    width=45,
     fg_color="#1976D2",
     hover_color="#0D47A1",
     text_color="white",
@@ -751,7 +750,7 @@ searchHashTableElementButton = CTkButton(
     if searchHashTableElementInput.get()
     else AlertPopup("Input box is empty"),
 )
-searchHashTableElementButton.place(x=390, y=35)
+searchHashTableElementButton.place(x=375, y=35)
 
 hashTableElementsList = []
 hashTableElements = HashTable()
@@ -1085,7 +1084,7 @@ def hashTaskSearch(givenName):
 
 
 hashTaskLoadDataHeading = CTkLabel(
-    dataStructuresTab, text="Load employees JSON", font=("Arial", 14, "bold")
+    dataStructuresTab, text="Load employees MD", font=("Arial", 14, "bold")
 )
 hashTaskLoadDataHeading.place(x=5, y=215)
 
@@ -1109,7 +1108,7 @@ hashTaskLoadDataButton = CTkButton(
 hashTaskLoadDataButton.place(x=120, y=245)
 
 hashTaskSearchHeading = CTkLabel(
-    dataStructuresTab, text="Perform search", font=("Arial", 14, "bold")
+    dataStructuresTab, text="Find position", font=("Arial", 14, "bold")
 )
 hashTaskSearchHeading.place(x=185, y=215)
 
