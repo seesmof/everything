@@ -594,15 +594,16 @@ def updateHashTableElementsContainer():
     for widget in hashTableElementsContainer.winfo_children():
         widget.destroy()
 
-    for key, value in hashTableElementsList.items():
+    for pair in hashTableElementsList:
+        key, value = pair.split(" ")
         elementText = f"{key} - {value}"
         currentLabel = CTkLabel(hashTableElementsContainer, text=elementText)
         currentLabel.pack(padx=5, anchor="w")
 
 
 def addHashTableElement(keyValuePair):
+    hashTableElementsList.append(keyValuePair)
     key, value = keyValuePair.split(" ")
-    hashTableElementsList[key] = value
     key = sum(ord(c) for c in key)
 
     hashTableElements.insert(key, value)
@@ -610,10 +611,13 @@ def addHashTableElement(keyValuePair):
 
 
 def deleteHashTableKey(key):
-    del hashTableElementsList[key]
-    key = sum(ord(c) for c in key)
+    for el in hashTableElementsList:
+        if el.split(" ")[0] == key:
+            hashTableElementsList.remove(el)
+            break
+    convertedKey = sum(ord(c) for c in key)
 
-    res = hashTableElements.delete(key)
+    res = hashTableElements.delete(convertedKey)
     if not res:
         AlertPopup(f"Failed to delete {key}")
 
@@ -640,12 +644,8 @@ def loadHashTableOnStart():
     try:
         with open("hashTable.json", "r") as f:
             res = json.load(f)
-            print(res)
-            for key, value in res.items():
-                pair = f"{key} {value}"
+            for pair in res:
                 addHashTableElement(pair)
-
-                hashTableElementsList[key] = value
     except:
         AlertPopup("Failed to load Hash Table data")
 
@@ -754,7 +754,7 @@ searchHashTableElementButton = CTkButton(
 )
 searchHashTableElementButton.place(x=390, y=35)
 
-hashTableElementsList = dict()
+hashTableElementsList = []
 hashTableElements = HashTable()
 loadHashTableOnStart()
 
