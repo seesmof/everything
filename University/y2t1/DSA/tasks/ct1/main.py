@@ -785,10 +785,6 @@ class BTree:
         else:
             self._insertNonFull(root, key)
 
-    def delete(self, key):
-        # TODO add deletion function
-        pass
-
     def searchKey(self, key, nodeA=None):
         if nodeA is not None:
             index = 0
@@ -802,19 +798,6 @@ class BTree:
                 return self.searchKey(key, nodeA.child[index])
         else:
             return self.searchKey(key, self.root)
-
-    def getList(self, nodeA, length):
-        res = []
-
-        for node in nodeA:
-            res.append(node)
-
-        length += 1
-        if len(nodeA.child) > 0:
-            for node in nodeA.child:
-                self.getList(node, length)
-
-        return res
 
     def _insertNonFull(self, nodeA, key):
         i = len(nodeA.keys) - 1
@@ -851,36 +834,43 @@ def updateBTreeElementsContainer():
     for widget in bTreeElementsContainer.winfo_children():
         widget.destroy()
 
-    # TODO fix this thing not working
-    for node in bTreeElements.getList(bTreeElements.root, len(bTreeElements.root.keys)):
-        print(node)
+    for node in bTreeElementsList:
         currentLabel = CTkLabel(bTreeElementsContainer, text=node)
-        currentLabel.pack(padx=5, anchow="w")
+        currentLabel.pack(padx=5, anchor="w")
 
 
 def addBTreeNode(data):
     bTreeElements.insert(data)
-    # updateBTreeElementsContainer()
-
-
-def deleteBTreeNode(data):
-    pass
+    bTreeElementsList.append(data)
+    updateBTreeElementsContainer()
 
 
 def searchBTreeNode(data):
+    # TODO fix search not working for values >10
     isFound, node, index = bTreeElements.searchKey(data)
 
-    AlertPopup(f"{data} is in the B-Tree") if isFound else AlertPopup(
-        f"{data} is NOT in the B-Tree"
-    )
+    if isFound:
+        AlertPopup(f"{data} is in the B-Tree")
+    else:
+        AlertPopup(f"{data} is NOT in the B-Tree")
 
 
 def saveBTreeOnExit():
-    pass
+    print(bTreeElementsList)
+    if len(bTreeElementsList) == 0:
+        return
+    with open("bTree.json", "w") as file:
+        json.dump(bTreeElementsList, file)
 
 
 def loadBTreeOnStart():
-    pass
+    try:
+        with open("bTree.json", "r") as file:
+            res = json.load(file)
+            for element in res:
+                addBTreeNode(element)
+    except:
+        AlertPopup("Failed to load B-Tree elements")
 
 
 addBTreeNodeHeading = CTkLabel(
@@ -949,7 +939,9 @@ searchBTreeNodeButton = CTkButton(
 )
 searchBTreeNodeButton.place(x=375, y=105)
 
+bTreeElementsList = []
 bTreeElements = BTree(3)
+loadBTreeOnStart()
 
 
 #! B-TREE TASK
@@ -1064,3 +1056,4 @@ app.mainloop()
 saveHeapOnExit()
 saveLinkedListOnExit()
 saveHashTableOnExit()
+saveBTreeOnExit()
