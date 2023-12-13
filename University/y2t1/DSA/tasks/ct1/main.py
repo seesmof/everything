@@ -235,7 +235,9 @@ addHeapElementInput.place(x=5, y=35)
 addHeapElementButton = CTkButton(
     heapTab,
     text="Add",
-    command=lambda: addHeapElement(int(addHeapElementInput.get())),
+    command=lambda: addHeapElement(int(addHeapElementInput.get()))
+    if addHeapElementInput.get()
+    else AlertPopup("Input field is empty"),
     width=60,
     fg_color="#28A228",
     hover_color="#1F7D1F",
@@ -355,7 +357,7 @@ def updateLinkedListElementsContainer():
 
 def addLinkedListNode(data):
     if linkedListElements.search(data):
-        AlertPopup(f"Element {data} already exists in linked list")
+        AlertPopup(f"{data} already exists in linked list")
         return
 
     linkedListElements.append(data)
@@ -364,7 +366,7 @@ def addLinkedListNode(data):
 
 def deleteLinkedListNode(data):
     if not linkedListElements.delete(data):
-        AlertPopup(f"Element {data} not found in linked list")
+        AlertPopup(f"{data} is NOT found in a list")
         return
 
     updateLinkedListElementsContainer()
@@ -372,9 +374,9 @@ def deleteLinkedListNode(data):
 
 def searchLinkedListNode(data):
     if linkedListElements.search(data):
-        AlertPopup(f"Element {data} found in linked list")
+        AlertPopup(f"{data} is found in a list")
     else:
-        AlertPopup(f"Element {data} not found in linked list")
+        AlertPopup(f"{data} is NOT found in a list")
 
 
 def saveLinkedListOnExit():
@@ -405,7 +407,9 @@ addLinkedListNodeInput.place(x=5, y=160)
 addLinkedListNodeButton = CTkButton(
     heapTab,
     text="Add",
-    command=lambda: addLinkedListNode(int(addLinkedListNodeInput.get())),
+    command=lambda: addLinkedListNode(int(addLinkedListNodeInput.get()))
+    if addLinkedListNodeInput.get()
+    else AlertPopup("Input field is empty"),
     width=45,
     fg_color="#28A228",
     hover_color="#1F7D1F",
@@ -425,7 +429,9 @@ deleteLinkedListNodeInput.place(x=145, y=160)
 deleteLinkedListNodeButton = CTkButton(
     heapTab,
     text="Delete",
-    command=lambda: deleteLinkedListNode(int(deleteLinkedListNodeInput.get())),
+    command=lambda: deleteLinkedListNode(int(deleteLinkedListNodeInput.get()))
+    if deleteLinkedListNodeInput.get()
+    else AlertPopup("Input field is empty"),
     width=45,
     fg_color="#D32F2F",
     hover_color="#B71C1C",
@@ -445,7 +451,9 @@ searchLinkedListNodeInput.place(x=290, y=160)
 searchLinkedListNodeButton = CTkButton(
     heapTab,
     text="Search",
-    command=lambda: searchLinkedListNode(int(searchLinkedListNodeInput.get())),
+    command=lambda: searchLinkedListNode(int(searchLinkedListNodeInput.get()))
+    if searchLinkedListNodeInput.get()
+    else AlertPopup("Input field is empty"),
     width=45,
     fg_color="#1976D2",
     hover_color="#0D47A1",
@@ -532,14 +540,16 @@ heapTaskLoadEmployeesDataButton = CTkButton(
     hover_color="#0D47A1",
     text_color="white",
     font=("Arial", 12, "bold"),
-    command=lambda: heapTaskLoadEmployeesData(heapTaskLoadEmployeesDataInput.get()),
+    command=lambda: heapTaskLoadEmployeesData(heapTaskLoadEmployeesDataInput.get())
+    if heapTaskLoadEmployeesDataInput.get()
+    else AlertPopup("Input field is empty"),
 )
 heapTaskLoadEmployeesDataButton.place(x=150, y=240)
 
 heapTaskShowResultsButton = CTkButton(
     heapTab,
     text="Show Results",
-    width=100,
+    width=120,
     fg_color="#28A228",
     hover_color="#1F7D1F",
     text_color="white",
