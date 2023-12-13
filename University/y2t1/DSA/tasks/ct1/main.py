@@ -45,7 +45,7 @@ graphTraversalTab = tabsContainer.tab("Graph Traversal")
 graphShortestPathTab = tabsContainer.tab("Graph Shortest Path")
 
 
-# ! HEAP
+#! HEAP
 class Heap:
     def __init__(self):
         self.heap = []
@@ -289,7 +289,7 @@ heapElements = Heap()
 loadHeapOnStart()
 
 
-# ! DOUBLY LINKED LIST
+#! DOUBLY LINKED LIST
 class DoublyLinkedList:
     class LinkedListNode:
         def __init__(self, data=None):
@@ -466,7 +466,7 @@ linkedListElements = DoublyLinkedList()
 loadLinkedListOnStart()
 
 
-# ! HEAP TASK - EMPLOYEES
+#! HEAP TASK - EMPLOYEES
 def updateHeapTaskElementsContainer():
     for widget in heapTaskElementsContainer.winfo_children():
         widget.destroy()
@@ -561,7 +561,7 @@ heapTaskShowResultsButton.place(x=220, y=240)
 heapTaskEmployeesData = []
 
 
-# ! HASH TABLE
+#! HASH TABLE
 # TODO add backwards hash function to show the original key
 class HashTable:
     def __init__(self, size=15):
@@ -733,6 +733,7 @@ deleteHashTableElementButton = CTkButton(
 )
 deleteHashTableElementButton.place(x=260, y=35)
 
+# TODO replace this with just a button that would open an input field cause there's not enough horizontal space for it here
 searchHashTableElementHeading = CTkLabel(
     dataStructuresTab, text="Search Key", font=("Arial", 14, "bold")
 )
@@ -759,6 +760,146 @@ searchHashTableElementButton.place(x=390, y=35)
 
 hashTableElements = HashTable()
 loadHashTableOnStart()
+
+
+#! B-TREE
+class BTree:
+    class BTreeNode:
+        def __init__(self, leaf=False):
+            self.leaf = leaf
+            self.keys = []
+            self.child = []
+
+    def __init__(self, t):
+        self.root = self.BTreeNode(True)
+        self.t = t
+
+    def insert(self, key):
+        root = self.root
+        if len(root.keys) == (2 * self.t) - 1:
+            tempNode = self.BTreeNode()
+            self.root = tempNode
+            tempNode.child.insert(0, root)
+            self._splitChild(tempNode, 0)
+            self._insertNonFull(tempNode, key)
+        else:
+            self._insertNonFull(root, key)
+
+    def delete(self, key):
+        # TODO add deletion function
+        pass
+
+    def searchKey(self, key, nodeA=None):
+        if nodeA is not None:
+            index = 0
+            while index < len(nodeA.keys) and key > nodeA.keys[index][0]:
+                index += 1
+            if index < len(nodeA.keys) and key == nodeA.keys[index][0]:
+                return (True, nodeA, index)
+            elif nodeA.leaf:
+                return (False, nodeA, index)
+            else:
+                return self.searchKey(key, nodeA.child[index])
+        else:
+            return self.searchKey(key, self.root)
+
+    def getList(self, nodeA, length):
+        res = []
+
+        for node in nodeA:
+            res.append(node)
+
+        length += 1
+        if len(nodeA.child) > 0:
+            for node in nodeA.child:
+                self.getList(node, length)
+
+        return res
+
+    def _insertNonFull(self, nodeA, key):
+        i = len(nodeA.keys) - 1
+        if nodeA.leaf:
+            nodeA.keys.append((None, None))
+            while i >= 0 and key < nodeA.keys[i]:
+                nodeA.keys[i + 1] = nodeA.keys[i]
+                i -= 1
+            nodeA.keys[i + 1] = key
+        else:
+            while i >= 0 and key < nodeA.keys[i]:
+                i -= 1
+            i += 1
+            if len(nodeA.child[i].keys) == (2 * self.t) - 1:
+                self._splitChild(nodeA, i)
+                if key > nodeA.keys[i]:
+                    i += 1
+            self._insertNonFull(nodeA.child[i], key)
+
+    def _splitChild(self, nodeA, index):
+        t = self.t
+        nodeB = nodeA.child[index]
+        nodeC = self.BTreeNode(nodeB.leaf)
+        nodeA.child.insert(index + 1, nodeC)
+        nodeA.keys.insert(index, nodeB.keys[t - 1])
+        nodeC.keys = nodeB.keys[t : (2 * t) - 1]
+        nodeB.keys = nodeB.keys[0 : t - 1]
+        if not nodeB.leaf:
+            nodeC.child = nodeB.child[t : 2 * t]
+            nodeB.child = nodeB.child[0 : t - 1]
+
+
+def updateBTreeElementsContainer():
+    for widget in bTreeElementsContainer.winfo_children():
+        widget.destroy()
+
+    for node in bTreeElements.getList():
+        print(node)
+        currentLabel = CTkLabel(bTreeElementsContainer, text=node)
+        currentLabel.pack(padx=5, anchow="w")
+
+
+def addBTreeNode(node):
+    pass
+
+
+def deleteBTreeNode(node):
+    pass
+
+
+def searchBTreeNode(node):
+    pass
+
+
+def saveBTreeOnExit():
+    pass
+
+
+def loadBTreeOnStart():
+    pass
+
+
+addBTreeNodeHeading = CTkLabel(
+    dataStructuresTab, text="Add Node", font=("Arial", 14, "bold")
+)
+addBTreeNodeHeading.place(x=5, y=75)
+
+addBTreeNodeInput = CTkEntry(dataStructuresTab, placeholder_text="Node...", width=76)
+addBTreeNodeInput.place(x=5, y=105)
+
+addBTreeNodeButton = CTkButton(
+    dataStructuresTab,
+    text="Add",
+    command=lambda: addBTreeNode(addBTreeNodeInput.get())
+    if addBTreeNodeInput.get()
+    else AlertPopup("Input box is empty"),
+    width=45,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+)
+addBTreeNodeButton.place(x=85, y=105)
+
+bTreeElements = BTree(3)
 
 app.mainloop()
 saveHeapOnExit()
