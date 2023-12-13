@@ -1,0 +1,6 @@
+- for the first element on the page set x,y to 5,5
+- vertical spacing betwee heading and input is 30
+- horizontal spacing between two subsection is 65
+- horizontal spacing between input and button is 80
+- width of input is 75
+- width of button is 45

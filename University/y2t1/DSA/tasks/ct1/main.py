@@ -851,22 +851,28 @@ def updateBTreeElementsContainer():
     for widget in bTreeElementsContainer.winfo_children():
         widget.destroy()
 
-    for node in bTreeElements.getList():
+    # TODO fix this thing not working
+    for node in bTreeElements.getList(bTreeElements.root, len(bTreeElements.root.keys)):
         print(node)
         currentLabel = CTkLabel(bTreeElementsContainer, text=node)
         currentLabel.pack(padx=5, anchow="w")
 
 
-def addBTreeNode(node):
+def addBTreeNode(data):
+    bTreeElements.insert(data)
+    # updateBTreeElementsContainer()
+
+
+def deleteBTreeNode(data):
     pass
 
 
-def deleteBTreeNode(node):
-    pass
+def searchBTreeNode(data):
+    isFound, node, index = bTreeElements.searchKey(data)
 
-
-def searchBTreeNode(node):
-    pass
+    AlertPopup(f"{data} is in the B-Tree") if isFound else AlertPopup(
+        f"{data} is NOT in the B-Tree"
+    )
 
 
 def saveBTreeOnExit():
@@ -882,7 +888,7 @@ addBTreeNodeHeading = CTkLabel(
 )
 addBTreeNodeHeading.place(x=5, y=75)
 
-addBTreeNodeInput = CTkEntry(dataStructuresTab, placeholder_text="Node...", width=76)
+addBTreeNodeInput = CTkEntry(dataStructuresTab, placeholder_text="Node...", width=75)
 addBTreeNodeInput.place(x=5, y=105)
 
 addBTreeNodeButton = CTkButton(
@@ -898,6 +904,50 @@ addBTreeNodeButton = CTkButton(
     font=("Arial", 12, "bold"),
 )
 addBTreeNodeButton.place(x=85, y=105)
+
+deleteBTreeNodeHeading = CTkLabel(
+    dataStructuresTab, text="Delete Node", font=("Arial", 14, "bold")
+)
+deleteBTreeNodeHeading.place(x=150, y=75)
+
+deleteBTreeNodeInput = CTkEntry(dataStructuresTab, placeholder_text="Node...", width=75)
+deleteBTreeNodeInput.place(x=150, y=105)
+
+deleteBTreeNodeButton = CTkButton(
+    dataStructuresTab,
+    text="Delete",
+    command=lambda: deleteBTreeNode(deleteBTreeNodeInput.get())
+    if deleteBTreeNodeInput.get()
+    else AlertPopup("Input box is empty"),
+    width=45,
+    fg_color="#D32F2F",
+    hover_color="#B71C1C",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+)
+deleteBTreeNodeButton.place(x=230, y=105)
+
+searchBTreeNodeHeading = CTkLabel(
+    dataStructuresTab, text="Search Node", font=("Arial", 14, "bold")
+)
+searchBTreeNodeHeading.place(x=295, y=75)
+
+searchBTreeNodeInput = CTkEntry(dataStructuresTab, placeholder_text="Node...", width=75)
+searchBTreeNodeInput.place(x=295, y=105)
+
+searchBTreeNodeButton = CTkButton(
+    dataStructuresTab,
+    text="Search",
+    command=lambda: searchBTreeNode(searchBTreeNodeInput.get())
+    if searchBTreeNodeInput.get()
+    else AlertPopup("Input box is empty"),
+    width=45,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+)
+searchBTreeNodeButton.place(x=375, y=105)
 
 bTreeElements = BTree(3)
 
