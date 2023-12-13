@@ -223,6 +223,7 @@ heapTaskElementsContainer = CTkScrollableFrame(
 )
 heapTaskElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
 
+
 addHeapElementHeading = CTkLabel(
     heapTab, text="Add to Heap", font=("Arial", 14, "bold")
 )
@@ -458,22 +459,59 @@ loadLinkedListOnStart()
 
 
 # ! HEAP TASK - EMPLOYEES
-def heapTaskLoadEmployeesData(filename: str):
-    with open(filename, "r", encoding="utf-8") as file:
-        data = json.load(file)
-    heapTaskEmployeesData = data["employees"]
-    updateHeapTaskElementsContainer()
-    print(heapTaskEmployeesData)
-
-
 def updateHeapTaskElementsContainer():
     for widget in heapTaskElementsContainer.winfo_children():
         widget.destroy()
 
     for employee in heapTaskEmployeesData:
-        print(employee)
-        currentLabel = CTkLabel(heapTaskElementsContainer, text=employee)
+        employeeText = f"{employee['name']} - {employee['disease']}"
+        currentLabel = CTkLabel(heapTaskElementsContainer, text=employeeText)
         currentLabel.pack(padx=5, anchor="w")
+
+
+def heapTaskLoadEmployeesData(filename: str):
+    with open(filename, "r", encoding="utf-8") as file:
+        data = json.load(file)
+
+    try:
+        global heapTaskEmployeesData
+        heapTaskEmployeesData = data["employees"]
+    except:
+        AlertPopup(f"Failed to load data from {filename}")
+
+    updateHeapTaskElementsContainer()
+
+
+def heapTaskShowResults():
+    def countDiseaseCases():
+        diseasesCount = dict()
+
+        for employee in heapTaskEmployeesData:
+            if employee["disease"] not in diseasesCount:
+                diseasesCount[employee["disease"]] = 1
+            else:
+                diseasesCount[employee["disease"]] += 1
+
+        return diseasesCount
+
+    def sortDiseasesList(arr):
+        if len(arr) == 0:
+            return arr
+
+        sortedArr = Heap().buildHeap(arr).sort()
+        return sortedArr
+
+    diseasesCount = countDiseaseCases()
+    diseasesCountList = [
+        (occurences, name) for name, occurences in diseasesCount.items()
+    ]
+
+    diseasesCountList = sortDiseasesList(diseasesCountList)
+    resultsString = f"Employees' Diseases sorted by Occurences:\n"
+    for occurence, name in diseasesCountList:
+        currentDisease = f"{name}: {occurence} times\n"
+        resultsString += currentDisease
+    AlertPopup(resultsString)
 
 
 heapTaskLoadEmployeesDataHeading = CTkLabel(
@@ -506,6 +544,7 @@ heapTaskShowResultsButton = CTkButton(
     hover_color="#1F7D1F",
     text_color="white",
     font=("Arial", 12, "bold"),
+    command=lambda: heapTaskShowResults(),
 )
 heapTaskShowResultsButton.place(x=220, y=240)
 
