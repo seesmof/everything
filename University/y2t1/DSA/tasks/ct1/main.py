@@ -392,8 +392,8 @@ def loadLinkedListOnStart():
             list = json.load(f)
             linkedListElements.buildList(list)
             updateLinkedListElementsContainer()
-    except FileNotFoundError:
-        pass
+    except:
+        AlertPopup("Failed to load Linked List data")
 
 
 addLinkedListNodeHeading = CTkLabel(
@@ -562,6 +562,7 @@ heapTaskEmployeesData = []
 
 
 # ! HASH TABLE
+# TODO add backwards hash function to show the original key
 class HashTable:
     def __init__(self, size=15):
         self.size = size
@@ -569,10 +570,6 @@ class HashTable:
 
     def hash(self, key):
         return int((key * ((5**0.5 - 1) / 2) % 1) * self.size)
-
-    def unhash(self, key):
-        # TODO implement backwards hash function
-        pass
 
     def insert(self, key, value):
         self.table[self.hash(key)].append((key, value))
@@ -637,6 +634,24 @@ def searchHashTableKey(key):
     AlertPopup(f"{key} is in the dictionary") if res else AlertPopup(
         f"{key} is NOT in the dictionary"
     )
+
+
+def saveHashTableOnExit():
+    if len(hashTableElements.getList()) == 0:
+        return
+    with open("hashTable.json", "w") as f:
+        json.dump(hashTableElements.getList(), f)
+
+
+def loadHashTableOnStart():
+    try:
+        with open("hashTable.json", "r") as f:
+            res = json.load(f)
+            for pair in res:
+                hashTableElements.insert(pair[0], pair[1])
+            updateHashTableElementsContainer()
+    except:
+        AlertPopup("Failed to load Hash Table data")
 
 
 hashOutputBoxesContainer = CTkTabview(dataStructuresTab, width=210, height=290)
@@ -743,7 +758,9 @@ searchHashTableElementButton = CTkButton(
 searchHashTableElementButton.place(x=390, y=35)
 
 hashTableElements = HashTable()
+loadHashTableOnStart()
 
 app.mainloop()
 saveHeapOnExit()
 saveLinkedListOnExit()
+saveHashTableOnExit()
