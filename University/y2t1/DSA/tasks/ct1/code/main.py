@@ -208,7 +208,9 @@ outputBoxesContainer.place(x=440, y=5)
 heapElementsTab = outputBoxesContainer.tab("Heap")
 linkedListElementsTab = outputBoxesContainer.tab("Linked List")
 
-heapElementsContainer = CTkScrollableFrame(heapElementsTab, width=200, height=260)
+heapElementsContainer = CTkScrollableFrame(
+    heapElementsTab, width=200, height=260, fg_color="light green"
+)
 heapElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
 
 linkedListElementsContainer = CTkScrollableFrame(
@@ -217,7 +219,7 @@ linkedListElementsContainer = CTkScrollableFrame(
 linkedListElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
 
 addHeapElementHeading = CTkLabel(
-    heapTab, text="Add Heap Element", font=("Arial", 14, "bold")
+    heapTab, text="Add to Heap", font=("Arial", 14, "bold")
 )
 addHeapElementHeading.place(x=5, y=5)
 
