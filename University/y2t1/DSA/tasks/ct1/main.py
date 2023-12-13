@@ -237,7 +237,7 @@ addHeapElementButton = CTkButton(
     text="Add",
     command=lambda: addHeapElement(int(addHeapElementInput.get()))
     if addHeapElementInput.get()
-    else AlertPopup("Input field is empty"),
+    else AlertPopup("Input box is empty"),
     width=60,
     fg_color="#28A228",
     hover_color="#1F7D1F",
@@ -409,7 +409,7 @@ addLinkedListNodeButton = CTkButton(
     text="Add",
     command=lambda: addLinkedListNode(int(addLinkedListNodeInput.get()))
     if addLinkedListNodeInput.get()
-    else AlertPopup("Input field is empty"),
+    else AlertPopup("Input box is empty"),
     width=45,
     fg_color="#28A228",
     hover_color="#1F7D1F",
@@ -431,7 +431,7 @@ deleteLinkedListNodeButton = CTkButton(
     text="Delete",
     command=lambda: deleteLinkedListNode(int(deleteLinkedListNodeInput.get()))
     if deleteLinkedListNodeInput.get()
-    else AlertPopup("Input field is empty"),
+    else AlertPopup("Input box is empty"),
     width=45,
     fg_color="#D32F2F",
     hover_color="#B71C1C",
@@ -453,7 +453,7 @@ searchLinkedListNodeButton = CTkButton(
     text="Search",
     command=lambda: searchLinkedListNode(int(searchLinkedListNodeInput.get()))
     if searchLinkedListNodeInput.get()
-    else AlertPopup("Input field is empty"),
+    else AlertPopup("Input box is empty"),
     width=45,
     fg_color="#1976D2",
     hover_color="#0D47A1",
@@ -542,7 +542,7 @@ heapTaskLoadEmployeesDataButton = CTkButton(
     font=("Arial", 12, "bold"),
     command=lambda: heapTaskLoadEmployeesData(heapTaskLoadEmployeesDataInput.get())
     if heapTaskLoadEmployeesDataInput.get()
-    else AlertPopup("Input field is empty"),
+    else AlertPopup("Input box is empty"),
 )
 heapTaskLoadEmployeesDataButton.place(x=150, y=240)
 
@@ -563,12 +563,16 @@ heapTaskEmployeesData = []
 
 # ! HASH TABLE
 class HashTable:
-    def __init__(self, size=10):
+    def __init__(self, size=15):
         self.size = size
         self.table = [[] for _ in range(self.size)]
 
     def hash(self, key):
         return int((key * ((5**0.5 - 1) / 2) % 1) * self.size)
+
+    def unhash(self, key):
+        # TODO implement backwards hash function
+        pass
 
     def insert(self, key, value):
         self.table[self.hash(key)].append((key, value))
@@ -587,6 +591,33 @@ class HashTable:
             if kv[0] == key:
                 return kv[1]
         return None
+
+    def getList(self):
+        res = []
+        for chain in self.table:
+            if chain:
+                for value in chain:
+                    res.append(value)
+        return res
+
+
+def updateHashTableElementsContainer():
+    for widget in hashTableElementsContainer.winfo_children():
+        widget.destroy()
+
+    for el in hashTableElements.getList():
+        elementText = f"{el[0]} - {el[1]}"
+        currentLabel = CTkLabel(hashTableElementsContainer, text=elementText)
+        currentLabel.pack(padx=5, anchor="w")
+
+
+def addHashTableElement(keyValuePair):
+    key, value = keyValuePair.split(" ")
+    # TODO check if key contains letters, if so only then convert to this sum of values else write like that
+    key = sum(ord(c) for c in key)
+
+    hashTableElements.insert(key, value)
+    updateHashTableElementsContainer()
 
 
 hashOutputBoxesContainer = CTkTabview(dataStructuresTab, width=210, height=290)
@@ -621,67 +652,72 @@ bTreeTaskElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
 
 
 addHashTableElementHeading = CTkLabel(
-    dataStructuresTab, text="Add Hash Table Element", font=("Arial", 14, "bold")
+    dataStructuresTab, text="Add Dictionary Element", font=("Arial", 14, "bold")
 )
 addHashTableElementHeading.place(x=5, y=5)
 
 addHashTableElementInput = CTkEntry(
-    dataStructuresTab, placeholder_text="Enter key and value...", width=350
+    dataStructuresTab, placeholder_text="Key & Value...", width=110
 )
 addHashTableElementInput.place(x=5, y=35)
 
 addHashTableElementButton = CTkButton(
     dataStructuresTab,
     text="Add",
-    width=60,
+    width=45,
     fg_color="#28A228",
     hover_color="#1F7D1F",
     text_color="white",
     font=("Arial", 12, "bold"),
+    command=lambda: addHashTableElement(addHashTableElementInput.get())
+    if addHashTableElementInput.get()
+    else AlertPopup("Input box is empty"),
 )
-addHashTableElementButton.place(x=360, y=35)
+addHashTableElementButton.place(x=120, y=35)
 
 deleteHashTableElementHeading = CTkLabel(
-    dataStructuresTab, text="Delete Hash Table Element", font=("Arial", 14, "bold")
+    dataStructuresTab, text="Delete Key", font=("Arial", 14, "bold")
 )
-deleteHashTableElementHeading.place(x=5, y=75)
+deleteHashTableElementHeading.place(x=180, y=5)
 
 deleteHashTableElementInput = CTkEntry(
-    dataStructuresTab, placeholder_text="Enter key...", width=350
+    dataStructuresTab, placeholder_text="Key...", width=75
 )
-deleteHashTableElementInput.place(x=5, y=105)
+deleteHashTableElementInput.place(x=180, y=35)
 
 deleteHashTableElementButton = CTkButton(
     dataStructuresTab,
     text="Delete",
-    width=60,
+    width=45,
     fg_color="#D32F2F",
     hover_color="#B71C1C",
     text_color="white",
     font=("Arial", 12, "bold"),
 )
-deleteHashTableElementButton.place(x=360, y=105)
+deleteHashTableElementButton.place(x=260, y=35)
 
 searchHashTableElementHeading = CTkLabel(
-    dataStructuresTab, text="Search Hash Table Element", font=("Arial", 14, "bold")
+    dataStructuresTab, text="Search Key", font=("Arial", 14, "bold")
 )
-searchHashTableElementHeading.place(x=5, y=145)
+searchHashTableElementHeading.place(x=320, y=5)
 
 searchHashTableElementInput = CTkEntry(
-    dataStructuresTab, placeholder_text="Enter key...", width=350
+    dataStructuresTab, placeholder_text="Key...", width=65
 )
-searchHashTableElementInput.place(x=5, y=175)
+searchHashTableElementInput.place(x=320, y=35)
 
 searchHashTableElementButton = CTkButton(
     dataStructuresTab,
-    text="Search",
-    width=60,
+    text="Run",
+    width=40,
     fg_color="#1976D2",
     hover_color="#0D47A1",
     text_color="white",
     font=("Arial", 12, "bold"),
 )
-searchHashTableElementButton.place(x=360, y=175)
+searchHashTableElementButton.place(x=390, y=35)
+
+hashTableElements = HashTable()
 
 app.mainloop()
 saveHeapOnExit()
