@@ -657,14 +657,14 @@ def loadHashTableOnStart():
 hashOutputBoxesContainer = CTkTabview(dataStructuresTab, width=210, height=290)
 hashOutputBoxesContainer.add("Hash Table")
 hashOutputBoxesContainer.add("B-Tree")
-hashOutputBoxesContainer.add("Task A")
-hashOutputBoxesContainer.add("Task B")
+hashOutputBoxesContainer.add("Huffman")
+hashOutputBoxesContainer.add("Subs")
 hashOutputBoxesContainer.place(x=430, y=5)
 
 hashTableElementsTab = hashOutputBoxesContainer.tab("Hash Table")
 bTreeElementsTab = hashOutputBoxesContainer.tab("B-Tree")
-hashTaskElementsTab = hashOutputBoxesContainer.tab("Task A")
-bTreeTaskElementsTab = hashOutputBoxesContainer.tab("Task B")
+hashTaskElementsTab = hashOutputBoxesContainer.tab("Huffman")
+bTreeTaskElementsTab = hashOutputBoxesContainer.tab("Subs")
 
 hashTableElementsContainer = CTkScrollableFrame(
     hashTableElementsTab, width=210, height=260
@@ -954,30 +954,62 @@ bTreeElements = BTree(3)
 
 #! B-TREE TASK
 class Subscriber:
-    def __init__(self, number, name, tariff):
-        self.phone = number
+    def __init__(self, phone, name, type):
+        self.phone = phone
         self.name = name
-        self.tariff = tariff
+        self.type = type
 
-    def to_dict(self):
+    def toDict(self):
         return {
-            "number": self.phone,
+            "phone": self.phone,
             "name": self.name,
-            "tariff": self.tariff,
+            "type": self.type,
         }
 
 
+def updateBTreeTaskElementsContainer():
+    for widget in bTreeTaskElementsContainer.winfo_children():
+        widget.destroy()
+
+    for subscriber in bTreeTaskSubscribers:
+        currentLabelString = f"+{subscriber.phone} - {subscriber.name}"
+        currentLabel = CTkLabel(bTreeTaskElementsContainer, text=currentLabelString)
+        currentLabel.pack(padx=5, anchor="w")
+
+
 def bTreeTaskSearchForSub(data):
-    pass
+    isFound, node, index = bTreeTaskElements.searchKey(data)
+
+    if isFound:
+        subInfo = node.keys[index][1]
+        print(subInfo)
+        print(f"{subInfo['name']}, {subInfo['type']}, {subInfo['phone']}")
+        alertString = f"{subInfo['name']} was found:\nSubscription type: {subInfo['type']}\nPhone: +{subInfo['phone']}"
+        AlertPopup(alertString)
+    else:
+        AlertPopup("Subscriber was not found in the database")
 
 
-def loadBTreeTaskData(name):
-    pass
+def loadBTreeTaskData(fileName):
+    dataHolder = []
+    try:
+        with open(fileName, "r") as file:
+            dataHolder = json.load(file)
+    except:
+        AlertPopup(f"Failed to load subscribers' data from {fileName}")
+
+    for element in dataHolder:
+        phone, name, type = element["phone"], element["name"], element["type"]
+        currentSubObject = Subscriber(phone, name, type)
+        bTreeTaskSubscribers.append(currentSubObject)
+
+    for sub in bTreeTaskSubscribers:
+        bTreeTaskElements.insert((sub.phone, sub.toDict()))
+    updateBTreeTaskElementsContainer()
 
 
-# TODO file from where we read all the subscribers and then write into our variable
 loadBTreeTaskDataHeading = CTkLabel(
-    dataStructuresTab, text="Load subscribers from JSON", font=("Arial", 14, "bold")
+    dataStructuresTab, text="Load subscribers JSON", font=("Arial", 14, "bold")
 )
 loadBTreeTaskDataHeading.place(x=5, y=145)
 
@@ -999,12 +1031,30 @@ loadBTreeTaskDataButton = CTkButton(
     else AlertPopup("Input box is empty"),
 )
 loadBTreeTaskDataButton.place(x=120, y=175)
-# TODO input field for search
+
 bTreeTaskSearchForSubHeading = CTkLabel(
     dataStructuresTab, text="Search for subscriber", font=("Arial", 14, "bold")
 )
-bTreeTaskSearchForSubHeading.place(x=185)
-# TODO outputting the results on search button press
+bTreeTaskSearchForSubHeading.place(x=185, y=145)
+
+bTreeTaskSearchForSubInput = CTkEntry(
+    dataStructuresTab, placeholder_text="Number...", width=110
+)
+bTreeTaskSearchForSubInput.place(x=185, y=175)
+
+bTreeTaskSearchForSubButton = CTkButton(
+    dataStructuresTab,
+    text="Search",
+    width=45,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: bTreeTaskSearchForSub(bTreeTaskSearchForSubInput.get())
+    if bTreeTaskSearchForSubInput.get()
+    else AlertPopup("Input box is empty"),
+)
+bTreeTaskSearchForSubButton.place(x=300, y=175)
 
 bTreeTaskSubscribers = []
 bTreeTaskElements = BTree(3)

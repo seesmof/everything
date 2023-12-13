@@ -2,6 +2,6 @@
 - Y vertical spacing betwee heading and input is **30**
 - Y vertical spacing between two sections is **40**
 - X horizontal spacing between two subsections is **65**
-- X horizontal spacing between inputs and button is **Current X+5** from input width
+- X horizontal spacing between inputs and button is **X+INPUT WIDTH+5** from input width
 - width of input is 75
 - width of button is 45
