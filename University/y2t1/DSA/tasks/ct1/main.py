@@ -589,8 +589,8 @@ class HashTable:
         chain = self.table[self.hash(key)]
         for kv in chain:
             if kv[0] == key:
-                return kv[1]
-        return None
+                return True
+        return False
 
     def getList(self):
         res = []
@@ -618,6 +618,25 @@ def addHashTableElement(keyValuePair):
 
     hashTableElements.insert(key, value)
     updateHashTableElementsContainer()
+
+
+def deleteHashTableKey(key):
+    key = sum(ord(c) for c in key)
+
+    res = hashTableElements.delete(key)
+    if not res:
+        AlertPopup(f"Failed to delete {key}")
+
+    updateHashTableElementsContainer()
+
+
+def searchHashTableKey(key):
+    key = sum(ord(c) for c in key)
+
+    res = hashTableElements.search(key)
+    AlertPopup(f"{key} is in the dictionary") if res else AlertPopup(
+        f"{key} is NOT in the dictionary"
+    )
 
 
 hashOutputBoxesContainer = CTkTabview(dataStructuresTab, width=210, height=290)
@@ -693,6 +712,9 @@ deleteHashTableElementButton = CTkButton(
     hover_color="#B71C1C",
     text_color="white",
     font=("Arial", 12, "bold"),
+    command=lambda: deleteHashTableKey(deleteHashTableElementInput.get())
+    if deleteHashTableElementInput.get()
+    else AlertPopup("Input box is empty"),
 )
 deleteHashTableElementButton.place(x=260, y=35)
 
@@ -714,6 +736,9 @@ searchHashTableElementButton = CTkButton(
     hover_color="#0D47A1",
     text_color="white",
     font=("Arial", 12, "bold"),
+    command=lambda: searchHashTableKey(searchHashTableElementInput.get())
+    if searchHashTableElementInput.get()
+    else AlertPopup("Input box is empty"),
 )
 searchHashTableElementButton.place(x=390, y=35)
 
