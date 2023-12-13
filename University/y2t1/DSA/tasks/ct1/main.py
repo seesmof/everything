@@ -562,7 +562,6 @@ heapTaskEmployeesData = []
 
 
 #! HASH TABLE
-# TODO make a dictionary where you substitute the hash key with the original value and use that just for output instead
 class HashTable:
     def __init__(self, size=15):
         self.size = size
@@ -625,9 +624,9 @@ def deleteHashTableKey(key):
 
 
 def searchHashTableKey(key):
-    covertedKey = sum(ord(c) for c in key)
+    convertedKey = sum(ord(c) for c in key)
 
-    res = hashTableElements.search(covertedKey)
+    res = hashTableElements.search(convertedKey)
     AlertPopup(f"{key} is in the dictionary") if res else AlertPopup(
         f"{key} is NOT in the dictionary"
     )
@@ -653,13 +652,13 @@ def loadHashTableOnStart():
 hashOutputBoxesContainer = CTkTabview(dataStructuresTab, width=210, height=290)
 hashOutputBoxesContainer.add("Hash Table")
 hashOutputBoxesContainer.add("B-Tree")
-hashOutputBoxesContainer.add("Huffman")
 hashOutputBoxesContainer.add("Subs")
+hashOutputBoxesContainer.add("Search")
 hashOutputBoxesContainer.place(x=430, y=5)
 
 hashTableElementsTab = hashOutputBoxesContainer.tab("Hash Table")
 bTreeElementsTab = hashOutputBoxesContainer.tab("B-Tree")
-hashTaskElementsTab = hashOutputBoxesContainer.tab("Huffman")
+hashTaskElementsTab = hashOutputBoxesContainer.tab("Search")
 bTreeTaskElementsTab = hashOutputBoxesContainer.tab("Subs")
 
 hashTableElementsContainer = CTkScrollableFrame(
@@ -853,7 +852,6 @@ def searchBTreeNode(data):
 
 
 def saveBTreeOnExit():
-    print(bTreeElementsList)
     if len(bTreeElementsList) == 0:
         return
     with open("bTree.json", "w") as file:
@@ -971,8 +969,6 @@ def bTreeTaskSearchForSub(data):
 
     if isFound:
         subInfo = node.keys[index][1]
-        print(subInfo)
-        print(f"{subInfo['name']}, {subInfo['type']}, {subInfo['phone']}")
         alertString = f"{subInfo['name']} was found:\nSubscription type: {subInfo['type']}\nPhone: +{subInfo['phone']}"
         AlertPopup(alertString)
     else:
@@ -1048,6 +1044,96 @@ bTreeTaskSearchForSubButton.place(x=300, y=175)
 bTreeTaskSubscribers = []
 bTreeTaskElements = BTree(3)
 
+
+#! HASH TABLE TASK
+def updateHashTaskElementsContainer():
+    for widget in hashTaskElementsContainer.winfo_children():
+        widget.destroy()
+
+    for pair in hashTaskEmployeesList:
+        name, position = pair.strip().split(",")
+        elementText = f"{name} - {position}"
+        currentLabel = CTkLabel(hashTaskElementsContainer, text=elementText)
+        currentLabel.pack(padx=5, anchor="w")
+
+
+def hashTaskLoadData(fileName):
+    try:
+        with open(fileName, "r") as file:
+            for line in file:
+                name, position = line.strip().split(",")
+                key = sum(ord(c) for c in name)
+                hashTaskEmployees.insert(key, (name, position))
+                hashTaskEmployeesList.append(line)
+            updateHashTaskElementsContainer()
+    except:
+        AlertPopup(f"Failed to load data from {fileName}")
+
+
+def hashTaskSearch(givenName):
+    convertedKey = sum(ord(c) for c in givenName)
+    if hashTaskEmployees.search(convertedKey):
+        position = None
+        for employeeData in hashTaskEmployeesList:
+            thisName, thisPosition = employeeData.strip().split(",")
+            if thisName == givenName:
+                position = thisPosition
+                break
+        AlertPopup(f"{givenName} is found. They work as {position}")
+    else:
+        AlertPopup(f"{givenName} is NOT found")
+
+
+hashTaskLoadDataHeading = CTkLabel(
+    dataStructuresTab, text="Load employees JSON", font=("Arial", 14, "bold")
+)
+hashTaskLoadDataHeading.place(x=5, y=215)
+
+hashTaskLoadDataInput = CTkEntry(
+    dataStructuresTab, placeholder_text="Filename...", width=110
+)
+hashTaskLoadDataInput.place(x=5, y=245)
+
+hashTaskLoadDataButton = CTkButton(
+    dataStructuresTab,
+    text="Load",
+    width=45,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: hashTaskLoadData(hashTaskLoadDataInput.get())
+    if hashTaskLoadDataInput.get()
+    else AlertPopup("Input box is empty"),
+)
+hashTaskLoadDataButton.place(x=120, y=245)
+
+hashTaskSearchHeading = CTkLabel(
+    dataStructuresTab, text="Perform search", font=("Arial", 14, "bold")
+)
+hashTaskSearchHeading.place(x=185, y=215)
+
+hashTaskSearchInput = CTkEntry(
+    dataStructuresTab, placeholder_text="Employee...", width=110
+)
+hashTaskSearchInput.place(x=185, y=245)
+
+hashTaskSearchButton = CTkButton(
+    dataStructuresTab,
+    text="Search",
+    width=45,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: hashTaskSearch(hashTaskSearchInput.get())
+    if hashTaskSearchInput.get()
+    else AlertPopup("Input box is empty"),
+)
+hashTaskSearchButton.place(x=300, y=245)
+
+hashTaskEmployeesList = []
+hashTaskEmployees = HashTable()
 
 app.mainloop()
 saveHeapOnExit()
