@@ -200,23 +200,28 @@ def loadHeapOnStart():
         pass
 
 
-outputBoxesContainer = CTkTabview(heapTab, width=200, height=290)
+outputBoxesContainer = CTkTabview(heapTab, width=210, height=290)
 outputBoxesContainer.add("Heap")
 outputBoxesContainer.add("Linked List")
-outputBoxesContainer.place(x=440, y=5)
+outputBoxesContainer.add("Task")
+outputBoxesContainer.place(x=430, y=5)
 
 heapElementsTab = outputBoxesContainer.tab("Heap")
 linkedListElementsTab = outputBoxesContainer.tab("Linked List")
+heapTaskElementsTab = outputBoxesContainer.tab("Task")
 
-heapElementsContainer = CTkScrollableFrame(
-    heapElementsTab, width=200, height=260, fg_color="light green"
-)
+heapElementsContainer = CTkScrollableFrame(heapElementsTab, width=210, height=260)
 heapElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
 
 linkedListElementsContainer = CTkScrollableFrame(
-    linkedListElementsTab, width=200, height=260
+    linkedListElementsTab, width=210, height=260
 )
 linkedListElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
+
+heapTaskElementsContainer = CTkScrollableFrame(
+    heapTaskElementsTab, width=210, height=260
+)
+heapTaskElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
 
 addHeapElementHeading = CTkLabel(
     heapTab, text="Add to Heap", font=("Arial", 14, "bold")
@@ -389,73 +394,122 @@ def loadLinkedListOnStart():
 
 
 addLinkedListNodeHeading = CTkLabel(
-    heapTab, text="Add Linked List Node", font=("Arial", 14, "bold")
+    heapTab, text="Add Node", font=("Arial", 14, "bold")
 )
 addLinkedListNodeHeading.place(x=5, y=130)
 
-addLinkedListNodeInput = CTkEntry(
-    heapTab, placeholder_text="Enter element...", width=350
-)
+addLinkedListNodeInput = CTkEntry(heapTab, placeholder_text="Node...", width=75)
 addLinkedListNodeInput.place(x=5, y=160)
 
 addLinkedListNodeButton = CTkButton(
     heapTab,
     text="Add",
     command=lambda: addLinkedListNode(int(addLinkedListNodeInput.get())),
-    width=60,
+    width=45,
     fg_color="#28A228",
     hover_color="#1F7D1F",
     text_color="white",
     font=("Arial", 12, "bold"),
 )
-addLinkedListNodeButton.place(x=360, y=160)
+addLinkedListNodeButton.place(x=85, y=160)
 
 deleteHeapNodeHeading = CTkLabel(
-    heapTab, text="Delete Linked List Node", font=("Arial", 14, "bold")
+    heapTab, text="Delete Node", font=("Arial", 14, "bold")
 )
-deleteHeapNodeHeading.place(x=5, y=200)
+deleteHeapNodeHeading.place(x=145, y=130)
 
-deleteLinkedListNodeInput = CTkEntry(
-    heapTab, placeholder_text="Enter element...", width=350
-)
-deleteLinkedListNodeInput.place(x=5, y=230)
+deleteLinkedListNodeInput = CTkEntry(heapTab, placeholder_text="Node...", width=75)
+deleteLinkedListNodeInput.place(x=145, y=160)
 
 deleteLinkedListNodeButton = CTkButton(
     heapTab,
     text="Delete",
     command=lambda: deleteLinkedListNode(int(deleteLinkedListNodeInput.get())),
-    width=60,
+    width=45,
     fg_color="#D32F2F",
     hover_color="#B71C1C",
     text_color="white",
     font=("Arial", 12, "bold"),
 )
-deleteLinkedListNodeButton.place(x=360, y=230)
+deleteLinkedListNodeButton.place(x=225, y=160)
 
 searchLinkedListNodeHeading = CTkLabel(
-    heapTab, text="Search Linked List Node", font=("Arial", 14, "bold")
+    heapTab, text="Search Node", font=("Arial", 14, "bold")
 )
-searchLinkedListNodeHeading.place(x=5, y=270)
+searchLinkedListNodeHeading.place(x=290, y=130)
 
-searchLinkedListNodeInput = CTkEntry(
-    heapTab, placeholder_text="Enter element...", width=350
-)
-searchLinkedListNodeInput.place(x=5, y=300)
+searchLinkedListNodeInput = CTkEntry(heapTab, placeholder_text="Node...", width=75)
+searchLinkedListNodeInput.place(x=290, y=160)
 
 searchLinkedListNodeButton = CTkButton(
     heapTab,
     text="Search",
     command=lambda: searchLinkedListNode(int(searchLinkedListNodeInput.get())),
-    width=60,
+    width=45,
     fg_color="#1976D2",
     hover_color="#0D47A1",
     text_color="white",
     font=("Arial", 12, "bold"),
 )
-searchLinkedListNodeButton.place(x=360, y=300)
+searchLinkedListNodeButton.place(x=370, y=160)
 
 linkedListElements = DoublyLinkedList()
 loadLinkedListOnStart()
+
+
+# ! HEAP TASK - EMPLOYEES
+def heapTaskLoadEmployeesData(filename: str):
+    with open(filename, "r", encoding="utf-8") as file:
+        data = json.load(file)
+    heapTaskEmployeesData = data["employees"]
+    updateHeapTaskElementsContainer()
+    print(heapTaskEmployeesData)
+
+
+def updateHeapTaskElementsContainer():
+    for widget in heapTaskElementsContainer.winfo_children():
+        widget.destroy()
+
+    for employee in heapTaskEmployeesData:
+        print(employee)
+        currentLabel = CTkLabel(heapTaskElementsContainer, text=employee)
+        currentLabel.pack(padx=5, anchor="w")
+
+
+heapTaskLoadEmployeesDataHeading = CTkLabel(
+    heapTab, text="Load employees JSON file", font=("Arial", 14, "bold")
+)
+heapTaskLoadEmployeesDataHeading.place(x=5, y=210)
+
+heapTaskLoadEmployeesDataInput = CTkEntry(
+    heapTab, placeholder_text="Filename...", width=140
+)
+heapTaskLoadEmployeesDataInput.place(x=5, y=240)
+
+heapTaskLoadEmployeesDataButton = CTkButton(
+    heapTab,
+    text="Load",
+    width=60,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: heapTaskLoadEmployeesData(heapTaskLoadEmployeesDataInput.get()),
+)
+heapTaskLoadEmployeesDataButton.place(x=150, y=240)
+
+heapTaskShowResultsButton = CTkButton(
+    heapTab,
+    text="Show Results",
+    width=100,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+)
+heapTaskShowResultsButton.place(x=220, y=240)
+
+heapTaskEmployeesData = []
 
 
 # ! HASH TABLE

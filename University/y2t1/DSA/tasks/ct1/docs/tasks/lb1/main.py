@@ -2,9 +2,7 @@
 - Розроблюваний програмний проєкт має складатися з окремих класів, що реалізують структури даних двозв’язний список та купа (черга з пріоритетами). На найвищий рівень може бути передбачено графічну інтерфейсну взаємодію з користувачем для роботи зі створеними класами.
 - Клас, що реалізує двозв’язний список, має дозволяти виконувати наступні операції на основі окремих методів: додавання вузла в початок списку, додавання вузла після заданого, пошук вузла в списку, видалення вузла, виведення вузлів на екран з початку та з кінця.
 - Клас, що реалізує купу (чергу з пріоритетами), має дозволяти виконувати наступні операції на основі окремих методів: вставлення елементу, сортування елементів, побудова купи з невпорядкованого масиву, видалення елементу, сортування елементів із використанням купи, виведення елементів на екран.
-- Розробити окремий модуль програмного забезпечення для реалізації пірамідального сортування на основі розробленого класу.
-- Розв’язати індивідуальне завдання за допомогою розробленої реалізації пірамідального сортування. Вважати, що масиви даних зберігаються в файлах.
-  - Варіант: У відділі кадрів міститься інформація про захворювання співробітників, що включає: прізвище, ім’я, по батькові співробітника; відділ, посаду; вік; дату початку лікарняного; дату завершення лікарняного; хвороба. Вивести інформацію про всі хвороби, якими хворіли співробітники, за зменшенням кількості випадків.
+У відділі кадрів міститься інформація про захворювання співробітників, що включає: прізвище, ім’я, по батькові співробітника; відділ, посаду; вік; дату початку лікарняного; дату завершення лікарняного; хвороба. Вивести інформацію про всі хвороби, якими хворіли співробітники, за зменшенням кількості випадків.
 """
 
 
@@ -241,25 +239,6 @@ def heapSort(arr):
 from json import load
 
 
-def getEmployeesData():
-    # opening file for read and reading JSON data from a file into the variable
-    with open("employees.json", "r") as inputFile:
-        data = load(inputFile)
-    return data
-
-
-def countDiseaseCases(employeeData):
-    diseasesCount = dict()
-    for employee in employeeData["employees"]:
-        # if employee's disease doesn't yet exist in the dictionary
-        if employee["disease"] not in diseasesCount:
-            # add it with a count of 0
-            diseasesCount[employee["disease"]] = 0
-        # else just increment the count
-        diseasesCount[employee["disease"]] += 1
-    return diseasesCount
-
-
 def demoDoublyLinkedList():
     linkedListDemo = DoublyLinkedList()
 
@@ -283,6 +262,26 @@ def demoDoublyLinkedList():
     linkedListDemo.delete("Node2.5")
     print("\nAfter deleting Node2.5:")
     linkedListDemo.displayFromHead()
+
+
+def countDiseaseCases(employeeData):
+    diseasesCount = dict()
+    for employee in employeeData["employees"]:
+        # if employee's disease doesn't yet exist in the dictionary
+        if employee["disease"] not in diseasesCount:
+            # add it with a count of 0
+            diseasesCount[employee["disease"]] = 0
+        else:
+            # else just increment the count
+            diseasesCount[employee["disease"]] += 1
+    return diseasesCount
+
+
+def getEmployeesData():
+    # opening file for read and reading JSON data from a file into the variable
+    with open("employees.json", "r") as inputFile:
+        data = load(inputFile)
+    return data
 
 
 def main():
