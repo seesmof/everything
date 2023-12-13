@@ -951,6 +951,65 @@ searchBTreeNodeButton.place(x=375, y=105)
 
 bTreeElements = BTree(3)
 
+
+#! B-TREE TASK
+class Subscriber:
+    def __init__(self, number, name, tariff):
+        self.phone = number
+        self.name = name
+        self.tariff = tariff
+
+    def to_dict(self):
+        return {
+            "number": self.phone,
+            "name": self.name,
+            "tariff": self.tariff,
+        }
+
+
+def bTreeTaskSearchForSub(data):
+    pass
+
+
+def loadBTreeTaskData(name):
+    pass
+
+
+# TODO file from where we read all the subscribers and then write into our variable
+loadBTreeTaskDataHeading = CTkLabel(
+    dataStructuresTab, text="Load subscribers from JSON", font=("Arial", 14, "bold")
+)
+loadBTreeTaskDataHeading.place(x=5, y=145)
+
+loadBTreeTaskDataInput = CTkEntry(
+    dataStructuresTab, placeholder_text="Filename...", width=110
+)
+loadBTreeTaskDataInput.place(x=5, y=175)
+
+loadBTreeTaskDataButton = CTkButton(
+    dataStructuresTab,
+    text="Load",
+    width=45,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: loadBTreeTaskData(loadBTreeTaskDataInput.get())
+    if loadBTreeTaskDataInput.get()
+    else AlertPopup("Input box is empty"),
+)
+loadBTreeTaskDataButton.place(x=120, y=175)
+# TODO input field for search
+bTreeTaskSearchForSubHeading = CTkLabel(
+    dataStructuresTab, text="Search for subscriber", font=("Arial", 14, "bold")
+)
+bTreeTaskSearchForSubHeading.place(x=185)
+# TODO outputting the results on search button press
+
+bTreeTaskSubscribers = []
+bTreeTaskElements = BTree(3)
+
+
 app.mainloop()
 saveHeapOnExit()
 saveLinkedListOnExit()
