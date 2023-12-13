@@ -576,16 +576,16 @@ class HashTable:
 
     def delete(self, key):
         chain = self.table[self.hash(key)]
-        for i, kv in enumerate(chain):
-            if kv[0] == key:
-                del chain[i]
+        for index, keyValuePair in enumerate(chain):
+            if keyValuePair[0] == key:
+                del chain[index]
                 return True
         return False
 
     def search(self, key):
         chain = self.table[self.hash(key)]
-        for kv in chain:
-            if kv[0] == key:
+        for keyValuePair in chain:
+            if keyValuePair[0] == key:
                 return True
         return False
 
@@ -593,8 +593,8 @@ class HashTable:
         res = []
         for chain in self.table:
             if chain:
-                for value in chain:
-                    res.append(value)
+                for pair in chain:
+                    res.append(pair)
         return res
 
 
