@@ -1,6 +1,8 @@
 from customtkinter import *
 import time
 import json
+import heapq
+import os
 
 
 class AlertPopup(CTkToplevel):
@@ -1133,6 +1135,285 @@ hashTaskSearchButton.place(x=300, y=245)
 
 hashTaskEmployeesList = []
 hashTaskEmployees = HashTable()
+
+
+#! HUFFMAN CODING
+class HuffmanCoding:
+    def __init__(self):
+        self.heap = []
+        self.codes = {}
+        self.reverse_mapping = {}
+
+    class HeapNode:
+        def __init__(self, char, freq):
+            self.char = char
+            self.freq = freq
+            self.left = None
+            self.right = None
+
+        def __lt__(self, other):
+            return self.freq < other.freq
+
+    def buildFrequencyDict(self, text):
+        frequency = {}
+        for char in text:
+            if char not in frequency:
+                frequency[char] = 0
+            frequency[char] += 1
+        return frequency
+
+    def buildHeap(self, frequency):
+        for key in frequency:
+            node = self.HeapNode(key, frequency[key])
+            heapq.heappush(self.heap, node)
+
+    def mergeNodes(self):
+        while len(self.heap) > 1:
+            node1 = heapq.heappop(self.heap)
+            node2 = heapq.heappop(self.heap)
+
+            merged = self.HeapNode(None, node1.freq + node2.freq)
+            merged.left = node1
+            merged.right = node2
+
+            heapq.heappush(self.heap, merged)
+
+    def _buildCodesHelper(self, root, currentCode):
+        if root is None:
+            return
+
+        if root.char is not None:
+            self.codes[root.char] = currentCode
+            self.reverse_mapping[currentCode] = root.char
+            return
+
+        self._buildCodesHelper(root.left, currentCode + "0")
+        self._buildCodesHelper(root.right, currentCode + "1")
+
+    def buildCodes(self):
+        root = heapq.heappop(self.heap)
+        currentCode = ""
+        self._buildCodesHelper(root, currentCode)
+
+    def getEncodedText(self, text):
+        encodedText = ""
+        for char in text:
+            encodedText += self.codes[char]
+        return encodedText
+
+    def padEncodedText(self, encodedText):
+        extraPadding = 8 - len(encodedText) % 8
+        for i in range(extraPadding):
+            encodedText += "0"
+
+        paddingInfo = "{0:08b}".format(extraPadding)
+        encodedText = paddingInfo + encodedText
+        return encodedText
+
+    def getByteArray(self, paddedEncodedText):
+        if len(paddedEncodedText) % 8 != 0:
+            print("Encoded text not padded properly")
+            exit(0)
+
+        b = bytearray()
+        for i in range(0, len(paddedEncodedText), 8):
+            byte = paddedEncodedText[i : i + 8]
+            b.append(int(byte, 2))
+        return b
+
+    def compress(self, filePath):
+        fileName, fileExtension = os.path.splitext(filePath)
+        outputPath = fileName + ".bin"
+
+        with open(filePath, "r+") as file, open(outputPath, "wb") as output:
+            text = file.read()
+            text = text.rstrip()
+
+            frequency = self.buildFrequencyDict(text)
+            self.buildHeap(frequency)
+            self.mergeNodes()
+            self.buildCodes()
+
+            encodedText = self.getEncodedText(text)
+            paddedEncodedText = self.padEncodedText(encodedText)
+
+            b = self.getByteArray(paddedEncodedText)
+            output.write(bytes(b))
+
+        AlertPopup(
+            f"File compressed successfully. It now weighs {os.path.getsize(outputPath)} bytes or {round(os.path.getsize(outputPath) / (1024 * 1024), 2)} megabytes\nPrevious weight - {os.path.getsize(filePath)} bytes or {round(os.path.getsize(filePath) / (1024 * 1024), 2)} megabytes\nSo the resulting compression is {round((1 - (os.path.getsize(outputPath) / os.path.getsize(filePath))) * 100, 2)}%"
+        )
+        return outputPath
+
+    def removePadding(self, paddedEncodedText):
+        paddedInfo = paddedEncodedText[:8]
+        extraPadding = int(paddedInfo, 2)
+
+        paddedEncodedText = paddedEncodedText[8:]
+        encodedText = paddedEncodedText[: -1 * extraPadding]
+
+        return encodedText
+
+    def decodeText(self, encodedText):
+        currentCode = ""
+        decodedText = ""
+
+        for bit in encodedText:
+            currentCode += bit
+            if currentCode in self.reverse_mapping:
+                character = self.reverse_mapping[currentCode]
+                decodedText += character
+                currentCode = ""
+
+        return decodedText
+
+    def decompress(self, filePath):
+        fileName, fileExtension = os.path.splitext(filePath)
+        outputPath = fileName + "_decompressed.txt"
+
+        with open(filePath, "rb") as file, open(outputPath, "w") as output:
+            bitString = ""
+
+            byte = file.read(1)
+            while byte:
+                byte = ord(byte)
+                bits = bin(byte)[2:].rjust(8, "0")
+                bitString += bits
+                byte = file.read(1)
+
+            encodedText = self.removePadding(bitString)
+            decodedText = self.decodeText(encodedText)
+
+            output.write(decodedText)
+
+        AlertPopup(
+            f"File decompressed successfully. Output file is {outputPath}\nCurrent file weight is {os.path.getsize(outputPath)} bytes or {round(os.path.getsize(outputPath) / (1024 * 1024), 2)} megabytes"
+        )
+        return outputPath
+
+
+greedyAlgosTabsContainer = CTkTabview(greedyAlgosTab)
+greedyAlgosTabsContainer.add("Huffman Coding")
+greedyAlgosTabsContainer.add("Greedy Algorithm Task")
+greedyAlgosTabsContainer.pack(padx=5, pady=5, fill="both", expand=True)
+
+huffmanCodingTab = greedyAlgosTabsContainer.tab("Huffman Coding")
+greedyAlgoTaskTab = greedyAlgosTabsContainer.tab("Greedy Algorithm Task")
+
+huffmanCodingElementsContainer = CTkScrollableFrame(
+    huffmanCodingTab, width=200, height=260
+)
+huffmanCodingElementsContainer.place(x=430, y=5)
+
+greedyAlgoTaskElementsContainer = CTkScrollableFrame(
+    greedyAlgoTaskTab, width=200, height=260
+)
+greedyAlgoTaskElementsContainer.place(x=430, y=5)
+
+
+def huffmanCompressFile(fileName):
+    try:
+        global huffmanDecompressedFilePath, huffmanLoadedFilePath
+        global huffmanOriginalFileWeight, huffmanCompressedFileWeight, huffmanDecompressedFileWeight
+
+        huffmanLoadedFilePath = fileName
+        huffmanDecompressedFilePath = huffmanObject.compress(fileName)
+
+        huffmanOriginalFileWeight = f"{round(os.path.getsize(fileName) / (1024 * 1024), 2)} MB or {round(os.path.getsize(fileName) / (1024 * 1024 * 1024), 2)} KB"
+        huffmanCompressedFileWeight = f"{round(os.path.getsize(huffmanDecompressedFilePath) / (1024 * 1024), 2)} MB or {round(os.path.getsize(huffmanDecompressedFilePath) / (1024 * 1024 * 1024), 2)} KB"
+    except:
+        AlertPopup("Failed to load file")
+
+
+def huffmanDecompressFile():
+    try:
+        global huffmanDecompressedFilePath
+        huffmanDecompressedFilePath = huffmanObject.decompress(
+            huffmanDecompressedFilePath
+        )
+    except:
+        AlertPopup("Failed to load file")
+
+
+huffmanLoadFileHeading = CTkLabel(
+    huffmanCodingTab, text="Load Text File", font=("Arial", 14, "bold")
+)
+huffmanLoadFileHeading.place(x=0, y=0)
+
+huffmanLoadFileInput = CTkEntry(
+    huffmanCodingTab, placeholder_text="Filename...", width=120
+)
+huffmanLoadFileInput.place(x=0, y=30)
+
+huffmanLoadFileButton = CTkButton(
+    huffmanCodingTab,
+    text="Load",
+    width=60,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: huffmanCompressFile(huffmanLoadFileInput.get())
+    if huffmanLoadFileInput.get()
+    else AlertPopup("Input box is empty"),
+)
+huffmanLoadFileButton.place(x=125, y=30)
+
+huffmanDecompressFileButton = CTkButton(
+    huffmanCodingTab,
+    text="Decompress",
+    width=80,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: huffmanDecompressFile()
+    if huffmanDecompressedFilePath
+    else AlertPopup("No file loaded"),
+)
+huffmanDecompressFileButton.place(x=200, y=30)
+
+huffmanLoadedFilePathLabel = CTkLabel(
+    huffmanCodingTab,
+    text="No file loaded",
+    font=("Arial", 12),
+)
+huffmanLoadedFilePathLabel.place(x=0, y=70)
+
+huffmanLoadedFileWeightLabel = CTkLabel(
+    huffmanCodingTab,
+    text="File weight: ",
+    font=("Arial", 12),
+)
+huffmanLoadedFileWeightLabel.place(x=0, y=90)
+
+huffmanOriginalFileWeightLabel = CTkLabel(
+    huffmanCodingTab,
+    text="Original file weight: ",
+    font=("Arial", 12),
+)
+huffmanOriginalFileWeightLabel.place(x=0, y=110)
+
+huffmanDecompressedFilePathLabel = CTkLabel(
+    huffmanCodingTab,
+    text="No file decompressed",
+    font=("Arial", 12),
+)
+huffmanDecompressedFilePathLabel.place(x=200, y=70)
+
+huffmanDecompressedFileWeightLabel = CTkLabel(
+    huffmanCodingTab,
+    text="Decompressed file weight: ",
+    font=("Arial", 12),
+)
+huffmanDecompressedFileWeightLabel.place(x=200, y=90)
+
+huffmanObject = HuffmanCoding()
+huffmanLoadedFilePath = None
+huffmanDecompressedFilePath = None
+huffmanOriginalFileWeight = None
+huffmanCompressedFileWeight = None
+huffmanDecompressedFileWeight = None
 
 app.mainloop()
 saveHeapOnExit()
