@@ -801,6 +801,7 @@ class BTree:
             return True
         else:
             return False
+
     def searchKey(self, key, nodeA=None):
         if nodeA is not None:
             index = 0
@@ -860,10 +861,12 @@ def addBTreeNode(data):
     bTreeElementsList.append(data)
     updateBTreeElementsContainer()
 
+
 def deleteBTreeNode(data):
     bTreeElements.delete(data)
     bTreeElementsList.remove(data)
     updateBTreeElementsContainer()
+
 
 def searchBTreeNode(data):
     # TODO fix search not working for values >10
@@ -890,6 +893,8 @@ def loadBTreeOnStart():
                 addBTreeNode(element)
     except:
         AlertPopup("Failed to load B-Tree elements")
+
+
 addBTreeNodeHeading = CTkLabel(
     bTreeDemoTab, text="Add B-Tree Node", font=("Arial", 14, "bold")
 )
@@ -1460,7 +1465,9 @@ class Shopkeeper:
 
     def solveProblem(self, customerOrder):
         queueTime = 0
+        productTimes = []
         for product in customerOrder:
+            originalTime = queueTime
             if product not in self.productsFreqency:
                 self.productsFreqency[product] = 0
 
@@ -1471,8 +1478,10 @@ class Shopkeeper:
                 self.productsFreqency[product] += 1
             else:
                 queueTime += 3
+            takenTime = queueTime - originalTime
+            productTimes.append(f"{product[0].upper() + product[1:]} - {takenTime}")
         self.updatePopularProducts()
-        return queueTime
+        return queueTime, productTimes
 
     def updatePopularProducts(self):
         mostPopularProduct = max(self.productsFreqency, key=self.productsFreqency.get)
@@ -1508,6 +1517,18 @@ def greedyTaskUpdateProductsContainer():
         ).pack(padx=5, pady=5, anchor="w")
 
 
+def greedyTaskUpdateOrdersContainer():
+    for widget in greedyTaskOrdersContainer.winfo_children():
+        widget.destroy()
+
+    for order in greedyTaskOrders:
+        orderString = ", ".join(order)
+        CTkLabel(
+            greedyTaskOrdersContainer,
+            text=orderString,
+        ).pack(padx=5, pady=5, anchor="w")
+
+
 def greedyTaskLoadProductsFromFile(fileName):
     with open(fileName, "r") as file:
         products = json.load(file)
@@ -1516,14 +1537,21 @@ def greedyTaskLoadProductsFromFile(fileName):
 
 def greedyTaskPlaceOrder(order):
     order = order.split(",")
-    queueTime = greedyTaskShop.solveProblem(order)
-    AlertPopup(f"Queue time: {queueTime}")
+    queueTime, productTimes = greedyTaskShop.solveProblem(order)
+    productTimesString = "\nTime taken to fetch each product:"
+    for product in productTimes:
+        productTimesString += f"\n{product} minutes"
+    AlertPopup(f"Queue time: {queueTime}\n{productTimesString}")
+
+    greedyTaskOrders.append(order)
+    greedyTaskUpdateOrdersContainer()
 
 
 greedyTaskTabsContainer = CTkTabview(greedyTaskTab)
 greedyTaskTabsContainer.add("Products")
 greedyTaskTabsContainer.add("Popular Products")
-greedyTaskTabsContainer.place(x=400, y=0)
+greedyTaskTabsContainer.add("Orders")
+greedyTaskTabsContainer.place(x=380, y=0)
 
 greedyTaskProductsContainer = CTkScrollableFrame(
     greedyTaskTabsContainer.tab("Products")
@@ -1535,6 +1563,8 @@ greedyTaskPopularProductsContainer = CTkScrollableFrame(
 )
 greedyTaskPopularProductsContainer.pack(side="left", fill="both", expand=True)
 
+greedyTaskOrdersContainer = CTkScrollableFrame(greedyTaskTabsContainer.tab("Orders"))
+greedyTaskOrdersContainer.pack(side="left", fill="both", expand=True)
 
 greedyTaskAddProductsHeading = CTkLabel(
     greedyTaskTab,
@@ -1622,6 +1652,7 @@ greedyTaskPlaceOrderButton = CTkButton(
 )
 greedyTaskPlaceOrderButton.place(x=305, y=190)
 
+greedyTaskOrders = []
 greedyTaskShop = Shopkeeper([])
 
 app.mainloop()
