@@ -667,43 +667,43 @@ def loadHashTableOnStart():
         AlertPopup("Failed to load Hash Table data")
 
 
-hashOutputBoxesContainer = CTkTabview(dataStructuresTab, width=210, height=290)
-hashOutputBoxesContainer.add("Hash Table")
-hashOutputBoxesContainer.add("B-Tree")
-hashOutputBoxesContainer.add("Subs")
-hashOutputBoxesContainer.add("Search")
-hashOutputBoxesContainer.place(x=430, y=5)
+dataStructuresTabsContainer = CTkTabview(dataStructuresTab, width=210, height=290)
+dataStructuresTabsContainer.add("Hash Table")
+dataStructuresTabsContainer.add("B-Tree")
+dataStructuresTabsContainer.add("Subs")
+dataStructuresTabsContainer.add("Search")
+dataStructuresTabsContainer.pack(fill="both", expand=True)
 
-hashTableElementsTab = hashOutputBoxesContainer.tab("Hash Table")
-bTreeElementsTab = hashOutputBoxesContainer.tab("B-Tree")
-hashTaskElementsTab = hashOutputBoxesContainer.tab("Search")
-bTreeTaskElementsTab = hashOutputBoxesContainer.tab("Subs")
+hashTableDemoTab = dataStructuresTabsContainer.tab("Hash Table")
+bTreeDemoTab = dataStructuresTabsContainer.tab("B-Tree")
+hashTaskTab = dataStructuresTabsContainer.tab("Search")
+bTreeTaskTab = dataStructuresTabsContainer.tab("Subs")
 
-hashTableElementsContainer = CTkScrollableFrame(hashTableElementsTab)
-hashTableElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
+hashTableElementsContainer = CTkScrollableFrame(hashTableDemoTab, width=240, height=270)
+hashTableElementsContainer.place(x=400, y=0)
 
-bTreeElementsContainer = CTkScrollableFrame(bTreeElementsTab)
-bTreeElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
+bTreeElementsContainer = CTkScrollableFrame(bTreeDemoTab, width=240, height=270)
+bTreeElementsContainer.place(x=400, y=0)
 
-hashTaskElementsContainer = CTkScrollableFrame(hashTaskElementsTab)
-hashTaskElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
+hashTaskElementsContainer = CTkScrollableFrame(hashTaskTab, width=240, height=270)
+hashTaskElementsContainer.place(x=400, y=0)
 
-bTreeTaskElementsContainer = CTkScrollableFrame(bTreeTaskElementsTab)
-bTreeTaskElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
+bTreeTaskElementsContainer = CTkScrollableFrame(bTreeTaskTab, width=240, height=270)
+bTreeTaskElementsContainer.place(x=400, y=0)
 
 
 addHashTableElementHeading = CTkLabel(
-    dataStructuresTab, text="Add Pair", font=("Arial", 14, "bold")
+    hashTableDemoTab, text="Add Key-Value Pair", font=("Arial", 14, "bold")
 )
-addHashTableElementHeading.place(x=5, y=5)
+addHashTableElementHeading.place(x=0, y=0)
 
 addHashTableElementInput = CTkEntry(
-    dataStructuresTab, placeholder_text="Key & Val...", width=75
+    hashTableDemoTab, placeholder_text="Key & Val...", width=300
 )
-addHashTableElementInput.place(x=5, y=35)
+addHashTableElementInput.place(x=0, y=30)
 
 addHashTableElementButton = CTkButton(
-    dataStructuresTab,
+    hashTableDemoTab,
     text="Add",
     width=45,
     fg_color="#28A228",
@@ -714,20 +714,20 @@ addHashTableElementButton = CTkButton(
     if addHashTableElementInput.get()
     else AlertPopup("Input box is empty"),
 )
-addHashTableElementButton.place(x=85, y=35)
+addHashTableElementButton.place(x=305, y=30)
 
 deleteHashTableElementHeading = CTkLabel(
-    dataStructuresTab, text="Delete Key", font=("Arial", 14, "bold")
+    hashTableDemoTab, text="Delete Hash Table Key", font=("Arial", 14, "bold")
 )
-deleteHashTableElementHeading.place(x=150, y=5)
+deleteHashTableElementHeading.place(x=0, y=70)
 
 deleteHashTableElementInput = CTkEntry(
-    dataStructuresTab, placeholder_text="Key...", width=75
+    hashTableDemoTab, placeholder_text="Key...", width=300
 )
-deleteHashTableElementInput.place(x=150, y=35)
+deleteHashTableElementInput.place(x=0, y=100)
 
 deleteHashTableElementButton = CTkButton(
-    dataStructuresTab,
+    hashTableDemoTab,
     text="Delete",
     width=45,
     fg_color="#D32F2F",
@@ -738,20 +738,20 @@ deleteHashTableElementButton = CTkButton(
     if deleteHashTableElementInput.get()
     else AlertPopup("Input box is empty"),
 )
-deleteHashTableElementButton.place(x=230, y=35)
+deleteHashTableElementButton.place(x=305, y=100)
 
 searchHashTableElementHeading = CTkLabel(
-    dataStructuresTab, text="Search Key", font=("Arial", 14, "bold")
+    hashTableDemoTab, text="Search Hash Table Key", font=("Arial", 14, "bold")
 )
-searchHashTableElementHeading.place(x=295, y=5)
+searchHashTableElementHeading.place(x=0, y=140)
 
 searchHashTableElementInput = CTkEntry(
-    dataStructuresTab, placeholder_text="Key...", width=75
+    hashTableDemoTab, placeholder_text="Key...", width=300
 )
-searchHashTableElementInput.place(x=295, y=35)
+searchHashTableElementInput.place(x=0, y=170)
 
 searchHashTableElementButton = CTkButton(
-    dataStructuresTab,
+    hashTableDemoTab,
     text="Search",
     width=45,
     fg_color="#1976D2",
@@ -762,7 +762,7 @@ searchHashTableElementButton = CTkButton(
     if searchHashTableElementInput.get()
     else AlertPopup("Input box is empty"),
 )
-searchHashTableElementButton.place(x=375, y=35)
+searchHashTableElementButton.place(x=305, y=170)
 
 hashTableElementsList = []
 hashTableElements = HashTable()
@@ -880,15 +880,15 @@ def loadBTreeOnStart():
 
 
 addBTreeNodeHeading = CTkLabel(
-    dataStructuresTab, text="Add Node", font=("Arial", 14, "bold")
+    bTreeDemoTab, text="Add Node", font=("Arial", 14, "bold")
 )
 addBTreeNodeHeading.place(x=5, y=75)
 
-addBTreeNodeInput = CTkEntry(dataStructuresTab, placeholder_text="Node...", width=75)
+addBTreeNodeInput = CTkEntry(bTreeDemoTab, placeholder_text="Node...", width=75)
 addBTreeNodeInput.place(x=5, y=105)
 
 addBTreeNodeButton = CTkButton(
-    dataStructuresTab,
+    bTreeDemoTab,
     text="Add",
     command=lambda: addBTreeNode(addBTreeNodeInput.get())
     if addBTreeNodeInput.get()
@@ -902,15 +902,15 @@ addBTreeNodeButton = CTkButton(
 addBTreeNodeButton.place(x=85, y=105)
 
 deleteBTreeNodeHeading = CTkLabel(
-    dataStructuresTab, text="Delete Node", font=("Arial", 14, "bold")
+    bTreeDemoTab, text="Delete Node", font=("Arial", 14, "bold")
 )
 deleteBTreeNodeHeading.place(x=150, y=75)
 
-deleteBTreeNodeInput = CTkEntry(dataStructuresTab, placeholder_text="Node...", width=75)
+deleteBTreeNodeInput = CTkEntry(bTreeDemoTab, placeholder_text="Node...", width=75)
 deleteBTreeNodeInput.place(x=150, y=105)
 
 deleteBTreeNodeButton = CTkButton(
-    dataStructuresTab,
+    bTreeDemoTab,
     text="Delete",
     command=lambda: deleteBTreeNode(deleteBTreeNodeInput.get())
     if deleteBTreeNodeInput.get()
@@ -924,15 +924,15 @@ deleteBTreeNodeButton = CTkButton(
 deleteBTreeNodeButton.place(x=230, y=105)
 
 searchBTreeNodeHeading = CTkLabel(
-    dataStructuresTab, text="Search Node", font=("Arial", 14, "bold")
+    bTreeDemoTab, text="Search Node", font=("Arial", 14, "bold")
 )
 searchBTreeNodeHeading.place(x=295, y=75)
 
-searchBTreeNodeInput = CTkEntry(dataStructuresTab, placeholder_text="Node...", width=75)
+searchBTreeNodeInput = CTkEntry(bTreeDemoTab, placeholder_text="Node...", width=75)
 searchBTreeNodeInput.place(x=295, y=105)
 
 searchBTreeNodeButton = CTkButton(
-    dataStructuresTab,
+    bTreeDemoTab,
     text="Search",
     command=lambda: searchBTreeNode(searchBTreeNodeInput.get())
     if searchBTreeNodeInput.get()
@@ -1005,17 +1005,17 @@ def loadBTreeTaskData(fileName):
 
 
 loadBTreeTaskDataHeading = CTkLabel(
-    dataStructuresTab, text="Load subscribers JSON", font=("Arial", 14, "bold")
+    bTreeTaskTab, text="Load subscribers JSON", font=("Arial", 14, "bold")
 )
 loadBTreeTaskDataHeading.place(x=5, y=145)
 
 loadBTreeTaskDataInput = CTkEntry(
-    dataStructuresTab, placeholder_text="Filename...", width=110
+    bTreeTaskTab, placeholder_text="Filename...", width=110
 )
 loadBTreeTaskDataInput.place(x=5, y=175)
 
 loadBTreeTaskDataButton = CTkButton(
-    dataStructuresTab,
+    bTreeTaskTab,
     text="Load",
     width=45,
     fg_color="#1976D2",
@@ -1029,17 +1029,17 @@ loadBTreeTaskDataButton = CTkButton(
 loadBTreeTaskDataButton.place(x=120, y=175)
 
 bTreeTaskSearchForSubHeading = CTkLabel(
-    dataStructuresTab, text="Search for subscriber", font=("Arial", 14, "bold")
+    bTreeTaskTab, text="Search for subscriber", font=("Arial", 14, "bold")
 )
 bTreeTaskSearchForSubHeading.place(x=185, y=145)
 
 bTreeTaskSearchForSubInput = CTkEntry(
-    dataStructuresTab, placeholder_text="Number...", width=110
+    bTreeTaskTab, placeholder_text="Number...", width=110
 )
 bTreeTaskSearchForSubInput.place(x=185, y=175)
 
 bTreeTaskSearchForSubButton = CTkButton(
-    dataStructuresTab,
+    bTreeTaskTab,
     text="Search",
     width=45,
     fg_color="#1976D2",
@@ -1096,17 +1096,15 @@ def hashTaskSearch(givenName):
 
 
 hashTaskLoadDataHeading = CTkLabel(
-    dataStructuresTab, text="Load employees MD", font=("Arial", 14, "bold")
+    hashTaskTab, text="Load employees MD", font=("Arial", 14, "bold")
 )
 hashTaskLoadDataHeading.place(x=5, y=215)
 
-hashTaskLoadDataInput = CTkEntry(
-    dataStructuresTab, placeholder_text="Filename...", width=110
-)
+hashTaskLoadDataInput = CTkEntry(hashTaskTab, placeholder_text="Filename...", width=110)
 hashTaskLoadDataInput.place(x=5, y=245)
 
 hashTaskLoadDataButton = CTkButton(
-    dataStructuresTab,
+    hashTaskTab,
     text="Load",
     width=45,
     fg_color="#1976D2",
@@ -1120,17 +1118,15 @@ hashTaskLoadDataButton = CTkButton(
 hashTaskLoadDataButton.place(x=120, y=245)
 
 hashTaskSearchHeading = CTkLabel(
-    dataStructuresTab, text="Find position", font=("Arial", 14, "bold")
+    hashTaskTab, text="Find position", font=("Arial", 14, "bold")
 )
 hashTaskSearchHeading.place(x=185, y=215)
 
-hashTaskSearchInput = CTkEntry(
-    dataStructuresTab, placeholder_text="Employee...", width=110
-)
+hashTaskSearchInput = CTkEntry(hashTaskTab, placeholder_text="Employee...", width=110)
 hashTaskSearchInput.place(x=185, y=245)
 
 hashTaskSearchButton = CTkButton(
-    dataStructuresTab,
+    hashTaskTab,
     text="Search",
     width=45,
     fg_color="#1976D2",
