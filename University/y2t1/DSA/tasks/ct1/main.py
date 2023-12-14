@@ -3,6 +3,7 @@ import time
 import json
 import heapq
 import os
+from collections import defaultdict
 
 
 class AlertPopup(CTkToplevel):
@@ -1289,20 +1290,10 @@ class HuffmanCoding:
 greedyAlgosTabsContainer = CTkTabview(greedyAlgosTab)
 greedyAlgosTabsContainer.add("Huffman Coding")
 greedyAlgosTabsContainer.add("Greedy Algorithm Task")
-greedyAlgosTabsContainer.pack(padx=5, pady=5, fill="both", expand=True)
+greedyAlgosTabsContainer.pack(fill="both", expand=True)
 
 huffmanCodingTab = greedyAlgosTabsContainer.tab("Huffman Coding")
-greedyAlgoTaskTab = greedyAlgosTabsContainer.tab("Greedy Algorithm Task")
-
-huffmanCodingElementsContainer = CTkScrollableFrame(
-    huffmanCodingTab, width=200, height=260
-)
-huffmanCodingElementsContainer.place(x=430, y=5)
-
-greedyAlgoTaskElementsContainer = CTkScrollableFrame(
-    greedyAlgoTaskTab, width=200, height=260
-)
-greedyAlgoTaskElementsContainer.place(x=430, y=5)
+greedyTaskTab = greedyAlgosTabsContainer.tab("Greedy Algorithm Task")
 
 
 def huffmanLoadAndCompress(fileName):
@@ -1442,6 +1433,181 @@ huffmanDecompressedFilePath = None
 huffmanOriginalFileWeight = None
 huffmanCompressedFileWeight = None
 huffmanCompressionRatio = None
+
+
+#! GREEDY ALGORITHMS
+class Shopkeeper:
+    def __init__(self, products):
+        self.products = products
+        self.popularProducts = []
+        self.productsFreqency = {product: 0 for product in products}
+
+    def solveProblem(self, customerOrder):
+        queueTime = 0
+        for product in customerOrder:
+            if product not in self.productsFreqency:
+                self.productsFreqency[product] = 0
+
+            if product in self.popularProducts:
+                queueTime += 1
+            elif product in self.products:
+                queueTime += 2
+                self.productsFreqency[product] += 1
+            else:
+                queueTime += 3
+        self.updatePopularProducts()
+        return queueTime
+
+    def updatePopularProducts(self):
+        mostPopularProduct = max(self.productsFreqency, key=self.productsFreqency.get)
+        self.popularProducts.append(mostPopularProduct)
+        del self.productsFreqency[mostPopularProduct]
+
+        greedyTaskUpdatePopularProductsContainer()
+
+    def updateProducts(self, newProducts):
+        self.products = newProducts
+        greedyTaskUpdateProductsContainer()
+
+
+def greedyTaskUpdatePopularProductsContainer():
+    for widget in greedyTaskPopularProductsContainer.winfo_children():
+        widget.destroy()
+
+    for product in greedyTaskShop.popularProducts:
+        CTkLabel(
+            greedyTaskPopularProductsContainer,
+            text=product,
+        ).pack(padx=5, pady=5, anchor="w")
+
+
+def greedyTaskUpdateProductsContainer():
+    for widget in greedyTaskProductsContainer.winfo_children():
+        widget.destroy()
+
+    for product in greedyTaskShop.products:
+        CTkLabel(
+            greedyTaskProductsContainer,
+            text=product,
+        ).pack(padx=5, pady=5, anchor="w")
+
+
+def greedyTaskLoadProductsFromFile(fileName):
+    with open(fileName, "r") as file:
+        products = json.load(file)
+    greedyTaskShop.updateProducts(products)
+
+
+def greedyTaskPlaceOrder(order):
+    order = order.split(",")
+    queueTime = greedyTaskShop.solveProblem(order)
+    AlertPopup(f"Queue time: {queueTime}")
+
+
+greedyTaskTabsContainer = CTkTabview(greedyTaskTab, width=270, height=300)
+greedyTaskTabsContainer.add("Products")
+greedyTaskTabsContainer.add("Popular Products")
+greedyTaskTabsContainer.place(x=400, y=0)
+
+greedyTaskProductsContainer = CTkScrollableFrame(
+    greedyTaskTabsContainer.tab("Products")
+)
+greedyTaskProductsContainer.pack(side="left", fill="both", expand=True)
+
+greedyTaskPopularProductsContainer = CTkScrollableFrame(
+    greedyTaskTabsContainer.tab("Popular Products")
+)
+greedyTaskPopularProductsContainer.pack(side="left", fill="both", expand=True)
+
+
+greedyTaskAddProductsHeading = CTkLabel(
+    greedyTaskTab,
+    text="Fill up shelves with products",
+    font=("Arial", 14, "bold"),
+)
+greedyTaskAddProductsHeading.place(x=0, y=0)
+
+greedyTaskAddProductsInput = CTkEntry(
+    greedyTaskTab,
+    placeholder_text="Products separated by comma...",
+    width=300,
+)
+greedyTaskAddProductsInput.place(x=0, y=30)
+
+greedyTaskAddProductsButton = CTkButton(
+    greedyTaskTab,
+    text="Add",
+    width=60,
+    command=lambda: greedyTaskShop.updateProducts(
+        greedyTaskAddProductsInput.get().split(",")
+    )
+    if greedyTaskAddProductsInput.get()
+    else AlertPopup("Enter products first"),
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+)
+greedyTaskAddProductsButton.place(x=305, y=30)
+
+greedyTaskLoadProductsHeading = CTkLabel(
+    greedyTaskTab,
+    text="OR Load products from JSON",
+    font=("Arial", 14, "bold"),
+)
+greedyTaskLoadProductsHeading.place(x=0, y=70)
+
+greedyTaskLoadProductsInput = CTkEntry(
+    greedyTaskTab,
+    placeholder_text="Path to JSON file...",
+    width=250,
+)
+greedyTaskLoadProductsInput.place(x=0, y=100)
+
+greedyTaskLoadProductsButton = CTkButton(
+    greedyTaskTab,
+    text="Load from JSON",
+    width=80,
+    command=lambda: greedyTaskLoadProductsFromFile(greedyTaskLoadProductsInput.get())
+    if greedyTaskLoadProductsInput.get()
+    else AlertPopup("Enter path first"),
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+)
+greedyTaskLoadProductsButton.place(x=255, y=100)
+
+# input for customer order
+greedyTaskPlaceOrderHeading = CTkLabel(
+    greedyTaskTab,
+    text="Place order",
+    font=("Arial", 14, "bold"),
+)
+greedyTaskPlaceOrderHeading.place(x=0, y=160)
+
+greedyTaskPlaceOrderInput = CTkEntry(
+    greedyTaskTab,
+    placeholder_text="Products separated by comma...",
+    width=300,
+)
+greedyTaskPlaceOrderInput.place(x=0, y=190)
+
+greedyTaskPlaceOrderButton = CTkButton(
+    greedyTaskTab,
+    text="Place",
+    width=60,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: greedyTaskPlaceOrder(greedyTaskPlaceOrderInput.get())
+    if greedyTaskPlaceOrderInput.get()
+    else AlertPopup("Enter products first"),
+)
+greedyTaskPlaceOrderButton.place(x=305, y=190)
+
+greedyTaskShop = Shopkeeper([])
 
 app.mainloop()
 saveHeapOnExit()
