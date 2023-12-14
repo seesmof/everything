@@ -301,6 +301,7 @@ loadHeapOnStart()
 
 
 #! DOUBLY LINKED LIST
+# TODO maybe add linked list visualization
 class DoublyLinkedList:
     class LinkedListNode:
         def __init__(self, data=None):
@@ -408,14 +409,14 @@ def loadLinkedListOnStart():
 
 
 addLinkedListNodeHeading = CTkLabel(
-    linkedListDemoTab, text="Add Node", font=("Arial", 14, "bold")
+    linkedListDemoTab, text="Add Linked List Node", font=("Arial", 14, "bold")
 )
-addLinkedListNodeHeading.place(x=5, y=130)
+addLinkedListNodeHeading.place(x=0, y=0)
 
 addLinkedListNodeInput = CTkEntry(
-    linkedListDemoTab, placeholder_text="Node...", width=75
+    linkedListDemoTab, placeholder_text="Node value...", width=300
 )
-addLinkedListNodeInput.place(x=5, y=160)
+addLinkedListNodeInput.place(x=0, y=30)
 
 addLinkedListNodeButton = CTkButton(
     linkedListDemoTab,
@@ -429,17 +430,17 @@ addLinkedListNodeButton = CTkButton(
     text_color="white",
     font=("Arial", 12, "bold"),
 )
-addLinkedListNodeButton.place(x=85, y=160)
+addLinkedListNodeButton.place(x=305, y=30)
 
 deleteHeapNodeHeading = CTkLabel(
-    linkedListDemoTab, text="Delete Node", font=("Arial", 14, "bold")
+    linkedListDemoTab, text="Delete Linked List Node", font=("Arial", 14, "bold")
 )
-deleteHeapNodeHeading.place(x=145, y=130)
+deleteHeapNodeHeading.place(x=0, y=70)
 
 deleteLinkedListNodeInput = CTkEntry(
-    linkedListDemoTab, placeholder_text="Node...", width=75
+    linkedListDemoTab, placeholder_text="Node...", width=300
 )
-deleteLinkedListNodeInput.place(x=145, y=160)
+deleteLinkedListNodeInput.place(x=0, y=100)
 
 deleteLinkedListNodeButton = CTkButton(
     linkedListDemoTab,
@@ -453,17 +454,17 @@ deleteLinkedListNodeButton = CTkButton(
     text_color="white",
     font=("Arial", 12, "bold"),
 )
-deleteLinkedListNodeButton.place(x=225, y=160)
+deleteLinkedListNodeButton.place(x=305, y=100)
 
 searchLinkedListNodeHeading = CTkLabel(
-    linkedListDemoTab, text="Search Node", font=("Arial", 14, "bold")
+    linkedListDemoTab, text="Search Linked List Node", font=("Arial", 14, "bold")
 )
-searchLinkedListNodeHeading.place(x=290, y=130)
+searchLinkedListNodeHeading.place(x=0, y=140)
 
 searchLinkedListNodeInput = CTkEntry(
-    linkedListDemoTab, placeholder_text="Node...", width=75
+    linkedListDemoTab, placeholder_text="Node...", width=300
 )
-searchLinkedListNodeInput.place(x=290, y=160)
+searchLinkedListNodeInput.place(x=0, y=170)
 
 searchLinkedListNodeButton = CTkButton(
     linkedListDemoTab,
@@ -477,7 +478,7 @@ searchLinkedListNodeButton = CTkButton(
     text_color="white",
     font=("Arial", 12, "bold"),
 )
-searchLinkedListNodeButton.place(x=370, y=160)
+searchLinkedListNodeButton.place(x=305, y=170)
 
 linkedListElements = DoublyLinkedList()
 loadLinkedListOnStart()
