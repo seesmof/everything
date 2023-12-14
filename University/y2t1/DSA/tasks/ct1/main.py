@@ -1306,44 +1306,52 @@ greedyAlgoTaskElementsContainer.place(x=430, y=5)
 
 
 def huffmanLoadAndCompress(fileName):
-    global huffmanInputFilePath
-    huffmanInputFilePath = fileName
-    huffmanInputFilePathLabel.configure(text=f"Loaded file: {fileName}")
+    try:
+        global huffmanInputFilePath
+        huffmanInputFilePath = fileName
+        huffmanInputFilePathLabel.configure(text=f"Loaded file: {fileName}")
 
-    global huffmanCompressedFilePath
-    huffmanCompressedFilePath = huffmanObject.compress(fileName)
+        global huffmanCompressedFilePath
+        huffmanCompressedFilePath = huffmanObject.compress(fileName)
 
-    global huffmanOriginalFileWeight
-    huffmanOriginalFileWeight = os.path.getsize(fileName)
-    huffmanOriginalFileWeightLabel.configure(
-        text=f"Original weight: {huffmanOriginalFileWeight/1024:.2f} KB or {huffmanOriginalFileWeight/1024/1024:.2f} MB"
-    )
+        global huffmanOriginalFileWeight
+        huffmanOriginalFileWeight = os.path.getsize(fileName)
+        huffmanOriginalFileWeightLabel.configure(
+            text=f"Original weight: {huffmanOriginalFileWeight/1024:.2f} KB or {huffmanOriginalFileWeight/1024/1024:.2f} MB"
+        )
 
-    global huffmanCompressedFileWeight
-    huffmanCompressedFileWeight = os.path.getsize(huffmanCompressedFilePath)
-    huffmanCompressedFileWeightLabel.configure(
-        text=f"Compressed weight: {huffmanCompressedFileWeight/1024:.2f} KB or {huffmanCompressedFileWeight/1024/1024:.2f} MB"
-    )
+        global huffmanCompressedFileWeight
+        huffmanCompressedFileWeight = os.path.getsize(huffmanCompressedFilePath)
+        huffmanCompressedFileWeightLabel.configure(
+            text=f"Compressed weight: {huffmanCompressedFileWeight/1024:.2f} KB or {huffmanCompressedFileWeight/1024/1024:.2f} MB"
+        )
 
-    global huffmanCompressionRatio
-    huffmanCompressionRatio = huffmanCompressionRatio = (
-        1 - huffmanCompressedFileWeight / huffmanOriginalFileWeight
-    ) * 100
-    huffmanCompressionRatioLabel.configure(
-        text=f"Compression Ratio: {huffmanCompressionRatio:.2f}%"
-    )
+        global huffmanCompressionRatio
+        huffmanCompressionRatio = huffmanCompressionRatio = (
+            1 - huffmanCompressedFileWeight / huffmanOriginalFileWeight
+        ) * 100
+        huffmanCompressionRatioLabel.configure(
+            text=f"Compression Ratio: {huffmanCompressionRatio:.2f}%"
+        )
+    except:
+        AlertPopup("Failed to compress")
 
 
 def huffmanDecompress():
-    global huffmanDecompressedFilePath
-    huffmanDecompressedFilePath = huffmanObject.decompress(huffmanCompressedFilePath)
-    huffmanDecompressedFilePathLabel.configure(
-        text=f"Decompressed file: {huffmanDecompressedFilePath}"
-    )
+    try:
+        global huffmanDecompressedFilePath
+        huffmanDecompressedFilePath = huffmanObject.decompress(
+            huffmanCompressedFilePath
+        )
+        huffmanDecompressedFilePathLabel.configure(
+            text=f"Decompressed file: {huffmanDecompressedFilePath}"
+        )
 
-    huffmanDecompressedFileWeightLabel.configure(
-        text=f"Decompressed weight: {os.path.getsize(huffmanDecompressedFilePath)/1024:.2f} KB or {os.path.getsize(huffmanDecompressedFilePath)/1024/1024:.2f} MB"
-    )
+        huffmanDecompressedFileWeightLabel.configure(
+            text=f"Decompressed weight: {os.path.getsize(huffmanDecompressedFilePath)/1024:.2f} KB or {os.path.getsize(huffmanDecompressedFilePath)/1024/1024:.2f} MB"
+        )
+    except:
+        AlertPopup("Failed to decompress")
 
 
 huffmanLoadFileHeading = CTkLabel(

@@ -111,21 +111,28 @@
       "case": "Override",
       "repA": "росію",
       "repB": "московію",
-      "type": "Swap"
-    },
-    {
-      "active": true,
-      "case": "Override",
-      "repA": "киев",
-      "repB": "Київ",
-      "type": "Swap"
+      "type": "Simple"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "kiev",
       "repB": "Kyiv",
-      "type": "Swap"
+      "type": "Simple"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "русня",
+      "repB": "кацапня",
+      "type": "Simple"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "киев",
+      "repB": "Київ",
+      "type": "Simple"
     }
   ]
 }

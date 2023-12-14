@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "ad5a42b976571ac8",
+        "id": "afceebc3f9ed49cc",
         "type": "tabs",
         "children": [
           {
-            "id": "7bf5f725100517d7",
+            "id": "44449214bd76a73a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/y2t1/IY/tasks/Lecture-Abstracts/res.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -86,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t1/IY/tasks/Lecture-Abstracts/res.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t1/IY/tasks/Lecture-Abstracts/res.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,9 +129,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "University/y2t1/IY/tasks/Lecture-Abstracts/res.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -176,8 +168,11 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "7bf5f725100517d7",
+  "active": "d785a87909210767",
   "lastOpenFiles": [
+    "University/y2t1/DSA/tasks/ct1/largeText_decompressed.txt",
+    "University/y2t1/DSA/tasks/ct1/largeText.bin",
+    "University/y2t1/IY/tasks/Lecture-Abstracts/res.md",
     "Code Doodles/Words and characters counter given a file/in.md",
     "Code Doodles/Words and characters counter given a file/input.md",
     "Code Doodles/Words and characters counter given a file/main.py",
@@ -200,7 +195,6 @@
     "University/y2t1/CT/prod/assets/images/real-estate-pictures/Особняк у старовинному стилі.jpg",
     "University/y2t1/CT/prod/assets/images/signup.ico",
     "University/y2t1/CT/prod/assets/images/real-estate-pictures",
-    "University/y2t1/CT/prod/assets/images/login.ico",
     "University/y2t1/CT/prod/docs/Тексти секцій/Help Section Text.md",
     "University/y2t1/CT/prod/docs/Тексти секцій/Developers Info Section Text.md",
     "University/y2t1/CT/prod/docs/Загальні вимоги до проєкту.md",
@@ -221,8 +215,6 @@
     "University/y2t1/CT/docs/Результати/Names.md",
     "University/y2t1/CT/docs/Результати/files-structure.md",
     "University/y2t1/CT/docs/Результати/data.md",
-    "University/y2t1/CT/docs/Результати/Algorithm for creating a video.md",
-    "University/y2t1/CT/docs/Зустрічі/Жовт 28, 2023 - Порядок денний на зустріч.md",
-    "University/y2t1/CT/docs/Зустрічі/Ідеї для проєкту до зустрічі - етап планування.md"
+    "University/y2t1/CT/docs/Результати/Algorithm for creating a video.md"
   ]
 }

@@ -26,7 +26,7 @@ def addNewOne(repA, repB):
         "case": "Override",
         "repA": repA,
         "repB": repB,
-        "type": "Swap",
+        "type": "Simple",
     }
 
     for replacement in data["replacements"]:
@@ -57,6 +57,8 @@ def removeExisting(repA):
     printExisting()
 
 
+"""
+
 newOne = "kiev"
 replaceWith = "Kyiv"
 
@@ -64,3 +66,5 @@ addNewOne(newOne, replaceWith)
 
 removeThis = "привет"
 removeExisting(removeThis)
+
+"""
