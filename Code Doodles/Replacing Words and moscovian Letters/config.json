@@ -6,105 +6,105 @@
       "case": "Override",
       "repA": "русский",
       "repB": "москаль",
-      "type": "Swap"
+      "type": "Simple"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "росіянин",
       "repB": "кацап",
-      "type": "Swap"
+      "type": "Simple"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "росиянен",
       "repB": "кацап",
-      "type": "Swap"
+      "type": "Simple"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "Украї",
       "repB": "Украї",
-      "type": "Swap"
+      "type": "Simple"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "russia",
       "repB": "moscovia",
-      "type": "Swap"
+      "type": "Simple"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "росій",
       "repB": "кацап",
-      "type": "Swap"
+      "type": "Simple"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "росії",
       "repB": "московії",
-      "type": "Swap"
+      "type": "Simple"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "путі",
       "repB": "путі",
-      "type": "Swap"
+      "type": "Simple"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "моск",
       "repB": "моск",
-      "type": "Swap"
+      "type": "Simple"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "росією",
       "repB": "московією",
-      "type": "Swap"
+      "type": "Simple"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "росіяни",
       "repB": "кацапи",
-      "type": "Swap"
+      "type": "Simple"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "россия",
       "repB": "московія",
-      "type": "Swap"
+      "type": "Simple"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "росія",
       "repB": "московія",
-      "type": "Swap"
+      "type": "Simple"
     },
     {
       "active": true,
       "case": "Override",
       "repA": ".ru",
       "repB": " !КАЦАПИ!",
-      "type": "Swap"
+      "type": "Simple"
     },
     {
       "active": true,
       "case": "Override",
       "repA": "ru.",
       "repB": "!КАЦАПИ! ",
-      "type": "Swap"
+      "type": "Simple"
     },
     {
       "active": true,
@@ -123,8 +123,8 @@
     {
       "active": true,
       "case": "Override",
-      "repA": "русня",
-      "repB": "кацапня",
+      "repA": "русн",
+      "repB": "кацапн",
       "type": "Simple"
     },
     {
