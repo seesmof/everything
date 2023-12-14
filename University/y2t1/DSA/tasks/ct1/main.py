@@ -543,12 +543,12 @@ def heapTaskShowResults():
 heapTaskLoadEmployeesDataHeading = CTkLabel(
     heapTaskTab, text="Load employees JSON file", font=("Arial", 14, "bold")
 )
-heapTaskLoadEmployeesDataHeading.place(x=5, y=210)
+heapTaskLoadEmployeesDataHeading.place(x=0, y=0)
 
 heapTaskLoadEmployeesDataInput = CTkEntry(
     heapTaskTab, placeholder_text="Filename...", width=140
 )
-heapTaskLoadEmployeesDataInput.place(x=5, y=240)
+heapTaskLoadEmployeesDataInput.place(x=0, y=30)
 
 heapTaskLoadEmployeesDataButton = CTkButton(
     heapTaskTab,
@@ -562,7 +562,7 @@ heapTaskLoadEmployeesDataButton = CTkButton(
     if heapTaskLoadEmployeesDataInput.get()
     else AlertPopup("Input box is empty"),
 )
-heapTaskLoadEmployeesDataButton.place(x=150, y=240)
+heapTaskLoadEmployeesDataButton.place(x=150, y=30)
 
 heapTaskShowResultsButton = CTkButton(
     heapTaskTab,
@@ -574,7 +574,7 @@ heapTaskShowResultsButton = CTkButton(
     font=("Arial", 12, "bold"),
     command=lambda: heapTaskShowResults(),
 )
-heapTaskShowResultsButton.place(x=220, y=240)
+heapTaskShowResultsButton.place(x=220, y=30)
 
 heapTaskEmployeesData = []
 
