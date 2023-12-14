@@ -5,8 +5,8 @@ import heapq
 import os
 import matplotlib.pyplot as plt
 import networkx as nx
-import pygraphviz as pgv
-
+import pydot
+from networkx.drawing.nx_pydot import graphviz_layout
 
 class AlertPopup(CTkToplevel):
     def __init__(self, message: str):
@@ -208,16 +208,26 @@ def loadHeapOnStart():
 
 def visualizeHeap():
     def getGraph():
-        G = nx.Graph()
+        G = nx.DiGraph()
         for i in range(len(heapElements.heap)):
-            if 2 * i + 1 < len(heapElements.heap):
-                G.add_edge(i, 2 * i + 1)
-            if 2 * i + 2 < len(heapElements.heap):
-                G.add_edge(i, 2 * i + 2)
+            if i != 0:
+                parent = (i - 1) // 2
+                G.add_edge(parent, i)
         return G
 
+    def treeLayout(G):
+        pos = {}
+        width = max(nx.node_connected_component(G, node) for node in G.nodes())
+        height = len(G.nodes() // width)
+        for node in nx.topological_sort(G):
+            x = node % width
+            y = node // width
+            pos[node] = (x, -y)
+        return pos
+
     G = getGraph()
-    nx.draw(G, with_labels=True)
+    pos = treeLayout(G)
+    nx.draw(G, pos, with_labels=True, node_color="lightblue", edge_color="gray")
     plt.show()
 
 
