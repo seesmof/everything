@@ -1439,7 +1439,7 @@ huffmanCompressionRatio = None
 class Shopkeeper:
     def __init__(self, products):
         self.products = products
-        self.popularProducts = []
+        self.popularProducts = set()
         self.productsFreqency = {product: 0 for product in products}
 
     def solveProblem(self, customerOrder):
@@ -1460,7 +1460,7 @@ class Shopkeeper:
 
     def updatePopularProducts(self):
         mostPopularProduct = max(self.productsFreqency, key=self.productsFreqency.get)
-        self.popularProducts.append(mostPopularProduct)
+        self.popularProducts.add(mostPopularProduct)
         del self.productsFreqency[mostPopularProduct]
 
         greedyTaskUpdatePopularProductsContainer()
@@ -1578,7 +1578,6 @@ greedyTaskLoadProductsButton = CTkButton(
 )
 greedyTaskLoadProductsButton.place(x=255, y=100)
 
-# input for customer order
 greedyTaskPlaceOrderHeading = CTkLabel(
     greedyTaskTab,
     text="Place order",
