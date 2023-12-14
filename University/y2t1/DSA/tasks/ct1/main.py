@@ -1109,10 +1109,10 @@ def hashTaskSearch(givenName):
 hashTaskLoadDataHeading = CTkLabel(
     hashTaskTab, text="Load employees MD", font=("Arial", 14, "bold")
 )
-hashTaskLoadDataHeading.place(x=5, y=215)
+hashTaskLoadDataHeading.place(x=0, y=0)
 
-hashTaskLoadDataInput = CTkEntry(hashTaskTab, placeholder_text="Filename...", width=110)
-hashTaskLoadDataInput.place(x=5, y=245)
+hashTaskLoadDataInput = CTkEntry(hashTaskTab, placeholder_text="Filename...", width=300)
+hashTaskLoadDataInput.place(x=0, y=30)
 
 hashTaskLoadDataButton = CTkButton(
     hashTaskTab,
@@ -1126,15 +1126,15 @@ hashTaskLoadDataButton = CTkButton(
     if hashTaskLoadDataInput.get()
     else AlertPopup("Input box is empty"),
 )
-hashTaskLoadDataButton.place(x=120, y=245)
+hashTaskLoadDataButton.place(x=305, y=30)
 
 hashTaskSearchHeading = CTkLabel(
     hashTaskTab, text="Find position", font=("Arial", 14, "bold")
 )
-hashTaskSearchHeading.place(x=185, y=215)
+hashTaskSearchHeading.place(x=0, y=70)
 
-hashTaskSearchInput = CTkEntry(hashTaskTab, placeholder_text="Employee...", width=110)
-hashTaskSearchInput.place(x=185, y=245)
+hashTaskSearchInput = CTkEntry(hashTaskTab, placeholder_text="Employee...", width=300)
+hashTaskSearchInput.place(x=0, y=100)
 
 hashTaskSearchButton = CTkButton(
     hashTaskTab,
@@ -1148,7 +1148,7 @@ hashTaskSearchButton = CTkButton(
     if hashTaskSearchInput.get()
     else AlertPopup("Input box is empty"),
 )
-hashTaskSearchButton.place(x=300, y=245)
+hashTaskSearchButton.place(x=305, y=100)
 
 hashTaskEmployeesList = []
 hashTaskEmployees = HashTable()
