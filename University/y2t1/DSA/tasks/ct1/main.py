@@ -770,6 +770,7 @@ loadHashTableOnStart()
 
 
 #! B-TREE
+# TODO fix deletion not working - understand it truly
 class BTree:
     class BTreeNode:
         def __init__(self, leaf=False):
@@ -792,6 +793,14 @@ class BTree:
         else:
             self._insertNonFull(root, key)
 
+    def delete(self, key):
+        nodeA, index = self.searchKey(key)
+        if nodeA is not None:
+            if nodeA.leaf:
+                nodeA.keys.pop(index)
+            return True
+        else:
+            return False
     def searchKey(self, key, nodeA=None):
         if nodeA is not None:
             index = 0
@@ -851,6 +860,10 @@ def addBTreeNode(data):
     bTreeElementsList.append(data)
     updateBTreeElementsContainer()
 
+def deleteBTreeNode(data):
+    bTreeElements.delete(data)
+    bTreeElementsList.remove(data)
+    updateBTreeElementsContainer()
 
 def searchBTreeNode(data):
     # TODO fix search not working for values >10
@@ -877,15 +890,13 @@ def loadBTreeOnStart():
                 addBTreeNode(element)
     except:
         AlertPopup("Failed to load B-Tree elements")
-
-
 addBTreeNodeHeading = CTkLabel(
-    bTreeDemoTab, text="Add Node", font=("Arial", 14, "bold")
+    bTreeDemoTab, text="Add B-Tree Node", font=("Arial", 14, "bold")
 )
-addBTreeNodeHeading.place(x=5, y=75)
+addBTreeNodeHeading.place(x=0, y=0)
 
-addBTreeNodeInput = CTkEntry(bTreeDemoTab, placeholder_text="Node...", width=75)
-addBTreeNodeInput.place(x=5, y=105)
+addBTreeNodeInput = CTkEntry(bTreeDemoTab, placeholder_text="Node...", width=300)
+addBTreeNodeInput.place(x=0, y=30)
 
 addBTreeNodeButton = CTkButton(
     bTreeDemoTab,
@@ -899,15 +910,15 @@ addBTreeNodeButton = CTkButton(
     text_color="white",
     font=("Arial", 12, "bold"),
 )
-addBTreeNodeButton.place(x=85, y=105)
+addBTreeNodeButton.place(x=305, y=30)
 
 deleteBTreeNodeHeading = CTkLabel(
-    bTreeDemoTab, text="Delete Node", font=("Arial", 14, "bold")
+    bTreeDemoTab, text="Delete B-Tree Node", font=("Arial", 14, "bold")
 )
-deleteBTreeNodeHeading.place(x=150, y=75)
+deleteBTreeNodeHeading.place(x=0, y=70)
 
-deleteBTreeNodeInput = CTkEntry(bTreeDemoTab, placeholder_text="Node...", width=75)
-deleteBTreeNodeInput.place(x=150, y=105)
+deleteBTreeNodeInput = CTkEntry(bTreeDemoTab, placeholder_text="Node...", width=300)
+deleteBTreeNodeInput.place(x=0, y=100)
 
 deleteBTreeNodeButton = CTkButton(
     bTreeDemoTab,
@@ -921,15 +932,15 @@ deleteBTreeNodeButton = CTkButton(
     text_color="white",
     font=("Arial", 12, "bold"),
 )
-deleteBTreeNodeButton.place(x=230, y=105)
+deleteBTreeNodeButton.place(x=305, y=100)
 
 searchBTreeNodeHeading = CTkLabel(
-    bTreeDemoTab, text="Search Node", font=("Arial", 14, "bold")
+    bTreeDemoTab, text="Search B-Tree Node", font=("Arial", 14, "bold")
 )
-searchBTreeNodeHeading.place(x=295, y=75)
+searchBTreeNodeHeading.place(x=0, y=140)
 
-searchBTreeNodeInput = CTkEntry(bTreeDemoTab, placeholder_text="Node...", width=75)
-searchBTreeNodeInput.place(x=295, y=105)
+searchBTreeNodeInput = CTkEntry(bTreeDemoTab, placeholder_text="Node...", width=300)
+searchBTreeNodeInput.place(x=0, y=170)
 
 searchBTreeNodeButton = CTkButton(
     bTreeDemoTab,
@@ -943,7 +954,7 @@ searchBTreeNodeButton = CTkButton(
     text_color="white",
     font=("Arial", 12, "bold"),
 )
-searchBTreeNodeButton.place(x=375, y=105)
+searchBTreeNodeButton.place(x=305, y=170)
 
 bTreeElementsList = []
 bTreeElements = BTree(3)
@@ -1007,12 +1018,12 @@ def loadBTreeTaskData(fileName):
 loadBTreeTaskDataHeading = CTkLabel(
     bTreeTaskTab, text="Load subscribers JSON", font=("Arial", 14, "bold")
 )
-loadBTreeTaskDataHeading.place(x=5, y=145)
+loadBTreeTaskDataHeading.place(x=0, y=0)
 
 loadBTreeTaskDataInput = CTkEntry(
-    bTreeTaskTab, placeholder_text="Filename...", width=110
+    bTreeTaskTab, placeholder_text="Filename...", width=300
 )
-loadBTreeTaskDataInput.place(x=5, y=175)
+loadBTreeTaskDataInput.place(x=0, y=30)
 
 loadBTreeTaskDataButton = CTkButton(
     bTreeTaskTab,
@@ -1026,17 +1037,17 @@ loadBTreeTaskDataButton = CTkButton(
     if loadBTreeTaskDataInput.get()
     else AlertPopup("Input box is empty"),
 )
-loadBTreeTaskDataButton.place(x=120, y=175)
+loadBTreeTaskDataButton.place(x=305, y=30)
 
 bTreeTaskSearchForSubHeading = CTkLabel(
     bTreeTaskTab, text="Search for subscriber", font=("Arial", 14, "bold")
 )
-bTreeTaskSearchForSubHeading.place(x=185, y=145)
+bTreeTaskSearchForSubHeading.place(x=0, y=70)
 
 bTreeTaskSearchForSubInput = CTkEntry(
-    bTreeTaskTab, placeholder_text="Number...", width=110
+    bTreeTaskTab, placeholder_text="Number...", width=300
 )
-bTreeTaskSearchForSubInput.place(x=185, y=175)
+bTreeTaskSearchForSubInput.place(x=0, y=100)
 
 bTreeTaskSearchForSubButton = CTkButton(
     bTreeTaskTab,
@@ -1050,7 +1061,7 @@ bTreeTaskSearchForSubButton = CTkButton(
     if bTreeTaskSearchForSubInput.get()
     else AlertPopup("Input box is empty"),
 )
-bTreeTaskSearchForSubButton.place(x=300, y=175)
+bTreeTaskSearchForSubButton.place(x=305, y=100)
 
 bTreeTaskSubscribers = []
 bTreeTaskElements = BTree(3)
