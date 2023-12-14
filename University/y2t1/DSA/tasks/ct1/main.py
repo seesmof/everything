@@ -3,7 +3,9 @@ import time
 import json
 import heapq
 import os
-from collections import defaultdict
+import matplotlib.pyplot as plt
+import networkx as nx
+import pygraphviz as pgv
 
 
 class AlertPopup(CTkToplevel):
@@ -204,6 +206,21 @@ def loadHeapOnStart():
         pass
 
 
+def visualizeHeap():
+    def getGraph():
+        G = nx.Graph()
+        for i in range(len(heapElements.heap)):
+            if 2 * i + 1 < len(heapElements.heap):
+                G.add_edge(i, 2 * i + 1)
+            if 2 * i + 2 < len(heapElements.heap):
+                G.add_edge(i, 2 * i + 2)
+        return G
+
+    G = getGraph()
+    nx.draw(G, with_labels=True)
+    plt.show()
+
+
 heapTabsContainer = CTkTabview(heapTab)
 heapTabsContainer.add("Heap")
 heapTabsContainer.add("Linked List")
@@ -279,7 +296,6 @@ sortHeap_HeapSortButton = CTkButton(
 )
 sortHeap_HeapSortButton.place(x=170, y=100)
 
-
 deleteHeapElementHeading = CTkLabel(
     heapDemoTab, text="Delete from Heap", font=("Arial", 14, "bold")
 )
@@ -296,6 +312,25 @@ deleteHeapElementButton = CTkButton(
     font=("Arial", 12, "bold"),
 )
 deleteHeapElementButton.place(x=0, y=170)
+
+visualizeHeapHeading = CTkLabel(
+    heapDemoTab, text="Visualize Heap", font=("Arial", 14, "bold")
+)
+visualizeHeapHeading.place(x=0, y=210)
+
+visualizeHeapButton = CTkButton(
+    heapDemoTab,
+    text="Visualize",
+    width=120,
+    command=lambda: visualizeHeap()
+    if len(heapElements.heap) > 0
+    else AlertPopup("Heap is empty"),
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+)
+visualizeHeapButton.place(x=0, y=240)
 
 heapElements = Heap()
 loadHeapOnStart()
