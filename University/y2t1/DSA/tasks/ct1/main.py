@@ -1552,7 +1552,7 @@ greedyTaskAddProductsButton.place(x=305, y=30)
 
 greedyTaskLoadProductsHeading = CTkLabel(
     greedyTaskTab,
-    text="OR Load products from JSON",
+    text="or, Load products from JSON file",
     font=("Arial", 14, "bold"),
 )
 greedyTaskLoadProductsHeading.place(x=0, y=70)
@@ -1567,7 +1567,7 @@ greedyTaskLoadProductsInput.place(x=0, y=100)
 greedyTaskLoadProductsButton = CTkButton(
     greedyTaskTab,
     text="Load from JSON",
-    width=80,
+    width=110,
     command=lambda: greedyTaskLoadProductsFromFile(greedyTaskLoadProductsInput.get())
     if greedyTaskLoadProductsInput.get()
     else AlertPopup("Enter path first"),
