@@ -5,8 +5,7 @@ import heapq
 import os
 import matplotlib.pyplot as plt
 import networkx as nx
-import pydot
-from networkx.drawing.nx_pydot import graphviz_layout
+
 
 class AlertPopup(CTkToplevel):
     def __init__(self, message: str):
@@ -51,7 +50,6 @@ graphShortestPathTab = tabsContainer.tab("Graph Shortest Path")
 
 
 #! HEAP
-# TODO perhaps add visualization of binary heap
 class Heap:
     def __init__(self):
         self.heap = []
@@ -206,31 +204,6 @@ def loadHeapOnStart():
         pass
 
 
-def visualizeHeap():
-    def getGraph():
-        G = nx.DiGraph()
-        for i in range(len(heapElements.heap)):
-            if i != 0:
-                parent = (i - 1) // 2
-                G.add_edge(parent, i)
-        return G
-
-    def treeLayout(G):
-        pos = {}
-        width = max(nx.node_connected_component(G, node) for node in G.nodes())
-        height = len(G.nodes() // width)
-        for node in nx.topological_sort(G):
-            x = node % width
-            y = node // width
-            pos[node] = (x, -y)
-        return pos
-
-    G = getGraph()
-    pos = treeLayout(G)
-    nx.draw(G, pos, with_labels=True, node_color="lightblue", edge_color="gray")
-    plt.show()
-
-
 heapTabsContainer = CTkTabview(heapTab)
 heapTabsContainer.add("Heap")
 heapTabsContainer.add("Linked List")
@@ -322,25 +295,6 @@ deleteHeapElementButton = CTkButton(
     font=("Arial", 12, "bold"),
 )
 deleteHeapElementButton.place(x=0, y=170)
-
-visualizeHeapHeading = CTkLabel(
-    heapDemoTab, text="Visualize Heap", font=("Arial", 14, "bold")
-)
-visualizeHeapHeading.place(x=0, y=210)
-
-visualizeHeapButton = CTkButton(
-    heapDemoTab,
-    text="Visualize",
-    width=120,
-    command=lambda: visualizeHeap()
-    if len(heapElements.heap) > 0
-    else AlertPopup("Heap is empty"),
-    fg_color="#1976D2",
-    hover_color="#0D47A1",
-    text_color="white",
-    font=("Arial", 12, "bold"),
-)
-visualizeHeapButton.place(x=0, y=240)
 
 heapElements = Heap()
 loadHeapOnStart()
