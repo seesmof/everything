@@ -1240,9 +1240,6 @@ class HuffmanCoding:
             b = self.getByteArray(paddedEncodedText)
             output.write(bytes(b))
 
-        AlertPopup(
-            f"File compressed successfully. It now weighs {os.path.getsize(outputPath)} bytes or {round(os.path.getsize(outputPath) / (1024 * 1024), 2)} megabytes\nPrevious weight - {os.path.getsize(filePath)} bytes or {round(os.path.getsize(filePath) / (1024 * 1024), 2)} megabytes\nSo the resulting compression is {round((1 - (os.path.getsize(outputPath) / os.path.getsize(filePath))) * 100, 2)}%"
-        )
         return outputPath
 
     def removePadding(self, paddedEncodedText):
@@ -1286,9 +1283,6 @@ class HuffmanCoding:
 
             output.write(decodedText)
 
-        AlertPopup(
-            f"File decompressed successfully. Output file is {outputPath}\nCurrent file weight is {os.path.getsize(outputPath)} bytes or {round(os.path.getsize(outputPath) / (1024 * 1024), 2)} megabytes"
-        )
         return outputPath
 
 
@@ -1311,28 +1305,45 @@ greedyAlgoTaskElementsContainer = CTkScrollableFrame(
 greedyAlgoTaskElementsContainer.place(x=430, y=5)
 
 
-def huffmanCompressFile(fileName):
-    try:
-        global huffmanDecompressedFilePath, huffmanLoadedFilePath
-        global huffmanOriginalFileWeight, huffmanCompressedFileWeight, huffmanDecompressedFileWeight
+def huffmanLoadAndCompress(fileName):
+    global huffmanInputFilePath
+    huffmanInputFilePath = fileName
+    huffmanInputFilePathLabel.configure(text=f"Loaded file: {fileName}")
 
-        huffmanLoadedFilePath = fileName
-        huffmanDecompressedFilePath = huffmanObject.compress(fileName)
+    global huffmanCompressedFilePath
+    huffmanCompressedFilePath = huffmanObject.compress(fileName)
 
-        huffmanOriginalFileWeight = f"{round(os.path.getsize(fileName) / (1024 * 1024), 2)} MB or {round(os.path.getsize(fileName) / (1024 * 1024 * 1024), 2)} KB"
-        huffmanCompressedFileWeight = f"{round(os.path.getsize(huffmanDecompressedFilePath) / (1024 * 1024), 2)} MB or {round(os.path.getsize(huffmanDecompressedFilePath) / (1024 * 1024 * 1024), 2)} KB"
-    except:
-        AlertPopup("Failed to load file")
+    global huffmanOriginalFileWeight
+    huffmanOriginalFileWeight = os.path.getsize(fileName)
+    huffmanOriginalFileWeightLabel.configure(
+        text=f"Original weight: {huffmanOriginalFileWeight/1024:.2f} KB or {huffmanOriginalFileWeight/1024/1024:.2f} MB"
+    )
+
+    global huffmanCompressedFileWeight
+    huffmanCompressedFileWeight = os.path.getsize(huffmanCompressedFilePath)
+    huffmanCompressedFileWeightLabel.configure(
+        text=f"Compressed weight: {huffmanCompressedFileWeight/1024:.2f} KB or {huffmanCompressedFileWeight/1024/1024:.2f} MB"
+    )
+
+    global huffmanCompressionRatio
+    huffmanCompressionRatio = huffmanCompressionRatio = (
+        1 - huffmanCompressedFileWeight / huffmanOriginalFileWeight
+    ) * 100
+    huffmanCompressionRatioLabel.configure(
+        text=f"Compression Ratio: {huffmanCompressionRatio:.2f}%"
+    )
 
 
-def huffmanDecompressFile():
-    try:
-        global huffmanDecompressedFilePath
-        huffmanDecompressedFilePath = huffmanObject.decompress(
-            huffmanDecompressedFilePath
-        )
-    except:
-        AlertPopup("Failed to load file")
+def huffmanDecompress():
+    global huffmanDecompressedFilePath
+    huffmanDecompressedFilePath = huffmanObject.decompress(huffmanCompressedFilePath)
+    huffmanDecompressedFilePathLabel.configure(
+        text=f"Decompressed file: {huffmanDecompressedFilePath}"
+    )
+
+    huffmanDecompressedFileWeightLabel.configure(
+        text=f"Decompressed weight: {os.path.getsize(huffmanDecompressedFilePath)/1024:.2f} KB or {os.path.getsize(huffmanDecompressedFilePath)/1024/1024:.2f} MB"
+    )
 
 
 huffmanLoadFileHeading = CTkLabel(
@@ -1353,7 +1364,7 @@ huffmanLoadFileButton = CTkButton(
     hover_color="#0D47A1",
     text_color="white",
     font=("Arial", 12, "bold"),
-    command=lambda: huffmanCompressFile(huffmanLoadFileInput.get())
+    command=lambda: huffmanLoadAndCompress(huffmanLoadFileInput.get())
     if huffmanLoadFileInput.get()
     else AlertPopup("Input box is empty"),
 )
@@ -1367,25 +1378,25 @@ huffmanDecompressFileButton = CTkButton(
     hover_color="#0D47A1",
     text_color="white",
     font=("Arial", 12, "bold"),
-    command=lambda: huffmanDecompressFile()
-    if huffmanDecompressedFilePath
+    command=lambda: huffmanDecompress()
+    if huffmanCompressedFilePath
     else AlertPopup("No file loaded"),
 )
 huffmanDecompressFileButton.place(x=200, y=30)
 
-huffmanLoadedFilePathLabel = CTkLabel(
+huffmanInputFilePathLabel = CTkLabel(
     huffmanCodingTab,
     text="No file loaded",
     font=("Arial", 12),
 )
-huffmanLoadedFilePathLabel.place(x=0, y=70)
+huffmanInputFilePathLabel.place(x=0, y=70)
 
-huffmanLoadedFileWeightLabel = CTkLabel(
+huffmanCompressedFileWeightLabel = CTkLabel(
     huffmanCodingTab,
     text="File weight: ",
     font=("Arial", 12),
 )
-huffmanLoadedFileWeightLabel.place(x=0, y=90)
+huffmanCompressedFileWeightLabel.place(x=0, y=90)
 
 huffmanOriginalFileWeightLabel = CTkLabel(
     huffmanCodingTab,
@@ -1394,26 +1405,35 @@ huffmanOriginalFileWeightLabel = CTkLabel(
 )
 huffmanOriginalFileWeightLabel.place(x=0, y=110)
 
+huffmanCompressionRatioLabel = CTkLabel(
+    huffmanCodingTab,
+    text="Compression ratio: ",
+    font=("Arial", 12),
+)
+huffmanCompressionRatioLabel.place(x=0, y=130)
+
 huffmanDecompressedFilePathLabel = CTkLabel(
     huffmanCodingTab,
     text="No file decompressed",
     font=("Arial", 12),
 )
-huffmanDecompressedFilePathLabel.place(x=200, y=70)
+huffmanDecompressedFilePathLabel.place(x=0, y=160)
 
 huffmanDecompressedFileWeightLabel = CTkLabel(
     huffmanCodingTab,
     text="Decompressed file weight: ",
     font=("Arial", 12),
 )
-huffmanDecompressedFileWeightLabel.place(x=200, y=90)
+huffmanDecompressedFileWeightLabel.place(x=0, y=180)
 
 huffmanObject = HuffmanCoding()
-huffmanLoadedFilePath = None
+huffmanInputFilePath = None
+huffmanCompressedFilePath = None
 huffmanDecompressedFilePath = None
+
 huffmanOriginalFileWeight = None
 huffmanCompressedFileWeight = None
-huffmanDecompressedFileWeight = None
+huffmanCompressionRatio = None
 
 app.mainloop()
 saveHeapOnExit()
