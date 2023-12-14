@@ -1657,6 +1657,7 @@ greedyTaskShop = Shopkeeper([])
 
 
 #! ROBOTS TASK
+# TODO add ability to load from JSON
 class RobotGroup:
     def __init__(self, num_robots, speeds, num_groups):
         self.robotsCount = num_robots
