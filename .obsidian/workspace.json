@@ -11,8 +11,12 @@
             "id": "44449214bd76a73a",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "University/y2t1/Дисципліни та Результати.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -82,6 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "University/y2t1/Дисципліни та Результати.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,6 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "University/y2t1/Дисципліни та Результати.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -129,7 +135,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "University/y2t1/Дисципліни та Результати.md"
+              }
             }
           }
         ]
@@ -168,8 +176,10 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "d785a87909210767",
+  "active": "44449214bd76a73a",
   "lastOpenFiles": [
+    "University/y2t1/CT/docs/Dec 14 - Fixing stuff/Fixing presentation.md",
+    "University/y2t1/CT/docs/Dec 14 - Fixing stuff",
     "Code Doodles/Learning Click in Python for building good CLI/main.py",
     "Code Doodles/Learning Click in Python for building good CLI",
     "University/y2t1/DSA/tasks/ct1/products.json",
@@ -182,9 +192,7 @@
     "Code Doodles/Words and characters counter given a file/main.py",
     "Code Doodles/Words and characters counter given a file",
     "Code Doodles/Interactive AI chat using gpt4free/main.py",
-    "Code Doodles/Interactive AI chat using gpt4free",
     "University/y2t1/DSA/tasks/ct1/docs/Elements spacing guidelines.md",
-    "University/y2t1/DSA/tasks/ct1/hashTable.json",
     "University/y2t1/WEB/tasks/ct1/images/hash-tab-design.png",
     "University/y2t1/CT/prod/assets/images/real-estate-pictures/Сучасний дуплекс біля технопарку.jpg",
     "University/y2t1/CT/prod/assets/images/real-estate-pictures/Студія в новобудові.jpg",

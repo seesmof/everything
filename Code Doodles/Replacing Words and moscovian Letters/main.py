@@ -57,12 +57,12 @@ def removeExisting(repA):
     printExisting()
 
 
-"""
 
-newOne = "kiev"
-replaceWith = "Kyiv"
+newOne = "хорошо"
+replaceWith = "добре"
 
 addNewOne(newOne, replaceWith)
+"""
 
 removeThis = "привет"
 removeExisting(removeThis)

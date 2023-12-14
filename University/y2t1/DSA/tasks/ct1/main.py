@@ -49,6 +49,7 @@ graphShortestPathTab = tabsContainer.tab("Graph Shortest Path")
 
 
 #! HEAP
+# TODO perhaps add visualization of binary heap
 class Heap:
     def __init__(self):
         self.heap = []
@@ -203,40 +204,40 @@ def loadHeapOnStart():
         pass
 
 
-heapOutputBoxesContainer = CTkTabview(heapTab, width=210, height=290)
-heapOutputBoxesContainer.add("Heap")
-heapOutputBoxesContainer.add("Linked List")
-heapOutputBoxesContainer.add("Task")
-heapOutputBoxesContainer.place(x=430, y=5)
+heapTabsContainer = CTkTabview(heapTab)
+heapTabsContainer.add("Heap")
+heapTabsContainer.add("Linked List")
+heapTabsContainer.add("Task")
+heapTabsContainer.pack(fill="both", expand=True)
 
-heapElementsTab = heapOutputBoxesContainer.tab("Heap")
-linkedListElementsTab = heapOutputBoxesContainer.tab("Linked List")
-heapTaskElementsTab = heapOutputBoxesContainer.tab("Task")
+heapDemoTab = heapTabsContainer.tab("Heap")
+linkedListDemoTab = heapTabsContainer.tab("Linked List")
+heapTaskTab = heapTabsContainer.tab("Task")
 
-heapElementsContainer = CTkScrollableFrame(heapElementsTab, width=210, height=260)
-heapElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
+heapElementsContainer = CTkScrollableFrame(heapDemoTab, width=240, height=270)
+heapElementsContainer.place(x=400, y=0)
 
 linkedListElementsContainer = CTkScrollableFrame(
-    linkedListElementsTab, width=210, height=260
+    linkedListDemoTab, width=240, height=270
 )
-linkedListElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
+linkedListElementsContainer.place(x=400, y=0)
 
-heapTaskElementsContainer = CTkScrollableFrame(
-    heapTaskElementsTab, width=210, height=260
-)
-heapTaskElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
+heapTaskElementsContainer = CTkScrollableFrame(heapTaskTab, width=240, height=270)
+heapTaskElementsContainer.place(x=400, y=0)
 
 
 addHeapElementHeading = CTkLabel(
-    heapTab, text="Add to Heap", font=("Arial", 14, "bold")
+    heapDemoTab, text="Add to Heap", font=("Arial", 14, "bold")
 )
-addHeapElementHeading.place(x=5, y=5)
+addHeapElementHeading.place(x=0, y=0)
 
-addHeapElementInput = CTkEntry(heapTab, placeholder_text="Enter element...", width=350)
-addHeapElementInput.place(x=5, y=35)
+addHeapElementInput = CTkEntry(
+    heapDemoTab, placeholder_text="Enter element...", width=300
+)
+addHeapElementInput.place(x=0, y=30)
 
 addHeapElementButton = CTkButton(
-    heapTab,
+    heapDemoTab,
     text="Add",
     command=lambda: addHeapElement(int(addHeapElementInput.get()))
     if addHeapElementInput.get()
@@ -247,10 +248,45 @@ addHeapElementButton = CTkButton(
     text_color="white",
     font=("Arial", 12, "bold"),
 )
-addHeapElementButton.place(x=360, y=35)
+addHeapElementButton.place(x=305, y=30)
+
+sortHeapSectionHeading = CTkLabel(
+    heapDemoTab, text="Sort Heap", font=("Arial", 14, "bold")
+)
+sortHeapSectionHeading.place(x=0, y=70)
+
+sortHeap_DefaultSortButton = CTkButton(
+    heapDemoTab,
+    text="Default Sort",
+    command=lambda: sortHeap_DefaultSort(),
+    width=60,
+)
+sortHeap_DefaultSortButton.place(x=0, y=100)
+
+sortHeap_QuickSortButton = CTkButton(
+    heapDemoTab,
+    text="Quick Sort",
+    command=lambda: sortHeap_QuickSort(),
+    width=60,
+)
+sortHeap_QuickSortButton.place(x=90, y=100)
+
+sortHeap_HeapSortButton = CTkButton(
+    heapDemoTab,
+    text="Heap Sort",
+    command=lambda: sortHeap_HeapSort(),
+    width=60,
+)
+sortHeap_HeapSortButton.place(x=170, y=100)
+
+
+deleteHeapElementHeading = CTkLabel(
+    heapDemoTab, text="Delete from Heap", font=("Arial", 14, "bold")
+)
+deleteHeapElementHeading.place(x=0, y=140)
 
 deleteHeapElementButton = CTkButton(
-    heapTab,
+    heapDemoTab,
     text="Delete Element",
     command=lambda: deleteHeapElement(),
     width=120,
@@ -259,34 +295,7 @@ deleteHeapElementButton = CTkButton(
     text_color="white",
     font=("Arial", 12, "bold"),
 )
-deleteHeapElementButton.place(x=300, y=80)
-
-heapSortingButtonsContainer = CTkFrame(heapTab, fg_color="transparent", width=300)
-heapSortingButtonsContainer.place(x=0, y=80)
-
-sortHeap_DefaultSortButton = CTkButton(
-    heapSortingButtonsContainer,
-    text="Default Sort",
-    command=lambda: sortHeap_DefaultSort(),
-    width=60,
-)
-sortHeap_DefaultSortButton.pack(padx=5, side="left")
-
-sortHeap_QuickSortButton = CTkButton(
-    heapSortingButtonsContainer,
-    text="Quick Sort",
-    command=lambda: sortHeap_QuickSort(),
-    width=60,
-)
-sortHeap_QuickSortButton.pack(padx=5, side="left")
-
-sortHeap_HeapSortButton = CTkButton(
-    heapSortingButtonsContainer,
-    text="Heap Sort",
-    command=lambda: sortHeap_HeapSort(),
-    width=60,
-)
-sortHeap_HeapSortButton.pack(padx=5, side="left")
+deleteHeapElementButton.place(x=0, y=170)
 
 heapElements = Heap()
 loadHeapOnStart()
@@ -400,15 +409,17 @@ def loadLinkedListOnStart():
 
 
 addLinkedListNodeHeading = CTkLabel(
-    heapTab, text="Add Node", font=("Arial", 14, "bold")
+    linkedListDemoTab, text="Add Node", font=("Arial", 14, "bold")
 )
 addLinkedListNodeHeading.place(x=5, y=130)
 
-addLinkedListNodeInput = CTkEntry(heapTab, placeholder_text="Node...", width=75)
+addLinkedListNodeInput = CTkEntry(
+    linkedListDemoTab, placeholder_text="Node...", width=75
+)
 addLinkedListNodeInput.place(x=5, y=160)
 
 addLinkedListNodeButton = CTkButton(
-    heapTab,
+    linkedListDemoTab,
     text="Add",
     command=lambda: addLinkedListNode(int(addLinkedListNodeInput.get()))
     if addLinkedListNodeInput.get()
@@ -422,15 +433,17 @@ addLinkedListNodeButton = CTkButton(
 addLinkedListNodeButton.place(x=85, y=160)
 
 deleteHeapNodeHeading = CTkLabel(
-    heapTab, text="Delete Node", font=("Arial", 14, "bold")
+    linkedListDemoTab, text="Delete Node", font=("Arial", 14, "bold")
 )
 deleteHeapNodeHeading.place(x=145, y=130)
 
-deleteLinkedListNodeInput = CTkEntry(heapTab, placeholder_text="Node...", width=75)
+deleteLinkedListNodeInput = CTkEntry(
+    linkedListDemoTab, placeholder_text="Node...", width=75
+)
 deleteLinkedListNodeInput.place(x=145, y=160)
 
 deleteLinkedListNodeButton = CTkButton(
-    heapTab,
+    linkedListDemoTab,
     text="Delete",
     command=lambda: deleteLinkedListNode(int(deleteLinkedListNodeInput.get()))
     if deleteLinkedListNodeInput.get()
@@ -444,15 +457,17 @@ deleteLinkedListNodeButton = CTkButton(
 deleteLinkedListNodeButton.place(x=225, y=160)
 
 searchLinkedListNodeHeading = CTkLabel(
-    heapTab, text="Search Node", font=("Arial", 14, "bold")
+    linkedListDemoTab, text="Search Node", font=("Arial", 14, "bold")
 )
 searchLinkedListNodeHeading.place(x=290, y=130)
 
-searchLinkedListNodeInput = CTkEntry(heapTab, placeholder_text="Node...", width=75)
+searchLinkedListNodeInput = CTkEntry(
+    linkedListDemoTab, placeholder_text="Node...", width=75
+)
 searchLinkedListNodeInput.place(x=290, y=160)
 
 searchLinkedListNodeButton = CTkButton(
-    heapTab,
+    linkedListDemoTab,
     text="Search",
     command=lambda: searchLinkedListNode(int(searchLinkedListNodeInput.get()))
     if searchLinkedListNodeInput.get()
@@ -526,17 +541,17 @@ def heapTaskShowResults():
 
 
 heapTaskLoadEmployeesDataHeading = CTkLabel(
-    heapTab, text="Load employees JSON file", font=("Arial", 14, "bold")
+    heapTaskTab, text="Load employees JSON file", font=("Arial", 14, "bold")
 )
 heapTaskLoadEmployeesDataHeading.place(x=5, y=210)
 
 heapTaskLoadEmployeesDataInput = CTkEntry(
-    heapTab, placeholder_text="Filename...", width=140
+    heapTaskTab, placeholder_text="Filename...", width=140
 )
 heapTaskLoadEmployeesDataInput.place(x=5, y=240)
 
 heapTaskLoadEmployeesDataButton = CTkButton(
-    heapTab,
+    heapTaskTab,
     text="Load",
     width=60,
     fg_color="#1976D2",
@@ -550,7 +565,7 @@ heapTaskLoadEmployeesDataButton = CTkButton(
 heapTaskLoadEmployeesDataButton.place(x=150, y=240)
 
 heapTaskShowResultsButton = CTkButton(
-    heapTab,
+    heapTaskTab,
     text="Show Results",
     width=120,
     fg_color="#28A228",
@@ -664,22 +679,16 @@ bTreeElementsTab = hashOutputBoxesContainer.tab("B-Tree")
 hashTaskElementsTab = hashOutputBoxesContainer.tab("Search")
 bTreeTaskElementsTab = hashOutputBoxesContainer.tab("Subs")
 
-hashTableElementsContainer = CTkScrollableFrame(
-    hashTableElementsTab, width=210, height=260
-)
+hashTableElementsContainer = CTkScrollableFrame(hashTableElementsTab)
 hashTableElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
 
-bTreeElementsContainer = CTkScrollableFrame(bTreeElementsTab, width=210, height=260)
+bTreeElementsContainer = CTkScrollableFrame(bTreeElementsTab)
 bTreeElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
 
-hashTaskElementsContainer = CTkScrollableFrame(
-    hashTaskElementsTab, width=210, height=260
-)
+hashTaskElementsContainer = CTkScrollableFrame(hashTaskElementsTab)
 hashTaskElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
 
-bTreeTaskElementsContainer = CTkScrollableFrame(
-    bTreeTaskElementsTab, width=210, height=260
-)
+bTreeTaskElementsContainer = CTkScrollableFrame(bTreeTaskElementsTab)
 bTreeTaskElementsContainer.pack(padx=5, pady=5, fill="both", expand=True)
 
 
@@ -1504,7 +1513,7 @@ def greedyTaskPlaceOrder(order):
     AlertPopup(f"Queue time: {queueTime}")
 
 
-greedyTaskTabsContainer = CTkTabview(greedyTaskTab, width=270, height=300)
+greedyTaskTabsContainer = CTkTabview(greedyTaskTab)
 greedyTaskTabsContainer.add("Products")
 greedyTaskTabsContainer.add("Popular Products")
 greedyTaskTabsContainer.place(x=400, y=0)
