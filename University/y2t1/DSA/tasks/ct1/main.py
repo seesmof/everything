@@ -1655,6 +1655,110 @@ greedyTaskPlaceOrderButton.place(x=305, y=190)
 greedyTaskOrders = []
 greedyTaskShop = Shopkeeper([])
 
+
+#! ROBOTS TASK
+class RobotGroup:
+    def __init__(self, num_robots, speeds, num_groups):
+        self.robotsCount = num_robots
+        self.speeds = speeds
+        self.groupsCount = num_groups
+        self.dp = [[-1] * (num_robots + 1) for _ in range(num_groups + 1)]
+
+    def countWays(self):
+        return self._countWaysHelper(self.groupsCount, self.robotsCount)
+
+    def _countWaysHelper(self, groups, robots):
+        if groups == 0 and robots == 0:
+            return 1
+        if groups == 0 or robots == 0:
+            return 0
+        if self.dp[groups][robots] != -1:
+            return self.dp[groups][robots]
+
+        ways = 0
+        for i in range(1, robots + 1):
+            ways += self._countWaysHelper(groups - 1, i - 1)
+        self.dp[groups][robots] = ways
+        return ways
+
+
+def solveRobotsTask(robotsCount, speeds, groupsCount):
+    robotGroup = RobotGroup(robotsCount, speeds, groupsCount)
+    res = robotGroup.countWays()
+    AlertPopup(f"Number of ways to arrange {groupsCount} groups is {res}")
+
+
+dynamicProgrammingTabsContainer = CTkTabview(dynamicProgrammingTab)
+dynamicProgrammingTabsContainer.add("Robot Groups")
+dynamicProgrammingTabsContainer.add("Buildings' Arrangements")
+dynamicProgrammingTabsContainer.pack(expand=True, fill="both")
+
+robotsTaskTab = dynamicProgrammingTabsContainer.tab("Robot Groups")
+buildingsTaskTab = dynamicProgrammingTabsContainer.tab("Buildings' Arrangements")
+
+
+robotsTaskGetRobotsCountHeading = CTkLabel(
+    robotsTaskTab,
+    text="Enter number of robots",
+    font=("Arial", 14, "bold"),
+)
+robotsTaskGetRobotsCountHeading.place(x=0, y=0)
+
+robotsTaskGetRobotsCountInput = CTkEntry(
+    robotsTaskTab,
+    placeholder_text="Number of robots...",
+    width=300,
+)
+robotsTaskGetRobotsCountInput.place(x=0, y=30)
+
+robotsTaskGetRobotsSpeedsHeading = CTkLabel(
+    robotsTaskTab,
+    text="Enter speeds of the robots",
+    font=("Arial", 14, "bold"),
+)
+robotsTaskGetRobotsSpeedsHeading.place(x=0, y=70)
+
+robotsTaskGetRobotsSpeedsInput = CTkEntry(
+    robotsTaskTab,
+    placeholder_text="Speeds of the robots separated by comma...",
+    width=300,
+)
+robotsTaskGetRobotsSpeedsInput.place(x=0, y=100)
+
+robotsTaskGetGroupsCountHeading = CTkLabel(
+    robotsTaskTab,
+    text="Enter number of groups",
+    font=("Arial", 14, "bold"),
+)
+robotsTaskGetGroupsCountHeading.place(x=0, y=140)
+
+robotsTaskGetGroupsCountInput = CTkEntry(
+    robotsTaskTab,
+    placeholder_text="Number of groups...",
+    width=300,
+)
+robotsTaskGetGroupsCountInput.place(x=0, y=170)
+
+robotsTaskShowResultsButton = CTkButton(
+    robotsTaskTab,
+    text="Show results",
+    width=110,
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    command=lambda: solveRobotsTask(
+        int(robotsTaskGetRobotsCountInput.get()),
+        list(map(int, robotsTaskGetRobotsSpeedsInput.get().split(","))),
+        int(robotsTaskGetGroupsCountInput.get()),
+    )
+    if robotsTaskGetRobotsCountInput.get()
+    and robotsTaskGetRobotsSpeedsInput.get()
+    and robotsTaskGetGroupsCountInput.get()
+    else AlertPopup("Fill in all the fields first"),
+)
+robotsTaskShowResultsButton.place(x=0, y=220)
+
 app.mainloop()
 saveHeapOnExit()
 saveLinkedListOnExit()

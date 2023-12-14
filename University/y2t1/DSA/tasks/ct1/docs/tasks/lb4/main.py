@@ -93,6 +93,7 @@ def main_menu():
                         can_be_next_to.lower() == "yes"
                     )
             num_buildings = int(input("Enter the number of buildings: "))
+            print(matrix)
             arrangement = BuildingArrangement(matrix)
             num_arrangements = arrangement.count_arrangements(num_buildings)
             print(f"\nNumber of arrangements: {num_arrangements}")
