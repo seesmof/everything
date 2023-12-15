@@ -1927,7 +1927,6 @@ buildingsTaskGetResultsButton.place(x=185, y=240)
 
 
 #! BFS
-# TODO understand this better and understand whats a tree
 class BFSGraph:
     def __init__(self, directed=False):
         self.graph = defaultdict(list)
@@ -2009,7 +2008,7 @@ def bfsDemoStartBFS(sourceNode):
     nodesList = ", ".join(map(str, visited))
 
     AlertPopup(
-        f"BFS from node {sourceNode} visited {len(visited)} nodes.\nFormed tree: {nodesList}"
+        f"BFS from node {sourceNode} visited {len(visited)} nodes\nFormed tree: {nodesList}"
     )
 
 
@@ -2083,6 +2082,137 @@ bfsDemoSetInitialNodeButton = CTkButton(
 bfsDemoSetInitialNodeButton.place(x=185, y=90)
 
 BFSGraphObject = None
+
+
+#! DFS
+class DFSGraph:
+    def __init__(self, directed=False):
+        self.graph = defaultdict(list)
+        self.directed = directed
+
+    def addEdge(self, u, v):
+        self.graph[u].append(v)
+        if not self.directed:
+            self.graph[v].append(u)
+
+    def DFS(self, source):
+        visited = []
+        stack = [source]
+
+        while stack:
+            vertex = stack.pop()
+            if vertex not in visited:
+                visited.append(vertex)
+                stack.extend(set(self.graph[vertex]) - set(visited))
+
+        return visited
+
+    def getList(self):
+        list = []
+        for key, value in self.graph.items():
+            chainString = (
+                f"{key} 🔗 {', '.join(map(str, value))}"
+                if not self.directed
+                else f"{key} → {', '.join(map(str, value))}"
+            )
+            list.append(chainString)
+        return list
+
+def dfsDemoUpdateEdgesContainer():
+    for item in dfsEdgesContainer.winfo_children():
+        item.destroy()
+        
+    for item in DFSGraphObject.getList():
+        CTkLabel(
+            dfsEdgesContainer,
+            text=item,
+        ).pack(padx=5, anchor="w")
+
+def dfsDemoLoadGraphEdges(fileName, isDirected):
+    global DFSGraphObject
+    DFSGraphObject = DFSGraph(isDirected)
+    with open(fileName, "r") as file:
+        for line in file:
+            u,v=map(int, line.strip().split())
+            DFSGraphObject.addEdge(u, v)
+    dfsDemoUpdateEdgesContainer()
+
+def dfsDemoStartDFS(source):
+    if not DFSGraphObject:
+        AlertPopup("Load Graph Edges first")
+
+    visited= DFSGraphObject.DFS(source)
+    nodesList= ", ".join(map(str, visited))
+    
+    AlertPopup(f"DFS from node {source} visited {len(visited)} nodes\nFormed tree: {nodesList}")
+
+
+dfsEdgesContainer= CTkScrollableFrame(dfsTab, width=240, height=270)
+dfsEdgesContainer.place(x=400, y=0)
+
+dfsDemoLoadGraphEdgesHeading = CTkLabel(
+    dfsTab,
+    text="Load Graph Edges from File",
+    font=("Arial", 14, "bold"),
+)
+dfsDemoLoadGraphEdgesHeading.place(x=0, y=0)
+
+dfsDemoIsDirected = CTkCheckBox(
+    dfsTab,
+    text="Directed",
+    onvalue=1,
+    offvalue=0,
+)
+dfsDemoIsDirected.place(x=0, y=30)
+
+dfsDemoFileNameInput = CTkEntry(
+    dfsTab,
+    placeholder_text="Graph edges file...",
+    width=180,
+)
+dfsDemoFileNameInput.place(x=100, y=30)
+
+dfsDemoLoadFileButton = CTkButton(
+    dfsTab,
+    text="Load",
+    width=60,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: dfsDemoLoadGraphEdges(
+        dfsDemoFileNameInput.get(), dfsDemoIsDirected.get()
+    )
+)
+dfsDemoLoadFileButton.place(x=285, y=30)
+
+dfsDemoSetInitialNodeHeading = CTkLabel(
+    dfsTab,
+    text="Set Source Node",
+    font=("Arial", 14, "bold"),
+)
+dfsDemoSetInitialNodeHeading.place(x=0, y=60)
+
+dfsDemoSetInitialNodeInput = CTkEntry(
+    dfsTab,
+    placeholder_text="Source Node...",
+    width=180,
+)
+dfsDemoSetInitialNodeInput.place(x=0, y=90)
+
+dfsDemoSetInitialNodeButton = CTkButton(
+    dfsTab,
+    text="Set and Start DFS",
+    width=100,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: dfsDemoStartDFS(int(dfsDemoSetInitialNodeInput.get())) if dfsDemoSetInitialNodeInput.get() and dfsDemoSetInitialNodeInput.get().isdigit() and int(dfsDemoSetInitialNodeInput.get()) in DFSGraphObject.graph else AlertPopup("Enter a valid source node"),
+)
+dfsDemoSetInitialNodeButton.place(x=185, y=90)
+
+DFSGraphObject = None
 
 app.mainloop()
 saveHeapOnExit()
