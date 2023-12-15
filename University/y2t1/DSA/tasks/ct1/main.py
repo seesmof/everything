@@ -2600,6 +2600,258 @@ mazeTaskSolveTask.place(x=0, y=70)
 
 mazeTaskGraphObject = None
 
+
+#! GRAPH SHORTEST PATHS
+class PathsGraph:
+    def __init__(self, directed=False):
+        self.edges = defaultdict(list)
+        self.directed = directed
+
+    def addEdge(self, u, v, weight):
+        self.edges[u].append((v, weight))
+        if not self.directed:
+            self.edges[v].append((u, weight))
+
+    def drawGraph(self, shortest_path=None):
+        G = nx.Graph() if not self.directed else nx.DiGraph()
+        for u, edges in self.edges.items():
+            for v, weight in edges:
+                G.add_edge(u, v, weight=weight)
+        pos = nx.spring_layout(G, k=0.15)
+
+        if shortest_path:
+            nodeColors = [
+                "red"
+                if node == shortest_path[-1]
+                else "lightgreen"
+                if node == shortest_path[0]
+                else "lightgray"
+                for node in G.nodes()
+            ]
+            nx.draw_networkx_nodes(G, pos, node_color=nodeColors)
+
+            plt.text(
+                0.00,
+                1.13,
+                "Red: End",
+                transform=plt.gca().transAxes,
+                fontsize=10,
+                verticalalignment="top",
+                bbox=dict(boxstyle="round", facecolor="red", alpha=0.5),
+            )
+            plt.text(
+                0.00,
+                1.06,
+                "Green: Start",
+                transform=plt.gca().transAxes,
+                fontsize=10,
+                verticalalignment="top",
+                bbox=dict(boxstyle="round", facecolor="lightgreen", alpha=0.5),
+            )
+        else:
+            nx.draw_networkx_nodes(G, pos, node_color="lightblue")
+        nx.draw_networkx_edges(
+            G, pos, arrowstyle="->"
+        ) if self.directed else nx.draw_networkx_edges(G, pos)
+        nx.draw_networkx_labels(G, pos, font_weight="bold")
+
+        if shortest_path:
+            edges = [
+                (shortest_path[i], shortest_path[i + 1])
+                for i in range(len(shortest_path) - 1)
+            ]
+            nx.draw_networkx_edges(
+                G, pos, edgelist=edges, edge_color="red", arrowstyle="->", width=2
+            ) if self.directed else nx.draw_networkx_edges(
+                G, pos, edgelist=edges, edge_color="red", width=2
+            )
+
+        labels = nx.get_edge_attributes(G, "weight")
+        nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
+        plt.show()
+
+    def floydWarshall(self):
+        dist = defaultdict(lambda: defaultdict(lambda: float("inf")))
+        nextNode = defaultdict(dict)
+
+        for u in self.edges:
+            dist[u][u] = 0
+            for v, weight in self.edges[u]:
+                dist[u][v] = weight
+                nextNode[u][v] = v
+
+        for k in self.edges:
+            for i in self.edges:
+                for j in self.edges:
+                    if dist[i][k] + dist[k][j] < dist[i][j]:
+                        dist[i][j] = dist[i][k] + dist[k][j]
+                        nextNode[i][j] = nextNode[i][k]
+
+        return dist, nextNode
+
+    def shortestPath(self, start, end):
+        distances, nextNode = self.floydWarshall()
+
+        if nextNode[start][end] is None:
+            return None
+        path = [start]
+        while start != end:
+            start = nextNode[start][end]
+            path.append(start)
+        return path
+
+    def dijkstra(self, start, end):
+        queue = [(0, start, [])]
+        seen = set()
+
+        while queue:
+            (cost, node, path) = heapq.heappop(queue)
+
+            if node not in seen:
+                seen.add(node)
+                path = path + [node]
+                if node == end:
+                    return path
+                for nextNode, c in self.edges[node]:
+                    if nextNode not in seen:
+                        newCost = cost + c
+                        heapq.heappush(queue, (newCost, nextNode, path))
+
+        return []
+
+    def bellmanFord(self, start, end):
+        distance = {node: float("infinity") for node in self.edges}
+        distance[start] = 0
+
+        predecessor = {node: None for node in self.edges}
+
+        for _ in range(len(self.edges) - 1):
+            for node in self.edges:
+                for neighbour, weight in self.edges[node]:
+                    if distance[node] + weight < distance[neighbour]:
+                        distance[neighbour] = distance[node] + weight
+                        predecessor[neighbour] = node
+
+        for node in self.edges:
+            for neighbour, weight in self.edges[node]:
+                assert (
+                    distance[node] + weight >= distance[neighbour]
+                ), "Graph contains a negative-weight cycle"
+
+        path = []
+        currentNode = end
+        while currentNode is not None:
+            path.append(currentNode)
+            currentNode = predecessor[currentNode]
+        path.reverse()
+
+        return path
+
+    def getList(self):
+        list = []
+        for key, value in self.edges.items():
+            for node in value:
+                list.append(
+                    f"{key} -> {node[0]} : {node[1]}"
+                ) if self.directed else list.append(f"{key} 🔗 {node[0]} : {node[1]}")
+        return list
+
+
+graphPathsTabsContainer = CTkTabview(
+    graphShortestPathTab,
+)
+graphPathsTabsContainer.add("Algorithms")
+graphPathsTabsContainer.add("Project Times")
+graphPathsTabsContainer.add("Path from Two Points")
+graphPathsTabsContainer.add("Path from All Points")
+graphPathsTabsContainer.pack(expand=True, fill="both")
+
+graphPathAlogsTab = graphPathsTabsContainer.tab("Algorithms")
+graphProjectTimesTab = graphPathsTabsContainer.tab("Project Times")
+graphPathFromTwoPointsTab = graphPathsTabsContainer.tab("Path from Two Points")
+graphPathFromAllPointsTab = graphPathsTabsContainer.tab("Path from All Points")
+
+
+def graphAlgosLoadGraph(fileName, isDirected):
+    global graphAlgosGraphObject
+    graphAlgosGraphObject = PathsGraph(isDirected)
+    with open(fileName, "r") as file:
+        for line in file:
+            u, v, w = map(int, line.strip().split())
+            graphAlgosGraphObject.addEdge(u, v, int(w))
+    graphAlgosUpdateElementsContainer()
+
+
+def graphAlgosUpdateElementsContainer():
+    for widget in graphAlgosElementsContainer.winfo_children():
+        widget.destroy()
+
+    for edge in graphAlgosGraphObject.getList():
+        CTkLabel(
+            graphAlgosElementsContainer,
+            text=edge,
+        ).pack(padx=5, anchor="w")
+
+
+def graphAlgosDrawGraph():
+    graphAlgosGraphObject.drawGraph()
+
+
+graphAlgosElementsContainer = CTkScrollableFrame(
+    graphPathAlogsTab, width=240, height=270
+)
+graphAlgosElementsContainer.place(x=400, y=0)
+
+graphAlgosLoadGraphHeading = CTkLabel(
+    graphPathAlogsTab, text="Load Graph from File", font=("Arial", 14, "bold")
+)
+graphAlgosLoadGraphHeading.place(x=0, y=0)
+
+graphAlgosIsDirected = CTkCheckBox(
+    graphPathAlogsTab,
+    text="Is Directed?",
+    onvalue=True,
+    offvalue=False,
+)
+graphAlgosIsDirected.place(x=0, y=30)
+
+graphAlgosLoadGraphInput = CTkEntry(
+    graphPathAlogsTab, width=180, placeholder_text="Graph File Path..."
+)
+graphAlgosLoadGraphInput.place(x=120, y=30)
+
+graphAlgosLoadGraphButton = CTkButton(
+    graphPathAlogsTab,
+    text="Load",
+    width=60,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: graphAlgosLoadGraph(
+        graphAlgosLoadGraphInput.get(), graphAlgosIsDirected.get()
+    )
+    if graphAlgosLoadGraphInput.get()
+    else AlertPopup("Please Enter Graph File Path"),
+)
+graphAlgosLoadGraphButton.place(x=305, y=30)
+
+graphAlgosDrawGraphButton = CTkButton(
+    graphPathAlogsTab,
+    text="Draw Graph",
+    width=120,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: graphAlgosDrawGraph()
+    if graphAlgosGraphObject
+    else AlertPopup("Please Load Graph First"),
+)
+graphAlgosDrawGraphButton.place(x=0, y=70)
+
+graphAlgosGraphObject = None
+
 app.mainloop()
 saveHeapOnExit()
 saveLinkedListOnExit()
