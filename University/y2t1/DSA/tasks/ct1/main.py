@@ -2299,6 +2299,7 @@ def sumPathsTaskGetResults(source, targetSum):
     else:
         AlertPopup(f"No paths with sum {targetSum} found")
 
+
 sumPathsTaskEdgesContainer = CTkScrollableFrame(pathsSumTab, width=240, height=270)
 sumPathsTaskEdgesContainer.place(x=400, y=0)
 
@@ -2384,6 +2385,98 @@ sumPathsTaskGetResultsButton = CTkButton(
 sumPathsTaskGetResultsButton.place(x=0, y=210)
 
 SumPathsTaskGraphObject = None
+
+
+#! MIN OPERATIONS
+class MinOperationsGraph:
+    def __init__(self, directed=False):
+        self.graph = defaultdict(list)
+        self.directed = directed
+
+    def solveTask(self, a, b, operations):
+        queue = deque([(a, [])])
+
+        while queue:
+            num, ops = queue.popleft()
+
+            if num == b:
+                return ops
+
+            for op in operations:
+                newNum = op(num)
+                if newNum not in ops:
+                    queue.append((newNum, ops + [op(num)]))
+
+        return None
+
+
+def minOperationsTaskSolve(a, b):
+    minOperationsTaskGraphObject = MinOperationsGraph()
+    res = minOperationsTaskGraphObject.solveTask(a, b, minOperationsTaskOperationsList)
+    if res:
+        AlertPopup(
+            f"Minimum number of operations to get from {a} to {b} is {len(res)}\nOperations: {', '.join(map(str, res))}"
+        )
+    else:
+        AlertPopup("There is no way to get from {a} to {b}")
+
+
+minOperationsTaskGetFirstNumberHeading = CTkLabel(
+    operationsTab,
+    text="Get First Number",
+    font=("Arial", 14, "bold"),
+)
+minOperationsTaskGetFirstNumberHeading.place(x=0, y=0)
+
+minOperationsTaskGetFirstNumberInput = CTkEntry(
+    operationsTab,
+    placeholder_text="First Number...",
+    width=300,
+)
+minOperationsTaskGetFirstNumberInput.place(x=0, y=30)
+
+minOperationsTaskGetFirstNumberHeading = CTkLabel(
+    operationsTab,
+    text="Get Second Number",
+    font=("Arial", 14, "bold"),
+)
+minOperationsTaskGetFirstNumberHeading.place(x=0, y=70)
+
+minOperationsTaskGetSecondNumberInput = CTkEntry(
+    operationsTab,
+    placeholder_text="Second Number...",
+    width=300,
+)
+minOperationsTaskGetSecondNumberInput.place(x=0, y=100)
+
+minOperationsTaskSolveButton = CTkButton(
+    operationsTab,
+    text="Solve",
+    width=120,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: minOperationsTaskSolve(
+        int(minOperationsTaskGetFirstNumberInput.get()),
+        int(minOperationsTaskGetSecondNumberInput.get()),
+    )
+    if minOperationsTaskGetFirstNumberInput.get()
+    and minOperationsTaskGetSecondNumberInput.get()
+    else AlertPopup("Fill in both fields"),
+)
+minOperationsTaskSolveButton.place(x=0, y=140)
+
+minOperationsTaskOperationsList = [
+    lambda x: x + 1,
+    lambda x: x - 1,
+    lambda x: x * 2,
+    lambda x: x // 2,
+    lambda x: x * 3,
+    lambda x: x // 3,
+    lambda x: x**2,
+    lambda x: x**3,
+]
 
 app.mainloop()
 saveHeapOnExit()
