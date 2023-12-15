@@ -5,6 +5,7 @@ import heapq
 import os
 import matplotlib.pyplot as plt
 import networkx as nx
+from collections import defaultdict, deque
 
 
 class AlertPopup(CTkToplevel):
@@ -1762,6 +1763,7 @@ robotsTaskShowResultsButton.place(x=0, y=220)
 
 
 #! BUILDINGS' ARRANGEMENTS
+# TODO replace inputs for compatibility with checkboxes
 class BuildingArrangement:
     def __init__(self, matrix):
         self.matrix = matrix
@@ -1800,23 +1802,19 @@ def buildingsTaskSolve(
 ):
     matrix = {
         "Residential": {
-            "Residential": residentialToResidential == "Y"
-            or residentialToResidential == "y",
-            "Industrial": residentialToIndustrial == "Y"
-            or residentialToIndustrial == "y",
-            "Office": residentialToOffice == "Y" or residentialToOffice == "y",
+            "Residential": residentialToResidential,
+            "Industrial": residentialToIndustrial,
+            "Office": residentialToOffice,
         },
         "Industrial": {
-            "Residential": industrialToResidential == "Y"
-            or industrialToResidential == "y",
-            "Industrial": industrialToIndustrial == "Y"
-            or industrialToIndustrial == "y",
-            "Office": industrialToOffice == "Y" or industrialToOffice == "y",
+            "Residential": industrialToResidential,
+            "Industrial": industrialToIndustrial,
+            "Office": industrialToOffice,
         },
         "Office": {
-            "Residential": officeToResidential == "Y" or officeToResidential == "y",
-            "Industrial": officeToIndustrial == "Y" or officeToIndustrial == "y",
-            "Office": officeToOffice == "Y" or officeToOffice == "y",
+            "Residential": officeToResidential,
+            "Industrial": officeToIndustrial,
+            "Office": officeToOffice,
         },
     }
     arrangements = BuildingArrangement(matrix)
@@ -1831,26 +1829,20 @@ buildingsTaskGetMatrixForResidentialHeading = CTkLabel(
 )
 buildingsTaskGetMatrixForResidentialHeading.place(x=0, y=0)
 
-buildingsTaskGetInputResidentialToResidential = CTkEntry(
-    buildingsTaskTab,
-    placeholder_text="Residential - Y/N...",
-    width=180,
+buildingsTaskGetInputResidentialToResidential = CTkCheckBox(
+    buildingsTaskTab, text="Residential", onvalue=1, offvalue=0
 )
 buildingsTaskGetInputResidentialToResidential.place(x=0, y=30)
 
-buildingsTaskGetInputResidentialToIndustrial = CTkEntry(
-    buildingsTaskTab,
-    placeholder_text="Industrial - Y/N...",
-    width=180,
+buildingsTaskGetInputResidentialToIndustrial = CTkCheckBox(
+    buildingsTaskTab, text="Industrial", onvalue=1, offvalue=0
 )
-buildingsTaskGetInputResidentialToIndustrial.place(x=185, y=30)
+buildingsTaskGetInputResidentialToIndustrial.place(x=110, y=30)
 
-buildingsTaskGetInputResidentialToOffice = CTkEntry(
-    buildingsTaskTab,
-    placeholder_text="Office - Y/N...",
-    width=180,
+buildingsTaskGetInputResidentialToOffice = CTkCheckBox(
+    buildingsTaskTab, text="Office", onvalue=1, offvalue=0
 )
-buildingsTaskGetInputResidentialToOffice.place(x=370, y=30)
+buildingsTaskGetInputResidentialToOffice.place(x=210, y=30)
 
 buildingsTaskGetMatrixForIndustrialHeading = CTkLabel(
     buildingsTaskTab,
@@ -1859,26 +1851,20 @@ buildingsTaskGetMatrixForIndustrialHeading = CTkLabel(
 )
 buildingsTaskGetMatrixForIndustrialHeading.place(x=0, y=70)
 
-buildingsTaskGetInputIndustrialToResidential = CTkEntry(
-    buildingsTaskTab,
-    placeholder_text="Residential - Y/N...",
-    width=180,
+buildingsTaskGetInputIndustrialToResidential = CTkCheckBox(
+    buildingsTaskTab, text="Residential", onvalue=1, offvalue=0
 )
 buildingsTaskGetInputIndustrialToResidential.place(x=0, y=100)
 
-buildingsTaskGetInputIndustrialToIndustrial = CTkEntry(
-    buildingsTaskTab,
-    placeholder_text="Industrial - Y/N...",
-    width=180,
+buildingsTaskGetInputIndustrialToIndustrial = CTkCheckBox(
+    buildingsTaskTab, text="Industrial", onvalue=1, offvalue=0
 )
-buildingsTaskGetInputIndustrialToIndustrial.place(x=185, y=100)
+buildingsTaskGetInputIndustrialToIndustrial.place(x=110, y=100)
 
-buildingsTaskGetInputIndustrialToOffice = CTkEntry(
-    buildingsTaskTab,
-    placeholder_text="Office - Y/N...",
-    width=180,
+buildingsTaskGetInputIndustrialToOffice = CTkCheckBox(
+    buildingsTaskTab, text="Office", onvalue=1, offvalue=0
 )
-buildingsTaskGetInputIndustrialToOffice.place(x=370, y=100)
+buildingsTaskGetInputIndustrialToOffice.place(x=210, y=100)
 
 buildingsTaskGetMatrixForOfficeHeading = CTkLabel(
     buildingsTaskTab,
@@ -1887,26 +1873,20 @@ buildingsTaskGetMatrixForOfficeHeading = CTkLabel(
 )
 buildingsTaskGetMatrixForOfficeHeading.place(x=0, y=140)
 
-buildingsTaskGetInputOfficeToResidential = CTkEntry(
-    buildingsTaskTab,
-    placeholder_text="Residential - Y/N...",
-    width=180,
+buildingsTaskGetInputOfficeToResidential = CTkCheckBox(
+    buildingsTaskTab, text="Residential", onvalue=1, offvalue=0
 )
 buildingsTaskGetInputOfficeToResidential.place(x=0, y=170)
 
-buildingsTaskGetInputOfficeToIndustrial = CTkEntry(
-    buildingsTaskTab,
-    placeholder_text="Industrial - Y/N...",
-    width=180,
+buildingsTaskGetInputOfficeToIndustrial = CTkCheckBox(
+    buildingsTaskTab, text="Industrial", onvalue=1, offvalue=0
 )
-buildingsTaskGetInputOfficeToIndustrial.place(x=185, y=170)
+buildingsTaskGetInputOfficeToIndustrial.place(x=110, y=170)
 
-buildingsTaskGetInputOfficeToOffice = CTkEntry(
-    buildingsTaskTab,
-    placeholder_text="Office - Y/N...",
-    width=180,
+buildingsTaskGetInputOfficeToOffice = CTkCheckBox(
+    buildingsTaskTab, text="Office", onvalue=1, offvalue=0
 )
-buildingsTaskGetInputOfficeToOffice.place(x=370, y=170)
+buildingsTaskGetInputOfficeToOffice.place(x=210, y=170)
 
 buildingsTaskGetResultsHeading = CTkLabel(
     buildingsTaskTab,
@@ -1941,20 +1921,73 @@ buildingsTaskGetResultsButton = CTkButton(
         buildingsTaskGetInputOfficeToIndustrial.get(),
         buildingsTaskGetInputOfficeToOffice.get(),
         buildingsTaskGetResultsInput.get(),
-    )
-    if buildingsTaskGetInputResidentialToResidential.get()
-    and buildingsTaskGetInputResidentialToIndustrial.get()
-    and buildingsTaskGetInputResidentialToOffice.get()
-    and buildingsTaskGetInputIndustrialToResidential.get()
-    and buildingsTaskGetInputIndustrialToIndustrial.get()
-    and buildingsTaskGetInputIndustrialToOffice.get()
-    and buildingsTaskGetInputOfficeToResidential.get()
-    and buildingsTaskGetInputOfficeToIndustrial.get()
-    and buildingsTaskGetInputOfficeToOffice.get()
-    and buildingsTaskGetResultsInput.get()
-    else AlertPopup("Please fill in all the fields"),
+    ),
 )
 buildingsTaskGetResultsButton.place(x=185, y=240)
+
+
+#! BFS
+class BFSGraph:
+    def __init__(self, directed=False):
+        self.graph = defaultdict(list)
+        self.directed = directed
+
+    def addEdge(self, u, v):
+        self.graph[u].append(v)
+        if not self.directed:
+            self.graph[v].append(u)
+
+    def BFS(self, start):
+        visited = set()
+        queue = deque([start])
+
+        while queue:
+            vertex = queue.popleft()
+            if vertex not in visited:
+                visited.add(vertex)
+                queue.extend(set(self.graph[vertex]) - visited)
+
+        return visited
+
+    def displayTree(self, start):
+        visited = set()
+        queue = deque([start])
+        tree = defaultdict(list)
+
+        while queue:
+            vertex = queue.popleft()
+            if vertex not in visited:
+                visited.add(vertex)
+                for neighbor in self.graph[vertex]:
+                    if neighbor not in visited:
+                        tree[vertex].append(neighbor)
+                        queue.append(neighbor)
+        return tree
+
+    def displayResults(self, start):
+        visited = self.BFS(start)
+        print(f"BFS traversal: {visited}")
+
+    def displayGraph(self):
+        for key, value in self.graph.items():
+            print(f"{key} 🔗 {', '.join(map(str, value))}")
+
+
+graphTraversalTabsContainer = CTkTabview(
+    graphTraversalTab,
+)
+graphTraversalTabsContainer.add("Breadth First Search")
+graphTraversalTabsContainer.add("Depth First Search")
+graphTraversalTabsContainer.add("Sum of Paths")
+graphTraversalTabsContainer.add("Min number of Operations")
+graphTraversalTabsContainer.add("Hampton Court Maze")
+graphTraversalTabsContainer.pack(fill="both", expand=True)
+
+bfsTab = graphTraversalTabsContainer.tab("Breadth First Search")
+dfsTab = graphTraversalTabsContainer.tab("Depth First Search")
+pathsSumTab = graphTraversalTabsContainer.tab("Sum of Paths")
+operationsTab = graphTraversalTabsContainer.tab("Min number of Operations")
+mazeTab = graphTraversalTabsContainer.tab("Hampton Court Maze")
 
 app.mainloop()
 saveHeapOnExit()

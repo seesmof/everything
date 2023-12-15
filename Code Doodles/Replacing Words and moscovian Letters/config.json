@@ -168,6 +168,20 @@
       "repA": "хорошо",
       "repB": "добре",
       "type": "Simple"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "вертольот",
+      "repB": "гвинтокрил",
+      "type": "Simple"
+    },
+    {
+      "active": true,
+      "case": "Override",
+      "repA": "рашист",
+      "repB": "кацап",
+      "type": "Simple"
     }
   ]
 }
