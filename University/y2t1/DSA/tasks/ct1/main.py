@@ -2056,14 +2056,14 @@ bfsDemoSetInitialNodeHeading = CTkLabel(
     text="Set Source Node",
     font=("Arial", 14, "bold"),
 )
-bfsDemoSetInitialNodeHeading.place(x=0, y=60)
+bfsDemoSetInitialNodeHeading.place(x=0, y=70)
 
 bfsDemoSetInitialNodeInput = CTkEntry(
     bfsTab,
     placeholder_text="Source Node...",
     width=180,
 )
-bfsDemoSetInitialNodeInput.place(x=0, y=90)
+bfsDemoSetInitialNodeInput.place(x=0, y=100)
 
 bfsDemoSetInitialNodeButton = CTkButton(
     bfsTab,
@@ -2079,7 +2079,7 @@ bfsDemoSetInitialNodeButton = CTkButton(
     and int(bfsDemoSetInitialNodeInput.get()) in BFSGraphObject.graph
     else AlertPopup("Enter a valid source node"),
 )
-bfsDemoSetInitialNodeButton.place(x=185, y=90)
+bfsDemoSetInitialNodeButton.place(x=185, y=100)
 
 BFSGraphObject = None
 
@@ -2118,36 +2118,41 @@ class DFSGraph:
             list.append(chainString)
         return list
 
+
 def dfsDemoUpdateEdgesContainer():
     for item in dfsEdgesContainer.winfo_children():
         item.destroy()
-        
+
     for item in DFSGraphObject.getList():
         CTkLabel(
             dfsEdgesContainer,
             text=item,
         ).pack(padx=5, anchor="w")
 
+
 def dfsDemoLoadGraphEdges(fileName, isDirected):
     global DFSGraphObject
     DFSGraphObject = DFSGraph(isDirected)
     with open(fileName, "r") as file:
         for line in file:
-            u,v=map(int, line.strip().split())
+            u, v = map(int, line.strip().split())
             DFSGraphObject.addEdge(u, v)
     dfsDemoUpdateEdgesContainer()
+
 
 def dfsDemoStartDFS(source):
     if not DFSGraphObject:
         AlertPopup("Load Graph Edges first")
 
-    visited= DFSGraphObject.DFS(source)
-    nodesList= ", ".join(map(str, visited))
-    
-    AlertPopup(f"DFS from node {source} visited {len(visited)} nodes\nFormed tree: {nodesList}")
+    visited = DFSGraphObject.DFS(source)
+    nodesList = ", ".join(map(str, visited))
+
+    AlertPopup(
+        f"DFS from node {source} visited {len(visited)} nodes\nFormed tree: {nodesList}"
+    )
 
 
-dfsEdgesContainer= CTkScrollableFrame(dfsTab, width=240, height=270)
+dfsEdgesContainer = CTkScrollableFrame(dfsTab, width=240, height=270)
 dfsEdgesContainer.place(x=400, y=0)
 
 dfsDemoLoadGraphEdgesHeading = CTkLabel(
@@ -2182,7 +2187,7 @@ dfsDemoLoadFileButton = CTkButton(
     font=("Arial", 12, "bold"),
     command=lambda: dfsDemoLoadGraphEdges(
         dfsDemoFileNameInput.get(), dfsDemoIsDirected.get()
-    )
+    ),
 )
 dfsDemoLoadFileButton.place(x=285, y=30)
 
@@ -2191,14 +2196,14 @@ dfsDemoSetInitialNodeHeading = CTkLabel(
     text="Set Source Node",
     font=("Arial", 14, "bold"),
 )
-dfsDemoSetInitialNodeHeading.place(x=0, y=60)
+dfsDemoSetInitialNodeHeading.place(x=0, y=70)
 
 dfsDemoSetInitialNodeInput = CTkEntry(
     dfsTab,
     placeholder_text="Source Node...",
     width=180,
 )
-dfsDemoSetInitialNodeInput.place(x=0, y=90)
+dfsDemoSetInitialNodeInput.place(x=0, y=100)
 
 dfsDemoSetInitialNodeButton = CTkButton(
     dfsTab,
@@ -2208,11 +2213,177 @@ dfsDemoSetInitialNodeButton = CTkButton(
     hover_color="#1F7D1F",
     text_color="white",
     font=("Arial", 12, "bold"),
-    command=lambda: dfsDemoStartDFS(int(dfsDemoSetInitialNodeInput.get())) if dfsDemoSetInitialNodeInput.get() and dfsDemoSetInitialNodeInput.get().isdigit() and int(dfsDemoSetInitialNodeInput.get()) in DFSGraphObject.graph else AlertPopup("Enter a valid source node"),
+    command=lambda: dfsDemoStartDFS(int(dfsDemoSetInitialNodeInput.get()))
+    if dfsDemoSetInitialNodeInput.get()
+    and dfsDemoSetInitialNodeInput.get().isdigit()
+    and int(dfsDemoSetInitialNodeInput.get()) in DFSGraphObject.graph
+    else AlertPopup("Enter a valid source node"),
 )
-dfsDemoSetInitialNodeButton.place(x=185, y=90)
+dfsDemoSetInitialNodeButton.place(x=185, y=100)
 
 DFSGraphObject = None
+
+
+#! SUM OF PATHS
+class SumGraph:
+    def __init__(self, directed=False):
+        self.graph = defaultdict(list)
+        self.directed = directed
+
+    def addEdge(self, u, v):
+        self.graph[u].append(v)
+        if not self.directed:
+            self.graph[v].append(u)
+
+    def findPaths(self, start, targetSum):
+        visited = set()
+        path = []
+        result = []
+        self._findPathsHelper(start, targetSum, visited, path, result)
+        return result
+
+    def _findPathsHelper(self, vertex, targetSum, visited, path, result):
+        visited.add(vertex)
+        path.append(vertex)
+
+        if sum(path) == targetSum:
+            result.append(" -> ".join(map(str, path)))
+
+        for neighbor in self.graph[vertex]:
+            if neighbor not in visited:
+                self._findPathsHelper(neighbor, targetSum, visited, path, result)
+
+        path.pop()
+        visited.remove(vertex)
+
+    def getList(self):
+        list = []
+        for key, value in self.graph.items():
+            chainString = (
+                f"{key} 🔗 {', '.join(map(str, value))}"
+                if not self.directed
+                else f"{key} → {', '.join(map(str, value))}"
+            )
+            list.append(chainString)
+        return list
+
+
+def sumPathsTaskLoadGraphEdges(fileName, isDirected):
+    global sumPathsTaskGraph
+    sumPathsTaskGraph = SumGraph(isDirected)
+    with open(fileName, "r") as file:
+        for line in file:
+            u, v = map(int, line.strip().split())
+            sumPathsTaskGraph.addEdge(u, v)
+    sumPathsTaskUpdateEdgesContainer()
+
+
+def sumPathsTaskUpdateEdgesContainer():
+    for widget in sumPathsTaskEdgesContainer.winfo_children():
+        widget.destroy()
+
+    for edge in sumPathsTaskGraph.getList():
+        CTkLabel(
+            sumPathsTaskEdgesContainer,
+            text=edge,
+        ).pack(padx=5, anchor="w")
+
+
+def sumPathsTaskGetResults(source, targetSum):
+    res = sumPathsTaskGraph.findPaths(source, targetSum)
+    if res:
+        pathsList = ""
+        for path in res:
+            pathsList += f"{path}\n"
+        AlertPopup(f"Paths with sum {targetSum}:\n{pathsList}")
+    else:
+        AlertPopup(f"No paths with sum {targetSum} found")
+
+sumPathsTaskEdgesContainer = CTkScrollableFrame(pathsSumTab, width=240, height=270)
+sumPathsTaskEdgesContainer.place(x=400, y=0)
+
+sumPathsTaskLoadGraphEdgesHeading = CTkLabel(
+    pathsSumTab,
+    text="Load Graph Edges from File",
+    font=("Arial", 14, "bold"),
+)
+sumPathsTaskLoadGraphEdgesHeading.place(x=0, y=0)
+
+sumPathsTaskIsDirected = CTkCheckBox(
+    pathsSumTab,
+    text="Directed",
+    onvalue=1,
+    offvalue=0,
+)
+sumPathsTaskIsDirected.place(x=0, y=30)
+
+sumPathsTaskFileNameInput = CTkEntry(
+    pathsSumTab,
+    placeholder_text="Graph edges file...",
+    width=180,
+)
+sumPathsTaskFileNameInput.place(x=100, y=30)
+
+sumPathsTaskLoadFileButton = CTkButton(
+    pathsSumTab,
+    text="Load",
+    width=60,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: sumPathsTaskLoadGraphEdges(
+        sumPathsTaskFileNameInput.get(), sumPathsTaskIsDirected.get()
+    ),
+)
+sumPathsTaskLoadFileButton.place(x=285, y=30)
+
+sumPathsTaskSetInitialNodeHeading = CTkLabel(
+    pathsSumTab,
+    text="Set Source Node",
+    font=("Arial", 14, "bold"),
+)
+sumPathsTaskSetInitialNodeHeading.place(x=0, y=70)
+
+sumPathsTaskSetInitialNodeInput = CTkEntry(
+    pathsSumTab,
+    placeholder_text="Source Node...",
+    width=300,
+)
+sumPathsTaskSetInitialNodeInput.place(x=0, y=100)
+
+sumPathsTaskSetWantedSumHeading = CTkLabel(
+    pathsSumTab,
+    text="Set Wanted Sum",
+    font=("Arial", 14, "bold"),
+)
+sumPathsTaskSetWantedSumHeading.place(x=0, y=140)
+
+sumPathsTaskSetWantedSumInput = CTkEntry(
+    pathsSumTab,
+    placeholder_text="Wanted Sum...",
+    width=300,
+)
+sumPathsTaskSetWantedSumInput.place(x=0, y=170)
+
+sumPathsTaskGetResultsButton = CTkButton(
+    pathsSumTab,
+    text="Get Results",
+    width=120,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: sumPathsTaskGetResults(
+        int(sumPathsTaskSetInitialNodeInput.get()),
+        int(sumPathsTaskSetWantedSumInput.get()),
+    )
+    if sumPathsTaskSetInitialNodeInput.get() and sumPathsTaskSetWantedSumInput.get()
+    else AlertPopup("Fill in both fields"),
+)
+sumPathsTaskGetResultsButton.place(x=0, y=210)
+
+SumPathsTaskGraphObject = None
 
 app.mainloop()
 saveHeapOnExit()
