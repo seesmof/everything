@@ -1927,6 +1927,7 @@ buildingsTaskGetResultsButton.place(x=185, y=240)
 
 
 #! BFS
+# TODO understand this better and understand whats a tree
 class BFSGraph:
     def __init__(self, directed=False):
         self.graph = defaultdict(list)
@@ -1938,31 +1939,16 @@ class BFSGraph:
             self.graph[v].append(u)
 
     def BFS(self, start):
-        visited = set()
+        visited = []
         queue = deque([start])
 
         while queue:
             vertex = queue.popleft()
             if vertex not in visited:
-                visited.add(vertex)
-                queue.extend(set(self.graph[vertex]) - visited)
+                visited.append(vertex)
+                queue.extend(set(self.graph[vertex]) - set(visited))
 
         return visited
-
-    def getTree(self, start):
-        visited = set()
-        queue = deque([start])
-        tree = defaultdict(list)
-
-        while queue:
-            vertex = queue.popleft()
-            if vertex not in visited:
-                visited.add(vertex)
-                for neighbor in self.graph[vertex]:
-                    if neighbor not in visited:
-                        tree[vertex].append(neighbor)
-                        queue.append(neighbor)
-        return tree
 
     def getList(self):
         list = []
@@ -2006,13 +1992,11 @@ def bfsDemoUpdateEdgesContainer():
 
 def bfsDemoLoadGraphEdges(fileName, isDirected):
     global BFSGraphObject
-    graph = BFSGraph(isDirected)
+    BFSGraphObject = BFSGraph(isDirected)
     with open(fileName, "r") as file:
         for line in file:
             u, v = map(int, line.strip().split())
-            graph.addEdge(u, v)
-    BFSGraphObject = graph
-    print(graph.graph)
+            BFSGraphObject.addEdge(u, v)
     bfsDemoUpdateEdgesContainer()
 
 
@@ -2022,8 +2006,11 @@ def bfsDemoStartBFS(sourceNode):
         return
 
     visited = BFSGraphObject.BFS(sourceNode)
-    resultingTree = BFSGraphObject.getTree(sourceNode)
-    AlertPopup(f"Nodes visited: {visited}\nTree: {resultingTree}")
+    nodesList = ", ".join(map(str, visited))
+
+    AlertPopup(
+        f"BFS from node {sourceNode} visited {len(visited)} nodes.\nFormed tree: {nodesList}"
+    )
 
 
 bfsEdgesContainer = CTkScrollableFrame(bfsTab, width=240, height=270)
@@ -2087,7 +2074,7 @@ bfsDemoSetInitialNodeButton = CTkButton(
     hover_color="#1F7D1F",
     text_color="white",
     font=("Arial", 12, "bold"),
-    command=lambda: bfsDemoStartBFS(bfsDemoSetInitialNodeInput.get())
+    command=lambda: bfsDemoStartBFS(int(bfsDemoSetInitialNodeInput.get()))
     if bfsDemoSetInitialNodeInput.get()
     and bfsDemoSetInitialNodeInput.get().isdigit()
     and int(bfsDemoSetInitialNodeInput.get()) in BFSGraphObject.graph
