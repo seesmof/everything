@@ -1921,7 +1921,7 @@ buildingsTaskGetResultsButton = CTkButton(
         buildingsTaskGetInputOfficeToIndustrial.get(),
         buildingsTaskGetInputOfficeToOffice.get(),
         buildingsTaskGetResultsInput.get(),
-    ),
+    ) if buildingsTaskGetResultsInput.get() else AlertPopup("Enter the number of buildings you want to build"),
 )
 buildingsTaskGetResultsButton.place(x=185, y=240)
 
