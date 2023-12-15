@@ -670,14 +670,14 @@ def loadHashTableOnStart():
 dataStructuresTabsContainer = CTkTabview(dataStructuresTab, width=210, height=290)
 dataStructuresTabsContainer.add("Hash Table")
 dataStructuresTabsContainer.add("B-Tree")
-dataStructuresTabsContainer.add("Subs")
-dataStructuresTabsContainer.add("Search")
+dataStructuresTabsContainer.add("Subscribers Search")
+dataStructuresTabsContainer.add("Employees Search")
 dataStructuresTabsContainer.pack(fill="both", expand=True)
 
 hashTableDemoTab = dataStructuresTabsContainer.tab("Hash Table")
 bTreeDemoTab = dataStructuresTabsContainer.tab("B-Tree")
-hashTaskTab = dataStructuresTabsContainer.tab("Search")
-bTreeTaskTab = dataStructuresTabsContainer.tab("Subs")
+bTreeTaskTab = dataStructuresTabsContainer.tab("Subscribers Search")
+hashTaskTab = dataStructuresTabsContainer.tab("Employees Search")
 
 hashTableElementsContainer = CTkScrollableFrame(hashTableDemoTab, width=240, height=270)
 hashTableElementsContainer.place(x=400, y=0)
@@ -1134,7 +1134,7 @@ hashTaskLoadDataButton = CTkButton(
 hashTaskLoadDataButton.place(x=305, y=30)
 
 hashTaskSearchHeading = CTkLabel(
-    hashTaskTab, text="Find position", font=("Arial", 14, "bold")
+    hashTaskTab, text="Find position of an employee", font=("Arial", 14, "bold")
 )
 hashTaskSearchHeading.place(x=0, y=70)
 
@@ -1759,6 +1759,202 @@ robotsTaskShowResultsButton = CTkButton(
     else AlertPopup("Fill in all the fields first"),
 )
 robotsTaskShowResultsButton.place(x=0, y=220)
+
+
+#! BUILDINGS' ARRANGEMENTS
+class BuildingArrangement:
+    def __init__(self, matrix):
+        self.matrix = matrix
+        self.memo = {}
+
+    def solveTask(self, buildingsCount):
+        return self._solveTaskUtil(buildingsCount, "Residential")
+
+    def _solveTaskUtil(self, n, buildingType):
+        if n == 0:
+            return 1
+
+        if (n, buildingType) in self.memo:
+            return self.memo[(n, buildingType)]
+
+        count = 0
+        for previousBuildingType in ["Residential", "Industrial", "Office"]:
+            if self.matrix[previousBuildingType][buildingType]:
+                count += self._solveTaskUtil(n - 1, previousBuildingType)
+
+        self.memo[(n, buildingType)] = count
+        return count
+
+
+def buildingsTaskSolve(
+    residentialToResidential,
+    residentialToIndustrial,
+    residentialToOffice,
+    industrialToResidential,
+    industrialToIndustrial,
+    industrialToOffice,
+    officeToResidential,
+    officeToIndustrial,
+    officeToOffice,
+    buildingsCount,
+):
+    matrix = {
+        "Residential": {
+            "Residential": residentialToResidential == "Y"
+            or residentialToResidential == "y",
+            "Industrial": residentialToIndustrial == "Y"
+            or residentialToIndustrial == "y",
+            "Office": residentialToOffice == "Y" or residentialToOffice == "y",
+        },
+        "Industrial": {
+            "Residential": industrialToResidential == "Y"
+            or industrialToResidential == "y",
+            "Industrial": industrialToIndustrial == "Y"
+            or industrialToIndustrial == "y",
+            "Office": industrialToOffice == "Y" or industrialToOffice == "y",
+        },
+        "Office": {
+            "Residential": officeToResidential == "Y" or officeToResidential == "y",
+            "Industrial": officeToIndustrial == "Y" or officeToIndustrial == "y",
+            "Office": officeToOffice == "Y" or officeToOffice == "y",
+        },
+    }
+    arrangements = BuildingArrangement(matrix)
+    res = arrangements.solveTask(int(buildingsCount))
+    AlertPopup(f"Number of arrangements: {res}")
+
+
+buildingsTaskGetMatrixForResidentialHeading = CTkLabel(
+    buildingsTaskTab,
+    text="Can be built next to residential buildings",
+    font=("Arial", 12),
+)
+buildingsTaskGetMatrixForResidentialHeading.place(x=0, y=0)
+
+buildingsTaskGetInputResidentialToResidential = CTkEntry(
+    buildingsTaskTab,
+    placeholder_text="Residential - Y/N...",
+    width=180,
+)
+buildingsTaskGetInputResidentialToResidential.place(x=0, y=30)
+
+buildingsTaskGetInputResidentialToIndustrial = CTkEntry(
+    buildingsTaskTab,
+    placeholder_text="Industrial - Y/N...",
+    width=180,
+)
+buildingsTaskGetInputResidentialToIndustrial.place(x=185, y=30)
+
+buildingsTaskGetInputResidentialToOffice = CTkEntry(
+    buildingsTaskTab,
+    placeholder_text="Office - Y/N...",
+    width=180,
+)
+buildingsTaskGetInputResidentialToOffice.place(x=370, y=30)
+
+buildingsTaskGetMatrixForIndustrialHeading = CTkLabel(
+    buildingsTaskTab,
+    text="Can be built next to industrial buildings",
+    font=("Arial", 12),
+)
+buildingsTaskGetMatrixForIndustrialHeading.place(x=0, y=70)
+
+buildingsTaskGetInputIndustrialToResidential = CTkEntry(
+    buildingsTaskTab,
+    placeholder_text="Residential - Y/N...",
+    width=180,
+)
+buildingsTaskGetInputIndustrialToResidential.place(x=0, y=100)
+
+buildingsTaskGetInputIndustrialToIndustrial = CTkEntry(
+    buildingsTaskTab,
+    placeholder_text="Industrial - Y/N...",
+    width=180,
+)
+buildingsTaskGetInputIndustrialToIndustrial.place(x=185, y=100)
+
+buildingsTaskGetInputIndustrialToOffice = CTkEntry(
+    buildingsTaskTab,
+    placeholder_text="Office - Y/N...",
+    width=180,
+)
+buildingsTaskGetInputIndustrialToOffice.place(x=370, y=100)
+
+buildingsTaskGetMatrixForOfficeHeading = CTkLabel(
+    buildingsTaskTab,
+    text="Can be built next to office buildings",
+    font=("Arial", 12),
+)
+buildingsTaskGetMatrixForOfficeHeading.place(x=0, y=140)
+
+buildingsTaskGetInputOfficeToResidential = CTkEntry(
+    buildingsTaskTab,
+    placeholder_text="Residential - Y/N...",
+    width=180,
+)
+buildingsTaskGetInputOfficeToResidential.place(x=0, y=170)
+
+buildingsTaskGetInputOfficeToIndustrial = CTkEntry(
+    buildingsTaskTab,
+    placeholder_text="Industrial - Y/N...",
+    width=180,
+)
+buildingsTaskGetInputOfficeToIndustrial.place(x=185, y=170)
+
+buildingsTaskGetInputOfficeToOffice = CTkEntry(
+    buildingsTaskTab,
+    placeholder_text="Office - Y/N...",
+    width=180,
+)
+buildingsTaskGetInputOfficeToOffice.place(x=370, y=170)
+
+buildingsTaskGetResultsHeading = CTkLabel(
+    buildingsTaskTab,
+    text="Enter the number of buildings you want to build",
+    font=("Arial", 14, "bold"),
+)
+buildingsTaskGetResultsHeading.place(x=0, y=210)
+
+buildingsTaskGetResultsInput = CTkEntry(
+    buildingsTaskTab,
+    placeholder_text="Number of Buildings...",
+    width=180,
+)
+buildingsTaskGetResultsInput.place(x=0, y=240)
+
+buildingsTaskGetResultsButton = CTkButton(
+    buildingsTaskTab,
+    text="Solve",
+    width=60,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: buildingsTaskSolve(
+        buildingsTaskGetInputResidentialToResidential.get(),
+        buildingsTaskGetInputResidentialToIndustrial.get(),
+        buildingsTaskGetInputResidentialToOffice.get(),
+        buildingsTaskGetInputIndustrialToResidential.get(),
+        buildingsTaskGetInputIndustrialToIndustrial.get(),
+        buildingsTaskGetInputIndustrialToOffice.get(),
+        buildingsTaskGetInputOfficeToResidential.get(),
+        buildingsTaskGetInputOfficeToIndustrial.get(),
+        buildingsTaskGetInputOfficeToOffice.get(),
+        buildingsTaskGetResultsInput.get(),
+    )
+    if buildingsTaskGetInputResidentialToResidential.get()
+    and buildingsTaskGetInputResidentialToIndustrial.get()
+    and buildingsTaskGetInputResidentialToOffice.get()
+    and buildingsTaskGetInputIndustrialToResidential.get()
+    and buildingsTaskGetInputIndustrialToIndustrial.get()
+    and buildingsTaskGetInputIndustrialToOffice.get()
+    and buildingsTaskGetInputOfficeToResidential.get()
+    and buildingsTaskGetInputOfficeToIndustrial.get()
+    and buildingsTaskGetInputOfficeToOffice.get()
+    and buildingsTaskGetResultsInput.get()
+    else AlertPopup("Please fill in all the fields"),
+)
+buildingsTaskGetResultsButton.place(x=185, y=240)
 
 app.mainloop()
 saveHeapOnExit()

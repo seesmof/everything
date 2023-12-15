@@ -42,7 +42,7 @@ class BuildingArrangement:
         self.memo = {}
 
     def count_arrangements(self, n):
-        return self._count_arrangements(n, "A")
+        return self._count_arrangements(n, "Residential")
 
     def _count_arrangements(self, n, building_type):
         if n == 0:
@@ -52,7 +52,7 @@ class BuildingArrangement:
             return self.memo[(n, building_type)]
 
         count = 0
-        for prev_building_type in ["A", "B", "C"]:
+        for prev_building_type in ["Residential", "Industrial", "Office"]:
             if self.matrix[prev_building_type][building_type]:
                 count += self._count_arrangements(n - 1, prev_building_type)
 
@@ -83,9 +83,9 @@ def main_menu():
 
         elif choice == "2":
             matrix = {}
-            for building_type in ["A", "B", "C"]:
+            for building_type in ["Residential", "Industrial", "Office"]:
                 matrix[building_type] = {}
-                for other_building_type in ["A", "B", "C"]:
+                for other_building_type in ["Residential", "Industrial", "Office"]:
                     can_be_next_to = input(
                         f"Can building type {building_type} be next to building type {other_building_type}? (yes/no): "
                     )
