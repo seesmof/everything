@@ -302,7 +302,6 @@ loadHeapOnStart()
 
 
 #! DOUBLY LINKED LIST
-# TODO maybe add linked list visualization
 class DoublyLinkedList:
     class LinkedListNode:
         def __init__(self, data=None):
@@ -1763,7 +1762,6 @@ robotsTaskShowResultsButton.place(x=0, y=220)
 
 
 #! BUILDINGS' ARRANGEMENTS
-# TODO replace inputs for compatibility with checkboxes
 class BuildingArrangement:
     def __init__(self, matrix):
         self.matrix = matrix
@@ -1921,7 +1919,9 @@ buildingsTaskGetResultsButton = CTkButton(
         buildingsTaskGetInputOfficeToIndustrial.get(),
         buildingsTaskGetInputOfficeToOffice.get(),
         buildingsTaskGetResultsInput.get(),
-    ) if buildingsTaskGetResultsInput.get() else AlertPopup("Enter the number of buildings you want to build"),
+    )
+    if buildingsTaskGetResultsInput.get()
+    else AlertPopup("Enter the number of buildings you want to build"),
 )
 buildingsTaskGetResultsButton.place(x=185, y=240)
 
@@ -1949,7 +1949,7 @@ class BFSGraph:
 
         return visited
 
-    def displayTree(self, start):
+    def getTree(self, start):
         visited = set()
         queue = deque([start])
         tree = defaultdict(list)
@@ -1964,13 +1964,16 @@ class BFSGraph:
                         queue.append(neighbor)
         return tree
 
-    def displayResults(self, start):
-        visited = self.BFS(start)
-        print(f"BFS traversal: {visited}")
-
-    def displayGraph(self):
+    def getList(self):
+        list = []
         for key, value in self.graph.items():
-            print(f"{key} 🔗 {', '.join(map(str, value))}")
+            chainString = (
+                f"{key} 🔗 {', '.join(map(str, value))}"
+                if not self.directed
+                else f"{key} → {', '.join(map(str, value))}"
+            )
+            list.append(chainString)
+        return list
 
 
 graphTraversalTabsContainer = CTkTabview(
@@ -1988,6 +1991,111 @@ dfsTab = graphTraversalTabsContainer.tab("Depth First Search")
 pathsSumTab = graphTraversalTabsContainer.tab("Sum of Paths")
 operationsTab = graphTraversalTabsContainer.tab("Min number of Operations")
 mazeTab = graphTraversalTabsContainer.tab("Hampton Court Maze")
+
+
+def bfsDemoUpdateEdgesContainer():
+    for widget in bfsEdgesContainer.winfo_children():
+        widget.destroy()
+
+    for edge in BFSGraphObject.getList():
+        CTkLabel(
+            bfsEdgesContainer,
+            text=edge,
+        ).pack(padx=5, anchor="w")
+
+
+def bfsDemoLoadGraphEdges(fileName, isDirected):
+    global BFSGraphObject
+    graph = BFSGraph(isDirected)
+    with open(fileName, "r") as file:
+        for line in file:
+            u, v = map(int, line.strip().split())
+            graph.addEdge(u, v)
+    BFSGraphObject = graph
+    print(graph.graph)
+    bfsDemoUpdateEdgesContainer()
+
+
+def bfsDemoStartBFS(sourceNode):
+    if not BFSGraphObject:
+        AlertPopup("Load graph edges first")
+        return
+
+    visited = BFSGraphObject.BFS(sourceNode)
+    resultingTree = BFSGraphObject.getTree(sourceNode)
+    AlertPopup(f"Nodes visited: {visited}\nTree: {resultingTree}")
+
+
+bfsEdgesContainer = CTkScrollableFrame(bfsTab, width=240, height=270)
+bfsEdgesContainer.place(x=400, y=0)
+
+bfsDemoLoadGraphEdgesHeading = CTkLabel(
+    bfsTab,
+    text="Load Graph Edges from File",
+    font=("Arial", 14, "bold"),
+)
+bfsDemoLoadGraphEdgesHeading.place(x=0, y=0)
+
+bfsDemoIsDirected = CTkCheckBox(
+    bfsTab,
+    text="Directed",
+    onvalue=1,
+    offvalue=0,
+)
+bfsDemoIsDirected.place(x=0, y=30)
+
+bfsDemoFileNameInput = CTkEntry(
+    bfsTab,
+    placeholder_text="Graph edges file...",
+    width=180,
+)
+bfsDemoFileNameInput.place(x=100, y=30)
+
+bfsDemoLoadFileButton = CTkButton(
+    bfsTab,
+    text="Load",
+    width=60,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: bfsDemoLoadGraphEdges(
+        bfsDemoFileNameInput.get(), bfsDemoIsDirected.get()
+    ),
+)
+bfsDemoLoadFileButton.place(x=285, y=30)
+
+bfsDemoSetInitialNodeHeading = CTkLabel(
+    bfsTab,
+    text="Set Source Node",
+    font=("Arial", 14, "bold"),
+)
+bfsDemoSetInitialNodeHeading.place(x=0, y=60)
+
+bfsDemoSetInitialNodeInput = CTkEntry(
+    bfsTab,
+    placeholder_text="Source Node...",
+    width=180,
+)
+bfsDemoSetInitialNodeInput.place(x=0, y=90)
+
+bfsDemoSetInitialNodeButton = CTkButton(
+    bfsTab,
+    text="Set and Start BFS",
+    width=100,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: bfsDemoStartBFS(bfsDemoSetInitialNodeInput.get())
+    if bfsDemoSetInitialNodeInput.get()
+    and bfsDemoSetInitialNodeInput.get().isdigit()
+    and int(bfsDemoSetInitialNodeInput.get()) in BFSGraphObject.graph
+    else AlertPopup("Enter a valid source node"),
+)
+bfsDemoSetInitialNodeButton.place(x=185, y=90)
+
+BFSGraphObject = None
 
 app.mainloop()
 saveHeapOnExit()
