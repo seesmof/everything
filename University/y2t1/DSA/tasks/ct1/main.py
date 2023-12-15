@@ -2478,6 +2478,128 @@ minOperationsTaskOperationsList = [
     (lambda x: x**3, "^3"),
 ]
 
+
+#! HAMPTON MAZE
+class MazeGraph:
+    def __init__(self, directed=False):
+        self.graph = defaultdict(list)
+        self.directed = directed
+
+    def addEdge(self, u, v):
+        self.graph[u].append(v)
+        if not self.directed:
+            self.graph[v].append(u)
+
+    def drawGraph(self):
+        G = nx.Graph() if not self.directed else nx.DiGraph()
+
+        for u, edges in self.graph.items():
+            for v in edges:
+                G.add_edge(u, v)
+
+        nodeColors = [
+            "red" if node == 1 else "lightgreen" if node == 0 else "lightgray"
+            for node in G.nodes()
+        ]
+        nx.draw(G, with_labels=True, node_color=nodeColors, edge_color="gray")
+        plt.show()
+
+    def getList(self):
+        list = []
+        for key, value in self.graph.items():
+            chainString = (
+                f"{key} 🔗 {', '.join(map(str, value))}"
+                if not self.directed
+                else f"{key} → {', '.join(map(str, value))}"
+            )
+            list.append(chainString)
+        return list
+
+
+def mazeTaskUpdateElementsContainer():
+    for widget in mazeTaskElementsContainer.winfo_children():
+        widget.destroy()
+
+    for edge in mazeTaskGraphObject.getList():
+        CTkLabel(
+            mazeTaskElementsContainer,
+            text=edge,
+        ).pack(padx=5, anchor="w")
+
+
+def mazeTaskLoadGraphEdges(fileName, isDirected):
+    global mazeTaskGraphObject
+    mazeTaskGraphObject = MazeGraph(isDirected)
+    with open(fileName, "r") as file:
+        for line in file:
+            u, v = map(int, line.strip().split())
+            mazeTaskGraphObject.addEdge(u, v)
+    mazeTaskUpdateElementsContainer()
+
+
+def mazeTaskBuildGraph():
+    if not mazeTaskGraphObject:
+        AlertPopup("Load maze edges first")
+        return
+
+    mazeTaskGraphObject.drawGraph()
+
+
+mazeTaskElementsContainer = CTkScrollableFrame(mazeTab, width=240, height=270)
+mazeTaskElementsContainer.place(x=400, y=0)
+
+mazeTaskLoadGraphEdgesHeading = CTkLabel(
+    mazeTab,
+    text="Load Maze Edges from File",
+    font=("Arial", 14, "bold"),
+)
+mazeTaskLoadGraphEdgesHeading.place(x=0, y=0)
+
+mazeTaskIsDirected = CTkCheckBox(
+    mazeTab,
+    text="Directed",
+    onvalue=1,
+    offvalue=0,
+)
+mazeTaskIsDirected.place(x=0, y=30)
+
+mazeTaskFileNameInput = CTkEntry(
+    mazeTab,
+    placeholder_text="Maze edges file...",
+    width=180,
+)
+mazeTaskFileNameInput.place(x=100, y=30)
+
+mazeTaskLoadFileButton = CTkButton(
+    mazeTab,
+    text="Load",
+    width=60,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: mazeTaskLoadGraphEdges(
+        mazeTaskFileNameInput.get(), mazeTaskIsDirected.get()
+    ),
+)
+mazeTaskLoadFileButton.place(x=285, y=30)
+
+mazeTaskSolveTask = CTkButton(
+    mazeTab,
+    text="Visualize Maze",
+    width=120,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: mazeTaskBuildGraph()
+    if mazeTaskGraphObject
+    else AlertPopup("Load maze edges first"),
+)
+mazeTaskSolveTask.place(x=0, y=70)
+
+mazeTaskGraphObject = None
+
 app.mainloop()
 saveHeapOnExit()
 saveLinkedListOnExit()
