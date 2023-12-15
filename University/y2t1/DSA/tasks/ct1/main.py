@@ -2402,10 +2402,10 @@ class MinOperationsGraph:
             if num == b:
                 return ops
 
-            for op in operations:
+            for op, operationString in operations:
                 newNum = op(num)
                 if newNum not in ops:
-                    queue.append((newNum, ops + [op(num)]))
+                    queue.append((newNum, ops + [operationString]))
 
         return None
 
@@ -2415,7 +2415,7 @@ def minOperationsTaskSolve(a, b):
     res = minOperationsTaskGraphObject.solveTask(a, b, minOperationsTaskOperationsList)
     if res:
         AlertPopup(
-            f"Minimum number of operations to get from {a} to {b} is {len(res)}\nOperations: {', '.join(map(str, res))}"
+            f"Minimum number of operations to get from {a} to {b} is {len(res)}\nOperations: {', '.join(res)}"
         )
     else:
         AlertPopup("There is no way to get from {a} to {b}")
@@ -2468,14 +2468,14 @@ minOperationsTaskSolveButton = CTkButton(
 minOperationsTaskSolveButton.place(x=0, y=140)
 
 minOperationsTaskOperationsList = [
-    lambda x: x + 1,
-    lambda x: x - 1,
-    lambda x: x * 2,
-    lambda x: x // 2,
-    lambda x: x * 3,
-    lambda x: x // 3,
-    lambda x: x**2,
-    lambda x: x**3,
+    (lambda x: x + 1, "+1"),
+    (lambda x: x - 1, "-1"),
+    (lambda x: x * 2, "*2"),
+    (lambda x: x // 2, "/2"),
+    (lambda x: x * 3, "*3"),
+    (lambda x: x // 3, "/3"),
+    (lambda x: x**2, "^2"),
+    (lambda x: x**3, "^3"),
 ]
 
 app.mainloop()
