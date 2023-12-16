@@ -674,57 +674,92 @@ loadLinkedListOnStart()
 
 #! HEAP TASK - EMPLOYEES
 def updateHeapTaskElementsContainer():
+    # For every UI element in the elements container
     for widget in heapTaskElementsContainer.winfo_children():
+        # Delete it, clearing the container
         widget.destroy()
 
+    # Run through each employee
     for employee in heapTaskEmployeesData:
-        employeeText = f"{employee['name']} - {employee['disease']}"
-        currentLabel = CTkLabel(heapTaskElementsContainer, text=employeeText)
-        currentLabel.pack(padx=5, anchor="w")
+        # And add it to the elements container
+        CTkLabel(
+            heapTaskElementsContainer,
+            text=f"{employee['name']} - {employee['disease']}",
+        ).pack(padx=5, anchor="w")
 
 
 def heapTaskLoadEmployeesData(filename: str):
-    with open(filename, "r", encoding="utf-8") as file:
-        data = json.load(file)
-
     try:
+        # Open the local file that should contain the employees' data
+        with open(filename, "r", encoding="utf-8") as file:
+            # Load the data from the file into the temporaray list
+            data = json.load(file)
+
         global heapTaskEmployeesData
+        # And assign it to the global list
         heapTaskEmployeesData = data["employees"]
     except:
+        # If we can't find the file or any other error occurs
+        # We display an alert informing the user
         AlertPopup(f"Failed to load data from {filename}")
 
+    # Otherwise we update the elements container
     updateHeapTaskElementsContainer()
 
 
 def heapTaskShowResults():
     def countDiseaseCases():
+        # A dictionary for keeping track of the occurences of each disease
         diseasesCount = dict()
 
+        # Run through each employee in the data list
         for employee in heapTaskEmployeesData:
+            # Check if the disease is not yet in the dictionary
             if employee["disease"] not in diseasesCount:
+                # If so, add it with a count of 1, since we just encrounced it
                 diseasesCount[employee["disease"]] = 1
             else:
+                # If we've encountered the disease before
+                # Just increment the count
                 diseasesCount[employee["disease"]] += 1
 
         return diseasesCount
 
     def sortDiseasesList(arr):
+        # Check if the list is empty
         if len(arr) == 0:
+            # Just return an empty list
             return arr
 
+        # Otherwise we sort the list by using Heap sort
         sortedArr = Heap().buildHeap(arr).sort()
+
+        # And return it
         return sortedArr
 
+    # Count the occurences of each disease
     diseasesCount = countDiseaseCases()
+
+    # Form a list of the diseases and their occurences
     diseasesCountList = [
         (occurences, name) for name, occurences in diseasesCount.items()
     ]
 
+    # Sort the list by occurences
     diseasesCountList = sortDiseasesList(diseasesCountList)
+
+    # And forming the output message
     resultsString = f"Employees' Diseases sorted by Occurences:\n"
+
+    # By running through each disease in the list
     for occurence, name in diseasesCountList:
+        # And adding its name as well as the number of occurences
         currentDisease = f"{name}: {occurence} times\n"
+
+        # To the resulting string
         resultsString += currentDisease
+
+    # Show the results as a popup message
     AlertPopup(resultsString)
 
 
@@ -748,7 +783,7 @@ heapTaskLoadEmployeesDataButton = CTkButton(
     font=("Arial", 12, "bold"),
     command=lambda: heapTaskLoadEmployeesData(heapTaskLoadEmployeesDataInput.get())
     if heapTaskLoadEmployeesDataInput.get()
-    else AlertPopup("Input box is empty"),
+    else AlertPopup("Please enter the filename to load data from"),
 )
 heapTaskLoadEmployeesDataButton.place(x=150, y=30)
 
@@ -760,7 +795,9 @@ heapTaskShowResultsButton = CTkButton(
     hover_color="#1F7D1F",
     text_color="white",
     font=("Arial", 12, "bold"),
-    command=lambda: heapTaskShowResults(),
+    command=lambda: heapTaskShowResults()
+    if len(heapTaskEmployeesData) > 0
+    else AlertPopup("Please load employees data first"),
 )
 heapTaskShowResultsButton.place(x=220, y=30)
 
