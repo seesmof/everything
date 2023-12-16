@@ -807,88 +807,165 @@ heapTaskEmployeesData = []
 #! HASH TABLE
 class HashTable:
     def __init__(self, size=15):
+        # Set the initial size of our hash table to the given one
+        # Or to the default value of 15 if none is given
         self.size = size
+
+        # Declare our hash table as a list of lists
+        # We declare a list of lists to handle any possible collisions
+        # And we don't use a linked list because a Python array is easier to search through and use in general
         self.table = [[] for _ in range(self.size)]
 
     def hash(self, key):
+        # Given a key, we compute its hash value
+        # We use the Golden Ratio to improve the distribution of our hash values
+        # And we multiply it by the size of our hash table
         return int((key * ((5**0.5 - 1) / 2) % 1) * self.size)
 
     def insert(self, key, value):
+        # When inserting a new key-value pair, we first compute the hashed key, and then insert our pair into the corresponding position, which is a list in our case
         self.table[self.hash(key)].append((key, value))
 
     def delete(self, key):
+        # When deleting we need to access the corresponding chain that the key is in
+        # We do that by computing key's hash and accessing the corresponding list from our hash table
         chain = self.table[self.hash(key)]
+
+        # Run through each key-value pair in the chain
         for index, keyValuePair in enumerate(chain):
+            # And check if the key matches with the given one
             if keyValuePair[0] == key:
+                # If it does, we delete our pair from the chain
                 del chain[index]
+                # And we return True to indicate that the key was found and deleted
                 return True
+
+        # If we exit out of the loop without returning, then the key was not found nor deleted
+        # Which we indicate by returning False
         return False
 
     def search(self, key):
+        # When searching for a key we first compute its hash value
+        # And then access the chain that the key is in
         chain = self.table[self.hash(key)]
+
+        # Run through the entire chain
         for keyValuePair in chain:
+            # And see if the key matches
             if keyValuePair[0] == key:
+                # If it does, we return True to indicate that the key was found
                 return True
+
+        # If we exit without returning, the key was never found
+        # Which we indicate by returning False
         return False
 
 
 def updateHashTableElementsContainer():
+    # For each UI element in the elements container
     for widget in hashTableElementsContainer.winfo_children():
+        # Delete it
         widget.destroy()
 
+    # Run through each pair of keys and their corresponding values in the elements list
     for pair in hashTableElementsList:
+        # Compute the key and value from the pair, since they are stored in the list as "key value" strings
         key, value = pair.split(" ")
-        elementText = f"{key} - {value}"
-        currentLabel = CTkLabel(hashTableElementsContainer, text=elementText)
-        currentLabel.pack(padx=5, anchor="w")
+
+        # And add it to the elements container
+        CTkLabel(hashTableElementsContainer, text=f"{key} - {value}").pack(
+            padx=5, anchor="w"
+        )
 
 
 def addHashTableElement(keyValuePair):
+    # Add the given key-value pair into our local list
     hashTableElementsList.append(keyValuePair)
+
+    # Split them into key and value variables
     key, value = keyValuePair.split(" ")
+    # Calculate the key's hash value
     key = sum(ord(c) for c in key)
 
+    # And insert it into our hash table
     hashTableElements.insert(key, value)
+
+    # Update the elements container to show the new element
     updateHashTableElementsContainer()
 
 
 def deleteHashTableKey(key):
+    # We first form a list of all keys in our hash table
+    # By taking each key-value pair in the local elements list, and extracting the key from it by splitting it and taking the first element
+    keysList = [keyValuePair.split(" ")[0] for keyValuePair in hashTableElementsList]
+
+    # Then checking if the given key is not in that list
+    if key not in keysList:
+        # If so, we alert the user
+        AlertPopup(f"{key} is not in the dictionary")
+
+        # And exit out of the function immediately as further processing is not needed
+        return
+
+    # If we are still here, we first remove the key-value pair from our local list
+    # By running through each pair of keys and their corresponding values
     for el in hashTableElementsList:
+        # And checking if the key matches
         if el.split(" ")[0] == key:
+            # If it does, we remove it from the list
             hashTableElementsList.remove(el)
+            # And we break out of the loop
             break
+
+    # Next we delete the key from our hash table
+    # By first converting the key to an integer of its ASCII values
     convertedKey = sum(ord(c) for c in key)
 
-    res = hashTableElements.delete(convertedKey)
-    if not res:
-        AlertPopup(f"Failed to delete {key}")
+    # And then deleting it from our hash table
+    _ = hashTableElements.delete(convertedKey)
 
+    # Then updating the elements container to reflect the changes
     updateHashTableElementsContainer()
 
 
 def searchHashTableKey(key):
+    # We first convert our given key to an integer of its ASCII values
     convertedKey = sum(ord(c) for c in key)
 
+    # Then run a search for it
     res = hashTableElements.search(convertedKey)
+
+    # And output the result to the user via an alert
     AlertPopup(f"{key} is in the dictionary") if res else AlertPopup(
         f"{key} is NOT in the dictionary"
     )
 
 
 def saveHashTableOnExit():
+    # We check if our local list is empty
     if len(hashTableElementsList) == 0:
+        # Then we just exit out of the function, as there is nothing to save
         return
+
+    # Open the local file in write mode
     with open("hashTable.json", "w") as f:
+        # And write our local list to it in JSON format
         json.dump(hashTableElementsList, f)
 
 
 def loadHashTableOnStart():
     try:
+        # Open the local file in read mode
         with open("hashTable.json", "r") as f:
+            # Load our list of key-value pairs from it into a temporaray variable
             res = json.load(f)
+
+            # For each key-value pair in the temporary variable
             for pair in res:
+                # We add it into the hash table
                 addHashTableElement(pair)
     except:
+        # If we fail to load the file, we alert the user
         AlertPopup("Failed to load Hash Table data")
 
 
@@ -937,7 +1014,7 @@ addHashTableElementButton = CTkButton(
     font=("Arial", 12, "bold"),
     command=lambda: addHashTableElement(addHashTableElementInput.get())
     if addHashTableElementInput.get()
-    else AlertPopup("Input box is empty"),
+    else AlertPopup("Please enter key and value to add"),
 )
 addHashTableElementButton.place(x=305, y=30)
 
@@ -961,7 +1038,7 @@ deleteHashTableElementButton = CTkButton(
     font=("Arial", 12, "bold"),
     command=lambda: deleteHashTableKey(deleteHashTableElementInput.get())
     if deleteHashTableElementInput.get()
-    else AlertPopup("Input box is empty"),
+    else AlertPopup("Please enter key to delete"),
 )
 deleteHashTableElementButton.place(x=305, y=100)
 
@@ -985,7 +1062,7 @@ searchHashTableElementButton = CTkButton(
     font=("Arial", 12, "bold"),
     command=lambda: searchHashTableKey(searchHashTableElementInput.get())
     if searchHashTableElementInput.get()
-    else AlertPopup("Input box is empty"),
+    else AlertPopup("Please enter key to search"),
 )
 searchHashTableElementButton.place(x=305, y=170)
 
