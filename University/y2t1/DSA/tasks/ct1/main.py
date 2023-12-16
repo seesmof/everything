@@ -1074,58 +1074,104 @@ loadHashTableOnStart()
 #! B-TREE
 class BTreeNode:
     def __init__(self, leaf=True):
+        # For keeping track of whether the node is a leaf or not, meaning whether it has children or not
+        # By default it is a leaf, hence the empty children list initialization
         self.leaf = leaf
+        # In the B-Tree we need to have a list of keys
         self.keys = []
+        # and a list of children nodes
         self.children = []
 
 
 class BTree:
     def __init__(self, t=3):
+        # In the B-Tree class we need to keep track of our root node and the degree of the tree
         self.root = BTreeNode()
+        # Which is set to 3 by default if no value is passed
         self.t = t
 
-    def search(self, key, node=None):
-        node = node or self.root
-        i = 0
-        while i < len(node.keys) and key > node.keys[i]:
-            i += 1
-        if i < len(node.keys) and key == node.keys[i]:
+    def search(self, key, currentNode=None):
+        # We first set our current node to be the root if not provided, or the value passed
+        currentNode = currentNode or self.root
+        # and declare an index variable for traversing the list of keys
+        index = 0
+
+        # Traverse the list of keys either until it reaches the end or we find a key that is greater than or equal to the provided key
+        while index < len(currentNode.keys) and key > currentNode.keys[index]:
+            index += 1
+
+        # If we found the key we want, return True
+        if index < len(currentNode.keys) and key == currentNode.keys[index]:
             return True
-        elif node.leaf:
+
+        # If the current node is a leaf, return False as the key will not be found
+        elif currentNode.leaf:
             return False
+
+        # Else recursively call the search function on the child node at the current index
         else:
-            return self.search(key, node.children[i])
+            return self.search(key, currentNode.children[index])
 
     def insert(self, key):
+        # Start by assigning the root node to a variable for convenience
         root = self.root
+
+        # Check if the root node is full
+        # If it is, we need to create a new root node
         if len(root.keys) == (2 * self.t) - 1:
-            new_root = BTreeNode(leaf=False)
-            new_root.children.append(self.root)
-            self._split_child(new_root, 0)
-            self.root = new_root
-            self._insert_non_full(new_root, key)
-        else:
-            self._insert_non_full(root, key)
+            # Create a new root node with the leaf set to False, as we immediately have children for it
+            newRoot = BTreeNode(leaf=False)
 
-    def _insert_non_full(self, x, key):
-        i = len(x.keys) - 1
-        if x.leaf:
-            x.keys.append(0)
-            while i >= 0 and key < x.keys[i]:
-                x.keys[i + 1] = x.keys[i]
-                i -= 1
-            x.keys[i + 1] = key
-        else:
-            while i >= 0 and key < x.keys[i]:
-                i -= 1
-            i += 1
-            if len(x.children[i].keys) == (2 * self.t) - 1:
-                self._split_child(x, i)
-                if key > x.keys[i]:
-                    i += 1
-            self._insert_non_full(x.children[i], key)
+            # Append the current root node as the first child of the new root
+            newRoot.children.append(self.root)
 
-    def _split_child(self, x, i):
+            # Split the first and only child of the new root
+            self._splitChild(newRoot, 0)
+
+            # Set the global root to be the new root node
+            self.root = newRoot
+
+            # And insert the key into the new root node (which is not full and has only one child)
+            self._insertNotFull(newRoot, key)
+        else:
+            # Else we simply insert the key into the root node
+            self._insertNotFull(root, key)
+
+    def _insertNotFull(self, currentNode, key):
+        # Set index to the position where the key should be inserted
+        index = len(currentNode.keys) - 1
+
+        if currentNode.leaf:
+            # If the node is a leaf, we insert a temporary zero to make space for our key
+            currentNode.keys.append(0)
+
+            # Then traverse the list of keys and shift all greater keys to the right
+            while index >= 0 and key < currentNode.keys[index]:
+                # Set the key at the current index to be the key at the next index
+                currentNode.keys[index + 1] = currentNode.keys[index]
+                # Move further to the left
+                index -= 1
+            # After choosing the correct position, insert the key
+            currentNode.keys[index + 1] = key
+        else:
+            # If the node is not a leaf, but an internal node instead
+            # We find the position where the key should be inserted
+            while index >= 0 and key < currentNode.keys[index]:
+                index -= 1
+            index += 1
+
+            # Check if the current child is full
+            if len(currentNode.children[index].keys) == (2 * self.t) - 1:
+                # If so, split it
+                self._splitChild(currentNode, index)
+                # Adjust the index if the new key is greater than the current key
+                if key > currentNode.keys[index]:
+                    index += 1
+
+            # Recursively call to continue to process until the leaf node is reached
+            self._insertNotFull(currentNode.children[index], key)
+
+    def _splitChild(self, x, i):
         t = self.t
         y = x.children[i]
         z = BTreeNode(leaf=y.leaf)
@@ -1161,9 +1207,9 @@ class BTree:
                     self._delete(x.children[i], key)
                 else:
                     if i > 0 and len(x.children[i - 1].keys) >= t:
-                        self._borrow_from_prev(x, i)
+                        self._borrowFromPrevious(x, i)
                     elif i < len(x.children) - 1 and len(x.children[i + 1].keys) >= t:
-                        self._borrow_from_next(x, i)
+                        self._borrowFromNext(x, i)
                     else:
                         self._merge(x, i)
                         self._delete(x.children[i], key)
@@ -1172,28 +1218,34 @@ class BTree:
         t = self.t
         key = x.keys[i]
         if len(x.children[i].keys) >= t:
-            predecessor = self._get_predecessor(x.children[i])
+            predecessor = self._getPredecessor(x.children[i])
             x.keys[i] = predecessor
             self._delete(x.children[i], predecessor)
         elif len(x.children[i + 1].keys) >= t:
-            successor = self._get_successor(x.children[i + 1])
+            successor = self._getSuccessor(x.children[i + 1])
             x.keys[i] = successor
             self._delete(x.children[i + 1], successor)
         else:
             self._merge(x, i)
             self._delete(x.children[i], key)
 
-    def _get_predecessor(self, x):
+    def _getPredecessor(self, x):
+        # Keep traversing the rightmost branch of the tree until a leaf node is reached
         while not x.leaf:
             x = x.children[-1]
+
+        # Return the rightmost key of the leaf node
         return x.keys[-1]
 
-    def _get_successor(self, x):
+    def _getSuccessor(self, x):
+        # Keep traversing the leftmost branch of the tree until a leaf node is reached
         while not x.leaf:
             x = x.children[0]
+
+        # Return the first key of the leaf node
         return x.keys[0]
 
-    def _borrow_from_prev(self, x, i):
+    def _borrowFromPrevious(self, x, i):
         child = x.children[i]
         sibling = x.children[i - 1]
         child.keys.insert(0, x.keys[i - 1])
@@ -1201,23 +1253,38 @@ class BTree:
         if not child.leaf:
             child.children.insert(0, sibling.children.pop())
 
-    def _borrow_from_next(self, x, i):
+    def _borrowFromNext(self, x, i):
+        # Get the child and sibling nodes
         child = x.children[i]
         sibling = x.children[i + 1]
+
+        # Move the key from the parent node to the child node
         child.keys.append(x.keys[i])
         x.keys[i] = sibling.keys.pop(0)
+
+        # If the child node is not a leaf node, move the child node from the sibling to the child
         if not child.leaf:
             child.children.append(sibling.children.pop(0))
 
     def _merge(self, x, i):
-        t = self.t
+        # Get the child node at index i
         child = x.children[i]
+        # Get the sibling node next to the child node
         sibling = x.children[i + 1]
+
+        # Append the key from the current node to the child node
         child.keys.append(x.keys[i])
+        # Extend the keys of the child node with the keys of the sibling node
         child.keys.extend(sibling.keys)
+
+        # If the child node is not a leaf node
         if not child.leaf:
+            # Extend the children of the child node with the children of the sibling node
             child.children.extend(sibling.children)
+
+        # Remove the key from the current node at index i
         x.keys.pop(i)
+        # Remove the child node at index i+1 from the current node
         x.children.pop(i + 1)
 
 
