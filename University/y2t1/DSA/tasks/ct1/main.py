@@ -2881,14 +2881,14 @@ graphAlgosPerformDijkstraHeading = CTkLabel(
 graphAlgosPerformDijkstraHeading.place(x=0, y=70)
 
 graphAlgosPerformDijkstraStart = CTkEntry(
-    graphPathAlogsTab, width=140, placeholder_text="Start Point"
+    graphPathAlogsTab, width=145, placeholder_text="Start Point"
 )
 graphAlgosPerformDijkstraStart.place(x=0, y=100)
 
 graphAlgosPerformDijkstraEnd = CTkEntry(
-    graphPathAlogsTab, width=140, placeholder_text="End Point"
+    graphPathAlogsTab, width=145, placeholder_text="End Point"
 )
-graphAlgosPerformDijkstraEnd.place(x=145, y=100)
+graphAlgosPerformDijkstraEnd.place(x=150, y=100)
 
 graphAlgosPerformDijkstraButton = CTkButton(
     graphPathAlogsTab,
@@ -2905,7 +2905,7 @@ graphAlgosPerformDijkstraButton = CTkButton(
     if graphAlgosPerformDijkstraStart.get() and graphAlgosPerformDijkstraEnd.get()
     else AlertPopup("Please Enter Start and End Points"),
 )
-graphAlgosPerformDijkstraButton.place(x=290, y=100)
+graphAlgosPerformDijkstraButton.place(x=305, y=100)
 
 graphAlgosPerformBellmanFordHeading = CTkLabel(
     graphPathAlogsTab, text="Perform Bellman Ford", font=("Arial", 14, "bold")
@@ -2913,14 +2913,14 @@ graphAlgosPerformBellmanFordHeading = CTkLabel(
 graphAlgosPerformBellmanFordHeading.place(x=0, y=140)
 
 graphAlgosPerformBellmanFordStart = CTkEntry(
-    graphPathAlogsTab, width=140, placeholder_text="Start Point"
+    graphPathAlogsTab, width=145, placeholder_text="Start Point"
 )
 graphAlgosPerformBellmanFordStart.place(x=0, y=170)
 
 graphAlgosPerformBellmanFordEnd = CTkEntry(
-    graphPathAlogsTab, width=140, placeholder_text="End Point"
+    graphPathAlogsTab, width=145, placeholder_text="End Point"
 )
-graphAlgosPerformBellmanFordEnd.place(x=145, y=170)
+graphAlgosPerformBellmanFordEnd.place(x=150, y=170)
 
 graphAlgosPerformBellmanFordButton = CTkButton(
     graphPathAlogsTab,
@@ -2937,7 +2937,7 @@ graphAlgosPerformBellmanFordButton = CTkButton(
     if graphAlgosPerformBellmanFordStart.get() and graphAlgosPerformBellmanFordEnd.get()
     else AlertPopup("Please Enter Start and End Points"),
 )
-graphAlgosPerformBellmanFordButton.place(x=290, y=170)
+graphAlgosPerformBellmanFordButton.place(x=305, y=170)
 
 graphAlgosPerformFordWarshallHeading = CTkLabel(
     graphPathAlogsTab, text="Perform Ford Warshall", font=("Arial", 14, "bold")
@@ -2945,14 +2945,14 @@ graphAlgosPerformFordWarshallHeading = CTkLabel(
 graphAlgosPerformFordWarshallHeading.place(x=0, y=210)
 
 graphAlgosPerformFordWarshallStart = CTkEntry(
-    graphPathAlogsTab, width=140, placeholder_text="Start Point"
+    graphPathAlogsTab, width=145, placeholder_text="Start Point"
 )
 graphAlgosPerformFordWarshallStart.place(x=0, y=240)
 
 graphAlgosPerformFordWarshallEnd = CTkEntry(
-    graphPathAlogsTab, width=140, placeholder_text="End Point"
+    graphPathAlogsTab, width=145, placeholder_text="End Point"
 )
-graphAlgosPerformFordWarshallEnd.place(x=145, y=240)
+graphAlgosPerformFordWarshallEnd.place(x=150, y=240)
 
 graphAlgosPerformFordWarshallButton = CTkButton(
     graphPathAlogsTab,
@@ -2970,7 +2970,7 @@ graphAlgosPerformFordWarshallButton = CTkButton(
     and graphAlgosPerformFordWarshallEnd.get()
     else AlertPopup("Please Enter Start and End Points"),
 )
-graphAlgosPerformFordWarshallButton.place(x=290, y=240)
+graphAlgosPerformFordWarshallButton.place(x=305, y=240)
 
 graphAlgosGraphObject = None
 
