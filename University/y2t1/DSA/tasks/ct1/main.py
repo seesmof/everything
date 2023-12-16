@@ -32,101 +32,164 @@ app.title("Data Structures and Algorithms")
 app.geometry("700x400")
 app.resizable(False, False)
 
-tabsContainer = CTkTabview(app)
-tabsContainer.pack(expand=1, fill="both")
+# Container for all of our tabs
+appTabsContainer = CTkTabview(app)
+appTabsContainer.pack(expand=True, fill="both")
 
-tabsContainer.add("Heap")
-tabsContainer.add("Data Structures")
-tabsContainer.add("Greedy Algorithms")
-tabsContainer.add("Dynamic Programming")
-tabsContainer.add("Graph Traversal")
-tabsContainer.add("Graph Shortest Path")
+appTabsContainer.add("Heap")
+appTabsContainer.add("Data Structures")
+appTabsContainer.add("Greedy Algorithms")
+appTabsContainer.add("Dynamic Programming")
+appTabsContainer.add("Graph Traversal")
+appTabsContainer.add("Graph Shortest Path")
 
-heapTab = tabsContainer.tab("Heap")
-dataStructuresTab = tabsContainer.tab("Data Structures")
-greedyAlgosTab = tabsContainer.tab("Greedy Algorithms")
-dynamicProgrammingTab = tabsContainer.tab("Dynamic Programming")
-graphTraversalTab = tabsContainer.tab("Graph Traversal")
-graphShortestPathTab = tabsContainer.tab("Graph Shortest Path")
+tabHeap = appTabsContainer.tab("Heap")
+tabDataStructures = appTabsContainer.tab("Data Structures")
+tabGreedyAlgorithms = appTabsContainer.tab("Greedy Algorithms")
+tabDynamicProgramming = appTabsContainer.tab("Dynamic Programming")
+tabGraphTraversalAlgorithms = appTabsContainer.tab("Graph Traversal")
+tabGraphShortestPathsAlgorithms = appTabsContainer.tab("Graph Shortest Path")
 
 
 #! HEAP
 class Heap:
     def __init__(self):
+        # Our heap is stored as an array, but is reordered on insertion or deletion to maintain the heap property (see _heapifyUp and _heapifyDown)
         self.heap = []
 
     def insert(self, value):
+        # Add the new element to the end of the heap
         self.heap.append(value)
-        self._heapifyUp(index=len(self.heap) - 1)
+
+        # Adjust new element's position to maintain the heap property
+        # The last element of the heap is the new element, hence the index of length(heap)-1
+        self._heapifyUp(givenIndex=len(self.heap) - 1)
 
     def delete(self):
+        # Check if heap is empty, meaning there are no elements to delete
         if len(self.heap) == 0:
             return None
+
+        # Swap the root with the last element
+        # The root is always at the beginning of the heap, hence the index of 0
         self._swap(0, len(self.heap) - 1)
+
+        # Get the root element by removing the last element, which we just swapped with the root
         root = self.heap.pop()
-        self._heapifyDown(index=0)
+
+        # Adjust the position of our last element which is now in root
+        self._heapifyDown(parentIndex=0)
+
         return root
 
     def sort(self):
+        # For storing all our sorted items
         sortedItems = []
+
+        # Run through the entire heap
         for _ in range(len(self.heap)):
+            # Add the root element to the sorted items
+            # Root because in MAX heap the root is always the biggest element
             sortedItems.append(self.delete())
+
         return sortedItems
 
     def buildHeap(self, arr):
+        # Assigning the heap to our given array
         self.heap = arr
+
+        # Starting from the middle of the heap because the last half is all the leaves
+        # and we don't need to heapify leaves as their position is already correct
         start = len(arr) // 2
+
+        # Run through our new heap from the middle to the first element in reversed order
         for i in reversed(range(start + 1)):
-            self._heapifyDown(index=i)
+            # Adjust the position of each element
+            self._heapifyDown(parentIndex=i)
+
+        # Returning self to be able to chain methods
         return self
 
-    def _heapifyUp(self, index):
-        parentIndex = (index - 1) // 2
-        if parentIndex >= 0 and self.heap[index] > self.heap[parentIndex]:
-            self._swap(parentIndex, index)
-            self._heapifyUp(index=parentIndex)
+    def _heapifyUp(self, givenIndex):
+        # Getting the index of the parent by formula
+        parentIndex = (givenIndex - 1) // 2
 
-    def _heapifyDown(self, index):
-        leftChildIndex = 2 * index + 1
-        rightChildIndex = 2 * index + 2
-        largest = index
+        # Check if the parent node exists
+        # and if the current value is greater than the parent's value
+        if parentIndex >= 0 and self.heap[givenIndex] > self.heap[parentIndex]:
+            # Swap the two elements
+            self._swap(parentIndex, givenIndex)
 
+            # Adjust the position of our new element further
+            self._heapifyUp(givenIndex=parentIndex)
+
+    def _heapifyDown(self, parentIndex):
+        # All the indeces are calculated by the appropriate formula
+        leftChildIndex = 2 * parentIndex + 1
+        rightChildIndex = 2 * parentIndex + 2
+
+        # Assume the parent to be the largest one
+        largest = parentIndex
+
+        # Check if the left child exists
+        # and if its value is greater than the parent's
         if (
             leftChildIndex < len(self.heap)
             and self.heap[leftChildIndex] > self.heap[largest]
         ):
+            # Reassign largest value to be this child
             largest = leftChildIndex
 
+        # Check if the right child exists
+        # and its value is greater then the current largest
+        # And the current largest can now be either the parent or the left child
         if (
             rightChildIndex < len(self.heap)
             and self.heap[rightChildIndex] > self.heap[largest]
         ):
+            # Reassign largest value to be this child
             largest = rightChildIndex
 
-        if largest != index:
-            self._swap(index, largest)
-            self._heapifyDown(index=largest)
+        # Check if the parent is not the largest one anymore
+        if largest != parentIndex:
+            # Swap the parent with the largest
+            # So the parent of this subtree is now the largest element
+            # and the previous parent is now at the position where the largest element was
+            self._swap(parentIndex, largest)
+
+            # Adjust the position of our previous parent further
+            self._heapifyDown(parentIndex=largest)
 
     def _swap(self, i, j):
+        # Just swap the values at indices i and j in the heap list
         self.heap[i], self.heap[j] = self.heap[j], self.heap[i]
 
 
 def updateHeapElementsContainer():
+    # Run through each possible UI element in the elements container
     for widget in heapElementsContainer.winfo_children():
+        # And destroy it
         widget.destroy()
 
-    for _, element in enumerate(heapElements.heap):
-        currentLabel = CTkLabel(heapElementsContainer, text=element)
-        currentLabel.pack(padx=5, anchor="w")
+    # Run through each heap node
+    for heapNode in heapElements.heap:
+        # And add it to the elements container
+        CTkLabel(heapElementsContainer, text=heapNode).pack(padx=5, anchor="w")
 
 
 def addHeapElement(element):
-    heapElements.insert(value=element)
+    # Insert our given element into the heap
+    heapElements.insert(element)
+
+    # And update the elements container
     updateHeapElementsContainer()
 
 
 def deleteHeapElement():
+    # Delete the root element
     heapElements.delete()
+
+    # And update the elements container
     updateHeapElementsContainer()
 
 
@@ -136,109 +199,121 @@ def showSortingTimeAlert(sortingTime: str):
     )
 
 
-def _quickSortUtil(arr):
+def quickSortUtil(arr):
+    # Get the length of our given array
     n = len(arr)
+
+    # See if there are 1 or 0 elements in it
     if n < 2:
+        # If so just return it, since it's already sorted
+        # This is our base case for the recursion
         return arr
 
+    # Choose the pivot element to be the middle one
     pivot = arr[n // 2]
+
+    # Get all the elements that are less than the pivot
+    # using list comprehension
     less = [x for x in arr if x < pivot]
+
+    # Get all the elements that are equal to the pivot
     equal = [x for x in arr if x == pivot]
+
+    # Get all the elements that are greater than the pivot
     more = [x for x in arr if x > pivot]
 
-    return _quickSortUtil(more) + equal + _quickSortUtil(less)
+    # Recursively sort the lesser elements, combined with equal element, and the greater elements
+    return quickSortUtil(more) + equal + quickSortUtil(less)
 
 
-def sortHeap_HeapSort():
-    if len(heapElements.heap) == 0:
-        return
-
+def sortHeap(sortingType: str):
+    # Start the timer to measure the sorting time
     startTimer = time.time()
-    heapElements.heap = heapElements.sort()
+
+    # Perform the appropriate sorting type based on the recieved parameter
+    heapElements.heap = (
+        heapElements.sort()
+        if sortingType == "Heap Sort"
+        else quickSortUtil(heapElements.heap)
+        if sortingType == "Quick Sort"
+        else sorted(heapElements.heap, reverse=True)
+    )
+
+    # Wait for 100ms to let the user see the sorting time
+    # Without it the results will always be 0 for some reason
     time.sleep(0.1)
-    endTimer = time.time()
-    sortingTime = endTimer - startTimer
+
+    # Calculate the sorting time by stopping the timer and subtracting it from the start
+    sortingTime = time.time() - startTimer
+
+    # Update the heap elements to reflect the sorting
     updateHeapElementsContainer()
-    showSortingTimeAlert(sortingTime=sortingTime)
 
-
-def sortHeap_QuickSort():
-    if len(heapElements.heap) == 0:
-        return
-
-    startTimer = time.time()
-    heapElements.heap = _quickSortUtil(heapElements.heap)
-    time.sleep(0.1)
-    endTimer = time.time()
-    sortingTime = endTimer - startTimer
-    updateHeapElementsContainer()
-    showSortingTimeAlert(sortingTime=sortingTime)
-
-
-def sortHeap_DefaultSort():
-    if len(heapElements.heap) == 0:
-        return
-
-    startTimer = time.time()
-    heapElements.heap = sorted(heapElements.heap, reverse=True)
-    time.sleep(0.1)
-    endTimer = time.time()
-    sortingTime = endTimer - startTimer
-    updateHeapElementsContainer()
+    # Show the sorting time alert
     showSortingTimeAlert(sortingTime=sortingTime)
 
 
 def saveHeapOnExit():
+    # If the heap is empty there is nothing to save
     if len(heapElements.heap) == 0:
+        # So we just exit out of the function
         return
+
+    # Open the heap file in write mode
     with open("heap.json", "w") as file:
+        # And write the heap into it
         json.dump(heapElements.heap, file)
 
 
 def loadHeapOnStart():
     try:
+        # Open the heap file in read mode
         with open("heap.json", "r") as file:
+            # Load the heap from the file into the temporary array
             heapArray = json.load(file)
+            # And build the heap from it
             heapElements.buildHeap(arr=heapArray)
+
+            # Update the elements container to reflect the loaded heap
             updateHeapElementsContainer()
-    except FileNotFoundError:
-        pass
+    except:
+        AlertPopup("Failed to load heap")
 
 
-heapTabsContainer = CTkTabview(heapTab)
-heapTabsContainer.add("Heap")
-heapTabsContainer.add("Linked List")
-heapTabsContainer.add("Task")
-heapTabsContainer.pack(fill="both", expand=True)
+tabHeap_SubTabsContainer = CTkTabview(tabHeap)
+tabHeap_SubTabsContainer.add("Heap")
+tabHeap_SubTabsContainer.add("Linked List")
+tabHeap_SubTabsContainer.add("Task")
+tabHeap_SubTabsContainer.pack(fill="both", expand=True)
 
-heapDemoTab = heapTabsContainer.tab("Heap")
-linkedListDemoTab = heapTabsContainer.tab("Linked List")
-heapTaskTab = heapTabsContainer.tab("Task")
+subtabHeap = tabHeap_SubTabsContainer.tab("Heap")
+subtabLinkedList = tabHeap_SubTabsContainer.tab("Linked List")
+subtabHeapTask = tabHeap_SubTabsContainer.tab("Task")
 
-heapElementsContainer = CTkScrollableFrame(heapDemoTab, width=240, height=270)
+heapElementsContainer = CTkScrollableFrame(subtabHeap, width=240, height=270)
 heapElementsContainer.place(x=400, y=0)
 
 linkedListElementsContainer = CTkScrollableFrame(
-    linkedListDemoTab, width=240, height=270
+    subtabLinkedList, width=240, height=270
 )
 linkedListElementsContainer.place(x=400, y=0)
 
-heapTaskElementsContainer = CTkScrollableFrame(heapTaskTab, width=240, height=270)
+heapTaskElementsContainer = CTkScrollableFrame(subtabHeapTask, width=240, height=270)
 heapTaskElementsContainer.place(x=400, y=0)
 
 
 addHeapElementHeading = CTkLabel(
-    heapDemoTab, text="Add to Heap", font=("Arial", 14, "bold")
+    subtabHeap, text="Add to Heap", font=("Arial", 14, "bold")
 )
 addHeapElementHeading.place(x=0, y=0)
 
 addHeapElementInput = CTkEntry(
-    heapDemoTab, placeholder_text="Enter element...", width=300
+    subtabHeap, placeholder_text="Enter element...", width=300
 )
 addHeapElementInput.place(x=0, y=30)
 
 addHeapElementButton = CTkButton(
-    heapDemoTab,
+    subtabHeap,
     text="Add",
     command=lambda: addHeapElement(int(addHeapElementInput.get()))
     if addHeapElementInput.get()
@@ -251,42 +326,60 @@ addHeapElementButton = CTkButton(
 )
 addHeapElementButton.place(x=305, y=30)
 
-sortHeapSectionHeading = CTkLabel(
-    heapDemoTab, text="Sort Heap", font=("Arial", 14, "bold")
+sortHeapHeading = CTkLabel(
+    subtabHeap, text="Sort Heap", font=("Arial", 14, "bold")
 )
-sortHeapSectionHeading.place(x=0, y=70)
+sortHeapHeading.place(x=0, y=70)
 
-sortHeap_DefaultSortButton = CTkButton(
-    heapDemoTab,
+sortHeapButton_DefaultSort = CTkButton(
+    subtabHeap,
     text="Default Sort",
-    command=lambda: sortHeap_DefaultSort(),
+    command=lambda: sortHeap("Default Sort")
+    if len(heapElements.heap) > 0
+    else AlertPopup("Heap is empty"),
     width=60,
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    fg_color="#8F00FF",
+    hover_color="#7500D1",
 )
-sortHeap_DefaultSortButton.place(x=0, y=100)
+sortHeapButton_DefaultSort.place(x=0, y=100)
 
-sortHeap_QuickSortButton = CTkButton(
-    heapDemoTab,
+sortHeapButton_QuickSort = CTkButton(
+    subtabHeap,
     text="Quick Sort",
-    command=lambda: sortHeap_QuickSort(),
+    command=lambda: sortHeap("Quick Sort")
+    if len(heapElements.heap) > 0
+    else AlertPopup("Heap is empty"),
     width=60,
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    fg_color="#8F00FF",
+    hover_color="#7500D1",
 )
-sortHeap_QuickSortButton.place(x=90, y=100)
+sortHeapButton_QuickSort.place(x=90, y=100)
 
-sortHeap_HeapSortButton = CTkButton(
-    heapDemoTab,
+sortHeapButton_HeapSort = CTkButton(
+    subtabHeap,
     text="Heap Sort",
-    command=lambda: sortHeap_HeapSort(),
+    command=lambda: sortHeap("Heap Sort")
+    if len(heapElements.heap) > 0
+    else AlertPopup("Heap is empty"),
     width=60,
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    fg_color="#8F00FF",
+    hover_color="#7500D1",
 )
-sortHeap_HeapSortButton.place(x=170, y=100)
+sortHeapButton_HeapSort.place(x=170, y=100)
 
-deleteHeapElementHeading = CTkLabel(
-    heapDemoTab, text="Delete from Heap", font=("Arial", 14, "bold")
+deleteFromHeapHeading = CTkLabel(
+    subtabHeap, text="Delete from Heap", font=("Arial", 14, "bold")
 )
-deleteHeapElementHeading.place(x=0, y=140)
+deleteFromHeapHeading.place(x=0, y=140)
 
-deleteHeapElementButton = CTkButton(
-    heapDemoTab,
+deleteFromHeapButton = CTkButton(
+    subtabHeap,
     text="Delete Element",
     command=lambda: deleteHeapElement(),
     width=120,
@@ -295,7 +388,7 @@ deleteHeapElementButton = CTkButton(
     text_color="white",
     font=("Arial", 12, "bold"),
 )
-deleteHeapElementButton.place(x=0, y=170)
+deleteFromHeapButton.place(x=0, y=170)
 
 heapElements = Heap()
 loadHeapOnStart()
@@ -409,17 +502,17 @@ def loadLinkedListOnStart():
 
 
 addLinkedListNodeHeading = CTkLabel(
-    linkedListDemoTab, text="Add Linked List Node", font=("Arial", 14, "bold")
+    subtabLinkedList, text="Add Linked List Node", font=("Arial", 14, "bold")
 )
 addLinkedListNodeHeading.place(x=0, y=0)
 
 addLinkedListNodeInput = CTkEntry(
-    linkedListDemoTab, placeholder_text="Node value...", width=300
+    subtabLinkedList, placeholder_text="Node value...", width=300
 )
 addLinkedListNodeInput.place(x=0, y=30)
 
 addLinkedListNodeButton = CTkButton(
-    linkedListDemoTab,
+    subtabLinkedList,
     text="Add",
     command=lambda: addLinkedListNode(int(addLinkedListNodeInput.get()))
     if addLinkedListNodeInput.get()
@@ -433,17 +526,17 @@ addLinkedListNodeButton = CTkButton(
 addLinkedListNodeButton.place(x=305, y=30)
 
 deleteHeapNodeHeading = CTkLabel(
-    linkedListDemoTab, text="Delete Linked List Node", font=("Arial", 14, "bold")
+    subtabLinkedList, text="Delete Linked List Node", font=("Arial", 14, "bold")
 )
 deleteHeapNodeHeading.place(x=0, y=70)
 
 deleteLinkedListNodeInput = CTkEntry(
-    linkedListDemoTab, placeholder_text="Node...", width=300
+    subtabLinkedList, placeholder_text="Node...", width=300
 )
 deleteLinkedListNodeInput.place(x=0, y=100)
 
 deleteLinkedListNodeButton = CTkButton(
-    linkedListDemoTab,
+    subtabLinkedList,
     text="Delete",
     command=lambda: deleteLinkedListNode(int(deleteLinkedListNodeInput.get()))
     if deleteLinkedListNodeInput.get()
@@ -457,17 +550,17 @@ deleteLinkedListNodeButton = CTkButton(
 deleteLinkedListNodeButton.place(x=305, y=100)
 
 searchLinkedListNodeHeading = CTkLabel(
-    linkedListDemoTab, text="Search Linked List Node", font=("Arial", 14, "bold")
+    subtabLinkedList, text="Search Linked List Node", font=("Arial", 14, "bold")
 )
 searchLinkedListNodeHeading.place(x=0, y=140)
 
 searchLinkedListNodeInput = CTkEntry(
-    linkedListDemoTab, placeholder_text="Node...", width=300
+    subtabLinkedList, placeholder_text="Node...", width=300
 )
 searchLinkedListNodeInput.place(x=0, y=170)
 
 searchLinkedListNodeButton = CTkButton(
-    linkedListDemoTab,
+    subtabLinkedList,
     text="Search",
     command=lambda: searchLinkedListNode(int(searchLinkedListNodeInput.get()))
     if searchLinkedListNodeInput.get()
@@ -541,17 +634,17 @@ def heapTaskShowResults():
 
 
 heapTaskLoadEmployeesDataHeading = CTkLabel(
-    heapTaskTab, text="Load employees JSON file", font=("Arial", 14, "bold")
+    subtabHeapTask, text="Load employees JSON file", font=("Arial", 14, "bold")
 )
 heapTaskLoadEmployeesDataHeading.place(x=0, y=0)
 
 heapTaskLoadEmployeesDataInput = CTkEntry(
-    heapTaskTab, placeholder_text="Filename...", width=140
+    subtabHeapTask, placeholder_text="Filename...", width=140
 )
 heapTaskLoadEmployeesDataInput.place(x=0, y=30)
 
 heapTaskLoadEmployeesDataButton = CTkButton(
-    heapTaskTab,
+    subtabHeapTask,
     text="Load",
     width=60,
     fg_color="#1976D2",
@@ -565,7 +658,7 @@ heapTaskLoadEmployeesDataButton = CTkButton(
 heapTaskLoadEmployeesDataButton.place(x=150, y=30)
 
 heapTaskShowResultsButton = CTkButton(
-    heapTaskTab,
+    subtabHeapTask,
     text="Show Results",
     width=120,
     fg_color="#28A228",
@@ -667,7 +760,7 @@ def loadHashTableOnStart():
         AlertPopup("Failed to load Hash Table data")
 
 
-dataStructuresTabsContainer = CTkTabview(dataStructuresTab, width=210, height=290)
+dataStructuresTabsContainer = CTkTabview(tabDataStructures, width=210, height=290)
 dataStructuresTabsContainer.add("Hash Table")
 dataStructuresTabsContainer.add("B-Tree")
 dataStructuresTabsContainer.add("Subscribers Search")
@@ -1379,7 +1472,7 @@ class HuffmanCoding:
         return outputPath
 
 
-greedyAlgosTabsContainer = CTkTabview(greedyAlgosTab)
+greedyAlgosTabsContainer = CTkTabview(tabGreedyAlgorithms)
 greedyAlgosTabsContainer.add("Huffman Coding")
 greedyAlgosTabsContainer.add("Greedy Algorithm Task")
 greedyAlgosTabsContainer.pack(fill="both", expand=True)
@@ -1465,8 +1558,8 @@ huffmanDecompressFileButton = CTkButton(
     huffmanCodingTab,
     text="Decompress",
     width=80,
-    fg_color="#1976D2",
-    hover_color="#0D47A1",
+    fg_color="#8F00FF",
+    hover_color="#7500D1",
     text_color="white",
     font=("Arial", 12, "bold"),
     command=lambda: huffmanDecompress()
@@ -1728,7 +1821,6 @@ greedyTaskShop = Shopkeeper([])
 
 
 #! ROBOTS TASK
-# TODO add ability to load from JSON
 class RobotGroup:
     def __init__(self, num_robots, speeds, num_groups):
         self.robotsCount = num_robots
@@ -1760,7 +1852,7 @@ def solveRobotsTask(robotsCount, speeds, groupsCount):
     AlertPopup(f"Number of ways to arrange {groupsCount} groups is {res}")
 
 
-dynamicProgrammingTabsContainer = CTkTabview(dynamicProgrammingTab)
+dynamicProgrammingTabsContainer = CTkTabview(tabDynamicProgramming)
 dynamicProgrammingTabsContainer.add("Robot Groups")
 dynamicProgrammingTabsContainer.add("Buildings' Arrangements")
 dynamicProgrammingTabsContainer.pack(expand=True, fill="both")
@@ -2033,7 +2125,7 @@ class BFSGraph:
 
 
 graphTraversalTabsContainer = CTkTabview(
-    graphTraversalTab,
+    tabGraphTraversalAlgorithms,
 )
 graphTraversalTabsContainer.add("Breadth First Search")
 graphTraversalTabsContainer.add("Depth First Search")
@@ -2829,7 +2921,7 @@ class PathsGraph:
 
 
 graphPathsTabsContainer = CTkTabview(
-    graphShortestPathTab,
+    tabGraphShortestPathsAlgorithms,
 )
 graphPathsTabsContainer.add("Algorithms")
 graphPathsTabsContainer.add("Project Times")
