@@ -2762,14 +2762,14 @@ graphPathsTabsContainer = CTkTabview(
 )
 graphPathsTabsContainer.add("Algorithms")
 graphPathsTabsContainer.add("Project Times")
-graphPathsTabsContainer.add("Path from Two Points")
-graphPathsTabsContainer.add("Path from All Points")
+graphPathsTabsContainer.add("Path between Two Points")
+graphPathsTabsContainer.add("Path to All Points")
 graphPathsTabsContainer.pack(expand=True, fill="both")
 
 graphPathAlogsTab = graphPathsTabsContainer.tab("Algorithms")
 graphProjectTimesTab = graphPathsTabsContainer.tab("Project Times")
-graphPathFromTwoPointsTab = graphPathsTabsContainer.tab("Path from Two Points")
-graphPathFromAllPointsTab = graphPathsTabsContainer.tab("Path from All Points")
+graphPathFromTwoPointsTab = graphPathsTabsContainer.tab("Path between Two Points")
+graphPathFromAllPointsTab = graphPathsTabsContainer.tab("Path to All Points")
 
 
 def graphAlgosLoadGraph(fileName, isDirected):
@@ -3248,7 +3248,7 @@ shortestPathFromTwoPointsGetStartInput = CTkEntry(
 )
 shortestPathFromTwoPointsGetStartInput.place(x=0, y=100)
 
-shortestPathFromTwoPointsGetEndHeading= CTkLabel(
+shortestPathFromTwoPointsGetEndHeading = CTkLabel(
     graphPathFromTwoPointsTab, text="Enter Ending Node", font=("Arial", 14, "bold")
 )
 shortestPathFromTwoPointsGetEndHeading.place(x=0, y=140)
@@ -3279,6 +3279,129 @@ shortestPathFromTwoPointsPerformButton = CTkButton(
 shortestPathFromTwoPointsPerformButton.place(x=0, y=210)
 
 shortestPathFromTwoPointsGraphObject = None
+
+
+#! SHORTEST PATHS TO ALL NODES
+def shortestPathToAllLoadGraph(fileName, isDirected):
+    global shortestPathToAllGraphObject
+    shortestPathToAllGraphObject = PathsGraph(isDirected)
+    with open(fileName, "r") as file:
+        for line in file:
+            try:
+                u, v, w = line.strip().split()
+                shortestPathToAllGraphObject.addEdge(int(u), int(v), int(w))
+            except ValueError:
+                print(f"Skipping line {line}")
+    shortestPathToAllUpdateElementsContainer()
+
+
+def shortestPathToAllUpdateElementsContainer():
+    for widget in shortestPathToAllElementsContainer.winfo_children():
+        widget.destroy()
+
+    for element in shortestPathToAllGraphObject.getList():
+        CTkLabel(shortestPathToAllElementsContainer, text=element).pack(
+            padx=5, anchor="w"
+        )
+
+
+def shortestPathToAll(start):
+    for currentNode in shortestPathToAllGraphObject.edges:
+        if currentNode != start:
+            currentPath = shortestPathToAllGraphObject.shortestPath(start, currentNode)
+            if currentPath:
+                shortestPathToAllGraphObject.drawGraph(currentPath)
+            else:
+                shortestPathToAllGraphObject.drawGraph([start, currentNode])
+
+
+shortestPathToAllElementsContainer = CTkScrollableFrame(
+    graphPathFromAllPointsTab,
+    width=240,
+    height=240,
+)
+shortestPathToAllElementsContainer.place(x=400, y=0)
+
+shortestPathToAllDrawGraphButton = CTkButton(
+    graphPathFromAllPointsTab,
+    text="Draw Graph",
+    width=260,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: shortestPathToAllGraphObject.drawGraph()
+    if shortestPathToAllGraphObject
+    else AlertPopup("Please Load Graph First"),
+)
+shortestPathToAllDrawGraphButton.place(x=400, y=260)
+
+shortestPathToAllLoadGraphHeading = CTkLabel(
+    graphPathFromAllPointsTab, text="Load Graph", font=("Arial", 14, "bold")
+)
+shortestPathToAllLoadGraphHeading.place(x=0, y=0)
+
+shortestPathToAllIsDirected = CTkCheckBox(
+    graphPathFromAllPointsTab,
+    text="Is Directed?",
+    onvalue=True,
+    offvalue=False,
+)
+shortestPathToAllIsDirected.place(x=0, y=30)
+
+shortestPathToAllLoadGraphInput = CTkEntry(
+    graphPathFromAllPointsTab,
+    width=180,
+    placeholder_text="Graph File Path...",
+)
+shortestPathToAllLoadGraphInput.place(x=120, y=30)
+
+shortestPathToAllLoadGraphButton = CTkButton(
+    graphPathFromAllPointsTab,
+    text="Load",
+    width=60,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: shortestPathToAllLoadGraph(
+        shortestPathToAllLoadGraphInput.get(),
+        shortestPathToAllIsDirected.get(),
+    )
+    if shortestPathToAllLoadGraphInput.get()
+    else AlertPopup("Please Enter Graph File Path"),
+)
+shortestPathToAllLoadGraphButton.place(x=305, y=30)
+
+shortestPathToAllGetStartHeading = CTkLabel(
+    graphPathFromAllPointsTab, text="Enter Starting Node", font=("Arial", 14, "bold")
+)
+shortestPathToAllGetStartHeading.place(x=0, y=70)
+
+shortestPathToAllGetStartInput = CTkEntry(
+    graphPathFromAllPointsTab,
+    width=300,
+    placeholder_text="Start Point...",
+)
+shortestPathToAllGetStartInput.place(x=0, y=100)
+
+shortestPathToAllPerformButton = CTkButton(
+    graphPathFromAllPointsTab,
+    text="Get Results",
+    width=120,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: shortestPathToAll(
+        int(shortestPathToAllGetStartInput.get()),
+    )
+    if shortestPathToAllGetStartInput.get()
+    else AlertPopup("Please Enter Start Point"),
+)
+shortestPathToAllPerformButton.place(x=0, y=140)
+
+shortestPathToAllGraphObject = None
 
 app.mainloop()
 saveHeapOnExit()
