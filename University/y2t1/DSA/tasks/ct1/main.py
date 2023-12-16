@@ -3036,7 +3036,7 @@ class TasksGraph:
     def getList(self):
         list = []
 
-        for task,subtasks in self.edges.items():
+        for task, subtasks in self.edges.items():
             for subtask in subtasks:
                 list.append(f"{task} -> {subtask[0]} : {subtask[1]}")
 
@@ -3145,6 +3145,140 @@ minimalTaskTimesGetResultsButton = CTkButton(
 minimalTaskTimesGetResultsButton.place(x=0, y=70)
 
 minimalTaskTimesGraphObject = None
+
+
+#! SHORTEST PATH FROM TWO POINTS
+def shortestPathFromTwoPointsLoadGraph(fileName, isDirected):
+    global shortestPathFromTwoPointsGraphObject
+    shortestPathFromTwoPointsGraphObject = PathsGraph(isDirected)
+    with open(fileName, "r") as file:
+        for line in file:
+            try:
+                u, v, w = line.strip().split()
+                shortestPathFromTwoPointsGraphObject.addEdge(int(u), int(v), int(w))
+            except ValueError:
+                print(f"Skipping line {line}")
+    shortestPathFromTwoPointsUpdateElementsContainer()
+
+
+def shortestPathFromTwoPointsUpdateElementsContainer():
+    for widget in shortestPathFromTwoPointsElementsContainer.winfo_children():
+        widget.destroy()
+
+    for task in shortestPathFromTwoPointsGraphObject.getList():
+        CTkLabel(
+            shortestPathFromTwoPointsElementsContainer,
+            text=task,
+        ).pack(padx=5, anchor="w")
+
+
+def shortestPathFromTwoPoints(start, end):
+    shortestPath = shortestPathFromTwoPointsGraphObject.dijkstra(start, end)
+    if not shortestPath:
+        AlertPopup(f"No Path from {start} to {end} Found")
+    else:
+        shortestPathFromTwoPointsGraphObject.drawGraph(shortestPath)
+
+
+shortestPathFromTwoPointsElementsContainer = CTkScrollableFrame(
+    graphPathFromTwoPointsTab, width=240, height=240
+)
+shortestPathFromTwoPointsElementsContainer.place(x=400, y=0)
+
+shortestPathFromTwoPointsDrawGraphButton = CTkButton(
+    graphPathFromTwoPointsTab,
+    text="Draw Graph",
+    width=260,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: shortestPathFromTwoPointsGraphObject.drawGraph()
+    if shortestPathFromTwoPointsGraphObject
+    else AlertPopup("Please Load Graph First"),
+)
+shortestPathFromTwoPointsDrawGraphButton.place(x=400, y=260)
+
+shortestPathFromTwoPointsLoadGraphHeading = CTkLabel(
+    graphPathFromTwoPointsTab, text="Load Graph", font=("Arial", 14, "bold")
+)
+shortestPathFromTwoPointsLoadGraphHeading.place(x=0, y=0)
+
+shortestPathFromTwoPointsIsDirected = CTkCheckBox(
+    graphPathFromTwoPointsTab,
+    text="Is Directed?",
+    onvalue=True,
+    offvalue=False,
+)
+shortestPathFromTwoPointsIsDirected.place(x=0, y=30)
+
+shortestPathFromTwoPointsLoadGraphInput = CTkEntry(
+    graphPathFromTwoPointsTab,
+    width=180,
+    placeholder_text="Graph File Path...",
+)
+shortestPathFromTwoPointsLoadGraphInput.place(x=120, y=30)
+
+shortestPathFromTwoPointsLoadGraphButton = CTkButton(
+    graphPathFromTwoPointsTab,
+    text="Load",
+    width=60,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: shortestPathFromTwoPointsLoadGraph(
+        shortestPathFromTwoPointsLoadGraphInput.get(),
+        shortestPathFromTwoPointsIsDirected.get(),
+    )
+    if shortestPathFromTwoPointsLoadGraphInput.get()
+    else AlertPopup("Please Enter Graph File Path"),
+)
+shortestPathFromTwoPointsLoadGraphButton.place(x=305, y=30)
+
+shortestPathFromTwoPointsGetStartHeading = CTkLabel(
+    graphPathFromTwoPointsTab, text="Enter Starting Node", font=("Arial", 14, "bold")
+)
+shortestPathFromTwoPointsGetStartHeading.place(x=0, y=70)
+
+shortestPathFromTwoPointsGetStartInput = CTkEntry(
+    graphPathFromTwoPointsTab,
+    width=300,
+    placeholder_text="Start Point...",
+)
+shortestPathFromTwoPointsGetStartInput.place(x=0, y=100)
+
+shortestPathFromTwoPointsGetEndHeading= CTkLabel(
+    graphPathFromTwoPointsTab, text="Enter Ending Node", font=("Arial", 14, "bold")
+)
+shortestPathFromTwoPointsGetEndHeading.place(x=0, y=140)
+
+shortestPathFromTwoPointsGetEndInput = CTkEntry(
+    graphPathFromTwoPointsTab,
+    width=300,
+    placeholder_text="End Point...",
+)
+shortestPathFromTwoPointsGetEndInput.place(x=0, y=170)
+
+shortestPathFromTwoPointsPerformButton = CTkButton(
+    graphPathFromTwoPointsTab,
+    text="Get Results",
+    width=120,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: shortestPathFromTwoPoints(
+        int(shortestPathFromTwoPointsGetStartInput.get()),
+        int(shortestPathFromTwoPointsGetEndInput.get()),
+    )
+    if shortestPathFromTwoPointsGetStartInput.get()
+    and shortestPathFromTwoPointsGetEndInput.get()
+    else AlertPopup("Please Enter Start and End Points"),
+)
+shortestPathFromTwoPointsPerformButton.place(x=0, y=210)
+
+shortestPathFromTwoPointsGraphObject = None
 
 app.mainloop()
 saveHeapOnExit()
