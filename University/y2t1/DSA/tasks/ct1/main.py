@@ -771,89 +771,70 @@ loadHashTableOnStart()
 
 #! B-TREE
 # TODO fix deletion not working - understand it truly
+# TODO fix search not working for values >10
 class BTree:
     class BTreeNode:
-        def __init__(self, leaf=False):
-            self.leaf = leaf
-            self.keys = []
-            self.child = []
+        def __init__(self, key):
+            self.left = None
+            self.right = None
+            self.val = key
 
-    def __init__(self, t):
-        self.root = self.BTreeNode(True)
-        self.t = t
+    def __init__(self):
+        self.root = None
 
     def insert(self, key):
-        root = self.root
-        if len(root.keys) == (2 * self.t) - 1:
-            tempNode = self.BTreeNode()
-            self.root = tempNode
-            tempNode.child.insert(0, root)
-            self._splitChild(tempNode, 0)
-            self._insertNonFull(tempNode, key)
+        if self.root is None:
+            self.root = self.BTreeNode(key)
         else:
-            self._insertNonFull(root, key)
+            self._insertUtil(key, self.root)
+
+    def _insertUtil(self, key, node):
+        if key < node.val:
+            if node.left is None:
+                node.left = self.BTreeNode(key)
+            else:
+                self._insertUtil(key, node.left)
+        else:
+            if node.right is None:
+                node.right = self.BTreeNode(key)
+            else:
+                self._insertUtil(key, node.right)
 
     def delete(self, key):
-        nodeA, index = self.searchKey(key)
-        if nodeA is not None:
-            if nodeA.leaf:
-                nodeA.keys.pop(index)
-            return True
-        else:
-            return False
+        self.root = self._deleteUtil(key, self.root)
 
-    def searchKey(self, key, nodeA=None):
-        if nodeA is not None:
-            index = 0
-            while index < len(nodeA.keys) and key > nodeA.keys[index][0]:
-                index += 1
-            if index < len(nodeA.keys) and key == nodeA.keys[index][0]:
-                return (True, nodeA, index)
-            elif nodeA.leaf:
-                return (False, nodeA, index)
-            else:
-                return self.searchKey(key, nodeA.child[index])
-        else:
-            return self.searchKey(key, self.root)
+    def _deleteUtil(self, key, node):
+        if node is None:
+            return node
+        if key < node.val:
+            node.left = self._deleteUtil(key, node.left)
+        if key > node.val:
+            node.right = self._deleteUtil(key, node.right)
+        if key == node.val:
+            if node.left is None:
+                return node.right
+            if node.right is None:
+                return node.left
+            temp = self._minValueNode(node.right)
+            node.val = temp.val
+            node.right = self._deleteUtil(temp.val, node.right)
+        return node
 
-    def _insertNonFull(self, nodeA, key):
-        i = len(nodeA.keys) - 1
-        if nodeA.leaf:
-            nodeA.keys.append((None, None))
-            while i >= 0 and key < nodeA.keys[i]:
-                nodeA.keys[i + 1] = nodeA.keys[i]
-                i -= 1
-            nodeA.keys[i + 1] = key
-        else:
-            while i >= 0 and key < nodeA.keys[i]:
-                i -= 1
-            i += 1
-            if len(nodeA.child[i].keys) == (2 * self.t) - 1:
-                self._splitChild(nodeA, i)
-                if key > nodeA.keys[i]:
-                    i += 1
-            self._insertNonFull(nodeA.child[i], key)
+    def _minValueNode(self, node):
+        currentNode = node
+        while currentNode.left:
+            currentNode = currentNode.left
+        return currentNode
 
-    def _splitChild(self, nodeA, index):
-        t = self.t
-        nodeB = nodeA.child[index]
-        nodeC = self.BTreeNode(nodeB.leaf)
-        nodeA.child.insert(index + 1, nodeC)
-        nodeA.keys.insert(index, nodeB.keys[t - 1])
-        nodeC.keys = nodeB.keys[t : (2 * t) - 1]
-        nodeB.keys = nodeB.keys[0 : t - 1]
-        if not nodeB.leaf:
-            nodeC.child = nodeB.child[t : 2 * t]
-            nodeB.child = nodeB.child[0 : t - 1]
+    def search(self, key):
+        return self._searchUtil(key, self.root) is not None
 
-
-def updateBTreeElementsContainer():
-    for widget in bTreeElementsContainer.winfo_children():
-        widget.destroy()
-
-    for node in bTreeElementsList:
-        currentLabel = CTkLabel(bTreeElementsContainer, text=node)
-        currentLabel.pack(padx=5, anchor="w")
+    def _searchUtil(self, key, node):
+        if node is None or node.val == key:
+            return node
+        if key < node.val:
+            return self._searchUtil(key, node.left)
+        return self._searchUtil(key, node.right)
 
 
 def addBTreeNode(data):
@@ -869,13 +850,21 @@ def deleteBTreeNode(data):
 
 
 def searchBTreeNode(data):
-    # TODO fix search not working for values >10
-    isFound, node, index = bTreeElements.searchKey(data)
+    isFound = bTreeElements.search(data)
 
     if isFound:
         AlertPopup(f"{data} is in the B-Tree")
     else:
         AlertPopup(f"{data} is NOT in the B-Tree")
+
+
+def updateBTreeElementsContainer():
+    for widget in bTreeElementsContainer.winfo_children():
+        widget.destroy()
+
+    for node in bTreeElementsList:
+        currentLabel = CTkLabel(bTreeElementsContainer, text=node)
+        currentLabel.pack(padx=5, anchor="w")
 
 
 def saveBTreeOnExit():
@@ -962,7 +951,7 @@ searchBTreeNodeButton = CTkButton(
 searchBTreeNodeButton.place(x=305, y=170)
 
 bTreeElementsList = []
-bTreeElements = BTree(3)
+bTreeElements = BTree()
 loadBTreeOnStart()
 
 
@@ -1069,7 +1058,7 @@ bTreeTaskSearchForSubButton = CTkButton(
 bTreeTaskSearchForSubButton.place(x=305, y=100)
 
 bTreeTaskSubscribers = []
-bTreeTaskElements = BTree(3)
+bTreeTaskElements = BTree()
 
 
 #! HASH TABLE TASK
