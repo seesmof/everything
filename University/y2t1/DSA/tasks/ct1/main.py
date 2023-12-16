@@ -193,12 +193,6 @@ def deleteHeapElement():
     updateHeapElementsContainer()
 
 
-def showSortingTimeAlert(sortingTime: str):
-    AlertPopup(
-        f"Sorting took {sortingTime:.2f} seconds or {sortingTime*1000:.2f} milliseconds"
-    )
-
-
 def quickSortUtil(arr):
     # Get the length of our given array
     n = len(arr)
@@ -250,7 +244,9 @@ def sortHeap(sortingType: str):
     updateHeapElementsContainer()
 
     # Show the sorting time alert
-    showSortingTimeAlert(sortingTime=sortingTime)
+    AlertPopup(
+        f"Sorting took {sortingTime:.2f} seconds or {sortingTime*1000:.2f} milliseconds"
+    )
 
 
 def saveHeapOnExit():
@@ -277,6 +273,7 @@ def loadHeapOnStart():
             # Update the elements container to reflect the loaded heap
             updateHeapElementsContainer()
     except:
+        # Show an alert popup if the heap fails to load
         AlertPopup("Failed to load heap")
 
 
@@ -317,7 +314,7 @@ addHeapElementButton = CTkButton(
     text="Add",
     command=lambda: addHeapElement(int(addHeapElementInput.get()))
     if addHeapElementInput.get()
-    else AlertPopup("Input box is empty"),
+    else AlertPopup("Please enter an element to add"),
     width=60,
     fg_color="#28A228",
     hover_color="#1F7D1F",
@@ -326,9 +323,7 @@ addHeapElementButton = CTkButton(
 )
 addHeapElementButton.place(x=305, y=30)
 
-sortHeapHeading = CTkLabel(
-    subtabHeap, text="Sort Heap", font=("Arial", 14, "bold")
-)
+sortHeapHeading = CTkLabel(subtabHeap, text="Sort Heap", font=("Arial", 14, "bold"))
 sortHeapHeading.place(x=0, y=70)
 
 sortHeapButton_DefaultSort = CTkButton(
@@ -336,7 +331,7 @@ sortHeapButton_DefaultSort = CTkButton(
     text="Default Sort",
     command=lambda: sortHeap("Default Sort")
     if len(heapElements.heap) > 0
-    else AlertPopup("Heap is empty"),
+    else AlertPopup("Heap is empty, so there is nothing to sort"),
     width=60,
     text_color="white",
     font=("Arial", 12, "bold"),
@@ -350,7 +345,7 @@ sortHeapButton_QuickSort = CTkButton(
     text="Quick Sort",
     command=lambda: sortHeap("Quick Sort")
     if len(heapElements.heap) > 0
-    else AlertPopup("Heap is empty"),
+    else AlertPopup("Heap is empty, so there is nothing to sort"),
     width=60,
     text_color="white",
     font=("Arial", 12, "bold"),
@@ -364,7 +359,7 @@ sortHeapButton_HeapSort = CTkButton(
     text="Heap Sort",
     command=lambda: sortHeap("Heap Sort")
     if len(heapElements.heap) > 0
-    else AlertPopup("Heap is empty"),
+    else AlertPopup("Heap is empty, so there is nothing to sort"),
     width=60,
     text_color="white",
     font=("Arial", 12, "bold"),
@@ -381,7 +376,9 @@ deleteFromHeapHeading.place(x=0, y=140)
 deleteFromHeapButton = CTkButton(
     subtabHeap,
     text="Delete Element",
-    command=lambda: deleteHeapElement(),
+    command=lambda: deleteHeapElement()
+    if len(heapElements.heap) > 0
+    else AlertPopup("Heap is already empty"),
     width=120,
     fg_color="#BF181D",
     hover_color="#961316",
@@ -398,106 +395,204 @@ loadHeapOnStart()
 class DoublyLinkedList:
     class LinkedListNode:
         def __init__(self, data=None):
+            # Since its a doubly linked list, we have a pointer to previous and next nodes
+            # And also the data, of course
             self.data = data
             self.next = None
             self.prev = None
 
     def __init__(self):
+        # Our class will hold only the head pointer
         self.head = None
 
     def append(self, data):
+        # Check if the linked list is empty
         if self.head is None:
+            # If so, create a new node and set it as the head
             self.head = self.LinkedListNode(data)
+
         else:
+            # Create a temporary node to traverse the linked list
+            # And set it to the head, since the list is not empty, we know it
             currentNode = self.head
+
+            # Traverse the entire linked list until our node doesn't have a next pointer
+            # Which means that there are no nodes after it
             while currentNode.next is not None:
                 currentNode = currentNode.next
+
+            # Declare our new node object with the given data we recieved as a parameter
             newNode = self.LinkedListNode(data)
+
+            # Set our last node's next pointer to our new node
             currentNode.next = newNode
+
+            # And set our new node's previous pointer to our last node
+            # Thus linking them together and making our new node a part of the list
             newNode.prev = currentNode
 
     def search(self, data) -> bool:
+        # Set the temporary node to the head
+        # It will be used to traverse the list
         currentNode = self.head
+
+        # Traverse the entire list until we find our node
         while currentNode is not None:
+            # Check if our node has the data we're looking for
+            # And this is pretty much the standard linear search that we can apply to the regular array as well. But as linked list doesn't allow index accessing, we cannot use Binary Search on it
             if currentNode.data == data:
+                # If we found the node we're looking for, we return True
                 return True
+            # Otherwise, we move to the next node
             currentNode = currentNode.next
+
+        # If we exited out of the loop without finding our node, we return False
+        # Since we obviously haven't found the node we were looking for, which means it is not in the list
         return False
 
     def delete(self, data) -> bool:
+        # Set our temporary node to the head
+        # Will be used for traversing the list, once again
         currentNode = self.head
+
+        # Traverse the entire linked list
         while currentNode is not None:
+            # Check if we found our node that holds the data we need to delete
             if currentNode.data == data:
+                # Check if there are nodes before the node we want to delete
                 if currentNode.prev is not None:
+                    # If so, set our previous node's next pointer to our next node
+                    # Meaning to the node that is after our node we want to delete
                     currentNode.prev.next = currentNode.next
+
+                # Check if there are nodes after the node we want to delete
                 if currentNode.next is not None:
+                    # If so, set our next node's previous pointer to our previous node
                     currentNode.next.prev = currentNode.prev
+
+                # Check if the node we want to delete is the head
                 if currentNode == self.head:
+                    # If so, set the next node to be the head
                     self.head = currentNode.next
+
+                # And return true to indicate we found and deleted the node
                 return True
+
+            # Otherwise, we move to the next node
             currentNode = currentNode.next
+
+        # If we haven't found and deleted our node, we return false
         return False
 
     def getList(self):
+        # Declare the list of nodes
         list = []
+
+        # Set our current temporaray node to the head
         currentNode = self.head
+
+        # Start traversing the list until we reach the end
         while currentNode is not None:
+            # And append all the nodes to the list
             list.append(currentNode.data)
+
+            # Move to the next node
             currentNode = currentNode.next
+
+        # Return the retrieved list of nodes
         return list
 
-    def buildList(self, list):
-        for element in list:
+    def buildList(self, inputList):
+        # Given a list of nodes, build the linked list
+
+        # By traversing the given list
+        for element in inputList:
+            # And appending each node to our linked list
             self.append(element)
 
 
 def updateLinkedListElementsContainer():
+    # For each existing UI element in the elements container
     for widget in linkedListElementsContainer.winfo_children():
+        # Delete it
         widget.destroy()
 
-    for _, element in enumerate(linkedListElements.getList()):
-        currentLabel = CTkLabel(linkedListElementsContainer, text=element)
-        currentLabel.pack(padx=5, anchor="w")
+    # Run through each node in the linked list
+    for node in linkedListElements.getList():
+        # And append it to the container
+        CTkLabel(linkedListElementsContainer, text=node).pack(padx=5, anchor="w")
 
 
 def addLinkedListNode(data):
+    # Check if the given element already exists in the linked list
     if linkedListElements.search(data):
+        # If so, we cannot add it again
+        # And we display an alert warning the user
         AlertPopup(f"{data} already exists in linked list")
+
+        # Exiting out of the function afterwards
         return
 
+    # Otherwise, we can add it to the list
     linkedListElements.append(data)
+
+    # And update the container that displays the linked list elements
     updateLinkedListElementsContainer()
 
 
 def deleteLinkedListNode(data):
+    # Check if the given element doesn't exist in the linked list
     if not linkedListElements.delete(data):
+        # If so, we cannot delete it
+        # So warn the user about it by showing the alert
         AlertPopup(f"{data} is NOT found in a list")
+
+        # Exiting out of the function afterwards
         return
 
+    # Otherwise, we can delete it from the list
+    # And update the container that displays the linked list elements
     updateLinkedListElementsContainer()
 
 
 def searchLinkedListNode(data):
+    # Simply perform a search for a given node
     if linkedListElements.search(data):
+        # And if its found
+        # Display an alert informing the user
         AlertPopup(f"{data} is found in a list")
     else:
+        # Otherwise, display an alert informing the user that the node was not found
         AlertPopup(f"{data} is NOT found in a list")
 
 
 def saveLinkedListOnExit():
+    # Check if the linked list is empty
     if len(linkedListElements.getList()) == 0:
+        # If so, we cannot save anything to the file
+        # So we exit out of the function
         return
+
+    # Otherwise, open the local file and write the list to it
     with open("linkedList.json", "w") as f:
+        # By using the JSON module and the appropriate function
         json.dump(linkedListElements.getList(), f)
 
 
 def loadLinkedListOnStart():
     try:
+        # Open the local file that should contain the linked list
         with open("linkedList.json", "r") as f:
+            # Load the list from the file
             list = json.load(f)
+            # And build a new linked list
             linkedListElements.buildList(list)
+
+            # Update the container that displays the linked list elements
             updateLinkedListElementsContainer()
     except:
+        # If we can't find the file or any other error occurs
+        # We display an alert informing the user
         AlertPopup("Failed to load Linked List data")
 
 
@@ -516,7 +611,7 @@ addLinkedListNodeButton = CTkButton(
     text="Add",
     command=lambda: addLinkedListNode(int(addLinkedListNodeInput.get()))
     if addLinkedListNodeInput.get()
-    else AlertPopup("Input box is empty"),
+    else AlertPopup("Please enter the value to add"),
     width=45,
     fg_color="#28A228",
     hover_color="#1F7D1F",
@@ -540,7 +635,7 @@ deleteLinkedListNodeButton = CTkButton(
     text="Delete",
     command=lambda: deleteLinkedListNode(int(deleteLinkedListNodeInput.get()))
     if deleteLinkedListNodeInput.get()
-    else AlertPopup("Input box is empty"),
+    else AlertPopup("Please enter the value to delete"),
     width=45,
     fg_color="#D32F2F",
     hover_color="#B71C1C",
@@ -564,7 +659,7 @@ searchLinkedListNodeButton = CTkButton(
     text="Search",
     command=lambda: searchLinkedListNode(int(searchLinkedListNodeInput.get()))
     if searchLinkedListNodeInput.get()
-    else AlertPopup("Input box is empty"),
+    else AlertPopup("Please enter the value to search for"),
     width=45,
     fg_color="#1976D2",
     hover_color="#0D47A1",
