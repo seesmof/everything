@@ -2601,7 +2601,7 @@ mazeTaskSolveTask.place(x=0, y=70)
 mazeTaskGraphObject = None
 
 
-#! GRAPH SHORTEST PATHS
+#! GRAPH SHORTEST PATHS ALGOS
 class PathsGraph:
     def __init__(self, directed=False):
         self.edges = defaultdict(list)
@@ -2793,10 +2793,6 @@ def graphAlgosUpdateElementsContainer():
         ).pack(padx=5, anchor="w")
 
 
-def graphAlgosDrawGraph():
-    graphAlgosGraphObject.drawGraph()
-
-
 def graphAlgosPerformDijkstra(start, end):
     shortestPath = graphAlgosGraphObject.dijkstra(start, end)
     if not shortestPath:
@@ -2835,7 +2831,7 @@ graphAlgosDrawGraphButton = CTkButton(
     hover_color="#1F7D1F",
     text_color="white",
     font=("Arial", 12, "bold"),
-    command=lambda: graphAlgosDrawGraph()
+    command=lambda: graphAlgosGraphObject.drawGraph()
     if graphAlgosGraphObject
     else AlertPopup("Please Load Graph First"),
 )
@@ -2973,6 +2969,182 @@ graphAlgosPerformFordWarshallButton = CTkButton(
 graphAlgosPerformFordWarshallButton.place(x=305, y=240)
 
 graphAlgosGraphObject = None
+
+
+#! PROJECT MINIMAL TIMES
+class TasksGraph:
+    def __init__(self, directed=False):
+        self.edges = defaultdict(list)
+        self.directed = directed
+
+    def addEdge(self, u, v, weight):
+        self.edges[u].append((v, weight))
+        if not self.directed:
+            self.edges[v].append((u, weight))
+
+    def drawGraph(self, tasks=None):
+        G = nx.Graph()
+        for u, edges in self.edges.items():
+            for v, weight in edges:
+                G.add_edge(u, v, weight=weight)
+        pos = nx.spring_layout(G, k=0.15)
+
+        if tasks:
+            nodeColors = [
+                "red"
+                if node == tasks[-1]
+                else "lightgreen"
+                if node == tasks[0]
+                else "lightgray"
+                for node in G.nodes()
+            ]
+            nx.draw_networkx_nodes(G, pos, node_color=nodeColors)
+
+            plt.text(
+                0.00,
+                1.13,
+                "Red: Last Task",
+                transform=plt.gca().transAxes,
+                fontsize=10,
+                verticalalignment="top",
+                bbox=dict(boxstyle="round", facecolor="red", alpha=0.5),
+            )
+            plt.text(
+                0.00,
+                1.06,
+                "Green: First Task",
+                transform=plt.gca().transAxes,
+                fontsize=10,
+                verticalalignment="top",
+                bbox=dict(boxstyle="round", facecolor="lightgreen", alpha=0.5),
+            )
+        else:
+            nx.draw_networkx_nodes(G, pos, node_color="lightblue")
+        nx.draw_networkx_edges(G, pos)
+        nx.draw_networkx_labels(G, pos, font_weight="bold")
+        labels = nx.get_edge_attributes(G, "weight")
+        nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
+        plt.show()
+
+    def calculateMinimumTime(self):
+        totalTime = 0
+        for edges in self.edges.values():
+            for edge in edges:
+                totalTime += edge[1]
+        return totalTime
+
+    def getList(self):
+        list = []
+
+        for task,subtasks in self.edges.items():
+            for subtask in subtasks:
+                list.append(f"{task} -> {subtask[0]} : {subtask[1]}")
+
+        return list
+
+
+def minimalTaskTimesUpdateElementsContainer():
+    for widget in minimalTaskTimesElementsContainer.winfo_children():
+        widget.destroy()
+
+    for task in minimalTaskTimesGraphObject.getList():
+        CTkLabel(
+            minimalTaskTimesElementsContainer,
+            text=task,
+        ).pack(padx=5, anchor="w")
+
+
+def minimalTaskTimesLoadGraph(fileName, isDirected):
+    global minimalTaskTimesGraphObject
+    minimalTaskTimesGraphObject = TasksGraph(isDirected)
+    with open(fileName, "r") as file:
+        for line in file:
+            try:
+                u, v, w = line.strip().split()
+                minimalTaskTimesGraphObject.addEdge(int(u), int(v), int(w))
+            except ValueError:
+                print(f"Skipping line {line}")
+    minimalTaskTimesUpdateElementsContainer()
+
+
+def minimalTaskTimesGetResults():
+    res = minimalTaskTimesGraphObject.calculateMinimumTime()
+    if res:
+        AlertPopup(f"Minimal Time to Complete Tasks: {res}")
+    else:
+        AlertPopup("Failed to Calculate Minimal Time")
+
+
+minimalTaskTimesElementsContainer = CTkScrollableFrame(
+    graphProjectTimesTab, width=240, height=240
+)
+minimalTaskTimesElementsContainer.place(x=400, y=0)
+
+minimalTaskTimesDrawGraphButton = CTkButton(
+    graphProjectTimesTab,
+    text="Draw Graph",
+    width=260,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: minimalTaskTimesGraphObject.drawGraph([1, 0])
+    if minimalTaskTimesGraphObject
+    else AlertPopup("Please Load Graph First"),
+)
+minimalTaskTimesDrawGraphButton.place(x=400, y=260)
+
+minimalTaskTimesLoadGraphHeading = CTkLabel(
+    graphProjectTimesTab, text="Load Graph", font=("Arial", 14, "bold")
+)
+minimalTaskTimesLoadGraphHeading.place(x=0, y=0)
+
+minimalTaskTimesIsDirected = CTkCheckBox(
+    graphProjectTimesTab,
+    text="Is Directed?",
+    onvalue=True,
+    offvalue=False,
+)
+minimalTaskTimesIsDirected.place(x=0, y=30)
+
+minimalTaskTimesLoadGraphInput = CTkEntry(
+    graphProjectTimesTab,
+    width=180,
+    placeholder_text="Graph File Path...",
+)
+minimalTaskTimesLoadGraphInput.place(x=120, y=30)
+
+minimalTaskTimesLoadGraphButton = CTkButton(
+    graphProjectTimesTab,
+    text="Load",
+    width=60,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: minimalTaskTimesLoadGraph(
+        minimalTaskTimesLoadGraphInput.get(), minimalTaskTimesIsDirected.get()
+    )
+    if minimalTaskTimesLoadGraphInput.get()
+    else AlertPopup("Please Enter Graph File Path"),
+)
+minimalTaskTimesLoadGraphButton.place(x=305, y=30)
+
+minimalTaskTimesGetResultsButton = CTkButton(
+    graphProjectTimesTab,
+    text="Get Results",
+    width=120,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: minimalTaskTimesGetResults()
+    if minimalTaskTimesGraphObject
+    else AlertPopup("Please Load Graph First"),
+)
+minimalTaskTimesGetResultsButton.place(x=0, y=70)
+
+minimalTaskTimesGraphObject = None
 
 app.mainloop()
 saveHeapOnExit()
