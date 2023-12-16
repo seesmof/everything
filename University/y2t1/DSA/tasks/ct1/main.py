@@ -2805,6 +2805,14 @@ def graphAlgosPerformDijkstra(start, end):
         graphAlgosGraphObject.drawGraph(shortestPath)
 
 
+def graphAlgosPerformBellmanFord(start, end):
+    shortestPath = graphAlgosGraphObject.bellmanFord(start, end)
+    if shortestPath is None:
+        AlertPopup(f"No Path from {start} to {end} Found")
+    else:
+        graphAlgosGraphObject.drawGraph(shortestPath)
+
+
 graphAlgosElementsContainer = CTkScrollableFrame(
     graphPathAlogsTab, width=240, height=240
 )
@@ -2883,12 +2891,45 @@ graphAlgosPerformDijkstraButton = CTkButton(
     text_color="white",
     font=("Arial", 12, "bold"),
     command=lambda: graphAlgosPerformDijkstra(
-        int(graphAlgosPerformDijkstraStart.get()), int(graphAlgosPerformDijkstraEnd.get())
+        int(graphAlgosPerformDijkstraStart.get()),
+        int(graphAlgosPerformDijkstraEnd.get()),
     )
     if graphAlgosPerformDijkstraStart.get() and graphAlgosPerformDijkstraEnd.get()
     else AlertPopup("Please Enter Start and End Points"),
 )
 graphAlgosPerformDijkstraButton.place(x=290, y=100)
+
+graphAlgosPerformBellmanFordHeading = CTkLabel(
+    graphPathAlogsTab, text="Perform Bellman Ford", font=("Arial", 14, "bold")
+)
+graphAlgosPerformBellmanFordHeading.place(x=0, y=140)
+
+graphAlgosPerformBellmanFordStart = CTkEntry(
+    graphPathAlogsTab, width=140, placeholder_text="Start Point"
+)
+graphAlgosPerformBellmanFordStart.place(x=0, y=170)
+
+graphAlgosPerformBellmanFordEnd = CTkEntry(
+    graphPathAlogsTab, width=140, placeholder_text="End Point"
+)
+graphAlgosPerformBellmanFordEnd.place(x=145, y=170)
+
+graphAlgosPerformBellmanFordButton = CTkButton(
+    graphPathAlogsTab,
+    text="Run",
+    width=60,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: graphAlgosPerformBellmanFord(
+        int(graphAlgosPerformBellmanFordStart.get()),
+        int(graphAlgosPerformBellmanFordEnd.get()),
+    )
+    if graphAlgosPerformBellmanFordStart.get() and graphAlgosPerformBellmanFordEnd.get()
+    else AlertPopup("Please Enter Start and End Points"),
+)
+graphAlgosPerformBellmanFordButton.place(x=290, y=170)
 
 graphAlgosGraphObject = None
 
