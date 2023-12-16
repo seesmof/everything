@@ -2617,7 +2617,7 @@ class PathsGraph:
         for u, edges in self.edges.items():
             for v, weight in edges:
                 G.add_edge(u, v, weight=weight)
-        pos = nx.spring_layout(G, k=0.15)
+        pos = nx.spring_layout(G, k=0.5)
 
         if shortest_path:
             nodeColors = [
@@ -2797,10 +2797,33 @@ def graphAlgosDrawGraph():
     graphAlgosGraphObject.drawGraph()
 
 
+def graphAlgosPerformDijkstra(start, end):
+    shortestPath = graphAlgosGraphObject.dijkstra(start, end)
+    if shortestPath is None:
+        AlertPopup(f"No Path from {start} to {end} Found")
+    else:
+        graphAlgosGraphObject.drawGraph(shortestPath)
+
+
 graphAlgosElementsContainer = CTkScrollableFrame(
-    graphPathAlogsTab, width=240, height=270
+    graphPathAlogsTab, width=240, height=240
 )
 graphAlgosElementsContainer.place(x=400, y=0)
+
+
+graphAlgosDrawGraphButton = CTkButton(
+    graphPathAlogsTab,
+    text="Draw Graph",
+    width=260,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    command=lambda: graphAlgosDrawGraph()
+    if graphAlgosGraphObject
+    else AlertPopup("Please Load Graph First"),
+)
+graphAlgosDrawGraphButton.place(x=400, y=260)
 
 graphAlgosLoadGraphHeading = CTkLabel(
     graphPathAlogsTab, text="Load Graph from File", font=("Arial", 14, "bold")
@@ -2836,19 +2859,36 @@ graphAlgosLoadGraphButton = CTkButton(
 )
 graphAlgosLoadGraphButton.place(x=305, y=30)
 
-graphAlgosDrawGraphButton = CTkButton(
+graphAlgosPerformDijkstraHeading = CTkLabel(
+    graphPathAlogsTab, text="Perform Dijkstra", font=("Arial", 14, "bold")
+)
+graphAlgosPerformDijkstraHeading.place(x=0, y=70)
+
+graphAlgosPerformDijkstraStart = CTkEntry(
+    graphPathAlogsTab, width=140, placeholder_text="Start Point"
+)
+graphAlgosPerformDijkstraStart.place(x=0, y=100)
+
+graphAlgosPerformDijkstraEnd = CTkEntry(
+    graphPathAlogsTab, width=140, placeholder_text="End Point"
+)
+graphAlgosPerformDijkstraEnd.place(x=145, y=100)
+
+graphAlgosPerformDijkstraButton = CTkButton(
     graphPathAlogsTab,
-    text="Draw Graph",
-    width=120,
-    fg_color="#28A228",
-    hover_color="#1F7D1F",
+    text="Run",
+    width=60,
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
     text_color="white",
     font=("Arial", 12, "bold"),
-    command=lambda: graphAlgosDrawGraph()
-    if graphAlgosGraphObject
-    else AlertPopup("Please Load Graph First"),
+    command=lambda: graphAlgosPerformDijkstra(
+        int(graphAlgosPerformDijkstraStart.get()), int(graphAlgosPerformDijkstraEnd.get())
+    )
+    if graphAlgosPerformDijkstraStart.get() and graphAlgosPerformDijkstraEnd.get()
+    else AlertPopup("Please Enter Start and End Points"),
 )
-graphAlgosDrawGraphButton.place(x=0, y=70)
+graphAlgosPerformDijkstraButton.place(x=290, y=100)
 
 graphAlgosGraphObject = None
 
