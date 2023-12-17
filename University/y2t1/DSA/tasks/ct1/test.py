@@ -1,36 +1,22 @@
-def _deleteInternalNode(self, parent, index):
-    # Get the minimum degree of the B-tree
-    t = self.t
+def bTreeTaskSearchForSub(data):
+    # Helper function to retrieve subscriber data based on phone number
+    def retrieveSubscribersData(phoneNumber):
+        for sub in employeesTaskElementsList:
+            if sub["phone"] == phoneNumber:
+                return sub
+        return None
 
-    # Get the key of the parent node at the given index
-    key = parent.keys[index]
+    # Check if the data is found in the employeesTaskElements tree
+    isFound = employeesTaskElements.search(data)
 
-    # Check if the left child of the parent has enough keys to borrow from
-    if len(parent.children[index].keys) >= t:
-        # Get the predecessor key from the left child
-        predecessor = self._getPredecessor(parent.children[index])
+    # Retrieve the subscriber data based on the data (phone number)
+    subscriberData = retrieveSubscribersData(data)
 
-        # Replace the key at the given index with the predecessor key
-        parent.keys[index] = predecessor
-
-        # Recursively delete the predecessor key from the left child
-        self._delete(parent.children[index], predecessor)
-
-    # Check if the right child of the parent has enough keys to borrow from
-    elif len(parent.children[index + 1].keys) >= t:
-        # Get the successor key from the right child
-        successor = self._getSuccessor(parent.children[index + 1])
-
-        # Replace the key at the given index with the successor key
-        parent.keys[index] = successor
-
-        # Recursively delete the successor key from the right child
-        self._delete(parent.children[index + 1], successor)
-
-    # If both the left and right children don't have enough keys to borrow from
+    # If data is found in the tree, display the subscriber's name and type in an alert popup
+    # Otherwise, display a message that data was not found in the database
+    if isFound:
+        AlertPopup(
+            f"+{data} was found in the database\nName - {subscriberData['name']}, Type - {subscriberData['type']}"
+        )
     else:
-        # Merge the child at the given index with its right sibling
-        self._merge(parent, index)
-
-        # Recursively delete the key from the merged child
-        self._delete(parent.children[index], key)
+        AlertPopup(f"+{data} was NOT found in the database")

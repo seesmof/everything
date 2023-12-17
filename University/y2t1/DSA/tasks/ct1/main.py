@@ -6,6 +6,13 @@ import os
 import matplotlib.pyplot as plt
 import networkx as nx
 from collections import defaultdict, deque
+from rich import print
+from rich.console import Console
+from rich.traceback import install
+from rich.markdown import Markdown as md
+
+install()
+console = Console()
 
 
 class AlertPopup(CTkToplevel):
@@ -974,8 +981,8 @@ tabDataStructures_SubTabsContainer = CTkTabview(
 )
 tabDataStructures_SubTabsContainer.add("Hash Table")
 tabDataStructures_SubTabsContainer.add("B-Tree")
-tabDataStructures_SubTabsContainer.add("Subscribers Search")
 tabDataStructures_SubTabsContainer.add("Employees Search")
+tabDataStructures_SubTabsContainer.add("Subscribers Search")
 tabDataStructures_SubTabsContainer.pack(fill="both", expand=True)
 
 subtabHashTable = tabDataStructures_SubTabsContainer.tab("Hash Table")
@@ -1371,6 +1378,22 @@ class BTree:
         # Remove the child node at index i+1 from the current node
         parent.children.pop(index + 1)
 
+    def getList(self, node=None):
+        # If no node is provided, set the node to the root
+        node = node or self.root
+        # Initialize an empty list to store the keys
+        keys = []
+
+        # Run through all the children of the current node
+        for child in node.children:
+            # Recursively add the keys of the children to the list
+            keys.extend(self.getList(child))
+
+        # Add the keys of the current node to the list
+        keys.extend(node.keys)
+        # And return the final list
+        return keys
+
 
 def addBTreeNode(data):
     # Add the given data to the B-Tree
@@ -1523,57 +1546,83 @@ loadBTreeOnStart()
 
 
 #! B-TREE TASK
-class Subscriber:
-    def __init__(self, phone, name, type):
-        self.phone = phone
-        self.name = name
-        self.type = type
-
-    def toDict(self):
-        return {
-            "phone": self.phone,
-            "name": self.name,
-            "type": self.type,
-        }
-
-
 def updateBTreeTaskElementsContainer():
+    # For each UI element in the elements container
     for widget in bTreeTaskElementsContainer.winfo_children():
+        # Delete it
         widget.destroy()
 
-    for subscriber in bTreeTaskSubscribers:
-        currentLabelString = f"+{subscriber.phone} - {subscriber.name}"
-        currentLabel = CTkLabel(bTreeTaskElementsContainer, text=currentLabelString)
-        currentLabel.pack(padx=5, anchor="w")
+    # Run through each subscriber in the list
+    for subscriber in subscribersTaskElementsList:
+        # Add it to the elements container
+        CTkLabel(
+            bTreeTaskElementsContainer,
+            text=f"+{subscriber['phone']} - {subscriber['name']}",
+        ).pack(padx=5, anchor="w")
 
 
 def bTreeTaskSearchForSub(data):
-    isFound, node, index = bTreeTaskElements.searchKey(data)
+    def retrieveSubscribersData(phoneNumber):
+        # Run through all the subscribers in the list
+        for currentSubscriber in subscribersTaskElementsList:
+            # Check if current subscriber has the same phone number
+            if currentSubscriber["phone"] == phoneNumber:
+                # Return the data of the current subscriber
+                return currentSubscriber
 
-    if isFound:
-        subInfo = node.keys[index][1]
-        alertString = f"{subInfo['name']} was found:\nSubscription type: {subInfo['type']}\nPhone: +{subInfo['phone']}"
-        AlertPopup(alertString)
-    else:
-        AlertPopup("Subscriber was not found in the database")
+        # If we haven't found the subscriber, return None
+        return None
+
+    # Check if the data is found in the employeesTaskElements tree
+    if not subscribersTaskElementsList or len(subscribersTaskElementsList) == 0:
+        # If not, show an error message
+        console.log("No subscribers found in the database")
+        AlertPopup("No subscribers found in the database")
+
+    # Search for the data in the employeesTaskElements tree
+    isFound = subscribersTaskElements.search(data)
+    # Retrieve the subscriber data based on the data (phone number)
+    subscriberData = retrieveSubscribersData(data)
+
+    # Output the appropriate message depending on whether the data was found or not
+    AlertPopup(
+        f"+{data} was found in the database\nName - {subscriberData['name']}, Type - {subscriberData['type']}"
+    ) if isFound else AlertPopup(f"+{data} was NOT found in the database")
+    console.log(f"+{data} {'was' if isFound else 'was not'} found in the database")
 
 
 def loadBTreeTaskData(fileName):
-    dataHolder = []
+    # For loading the subscribers' data from a JSON file
+    subscribersDataHolder = []
     try:
+        # Open the local JSON file in read mode
         with open(fileName, "r") as file:
-            dataHolder = json.load(file)
+            # And load the data from it
+            subscribersDataHolder = json.load(file)
     except:
+        # If we fail to load the data, show an error message
         AlertPopup(f"Failed to load subscribers' data from {fileName}")
+        console.log(f"Failed to load subscribers' data from {fileName}")
 
-    for element in dataHolder:
-        phone, name, type = element["phone"], element["name"], element["type"]
-        currentSubObject = Subscriber(phone, name, type)
-        bTreeTaskSubscribers.append(currentSubObject)
+    # Run through each element in the retrieved list
+    for element in subscribersDataHolder:
+        # Add phone number to the B-Tree
+        subscribersTaskElements.insert(element["phone"])
 
-    for sub in bTreeTaskSubscribers:
-        bTreeTaskElements.insert((sub.phone, sub.toDict()))
+    # Run through each element in the retrieved list again
+    for element in subscribersDataHolder:
+        # To now append the subscriber's data to the list
+        subscribersTaskElementsList.append(
+            {
+                "phone": element["phone"],
+                "name": element["name"],
+                "type": element["type"],
+            }
+        )
+
+    # And update the elements container
     updateBTreeTaskElementsContainer()
+    console.log(f"Loaded subscribers data from {fileName}")
 
 
 loadBTreeTaskDataHeading = CTkLabel(
@@ -1624,8 +1673,8 @@ bTreeTaskSearchForSubButton = CTkButton(
 )
 bTreeTaskSearchForSubButton.place(x=305, y=100)
 
-bTreeTaskSubscribers = []
-bTreeTaskElements = BTree()
+subscribersTaskElementsList = []
+subscribersTaskElements = BTree()
 
 
 #! HASH TABLE TASK
@@ -1794,7 +1843,7 @@ class HuffmanCoding:
 
     def getByteArray(self, paddedEncodedText):
         if len(paddedEncodedText) % 8 != 0:
-            print("Encoded text not padded properly")
+            console.log("Encoded text not padded properly", log_locals=True)
             exit(0)
 
         b = bytearray()
@@ -3622,7 +3671,7 @@ def minimalTaskTimesLoadGraph(fileName, isDirected):
                 u, v, w = line.strip().split()
                 minimalTaskTimesGraphObject.addEdge(int(u), int(v), int(w))
             except ValueError:
-                print(f"Skipping line {line}")
+                console.log(f"Skipping line {line}", log_locals=True)
     minimalTaskTimesUpdateElementsContainer()
 
 
@@ -3716,7 +3765,7 @@ def shortestPathFromTwoPointsLoadGraph(fileName, isDirected):
                 u, v, w = line.strip().split()
                 shortestPathFromTwoPointsGraphObject.addEdge(int(u), int(v), int(w))
             except ValueError:
-                print(f"Skipping line {line}")
+                console.log(f"Skipping line {line}", log_locals=True)
     shortestPathFromTwoPointsUpdateElementsContainer()
 
 
@@ -3850,7 +3899,7 @@ def shortestPathToAllLoadGraph(fileName, isDirected):
                 u, v, w = line.strip().split()
                 shortestPathToAllGraphObject.addEdge(int(u), int(v), int(w))
             except ValueError:
-                print(f"Skipping line {line}")
+                console.log(f"Skipping line {line}", log_locals=True)
     shortestPathToAllUpdateElementsContainer()
 
 
