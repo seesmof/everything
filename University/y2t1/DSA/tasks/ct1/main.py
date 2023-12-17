@@ -39,7 +39,6 @@ app.title("Data Structures and Algorithms")
 app.geometry("700x400")
 app.resizable(False, False)
 
-# Container for all of our tabs
 appTabsContainer = CTkTabview(app)
 appTabsContainer.pack(expand=True, fill="both")
 
@@ -61,177 +60,105 @@ tabGraphShortestPathsAlgorithms = appTabsContainer.tab("Graph Shortest Path")
 #! HEAP
 class Heap:
     def __init__(self):
-        # Our heap is stored as an array, but is reordered on insertion or deletion to maintain the heap property (see _heapifyUp and _heapifyDown)
         self.heap = []
 
     def insert(self, value):
-        # Add the new element to the end of the heap
         self.heap.append(value)
-
-        # Adjust new element's position to maintain the heap property
-        # The last element of the heap is the new element, hence the index of length(heap)-1
         self._heapifyUp(givenIndex=len(self.heap) - 1)
 
     def delete(self):
-        # Check if heap is empty, meaning there are no elements to delete
         if len(self.heap) == 0:
             return None
 
-        # Swap the root with the last element
-        # The root is always at the beginning of the heap, hence the index of 0
         self._swap(0, len(self.heap) - 1)
-
-        # Get the root element by removing the last element, which we just swapped with the root
         root = self.heap.pop()
-
-        # Adjust the position of our last element which is now in root
         self._heapifyDown(parentIndex=0)
 
         return root
 
     def sort(self):
-        # For storing all our sorted items
         sortedItems = []
 
-        # Run through the entire heap
         for _ in range(len(self.heap)):
-            # Add the root element to the sorted items
-            # Root because in MAX heap the root is always the biggest element
             sortedItems.append(self.delete())
 
         return sortedItems
 
     def buildHeap(self, arr):
-        # Assigning the heap to our given array
         self.heap = arr
-
-        # Starting from the middle of the heap because the last half is all the leaves
-        # and we don't need to heapify leaves as their position is already correct
         start = len(arr) // 2
 
-        # Run through our new heap from the middle to the first element in reversed order
         for i in reversed(range(start + 1)):
-            # Adjust the position of each element
             self._heapifyDown(parentIndex=i)
 
-        # Returning self to be able to chain methods
         return self
 
     def _heapifyUp(self, givenIndex):
-        # Getting the index of the parent by formula
         parentIndex = (givenIndex - 1) // 2
 
-        # Check if the parent node exists
-        # and if the current value is greater than the parent's value
         if parentIndex >= 0 and self.heap[givenIndex] > self.heap[parentIndex]:
-            # Swap the two elements
             self._swap(parentIndex, givenIndex)
-
-            # Adjust the position of our new element further
             self._heapifyUp(givenIndex=parentIndex)
 
     def _heapifyDown(self, parentIndex):
-        # All the indeces are calculated by the appropriate formula
         leftChildIndex = 2 * parentIndex + 1
         rightChildIndex = 2 * parentIndex + 2
-
-        # Assume the parent to be the largest one
         largest = parentIndex
 
-        # Check if the left child exists
-        # and if its value is greater than the parent's
         if (
             leftChildIndex < len(self.heap)
             and self.heap[leftChildIndex] > self.heap[largest]
         ):
-            # Reassign largest value to be this child
             largest = leftChildIndex
 
-        # Check if the right child exists
-        # and its value is greater then the current largest
-        # And the current largest can now be either the parent or the left child
         if (
             rightChildIndex < len(self.heap)
             and self.heap[rightChildIndex] > self.heap[largest]
         ):
-            # Reassign largest value to be this child
             largest = rightChildIndex
 
-        # Check if the parent is not the largest one anymore
         if largest != parentIndex:
-            # Swap the parent with the largest
-            # So the parent of this subtree is now the largest element
-            # and the previous parent is now at the position where the largest element was
             self._swap(parentIndex, largest)
-
-            # Adjust the position of our previous parent further
             self._heapifyDown(parentIndex=largest)
 
     def _swap(self, i, j):
-        # Just swap the values at indices i and j in the heap list
         self.heap[i], self.heap[j] = self.heap[j], self.heap[i]
 
 
 def updateHeapElementsContainer():
-    # Run through each possible UI element in the elements container
     for widget in heapElementsContainer.winfo_children():
-        # And destroy it
         widget.destroy()
 
-    # Run through each heap node
     for heapNode in heapElements.heap:
-        # And add it to the elements container
         CTkLabel(heapElementsContainer, text=heapNode).pack(padx=5, anchor="w")
 
 
 def addHeapElement(element):
-    # Insert our given element into the heap
     heapElements.insert(element)
-
-    # And update the elements container
     updateHeapElementsContainer()
 
 
 def deleteHeapElement():
-    # Delete the root element
     heapElements.delete()
-
-    # And update the elements container
     updateHeapElementsContainer()
 
 
 def quickSortUtil(arr):
-    # Get the length of our given array
     n = len(arr)
-
-    # See if there are 1 or 0 elements in it
     if n < 2:
-        # If so just return it, since it's already sorted
-        # This is our base case for the recursion
         return arr
 
-    # Choose the pivot element to be the middle one
     pivot = arr[n // 2]
-
-    # Get all the elements that are less than the pivot
-    # using list comprehension
     less = [x for x in arr if x < pivot]
-
-    # Get all the elements that are equal to the pivot
     equal = [x for x in arr if x == pivot]
-
-    # Get all the elements that are greater than the pivot
     more = [x for x in arr if x > pivot]
 
-    # Recursively sort the lesser elements, combined with equal element, and the greater elements
     return quickSortUtil(more) + equal + quickSortUtil(less)
 
 
 def sortHeap(sortingType: str):
-    # Start the timer to measure the sorting time
     startTimer = time.time()
 
-    # Perform the appropriate sorting type based on the recieved parameter
     heapElements.heap = (
         heapElements.sort()
         if sortingType == "Heap Sort"
@@ -240,47 +167,30 @@ def sortHeap(sortingType: str):
         else sorted(heapElements.heap, reverse=True)
     )
 
-    # Wait for 100ms to let the user see the sorting time
-    # Without it the results will always be 0 for some reason
     time.sleep(0.1)
-
-    # Calculate the sorting time by stopping the timer and subtracting it from the start
     sortingTime = time.time() - startTimer
-
-    # Update the heap elements to reflect the sorting
     updateHeapElementsContainer()
-
-    # Show the sorting time alert
     AlertPopup(
         f"Sorting took {sortingTime:.2f} seconds or {sortingTime*1000:.2f} milliseconds"
     )
 
 
 def saveHeapOnExit():
-    # If the heap is empty there is nothing to save
     if len(heapElements.heap) == 0:
-        # So we just exit out of the function
         return
 
-    # Open the heap file in write mode
     with open("heap.json", "w") as file:
-        # And write the heap into it
         json.dump(heapElements.heap, file)
 
 
 def loadHeapOnStart():
     try:
-        # Open the heap file in read mode
         with open("heap.json", "r") as file:
-            # Load the heap from the file into the temporary array
             heapArray = json.load(file)
-            # And build the heap from it
             heapElements.buildHeap(arr=heapArray)
 
-            # Update the elements container to reflect the loaded heap
             updateHeapElementsContainer()
     except:
-        # Show an alert popup if the heap fails to load
         AlertPopup("Failed to load heap")
 
 
@@ -402,204 +312,119 @@ loadHeapOnStart()
 class DoublyLinkedList:
     class LinkedListNode:
         def __init__(self, data=None):
-            # Since its a doubly linked list, we have a pointer to previous and next nodes
-            # And also the data, of course
             self.data = data
             self.next = None
             self.prev = None
 
     def __init__(self):
-        # Our class will hold only the head pointer
         self.head = None
 
     def append(self, data):
-        # Check if the linked list is empty
         if self.head is None:
-            # If so, create a new node and set it as the head
             self.head = self.LinkedListNode(data)
 
         else:
-            # Create a temporary node to traverse the linked list
-            # And set it to the head, since the list is not empty, we know it
             currentNode = self.head
 
-            # Traverse the entire linked list until our node doesn't have a next pointer
-            # Which means that there are no nodes after it
             while currentNode.next is not None:
                 currentNode = currentNode.next
 
-            # Declare our new node object with the given data we recieved as a parameter
             newNode = self.LinkedListNode(data)
-
-            # Set our last node's next pointer to our new node
             currentNode.next = newNode
-
-            # And set our new node's previous pointer to our last node
-            # Thus linking them together and making our new node a part of the list
             newNode.prev = currentNode
 
     def search(self, data) -> bool:
-        # Set the temporary node to the head
-        # It will be used to traverse the list
         currentNode = self.head
 
-        # Traverse the entire list until we find our node
         while currentNode is not None:
-            # Check if our node has the data we're looking for
-            # And this is pretty much the standard linear search that we can apply to the regular array as well. But as linked list doesn't allow index accessing, we cannot use Binary Search on it
             if currentNode.data == data:
-                # If we found the node we're looking for, we return True
                 return True
-            # Otherwise, we move to the next node
             currentNode = currentNode.next
 
-        # If we exited out of the loop without finding our node, we return False
-        # Since we obviously haven't found the node we were looking for, which means it is not in the list
         return False
 
     def delete(self, data) -> bool:
-        # Set our temporary node to the head
-        # Will be used for traversing the list, once again
         currentNode = self.head
 
-        # Traverse the entire linked list
         while currentNode is not None:
-            # Check if we found our node that holds the data we need to delete
             if currentNode.data == data:
-                # Check if there are nodes before the node we want to delete
                 if currentNode.prev is not None:
-                    # If so, set our previous node's next pointer to our next node
-                    # Meaning to the node that is after our node we want to delete
                     currentNode.prev.next = currentNode.next
 
-                # Check if there are nodes after the node we want to delete
                 if currentNode.next is not None:
-                    # If so, set our next node's previous pointer to our previous node
                     currentNode.next.prev = currentNode.prev
 
-                # Check if the node we want to delete is the head
                 if currentNode == self.head:
-                    # If so, set the next node to be the head
                     self.head = currentNode.next
 
-                # And return true to indicate we found and deleted the node
                 return True
 
-            # Otherwise, we move to the next node
             currentNode = currentNode.next
-
-        # If we haven't found and deleted our node, we return false
         return False
 
     def getList(self):
-        # Declare the list of nodes
         list = []
-
-        # Set our current temporaray node to the head
         currentNode = self.head
 
-        # Start traversing the list until we reach the end
         while currentNode is not None:
-            # And append all the nodes to the list
             list.append(currentNode.data)
-
-            # Move to the next node
             currentNode = currentNode.next
 
-        # Return the retrieved list of nodes
         return list
 
     def buildList(self, inputList):
-        # Given a list of nodes, build the linked list
-
-        # By traversing the given list
         for element in inputList:
-            # And appending each node to our linked list
             self.append(element)
 
 
 def updateLinkedListElementsContainer():
-    # For each existing UI element in the elements container
     for widget in linkedListElementsContainer.winfo_children():
-        # Delete it
         widget.destroy()
 
-    # Run through each node in the linked list
     for node in linkedListElements.getList():
-        # And append it to the container
         CTkLabel(linkedListElementsContainer, text=node).pack(padx=5, anchor="w")
 
 
 def addLinkedListNode(data):
-    # Check if the given element already exists in the linked list
     if linkedListElements.search(data):
-        # If so, we cannot add it again
-        # And we display an alert warning the user
         AlertPopup(f"{data} already exists in linked list")
-
-        # Exiting out of the function afterwards
         return
 
-    # Otherwise, we can add it to the list
     linkedListElements.append(data)
-
-    # And update the container that displays the linked list elements
     updateLinkedListElementsContainer()
 
 
 def deleteLinkedListNode(data):
-    # Check if the given element doesn't exist in the linked list
     if not linkedListElements.delete(data):
-        # If so, we cannot delete it
-        # So warn the user about it by showing the alert
         AlertPopup(f"{data} is NOT found in a list")
-
-        # Exiting out of the function afterwards
         return
 
-    # Otherwise, we can delete it from the list
-    # And update the container that displays the linked list elements
     updateLinkedListElementsContainer()
 
 
 def searchLinkedListNode(data):
-    # Simply perform a search for a given node
     if linkedListElements.search(data):
-        # And if its found
-        # Display an alert informing the user
         AlertPopup(f"{data} is found in a list")
     else:
-        # Otherwise, display an alert informing the user that the node was not found
         AlertPopup(f"{data} is NOT found in a list")
 
 
 def saveLinkedListOnExit():
-    # Check if the linked list is empty
     if len(linkedListElements.getList()) == 0:
-        # If so, we cannot save anything to the file
-        # So we exit out of the function
         return
 
-    # Otherwise, open the local file and write the list to it
     with open("linkedList.json", "w") as f:
-        # By using the JSON module and the appropriate function
         json.dump(linkedListElements.getList(), f)
 
 
 def loadLinkedListOnStart():
     try:
-        # Open the local file that should contain the linked list
         with open("linkedList.json", "r") as f:
-            # Load the list from the file
             list = json.load(f)
-            # And build a new linked list
             linkedListElements.buildList(list)
 
-            # Update the container that displays the linked list elements
             updateLinkedListElementsContainer()
     except:
-        # If we can't find the file or any other error occurs
-        # We display an alert informing the user
         AlertPopup("Failed to load Linked List data")
 
 
@@ -681,14 +506,10 @@ loadLinkedListOnStart()
 
 #! HEAP TASK - EMPLOYEES
 def updateHeapTaskElementsContainer():
-    # For every UI element in the elements container
     for widget in heapTaskElementsContainer.winfo_children():
-        # Delete it, clearing the container
         widget.destroy()
 
-    # Run through each employee
     for employee in heapTaskEmployeesData:
-        # And add it to the elements container
         CTkLabel(
             heapTaskElementsContainer,
             text=f"{employee['name']} - {employee['disease']}",
@@ -697,76 +518,47 @@ def updateHeapTaskElementsContainer():
 
 def heapTaskLoadEmployeesData(filename: str):
     try:
-        # Open the local file that should contain the employees' data
         with open(filename, "r", encoding="utf-8") as file:
-            # Load the data from the file into the temporaray list
             data = json.load(file)
 
         global heapTaskEmployeesData
-        # And assign it to the global list
         heapTaskEmployeesData = data["employees"]
     except:
-        # If we can't find the file or any other error occurs
-        # We display an alert informing the user
         AlertPopup(f"Failed to load data from {filename}")
 
-    # Otherwise we update the elements container
     updateHeapTaskElementsContainer()
 
 
 def heapTaskShowResults():
     def countDiseaseCases():
-        # A dictionary for keeping track of the occurences of each disease
         diseasesCount = dict()
 
-        # Run through each employee in the data list
         for employee in heapTaskEmployeesData:
-            # Check if the disease is not yet in the dictionary
             if employee["disease"] not in diseasesCount:
-                # If so, add it with a count of 1, since we just encrounced it
                 diseasesCount[employee["disease"]] = 1
             else:
-                # If we've encountered the disease before
-                # Just increment the count
                 diseasesCount[employee["disease"]] += 1
 
         return diseasesCount
 
     def sortDiseasesList(arr):
-        # Check if the list is empty
         if len(arr) == 0:
-            # Just return an empty list
             return arr
-
-        # Otherwise we sort the list by using Heap sort
         sortedArr = Heap().buildHeap(arr).sort()
 
-        # And return it
         return sortedArr
 
-    # Count the occurences of each disease
     diseasesCount = countDiseaseCases()
-
-    # Form a list of the diseases and their occurences
     diseasesCountList = [
         (occurences, name) for name, occurences in diseasesCount.items()
     ]
-
-    # Sort the list by occurences
     diseasesCountList = sortDiseasesList(diseasesCountList)
-
-    # And forming the output message
     resultsString = f"Employees' Diseases sorted by Occurences:\n"
 
-    # By running through each disease in the list
     for occurence, name in diseasesCountList:
-        # And adding its name as well as the number of occurences
         currentDisease = f"{name}: {occurence} times\n"
-
-        # To the resulting string
         resultsString += currentDisease
 
-    # Show the results as a popup message
     AlertPopup(resultsString)
 
 
@@ -814,165 +606,102 @@ heapTaskEmployeesData = []
 #! HASH TABLE
 class HashTable:
     def __init__(self, size=15):
-        # Set the initial size of our hash table to the given one
-        # Or to the default value of 15 if none is given
         self.size = size
-
-        # Declare our hash table as a list of lists
-        # We declare a list of lists to handle any possible collisions
-        # And we don't use a linked list because a Python array is easier to search through and use in general
         self.table = [[] for _ in range(self.size)]
 
     def hash(self, key):
-        # Given a key, we compute its hash value
-        # We use the Golden Ratio to improve the distribution of our hash values
-        # And we multiply it by the size of our hash table
         return int((key * ((5**0.5 - 1) / 2) % 1) * self.size)
 
     def insert(self, key, value):
-        # When inserting a new key-value pair, we first compute the hashed key, and then insert our pair into the corresponding position, which is a list in our case
         self.table[self.hash(key)].append((key, value))
 
     def delete(self, key):
-        # When deleting we need to access the corresponding chain that the key is in
-        # We do that by computing key's hash and accessing the corresponding list from our hash table
         chain = self.table[self.hash(key)]
 
-        # Run through each key-value pair in the chain
         for index, keyValuePair in enumerate(chain):
-            # And check if the key matches with the given one
             if keyValuePair[0] == key:
-                # If it does, we delete our pair from the chain
                 del chain[index]
-                # And we return True to indicate that the key was found and deleted
                 return True
 
-        # If we exit out of the loop without returning, then the key was not found nor deleted
-        # Which we indicate by returning False
         return False
 
     def search(self, key):
-        # When searching for a key we first compute its hash value
-        # And then access the chain that the key is in
         chain = self.table[self.hash(key)]
 
-        # Run through the entire chain
         for keyValuePair in chain:
-            # And see if the key matches
             if keyValuePair[0] == key:
-                # If it does, we return True to indicate that the key was found
                 return True
 
-        # If we exit without returning, the key was never found
-        # Which we indicate by returning False
         return False
 
 
 def updateHashTableElementsContainer():
-    # For each UI element in the elements container
     for widget in hashTableElementsContainer.winfo_children():
-        # Delete it
         widget.destroy()
 
-    # Run through each pair of keys and their corresponding values in the elements list
     for pair in hashTableElementsList:
-        # Compute the key and value from the pair, since they are stored in the list as "key value" strings
         key, value = pair.split(" ")
 
-        # And add it to the elements container
         CTkLabel(hashTableElementsContainer, text=f"{key} - {value}").pack(
             padx=5, anchor="w"
         )
 
 
 def addHashTableElement(keyValuePair):
-    # Add the given key-value pair into our local list
     hashTableElementsList.append(keyValuePair)
 
-    # Split them into key and value variables
     key, value = keyValuePair.split(" ")
-    # Calculate the key's hash value
     key = sum(ord(c) for c in key)
 
-    # And insert it into our hash table
     hashTableElements.insert(key, value)
 
-    # Update the elements container to show the new element
     updateHashTableElementsContainer()
 
 
 def deleteHashTableKey(key):
-    # We first form a list of all keys in our hash table
-    # By taking each key-value pair in the local elements list, and extracting the key from it by splitting it and taking the first element
     keysList = [keyValuePair.split(" ")[0] for keyValuePair in hashTableElementsList]
 
-    # Then checking if the given key is not in that list
     if key not in keysList:
-        # If so, we alert the user
         AlertPopup(f"{key} is not in the dictionary")
 
-        # And exit out of the function immediately as further processing is not needed
         return
 
-    # If we are still here, we first remove the key-value pair from our local list
-    # By running through each pair of keys and their corresponding values
     for el in hashTableElementsList:
-        # And checking if the key matches
         if el.split(" ")[0] == key:
-            # If it does, we remove it from the list
             hashTableElementsList.remove(el)
-            # And we break out of the loop
             break
 
-    # Next we delete the key from our hash table
-    # By first converting the key to an integer of its ASCII values
     convertedKey = sum(ord(c) for c in key)
-
-    # And then deleting it from our hash table
     _ = hashTableElements.delete(convertedKey)
 
-    # Then updating the elements container to reflect the changes
     updateHashTableElementsContainer()
 
 
 def searchHashTableKey(key):
-    # We first convert our given key to an integer of its ASCII values
     convertedKey = sum(ord(c) for c in key)
-
-    # Then run a search for it
     res = hashTableElements.search(convertedKey)
 
-    # And output the result to the user via an alert
     AlertPopup(f"{key} is in the dictionary") if res else AlertPopup(
         f"{key} is NOT in the dictionary"
     )
 
 
 def saveHashTableOnExit():
-    # We check if our local list is empty
     if len(hashTableElementsList) == 0:
-        # Then we just exit out of the function, as there is nothing to save
         return
 
-    # Open the local file in write mode
     with open("hashTable.json", "w") as f:
-        # And write our local list to it in JSON format
         json.dump(hashTableElementsList, f)
 
 
 def loadHashTableOnStart():
     try:
-        # Open the local file in read mode
         with open("hashTable.json", "r") as f:
-            # Load our list of key-value pairs from it into a temporaray variable
             res = json.load(f)
 
-            # For each key-value pair in the temporary variable
             for pair in res:
-                # We add it into the hash table
                 addHashTableElement(pair)
     except:
-        # If we fail to load the file, we alert the user
         AlertPopup("Failed to load Hash Table data")
 
 
@@ -1085,392 +814,240 @@ loadHashTableOnStart()
 #! B-TREE
 class BTreeNode:
     def __init__(self, leaf=True):
-        # For keeping track of whether the node is a leaf or not, meaning whether it has children or not
-        # By default it is a leaf, hence the empty children list initialization
         self.leaf = leaf
-        # In the B-Tree we need to have a list of keys
         self.keys = []
-        # and a list of children nodes
         self.children = []
 
 
 class BTree:
     def __init__(self, t=3):
-        # In the B-Tree class we need to keep track of our root node and the degree of the tree
         self.root = BTreeNode()
-        # Which is set to 3 by default if no value is passed
         self.t = t
 
     def search(self, key, currentNode=None):
-        # We first set our current node to be the root if not provided, or the value passed
         currentNode = currentNode or self.root
-        # and declare an index variable for traversing the list of keys
         index = 0
 
-        # Traverse the list of keys either until it reaches the end or we find a key that is greater than or equal to the provided key
         while index < len(currentNode.keys) and key > currentNode.keys[index]:
             index += 1
 
-        # If we found the key we want, return True
         if index < len(currentNode.keys) and key == currentNode.keys[index]:
             return True
 
-        # If the current node is a leaf, return False as the key will not be found
         elif currentNode.leaf:
             return False
 
-        # Else recursively call the search function on the child node at the current index
         else:
             return self.search(key, currentNode.children[index])
 
     def insert(self, key):
-        # Start by assigning the root node to a variable for convenience
         root = self.root
 
-        # Check if the root node is full
-        # If it is, we need to create a new root node
         if len(root.keys) == (2 * self.t) - 1:
-            # Create a new root node with the leaf set to False, as we immediately have children for it
             newRoot = BTreeNode(leaf=False)
-
-            # Append the current root node as the first child of the new root
             newRoot.children.append(self.root)
-
-            # Split the first and only child of the new root
             self._splitChild(newRoot, 0)
-
-            # Set the global root to be the new root node
             self.root = newRoot
-
-            # And insert the key into the new root node (which is not full and has only one child)
             self._insertNotFull(newRoot, key)
         else:
-            # Else we simply insert the key into the root node
             self._insertNotFull(root, key)
 
     def _insertNotFull(self, currentNode, key):
-        # Set index to the position where the key should be inserted
         index = len(currentNode.keys) - 1
 
         if currentNode.leaf:
-            # If the node is a leaf, we insert a temporary zero to make space for our key
             currentNode.keys.append(0)
 
-            # Then traverse the list of keys and shift all greater keys to the right
             while index >= 0 and key < currentNode.keys[index]:
-                # Set the key at the current index to be the key at the next index
                 currentNode.keys[index + 1] = currentNode.keys[index]
-                # Move further to the left
                 index -= 1
-            # After choosing the correct position, insert the key
             currentNode.keys[index + 1] = key
         else:
-            # If the node is not a leaf, but an internal node instead
-            # We find the position where the key should be inserted
             while index >= 0 and key < currentNode.keys[index]:
                 index -= 1
             index += 1
 
-            # Check if the current child is full
             if len(currentNode.children[index].keys) == (2 * self.t) - 1:
-                # If so, split it
                 self._splitChild(currentNode, index)
-                # Adjust the index if the new key is greater than the current key
                 if key > currentNode.keys[index]:
                     index += 1
 
-            # Recursively call to continue to process until the leaf node is reached
             self._insertNotFull(currentNode.children[index], key)
 
     def _splitChild(self, parent, index):
-        # Get the degree of our tree for convenience
         t = self.t
 
-        # Get the child node to be split
         child = parent.children[index]
-
-        # Create a new node for the child
         newNode = BTreeNode(leaf=child.leaf)
 
-        # Insert the new node into the parent node
         parent.children.insert(index + 1, newNode)
-
-        # Insert the middle key of the child node into the parent node
         parent.keys.insert(index, child.keys[t - 1])
 
-        # Assign keys to the right of the middle key to the new node
         newNode.keys = child.keys[t:]
-
-        # Retain the keys to the left of the middle key in the original node
         child.keys = child.keys[: t - 1]
 
         if not child.leaf:
-            # If the child node is not a leaf, redistribute the children across the new node and the original child node
             newNode.children = child.children[t:]
             child.children = child.children[:t]
 
     def delete(self, key):
-        # Get the root node
         root = self.root
-
-        # Delete teh key from the tree
         self._delete(root, key)
-
         if len(root.keys) == 0 and not root.leaf:
-            # If the root is empty and is not a leaf
-            # Replace the root with its first child
             self.root = root.children[0]
 
     def _delete(self, parent, key):
-        # Get the degree of our tree for convenience
         t = self.t
-
-        # Set the index to traverse the keys in the parent node
         index = 0
 
-        # Find the position in the parent node where the key should be
         while index < len(parent.keys) and key > parent.keys[index]:
             index += 1
 
         if parent.leaf:
-            # If the parent node is a leaf node
-            # Check if the key is found in the parent node
             if index < len(parent.keys) and key == parent.keys[index]:
-                # Remove it, if found
                 parent.keys.pop(index)
             else:
-                # Otherwise, show an error message
                 AlertPopup(f"Key {key} was not found")
 
         else:
             if index < len(parent.keys) and key == parent.keys[index]:
-                # If the key is found in the parent node
-                # Delete it from the internal node
                 self._deleteInternalNode(parent, index)
 
             else:
                 if len(parent.children[index].keys) >= t:
-                    # If the child node has enough keys, recursively delete the key from that child node
                     self._delete(parent.children[index], key)
                 else:
                     if index > 0 and len(parent.children[index - 1].keys) >= t:
-                        # If the previous sibling has enough keys, borrow a key from it
                         self._borrowFromPrevious(parent, index)
                     elif (
                         index < len(parent.children) - 1
                         and len(parent.children[index + 1].keys) >= t
                     ):
-                        # Else check if the next sibling has enough keys, borrow a key from it
                         self._borrowFromNext(parent, index)
                     else:
-                        # And if neither borrowing is an option
-                        # Merge the current child node with its adjacent sibling
                         self._merge(parent, index)
-                        # And continue the deletion process in the merged child node
                         self._delete(parent.children[index], key)
 
     def _deleteInternalNode(self, parent, index):
-        # Get the degree of our tree for convenience
         t = self.t
-        # Get the key of the parent node at the given index
         key = parent.keys[index]
 
-        # Check if the child at given index has enough keys to borrow from
         if len(parent.children[index].keys) >= t:
-            # Get the predecessor key from it
             predecessor = self._getPredecessor(parent.children[index])
-
-            # Replace the key at the given index with the predecessor key
             parent.keys[index] = predecessor
-
-            # Delete the predecessor key from the left child
             self._delete(parent.children[index], predecessor)
 
-        # Check if the parent's right child has enough keys to borrow from
         elif len(parent.children[index + 1].keys) >= t:
-            # Get the successor key from it
             successor = self._getSuccessor(parent.children[index + 1])
-
-            # Replace the key at the given index with the successor key
             parent.keys[index] = successor
-
-            # Delete the successor key from the right child
             self._delete(parent.children[index + 1], successor)
 
-        # If both the left and right children don't have enough keys to borrow from
         else:
-            # Merge the child at the given index with its right sibling
             self._merge(parent, index)
-
-            # And delete the key from the merged child
             self._delete(parent.children[index], key)
 
     def _getPredecessor(self, parent):
-        # Traverse the tree until the rightmost leaf is reached
         while not parent.leaf:
-            # Get the rightmost child of the current parent
             parent = parent.children[-1]
 
-        # Return the rightmost key of the rightmost leaf
         return parent.keys[-1]
 
     def _getSuccessor(self, parent):
-        # Traverse the tree until the leftmost leaf is reached
         while not parent.leaf:
-            # Get the leftmost child of the current parent
             parent = parent.children[0]
 
-        # Return the leftmost key of the leftmost leaf
         return parent.keys[0]
 
     def _borrowFromPrevious(self, parent, index):
-        # Get the parent's child node at the given index
         child = parent.children[index]
-        # Get child's left sibiling node - or a previous sibling
         sibling = parent.children[index - 1]
-
-        # Move the key from the parent to the child
         child.keys.insert(0, parent.keys[index - 1])
-
-        # Move the key from the left sibling to the parent
         parent.keys[index - 1] = sibling.keys.pop()
 
         if not child.leaf:
-            # Check if the child not is not a leaf
-            # If so, move a child from the left sibling to the child
             child.children.insert(0, sibling.children.pop())
 
     def _borrowFromNext(self, parent, index):
-        # Get the parent's child node at the given index
         child = parent.children[index]
-        # Get child's right sibiling node - or a next sibling
         sibling = parent.children[index + 1]
-
-        # Move the key from the parent to the child
         child.keys.append(parent.keys[index])
-
-        # Move the key from the sibiling to the parent
         parent.keys[index] = sibling.keys.pop(0)
 
         if not child.leaf:
-            # Check if the child not is not a leaf
-            # If so, move a child from the right sibling to the child
             child.children.append(sibling.children.pop(0))
 
     def _merge(self, parent, index):
-        # Get the child node at index i
         child = parent.children[index]
-        # Get the sibling node next to the child node
         sibling = parent.children[index + 1]
 
-        # Append the key from the current node to the child node
         child.keys.append(parent.keys[index])
-        # Extend the keys of the child node with the keys of the sibling node
         child.keys.extend(sibling.keys)
 
-        # If the child node is not a leaf node
         if not child.leaf:
-            # Extend the children of the child node with the children of the sibling node
             child.children.extend(sibling.children)
 
-        # Remove the key from the current node at index i
         parent.keys.pop(index)
-        # Remove the child node at index i+1 from the current node
         parent.children.pop(index + 1)
 
     def getList(self, node=None):
-        # If no node is provided, set the node to the root
         node = node or self.root
-        # Initialize an empty list to store the keys
         keys = []
 
-        # Run through all the children of the current node
         for child in node.children:
-            # Recursively add the keys of the children to the list
             keys.extend(self.getList(child))
 
-        # Add the keys of the current node to the list
         keys.extend(node.keys)
-        # And return the final list
         return keys
 
 
 def addBTreeNode(data):
-    # Add the given data to the B-Tree
     bTreeElements.insert(data)
-
-    # Insert it into the local list
     bTreeElementsList.append(data)
-
-    # And update the B-Tree elements container to reflect the changes
     updateBTreeElementsContainer()
 
 
 def deleteBTreeNode(data):
-    # Check if the given data is in the B-Tree
     if data not in bTreeElementsList:
-        # If its not, show an error message
         AlertPopup(f"{data} is NOT in the B-Tree")
-        # And exit out of the function
         return
 
-    # Delete the given data from the B-Tree
     bTreeElements.delete(data)
-
-    # Remove it from the local list
     bTreeElementsList.remove(data)
-
-    # And update the B-Tree elements container to reflect the changes
     updateBTreeElementsContainer()
 
 
 def searchBTreeNode(data):
-    # Search for a given data in the B-Tree
     isFound = bTreeElements.search(data)
 
-    # And show the appropriate popup message
     AlertPopup(f"{data} is in the B-Tree") if isFound else AlertPopup(
         f"{data} is NOT in the B-Tree"
     )
 
 
 def updateBTreeElementsContainer():
-    # For each UI element in the B-Tree elements container
     for widget in bTreeElementsContainer.winfo_children():
-        # Delete it
         widget.destroy()
 
-    # Run through each node in the B-Tree
     for node in bTreeElementsList:
-        # Append it to the container
         CTkLabel(bTreeElementsContainer, text=node).pack(padx=5, anchor="w")
 
 
 def saveBTreeOnExit():
-    # Check if our list is empty
     if len(bTreeElementsList) == 0:
-        # If so, we cannot save anything to the file
         return
 
-    # Otherwise, open a local file in write mode
     with open("bTree.json", "w") as file:
-        # And write the list into it
         json.dump(bTreeElementsList, file)
 
 
 def loadBTreeOnStart():
     try:
-        # Open the local file in read mode
         with open("bTree.json", "r") as file:
-            # Load the contents of the file into temporaray list
             res = json.load(file)
 
-            # Run through each element in the list
             for element in res:
-                # And add it to the B-Tree
                 addBTreeNode(element)
     except:
-        # If we fail to load the file, show an error message
         AlertPopup("Failed to load B-Tree elements")
 
 
@@ -1546,16 +1123,11 @@ loadBTreeOnStart()
 
 
 #! B-TREE TASK
-# TODO add a button to show count of all the subscription types
 def updateBTreeTaskElementsContainer():
-    # For each UI element in the elements container
     for widget in bTreeTaskElementsContainer.winfo_children():
-        # Delete it
         widget.destroy()
 
-    # Run through each subscriber in the list
     for subscriber in subscribersTaskElementsList:
-        # Add it to the elements container
         CTkLabel(
             bTreeTaskElementsContainer,
             text=f"+{subscriber['phone']} - {subscriber['name']}",
@@ -1564,28 +1136,19 @@ def updateBTreeTaskElementsContainer():
 
 def bTreeTaskSearchForSub(data):
     def retrieveSubscribersData(phoneNumber):
-        # Run through all the subscribers in the list
         for currentSubscriber in subscribersTaskElementsList:
-            # Check if current subscriber has the same phone number
             if currentSubscriber["phone"] == phoneNumber:
-                # Return the data of the current subscriber
                 return currentSubscriber
 
-        # If we haven't found the subscriber, return None
         return None
 
-    # Check if the data is found in the employeesTaskElements tree
     if not subscribersTaskElementsList or len(subscribersTaskElementsList) == 0:
-        # If not, show an error message
         console.log("No subscribers found in the database")
         AlertPopup("No subscribers found in the database")
 
-    # Search for the data in the employeesTaskElements tree
     isFound = subscribersTaskElements.search(data)
-    # Retrieve the subscriber data based on the data (phone number)
     subscriberData = retrieveSubscribersData(data)
 
-    # Output the appropriate message depending on whether the data was found or not
     AlertPopup(
         f"+{data} was found in the database\nName - {subscriberData['name']}, Type - {subscriberData['type']}"
     ) if isFound else AlertPopup(f"+{data} was NOT found in the database")
@@ -1593,26 +1156,18 @@ def bTreeTaskSearchForSub(data):
 
 
 def loadBTreeTaskData(fileName):
-    # For loading the subscribers' data from a JSON file
     subscribersDataHolder = []
     try:
-        # Open the local JSON file in read mode
         with open(fileName, "r") as file:
-            # And load the data from it
             subscribersDataHolder = json.load(file)
     except:
-        # If we fail to load the data, show an error message
         AlertPopup(f"Failed to load subscribers' data from {fileName}")
         console.log(f"Failed to load subscribers' data from {fileName}")
 
-    # Run through each element in the retrieved list
     for element in subscribersDataHolder:
-        # Add phone number to the B-Tree
         subscribersTaskElements.insert(element["phone"])
 
-    # Run through each element in the retrieved list again
     for element in subscribersDataHolder:
-        # To now append the subscriber's data to the list
         subscribersTaskElementsList.append(
             {
                 "phone": element["phone"],
@@ -1621,43 +1176,28 @@ def loadBTreeTaskData(fileName):
             }
         )
 
-    # And update the elements container
     updateBTreeTaskElementsContainer()
     console.log(f"Loaded subscribers data from {fileName}")
 
 
 def subscribersTaskCountTypes():
-    # Check if our database is empty
     if not subscribersTaskElementsList or len(subscribersTaskElementsList) == 0:
-        # If so, show an error message
         console.log("No subscribers found in the database")
         AlertPopup("No subscribers found in the database")
 
-        # And exit out of the function
         return
 
-    # Otherwise, count the occurences of each subscription type
     typesCount = {}
-    # By running through each subscriber in a list
     for subscriber in subscribersTaskElementsList:
-        # And checkinf if we've seen such type before
         if subscriber["type"] in typesCount:
-            # If so, add one to the count
             typesCount[subscriber["type"]] += 1
-
-        # And if we haven't
         else:
-            # Set the count to one since we just saw it
             typesCount[subscriber["type"]] = 1
 
-    # Form a resulting string
     resultsString = "Count of occurences of each subscription type:\n"
-    # By running through each type in the dictionary
     for type in typesCount:
-        # And adding it as well its count to the result
         resultsString += f"{type}: {typesCount[type]}\n"
 
-    # Show the result to user as a popup message
     AlertPopup(resultsString)
     console.log("Counted subscription types")
 
@@ -1735,16 +1275,11 @@ subscribersTaskElements = BTree()
 
 #! HASH TABLE TASK
 def updateHashTaskElementsContainer():
-    # Run through all the UI elements in the elements container
     for widget in hashTaskElementsContainer.winfo_children():
-        # Delete it
         widget.destroy()
 
-    # Run through each pair of keys and their corresponding values in the elements list
     for pair in hashTaskEmployeesList:
-        # Get name and position out
         name, position = pair.strip().split(",")
-        # And add the string to the elements container
         CTkLabel(hashTaskElementsContainer, text=f"{name} - {position}").pack(
             padx=5, anchor="w"
         )
@@ -1752,21 +1287,14 @@ def updateHashTaskElementsContainer():
 
 def hashTaskLoadData(fileName):
     try:
-        # Open the local file in read mode
         with open(fileName, "r") as file:
-            # Run through each line in the file
             for line in file:
-                # Extract the name and position out of it
                 name, position = line.strip().split(",")
-                # Calculate the appropriate key for the hash table
                 key = sum(ord(c) for c in name)
 
-                # Insert the name and position into the hash table
                 hashTaskEmployees.insert(key, (name, position))
-                # And add it into our local list
                 hashTaskEmployeesList.append(line)
 
-            # Update the elements container afterwards
             updateHashTaskElementsContainer()
             console.log(f"Loaded employees data from {fileName}")
     except:
@@ -1775,27 +1303,18 @@ def hashTaskLoadData(fileName):
 
 
 def hashTaskSearch(givenName):
-    # Form a key out of the name
     convertedKey = sum(ord(c) for c in givenName)
 
-    # Check if we found the name in the hash table
     if hashTaskEmployees.search(convertedKey):
-        # If so, initialize the position to be None
         position = None
 
-        # Run through all the employees in the list
         for employeeData in hashTaskEmployeesList:
-            # Get their name and position
             thisName, thisPosition = employeeData.strip().split(",")
 
-            # And see if the two names match
             if thisName == givenName:
-                # If they do, we found our person in the hash table
                 position = thisPosition
-                # So we can break out of the loop
                 break
 
-        # Show the alert popup saying that the name was found
         AlertPopup(f"{givenName} is found. They work as {position}")
         console.log(f"{givenName} was found in the hash table")
     else:
@@ -4001,6 +3520,11 @@ def shortestPathToAllUpdateElementsContainer():
 
 
 def shortestPathToAll(start):
+    if len(shortestPathToAllGraphObject.edges) == 0:
+        AlertPopup("Please Load Graph First")
+        console.log("Failed to show all paths, no graph loaded")
+        return
+
     for currentNode in shortestPathToAllGraphObject.edges:
         if currentNode != start:
             currentPath = shortestPathToAllGraphObject.shortestPath(start, currentNode)
@@ -4064,7 +3588,7 @@ shortestPathToAllLoadGraphButton = CTkButton(
         shortestPathToAllIsDirected.get(),
     )
     if shortestPathToAllLoadGraphInput.get()
-    else AlertPopup("Please Enter Graph File Path"),
+    else AlertPopup("Please enter the graph file path"),
 )
 shortestPathToAllLoadGraphButton.place(x=305, y=30)
 
@@ -4092,7 +3616,7 @@ shortestPathToAllPerformButton = CTkButton(
         int(shortestPathToAllGetStartInput.get()),
     )
     if shortestPathToAllGetStartInput.get()
-    else AlertPopup("Please Enter Start Point"),
+    else AlertPopup("Please enter the starting node"),
 )
 shortestPathToAllPerformButton.place(x=0, y=140)
 
