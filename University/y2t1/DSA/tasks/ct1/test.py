@@ -1,14 +1,24 @@
-def _borrow_from_prev(self, x, i):
-    # Get the child node and its left sibling
-    child = x.children[i]
-    sibling = x.children[i - 1]
+def _splitChild(self, parent, index):
+    # Get the degree of our tree for convenience
+    t = self.t
 
-    # Move the key from the parent node to the child node
-    child.keys.insert(0, x.keys[i - 1])
+    # Get the child node to be split
+    child = parent.children[index]
 
-    # Move the key from the left sibling to the parent node
-    x.keys[i - 1] = sibling.keys.pop()
+    # Create a new node for the child
+    newNode = BTreeNode(leaf=child.leaf)
 
-    # If the child node is not a leaf node, move the child node's rightmost child from the left sibling
+    # Insert the new node into the parent node
+    parent.children.insert(index + 1, newNode)
+
+    # Insert the middle key of the child node into the parent node
+    parent.keys.insert(index, child.keys[t - 1])
+
+    # Split the child node's keys
+    newNode.keys = child.keys[t:]
+    child.keys = child.keys[: t - 1]
+
+    # If the child node is not a leaf, split its children nodes as well
     if not child.leaf:
-        child.children.insert(0, sibling.children.pop())
+        newNode.children = child.children[t:]
+        child.children = child.children[:t]

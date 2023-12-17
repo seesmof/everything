@@ -1171,17 +1171,32 @@ class BTree:
             # Recursively call to continue to process until the leaf node is reached
             self._insertNotFull(currentNode.children[index], key)
 
-    def _splitChild(self, x, i):
+    def _splitChild(self, parent, index):
+        # Get the degree of our tree for convenience
         t = self.t
-        y = x.children[i]
-        z = BTreeNode(leaf=y.leaf)
-        x.children.insert(i + 1, z)
-        x.keys.insert(i, y.keys[t - 1])
-        z.keys = y.keys[t:]
-        y.keys = y.keys[: t - 1]
-        if not y.leaf:
-            z.children = y.children[t:]
-            y.children = y.children[:t]
+
+        # Get the child node to be split
+        child = parent.children[index]
+
+        # Create a new node for the child
+        newNode = BTreeNode(leaf=child.leaf)
+
+        # Insert the new node into the parent node
+        parent.children.insert(index + 1, newNode)
+
+        # Insert the middle key of the child node into the parent node
+        parent.keys.insert(index, child.keys[t - 1])
+
+        # Assign keys to the right of the middle key to the new node
+        newNode.keys = child.keys[t:]
+
+        # Retain the keys to the left of the middle key in the original node
+        child.keys = child.keys[: t - 1]
+
+        if not child.leaf:
+            # If the child node is not a leaf, redistribute the children across the new node and the original child node
+            newNode.children = child.children[t:]
+            child.children = child.children[:t]
 
     def delete(self, key):
         root = self.root
