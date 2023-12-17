@@ -84,6 +84,12 @@ class Heap:
 
         return sortedItems
 
+    def search(self, value):
+        for index, item in enumerate(self.heap):
+            if item == value:
+                return index
+        return -1
+
     def buildHeap(self, arr):
         self.heap = arr
         start = len(arr) // 2
@@ -172,6 +178,17 @@ def sortHeap(sortingType: str):
     updateHeapElementsContainer()
     AlertPopup(
         f"Sorting took {sortingTime:.2f} seconds or {sortingTime*1000:.2f} milliseconds"
+    )
+
+
+def searchHeapElement(value):
+    index = heapElements.search(value)
+    if index == -1:
+        AlertPopup(f"{value} not found")
+    else:
+        AlertPopup(f"{value} found at index {index}")
+    console.log(
+        f"{value} searched in {heapElements.heap}, {f'Found at index {index}' if index != -1 else 'Not Found'}"
     )
 
 
@@ -303,6 +320,28 @@ deleteFromHeapButton = CTkButton(
     font=("Arial", 12, "bold"),
 )
 deleteFromHeapButton.place(x=0, y=170)
+
+searchInHeapHeading = CTkLabel(
+    subtabHeap, text="Search in Heap", font=("Arial", 14, "bold")
+)
+searchInHeapHeading.place(x=0, y=210)
+
+searchInHeapInput = CTkEntry(subtabHeap, placeholder_text="Enter element...", width=300)
+searchInHeapInput.place(x=0, y=240)
+
+searchInHeapButton = CTkButton(
+    subtabHeap,
+    text="Search",
+    command=lambda: searchHeapElement(int(searchInHeapInput.get()))
+    if searchInHeapInput.get()
+    else AlertPopup("Please enter an element to search"),
+    width=60,
+    fg_color="#28A228",
+    hover_color="#1F7D1F",
+    text_color="white",
+    font=("Arial", 12, "bold"),
+)
+searchInHeapButton.place(x=305, y=240)
 
 heapElements = Heap()
 loadHeapOnStart()
