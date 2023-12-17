@@ -1379,7 +1379,7 @@ class HuffmanCoding:
     def __init__(self):
         self.heap = []
         self.codes = {}
-        self.reverse_mapping = {}
+        self.reverseMapping = {}
 
     class HeapNode:
         def __init__(self, char, freq):
@@ -1399,19 +1399,19 @@ class HuffmanCoding:
             frequency[char] += 1
         return frequency
 
-    def buildHeap(self, frequency):
-        for key in frequency:
-            node = self.HeapNode(key, frequency[key])
+    def buildHeap(self, frequencies):
+        for key in frequencies:
+            node = self.HeapNode(key, frequencies[key])
             heapq.heappush(self.heap, node)
 
     def mergeNodes(self):
         while len(self.heap) > 1:
-            node1 = heapq.heappop(self.heap)
-            node2 = heapq.heappop(self.heap)
+            child = heapq.heappop(self.heap)
+            mergeWith = heapq.heappop(self.heap)
 
-            merged = self.HeapNode(None, node1.freq + node2.freq)
-            merged.left = node1
-            merged.right = node2
+            merged = self.HeapNode(None, child.freq + mergeWith.freq)
+            merged.left = child
+            merged.right = mergeWith
 
             heapq.heappush(self.heap, merged)
 
@@ -1421,7 +1421,7 @@ class HuffmanCoding:
 
         if root.char is not None:
             self.codes[root.char] = currentCode
-            self.reverse_mapping[currentCode] = root.char
+            self.reverseMapping[currentCode] = root.char
             return
 
         self._buildCodesHelper(root.left, currentCode + "0")
@@ -1440,16 +1440,16 @@ class HuffmanCoding:
 
     def padEncodedText(self, encodedText):
         extraPadding = 8 - len(encodedText) % 8
-        for i in range(extraPadding):
+        for _ in range(extraPadding):
             encodedText += "0"
 
-        paddingInfo = "{0:08b}".format(extraPadding)
+        paddingInfo = f"{extraPadding:08b}"
         encodedText = paddingInfo + encodedText
         return encodedText
 
     def getByteArray(self, paddedEncodedText):
         if len(paddedEncodedText) % 8 != 0:
-            console.log("Encoded text not padded properly", log_locals=True)
+            console.log("Encoded text not padded properly")
             exit(0)
 
         b = bytearray()
@@ -1494,8 +1494,8 @@ class HuffmanCoding:
 
         for bit in encodedText:
             currentCode += bit
-            if currentCode in self.reverse_mapping:
-                character = self.reverse_mapping[currentCode]
+            if currentCode in self.reverseMapping:
+                character = self.reverseMapping[currentCode]
                 decodedText += character
                 currentCode = ""
 
@@ -1873,11 +1873,11 @@ greedyTaskShop = Shopkeeper([])
 
 #! ROBOTS TASK
 class RobotGroup:
-    def __init__(self, num_robots, speeds, num_groups):
-        self.robotsCount = num_robots
+    def __init__(self, robotsCount, speeds, groupsCount):
+        self.robotsCount = robotsCount
         self.speeds = speeds
-        self.groupsCount = num_groups
-        self.dp = [[-1] * (num_robots + 1) for _ in range(num_groups + 1)]
+        self.groupsCount = groupsCount
+        self.dp = [[-1] * (robotsCount + 1) for _ in range(groupsCount + 1)]
 
     def countWays(self):
         return self._countWaysHelper(self.groupsCount, self.robotsCount)
