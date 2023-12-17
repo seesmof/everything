@@ -1,24 +1,36 @@
-def _splitChild(self, parent, index):
-    # Get the degree of our tree for convenience
+def _deleteInternalNode(self, parent, index):
+    # Get the minimum degree of the B-tree
     t = self.t
 
-    # Get the child node to be split
-    child = parent.children[index]
+    # Get the key of the parent node at the given index
+    key = parent.keys[index]
 
-    # Create a new node for the child
-    newNode = BTreeNode(leaf=child.leaf)
+    # Check if the left child of the parent has enough keys to borrow from
+    if len(parent.children[index].keys) >= t:
+        # Get the predecessor key from the left child
+        predecessor = self._getPredecessor(parent.children[index])
 
-    # Insert the new node into the parent node
-    parent.children.insert(index + 1, newNode)
+        # Replace the key at the given index with the predecessor key
+        parent.keys[index] = predecessor
 
-    # Insert the middle key of the child node into the parent node
-    parent.keys.insert(index, child.keys[t - 1])
+        # Recursively delete the predecessor key from the left child
+        self._delete(parent.children[index], predecessor)
 
-    # Split the child node's keys
-    newNode.keys = child.keys[t:]
-    child.keys = child.keys[: t - 1]
+    # Check if the right child of the parent has enough keys to borrow from
+    elif len(parent.children[index + 1].keys) >= t:
+        # Get the successor key from the right child
+        successor = self._getSuccessor(parent.children[index + 1])
 
-    # If the child node is not a leaf, split its children nodes as well
-    if not child.leaf:
-        newNode.children = child.children[t:]
-        child.children = child.children[:t]
+        # Replace the key at the given index with the successor key
+        parent.keys[index] = successor
+
+        # Recursively delete the successor key from the right child
+        self._delete(parent.children[index + 1], successor)
+
+    # If both the left and right children don't have enough keys to borrow from
+    else:
+        # Merge the child at the given index with its right sibling
+        self._merge(parent, index)
+
+        # Recursively delete the key from the merged child
+        self._delete(parent.children[index], key)

@@ -969,43 +969,47 @@ def loadHashTableOnStart():
         AlertPopup("Failed to load Hash Table data")
 
 
-dataStructuresTabsContainer = CTkTabview(tabDataStructures, width=210, height=290)
-dataStructuresTabsContainer.add("Hash Table")
-dataStructuresTabsContainer.add("B-Tree")
-dataStructuresTabsContainer.add("Subscribers Search")
-dataStructuresTabsContainer.add("Employees Search")
-dataStructuresTabsContainer.pack(fill="both", expand=True)
+tabDataStructures_SubTabsContainer = CTkTabview(
+    tabDataStructures, width=210, height=290
+)
+tabDataStructures_SubTabsContainer.add("Hash Table")
+tabDataStructures_SubTabsContainer.add("B-Tree")
+tabDataStructures_SubTabsContainer.add("Subscribers Search")
+tabDataStructures_SubTabsContainer.add("Employees Search")
+tabDataStructures_SubTabsContainer.pack(fill="both", expand=True)
 
-hashTableDemoTab = dataStructuresTabsContainer.tab("Hash Table")
-bTreeDemoTab = dataStructuresTabsContainer.tab("B-Tree")
-bTreeTaskTab = dataStructuresTabsContainer.tab("Subscribers Search")
-hashTaskTab = dataStructuresTabsContainer.tab("Employees Search")
+subtabHashTable = tabDataStructures_SubTabsContainer.tab("Hash Table")
+subtabBTree = tabDataStructures_SubTabsContainer.tab("B-Tree")
+subtabBTreeTask = tabDataStructures_SubTabsContainer.tab("Subscribers Search")
+subtabHashTableTask = tabDataStructures_SubTabsContainer.tab("Employees Search")
 
-hashTableElementsContainer = CTkScrollableFrame(hashTableDemoTab, width=240, height=270)
+hashTableElementsContainer = CTkScrollableFrame(subtabHashTable, width=240, height=270)
 hashTableElementsContainer.place(x=400, y=0)
 
-bTreeElementsContainer = CTkScrollableFrame(bTreeDemoTab, width=240, height=270)
+bTreeElementsContainer = CTkScrollableFrame(subtabBTree, width=240, height=270)
 bTreeElementsContainer.place(x=400, y=0)
 
-hashTaskElementsContainer = CTkScrollableFrame(hashTaskTab, width=240, height=270)
+hashTaskElementsContainer = CTkScrollableFrame(
+    subtabHashTableTask, width=240, height=270
+)
 hashTaskElementsContainer.place(x=400, y=0)
 
-bTreeTaskElementsContainer = CTkScrollableFrame(bTreeTaskTab, width=240, height=270)
+bTreeTaskElementsContainer = CTkScrollableFrame(subtabBTreeTask, width=240, height=270)
 bTreeTaskElementsContainer.place(x=400, y=0)
 
 
 addHashTableElementHeading = CTkLabel(
-    hashTableDemoTab, text="Add Key-Value Pair", font=("Arial", 14, "bold")
+    subtabHashTable, text="Add Key-Value Pair", font=("Arial", 14, "bold")
 )
 addHashTableElementHeading.place(x=0, y=0)
 
 addHashTableElementInput = CTkEntry(
-    hashTableDemoTab, placeholder_text="Key & Val...", width=300
+    subtabHashTable, placeholder_text="Key & Val...", width=300
 )
 addHashTableElementInput.place(x=0, y=30)
 
 addHashTableElementButton = CTkButton(
-    hashTableDemoTab,
+    subtabHashTable,
     text="Add",
     width=45,
     fg_color="#28A228",
@@ -1019,17 +1023,17 @@ addHashTableElementButton = CTkButton(
 addHashTableElementButton.place(x=305, y=30)
 
 deleteHashTableElementHeading = CTkLabel(
-    hashTableDemoTab, text="Delete Hash Table Key", font=("Arial", 14, "bold")
+    subtabHashTable, text="Delete Hash Table Key", font=("Arial", 14, "bold")
 )
 deleteHashTableElementHeading.place(x=0, y=70)
 
 deleteHashTableElementInput = CTkEntry(
-    hashTableDemoTab, placeholder_text="Key...", width=300
+    subtabHashTable, placeholder_text="Key...", width=300
 )
 deleteHashTableElementInput.place(x=0, y=100)
 
 deleteHashTableElementButton = CTkButton(
-    hashTableDemoTab,
+    subtabHashTable,
     text="Delete",
     width=45,
     fg_color="#D32F2F",
@@ -1043,17 +1047,17 @@ deleteHashTableElementButton = CTkButton(
 deleteHashTableElementButton.place(x=305, y=100)
 
 searchHashTableElementHeading = CTkLabel(
-    hashTableDemoTab, text="Search Hash Table Key", font=("Arial", 14, "bold")
+    subtabHashTable, text="Search Hash Table Key", font=("Arial", 14, "bold")
 )
 searchHashTableElementHeading.place(x=0, y=140)
 
 searchHashTableElementInput = CTkEntry(
-    hashTableDemoTab, placeholder_text="Key...", width=300
+    subtabHashTable, placeholder_text="Key...", width=300
 )
 searchHashTableElementInput.place(x=0, y=170)
 
 searchHashTableElementButton = CTkButton(
-    hashTableDemoTab,
+    subtabHashTable,
     text="Search",
     width=45,
     fg_color="#1976D2",
@@ -1199,96 +1203,161 @@ class BTree:
             child.children = child.children[:t]
 
     def delete(self, key):
+        # Get the root node
         root = self.root
+
+        # Delete teh key from the tree
         self._delete(root, key)
+
         if len(root.keys) == 0 and not root.leaf:
+            # If the root is empty and is not a leaf
+            # Replace the root with its first child
             self.root = root.children[0]
 
-    def _delete(self, x, key):
+    def _delete(self, parent, key):
+        # Get the degree of our tree for convenience
         t = self.t
-        i = 0
-        while i < len(x.keys) and key > x.keys[i]:
-            i += 1
-        if x.leaf:
-            if i < len(x.keys) and key == x.keys[i]:
-                x.keys.pop(i)
+
+        # Set the index to traverse the keys in the parent node
+        index = 0
+
+        # Find the position in the parent node where the key should be
+        while index < len(parent.keys) and key > parent.keys[index]:
+            index += 1
+
+        if parent.leaf:
+            # If the parent node is a leaf node
+            # Check if the key is found in the parent node
+            if index < len(parent.keys) and key == parent.keys[index]:
+                # Remove it, if found
+                parent.keys.pop(index)
             else:
-                print(f"Key {key} not found.")
+                # Otherwise, show an error message
+                AlertPopup(f"Key {key} was not found")
+
         else:
-            if i < len(x.keys) and key == x.keys[i]:
-                self._delete_internal_node(x, i)
+            if index < len(parent.keys) and key == parent.keys[index]:
+                # If the key is found in the parent node
+                # Delete it from the internal node
+                self._deleteInternalNode(parent, index)
+
             else:
-                if len(x.children[i].keys) >= t:
-                    self._delete(x.children[i], key)
+                if len(parent.children[index].keys) >= t:
+                    # If the child node has enough keys, recursively delete the key from that child node
+                    self._delete(parent.children[index], key)
                 else:
-                    if i > 0 and len(x.children[i - 1].keys) >= t:
-                        self._borrowFromPrevious(x, i)
-                    elif i < len(x.children) - 1 and len(x.children[i + 1].keys) >= t:
-                        self._borrowFromNext(x, i)
+                    if index > 0 and len(parent.children[index - 1].keys) >= t:
+                        # If the previous sibling has enough keys, borrow a key from it
+                        self._borrowFromPrevious(parent, index)
+                    elif (
+                        index < len(parent.children) - 1
+                        and len(parent.children[index + 1].keys) >= t
+                    ):
+                        # Else check if the next sibling has enough keys, borrow a key from it
+                        self._borrowFromNext(parent, index)
                     else:
-                        self._merge(x, i)
-                        self._delete(x.children[i], key)
+                        # And if neither borrowing is an option
+                        # Merge the current child node with its adjacent sibling
+                        self._merge(parent, index)
+                        # And continue the deletion process in the merged child node
+                        self._delete(parent.children[index], key)
 
-    def _delete_internal_node(self, x, i):
+    def _deleteInternalNode(self, parent, index):
+        # Get the degree of our tree for convenience
         t = self.t
-        key = x.keys[i]
-        if len(x.children[i].keys) >= t:
-            predecessor = self._getPredecessor(x.children[i])
-            x.keys[i] = predecessor
-            self._delete(x.children[i], predecessor)
-        elif len(x.children[i + 1].keys) >= t:
-            successor = self._getSuccessor(x.children[i + 1])
-            x.keys[i] = successor
-            self._delete(x.children[i + 1], successor)
+        # Get the key of the parent node at the given index
+        key = parent.keys[index]
+
+        # Check if the child at given index has enough keys to borrow from
+        if len(parent.children[index].keys) >= t:
+            # Get the predecessor key from it
+            predecessor = self._getPredecessor(parent.children[index])
+
+            # Replace the key at the given index with the predecessor key
+            parent.keys[index] = predecessor
+
+            # Delete the predecessor key from the left child
+            self._delete(parent.children[index], predecessor)
+
+        # Check if the parent's right child has enough keys to borrow from
+        elif len(parent.children[index + 1].keys) >= t:
+            # Get the successor key from it
+            successor = self._getSuccessor(parent.children[index + 1])
+
+            # Replace the key at the given index with the successor key
+            parent.keys[index] = successor
+
+            # Delete the successor key from the right child
+            self._delete(parent.children[index + 1], successor)
+
+        # If both the left and right children don't have enough keys to borrow from
         else:
-            self._merge(x, i)
-            self._delete(x.children[i], key)
+            # Merge the child at the given index with its right sibling
+            self._merge(parent, index)
 
-    def _getPredecessor(self, x):
-        # Keep traversing the rightmost branch of the tree until a leaf node is reached
-        while not x.leaf:
-            x = x.children[-1]
+            # And delete the key from the merged child
+            self._delete(parent.children[index], key)
 
-        # Return the rightmost key of the leaf node
-        return x.keys[-1]
+    def _getPredecessor(self, parent):
+        # Traverse the tree until the rightmost leaf is reached
+        while not parent.leaf:
+            # Get the rightmost child of the current parent
+            parent = parent.children[-1]
 
-    def _getSuccessor(self, x):
-        # Keep traversing the leftmost branch of the tree until a leaf node is reached
-        while not x.leaf:
-            x = x.children[0]
+        # Return the rightmost key of the rightmost leaf
+        return parent.keys[-1]
 
-        # Return the first key of the leaf node
-        return x.keys[0]
+    def _getSuccessor(self, parent):
+        # Traverse the tree until the leftmost leaf is reached
+        while not parent.leaf:
+            # Get the leftmost child of the current parent
+            parent = parent.children[0]
 
-    def _borrowFromPrevious(self, x, i):
-        child = x.children[i]
-        sibling = x.children[i - 1]
-        child.keys.insert(0, x.keys[i - 1])
-        x.keys[i - 1] = sibling.keys.pop()
+        # Return the leftmost key of the leftmost leaf
+        return parent.keys[0]
+
+    def _borrowFromPrevious(self, parent, index):
+        # Get the parent's child node at the given index
+        child = parent.children[index]
+        # Get child's left sibiling node - or a previous sibling
+        sibling = parent.children[index - 1]
+
+        # Move the key from the parent to the child
+        child.keys.insert(0, parent.keys[index - 1])
+
+        # Move the key from the left sibling to the parent
+        parent.keys[index - 1] = sibling.keys.pop()
+
         if not child.leaf:
+            # Check if the child not is not a leaf
+            # If so, move a child from the left sibling to the child
             child.children.insert(0, sibling.children.pop())
 
-    def _borrowFromNext(self, x, i):
-        # Get the child and sibling nodes
-        child = x.children[i]
-        sibling = x.children[i + 1]
+    def _borrowFromNext(self, parent, index):
+        # Get the parent's child node at the given index
+        child = parent.children[index]
+        # Get child's right sibiling node - or a next sibling
+        sibling = parent.children[index + 1]
 
-        # Move the key from the parent node to the child node
-        child.keys.append(x.keys[i])
-        x.keys[i] = sibling.keys.pop(0)
+        # Move the key from the parent to the child
+        child.keys.append(parent.keys[index])
 
-        # If the child node is not a leaf node, move the child node from the sibling to the child
+        # Move the key from the sibiling to the parent
+        parent.keys[index] = sibling.keys.pop(0)
+
         if not child.leaf:
+            # Check if the child not is not a leaf
+            # If so, move a child from the right sibling to the child
             child.children.append(sibling.children.pop(0))
 
-    def _merge(self, x, i):
+    def _merge(self, parent, index):
         # Get the child node at index i
-        child = x.children[i]
+        child = parent.children[index]
         # Get the sibling node next to the child node
-        sibling = x.children[i + 1]
+        sibling = parent.children[index + 1]
 
         # Append the key from the current node to the child node
-        child.keys.append(x.keys[i])
+        child.keys.append(parent.keys[index])
         # Extend the keys of the child node with the keys of the sibling node
         child.keys.extend(sibling.keys)
 
@@ -1298,72 +1367,104 @@ class BTree:
             child.children.extend(sibling.children)
 
         # Remove the key from the current node at index i
-        x.keys.pop(i)
+        parent.keys.pop(index)
         # Remove the child node at index i+1 from the current node
-        x.children.pop(i + 1)
+        parent.children.pop(index + 1)
 
 
 def addBTreeNode(data):
+    # Add the given data to the B-Tree
     bTreeElements.insert(data)
+
+    # Insert it into the local list
     bTreeElementsList.append(data)
+
+    # And update the B-Tree elements container to reflect the changes
     updateBTreeElementsContainer()
 
 
 def deleteBTreeNode(data):
+    # Check if the given data is in the B-Tree
+    if data not in bTreeElementsList:
+        # If its not, show an error message
+        AlertPopup(f"{data} is NOT in the B-Tree")
+        # And exit out of the function
+        return
+
+    # Delete the given data from the B-Tree
     bTreeElements.delete(data)
+
+    # Remove it from the local list
     bTreeElementsList.remove(data)
+
+    # And update the B-Tree elements container to reflect the changes
     updateBTreeElementsContainer()
 
 
 def searchBTreeNode(data):
+    # Search for a given data in the B-Tree
     isFound = bTreeElements.search(data)
 
-    if isFound:
-        AlertPopup(f"{data} is in the B-Tree")
-    else:
-        AlertPopup(f"{data} is NOT in the B-Tree")
+    # And show the appropriate popup message
+    AlertPopup(f"{data} is in the B-Tree") if isFound else AlertPopup(
+        f"{data} is NOT in the B-Tree"
+    )
 
 
 def updateBTreeElementsContainer():
+    # For each UI element in the B-Tree elements container
     for widget in bTreeElementsContainer.winfo_children():
+        # Delete it
         widget.destroy()
 
+    # Run through each node in the B-Tree
     for node in bTreeElementsList:
-        currentLabel = CTkLabel(bTreeElementsContainer, text=node)
-        currentLabel.pack(padx=5, anchor="w")
+        # Append it to the container
+        CTkLabel(bTreeElementsContainer, text=node).pack(padx=5, anchor="w")
 
 
 def saveBTreeOnExit():
+    # Check if our list is empty
     if len(bTreeElementsList) == 0:
+        # If so, we cannot save anything to the file
         return
+
+    # Otherwise, open a local file in write mode
     with open("bTree.json", "w") as file:
+        # And write the list into it
         json.dump(bTreeElementsList, file)
 
 
 def loadBTreeOnStart():
     try:
+        # Open the local file in read mode
         with open("bTree.json", "r") as file:
+            # Load the contents of the file into temporaray list
             res = json.load(file)
+
+            # Run through each element in the list
             for element in res:
+                # And add it to the B-Tree
                 addBTreeNode(element)
     except:
+        # If we fail to load the file, show an error message
         AlertPopup("Failed to load B-Tree elements")
 
 
 addBTreeNodeHeading = CTkLabel(
-    bTreeDemoTab, text="Add B-Tree Node", font=("Arial", 14, "bold")
+    subtabBTree, text="Add B-Tree Node", font=("Arial", 14, "bold")
 )
 addBTreeNodeHeading.place(x=0, y=0)
 
-addBTreeNodeInput = CTkEntry(bTreeDemoTab, placeholder_text="Node...", width=300)
+addBTreeNodeInput = CTkEntry(subtabBTree, placeholder_text="Node...", width=300)
 addBTreeNodeInput.place(x=0, y=30)
 
 addBTreeNodeButton = CTkButton(
-    bTreeDemoTab,
+    subtabBTree,
     text="Add",
     command=lambda: addBTreeNode(addBTreeNodeInput.get())
     if addBTreeNodeInput.get()
-    else AlertPopup("Input box is empty"),
+    else AlertPopup("Please enter a value to add"),
     width=45,
     fg_color="#28A228",
     hover_color="#1F7D1F",
@@ -1373,19 +1474,19 @@ addBTreeNodeButton = CTkButton(
 addBTreeNodeButton.place(x=305, y=30)
 
 deleteBTreeNodeHeading = CTkLabel(
-    bTreeDemoTab, text="Delete B-Tree Node", font=("Arial", 14, "bold")
+    subtabBTree, text="Delete B-Tree Node", font=("Arial", 14, "bold")
 )
 deleteBTreeNodeHeading.place(x=0, y=70)
 
-deleteBTreeNodeInput = CTkEntry(bTreeDemoTab, placeholder_text="Node...", width=300)
+deleteBTreeNodeInput = CTkEntry(subtabBTree, placeholder_text="Node...", width=300)
 deleteBTreeNodeInput.place(x=0, y=100)
 
 deleteBTreeNodeButton = CTkButton(
-    bTreeDemoTab,
+    subtabBTree,
     text="Delete",
     command=lambda: deleteBTreeNode(deleteBTreeNodeInput.get())
     if deleteBTreeNodeInput.get()
-    else AlertPopup("Input box is empty"),
+    else AlertPopup("Please enter a value to delete"),
     width=45,
     fg_color="#D32F2F",
     hover_color="#B71C1C",
@@ -1395,19 +1496,19 @@ deleteBTreeNodeButton = CTkButton(
 deleteBTreeNodeButton.place(x=305, y=100)
 
 searchBTreeNodeHeading = CTkLabel(
-    bTreeDemoTab, text="Search B-Tree Node", font=("Arial", 14, "bold")
+    subtabBTree, text="Search B-Tree Node", font=("Arial", 14, "bold")
 )
 searchBTreeNodeHeading.place(x=0, y=140)
 
-searchBTreeNodeInput = CTkEntry(bTreeDemoTab, placeholder_text="Node...", width=300)
+searchBTreeNodeInput = CTkEntry(subtabBTree, placeholder_text="Node...", width=300)
 searchBTreeNodeInput.place(x=0, y=170)
 
 searchBTreeNodeButton = CTkButton(
-    bTreeDemoTab,
+    subtabBTree,
     text="Search",
     command=lambda: searchBTreeNode(searchBTreeNodeInput.get())
     if searchBTreeNodeInput.get()
-    else AlertPopup("Input box is empty"),
+    else AlertPopup("Please enter a value to search"),
     width=45,
     fg_color="#1976D2",
     hover_color="#0D47A1",
@@ -1476,17 +1577,17 @@ def loadBTreeTaskData(fileName):
 
 
 loadBTreeTaskDataHeading = CTkLabel(
-    bTreeTaskTab, text="Load subscribers JSON", font=("Arial", 14, "bold")
+    subtabBTreeTask, text="Load subscribers JSON", font=("Arial", 14, "bold")
 )
 loadBTreeTaskDataHeading.place(x=0, y=0)
 
 loadBTreeTaskDataInput = CTkEntry(
-    bTreeTaskTab, placeholder_text="Filename...", width=300
+    subtabBTreeTask, placeholder_text="Filename...", width=300
 )
 loadBTreeTaskDataInput.place(x=0, y=30)
 
 loadBTreeTaskDataButton = CTkButton(
-    bTreeTaskTab,
+    subtabBTreeTask,
     text="Load",
     width=45,
     fg_color="#1976D2",
@@ -1500,17 +1601,17 @@ loadBTreeTaskDataButton = CTkButton(
 loadBTreeTaskDataButton.place(x=305, y=30)
 
 bTreeTaskSearchForSubHeading = CTkLabel(
-    bTreeTaskTab, text="Search for subscriber", font=("Arial", 14, "bold")
+    subtabBTreeTask, text="Search for subscriber", font=("Arial", 14, "bold")
 )
 bTreeTaskSearchForSubHeading.place(x=0, y=70)
 
 bTreeTaskSearchForSubInput = CTkEntry(
-    bTreeTaskTab, placeholder_text="Number...", width=300
+    subtabBTreeTask, placeholder_text="Number...", width=300
 )
 bTreeTaskSearchForSubInput.place(x=0, y=100)
 
 bTreeTaskSearchForSubButton = CTkButton(
-    bTreeTaskTab,
+    subtabBTreeTask,
     text="Search",
     width=45,
     fg_color="#1976D2",
@@ -1567,15 +1668,17 @@ def hashTaskSearch(givenName):
 
 
 hashTaskLoadDataHeading = CTkLabel(
-    hashTaskTab, text="Load employees MD", font=("Arial", 14, "bold")
+    subtabHashTableTask, text="Load employees MD", font=("Arial", 14, "bold")
 )
 hashTaskLoadDataHeading.place(x=0, y=0)
 
-hashTaskLoadDataInput = CTkEntry(hashTaskTab, placeholder_text="Filename...", width=300)
+hashTaskLoadDataInput = CTkEntry(
+    subtabHashTableTask, placeholder_text="Filename...", width=300
+)
 hashTaskLoadDataInput.place(x=0, y=30)
 
 hashTaskLoadDataButton = CTkButton(
-    hashTaskTab,
+    subtabHashTableTask,
     text="Load",
     width=45,
     fg_color="#1976D2",
@@ -1589,15 +1692,17 @@ hashTaskLoadDataButton = CTkButton(
 hashTaskLoadDataButton.place(x=305, y=30)
 
 hashTaskSearchHeading = CTkLabel(
-    hashTaskTab, text="Find position of an employee", font=("Arial", 14, "bold")
+    subtabHashTableTask, text="Find position of an employee", font=("Arial", 14, "bold")
 )
 hashTaskSearchHeading.place(x=0, y=70)
 
-hashTaskSearchInput = CTkEntry(hashTaskTab, placeholder_text="Employee...", width=300)
+hashTaskSearchInput = CTkEntry(
+    subtabHashTableTask, placeholder_text="Employee...", width=300
+)
 hashTaskSearchInput.place(x=0, y=100)
 
 hashTaskSearchButton = CTkButton(
-    hashTaskTab,
+    subtabHashTableTask,
     text="Search",
     width=45,
     fg_color="#1976D2",
