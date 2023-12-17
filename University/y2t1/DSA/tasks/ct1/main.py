@@ -1546,6 +1546,7 @@ loadBTreeOnStart()
 
 
 #! B-TREE TASK
+# TODO add a button to show count of all the subscription types
 def updateBTreeTaskElementsContainer():
     # For each UI element in the elements container
     for widget in bTreeTaskElementsContainer.winfo_children():
@@ -1625,6 +1626,42 @@ def loadBTreeTaskData(fileName):
     console.log(f"Loaded subscribers data from {fileName}")
 
 
+def subscribersTaskCountTypes():
+    # Check if our database is empty
+    if not subscribersTaskElementsList or len(subscribersTaskElementsList) == 0:
+        # If so, show an error message
+        console.log("No subscribers found in the database")
+        AlertPopup("No subscribers found in the database")
+
+        # And exit out of the function
+        return
+
+    # Otherwise, count the occurences of each subscription type
+    typesCount = {}
+    # By running through each subscriber in a list
+    for subscriber in subscribersTaskElementsList:
+        # And checkinf if we've seen such type before
+        if subscriber["type"] in typesCount:
+            # If so, add one to the count
+            typesCount[subscriber["type"]] += 1
+
+        # And if we haven't
+        else:
+            # Set the count to one since we just saw it
+            typesCount[subscriber["type"]] = 1
+
+    # Form a resulting string
+    resultsString = "Count of occurences of each subscription type:\n"
+    # By running through each type in the dictionary
+    for type in typesCount:
+        # And adding it as well its count to the result
+        resultsString += f"{type}: {typesCount[type]}\n"
+
+    # Show the result to user as a popup message
+    AlertPopup(resultsString)
+    console.log("Counted subscription types")
+
+
 loadBTreeTaskDataHeading = CTkLabel(
     subtabBTreeTask, text="Load subscribers JSON", font=("Arial", 14, "bold")
 )
@@ -1673,47 +1710,97 @@ bTreeTaskSearchForSubButton = CTkButton(
 )
 bTreeTaskSearchForSubButton.place(x=305, y=100)
 
+subscribersTaskCountTypesHeading = CTkLabel(
+    subtabBTreeTask,
+    text="Count subscribers by type",
+    font=("Arial", 14, "bold"),
+)
+subscribersTaskCountTypesHeading.place(x=0, y=140)
+
+subscribersTaskCountTypesButton = CTkButton(
+    subtabBTreeTask,
+    text="Count",
+    width=120,
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    fg_color="#8F00FF",
+    hover_color="#7500D1",
+    command=lambda: subscribersTaskCountTypes(),
+)
+subscribersTaskCountTypesButton.place(x=0, y=170)
+
 subscribersTaskElementsList = []
 subscribersTaskElements = BTree()
 
 
 #! HASH TABLE TASK
 def updateHashTaskElementsContainer():
+    # Run through all the UI elements in the elements container
     for widget in hashTaskElementsContainer.winfo_children():
+        # Delete it
         widget.destroy()
 
+    # Run through each pair of keys and their corresponding values in the elements list
     for pair in hashTaskEmployeesList:
+        # Get name and position out
         name, position = pair.strip().split(",")
-        elementText = f"{name} - {position}"
-        currentLabel = CTkLabel(hashTaskElementsContainer, text=elementText)
-        currentLabel.pack(padx=5, anchor="w")
+        # And add the string to the elements container
+        CTkLabel(hashTaskElementsContainer, text=f"{name} - {position}").pack(
+            padx=5, anchor="w"
+        )
 
 
 def hashTaskLoadData(fileName):
     try:
+        # Open the local file in read mode
         with open(fileName, "r") as file:
+            # Run through each line in the file
             for line in file:
+                # Extract the name and position out of it
                 name, position = line.strip().split(",")
+                # Calculate the appropriate key for the hash table
                 key = sum(ord(c) for c in name)
+
+                # Insert the name and position into the hash table
                 hashTaskEmployees.insert(key, (name, position))
+                # And add it into our local list
                 hashTaskEmployeesList.append(line)
+
+            # Update the elements container afterwards
             updateHashTaskElementsContainer()
+            console.log(f"Loaded employees data from {fileName}")
     except:
         AlertPopup(f"Failed to load data from {fileName}")
+        console.log(f"Failed to load employees data from {fileName}")
 
 
 def hashTaskSearch(givenName):
+    # Form a key out of the name
     convertedKey = sum(ord(c) for c in givenName)
+
+    # Check if we found the name in the hash table
     if hashTaskEmployees.search(convertedKey):
+        # If so, initialize the position to be None
         position = None
+
+        # Run through all the employees in the list
         for employeeData in hashTaskEmployeesList:
+            # Get their name and position
             thisName, thisPosition = employeeData.strip().split(",")
+
+            # And see if the two names match
             if thisName == givenName:
+                # If they do, we found our person in the hash table
                 position = thisPosition
+                # So we can break out of the loop
                 break
+
+        # Show the alert popup saying that the name was found
         AlertPopup(f"{givenName} is found. They work as {position}")
+        console.log(f"{givenName} was found in the hash table")
     else:
         AlertPopup(f"{givenName} is NOT found")
+        console.log(f"{givenName} was NOT found in the hash table")
 
 
 hashTaskLoadDataHeading = CTkLabel(
@@ -1736,7 +1823,7 @@ hashTaskLoadDataButton = CTkButton(
     font=("Arial", 12, "bold"),
     command=lambda: hashTaskLoadData(hashTaskLoadDataInput.get())
     if hashTaskLoadDataInput.get()
-    else AlertPopup("Input box is empty"),
+    else AlertPopup("Please enter a filename to load data from"),
 )
 hashTaskLoadDataButton.place(x=305, y=30)
 
@@ -1760,7 +1847,7 @@ hashTaskSearchButton = CTkButton(
     font=("Arial", 12, "bold"),
     command=lambda: hashTaskSearch(hashTaskSearchInput.get())
     if hashTaskSearchInput.get()
-    else AlertPopup("Input box is empty"),
+    else AlertPopup("Please enter an employee name to search for"),
 )
 hashTaskSearchButton.place(x=305, y=100)
 
