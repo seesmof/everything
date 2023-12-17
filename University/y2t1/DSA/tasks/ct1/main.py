@@ -188,7 +188,7 @@ def searchHeapElement(value):
     else:
         AlertPopup(f"{value} found at index {index}")
     console.log(
-        f"{value} searched in {heapElements.heap}, {f'Found at index {index}' if index != -1 else 'Not Found'}"
+        f"{value} searched in heap, {f'Found at index {index}' if index != -1 else 'Not Found'}"
     )
 
 
