@@ -14,149 +14,349 @@ The main body of the explanatory note consists of sections, subsections, paragra
 - advanced methods of development and analysis;
 - algorithms for working with graphs.
 
-lets tackle data structures section first
+lets tackle advanced methods of development and analysis now.
 
-The section on data structures should include the following information
+The section on advanced methods of development and analysis should contain the following data:
 
-- a brief description of the pyramidal sorting algorithm, an individual task, features of the algorithm application for solving an individual task, a description of the software in terms of implementing this algorithm with the corresponding screen forms, results of solving the task, characteristics of the algorithm, comparison of the efficiency of using three sorting algorithms;
-- a brief description of hashing and B-trees as data structures and their corresponding algorithms, an individual task, features of applying the algorithm to solve an individual task, a description of the software in terms of implementing hash tables and B-trees with the corresponding screen forms, results of solving the task, characteristics of the algorithms and comparison of data structures in terms of task efficiency.
+- individual task, features of using the greedy algorithm and, in particular, the Huffman algorithm to solve the problem, a description of the software in terms of implementing this algorithm with the corresponding screen forms, results of solving the problem, characteristics of the algorithm;
+- an individual task, features of using dynamic programming to solve the task, a description of the software in terms of implementing this algorithm with the corresponding screen forms, results of solving the task, characteristics of the algorithm.
 
-so in terms of the info you might need for writing it:
+so regarding the greedy algorithms, here are the individual tasks we tackled:
 
-heap sort algorithm:
+- A shop assistant in a small store has a habit of keeping the most popular products on hand to speed up the queue of customers. The number of such goods is determined additionally. Each customer orders an item in turn, and the seller checks to see if the item is available. If the product is not available, the seller takes it off the shelves, which takes more time. At the same time, for each such product, the seller must decide whether it should be placed among the most popular products instead of one of the existing ones. Help the salesperson make this decision as the entire customer order queue progresses, if they want to reduce the time it takes for the entire queue to leave the store. Assume that the seller knows in advance what products each customer in the queue wants to buy.
+- Develop software that implements the Huffman algorithm for compressing text file data in the form of a class. The class should have methods that allow you to specify a file with data, perform data compression, determine the parameters of the compression and inverse transformation, and write the results of encoding/decoding to a file.
+
+regarding the code, here's some on the huffman:
 
 ```python
-def sort(self):
-    sortedItems = []
+def compress(self, filePath):
+    fileName, fileExtension = os.path.splitext(filePath)
+    outputPath = fileName + ".bin"
 
-    for _ in range(len(self.heap)):
-        sortedItems.append(self.delete())
+    with open(filePath, "r+") as file, open(outputPath, "wb") as output:
+        text = file.read()
+        text = text.rstrip()
 
-    return sortedItems
+        frequency = self.buildFrequencyDict(text)
+        self.buildHeap(frequency)
+        self.mergeNodes()
+        self.buildCodes()
+
+        encodedText = self.getEncodedText(text)
+        paddedEncodedText = self.padEncodedText(encodedText)
+
+        b = self.getByteArray(paddedEncodedText)
+        output.write(bytes(b))
+
+    return outputPath
 ```
 
-and the delete method just pops the root and returns it which is the largest element since its a max heap.
-
-the individual task that i've got for using heap sort is:
-
-- The HR department contains information about employee illnesses, including: employee's surname, name, patronymic; department, position; age; date of start of sick leave; date of end of sick leave; disease. Display information about all diseases that employees have had, in descending order of the number of cases.
-
-and here's how i solved it:
-
 ```python
-def heapTaskShowResults():
-    def countDiseaseCases():
-        diseasesCount = dict()
+def huffmanLoadAndCompress(fileName):
+    try:
+        global huffmanInputFilePath
+        huffmanInputFilePath = fileName
+        huffmanInputFilePathLabel.configure(text=f"Loaded file: {fileName}")
 
-        for employee in heapTaskEmployeesData:
-            if employee["disease"] not in diseasesCount:
-                diseasesCount[employee["disease"]] = 1
-            else:
-                diseasesCount[employee["disease"]] += 1
+        global huffmanCompressedFilePath
+        huffmanCompressedFilePath = huffmanObject.compress(fileName)
 
-        return diseasesCount
+        global huffmanOriginalFileWeight
+        huffmanOriginalFileWeight = os.path.getsize(fileName)
+        huffmanOriginalFileWeightLabel.configure(
+            text=f"Original weight: {huffmanOriginalFileWeight/1024:.2f} KB or {huffmanOriginalFileWeight/1024/1024:.2f} MB"
+        )
 
-    def sortDiseasesList(arr):
-        if len(arr) == 0:
-            return arr
-        sortedArr = Heap().buildHeap(arr).sort()
+        global huffmanCompressedFileWeight
+        huffmanCompressedFileWeight = os.path.getsize(huffmanCompressedFilePath)
+        huffmanCompressedFileWeightLabel.configure(
+            text=f"Compressed weight: {huffmanCompressedFileWeight/1024:.2f} KB or {huffmanCompressedFileWeight/1024/1024:.2f} MB"
+        )
 
-        return sortedArr
+        global huffmanCompressionRatio
+        huffmanCompressionRatio = huffmanCompressionRatio = (
+            1 - huffmanCompressedFileWeight / huffmanOriginalFileWeight
+        ) * 100
+        huffmanCompressionRatioLabel.configure(
+            text=f"Compression Ratio: {huffmanCompressionRatio:.2f}%"
+        )
+    except:
+        AlertPopup("Failed to compress")
 
-    diseasesCount = countDiseaseCases()
-    diseasesCountList = [
-        (occurences, name) for name, occurences in diseasesCount.items()
-    ]
-    diseasesCountList = sortDiseasesList(diseasesCountList)
-    resultsString = f"Employees' Diseases sorted by Occurences:\n"
+def huffmanDecompress():
+    try:
+        global huffmanDecompressedFilePath
+        huffmanDecompressedFilePath = huffmanObject.decompress(
+            huffmanCompressedFilePath
+        )
+        huffmanDecompressedFilePathLabel.configure(
+            text=f"Decompressed file: {huffmanDecompressedFilePath}"
+        )
 
-    for occurence, name in diseasesCountList:
-        currentDisease = f"{name}: {occurence} times\n"
-        resultsString += currentDisease
-
-    AlertPopup(resultsString)
-    console.log("Heap Sort Task Completed")
+        huffmanDecompressedFileWeightLabel.configure(
+            text=f"Decompressed weight: {os.path.getsize(huffmanDecompressedFilePath)/1024:.2f} KB or {os.path.getsize(huffmanDecompressedFilePath)/1024/1024:.2f} MB"
+        )
+    except:
+        AlertPopup("Failed to decompress")
 ```
 
-say that the three sorting algorithms are listed in the heap demo section where user can define whatever heap they want, and then add, delete and search elements in it as well as sort it in 3 different ways: heap sort, quick sort and python built in sort function. they get to see the average times for each sorting algorithm as a table outputted in the console, so that is covered. not sure what screenshots they're talking about here, i'd love to hear what you have to say on this, and the results im gonna add as images. now onto the b-tree and hashing.
-
-here are the tasks i have for hash table and a b-tree:
-
-- Create a hash table that uses the chain method to resolve collisions and the hash multiplication function. Fill in the hash table based on the selection of information from a text file that contains the names of the company's employees and their positions. Determine the position of a given employee.
-- A mobile operator must have information about subscribers to provide services. Each subscriber is characterized by a number, surname, name, patronymic, and tariff plan. Form a tree from the relevant information about subscribers, provide search for information about the subscriber by his phone number and determine the number of connections for each of the tariffs.
-
-and here's how i solve them:
+here's some on the shopkeeper:
 
 ```python
-def bTreeTaskSearchForSub(data):
-    def retrieveSubscribersData(phoneNumber):
-        for currentSubscriber in subscribersTaskElementsList:
-            if currentSubscriber["phone"] == phoneNumber:
-                return currentSubscriber
+def solveProblem(self, customerOrder):
+    queueTime = 0
+    productTimes = []
+    for product in customerOrder:
+        originalTime = queueTime
+        if product not in self.productsFreqency:
+            self.productsFreqency[product] = 0
 
-        return None
-
-    if not subscribersTaskElementsList or len(subscribersTaskElementsList) == 0:
-        console.log("No subscribers found in the database")
-        AlertPopup("No subscribers found in the database")
-
-    isFound = subscribersTaskElements.search(data)
-    subscriberData = retrieveSubscribersData(data)
-
-    AlertPopup(
-        f"+{data} was found in the database\nName - {subscriberData['name']}, Type - {subscriberData['type']}"
-    ) if isFound else AlertPopup(f"+{data} was NOT found in the database")
-    console.log(f"+{data} {'was' if isFound else 'was not'} found in the database")
-
-def subscribersTaskCountTypes():
-    if not subscribersTaskElementsList or len(subscribersTaskElementsList) == 0:
-        console.log("No subscribers found in the database")
-        AlertPopup("No subscribers found in the database")
-
-        return
-
-    typesCount = {}
-    for subscriber in subscribersTaskElementsList:
-        if subscriber["type"] in typesCount:
-            typesCount[subscriber["type"]] += 1
+        if product in self.popularProducts:
+            queueTime += 1
+        elif product in self.products:
+            queueTime += 2
+            self.productsFreqency[product] += 1
         else:
-            typesCount[subscriber["type"]] = 1
-
-    resultsString = "Count of occurences of each subscription type:\n"
-    for type in typesCount:
-        resultsString += f"{type}: {typesCount[type]}\n"
-
-    AlertPopup(resultsString)
-    console.log("Counted subscription types")
+            queueTime += 3
+        takenTime = queueTime - originalTime
+        productTimes.append(f"{product[0].upper() + product[1:]} - {takenTime}")
+    self.updatePopularProducts()
+    return queueTime, productTimes
 ```
 
 ```python
-def hashTaskSearch(givenName):
-    convertedKey = sum(ord(c) for c in givenName)
+def greedyTaskPlaceOrder(order):
+    global greedyTaskResults
+    order = order.split(",")
+    startTimer = time.time()
 
-    if hashTaskEmployees.search(convertedKey):
-        position = None
+    queueTime, productTimes = greedyTaskShop.solveProblem(order)
+    time.sleep(0.1)
+    timeTaken = time.time() - startTimer
+    memoryTaken = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
 
-        for employeeData in hashTaskEmployeesList:
-            thisName, thisPosition = employeeData.strip().split(",")
+    productTimesString = "\nTime taken to fetch each product:"
+    for product in productTimes:
+        productTimesString += f"\n{product} minutes"
 
-            if thisName == givenName:
-                position = thisPosition
-                break
+    AlertPopup(f"Queue time: {queueTime}\n{productTimesString}")
+    console.log(f"Placed order to shopkeeper, took {timeTaken:.2f} seconds")
 
-        AlertPopup(f"{givenName} is found. They work as {position}")
-        console.log(f"{givenName} was found in the hash table")
-    else:
-        AlertPopup(f"{givenName} is NOT found")
-        console.log(f"{givenName} was NOT found in the hash table")
+    greedyTaskOrders.append(order)
+    greedyTaskUpdateOrdersContainer()
+
+    resultObjects = {"time": timeTaken, "memory": memoryTaken}
+    greedyTaskResults.append(resultObjects)
+
+    def showResultsTable():
+        resultsTable = Table(title="Shopkeeper Results")
+        resultsTable.add_column("Iteration Number", style="white")
+        resultsTable.add_column("Time - [cyan]seconds[/]")
+        resultsTable.add_column("Memory - [cyan]bytes[/]")
+
+        averageTime = sum(result["time"] for result in greedyTaskResults) / len(
+            greedyTaskResults
+        )
+        averageMemory = sum(result["memory"] for result in greedyTaskResults) / len(
+            greedyTaskResults
+        )
+        resultsTable.add_row(
+            "[bold]Average[/]",
+            f"[bold]{averageTime:.2f}[/]",
+            f"[bold]{averageMemory:.2f}[/]",
+        )
+
+        for i, result in enumerate(greedyTaskResults):
+            resultsTable.add_row(
+                f"{i+1}",
+                f"{result['time']:.2f}",
+                f"{result['memory']:.2f}",
+            )
+
+        console.print(resultsTable)
+
+    showResultsTable()
+```
+
+everything else is pretty straight forwards so lets move onto the dynamic programming. here are the individual tasks:
+
+- During the experimental training of the robots, they were put on bicycles. The entire group of robots is sent on bicycles along a narrow bike path in the same direction with some intervals. Each robot controls the bicycle at a given speed, which changes only if the robot catches up with a slower cyclist: unable to overtake the slower cyclist, it will slow down to the speed of the cyclist in front of it. Thus, after a while, the robots will be divided into groups, each of which will move at its own constant speed. The programmer's task is to divide the robots into a certain number of groups. Determine how many ways there are to start the robots (i.e., the order in which each robot will start moving along the bike path) that will result in a given number of groups.
+- On one of the streets of a town, the buildings are classified into three types: the first is ordinary residential buildings, the second is industrial buildings, and the third is city institutions (hospitals, schools, etc.). As a result, the street is schematically represented by a set of letters, each of which defines the type of building. In the process of collecting information about the city, a matrix was created - a table in which each column and row corresponds to one of the building types. Accordingly, a cell in such a table determines whether there are buildings of a given type located nearby on a given street. The matrix is symmetric. Determine how many ways there are to arrange the buildings of these types among themselves according to the given matrix for a given number of buildings on the street, that is, the number of possible sets of letters of a given length corresponding to the given matrix.
+- Compare the obtained results of the tests, analyze the accuracy, correctness and adequacy of the developed software and the methods used.
+
+here's some code on the robots:
+
+```python
+def _count_ways(self, groups, robots):
+    if groups == 0 and robots == 0:
+        return 1
+    if groups == 0 or robots == 0:
+        return 0
+    if self.dp[groups][robots] != -1:
+        return self.dp[groups][robots]
+
+    ways = 0
+    for i in range(1, robots + 1):
+        ways += self._count_ways(groups - 1, i - 1)
+    self.dp[groups][robots] = ways
+    return ways
 ```
 
 ```python
-def hash(self, key):
-    return int((key * ((5**0.5 - 1) / 2) % 1) * self.size)
+def solveRobotsTask(robotsCount, speeds, groupsCount):
+    global robotsTaskResults
+    robotGroup = RobotGroup(robotsCount, speeds, groupsCount)
+
+    startTimer = time.time()
+    res = robotGroup.countWays()
+    time.sleep(0.1)
+    timeTaken = time.time() - startTimer
+
+    AlertPopup(f"Number of ways to arrange {groupsCount} groups is {res}")
+    console.log(f"Completed robots DP task in {timeTaken:.2f} seconds")
+
+    resultsObject = {
+        "time": timeTaken,
+        "memory": sys.getsizeof(robotGroup.dp),
+    }
+    robotsTaskResults.append(resultsObject)
+
+    def showResultsTable():
+        resultsTable = Table(
+            title="Robots DP Task Results",
+        )
+        resultsTable.add_column("Attempt Number", style="white")
+        resultsTable.add_column("Time - [cyan]seconds[/]")
+        resultsTable.add_column("Memory - [cyan]bytes[/]")
+
+        averageTimes = []
+        averageMemories = []
+
+        for result in robotsTaskResults:
+            averageTimes.append(result["time"])
+            averageMemories.append(result["memory"])
+
+        averageTime = sum(averageTimes) / len(averageTimes)
+        averageMemory = sum(averageMemories) / len(averageMemories)
+        resultsTable.add_row(
+            "[bold]Average[/]",
+            f"[bold]{averageTime:.2f}[/]",
+            f"[bold]{averageMemory:.2f}[/]",
+        )
+
+        for result in robotsTaskResults:
+            resultsTable.add_row(
+                str(robotsTaskResults.index(result) + 1),
+                f"{result['time']:.2f}",
+                f"{result['memory']:.2f}",
+            )
+        console.print(resultsTable)
+
+    showResultsTable()
 ```
 
-well i have no idea what they mean in the rest of the paragraph, so you'll have to figure it all out yourself. if you need any other code, just let me know. other than that, lets start with this section and go from there
+and here's some on the buildings arrangements:
+
+```python
+def _solveTaskUtil(self, n, buildingType):
+    if n == 0:
+        return 1
+
+    if (n, buildingType) in self.memo:
+        return self.memo[(n, buildingType)]
+
+    count = 0
+    for previousBuildingType in ["Residential", "Industrial", "Office"]:
+        if self.matrix[previousBuildingType][buildingType]:
+            count += self._solveTaskUtil(n - 1, previousBuildingType)
+
+    self.memo[(n, buildingType)] = count
+    return count
+```
+
+```python
+def buildingsTaskSolve(
+    residentialToResidential,
+    residentialToIndustrial,
+    residentialToOffice,
+    industrialToResidential,
+    industrialToIndustrial,
+    industrialToOffice,
+    officeToResidential,
+    officeToIndustrial,
+    officeToOffice,
+    buildingsCount,
+):
+    global buildingsTaskResults
+    matrix = {
+        "Residential": {
+            "Residential": residentialToResidential,
+            "Industrial": residentialToIndustrial,
+            "Office": residentialToOffice,
+        },
+        "Industrial": {
+            "Residential": industrialToResidential,
+            "Industrial": industrialToIndustrial,
+            "Office": industrialToOffice,
+        },
+        "Office": {
+            "Residential": officeToResidential,
+            "Industrial": officeToIndustrial,
+            "Office": officeToOffice,
+        },
+    }
+    arrangements = BuildingArrangement(matrix)
+
+    startTimer = time.time()
+    try:
+        res = arrangements.solveTask(int(buildingsCount))
+    except:
+        AlertPopup("Woah... That is too many buildings")
+        console.log(
+            "Failed to solve buildings arrangement due to maximum recursion depth exceeded"
+        )
+        return
+    time.sleep(0.1)
+    timeTaken = time.time() - startTimer
+
+    AlertPopup(f"Number of arrangements: {res}")
+    console.log(f"Solved buildings arrangement in {timeTaken:.2f} seconds")
+
+    resultObject = {"time": timeTaken, "memory": sys.getsizeof(arrangements.memo)}
+    buildingsTaskResults.append(resultObject)
+
+    def showResultsTable():
+        resultsTable = Table(title="Buildings Arrangements Results")
+        resultsTable.add_column("Iteration Number", style="white")
+        resultsTable.add_column("Time - [cyan]seconds[/]")
+        resultsTable.add_column("Memory - [cyan]bytes[/]")
+
+        averageTimes = []
+        averageMemories = []
+
+        for result in buildingsTaskResults:
+            averageTimes.append(result["time"])
+            averageMemories.append(result["memory"])
+
+        averageTime = sum(averageTimes) / len(averageTimes)
+        averageMemory = sum(averageMemories) / len(averageMemories)
+        resultsTable.add_row(
+            "[bold]Average[/]",
+            f"[bold]{averageTime:.2f}[/]",
+            f"[bold]{averageMemory:.2f}[/]",
+        )
+
+        for result in buildingsTaskResults:
+            resultsTable.add_row(
+                f"{buildingsTaskResults.index(result) + 1}",
+                f"{result['time']:.2f}",
+                f"{result['memory']:.2f}",
+            )
+
+        console.print(resultsTable)
+
+    showResultsTable()
+```
 
 ---
 
