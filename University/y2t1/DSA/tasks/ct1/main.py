@@ -2871,6 +2871,9 @@ def sumPathsTaskGetResults(source, targetSum):
         AlertPopup(f"Paths with sum {targetSum}:\n{pathsList}")
     else:
         AlertPopup(f"No paths with sum {targetSum} found")
+    console.log(
+        f"Executed Sum of Paths Task. {f'Found {len(res)} valid paths' if res else 'No paths found'}"
+    )
 
 
 sumPathsTaskEdgesContainer = CTkScrollableFrame(pathsSumTab, width=240, height=270)
@@ -3699,10 +3702,12 @@ def minimalTaskTimesLoadGraph(fileName, isDirected):
 
 def minimalTaskTimesGetResults():
     res = minimalTaskTimesGraphObject.calculateMinimumTime()
-    if res:
-        AlertPopup(f"Minimal Time to Complete Tasks: {res}")
-    else:
-        AlertPopup("Failed to Calculate Minimal Time")
+    AlertPopup(f"Minimal Time to Complete Tasks: {res}") if res else AlertPopup(
+        "Failed to Calculate Minimal Time"
+    )
+    console.log(
+        f"Solved Project Minimal Times task. {f'Time taken was {res}' if res else 'Failed to Calculate Minimal Time'}"
+    )
 
 
 minimalTaskTimesElementsContainer = CTkScrollableFrame(

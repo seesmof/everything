@@ -14,151 +14,66 @@ The main body of the explanatory note consists of sections, subsections, paragra
 - advanced methods of development and analysis;
 - algorithms for working with graphs.
 
-lets tackle advanced methods of development and analysis now.
+lets tackle algorithms for working with graphs now.
 
-The section on advanced methods of development and analysis should contain the following data:
+The section on algorithms for working with graphs should include the following information
 
-- individual task, features of using the greedy algorithm and, in particular, the Huffman algorithm to solve the problem, a description of the software in terms of implementing this algorithm with the corresponding screen forms, results of solving the problem, characteristics of the algorithm;
-- an individual task, features of using dynamic programming to solve the task, a description of the software in terms of implementing this algorithm with the corresponding screen forms, results of solving the task, characteristics of the algorithm.
+- a brief description of graph traversal algorithms, peculiarities of own application of algorithms, description of software in terms of implementation of these algorithms with the corresponding screen forms, characteristics of algorithms;
+- a brief description of shortest path search algorithms, peculiarities of their own application, description of software in terms of implementing these algorithms with the corresponding screen forms, characteristics of the algorithms;
 
-so regarding the greedy algorithms, here are the individual tasks we tackled:
+here are the individual tasks given for the graph traversal algorithms:
 
-- A shop assistant in a small store has a habit of keeping the most popular products on hand to speed up the queue of customers. The number of such goods is determined additionally. Each customer orders an item in turn, and the seller checks to see if the item is available. If the product is not available, the seller takes it off the shelves, which takes more time. At the same time, for each such product, the seller must decide whether it should be placed among the most popular products instead of one of the existing ones. Help the salesperson make this decision as the entire customer order queue progresses, if they want to reduce the time it takes for the entire queue to leave the store. Assume that the seller knows in advance what products each customer in the queue wants to buy.
-- Develop software that implements the Huffman algorithm for compressing text file data in the form of a class. The class should have methods that allow you to specify a file with data, perform data compression, determine the parameters of the compression and inverse transformation, and write the results of encoding/decoding to a file.
+- In a graph given by the user, each vertex is assigned an integer (can be either negative or positive). Determine the paths between pairs of vertices that result in the addition of all the numbers from each vertex to get the value specified by the user.
+- Given a set of arithmetic operations (for example, add 3, multiply by 2) that can be performed on the operand. Determine the minimal set of operations that can be used to get from one given number a number b. If such a conversion cannot be performed using the set of operations specified by the user, print a corresponding message.
+- Hampton Court Maze, a 60-acre maze, attracts many tourists. Before entering one of these mazes and demonstrating his skills, your friend decided to study the maze plan and asked you for help in finding his way through the maze. Model the maze using vertices corresponding to the entrance to the maze, the exit, dead ends, all points in the maze where there is a choice of paths, and connect these vertices with edges corresponding to the paths in the maze
 
-regarding the code, here's some on the huffman:
+regarding graph traversal, here's some code on that:
 
 ```python
-def compress(self, filePath):
-    fileName, fileExtension = os.path.splitext(filePath)
-    outputPath = fileName + ".bin"
+def BFS(self, start):
+    visited = []
+    queue = deque([start])
 
-    with open(filePath, "r+") as file, open(outputPath, "wb") as output:
-        text = file.read()
-        text = text.rstrip()
+    while queue:
+        vertex = queue.popleft()
+        if vertex not in visited:
+            visited.append(vertex)
+            queue.extend(set(self.graph[vertex]) - set(visited))
 
-        frequency = self.buildFrequencyDict(text)
-        self.buildHeap(frequency)
-        self.mergeNodes()
-        self.buildCodes()
-
-        encodedText = self.getEncodedText(text)
-        paddedEncodedText = self.padEncodedText(encodedText)
-
-        b = self.getByteArray(paddedEncodedText)
-        output.write(bytes(b))
-
-    return outputPath
+    return visited
 ```
 
 ```python
-def huffmanLoadAndCompress(fileName):
-    try:
-        global huffmanInputFilePath
-        huffmanInputFilePath = fileName
-        huffmanInputFilePathLabel.configure(text=f"Loaded file: {fileName}")
+def bfsDemoStartBFS(sourceNode):
+    if not BFSGraphObject:
+        AlertPopup("Load graph edges first")
+        return
 
-        global huffmanCompressedFilePath
-        huffmanCompressedFilePath = huffmanObject.compress(fileName)
-
-        global huffmanOriginalFileWeight
-        huffmanOriginalFileWeight = os.path.getsize(fileName)
-        huffmanOriginalFileWeightLabel.configure(
-            text=f"Original weight: {huffmanOriginalFileWeight/1024:.2f} KB or {huffmanOriginalFileWeight/1024/1024:.2f} MB"
-        )
-
-        global huffmanCompressedFileWeight
-        huffmanCompressedFileWeight = os.path.getsize(huffmanCompressedFilePath)
-        huffmanCompressedFileWeightLabel.configure(
-            text=f"Compressed weight: {huffmanCompressedFileWeight/1024:.2f} KB or {huffmanCompressedFileWeight/1024/1024:.2f} MB"
-        )
-
-        global huffmanCompressionRatio
-        huffmanCompressionRatio = huffmanCompressionRatio = (
-            1 - huffmanCompressedFileWeight / huffmanOriginalFileWeight
-        ) * 100
-        huffmanCompressionRatioLabel.configure(
-            text=f"Compression Ratio: {huffmanCompressionRatio:.2f}%"
-        )
-    except:
-        AlertPopup("Failed to compress")
-
-def huffmanDecompress():
-    try:
-        global huffmanDecompressedFilePath
-        huffmanDecompressedFilePath = huffmanObject.decompress(
-            huffmanCompressedFilePath
-        )
-        huffmanDecompressedFilePathLabel.configure(
-            text=f"Decompressed file: {huffmanDecompressedFilePath}"
-        )
-
-        huffmanDecompressedFileWeightLabel.configure(
-            text=f"Decompressed weight: {os.path.getsize(huffmanDecompressedFilePath)/1024:.2f} KB or {os.path.getsize(huffmanDecompressedFilePath)/1024/1024:.2f} MB"
-        )
-    except:
-        AlertPopup("Failed to decompress")
-```
-
-here's some on the shopkeeper:
-
-```python
-def solveProblem(self, customerOrder):
-    queueTime = 0
-    productTimes = []
-    for product in customerOrder:
-        originalTime = queueTime
-        if product not in self.productsFreqency:
-            self.productsFreqency[product] = 0
-
-        if product in self.popularProducts:
-            queueTime += 1
-        elif product in self.products:
-            queueTime += 2
-            self.productsFreqency[product] += 1
-        else:
-            queueTime += 3
-        takenTime = queueTime - originalTime
-        productTimes.append(f"{product[0].upper() + product[1:]} - {takenTime}")
-    self.updatePopularProducts()
-    return queueTime, productTimes
-```
-
-```python
-def greedyTaskPlaceOrder(order):
-    global greedyTaskResults
-    order = order.split(",")
+    global bfsResults
     startTimer = time.time()
-
-    queueTime, productTimes = greedyTaskShop.solveProblem(order)
+    visited = BFSGraphObject.BFS(sourceNode)
     time.sleep(0.1)
     timeTaken = time.time() - startTimer
     memoryTaken = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
+    nodesList = ", ".join(map(str, visited))
 
-    productTimesString = "\nTime taken to fetch each product:"
-    for product in productTimes:
-        productTimesString += f"\n{product} minutes"
+    AlertPopup(
+        f"BFS from node {sourceNode} visited {len(visited)} nodes\nFormed tree: {nodesList}"
+    )
+    console.log(f"Executed BFS, took {timeTaken:.2f} seconds")
 
-    AlertPopup(f"Queue time: {queueTime}\n{productTimesString}")
-    console.log(f"Placed order to shopkeeper, took {timeTaken:.2f} seconds")
-
-    greedyTaskOrders.append(order)
-    greedyTaskUpdateOrdersContainer()
-
-    resultObjects = {"time": timeTaken, "memory": memoryTaken}
-    greedyTaskResults.append(resultObjects)
+    resultObject = {"time": timeTaken, "memory": memoryTaken}
+    bfsResults.append(resultObject)
 
     def showResultsTable():
-        resultsTable = Table(title="Shopkeeper Results")
+        resultsTable = Table(title="BFS Results")
         resultsTable.add_column("Iteration Number", style="white")
         resultsTable.add_column("Time - [cyan]seconds[/]")
         resultsTable.add_column("Memory - [cyan]bytes[/]")
 
-        averageTime = sum(result["time"] for result in greedyTaskResults) / len(
-            greedyTaskResults
-        )
-        averageMemory = sum(result["memory"] for result in greedyTaskResults) / len(
-            greedyTaskResults
+        averageTime = sum([result["time"] for result in bfsResults]) / len(bfsResults)
+        averageMemory = sum([result["memory"] for result in bfsResults]) / len(
+            bfsResults
         )
         resultsTable.add_row(
             "[bold]Average[/]",
@@ -166,196 +81,333 @@ def greedyTaskPlaceOrder(order):
             f"[bold]{averageMemory:.2f}[/]",
         )
 
-        for i, result in enumerate(greedyTaskResults):
+        for i, result in enumerate(bfsResults):
+            resultsTable.add_row(
+                f"{i+1}", f"{result['time']:.2f}", f"{result['memory']:.2f}"
+            )
+
+        console.print(resultsTable)
+
+    showResultsTable()
+```
+
+here's some BFS:
+
+```python
+def DFS(self, source):
+    visited = []
+    stack = [source]
+
+    while stack:
+        vertex = stack.pop()
+        if vertex not in visited:
+            visited.append(vertex)
+            stack.extend(set(self.graph[vertex]) - set(visited))
+
+    return visited
+```
+
+```python
+def dfsDemoStartDFS(source):
+    if not DFSGraphObject:
+        AlertPopup("Load Graph Edges first")
+
+    global dfsResults
+    startTimer = time.time()
+    visited = DFSGraphObject.DFS(source)
+    time.sleep(0.1)
+    timeTaken = time.time() - startTimer
+    memoryTaken = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
+    nodesList = ", ".join(map(str, visited))
+
+    AlertPopup(
+        f"DFS from node {source} visited {len(visited)} nodes\nFormed tree: {nodesList}"
+    )
+    console.log(f"Executed DFS, took {timeTaken:.2f} seconds")
+
+    resultObject = {"time": timeTaken, "memory": memoryTaken}
+    dfsResults.append(resultObject)
+
+    def showResultsTable():
+        resultsTable = Table(title="DFS Results")
+        resultsTable.add_column("Iteration Number", style="white")
+        resultsTable.add_column("Time - [cyan]seconds[/]")
+        resultsTable.add_column("Memory - [cyan]bytes[/]")
+
+        averageTime = sum([result["time"] for result in dfsResults]) / len(dfsResults)
+        averageMemory = sum([result["memory"] for result in dfsResults]) / len(
+            dfsResults
+        )
+        resultsTable.add_row(
+            "[bold]Average[/]",
+            f"[bold]{averageTime:.2f}[/]",
+            f"[bold]{averageMemory:.2f}[/]",
+        )
+
+        for i, result in enumerate(dfsResults):
             resultsTable.add_row(
                 f"{i+1}",
                 f"{result['time']:.2f}",
                 f"{result['memory']:.2f}",
             )
-
         console.print(resultsTable)
 
     showResultsTable()
 ```
 
-everything else is pretty straight forwards so lets move onto the dynamic programming. here are the individual tasks:
-
-- During the experimental training of the robots, they were put on bicycles. The entire group of robots is sent on bicycles along a narrow bike path in the same direction with some intervals. Each robot controls the bicycle at a given speed, which changes only if the robot catches up with a slower cyclist: unable to overtake the slower cyclist, it will slow down to the speed of the cyclist in front of it. Thus, after a while, the robots will be divided into groups, each of which will move at its own constant speed. The programmer's task is to divide the robots into a certain number of groups. Determine how many ways there are to start the robots (i.e., the order in which each robot will start moving along the bike path) that will result in a given number of groups.
-- On one of the streets of a town, the buildings are classified into three types: the first is ordinary residential buildings, the second is industrial buildings, and the third is city institutions (hospitals, schools, etc.). As a result, the street is schematically represented by a set of letters, each of which defines the type of building. In the process of collecting information about the city, a matrix was created - a table in which each column and row corresponds to one of the building types. Accordingly, a cell in such a table determines whether there are buildings of a given type located nearby on a given street. The matrix is symmetric. Determine how many ways there are to arrange the buildings of these types among themselves according to the given matrix for a given number of buildings on the street, that is, the number of possible sets of letters of a given length corresponding to the given matrix.
-- Compare the obtained results of the tests, analyze the accuracy, correctness and adequacy of the developed software and the methods used.
-
-here's some code on the robots:
+here's some on the first individual task about finding a path that is the given sum:
 
 ```python
-def _count_ways(self, groups, robots):
-    if groups == 0 and robots == 0:
-        return 1
-    if groups == 0 or robots == 0:
-        return 0
-    if self.dp[groups][robots] != -1:
-        return self.dp[groups][robots]
+def _findPathsHelper(self, vertex, targetSum, visited, path, result):
+    visited.add(vertex)
+    path.append(vertex)
 
-    ways = 0
-    for i in range(1, robots + 1):
-        ways += self._count_ways(groups - 1, i - 1)
-    self.dp[groups][robots] = ways
-    return ways
+    if sum(path) == targetSum:
+        result.append(" -> ".join(map(str, path)))
+
+    for neighbor in self.graph[vertex]:
+        if neighbor not in visited:
+            self._findPathsHelper(neighbor, targetSum, visited, path, result)
+
+    path.pop()
+    visited.remove(vertex)
 ```
 
 ```python
-def solveRobotsTask(robotsCount, speeds, groupsCount):
-    global robotsTaskResults
-    robotGroup = RobotGroup(robotsCount, speeds, groupsCount)
+def sumPathsTaskGetResults(source, targetSum):
+    res = sumPathsTaskGraph.findPaths(source, targetSum)
+    if res:
+        pathsList = ""
+        for path in res:
+            pathsList += f"{path}\n"
+        AlertPopup(f"Paths with sum {targetSum}:\n{pathsList}")
+    else:
+        AlertPopup(f"No paths with sum {targetSum} found")
+    console.log(
+        f"Executed Sum of Paths Task. {f'Found {len(res)} valid paths' if res else 'No paths found'}"
+    )
+```
 
+here's some on the second individual task about finding the minimum number of operations:
+
+```python
+def solveTask(self, a, b, operations):
+    queue = deque([(a, [])])
+
+    while queue:
+        num, ops = queue.popleft()
+
+        if num == b:
+            return ops
+
+        for op, operationString in operations:
+            newNum = op(num)
+            if newNum not in ops:
+                queue.append((newNum, ops + [operationString]))
+
+    return None
+```
+
+```python
+def minOperationsTaskSolve(a, b):
+    minOperationsTaskGraphObject = MinOperationsGraph()
+    res = minOperationsTaskGraphObject.solveTask(a, b, minOperationsTaskOperationsList)
+    AlertPopup(
+        f"Minimum number of operations to get from {a} to {b} is {len(res)}\nOperations: {', '.join(res)}"
+    ) if res else AlertPopup("There is no way to get from {a} to {b}")
+    console.log(
+        f"Minimum number of operations calculated. {f'It took {len(res)} operations' if res else f'Path from {a} to {b} never found'}"
+    )
+```
+
+and now onto the shortest paths algorithms. here are the individual tasks given:
+
+- The list of tasks to be performed in the course of work on a project by a group of specialists and their planned duration are determined by the user. After that, the user defines the relationship between these tasks, identifying the tasks that must be completed before the start of each task. Determine the minimum period of time it will take to complete the project.
+- The map shows the roadways of a certain part of the city of Zaporizhzhia. Some streets have one-way traffic, and some may experience traffic jams. Using this information and taking into account the speed limits on the streets, determine the shortest path to get from one given point in Zaporizhzhia to another at a given time.
+- Determine the shortest paths between all points on the map of Zaporizhzhia using the constraints of the previous task.
+
+now here's some code on the algorithms themselves:
+
+```python
+def floydWarshall(self):
+    dist = defaultdict(lambda: defaultdict(lambda: float("inf")))
+    nextNode = defaultdict(dict)
+
+    for u in self.edges:
+        dist[u][u] = 0
+        for v, weight in self.edges[u]:
+            dist[u][v] = weight
+            nextNode[u][v] = v
+
+    for k in self.edges:
+        for i in self.edges:
+            for j in self.edges:
+                if dist[i][k] + dist[k][j] < dist[i][j]:
+                    dist[i][j] = dist[i][k] + dist[k][j]
+                    nextNode[i][j] = nextNode[i][k]
+
+    return dist, nextNode
+```
+
+```python
+def dijkstra(self, start, end):
+    queue = [(0, start, [])]
+    seen = set()
+
+    while queue:
+        (cost, node, path) = heapq.heappop(queue)
+
+        if node not in seen:
+            seen.add(node)
+            path = path + [node]
+            if node == end:
+                return path
+            for nextNode, c in self.edges[node]:
+                if nextNode not in seen:
+                    newCost = cost + c
+                    heapq.heappush(queue, (newCost, nextNode, path))
+
+    return []
+```
+
+```python
+def bellmanFord(self, start, end):
+    distance = {node: float("infinity") for node in self.edges}
+    distance[start] = 0
+
+    predecessor = {node: None for node in self.edges}
+
+    for _ in range(len(self.edges) - 1):
+        for node in self.edges:
+            for neighbour, weight in self.edges[node]:
+                if distance[node] + weight < distance[neighbour]:
+                    distance[neighbour] = distance[node] + weight
+                    predecessor[neighbour] = node
+
+    for node in self.edges:
+        for neighbour, weight in self.edges[node]:
+            assert (
+                distance[node] + weight >= distance[neighbour]
+            ), "Graph contains a negative-weight cycle"
+
+    path = []
+    currentNode = end
+    while currentNode is not None:
+        path.append(currentNode)
+        currentNode = predecessor[currentNode]
+    path.reverse()
+
+    return path
+```
+
+```python
+def graphAlgosPerformDijkstra(start, end):
     startTimer = time.time()
-    res = robotGroup.countWays()
+    shortestPath = graphAlgosGraphObject.dijkstra(start, end)
     time.sleep(0.1)
     timeTaken = time.time() - startTimer
+    memoryTaken = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
 
-    AlertPopup(f"Number of ways to arrange {groupsCount} groups is {res}")
-    console.log(f"Completed robots DP task in {timeTaken:.2f} seconds")
+    AlertPopup(
+        f"No Path from {start} to {end} Found"
+    ) if not shortestPath else graphAlgosGraphObject.drawGraph(shortestPath)
+    console.log(f"Executed Dijkstra, took {timeTaken:.2f} seconds")
 
-    resultsObject = {
-        "time": timeTaken,
-        "memory": sys.getsizeof(robotGroup.dp),
-    }
-    robotsTaskResults.append(resultsObject)
-
-    def showResultsTable():
-        resultsTable = Table(
-            title="Robots DP Task Results",
-        )
-        resultsTable.add_column("Attempt Number", style="white")
-        resultsTable.add_column("Time - [cyan]seconds[/]")
-        resultsTable.add_column("Memory - [cyan]bytes[/]")
-
-        averageTimes = []
-        averageMemories = []
-
-        for result in robotsTaskResults:
-            averageTimes.append(result["time"])
-            averageMemories.append(result["memory"])
-
-        averageTime = sum(averageTimes) / len(averageTimes)
-        averageMemory = sum(averageMemories) / len(averageMemories)
-        resultsTable.add_row(
-            "[bold]Average[/]",
-            f"[bold]{averageTime:.2f}[/]",
-            f"[bold]{averageMemory:.2f}[/]",
-        )
-
-        for result in robotsTaskResults:
-            resultsTable.add_row(
-                str(robotsTaskResults.index(result) + 1),
-                f"{result['time']:.2f}",
-                f"{result['memory']:.2f}",
-            )
-        console.print(resultsTable)
-
-    showResultsTable()
-```
-
-and here's some on the buildings arrangements:
-
-```python
-def _solveTaskUtil(self, n, buildingType):
-    if n == 0:
-        return 1
-
-    if (n, buildingType) in self.memo:
-        return self.memo[(n, buildingType)]
-
-    count = 0
-    for previousBuildingType in ["Residential", "Industrial", "Office"]:
-        if self.matrix[previousBuildingType][buildingType]:
-            count += self._solveTaskUtil(n - 1, previousBuildingType)
-
-    self.memo[(n, buildingType)] = count
-    return count
+    resultObject = {"type": "Dijkstra", "time": timeTaken, "memory": memoryTaken}
+    graphAlgosResults.append(resultObject)
+    graphAlgosShowResultsTable()
 ```
 
 ```python
-def buildingsTaskSolve(
-    residentialToResidential,
-    residentialToIndustrial,
-    residentialToOffice,
-    industrialToResidential,
-    industrialToIndustrial,
-    industrialToOffice,
-    officeToResidential,
-    officeToIndustrial,
-    officeToOffice,
-    buildingsCount,
-):
-    global buildingsTaskResults
-    matrix = {
-        "Residential": {
-            "Residential": residentialToResidential,
-            "Industrial": residentialToIndustrial,
-            "Office": residentialToOffice,
-        },
-        "Industrial": {
-            "Residential": industrialToResidential,
-            "Industrial": industrialToIndustrial,
-            "Office": industrialToOffice,
-        },
-        "Office": {
-            "Residential": officeToResidential,
-            "Industrial": officeToIndustrial,
-            "Office": officeToOffice,
-        },
-    }
-    arrangements = BuildingArrangement(matrix)
-
+def graphAlgosPerformBellmanFord(start, end):
     startTimer = time.time()
-    try:
-        res = arrangements.solveTask(int(buildingsCount))
-    except:
-        AlertPopup("Woah... That is too many buildings")
-        console.log(
-            "Failed to solve buildings arrangement due to maximum recursion depth exceeded"
-        )
+    shortestPath = graphAlgosGraphObject.bellmanFord(start, end)
+    time.sleep(0.1)
+    timeTaken = time.time() - startTimer
+    memoryTaken = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
+
+    AlertPopup(
+        f"No Path from {start} to {end} Found"
+    ) if not shortestPath else graphAlgosGraphObject.drawGraph(shortestPath)
+    console.log(f"Executed BellmanFord, took {timeTaken:.2f} seconds")
+
+    resultObject = {"type": "Bellman-Ford", "time": timeTaken, "memory": memoryTaken}
+    graphAlgosResults.append(resultObject)
+    graphAlgosShowResultsTable()
+```
+
+```python
+def graphAlgosPerformFordWarshall(start, end):
+    startTimer = time.time()
+    shortestPath = graphAlgosGraphObject.shortestPath(start, end)
+    time.sleep(0.1)
+    timeTaken = time.time() - startTimer
+    memoryTaken = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
+
+    AlertPopup(
+        f"No Path from {start} to {end} Found"
+    ) if not shortestPath else graphAlgosGraphObject.drawGraph(shortestPath)
+    console.log(f"Executed FordWarshall, took {timeTaken:.2f} seconds")
+
+    resultObject = {"type": "Ford-Warshall", "time": timeTaken, "memory": memoryTaken}
+    graphAlgosResults.append(resultObject)
+    graphAlgosShowResultsTable()
+```
+
+and now here's some on the first individual task regarding finding project minimal time to complete:
+
+```python
+def calculateMinimumTime(self):
+    totalTime = 0
+    for edges in self.edges.values():
+        for edge in edges:
+            totalTime += edge[1]
+    return totalTime
+```
+
+```python
+def minimalTaskTimesGetResults():
+    res = minimalTaskTimesGraphObject.calculateMinimumTime()
+    AlertPopup(f"Minimal Time to Complete Tasks: {res}") if res else AlertPopup(
+        "Failed to Calculate Minimal Time"
+    )
+    console.log(
+        f"Solved Project Minimal Times task. {f'Time taken was {res}' if res else 'Failed to Calculate Minimal Time'}"
+    )
+```
+
+here's some on the second individual task regarding finding shortest path between two points on the map:
+
+```python
+def shortestPathFromTwoPoints(start, end):
+    shortestPath = shortestPathFromTwoPointsGraphObject.dijkstra(start, end)
+    AlertPopup(
+        f"No Path from {start} to {end} Found"
+    ) if not shortestPath else shortestPathFromTwoPointsGraphObject.drawGraph(
+        shortestPath
+    )
+    console.log(
+        f"Executed shortest path from two points algorithm. {f'No path between {start} and {end} found' if not shortestPath else ' -> '.join(shortestPath)}"
+    )
+```
+
+and here's some, finally, on the third individual task regarding finding shortest paths between all points on the map:
+
+```python
+def shortestPathToAll(start):
+    if len(shortestPathToAllGraphObject.edges) == 0:
+        AlertPopup("Please Load Graph First")
+        console.log("Failed to show all paths, no graph loaded")
         return
-    time.sleep(0.1)
-    timeTaken = time.time() - startTimer
 
-    AlertPopup(f"Number of arrangements: {res}")
-    console.log(f"Solved buildings arrangement in {timeTaken:.2f} seconds")
-
-    resultObject = {"time": timeTaken, "memory": sys.getsizeof(arrangements.memo)}
-    buildingsTaskResults.append(resultObject)
-
-    def showResultsTable():
-        resultsTable = Table(title="Buildings Arrangements Results")
-        resultsTable.add_column("Iteration Number", style="white")
-        resultsTable.add_column("Time - [cyan]seconds[/]")
-        resultsTable.add_column("Memory - [cyan]bytes[/]")
-
-        averageTimes = []
-        averageMemories = []
-
-        for result in buildingsTaskResults:
-            averageTimes.append(result["time"])
-            averageMemories.append(result["memory"])
-
-        averageTime = sum(averageTimes) / len(averageTimes)
-        averageMemory = sum(averageMemories) / len(averageMemories)
-        resultsTable.add_row(
-            "[bold]Average[/]",
-            f"[bold]{averageTime:.2f}[/]",
-            f"[bold]{averageMemory:.2f}[/]",
-        )
-
-        for result in buildingsTaskResults:
-            resultsTable.add_row(
-                f"{buildingsTaskResults.index(result) + 1}",
-                f"{result['time']:.2f}",
-                f"{result['memory']:.2f}",
+    for currentNode in shortestPathToAllGraphObject.edges:
+        if currentNode != start:
+            currentPath = shortestPathToAllGraphObject.shortestPath(start, currentNode)
+            shortestPathToAllGraphObject.drawGraph(
+                currentPath
+            ) if currentPath else shortestPathToAllGraphObject.drawGraph(
+                [start, currentNode]
             )
-
-        console.print(resultsTable)
-
-    showResultsTable()
 ```
 
 ---
@@ -420,8 +472,20 @@ B-дерева, з іншого боку, є типом самобалансую
 
 ## Алгоритми роботи з графами
 
-The section on algorithms for working with graphs should include the following information
+### Graph Traversal Algorithms
 
-- a brief description of graph traversal algorithms, peculiarities of own application of algorithms, description of software in terms of implementation of these algorithms with the corresponding screen forms, characteristics of algorithms;
-- a brief description of shortest path search algorithms, peculiarities of their own application, description of software in terms of implementing these algorithms with the corresponding screen forms, characteristics of the algorithms;
-- a brief description of the Ford-Falkerson algorithm, features of its own application of algorithms, a description of the software in terms of implementing this algorithm with the corresponding screen forms, characteristics of the algorithm
+Graph traversal algorithms are designed to visit every node of a graph once. The two most common types of traversals are Breadth-First Search (BFS) and Depth-First Search (DFS). These algorithms are used in numerous applications, including network routing, social network analysis, and many others.
+
+In the BFS algorithm, we start from a chosen node (usually the root) and visit all its adjacent nodes. Then, for each of those nearest nodes, we visit their unvisited neighbors, and so on, until we visit every node in the graph. The BFS algorithm uses a queue data structure to keep track of the nodes to visit.
+
+DFS is another graph traversal algorithm that visits every node of a graph. In DFS, we start from a chosen node, then go as far as possible along each path before backtracking. DFS uses a stack to remember to get the next vertex to start a search when a dead end occurs in any iteration.
+
+For the individual tasks, we implemented these algorithms in Python, visualizing the process using a GUI. The software allowed the user to input a graph, and it would display the graph before and after applying the BFS or DFS algorithm. The results showed that these algorithms were able to traverse the graph efficiently.
+
+### Shortest Path Search Algorithms
+
+Shortest path search algorithms are designed to find the shortest path between two nodes in a graph. The most common algorithms for this purpose are Dijkstra's algorithm, the Bellman-Ford algorithm, and the Floyd-Warshall algorithm.
+
+Dijkstra's algorithm works by creating a tree of shortest paths from the starting vertex to all other points in the graph. The Bellman-Ford algorithm works by iteratively relaxing the edges of the graph, which gradually leads to the discovery of the shortest path. The Floyd-Warshall algorithm works by breaking the problem down into smaller subproblems, which are then solved in a bottom-up manner.
+
+For the individual tasks, we implemented these algorithms in Python, visualizing the process using a GUI. The software allowed the user to input a graph, and it would display the graph before and after applying the shortest path algorithm. The results showed that these algorithms were able to find the shortest path efficiently.
