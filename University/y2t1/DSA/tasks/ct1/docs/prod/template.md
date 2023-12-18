@@ -1,6 +1,10 @@
 CONTEXT:
-Final course project on Data Structures and Algorithms discipline. Consists of one program that is a combination of all the previous semester works. Sections are the following: Heap, B-Tree, Heap Task, B-Tree Task, 
+Final course project on Data Structures and Algorithms discipline. Consists of one program that is a combination of all the previous semester works. Sections are the following: Heap Demo, Linked List Demo, Heap Task, Hash Table Demo, B-Tree Demo, Hash Table Task, B-Tree Task, Huffman Coding Task, Greedy Algorithm Task, Robot Groups Dynamic Programming Task, Buildings Arrangements Dynamic Programming Task, BFS Demo, DFS Demo, Sum of Paths BFS Task, Min number of operations DFS Task, Hampton Maze Visualization Task, Dijkstra & Floyd-Warshall & Bellman-Ford Demo, Project Times Dijkstra Task, Path between A and B Dijkstra Task, Path to all nodes Floyd-Warshall Task. This combination is developed with GUI in Python. Now I need to write a report for this work and I need your help.
 
+TASK:
+I will give you a name of the section as well as the given description of what's to be in it, and maybe a markdown structure that you will fill in, but most of the times all markdown you'll have to use is the section name itself, and just put everything else inside of it. Given the section name and the description, fill in the section.
+
+SECTION:
 
 ---
 
