@@ -4,16 +4,27 @@ import json
 import heapq
 import os
 import random
+import sys
 import matplotlib.pyplot as plt
 import networkx as nx
 from collections import defaultdict, deque
 from rich import print
 from rich.console import Console
+from rich.theme import Theme
+from rich.table import Table
 from rich.traceback import install
 from rich.markdown import Markdown as md
 
 install()
-console = Console()
+consoleTheme = Theme(
+    {
+        "warning": "bold yellow",
+        "error": "bold red",
+        "success": "bold green",
+        "info": "bold blue",
+    }
+)
+console = Console(theme=consoleTheme)
 
 
 class AlertPopup(CTkToplevel):
@@ -164,6 +175,7 @@ def quickSortUtil(arr):
 
 
 def sortHeap(sortingType: str):
+    global heapSortingResults
     startTimer = time.time()
 
     heapElements.heap = (
@@ -177,9 +189,49 @@ def sortHeap(sortingType: str):
     time.sleep(0.1)
     sortingTime = time.time() - startTimer
     updateHeapElementsContainer()
+    sortingMemory = sys.getsizeof(heapElements.heap)
+
     AlertPopup(
         f"Sorting took {sortingTime:.2f} seconds or {sortingTime*1000:.2f} milliseconds"
     )
+    console.log(
+        f"Completed sorting heap using {'Heap Sort' if sortingType == 'Heap Sort' else 'Quick Sort' if sortingType == 'Quick Sort' else 'Default Sort'}, took {sortingTime:.2f} seconds"
+    )
+
+    sortingResults = {"type": sortingType, "time": sortingTime, "memory": sortingMemory}
+    heapSortingResults.append(sortingResults)
+
+    def showResultsTable():
+        sortingResultsTable = Table(
+            title="Sorting Results",
+        )
+        sortingResultsTable.add_column("Sorting Type")
+        sortingResultsTable.add_column("Time - [cyan]seconds[/]")
+        sortingResultsTable.add_column("Memory - [cyan]bytes[/]")
+
+        sortingTypesCount = {result["type"]: 0 for result in heapSortingResults}
+        averageTimes = {result["type"]: 0 for result in heapSortingResults}
+        averageMemories = {result["type"]: 0 for result in heapSortingResults}
+
+        for result in heapSortingResults:
+            sortingTypesCount[result["type"]] += 1
+            averageTimes[result["type"]] += result["time"]
+            averageMemories[result["type"]] += result["memory"]
+
+        for sortingType in averageTimes:
+            averageTimes[sortingType] /= sortingTypesCount[sortingType]
+            averageMemories[sortingType] /= sortingTypesCount[sortingType]
+
+        for sortingType in sortingTypesCount:
+            sortingResultsTable.add_row(
+                sortingType,
+                f"{averageTimes[sortingType]:.2f}",
+                f"{averageMemories[sortingType]:.2f}",
+            )
+
+        console.print(sortingResultsTable)
+
+    showResultsTable()
 
 
 def searchHeapElement(value):
@@ -345,6 +397,7 @@ searchInHeapButton = CTkButton(
 searchInHeapButton.place(x=305, y=240)
 
 heapElements = Heap()
+heapSortingResults = []
 loadHeapOnStart()
 
 

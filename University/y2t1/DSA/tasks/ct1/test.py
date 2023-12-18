@@ -1,27 +1,19 @@
-import requests
+from rich import print
+from rich.console import Console
+from rich.theme import Theme
+from rich.table import Table
+from rich.traceback import install
+from rich.markdown import Markdown as md
 
+install()
+consoleTheme = Theme(
+    {
+        "warning": "bold yellow",
+        "error": "bold red",
+        "success": "bold green",
+        "info": "bold blue",
+    }
+)
+console = Console(theme=consoleTheme)
 
-def fetch_high_priority_tasks():
-    # Replace 'your_access_token' with your actual Todoist API token
-    headers = {"Authorization": "Bearer your_access_token"}
-
-    response = requests.get("https://api.todoist.com/rest/v1/tasks", headers=headers)
-    tasks = response.json()
-
-    # Filter tasks with priority 2 and higher
-    high_priority_tasks = [
-        {
-            "content": task["content"],
-            "due": task.get("due", {}).get("date", "No due date"),
-        }
-        for task in tasks
-        if task["priority"] >= 2
-    ]
-
-    return high_priority_tasks
-
-
-# Example usage
-high_priority_task_list = fetch_high_priority_tasks()
-for task in high_priority_task_list:
-    print(f"{task['content']} - {task['due']}")
+table = Table(title="Data Structures and Algorithms")
