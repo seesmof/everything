@@ -3,6 +3,7 @@ import time
 import json
 import heapq
 import os
+import random
 import matplotlib.pyplot as plt
 import networkx as nx
 from collections import defaultdict, deque
@@ -336,8 +337,8 @@ searchInHeapButton = CTkButton(
     if searchInHeapInput.get()
     else AlertPopup("Please enter an element to search"),
     width=60,
-    fg_color="#28A228",
-    hover_color="#1F7D1F",
+    fg_color="#1976D2",
+    hover_color="#0D47A1",
     text_color="white",
     font=("Arial", 12, "bold"),
 )
@@ -1748,6 +1749,34 @@ class Shopkeeper:
         self.products = newProducts
         greedyTaskUpdateProductsContainer()
 
+    def proveOptimality(self, customerOrder):
+        greedyQueueTime, _ = self.solveProblem(customerOrder)
+
+        optimalShopkeeper = Shopkeeper(self.products)
+        optimalShopkeeper.popularProducts = self.popularProducts.copy()
+        optimalShopkeeper.productsFreqency = self.productsFreqency.copy()
+
+        for product in customerOrder:
+            if product not in optimalShopkeeper.productsFreqency:
+                optimalShopkeeper.productsFreqency[product] = 0
+
+            if product not in optimalShopkeeper.popularProducts:
+                optimalShopkeeper.popularProducts.add(product)
+                del optimalShopkeeper.productsFreqency[product]
+
+        optimalQueueTime, _ = optimalShopkeeper.solveProblem(customerOrder)
+
+        AlertPopup(
+            "The greedy choice is an optimal solution."
+        ) if greedyQueueTime == optimalQueueTime else AlertPopup(
+            "The greedy choice is a part of some optimal solution."
+        )
+        console.log(
+            "Proved greedy algorithm optimality"
+            if greedyQueueTime == optimalQueueTime
+            else "Proved greedy algorithm partial optimality"
+        )
+
 
 def greedyTaskUpdatePopularProductsContainer():
     for widget in greedyTaskPopularProductsContainer.winfo_children():
@@ -1799,6 +1828,15 @@ def greedyTaskPlaceOrder(order):
 
     greedyTaskOrders.append(order)
     greedyTaskUpdateOrdersContainer()
+
+
+def greedyTaskProveOptimality():
+    if len(greedyTaskOrders) > 0:
+        greedyTaskShop.proveOptimality(greedyTaskOrders[0])
+    else:
+        orderSize = max(1, len(greedyTaskShop.products) // 2)
+        randomOrder = random.sample(greedyTaskShop.products, orderSize)
+        greedyTaskShop.proveOptimality(randomOrder)
 
 
 greedyTaskTabsContainer = CTkTabview(greedyTaskTab)
@@ -1905,6 +1943,20 @@ greedyTaskPlaceOrderButton = CTkButton(
     else AlertPopup("Enter products first"),
 )
 greedyTaskPlaceOrderButton.place(x=305, y=190)
+
+greedyTaskProveOptimalityButton = CTkButton(
+    greedyTaskTab,
+    text="Prove algorithm optimality",
+    width=150,
+    text_color="white",
+    font=("Arial", 12, "bold"),
+    fg_color="#8F00FF",
+    hover_color="#7500D1",
+    command=lambda: greedyTaskProveOptimality()
+    if greedyTaskShop.products
+    else AlertPopup("Enter products first"),
+)
+greedyTaskProveOptimalityButton.place(x=0, y=230)
 
 greedyTaskOrders = []
 greedyTaskShop = Shopkeeper([])
@@ -2666,12 +2718,12 @@ class MinOperationsGraph:
 def minOperationsTaskSolve(a, b):
     minOperationsTaskGraphObject = MinOperationsGraph()
     res = minOperationsTaskGraphObject.solveTask(a, b, minOperationsTaskOperationsList)
-    if res:
-        AlertPopup(
-            f"Minimum number of operations to get from {a} to {b} is {len(res)}\nOperations: {', '.join(res)}"
-        )
-    else:
-        AlertPopup("There is no way to get from {a} to {b}")
+    AlertPopup(
+        f"Minimum number of operations to get from {a} to {b} is {len(res)}\nOperations: {', '.join(res)}"
+    ) if res else AlertPopup("There is no way to get from {a} to {b}")
+    console.log(
+        f"Minimum number of operations calculated. {f'It took {len(res)} operations' if res else f'Path from {a} to {b} never found'}"
+    )
 
 
 minOperationsTaskGetFirstNumberHeading = CTkLabel(
@@ -2944,8 +2996,10 @@ class PathsGraph:
 
     def shortestPath(self, start, end):
         distances, nextNode = self.floydWarshall()
+        console.print(nextNode)
 
         if nextNode[start][end] is None:
+            console.log("No path from {start} to {end} found")
             return None
         path = [start]
         while start != end:
@@ -3316,7 +3370,7 @@ def minimalTaskTimesLoadGraph(fileName, isDirected):
                 u, v, w = line.strip().split()
                 minimalTaskTimesGraphObject.addEdge(int(u), int(v), int(w))
             except ValueError:
-                console.log(f"Skipping line {line}", log_locals=True)
+                console.log(f"Skipping line {line}")
     minimalTaskTimesUpdateElementsContainer()
 
 
@@ -3410,7 +3464,7 @@ def shortestPathFromTwoPointsLoadGraph(fileName, isDirected):
                 u, v, w = line.strip().split()
                 shortestPathFromTwoPointsGraphObject.addEdge(int(u), int(v), int(w))
             except ValueError:
-                console.log(f"Skipping line {line}", log_locals=True)
+                console.log(f"Skipping line {line}")
     shortestPathFromTwoPointsUpdateElementsContainer()
 
 
@@ -3427,10 +3481,14 @@ def shortestPathFromTwoPointsUpdateElementsContainer():
 
 def shortestPathFromTwoPoints(start, end):
     shortestPath = shortestPathFromTwoPointsGraphObject.dijkstra(start, end)
-    if not shortestPath:
-        AlertPopup(f"No Path from {start} to {end} Found")
-    else:
-        shortestPathFromTwoPointsGraphObject.drawGraph(shortestPath)
+    AlertPopup(
+        f"No Path from {start} to {end} Found"
+    ) if not shortestPath else shortestPathFromTwoPointsGraphObject.drawGraph(
+        shortestPath
+    )
+    console.log(
+        f"Executed shortest path from two points algorithm. {f'No path between {start} and {end} found' if not shortestPath else ' -> '.join(shortestPath)}"
+    )
 
 
 shortestPathFromTwoPointsElementsContainer = CTkScrollableFrame(
@@ -3544,7 +3602,7 @@ def shortestPathToAllLoadGraph(fileName, isDirected):
                 u, v, w = line.strip().split()
                 shortestPathToAllGraphObject.addEdge(int(u), int(v), int(w))
             except ValueError:
-                console.log(f"Skipping line {line}", log_locals=True)
+                console.log(f"Skipping line {line}")
     shortestPathToAllUpdateElementsContainer()
 
 
@@ -3567,10 +3625,11 @@ def shortestPathToAll(start):
     for currentNode in shortestPathToAllGraphObject.edges:
         if currentNode != start:
             currentPath = shortestPathToAllGraphObject.shortestPath(start, currentNode)
-            if currentPath:
-                shortestPathToAllGraphObject.drawGraph(currentPath)
-            else:
-                shortestPathToAllGraphObject.drawGraph([start, currentNode])
+            shortestPathToAllGraphObject.drawGraph(
+                currentPath
+            ) if currentPath else shortestPathToAllGraphObject.drawGraph(
+                [start, currentNode]
+            )
 
 
 shortestPathToAllElementsContainer = CTkScrollableFrame(
