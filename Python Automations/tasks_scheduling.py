@@ -1,5 +1,12 @@
 from library import *
-from classes_year_2_term_1 import *
+from classes_year_2_term_2 import *
+from rich import print
+from rich.console import Console
+from rich.traceback import install
+from rich.markdown import Markdown as md
+
+install()
+console = Console()
 
 
 def scheduleClasses(day, week):
@@ -28,7 +35,10 @@ else:
     speak("Week is Numerator.")
 
 dayName = date.today().strftime("%A")
-scheduleClasses(dayName, weekNominationStatus)
+try:
+    scheduleClasses(dayName, weekNominationStatus)
+except:
+    console.log("Failed to schedule classes")
 
 sunsetTime = getSunset()
 schedule.every().day.at(sunsetTime).do(closeWindow)
