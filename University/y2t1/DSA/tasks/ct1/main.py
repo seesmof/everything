@@ -1909,7 +1909,7 @@ def greedyTaskPlaceOrder(order):
             greedyTaskResults
         )
         resultsTable.add_row(
-            "Average",
+            "[bold]Average[/]",
             f"{averageTime:.2f}",
             f"{averageMemory:.2f}",
         )
@@ -2301,7 +2301,9 @@ def buildingsTaskSolve(
 
         averageTime = sum(averageTimes) / len(averageTimes)
         averageMemory = sum(averageMemories) / len(averageMemories)
-        resultsTable.add_row("Average", f"{averageTime:.2f}", f"{averageMemory:.2f}")
+        resultsTable.add_row(
+            "[bold]Average[/]", f"{averageTime:.2f}", f"{averageMemory:.2f}"
+        )
 
         for result in buildingsTaskResults:
             resultsTable.add_row(
@@ -2501,12 +2503,44 @@ def bfsDemoStartBFS(sourceNode):
         AlertPopup("Load graph edges first")
         return
 
+    global bfsResults
+    startTimer = time.time()
     visited = BFSGraphObject.BFS(sourceNode)
+    time.sleep(0.1)
+    timeTaken = time.time() - startTimer
+    memoryTaken = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
     nodesList = ", ".join(map(str, visited))
 
     AlertPopup(
         f"BFS from node {sourceNode} visited {len(visited)} nodes\nFormed tree: {nodesList}"
     )
+    console.log(f"Executed BFS, took {timeTaken:.2f} seconds")
+
+    resultObject = {"time": timeTaken, "memory": memoryTaken}
+    bfsResults.append(resultObject)
+
+    def showResultsTable():
+        resultsTable = Table(title="BFS Results")
+        resultsTable.add_column("Iteration Number", style="white")
+        resultsTable.add_column("Time - [cyan]seconds[/]")
+        resultsTable.add_column("Memory - [cyan]bytes[/]")
+
+        averageTime = sum([result["time"] for result in bfsResults]) / len(bfsResults)
+        averageMemory = sum([result["memory"] for result in bfsResults]) / len(
+            bfsResults
+        )
+        resultsTable.add_row(
+            "[bold]Average[/]", f"{averageTime:.2f}", f"{averageMemory:.2f}"
+        )
+
+        for i, result in enumerate(bfsResults):
+            resultsTable.add_row(
+                f"{i+1}", f"{result['time']:.2f}", f"{result['memory']:.2f}"
+            )
+
+        console.print(resultsTable)
+
+    showResultsTable()
 
 
 bfsEdgesContainer = CTkScrollableFrame(bfsTab, width=240, height=270)
@@ -2579,6 +2613,7 @@ bfsDemoSetInitialNodeButton = CTkButton(
 bfsDemoSetInitialNodeButton.place(x=185, y=100)
 
 BFSGraphObject = None
+bfsResults = []
 
 
 #! DFS
