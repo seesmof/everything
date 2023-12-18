@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "afceebc3f9ed49cc",
+        "id": "d100fd986fb41cc6",
         "type": "tabs",
         "children": [
           {
-            "id": "44449214bd76a73a",
+            "id": "39dabb1bd30c7df2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/y2t1/Дисципліни та Результати.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -86,7 +82,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t1/Дисципліни та Результати.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +98,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t1/Дисципліни та Результати.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,9 +129,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "University/y2t1/Дисципліни та Результати.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -176,8 +168,9 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "44449214bd76a73a",
+  "active": "39dabb1bd30c7df2",
   "lastOpenFiles": [
+    "University/y2t1/Дисципліни та Результати.md",
     "Competitive Programming/LeetCode Solutions/1890.the-latest-login-in-2020.py",
     "Competitive Programming/LeetCode Solutions/831.masking-personal-information.py",
     "University/y2t1/CT/docs/Dec 14 - Fixing stuff/Fixing presentation.md",
@@ -192,7 +185,6 @@
     "Code Doodles/Words and characters counter given a file/in.md",
     "Code Doodles/Words and characters counter given a file/input.md",
     "Code Doodles/Words and characters counter given a file/main.py",
-    "Code Doodles/Words and characters counter given a file",
     "University/y2t1/DSA/tasks/ct1/docs/Elements spacing guidelines.md",
     "University/y2t1/WEB/tasks/ct1/images/hash-tab-design.png",
     "University/y2t1/CT/prod/assets/images/real-estate-pictures/Сучасний дуплекс біля технопарку.jpg",

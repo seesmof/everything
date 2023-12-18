@@ -28,9 +28,10 @@ console = Console(theme=consoleTheme)
 
 
 class AlertPopup(CTkToplevel):
-    def __init__(self, message: str):
+    def __init__(self, message: str, title: str = "Alert"):
         super().__init__()
         self.resizable(False, False)
+        self.title(title)
 
         label = CTkLabel(master=self, text=message)
         label.pack(padx=10, pady=10, anchor="center")
@@ -205,7 +206,7 @@ def sortHeap(sortingType: str):
         sortingResultsTable = Table(
             title="Sorting Results",
         )
-        sortingResultsTable.add_column("Sorting Type")
+        sortingResultsTable.add_column("Sorting Type", style="white")
         sortingResultsTable.add_column("Time - [cyan]seconds[/]")
         sortingResultsTable.add_column("Memory - [cyan]bytes[/]")
 
@@ -2042,9 +2043,55 @@ class RobotGroup:
 
 
 def solveRobotsTask(robotsCount, speeds, groupsCount):
+    global robotsTaskResults
     robotGroup = RobotGroup(robotsCount, speeds, groupsCount)
+
+    startTimer = time.time()
     res = robotGroup.countWays()
+    time.sleep(0.1)
+    timeTaken = time.time() - startTimer
+
     AlertPopup(f"Number of ways to arrange {groupsCount} groups is {res}")
+    console.log(f"Completed robots DP task in {timeTaken:.2f} seconds")
+
+    resultsObject = {
+        "time": timeTaken,
+        "memory": sys.getsizeof(robotGroup.dp),
+    }
+    robotsTaskResults.append(resultsObject)
+
+    def showResultsTable():
+        resultsTable = Table(
+            title="Robots DP Task Results",
+        )
+        resultsTable.add_column("Attempt Number", style="white")
+        resultsTable.add_column("Time - [cyan]seconds[/]")
+        resultsTable.add_column("Memory - [cyan]bytes[/]")
+
+        averageTimes = []
+        averageMemories = []
+
+        for result in robotsTaskResults:
+            averageTimes.append(result["time"])
+            averageMemories.append(result["memory"])
+
+        averageTime = sum(averageTimes) / len(averageTimes)
+        averageMemory = sum(averageMemories) / len(averageMemories)
+        resultsTable.add_row(
+            "[bold]Average[/]",
+            f"{averageTime:.2f}",
+            f"{averageMemory:.2f}",
+        )
+
+        for result in robotsTaskResults:
+            resultsTable.add_row(
+                str(robotsTaskResults.index(result) + 1),
+                f"{result['time']:.2f}",
+                f"{result['memory']:.2f}",
+            )
+        console.print(resultsTable)
+
+    showResultsTable()
 
 
 dynamicProgrammingTabsContainer = CTkTabview(tabDynamicProgramming)
@@ -2118,6 +2165,8 @@ robotsTaskShowResultsButton = CTkButton(
 )
 robotsTaskShowResultsButton.place(x=0, y=220)
 
+robotsTaskResults = []
+
 
 #! BUILDINGS' ARRANGEMENTS
 class BuildingArrangement:
@@ -2156,6 +2205,7 @@ def buildingsTaskSolve(
     officeToOffice,
     buildingsCount,
 ):
+    global buildingsTaskResults
     matrix = {
         "Residential": {
             "Residential": residentialToResidential,
@@ -2174,8 +2224,50 @@ def buildingsTaskSolve(
         },
     }
     arrangements = BuildingArrangement(matrix)
-    res = arrangements.solveTask(int(buildingsCount))
+
+    startTimer = time.time()
+    try:
+        res = arrangements.solveTask(int(buildingsCount))
+    except:
+        AlertPopup("Woah... That is too many buildings")
+        console.log("Failed to solve buildings arrangement due to maximum recursion depth exceeded")
+        return
+    time.sleep(0.1)
+    timeTaken = time.time() - startTimer
+
     AlertPopup(f"Number of arrangements: {res}")
+    console.log(f"Solved buildings arrangement in {timeTaken:.2f} seconds")
+
+    resultObject = {"time": timeTaken, "memory": sys.getsizeof(arrangements.memo)}
+    buildingsTaskResults.append(resultObject)
+
+    def showResultsTable():
+        table = Table(title="Buildings Arrangements Results")
+        table.add_column("Iteration Number", style="white")
+        table.add_column("Time - [cyan]seconds[/]")
+        table.add_column("Memory - [cyan]bytes[/]")
+
+        averageTimes = []
+        averageMemories = []
+
+        for result in buildingsTaskResults:
+            averageTimes.append(result["time"])
+            averageMemories.append(result["memory"])
+
+        averageTime = sum(averageTimes) / len(averageTimes)
+        averageMemory = sum(averageMemories) / len(averageMemories)
+        table.add_row("Average", f"{averageTime:.2f}", f"{averageMemory:.2f}")
+
+        for result in buildingsTaskResults:
+            table.add_row(
+                f"{buildingsTaskResults.index(result) + 1}",
+                f"{result['time']:.2f}",
+                f"{result['memory']:.2f}",
+            )
+
+        console.print(table)
+
+    showResultsTable()
 
 
 buildingsTaskGetMatrixForResidentialHeading = CTkLabel(
@@ -2282,6 +2374,8 @@ buildingsTaskGetResultsButton = CTkButton(
     else AlertPopup("Enter the number of buildings you want to build"),
 )
 buildingsTaskGetResultsButton.place(x=185, y=240)
+
+buildingsTaskResults = []
 
 
 #! BFS
