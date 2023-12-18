@@ -5,6 +5,7 @@ import heapq
 import os
 import random
 import sys
+import psutil
 import matplotlib.pyplot as plt
 import networkx as nx
 from collections import defaultdict, deque
@@ -1873,15 +1874,56 @@ def greedyTaskLoadProductsFromFile(fileName):
 
 
 def greedyTaskPlaceOrder(order):
+    global greedyTaskResults
     order = order.split(",")
+    startTimer = time.time()
+
     queueTime, productTimes = greedyTaskShop.solveProblem(order)
+    time.sleep(0.1)
+    timeTaken = time.time() - startTimer
+    memoryTaken = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
+
     productTimesString = "\nTime taken to fetch each product:"
     for product in productTimes:
         productTimesString += f"\n{product} minutes"
+
     AlertPopup(f"Queue time: {queueTime}\n{productTimesString}")
+    console.log(f"Placed order to shopkeeper, took {timeTaken:.2f} seconds")
 
     greedyTaskOrders.append(order)
     greedyTaskUpdateOrdersContainer()
+
+    resultObjects = {"time": timeTaken, "memory": memoryTaken}
+    greedyTaskResults.append(resultObjects)
+
+    def showResultsTable():
+        resultsTable = Table(title="Shopkeeper Results")
+        resultsTable.add_column("Iteration Number", style="white")
+        resultsTable.add_column("Time - [cyan]seconds[/]")
+        resultsTable.add_column("Memory - [cyan]bytes[/]")
+
+        averageTime = sum(result["time"] for result in greedyTaskResults) / len(
+            greedyTaskResults
+        )
+        averageMemory = sum(result["memory"] for result in greedyTaskResults) / len(
+            greedyTaskResults
+        )
+        resultsTable.add_row(
+            "Average",
+            f"{averageTime:.2f}",
+            f"{averageMemory:.2f}",
+        )
+
+        for i, result in enumerate(greedyTaskResults):
+            resultsTable.add_row(
+                f"{i+1}",
+                f"{result['time']:.2f}",
+                f"{result['memory']:.2f}",
+            )
+
+        console.print(resultsTable)
+
+    showResultsTable()
 
 
 def greedyTaskProveOptimality():
@@ -2014,6 +2056,7 @@ greedyTaskProveOptimalityButton.place(x=0, y=230)
 
 greedyTaskOrders = []
 greedyTaskShop = Shopkeeper([])
+greedyTaskResults = []
 
 
 #! ROBOTS TASK
@@ -2230,7 +2273,9 @@ def buildingsTaskSolve(
         res = arrangements.solveTask(int(buildingsCount))
     except:
         AlertPopup("Woah... That is too many buildings")
-        console.log("Failed to solve buildings arrangement due to maximum recursion depth exceeded")
+        console.log(
+            "Failed to solve buildings arrangement due to maximum recursion depth exceeded"
+        )
         return
     time.sleep(0.1)
     timeTaken = time.time() - startTimer
@@ -2242,10 +2287,10 @@ def buildingsTaskSolve(
     buildingsTaskResults.append(resultObject)
 
     def showResultsTable():
-        table = Table(title="Buildings Arrangements Results")
-        table.add_column("Iteration Number", style="white")
-        table.add_column("Time - [cyan]seconds[/]")
-        table.add_column("Memory - [cyan]bytes[/]")
+        resultsTable = Table(title="Buildings Arrangements Results")
+        resultsTable.add_column("Iteration Number", style="white")
+        resultsTable.add_column("Time - [cyan]seconds[/]")
+        resultsTable.add_column("Memory - [cyan]bytes[/]")
 
         averageTimes = []
         averageMemories = []
@@ -2256,16 +2301,16 @@ def buildingsTaskSolve(
 
         averageTime = sum(averageTimes) / len(averageTimes)
         averageMemory = sum(averageMemories) / len(averageMemories)
-        table.add_row("Average", f"{averageTime:.2f}", f"{averageMemory:.2f}")
+        resultsTable.add_row("Average", f"{averageTime:.2f}", f"{averageMemory:.2f}")
 
         for result in buildingsTaskResults:
-            table.add_row(
+            resultsTable.add_row(
                 f"{buildingsTaskResults.index(result) + 1}",
                 f"{result['time']:.2f}",
                 f"{result['memory']:.2f}",
             )
 
-        console.print(table)
+        console.print(resultsTable)
 
     showResultsTable()
 
