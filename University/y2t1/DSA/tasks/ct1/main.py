@@ -2302,7 +2302,9 @@ def buildingsTaskSolve(
         averageTime = sum(averageTimes) / len(averageTimes)
         averageMemory = sum(averageMemories) / len(averageMemories)
         resultsTable.add_row(
-            "[bold]Average[/]", f"[bold]{averageTime:.2f}[/]", f"[bold]{averageMemory:.2f}[/]"
+            "[bold]Average[/]",
+            f"[bold]{averageTime:.2f}[/]",
+            f"[bold]{averageMemory:.2f}[/]",
         )
 
         for result in buildingsTaskResults:
@@ -2530,7 +2532,9 @@ def bfsDemoStartBFS(sourceNode):
             bfsResults
         )
         resultsTable.add_row(
-            "[bold]Average[/]", f"[bold]{averageTime:.2f}[/]", f"[bold]{averageMemory:.2f}[/]"
+            "[bold]Average[/]",
+            f"[bold]{averageTime:.2f}[/]",
+            f"[bold]{averageMemory:.2f}[/]",
         )
 
         for i, result in enumerate(bfsResults):
@@ -3259,7 +3263,6 @@ class PathsGraph:
 
     def shortestPath(self, start, end):
         distances, nextNode = self.floydWarshall()
-        console.print(nextNode)
 
         if nextNode[start][end] is None:
             console.log("No path from {start} to {end} found")
@@ -3362,29 +3365,78 @@ def graphAlgosUpdateElementsContainer():
             text=edge,
         ).pack(padx=5, anchor="w")
 
+def graphAlgosShowResultsTable():
+    resultsTable = Table(title="Graph Shortest Path Algorithms Results")
+    resultsTable.add_column("Type", style="white")
+    resultsTable.add_column("Time - [cyan]seconds[/]")
+    resultsTable.add_column("Memory - [cyan]bytes[/]")
+
+    eachTypeCount = {result["type"]: 0 for result in graphAlgosResults}
+    averageTimes = {result["type"]: 0 for result in graphAlgosResults}
+    averageMemories = {result["type"]: 0 for result in graphAlgosResults}
+
+    for result in graphAlgosResults:
+        eachTypeCount[result["type"]] += 1
+        averageTimes[result["type"]] += result["time"]
+        averageMemories[result["type"]] += result["memory"]
+
+    for type in eachTypeCount:
+        averageTimes[type] /= eachTypeCount[type]
+        averageMemories[type] /= eachTypeCount[type]
+
+    for type in eachTypeCount:
+        resultsTable.add_row(
+            type,
+            f"{averageTimes[type]:.2f}",
+            f"{averageMemories[type]:.2f}",
+        )
+    console.print(resultsTable)
 
 def graphAlgosPerformDijkstra(start, end):
+    startTimer = time.time()
     shortestPath = graphAlgosGraphObject.dijkstra(start, end)
-    if not shortestPath:
-        AlertPopup(f"No Path from {start} to {end} Found")
-    else:
-        graphAlgosGraphObject.drawGraph(shortestPath)
+    time.sleep(0.1)
+    timeTaken = time.time() - startTimer
+    memoryTaken = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
+
+    AlertPopup(
+        f"No Path from {start} to {end} Found"
+    ) if not shortestPath else graphAlgosGraphObject.drawGraph(shortestPath)
+    console.log(f"Executed Dijkstra, took {timeTaken:.2f} seconds")
+
+    resultObject = {"type": "Dijkstra", "time": timeTaken, "memory": memoryTaken}
+    graphAlgosResults.append(resultObject)
+    graphAlgosShowResultsTable()
 
 
 def graphAlgosPerformBellmanFord(start, end):
+    startTimer= time.time()
     shortestPath = graphAlgosGraphObject.bellmanFord(start, end)
-    if not shortestPath:
-        AlertPopup(f"No Path from {start} to {end} Found")
-    else:
-        graphAlgosGraphObject.drawGraph(shortestPath)
+    time.sleep(0.1)
+    timeTaken = time.time() - startTimer
+    memoryTaken= psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
+    
+    AlertPopup(f"No Path from {start} to {end} Found") if not shortestPath else graphAlgosGraphObject.drawGraph(shortestPath)
+    console.log(f"Executed BellmanFord, took {timeTaken:.2f} seconds")
+    
+    resultObject = {"type": "Bellman-Ford", "time": timeTaken, "memory": memoryTaken}
+    graphAlgosResults.append(resultObject)
+    graphAlgosShowResultsTable()
 
 
 def graphAlgosPerformFordWarshall(start, end):
+    startTimer= time.time()
     shortestPath = graphAlgosGraphObject.shortestPath(start, end)
-    if not shortestPath:
-        AlertPopup(f"No Path from {start} to {end} Found")
-    else:
-        graphAlgosGraphObject.drawGraph(shortestPath)
+    time.sleep(0.1)
+    timeTaken = time.time() - startTimer
+    memoryTaken= psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
+
+    AlertPopup(f"No Path from {start} to {end} Found") if not shortestPath else graphAlgosGraphObject.drawGraph(shortestPath)
+    console.log(f"Executed FordWarshall, took {timeTaken:.2f} seconds")
+    
+    resultObject = {"type": "Ford-Warshall", "time": timeTaken, "memory": memoryTaken}
+    graphAlgosResults.append(resultObject)
+    graphAlgosShowResultsTable()
 
 
 graphAlgosElementsContainer = CTkScrollableFrame(
@@ -3539,6 +3591,7 @@ graphAlgosPerformFordWarshallButton = CTkButton(
 graphAlgosPerformFordWarshallButton.place(x=305, y=240)
 
 graphAlgosGraphObject = None
+graphAlgosResults = []
 
 
 #! PROJECT MINIMAL TIMES
