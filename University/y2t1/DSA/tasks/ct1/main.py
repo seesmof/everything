@@ -655,6 +655,7 @@ def heapTaskShowResults():
         resultsString += currentDisease
 
     AlertPopup(resultsString)
+    console.log("Heap Sort Task Completed")
 
 
 heapTaskLoadEmployeesDataHeading = CTkLabel(
@@ -3365,6 +3366,7 @@ def graphAlgosUpdateElementsContainer():
             text=edge,
         ).pack(padx=5, anchor="w")
 
+
 def graphAlgosShowResultsTable():
     resultsTable = Table(title="Graph Shortest Path Algorithms Results")
     resultsTable.add_column("Type", style="white")
@@ -3392,6 +3394,7 @@ def graphAlgosShowResultsTable():
         )
     console.print(resultsTable)
 
+
 def graphAlgosPerformDijkstra(start, end):
     startTimer = time.time()
     shortestPath = graphAlgosGraphObject.dijkstra(start, end)
@@ -3410,30 +3413,34 @@ def graphAlgosPerformDijkstra(start, end):
 
 
 def graphAlgosPerformBellmanFord(start, end):
-    startTimer= time.time()
+    startTimer = time.time()
     shortestPath = graphAlgosGraphObject.bellmanFord(start, end)
     time.sleep(0.1)
     timeTaken = time.time() - startTimer
-    memoryTaken= psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
-    
-    AlertPopup(f"No Path from {start} to {end} Found") if not shortestPath else graphAlgosGraphObject.drawGraph(shortestPath)
+    memoryTaken = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
+
+    AlertPopup(
+        f"No Path from {start} to {end} Found"
+    ) if not shortestPath else graphAlgosGraphObject.drawGraph(shortestPath)
     console.log(f"Executed BellmanFord, took {timeTaken:.2f} seconds")
-    
+
     resultObject = {"type": "Bellman-Ford", "time": timeTaken, "memory": memoryTaken}
     graphAlgosResults.append(resultObject)
     graphAlgosShowResultsTable()
 
 
 def graphAlgosPerformFordWarshall(start, end):
-    startTimer= time.time()
+    startTimer = time.time()
     shortestPath = graphAlgosGraphObject.shortestPath(start, end)
     time.sleep(0.1)
     timeTaken = time.time() - startTimer
-    memoryTaken= psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
+    memoryTaken = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
 
-    AlertPopup(f"No Path from {start} to {end} Found") if not shortestPath else graphAlgosGraphObject.drawGraph(shortestPath)
+    AlertPopup(
+        f"No Path from {start} to {end} Found"
+    ) if not shortestPath else graphAlgosGraphObject.drawGraph(shortestPath)
     console.log(f"Executed FordWarshall, took {timeTaken:.2f} seconds")
-    
+
     resultObject = {"type": "Ford-Warshall", "time": timeTaken, "memory": memoryTaken}
     graphAlgosResults.append(resultObject)
     graphAlgosShowResultsTable()
