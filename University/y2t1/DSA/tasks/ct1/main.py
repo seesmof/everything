@@ -1910,8 +1910,8 @@ def greedyTaskPlaceOrder(order):
         )
         resultsTable.add_row(
             "[bold]Average[/]",
-            f"{averageTime:.2f}",
-            f"{averageMemory:.2f}",
+            f"[bold]{averageTime:.2f}[/]",
+            f"[bold]{averageMemory:.2f}[/]",
         )
 
         for i, result in enumerate(greedyTaskResults):
@@ -2122,8 +2122,8 @@ def solveRobotsTask(robotsCount, speeds, groupsCount):
         averageMemory = sum(averageMemories) / len(averageMemories)
         resultsTable.add_row(
             "[bold]Average[/]",
-            f"{averageTime:.2f}",
-            f"{averageMemory:.2f}",
+            f"[bold]{averageTime:.2f}[/]",
+            f"[bold]{averageMemory:.2f}[/]",
         )
 
         for result in robotsTaskResults:
@@ -2302,7 +2302,7 @@ def buildingsTaskSolve(
         averageTime = sum(averageTimes) / len(averageTimes)
         averageMemory = sum(averageMemories) / len(averageMemories)
         resultsTable.add_row(
-            "[bold]Average[/]", f"{averageTime:.2f}", f"{averageMemory:.2f}"
+            "[bold]Average[/]", f"[bold]{averageTime:.2f}[/]", f"[bold]{averageMemory:.2f}[/]"
         )
 
         for result in buildingsTaskResults:
@@ -2530,7 +2530,7 @@ def bfsDemoStartBFS(sourceNode):
             bfsResults
         )
         resultsTable.add_row(
-            "[bold]Average[/]", f"{averageTime:.2f}", f"{averageMemory:.2f}"
+            "[bold]Average[/]", f"[bold]{averageTime:.2f}[/]", f"[bold]{averageMemory:.2f}[/]"
         )
 
         for i, result in enumerate(bfsResults):
@@ -2676,12 +2676,47 @@ def dfsDemoStartDFS(source):
     if not DFSGraphObject:
         AlertPopup("Load Graph Edges first")
 
+    global dfsResults
+    startTimer = time.time()
     visited = DFSGraphObject.DFS(source)
+    time.sleep(0.1)
+    timeTaken = time.time() - startTimer
+    memoryTaken = psutil.Process(os.getpid()).memory_info().rss / 1024 / 1024
     nodesList = ", ".join(map(str, visited))
 
     AlertPopup(
         f"DFS from node {source} visited {len(visited)} nodes\nFormed tree: {nodesList}"
     )
+    console.log(f"Executed DFS, took {timeTaken:.2f} seconds")
+
+    resultObject = {"time": timeTaken, "memory": memoryTaken}
+    dfsResults.append(resultObject)
+
+    def showResultsTable():
+        resultsTable = Table(title="DFS Results")
+        resultsTable.add_column("Iteration Number", style="white")
+        resultsTable.add_column("Time - [cyan]seconds[/]")
+        resultsTable.add_column("Memory - [cyan]bytes[/]")
+
+        averageTime = sum([result["time"] for result in dfsResults]) / len(dfsResults)
+        averageMemory = sum([result["memory"] for result in dfsResults]) / len(
+            dfsResults
+        )
+        resultsTable.add_row(
+            "[bold]Average[/]",
+            f"[bold]{averageTime:.2f}[/]",
+            f"[bold]{averageMemory:.2f}[/]",
+        )
+
+        for i, result in enumerate(dfsResults):
+            resultsTable.add_row(
+                f"{i+1}",
+                f"{result['time']:.2f}",
+                f"{result['memory']:.2f}",
+            )
+        console.print(resultsTable)
+
+    showResultsTable()
 
 
 dfsEdgesContainer = CTkScrollableFrame(dfsTab, width=240, height=270)
@@ -2754,6 +2789,7 @@ dfsDemoSetInitialNodeButton = CTkButton(
 dfsDemoSetInitialNodeButton.place(x=185, y=100)
 
 DFSGraphObject = None
+dfsResults = []
 
 
 #! SUM OF PATHS
