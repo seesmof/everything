@@ -1,5 +1,4 @@
 from rich.console import Console
-import re
 import json
 
 console = Console()
@@ -14,23 +13,40 @@ def solve(fileName):
 
     lines = loadLines()
     res = 0
+    validDigits = {
+        "one": "1",
+        "two": "2",
+        "three": "3",
+        "four": "4",
+        "five": "5",
+        "six": "6",
+        "seven": "7",
+        "eight": "8",
+        "nine": "9",
+    }
+    console.print(f"{'nine' in validDigits}")
 
     def countLineValue(line):
         digits = []
         for c in line:
-            if c.isdigit():
-                digits.append(c)
+            digits.append(c) if c.isdigit() else None
+        for possibleValue in validDigits:
+            console.print(f"{possibleValue} in validDigits: {possibleValue in line}")
+            if possibleValue in validDigits:
+                digits.append(validDigits[possibleValue])
         value = int(digits[0] + digits[-1])
         return value
 
     for line in lines:
         value = countLineValue(line)
+        console.print(f"Value: {value}")
         res += value
 
     return res
 
 
-availableFiles = ["input.txt", "hoax.txt"]
+# availableFiles = ["input.txt", "hoax.txt"]
+availableFiles = ["hoax.txt"]
 results = []
 for file in availableFiles:
     resultObject = {

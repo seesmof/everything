@@ -1,10 +1,6 @@
 [
   {
-    "file": "input.txt",
-    "result": 54605
-  },
-  {
     "file": "hoax.txt",
-    "result": 142
+    "result": 175
   }
 ]
