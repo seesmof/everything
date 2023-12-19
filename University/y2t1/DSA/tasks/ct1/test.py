@@ -16,4 +16,6 @@ consoleTheme = Theme(
 )
 console = Console(theme=consoleTheme)
 
-table = Table(title="Data Structures and Algorithms")
+console.print("[pink1]Hey Barbie[/]")
+console.print("[thistle1]Hey Ken[/]")
+console.print("[red1]Hey Marcus[/]")

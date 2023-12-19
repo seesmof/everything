@@ -3432,7 +3432,7 @@ def graphAlgosPerformBellmanFord(start, end):
     graphAlgosShowResultsTable()
 
 
-def graphAlgosPerformFordWarshall(start, end):
+def graphAlgosPerformFloydWarshall(start, end):
     startTimer = time.time()
     shortestPath = graphAlgosGraphObject.shortestPath(start, end)
     time.sleep(0.1)
@@ -3442,9 +3442,9 @@ def graphAlgosPerformFordWarshall(start, end):
     AlertPopup(
         f"No Path from {start} to {end} Found"
     ) if not shortestPath else graphAlgosGraphObject.drawGraph(shortestPath)
-    console.log(f"Executed FordWarshall, took {timeTaken:.2f} seconds")
+    console.log(f"Executed FloydWarshall, took {timeTaken:.2f} seconds")
 
-    resultObject = {"type": "Ford-Warshall", "time": timeTaken, "memory": memoryTaken}
+    resultObject = {"type": "Floyd-Warshall", "time": timeTaken, "memory": memoryTaken}
     graphAlgosResults.append(resultObject)
     graphAlgosShowResultsTable()
 
@@ -3567,22 +3567,22 @@ graphAlgosPerformBellmanFordButton = CTkButton(
 )
 graphAlgosPerformBellmanFordButton.place(x=305, y=170)
 
-graphAlgosPerformFordWarshallHeading = CTkLabel(
-    graphPathAlogsTab, text="Perform Ford Warshall", font=("Arial", 14, "bold")
+graphAlgosPerformFloydWarshallHeading = CTkLabel(
+    graphPathAlogsTab, text="Perform Floyd Warshall", font=("Arial", 14, "bold")
 )
-graphAlgosPerformFordWarshallHeading.place(x=0, y=210)
+graphAlgosPerformFloydWarshallHeading.place(x=0, y=210)
 
-graphAlgosPerformFordWarshallStart = CTkEntry(
+graphAlgosPerformFloydWarshallStart = CTkEntry(
     graphPathAlogsTab, width=145, placeholder_text="Start Point"
 )
-graphAlgosPerformFordWarshallStart.place(x=0, y=240)
+graphAlgosPerformFloydWarshallStart.place(x=0, y=240)
 
-graphAlgosPerformFordWarshallEnd = CTkEntry(
+graphAlgosPerformFloydWarshallEnd = CTkEntry(
     graphPathAlogsTab, width=145, placeholder_text="End Point"
 )
-graphAlgosPerformFordWarshallEnd.place(x=150, y=240)
+graphAlgosPerformFloydWarshallEnd.place(x=150, y=240)
 
-graphAlgosPerformFordWarshallButton = CTkButton(
+graphAlgosPerformFloydWarshallButton = CTkButton(
     graphPathAlogsTab,
     text="Run",
     width=60,
@@ -3590,15 +3590,15 @@ graphAlgosPerformFordWarshallButton = CTkButton(
     hover_color="#0D47A1",
     text_color="white",
     font=("Arial", 12, "bold"),
-    command=lambda: graphAlgosPerformFordWarshall(
-        int(graphAlgosPerformFordWarshallStart.get()),
-        int(graphAlgosPerformFordWarshallEnd.get()),
+    command=lambda: graphAlgosPerformFloydWarshall(
+        int(graphAlgosPerformFloydWarshallStart.get()),
+        int(graphAlgosPerformFloydWarshallEnd.get()),
     )
-    if graphAlgosPerformFordWarshallStart.get()
-    and graphAlgosPerformFordWarshallEnd.get()
+    if graphAlgosPerformFloydWarshallStart.get()
+    and graphAlgosPerformFloydWarshallEnd.get()
     else AlertPopup("Please Enter Start and End Points"),
 )
-graphAlgosPerformFordWarshallButton.place(x=305, y=240)
+graphAlgosPerformFloydWarshallButton.place(x=305, y=240)
 
 graphAlgosGraphObject = None
 graphAlgosResults = []
@@ -3687,9 +3687,9 @@ def minimalTaskTimesUpdateElementsContainer():
         ).pack(padx=5, anchor="w")
 
 
-def minimalTaskTimesLoadGraph(fileName, isDirected):
+def minimalTaskTimesLoadGraph(fileName):
     global minimalTaskTimesGraphObject
-    minimalTaskTimesGraphObject = TasksGraph(isDirected)
+    minimalTaskTimesGraphObject = TasksGraph(True)
     with open(fileName, "r") as file:
         for line in file:
             try:
@@ -3734,20 +3734,12 @@ minimalTaskTimesLoadGraphHeading = CTkLabel(
 )
 minimalTaskTimesLoadGraphHeading.place(x=0, y=0)
 
-minimalTaskTimesIsDirected = CTkCheckBox(
-    graphProjectTimesTab,
-    text="Is Directed?",
-    onvalue=True,
-    offvalue=False,
-)
-minimalTaskTimesIsDirected.place(x=0, y=30)
-
 minimalTaskTimesLoadGraphInput = CTkEntry(
     graphProjectTimesTab,
-    width=180,
+    width=300,
     placeholder_text="Graph File Path...",
 )
-minimalTaskTimesLoadGraphInput.place(x=120, y=30)
+minimalTaskTimesLoadGraphInput.place(x=0, y=30)
 
 minimalTaskTimesLoadGraphButton = CTkButton(
     graphProjectTimesTab,
@@ -3757,9 +3749,7 @@ minimalTaskTimesLoadGraphButton = CTkButton(
     hover_color="#0D47A1",
     text_color="white",
     font=("Arial", 12, "bold"),
-    command=lambda: minimalTaskTimesLoadGraph(
-        minimalTaskTimesLoadGraphInput.get(), minimalTaskTimesIsDirected.get()
-    )
+    command=lambda: minimalTaskTimesLoadGraph(minimalTaskTimesLoadGraphInput.get())
     if minimalTaskTimesLoadGraphInput.get()
     else AlertPopup("Please Enter Graph File Path"),
 )

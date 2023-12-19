@@ -472,20 +472,24 @@ B-дерева, з іншого боку, є типом самобалансую
 
 ## Алгоритми роботи з графами
 
-### Graph Traversal Algorithms
+### Алгоритми обходу графа
 
-Graph traversal algorithms are designed to visit every node of a graph once. The two most common types of traversals are Breadth-First Search (BFS) and Depth-First Search (DFS). These algorithms are used in numerous applications, including network routing, social network analysis, and many others.
+Алгоритми обходу графів призначені для відвідування кожної вершини графа один раз. Два найпоширеніші типи обходів - це пошук в ширину (BFS) та пошук в глибину (DFS). Ці алгоритми використовуються в багатьох застосунках, включаючи мережеву маршрутизацію, аналіз соціальних мереж та багато інших.
 
-In the BFS algorithm, we start from a chosen node (usually the root) and visit all its adjacent nodes. Then, for each of those nearest nodes, we visit their unvisited neighbors, and so on, until we visit every node in the graph. The BFS algorithm uses a queue data structure to keep track of the nodes to visit.
+В алгоритмі BFS ми починаємо з обраної вершини (зазвичай кореневої) і відвідуємо всі сусідні з нею вершини. Потім для кожної з цих найближчих вершин ми відвідуємо їхніх невідвіданих сусідів, і так далі, поки не відвідаємо кожну вершину графа. Алгоритм BFS використовує структуру даних у вигляді черги для відстеження вершин, які потрібно відвідати.
 
-DFS is another graph traversal algorithm that visits every node of a graph. In DFS, we start from a chosen node, then go as far as possible along each path before backtracking. DFS uses a stack to remember to get the next vertex to start a search when a dead end occurs in any iteration.
+DFS - ще один алгоритм обходу графа, який відвідує кожну вершину графа. У DFS ми починаємо з обраної вершини, потім проходимо якомога далі вздовж кожного шляху, перш ніж повернутися назад. DFS використовує стек, щоб не забути почати пошук з наступної вершини, коли на будь-якій ітерації виникає глухий кут.
 
-For the individual tasks, we implemented these algorithms in Python, visualizing the process using a GUI. The software allowed the user to input a graph, and it would display the graph before and after applying the BFS or DFS algorithm. The results showed that these algorithms were able to traverse the graph efficiently.
+Для окремих завдань ми реалізували ці алгоритми на Python, візуалізуючи процес за допомогою графічного інтерфейсу. Програма дозволяла користувачеві вводити граф, і вона відображала граф до і після застосування алгоритму BFS або DFS. Результати показали, що ці алгоритми здатні ефективно обходити граф.
 
-### Shortest Path Search Algorithms
+Фрагменти коду та результати виконання індивідуальних завдань наведено нижче у вигляді знімків з екрану.
 
-Shortest path search algorithms are designed to find the shortest path between two nodes in a graph. The most common algorithms for this purpose are Dijkstra's algorithm, the Bellman-Ford algorithm, and the Floyd-Warshall algorithm.
+### Алгоритми пошуку найкоротшого шляху
 
-Dijkstra's algorithm works by creating a tree of shortest paths from the starting vertex to all other points in the graph. The Bellman-Ford algorithm works by iteratively relaxing the edges of the graph, which gradually leads to the discovery of the shortest path. The Floyd-Warshall algorithm works by breaking the problem down into smaller subproblems, which are then solved in a bottom-up manner.
+Алгоритми пошуку найкоротшого шляху призначені для пошуку найкоротшого шляху між двома вершинами графа. Найпоширенішими алгоритмами для цієї мети є алгоритм Дейкстри, алгоритм Беллмана-Форда та алгоритм Флойда-Уоршалла.
 
-For the individual tasks, we implemented these algorithms in Python, visualizing the process using a GUI. The software allowed the user to input a graph, and it would display the graph before and after applying the shortest path algorithm. The results showed that these algorithms were able to find the shortest path efficiently.
+Алгоритм Дейкстри працює шляхом створення дерева найкоротших шляхів від початкової вершини до всіх інших точок графа. Алгоритм Беллмана-Форда працює шляхом ітеративного розслаблення ребер графа, що поступово призводить до знаходження найкоротшого шляху. Алгоритм Флойда-Уоршалла працює шляхом розбиття задачі на менші підзадачі, які потім вирішуються за принципом "знизу вгору".
+
+Для окремих завдань ми реалізували ці алгоритми мовою Python, візуалізуючи процес за допомогою графічного інтерфейсу. Програма дозволяла користувачеві вводити граф, і вона відображала граф до і після застосування алгоритму найкоротшого шляху. Результати показали, що ці алгоритми здатні ефективно знаходити найкоротший шлях.
+
+Фрагменти коду та результати виконання індивідуальних завдань наведено нижче у вигляді знімків з екрану.
