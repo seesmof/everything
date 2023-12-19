@@ -4,6 +4,7 @@ from rich.console import Console
 from rich.table import Table
 from rich.traceback import install
 from rich.markdown import Markdown as md
+from modules.ui import importantInfo
 
 install()
 console = Console()
@@ -44,11 +45,6 @@ app.geometry("600x400")
 app.title("Python GUI")
 app.bind("<Escape>", closeApp)
 
-rootTabsContainer = CTkTabview(app)
-rootTabsContainer.pack(fill="both", expand=True)
-
-rootTabsContainer.add("Chat")
-rootTabsContainer.add("Statistics")
-rootTabsContainer.add("Settings")
+AlertPopup(importantInfo)
 
 app.mainloop()
