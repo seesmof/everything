@@ -17,28 +17,28 @@ consoleTheme = Theme(
 console = Console(theme=consoleTheme)
 
 
-def prodArrExceptSelf(arr: [int]) -> [int]:
-    res = []
-    arraysWithoutSelves = {index: [] for index in range(len(arr))}
-
-    for index, item in enumerate(arr):
-        arrayWithoutCurrent = arr.copy()
-        arrayWithoutCurrent.pop(index)
-        arraysWithoutSelves[index] = arrayWithoutCurrent
-
-    for index, arrayWithoutCurrent in arraysWithoutSelves.items():
-        currentProduct = 1
-        for number in arrayWithoutCurrent:
-            currentProduct *= number
-        res.append(currentProduct)
-
-    return res
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
 
-arr = [1, 2, 3, 4]
-res = prodArrExceptSelf(arr)
-console.print(res, res == [24, 12, 8, 6])
+def reverseList(head: [ListNode]) -> [ListNode]:
+    if len(head) == 0:
+        return head
 
-arr = [-1, 1, 0, -3, 3]
-res = prodArrExceptSelf(arr)
-console.print(res, res == [0, 0, 9, 0, 0])
+    prev = None
+    curr = head
+
+    while curr:
+        next = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next
+
+    return prev
+
+
+head = [1, 2, 3, 4, 5]
+res = reverseList(head)
+console.print(res, res == [5, 4, 3, 2, 1])
