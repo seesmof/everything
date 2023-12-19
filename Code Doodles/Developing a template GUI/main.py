@@ -1,9 +1,9 @@
+from customtkinter import *
 from rich import print
 from rich.console import Console
 from rich.table import Table
 from rich.traceback import install
 from rich.markdown import Markdown as md
-from customtkinter import *
 
 install()
 console = Console()
@@ -18,18 +18,16 @@ class AlertPopup(CTkToplevel):
         self.title(title)
 
         infoLabel = CTkLabel(self, text=message)
-        infoLabel.pack(padx=6, pady=3)
+        infoLabel.pack(padx=8, pady=8, anchor="center")
 
         dismissButton = CTkButton(
             self,
             text="Okay",
             command=self.destroy,
-            text_color="#fff",
-            fg_color="#5A4FCF",
-            hover_color="#3F33BD",
             font=("Arial", 12, "bold"),
+            width=60,
         )
-        dismissButton.pack(padx=6, pady=3)
+        dismissButton.pack(padx=8, pady=8, anchor="e")
 
         self.bind("<Escape>", self.closePopup)
 
@@ -44,14 +42,13 @@ def closeApp(event):
 app = CTk()
 app.geometry("600x400")
 app.title("Python GUI")
-app.resizable(False, False)
 app.bind("<Escape>", closeApp)
 
-appColorTheme = {
-    "primary": "#5A4FCF",
-    "primaryHover": "#3F33BD",
-}
+rootTabsContainer = CTkTabview(app)
+rootTabsContainer.pack(fill="both", expand=True)
 
-AlertPopup()
+rootTabsContainer.add("Chat")
+rootTabsContainer.add("Statistics")
+rootTabsContainer.add("Settings")
 
 app.mainloop()
