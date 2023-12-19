@@ -1,0 +1,10 @@
+[
+  {
+    "file": "input.txt",
+    "result": 14482432495
+  },
+  {
+    "file": "hoax.txt",
+    "result": 142
+  }
+]

@@ -48,3 +48,4 @@ app.bind("<Escape>", closeApp)
 AlertPopup(importantInfo)
 
 app.mainloop()
+ad
