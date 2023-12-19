@@ -10,10 +10,18 @@ from math import prod
 
 
 class Solution:
-    def productExceptSelf(self, nums: [int]) -> [int]:
-        ans = []
+    def productExceptSelf(self, arr: [int]) -> [int]:
+        res = []
 
-        return ans
+        for index, item in enumerate(arr):
+            arrayWithoutCurrent = [arr[j] for j in range(len(arr)) if j != index]
+
+            currentProduct = 1
+            for number in arrayWithoutCurrent:
+                currentProduct *= number
+            res.append(currentProduct)
+
+        return res
 
 
 # @lc code=end

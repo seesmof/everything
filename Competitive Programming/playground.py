@@ -1,37 +1,44 @@
-def maskPII(s: str) -> str:
-    if "@" in s:
-        email = s.split("@")
+from rich import print
+from rich.console import Console
+from rich.theme import Theme
+from rich.table import Table
+from rich.traceback import install
+from rich.markdown import Markdown as md
 
-        email[0] = email[0].lower()
-        email[1] = email[1].lower()
-
-        email[0] = email[0][0] + "*****" + email[0][-1]
-
-        email = "@".join(email)
-
-        return email
-    else:
-        separationChars = ["+", "-", "(", ")", " "]
-        phone = s
-
-        for char in separationChars:
-            phone = phone.replace(char, "")
-
-        phone = (
-            f"***-***-{phone[6:]}"
-            if len(phone) == 10
-            else f"+*-***-***-{phone[7:]}"
-            if len(phone) == 11
-            else f"+**-***-***-{phone[8:]}"
-            if len(phone) == 12
-            else f"+***-***-***-{phone[9:]}"
-        )
-
-        return phone
+install()
+consoleTheme = Theme(
+    {
+        "warning": "bold yellow",
+        "error": "bold red",
+        "success": "bold green",
+        "info": "bold blue",
+    }
+)
+console = Console(theme=consoleTheme)
 
 
-words = ["+1(234)567-890", "+38(068)00-77-147", "+132(758)61-73-222"]
+def prodArrExceptSelf(arr: [int]) -> [int]:
+    res = []
+    arraysWithoutSelves = {index: [] for index in range(len(arr))}
 
-for word in words:
-    res = maskPII(word)
-    print(f"{res}\n")
+    for index, item in enumerate(arr):
+        arrayWithoutCurrent = arr.copy()
+        arrayWithoutCurrent.pop(index)
+        arraysWithoutSelves[index] = arrayWithoutCurrent
+
+    for index, arrayWithoutCurrent in arraysWithoutSelves.items():
+        currentProduct = 1
+        for number in arrayWithoutCurrent:
+            currentProduct *= number
+        res.append(currentProduct)
+
+    return res
+
+
+arr = [1, 2, 3, 4]
+res = prodArrExceptSelf(arr)
+console.print(res, res == [24, 12, 8, 6])
+
+arr = [-1, 1, 0, -3, 3]
+res = prodArrExceptSelf(arr)
+console.print(res, res == [0, 0, 9, 0, 0])
