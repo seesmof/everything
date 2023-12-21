@@ -109,31 +109,32 @@ def getMostPopularWords(lines):
 
 
 def renderFromTextTab(root):
-    def updateMostPopularWords(words, mostPopularWordsFrame):
-        for widget in mostPopularWordsFrame.winfo_children():
-            widget.destroy()
+    def showMostPopularWords(data):
+        console.log(
+            f"Started calculating most popular words from a text with {len(data)} words..."
+        )
 
-        words = {
-            k: v
-            for k, v in sorted(words.items(), key=lambda item: item[1], reverse=True)
-        }
-        for word in words:
-            CTkLabel(
-                mostPopularWordsFrame,
-                text=f"{word}: {words[word]}",
-                font=("Arial", 12),
-            ).pack(padx=5, anchor="w")
+        lines, _ = removeWhiteSpace(data)
+        mostPopularWords = getMostPopularWords(lines)
+        mostPopularWords = sorted(
+            mostPopularWords.items(), key=lambda x: x[1], reverse=True
+        )
+
+        resultsString = "Most popular words in a given text:\n"
+        for word in mostPopularWords:
+            resultsString += f"  - {word[0]}: {word[1]}\n"
+        AlertPopup(resultsString)
+
+        console.log(f"Calculated {len(mostPopularWords)} most popular words")
 
     def performCalculations(data):
         lines, linesCount = removeWhiteSpace(data)
         symbolsCount = countSymbols(lines)
         wordsCount = countWords(lines)
-        mostPopularWords = getMostPopularWords(lines[:40])
 
         resultsLines.configure(text=f"Lines: {linesCount}")
         resultsSymbols.configure(text=f"Symbols: {symbolsCount}")
         resultsWords.configure(text=f"Words: {wordsCount}")
-        updateMostPopularWords(mostPopularWords, mostPopularWordsTable)
 
     getTextHeading = CTkLabel(
         root, text="Enter text you want to count words in", font=("Arial", 14, "bold")
@@ -156,15 +157,14 @@ def renderFromTextTab(root):
     resultsWords = CTkLabel(root, text="", font=("Arial", 13))
     resultsWords.place(x=240, y=190)
 
-    mostPopularWordsTable = CTkScrollableFrame(
+    showMostPopularWordsButton = CTkButton(
         root,
-        width=335,
-        border_color="#333333",
-        border_width=2,
-        label_text="Most popular words",
-        label_font=("Arial", 12, "bold"),
+        text="Show Most Popular Words (Might Take Some Time)",
+        font=("Arial", 12, "bold"),
+        command=lambda: showMostPopularWords(getTextInput.get("0.0", "end")),
+        width=360,
     )
-    mostPopularWordsTable.place(x=0, y=230)
+    showMostPopularWordsButton.place(x=0, y=220)
 
 
 renderFromTextTab(fromTextTab)
