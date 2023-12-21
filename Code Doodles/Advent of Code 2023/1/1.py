@@ -24,16 +24,12 @@ def solve(fileName):
         "eight": "8",
         "nine": "9",
     }
-    console.print(f"{'nine' in validDigits}")
 
     def countLineValue(line):
         digits = []
         for c in line:
             digits.append(c) if c.isdigit() else None
-        for possibleValue in validDigits:
-            console.print(f"{possibleValue} in validDigits: {possibleValue in line}")
-            if possibleValue in validDigits:
-                digits.append(validDigits[possibleValue])
+        console.print(f"Digits: {digits}")
         value = int(digits[0] + digits[-1])
         return value
 

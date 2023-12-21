@@ -9,9 +9,14 @@ with open("input.txt") as f:
 ans = 0
 for line in lines:
     digits = []
-    for c in line:
+    for i, c in enumerate(line):
         if c.isdigit():
             digits.append(c)
+        for d, val in enumerate(
+            ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+        ):
+            if line[i:].startswith(val):
+                digits.append(str(d + 1))
     value = int(digits[0] + digits[-1])
     ans += value
 console.print(ans)
