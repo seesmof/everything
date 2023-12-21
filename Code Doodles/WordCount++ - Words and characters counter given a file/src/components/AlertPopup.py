@@ -21,6 +21,8 @@ class AlertPopup(CTkToplevel):
         )
         dismissButton.pack(padx=8, pady=8, anchor="e")
 
+        self.grab_set()
+        self.lift()
         self.bind("<Escape>", self.closePopup)
 
     def closePopup(self, event):
