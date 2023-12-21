@@ -53,6 +53,13 @@ def showMostPopularWords(data):
         f"Started calculating most popular words from a text with {len(data)} words..."
     )
 
+    # TODO read below and implement
+    # have a new window open where we would have a scrollable frame
+    # in the scrollable frame we would write all our popular words
+    # we will write from a list of custom objects from a class, that would have a word and a count
+    # each object would have a string representation
+    # or we could actually even have a class that would wrap our words container and do all the operations on them, not sure yet
+
     lines, _ = countLines(data)
     mostPopularWords = getMostPopularWords(lines)
     mostPopularWords = sorted(
@@ -100,38 +107,69 @@ def renderInputSection(root):
     return getTextHeading, getTextInput
 
 
-def renderMainTab(root):
-    getTextHeading, getTextInput = renderInputSection(root)
-
-    # todo show popular words as top level component with a scrollable frame
-
+def renderResultsSection(root):
     resultsHeading = CTkLabel(root, text="Text Results", font=("Arial", 14, "bold"))
-    resultsHeading.place(x=0, y=190)
-
     resultsLines = CTkLabel(root, text="No lines found", font=("Arial", 13))
-    resultsLines.place(x=0, y=215)
-
     resultsSymbols = CTkLabel(root, text="No symbols found", font=("Arial", 13))
-    resultsSymbols.place(x=0, y=235)
-
     resultsWords = CTkLabel(root, text="No words found", font=("Arial", 13))
+
+    resultsHeading.place(x=0, y=190)
+    resultsLines.place(x=0, y=215)
+    resultsSymbols.place(x=0, y=235)
     resultsWords.place(x=0, y=255)
 
+    return resultsHeading, resultsLines, resultsSymbols, resultsWords
+
+
+def renderButtonsSection(root):
     interactWithTextHeading = CTkLabel(
         root,
         text="Text Interactions",
         font=("Arial", 14, "bold"),
     )
-    interactWithTextHeading.place(x=180, y=190)
-
     showMostPopularWordsButton = CTkButton(
         root,
         text="Show Popular Words",
         font=("Arial", 12, "bold"),
-        command=lambda: showMostPopularWords(getTextInput.get("0.0", "end")),
     )
-    showMostPopularWordsButton.place(x=180, y=220)
+    loadTextFromFileButton = CTkButton(
+        root,
+        text="Load Text From File",
+        font=("Arial", 12, "bold"),
+    )
+    saveTextToFileButton = CTkButton(
+        root,
+        text="Save Text To File",
+        font=("Arial", 12, "bold"),
+    )
 
+    interactWithTextHeading.place(x=210, y=190)
+    showMostPopularWordsButton.place(x=210, y=220)
+    loadTextFromFileButton.place(x=210, y=260)
+    saveTextToFileButton.place(x=210, y=300)
+
+    return interactWithTextHeading, showMostPopularWordsButton, loadTextFromFileButton
+
+
+def renderMainTab(root):
+    getTextHeading, getTextInput = renderInputSection(root)
+
+    resultsHeading, resultsLines, resultsSymbols, resultsWords = renderResultsSection(
+        root
+    )
+
+    (
+        interactWithTextHeading,
+        showMostPopularWordsButton,
+        loadTextFromFileButton,
+    ) = renderButtonsSection(root)
+
+    showMostPopularWordsButton.configure(
+        command=lambda: showMostPopularWords(getTextInput.get("0.0", "end"))
+    )
+    loadTextFromFileButton.configure(
+        command=lambda: console.print("TODO: load text from file")
+    )
     getTextInput.bind(
         "<KeyRelease>",
         lambda event: updateMetrics(
@@ -140,22 +178,36 @@ def renderMainTab(root):
     )
 
 
-def main():
+def configureApp():
     app = CTk()
+
     app.geometry("380x560")
     app.resizable(False, False)
-    app.title("Count Words and Characters")
+    app.title("Word Counter App")
+
     app.bind("<Escape>", lambda event: closeApp(app, event=event))
     set_default_color_theme("dark-blue")
+    app.grab_set()
+    app.lift()
 
+    return app
+
+
+def configureTabsContainer(app):
     tabsContainer = CTkTabview(app)
     tabsContainer.add("Analyze Text")
     tabsContainer.pack(expand=True, fill="both")
 
+    return tabsContainer
+
+
+def main():
+    app = configureApp()
+
+    tabsContainer = configureTabsContainer(app)
     mainTab = tabsContainer.tab("Analyze Text")
 
     renderMainTab(mainTab)
-
     app.mainloop()
 
 
