@@ -5,7 +5,6 @@ from rich.traceback import install
 from rich.markdown import Markdown as md
 from customtkinter import *
 from collections import defaultdict
-import threading
 
 from components.AlertPopup import AlertPopup
 from util.main import *
@@ -38,7 +37,7 @@ def countWords(lines):
     return res
 
 
-def getMostPopularWords(lines):
+def getPopularWords(lines):
     words = defaultdict(int)
     for line in lines:
         wordsInLine = line.split(" ")
@@ -48,9 +47,9 @@ def getMostPopularWords(lines):
     return words
 
 
-def showMostPopularWords(data):
+def showPopularWords(text):
     console.log(
-        f"Started calculating most popular words from a text with {len(data)} words..."
+        f"Started calculating most popular words from a text with {len(text)} symbols..."
     )
 
     # TODO read below and implement
@@ -60,8 +59,8 @@ def showMostPopularWords(data):
     # each object would have a string representation
     # or we could actually even have a class that would wrap our words container and do all the operations on them, not sure yet
 
-    lines, _ = countLines(data)
-    mostPopularWords = getMostPopularWords(lines)
+    lines, _ = countLines(text)
+    mostPopularWords = getPopularWords(lines)
     mostPopularWords = sorted(
         mostPopularWords.items(), key=lambda x: x[1], reverse=True
     )
@@ -74,28 +73,30 @@ def showMostPopularWords(data):
     console.log(f"Calculated {len(mostPopularWords)} most popular words")
 
 
-def getCurrentMetrics(text):
+def getCurrentMetrics(text) -> tuple[int, int, int, int]:
     lines, linesCount = countLines(text)
     symbolsCount = countSymbols(lines)
     wordsCount = countWords(lines)
     return lines, linesCount, symbolsCount, wordsCount
 
 
-def updateMetrics(text, resultsLines, resultsSymbols, resultsWords):
-    lines, linesCount, symbolsCount, wordsCount = getCurrentMetrics(text)
+def updateMetrics(
+    text: str, linesHeading: CTkLabel, symbolsHeading: CTkLabel, wordsHeading: CTkLabel
+) -> None:
+    _, linesCount, symbolsCount, wordsCount = getCurrentMetrics(text)
 
-    resultsLines.configure(
+    linesHeading.configure(
         text=f"Lines: {linesCount}" if linesCount else "No lines found"
     )
-    resultsSymbols.configure(
+    symbolsHeading.configure(
         text=f"Symbols: {symbolsCount}" if symbolsCount else "No symbols found"
     )
-    resultsWords.configure(
+    wordsHeading.configure(
         text=f"Words: {wordsCount}" if wordsCount else "No words found"
     )
 
 
-def renderInputSection(root):
+def renderInputSection(root) -> tuple[CTkLabel, CTkTextbox]:
     getTextHeading = CTkLabel(
         root, text="Enter text you want to count words in", font=("Arial", 14, "bold")
     )
@@ -107,7 +108,7 @@ def renderInputSection(root):
     return getTextHeading, getTextInput
 
 
-def renderResultsSection(root):
+def renderResultsSection(root) -> tuple[CTkLabel, CTkLabel, CTkLabel, CTkLabel]:
     resultsHeading = CTkLabel(root, text="Text Results", font=("Arial", 14, "bold"))
     resultsLines = CTkLabel(root, text="No lines found", font=("Arial", 13))
     resultsSymbols = CTkLabel(root, text="No symbols found", font=("Arial", 13))
@@ -121,7 +122,7 @@ def renderResultsSection(root):
     return resultsHeading, resultsLines, resultsSymbols, resultsWords
 
 
-def renderButtonsSection(root):
+def renderButtonsSection(root) -> tuple[CTkLabel, CTkButton, CTkButton, CTkButton]:
     interactWithTextHeading = CTkLabel(
         root,
         text="Text Interactions",
@@ -151,7 +152,7 @@ def renderButtonsSection(root):
     return interactWithTextHeading, showMostPopularWordsButton, loadTextFromFileButton
 
 
-def renderMainTab(root):
+def renderMainTab(root) -> None:
     getTextHeading, getTextInput = renderInputSection(root)
 
     resultsHeading, resultsLines, resultsSymbols, resultsWords = renderResultsSection(
@@ -165,7 +166,7 @@ def renderMainTab(root):
     ) = renderButtonsSection(root)
 
     showMostPopularWordsButton.configure(
-        command=lambda: showMostPopularWords(getTextInput.get("0.0", "end"))
+        command=lambda: showPopularWords(getTextInput.get("0.0", "end"))
     )
     loadTextFromFileButton.configure(
         command=lambda: console.print("TODO: load text from file")
@@ -178,7 +179,7 @@ def renderMainTab(root):
     )
 
 
-def configureApp():
+def configureApp() -> CTk:
     app = CTk()
 
     app.geometry("380x560")
@@ -193,7 +194,7 @@ def configureApp():
     return app
 
 
-def configureTabsContainer(app):
+def configureTabsContainer(app: CTk) -> CTkTabview:
     tabsContainer = CTkTabview(app)
     tabsContainer.add("Analyze Text")
     tabsContainer.pack(expand=True, fill="both")
@@ -201,7 +202,7 @@ def configureTabsContainer(app):
     return tabsContainer
 
 
-def main():
+def main() -> None:
     app = configureApp()
 
     tabsContainer = configureTabsContainer(app)
