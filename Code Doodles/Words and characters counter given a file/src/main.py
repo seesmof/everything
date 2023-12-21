@@ -147,6 +147,7 @@ def renderFromTextTab(root):
         "<KeyRelease>",
         lambda event: performCalculations(getTextInput.get("0.0", "end")),
     )
+    # todo show popular words as top level component with a scrollable frame
 
     resultsLines = CTkLabel(root, text="", font=("Arial", 13))
     resultsLines.place(x=0, y=190)
