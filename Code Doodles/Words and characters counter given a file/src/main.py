@@ -13,7 +13,7 @@ console = Console()
 
 
 app = CTk()
-app.geometry("380x410")
+app.geometry("380x400")
 app.resizable(False, False)
 app.title("Count Words and Characters")
 app.bind("<Escape>", lambda event: closeApp(app, event=event))
@@ -51,29 +51,32 @@ def renderFromFileTab(root):
 renderFromFileTab(fromFileTab)
 
 
+def removeWhiteSpace(data):
+    lines = data.split("\n")
+    lines = [line for line in lines if line != ""]
+    return lines, len(lines)
+
+
+def countSymbols(lines):
+    res = 0
+    for line in lines:
+        symbolsInLine = 0
+        for char in line:
+            symbolsInLine += 1
+        res += symbolsInLine
+    return res
+
+
+def countWords(lines):
+    res = 0
+    for line in lines:
+        wordsInLine = line.split(" ")
+        res += len(wordsInLine)
+    return res
+
+
 def renderFromTextTab(root):
     def performCalculations(data):
-        def removeWhiteSpace(data):
-            lines = data.split("\n")
-            lines = [line for line in lines if line != ""]
-            return lines, len(lines)
-
-        def countSymbols(lines):
-            res = 0
-            for line in lines:
-                symbolsInLine = 0
-                for char in line:
-                    symbolsInLine += 1
-                res += symbolsInLine
-            return res
-
-        def countWords(lines):
-            res = 0
-            for line in lines:
-                wordsInLine = line.split(" ")
-                res += len(wordsInLine)
-            return res
-
         lines, linesCount = removeWhiteSpace(data)
         symbolsCount = countSymbols(lines)
         wordsCount = countWords(lines)
@@ -89,6 +92,10 @@ def renderFromTextTab(root):
 
     getTextInput = CTkTextbox(root, width=360, height=150)
     getTextInput.place(x=0, y=30)
+    getTextInput.bind(
+        "<KeyRelease>",
+        lambda event: performCalculations(getTextInput.get("0.0", "end")),
+    )
 
     performCountButton = CTkButton(
         root,
@@ -99,19 +106,14 @@ def renderFromTextTab(root):
     )
     performCountButton.place(x=0, y=190)
 
-    resultsHeading = CTkLabel(
-        root, text="The given text contains", font=("Arial", 14, "bold")
-    )
-    resultsHeading.place(x=0, y=230)
-
     resultsLines = CTkLabel(root, text="", font=("Arial", 13))
-    resultsLines.place(x=0, y=260)
+    resultsLines.place(x=0, y=230)
 
     resultsSymbols = CTkLabel(root, text="", font=("Arial", 13))
-    resultsSymbols.place(x=0, y=290)
+    resultsSymbols.place(x=0, y=260)
 
     resultsWords = CTkLabel(root, text="", font=("Arial", 13))
-    resultsWords.place(x=0, y=320)
+    resultsWords.place(x=0, y=290)
 
 
 renderFromTextTab(fromTextTab)
