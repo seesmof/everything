@@ -1,44 +1,32 @@
-from rich import print
+memo = {}
+
+
+def factorial(k):
+    if k < 2:
+        return 1
+    if k not in memo:
+        memo[k] = k * factorial(k - 1)
+    return memo[k]
+
+
+import time
 from rich.console import Console
-from rich.theme import Theme
-from rich.table import Table
 from rich.traceback import install
-from rich.markdown import Markdown as md
 
 install()
-consoleTheme = Theme(
-    {
-        "warning": "bold yellow",
-        "error": "bold red",
-        "success": "bold green",
-        "info": "bold blue",
-    }
-)
-console = Console(theme=consoleTheme)
+console = Console()
 
 
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+def testFactorial():
+    numbers = [500, 300, 400, 500, 300, 200, 400, 200]
+    results = {num: 0 for num in numbers}
+    for num in numbers:
+        startTimer = time.time()
+        factorial(num)
+        time.sleep(0.1)
+        timeTaken = time.time() - startTimer
+        results[num] = timeTaken
+        console.log(f"Time taken for {num} is {timeTaken}")
 
 
-def reverseList(head: [ListNode]) -> [ListNode]:
-    if len(head) == 0:
-        return head
-
-    prev = None
-    curr = head
-
-    while curr:
-        next = curr.next
-        curr.next = prev
-        prev = curr
-        curr = next
-
-    return prev
-
-
-head = [1, 2, 3, 4, 5]
-res = reverseList(head)
-console.print(res, res == [5, 4, 3, 2, 1])
+testFactorial()
