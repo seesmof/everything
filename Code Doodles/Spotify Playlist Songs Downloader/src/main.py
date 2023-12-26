@@ -1,13 +1,18 @@
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth
+
 import json
 from os import path
+
 from rich.console import Console
 from rich.traceback import install
 
 install()
 console = Console()
 
-REDIRECT_URL = "http://localhost:8888/"
+REDIRECT_URL = "https://example.com/callback"
 SCOPES = "playlist-read-private"
+TEST_PLAYLIST_URL = "https://open.spotify.com/playlist/3PSAwyWVPlYlhQLEpvCxJX"
 CLIENT_ID = None
 CLIENT_SECRET = None
 
@@ -16,19 +21,54 @@ def loadSpotifyData():
     fileName = "spotifyData.json"
     currentDir = path.dirname(path.abspath(__file__))
     relativePath = path.join(currentDir, "..", "data", fileName)
-    with open(relativePath, "r", encoding="utf-8") as f:
-        return json.load(f)
+    try:
+        with open(relativePath, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except:
+        return {"CLIENT_ID": None, "CLIENT_SECRET": None}
 
 
 def setSpotifyData():
-    data = loadSpotifyData()
+    data: dict = loadSpotifyData()
     global CLIENT_ID, CLIENT_SECRET
     CLIENT_ID = data["CLIENT_ID"]
     CLIENT_SECRET = data["CLIENT_SECRET"]
-    console.log("Spotify data loaded")
+
+    console.log(
+        "[green]Loaded Spotify data[/]"
+    ) if CLIENT_ID and CLIENT_SECRET else console.log(
+        "[red]Failed to load Spotify data[/]"
+    )
 
 
-setSpotifyData()
+def parsePlaylist(url: str):
+    spotifyClient = spotipy.Spotify(
+        auth_manager=SpotifyOAuth(
+            client_id=CLIENT_ID,
+            client_secret=CLIENT_SECRET,
+            redirect_uri=REDIRECT_URL,
+            scope=SCOPES,
+        )
+    )
+
+    playlistId = url.split("/")[-1]
+    try:
+        playlistData = spotifyClient.playlist(playlistId)
+    except:
+        console.log("[red]Failed to parse playlist[/]")
+        return None
+
+    tracks = []
+    for item in playlistData["tracks"]["items"]:
+        track = item["track"]
+        author, name = track["artists"][0]["name"], track["name"]
+        tracks.append((author, name))
+
+    console.log(f"[green]Parsed {len(tracks)} tracks[/]") if tracks else console.log(
+        "[red]Failed to parse tracks[/]"
+    )
+    return sorted(tracks)
+
 
 """
 1. get spotify playlist url input from user
@@ -38,4 +78,15 @@ setSpotifyData()
     - else, output an error and continue
 """
 
-# spotifyPlaylistUrl = input("Enter Spotify Playlist URL: ")
+
+def main():
+    setSpotifyData()
+
+    # spotifyPlaylistUrl = input("Enter Spotify Playlist URL: ")
+    spotifyPlaylistUrl = TEST_PLAYLIST_URL
+
+    listOfTracks = parsePlaylist(spotifyPlaylistUrl)
+
+
+if __name__ == "__main__":
+    main()
