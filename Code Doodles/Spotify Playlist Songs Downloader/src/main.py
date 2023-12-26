@@ -1,8 +1,13 @@
+from time import sleep
+import webbrowser
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
 import json
 from os import path
+
+import requests
+from bs4 import BeautifulSoup
 
 from rich.console import Console
 from rich.traceback import install
@@ -36,8 +41,8 @@ def setSpotifyData():
 
     console.log(
         "[green]Loaded Spotify data[/]"
-    ) if CLIENT_ID and CLIENT_SECRET else console.log(
-        "[red]Failed to load Spotify data[/]"
+        if CLIENT_ID and CLIENT_SECRET
+        else "[red]Failed to load Spotify data[/]"
     )
 
 
@@ -64,10 +69,21 @@ def parsePlaylist(url: str):
         author, name = track["artists"][0]["name"], track["name"]
         tracks.append((author, name))
 
-    console.log(f"[green]Parsed {len(tracks)} tracks[/]") if tracks else console.log(
-        "[red]Failed to parse tracks[/]"
+    console.log(
+        f"[green]Parsed {len(tracks)} tracks[/]"
+        if tracks
+        else "[red]Failed to parse tracks[/]"
     )
     return sorted(tracks)
+
+
+def lookForTracks(tracks):
+    for author, name in tracks:
+        convertedName = name.replace(" ", "+")
+        convertedAuthor = author.replace(" ", "+")
+        searchUrl = f"https://www.youtube.com/results?search_query={convertedAuthor}+{convertedName}"
+        webbrowser.open(searchUrl)
+        sleep(10)
 
 
 """
@@ -86,6 +102,7 @@ def main():
     spotifyPlaylistUrl = TEST_PLAYLIST_URL
 
     listOfTracks = parsePlaylist(spotifyPlaylistUrl)
+    lookForTracks(listOfTracks)
 
 
 if __name__ == "__main__":
