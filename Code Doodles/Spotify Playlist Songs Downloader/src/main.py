@@ -6,8 +6,7 @@ from spotipy.oauth2 import SpotifyOAuth
 import json
 from os import path
 
-import requests
-from bs4 import BeautifulSoup
+from seleniumbase import SB
 
 from rich.console import Console
 from rich.traceback import install
@@ -22,7 +21,7 @@ CLIENT_ID = None
 CLIENT_SECRET = None
 
 
-def loadSpotifyData():
+def loadVariables():
     fileName = "spotifyData.json"
     currentDir = path.dirname(path.abspath(__file__))
     relativePath = path.join(currentDir, "..", "data", fileName)
@@ -34,7 +33,7 @@ def loadSpotifyData():
 
 
 def setSpotifyData():
-    data: dict = loadSpotifyData()
+    data: dict = loadVariables()
     global CLIENT_ID, CLIENT_SECRET
     CLIENT_ID = data["CLIENT_ID"]
     CLIENT_SECRET = data["CLIENT_SECRET"]
@@ -59,8 +58,8 @@ def parsePlaylist(url: str):
     playlistId = url.split("/")[-1]
     try:
         playlistData = spotifyClient.playlist(playlistId)
-    except:
-        console.log("[red]Failed to parse playlist[/]")
+    except Exception as e:
+        console.log(f"[red]Failed to parse playlist: \n{e}[/]")
         return None
 
     tracks = []
@@ -77,13 +76,19 @@ def parsePlaylist(url: str):
     return sorted(tracks)
 
 
+def downloadTrack(url: str, name: str, author: str):
+    with SB(uc=True, demo=True) as s:
+        s.open(url)
+        s.click(f"a:contains({name})" or f"a:contains({author})")
+
+
 def lookForTracks(tracks: [(str, str)]):
     for author, name in tracks:
         convertedName = name.replace(" ", "+")
         convertedAuthor = author.replace(" ", "+")
         searchUrl = f"https://www.youtube.com/results?search_query={convertedAuthor}+{convertedName}"
-        webbrowser.open(searchUrl)
-        sleep(5)
+        downloadTrack(searchUrl, name, author)
+        sleep(4)
 
 
 """
@@ -101,8 +106,14 @@ def main():
     # spotifyPlaylistUrl = input("Enter Spotify Playlist URL: ")
     spotifyPlaylistUrl = TEST_PLAYLIST_URL
 
-    listOfTracks = parsePlaylist(spotifyPlaylistUrl)
-    lookForTracks(listOfTracks)
+    listOfTracks = (
+        parsePlaylist(spotifyPlaylistUrl)
+        if spotifyPlaylistUrl
+        else console.log("[red]Failed to parse playlist url[/]")
+    )
+    lookForTracks(listOfTracks) if listOfTracks else console.log(
+        "[red]No tracks found[/]"
+    )
 
 
 if __name__ == "__main__":
