@@ -6,6 +6,7 @@ from spotipy.oauth2 import SpotifyOAuth
 import json
 from os import path
 
+import YouTubeMusicAPI
 from seleniumbase import SB
 
 from rich.console import Console
@@ -76,19 +77,17 @@ def parsePlaylist(url: str):
     return sorted(tracks)
 
 
-def downloadTrack(url: str, name: str, author: str):
-    with SB(uc=True, demo=True) as s:
-        s.open(url)
-        s.click(f"a:contains({name})" or f"a:contains({author})")
+def downloadTrack(name: str, author: str):
+    trackUrl = YouTubeMusicAPI.search(name)
+    url = trackUrl["url"] if trackUrl else None
+    console.log("[green]Got track url[/]" if url else "[red]Failed to get track url[/]")
+
+    # todo now go to the downloads site, paste the link and download the song
 
 
 def lookForTracks(tracks: [(str, str)]):
     for author, name in tracks:
-        convertedName = name.replace(" ", "+")
-        convertedAuthor = author.replace(" ", "+")
-        searchUrl = f"https://www.youtube.com/results?search_query={convertedAuthor}+{convertedName}"
-        downloadTrack(searchUrl, name, author)
-        sleep(4)
+        downloadTrack(name, author)
 
 
 """
