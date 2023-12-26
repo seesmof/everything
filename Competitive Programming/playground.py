@@ -18,7 +18,7 @@ console = Console()
 
 
 def testFactorial():
-    numbers = [500, 300, 400, 500, 300, 200, 400, 200]
+    numbers = [5, 3, 4, 5, 3, 2, 4, 2]
     results = {num: 0 for num in numbers}
     for num in numbers:
         startTimer = time.time()
@@ -26,7 +26,7 @@ def testFactorial():
         time.sleep(0.1)
         timeTaken = time.time() - startTimer
         results[num] = timeTaken
-        console.log(f"Time taken for {num} is {timeTaken}")
+        console.print(f"Time taken for {num} is {timeTaken:.3f}")
 
 
 testFactorial()

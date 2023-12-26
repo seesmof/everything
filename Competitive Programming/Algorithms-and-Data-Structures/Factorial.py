@@ -1,5 +1,7 @@
 class Factorial:
     def __init__(self, n) -> None:
+        if not isinstance(n, int) or n < 0:
+            raise ValueError("n must be a positive integer")
         self.n: int = n
 
     @staticmethod
