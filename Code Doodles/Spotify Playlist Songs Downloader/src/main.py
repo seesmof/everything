@@ -77,13 +77,13 @@ def parsePlaylist(url: str):
     return sorted(tracks)
 
 
-def lookForTracks(tracks):
+def lookForTracks(tracks: [(str, str)]):
     for author, name in tracks:
         convertedName = name.replace(" ", "+")
         convertedAuthor = author.replace(" ", "+")
         searchUrl = f"https://www.youtube.com/results?search_query={convertedAuthor}+{convertedName}"
         webbrowser.open(searchUrl)
-        sleep(10)
+        sleep(5)
 
 
 """
