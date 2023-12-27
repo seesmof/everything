@@ -77,37 +77,27 @@ def parsePlaylist(url: str):
     return sorted(tracks)
 
 
-def getDownloadLink(name: str, author: str) -> str | None:
-    def scrapeForUrl(url: str) -> str:
-        from seleniumbase import SB
-
-        with SB(uc=True) as browser:
-            browser.open("https://yt1s.com/en572/youtube-to-mp3")
-            browser.type("input#s_input", url)
-            browser.click("button#btn-convert")
-            browser.find_element("button#btn-action", timeout=10).click()
-            try:
-                link = browser.find_element("a#asuccess", timeout=60).get_attribute(
-                    "href"
-                )
-            except:
-                link = None
-            return link
-
+def getYoutubeLink(name: str, author: str):
     trackUrl = YouTubeMusicAPI.search(f"{author} - {name}")
     youtubeLink = trackUrl["url"] if trackUrl else None
-    return scrapeForUrl(youtubeLink) if youtubeLink else None
+    return youtubeLink
 
 
 def lookForTracks(tracks: [(str, str)]):
-    downloadLinks = []
+    from seleniumbase import Driver
+
+    s = Driver(uc=True)
+    DOWNLOADER_URL = "https://yt1s.com/en572/youtube-to-mp3"
+
     for author, name in tracks:
-        downloadLink = getDownloadLink(name, author)
-        if not downloadLink:
-            console.log(f"[red]Failed to find download link for {name}[/]")
-            continue
-        downloadLinks.append(downloadLink)
-    console.print(downloadLinks)
+        youtubeLink = getYoutubeLink(name, author)
+        s.open(DOWNLOADER_URL)
+        s.type("input#s_input", youtubeLink)
+        s.click("button#btn-convert")
+        s.find_element("button#btn-action", timeout=10).click()
+        s.highlight("a#asuccess", timeout=30)
+
+    sleep(60)
 
 
 """
