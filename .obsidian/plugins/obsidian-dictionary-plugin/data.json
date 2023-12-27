@@ -1,7 +1,7 @@
 {
   "getLangFromFile": true,
-  "defaultLanguage": "en_US",
-  "normalLang": "en_US",
+  "defaultLanguage": "fr",
+  "normalLang": "fr",
   "shouldShowSynonymPopover": true,
   "shouldShowCustomContextMenu": true,
   "apiSettings": {
@@ -18,7 +18,7 @@
       "synonymApiName": "Altervista"
     },
     "fr": {
-      "definitionApiName": "Free Dictionary API",
+      "definitionApiName": "Google",
       "synonymApiName": "Altervista"
     },
     "ja": {
@@ -65,7 +65,7 @@
   "partOfSpeechApiName": "Systran API",
   "advancedSynonymAnalysis": false,
   "useCaching": true,
-  "folder": "archive/dictionary",
+  "folder": "University/Dictionary/French/",
   "capitalizedFileName": true,
   "prefix": "",
   "suffix": "",

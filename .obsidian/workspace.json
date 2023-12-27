@@ -11,8 +11,12 @@
             "id": "39dabb1bd30c7df2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/1.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -60,6 +64,16 @@
               "type": "bookmarks",
               "state": {}
             }
+          },
+          {
+            "id": "4ce4e8e73de6a2ba",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/1.md"
+              }
+            }
           }
         ]
       }
@@ -74,33 +88,14 @@
       {
         "id": "e344f97896106e3c",
         "type": "tabs",
-        "dimension": 74.65277777777779,
+        "dimension": 67.03703703703704,
         "children": [
           {
-            "id": "9d51936762f4a98c",
+            "id": "438b2d7bacd7794a",
             "type": "leaf",
             "state": {
-              "type": "backlink",
-              "state": {
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
-            "id": "9bca9a376b29eb7e",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              }
+              "type": "dictionary-view",
+              "state": {}
             }
           },
           {
@@ -123,21 +118,13 @@
                 "sortOrder": "frequency"
               }
             }
-          },
-          {
-            "id": "4ce4e8e73de6a2ba",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {}
-            }
           }
         ]
       },
       {
         "id": "564b38c3eb86bf3b",
         "type": "tabs",
-        "dimension": 25.34722222222222,
+        "dimension": 32.96296296296296,
         "children": [
           {
             "id": "67df3ce513b54367",
@@ -146,13 +133,42 @@
               "type": "calendar",
               "state": {}
             }
+          },
+          {
+            "id": "9d51936762f4a98c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/1.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "9bca9a376b29eb7e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/1.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 438.5,
-    "collapsed": true
+    "width": 381.5
   },
   "left-ribbon": {
     "hiddenItems": {

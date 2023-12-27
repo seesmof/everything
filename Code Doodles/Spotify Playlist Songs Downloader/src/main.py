@@ -91,11 +91,15 @@ def lookForTracks(tracks: [(str, str)]):
 
     for author, name in tracks:
         youtubeLink = getYoutubeLink(name, author)
+        if not youtubeLink:
+            console.log(f"[red]Failed to find track: {author} - {name}[/]")
+            continue
+
         s.open(DOWNLOADER_URL)
         s.type("input#s_input", youtubeLink)
         s.click("button#btn-convert")
-        s.find_element("button#btn-action", timeout=10).click()
-        s.highlight("a#asuccess", timeout=30)
+        s.wait_for_element("button#btn-action").click()
+        s.highlight("a#asuccess")
 
     sleep(60)
 

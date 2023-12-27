@@ -1,7 +1,3 @@
-> [!CAUTION]
-> Project is under reworking and will be updated soon.
-> For right now it does not work properly, so please don't try using it.
-
 <a name="readme-top"></a>
 
 <a href="./README_Ukrainian.md"><strong>Інструкція Українською</strong></a>
