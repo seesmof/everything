@@ -10,30 +10,37 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.by import By
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 driver.get("https://y2mate.com.co/en185z/youtube-to-mp3-converter")
 
-inputBox = driver.find_element(by="id", value="txt-url")
+inputBox = driver.find_element(By.ID, "txt-url")
 inputBox.send_keys("https://music.youtube.com/watch?v=3mPu1ho7ThY")
 
-searchButton = driver.find_element(by="id", value="btn-submit")
+searchButton = driver.find_element(By.ID, "btn-submit")
 searchButton.click()
 
-sleep(4)
-
-downloadButton = driver.find_element(
-    by="xpath", value="//a[contains(., 'Download') and @data-ftype=\"mp3\"]"
+wait = WebDriverWait(driver, 60)
+downloadButton = wait.until(
+    EC.element_to_be_clickable(
+        (By.XPATH, "//a[contains(., 'Download') and @data-ftype=\"mp3\"]")
+    )
 )
+downloadButton.click()
+
+"""
 neededUrl = downloadButton.get_attribute("href")
 
 driver.execute_script("window.open()")
 driver.switch_to.window(driver.window_handles[-1])
 driver.get(neededUrl)
+"""
 
-WebDriverWait(driver, 12).until(
-    EC.presence_of_element_located(
-        ("xpath", "//a[contains(., 'Download') and @id=\"A_downloadUrl\"")
-    )
-).click()
+newWait = WebDriverWait(driver, 60)
+download = newWait.until(EC.element_to_be_clickable((By.ID, "A_downloadUrl")))
+download.click()
+
+console.log("Started waiting for file to download")
+sleep(5)
