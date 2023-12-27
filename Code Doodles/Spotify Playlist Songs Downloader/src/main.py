@@ -79,44 +79,20 @@ def parsePlaylist(url: str):
 
 def getDownloadLink(name: str, author: str) -> str | None:
     def scrapeForUrl(url: str) -> str:
-        from selenium import webdriver
-        from selenium.webdriver.support.ui import WebDriverWait
-        from selenium.webdriver.support import expected_conditions as EC
-        from selenium.webdriver.chrome.service import Service
-        from selenium.webdriver.chrome.options import Options
-        from webdriver_manager.chrome import ChromeDriverManager
-        from selenium.webdriver.common.by import By
+        from seleniumbase import SB
 
-        options = Options()
-        options.add_argument("--disable-notifications")
-        options.add_experimental_option("excludeSwitches", ["enable-logging"])
-        driver = webdriver.Chrome(
-            service=Service(ChromeDriverManager().install()), options=options
-        )
-
-        driver.get("https://yt1s.com/en572/youtube-to-mp3")
-
-        inputBox = driver.find_element(By.ID, "s_input")
-        inputBox.send_keys(url)
-
-        searchButton = driver.find_element(By.ID, "btn-convert")
-        searchButton.click()
-
-        waitForLink = WebDriverWait(driver, 6)
-        getLinkButton = waitForLink.until(
-            EC.element_to_be_clickable((By.ID, "btn-action"))
-        )
-        getLinkButton.click()
-
-        waitForDownload = WebDriverWait(driver, 60)
-        try:
-            download = waitForDownload.until(
-                EC.element_to_be_clickable((By.ID, "asuccess"))
-            )
-            link: str = download.get_attribute("href")
-        except:
-            link = None
-        return link
+        with SB(uc=True) as browser:
+            browser.open("https://yt1s.com/en572/youtube-to-mp3")
+            browser.type("input#s_input", url)
+            browser.click("button#btn-convert")
+            browser.find_element("button#btn-action", timeout=10).click()
+            try:
+                link = browser.find_element("a#asuccess", timeout=60).get_attribute(
+                    "href"
+                )
+            except:
+                link = None
+            return link
 
     trackUrl = YouTubeMusicAPI.search(f"{author} - {name}")
     youtubeLink = trackUrl["url"] if trackUrl else None
