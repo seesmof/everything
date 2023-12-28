@@ -1,7 +1,7 @@
-from string import ascii_letters, ascii_uppercase, digits
 from components.AlertPopup import AlertPopup
 from util.settings import saveSettings
 
+from string import ascii_letters, digits
 from rich.console import Console
 from rich.traceback import install
 from customtkinter import *
@@ -15,10 +15,9 @@ def closeApp(app, event):
     app.destroy()
 
 
-def updatePasswordLength(passwordLengthSlider, passwordLengthHeading):
-    passwordLengthHeading.configure(
-        text=f"Password Length ({int(passwordLengthSlider.get())})"
-    )
+def updatePasswordLength(slider, heading):
+    length = int(slider.get())
+    heading.configure(text=f"Password Length ({length})")
 
 
 def bindSettingChangeEvent(widget, settings, settingsElements):
@@ -32,7 +31,7 @@ def copyGeneratedPassword(box):
     box.clipboard_append(box.get())
 
 
-def generatePassword(box: CTkEntry, *settingsElements):
+def generatePassword(box: CTkEntry, *settingsElements) -> None:
     box.delete(0, "end")
 
     password = ""
@@ -43,18 +42,15 @@ def generatePassword(box: CTkEntry, *settingsElements):
     autoCopy = settingsElements[4].get()
     length = int(settingsElements[5].get())
 
-    if not useLetters and not useUppercase and not useNumber and not useSymbols:
+    if not any([useLetters, useUppercase, useNumber, useSymbols]):
         AlertPopup("Please select at least one type of character to include.")
-        console.log(
-            "[red]Failed to generate password: No types of characters were selected[/red]"
-        )
         return
 
     characters = ""
     if useLetters:
         characters += ascii_letters.lower()
     if useUppercase:
-        characters += ascii_uppercase
+        characters += ascii_letters.upper()
     if useNumber:
         characters += digits
     if useSymbols:

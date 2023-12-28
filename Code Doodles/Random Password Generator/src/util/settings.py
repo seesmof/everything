@@ -28,13 +28,22 @@ def loadSettingsData():
 
 
 def loadSettings(settings):
-    loadedData = loadSettingsData()
-    settings["includeLetters"] = loadedData["includeLetters"]
-    settings["includeUppercase"] = loadedData["includeUppercase"]
-    settings["includeNumbers"] = loadedData["includeNumbers"]
-    settings["includeSymbols"] = loadedData["includeSymbols"]
-    settings["autoCopy"] = loadedData["autoCopy"]
-    settings["length"] = loadedData["length"]
+    data = loadSettingsData()
+    (
+        settings["includeLetters"],
+        settings["includeUppercase"],
+        settings["includeNumbers"],
+        settings["includeSymbols"],
+        settings["autoCopy"],
+        settings["length"],
+    ) = (
+        data["includeLetters"],
+        data["includeUppercase"],
+        data["includeNumbers"],
+        data["includeSymbols"],
+        data["autoCopy"],
+        data["length"],
+    )
 
 
 def setSettings(
@@ -79,5 +88,8 @@ def saveSettingsData(settings):
     currentDir = path.dirname(path.abspath(__file__))
     settingsPath = path.join(currentDir, "..", "..", "data", "settings_cache.json")
 
-    with open(settingsPath, "w") as settingsFile:
-        json.dump(settings, settingsFile)
+    try:
+        with open(settingsPath, "w") as settingsFile:
+            json.dump(settings, settingsFile)
+    except Exception as e:
+        console.log("[red]Failed to save settings file[/red]")

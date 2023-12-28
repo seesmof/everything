@@ -1,23 +1,7 @@
-"""
-get input from user on the:
-- length
-- symbols
-    - include letters
-    - include uppercase letters
-    - include numbers
-    - include special symbols
-    - automatically copy generated password
-    
-have an input field which will actually be your output and two buttons next to it - Generate and Copy
-
-enable auto-saving of settings
-"""
-
 from rich.console import Console
 from rich.traceback import install
 from customtkinter import *
 
-from components.AlertPopup import AlertPopup
 from util.misc import *
 from ui.main import *
 

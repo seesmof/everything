@@ -6,81 +6,94 @@ from util.misc import (
     generatePassword,
     updatePasswordLength,
 )
-from util.settings import loadSettings, saveSettings, setSettings
+from util.settings import loadSettings, setSettings
 
 
-def renderGenerateSection(root):
+def renderGenerateSection(root) -> tuple[CTkLabel, CTkEntry, CTkButton, CTkButton]:
     generatePasswordHeading = CTkLabel(
         root,
-        text="Generated password will be placed in the box below",
+        text="Generate Secure Password",
         font=("Arial", 14, "bold"),
     )
-    passwordOuput = CTkEntry(
+    passwordOuputBox = CTkEntry(
         placeholder_text="Password will appear here",
         master=root,
         width=250,
     )
-    generatePassword = CTkButton(
+    generatePasswordButton = CTkButton(
         root, width=80, text="Generate", font=("Arial", 12, "bold")
     )
-    copyPassword = CTkButton(root, width=60, text="Copy", font=("Arial", 12, "bold"))
+    copyPasswordButton = CTkButton(
+        root, width=60, text="Copy", font=("Arial", 12, "bold")
+    )
 
     generatePasswordHeading.place(x=0, y=0)
-    passwordOuput.place(x=0, y=30)
-    generatePassword.place(x=255, y=30)
-    copyPassword.place(x=340, y=30)
+    passwordOuputBox.place(x=0, y=30)
+    generatePasswordButton.place(x=255, y=30)
+    copyPasswordButton.place(x=340, y=30)
 
-    return generatePasswordHeading, passwordOuput, generatePassword, copyPassword
+    return (
+        generatePasswordHeading,
+        passwordOuputBox,
+        generatePasswordButton,
+        copyPasswordButton,
+    )
 
 
-def renderSettingsSection(root):
+def renderSettingsSection(
+    root,
+) -> tuple[
+    CTkLabel, CTkCheckBox, CTkCheckBox, CTkCheckBox, CTkCheckBox, CTkLabel, CTkSlider
+]:
     changeSettingsHeading = CTkLabel(
         root,
         text="Change Generation Settings",
         font=("Arial", 14, "bold"),
     )
-    toggleLetters = CTkCheckBox(
+    toggleLettersCheckbox = CTkCheckBox(
         root, text="Include letters", font=("Arial", 12, "bold")
     )
-    toggleUppercaseLetters = CTkCheckBox(
+    toggleUppercaseCheckbox = CTkCheckBox(
         root, text="Include uppercase letters", font=("Arial", 12, "bold")
     )
-    toggleNumbers = CTkCheckBox(
+    toggleNumbersCheckbox = CTkCheckBox(
         root, text="Include numbers", font=("Arial", 12, "bold")
     )
-    toggleSpecialCharacters = CTkCheckBox(
+    toggleSpecialsCheckbox = CTkCheckBox(
         root, text="Include special characters", font=("Arial", 12, "bold")
     )
-    autoCopyCheckbox = CTkCheckBox(
+    automaticCopyCheckbox = CTkCheckBox(
         root, text="Automatically copy password", font=("Arial", 12, "bold")
     )
-    outputLengthHeading = CTkLabel(
+    passwordLengthHeading = CTkLabel(
         root, text="Password Length", font=("Arial", 12, "bold")
     )
-    outputLength = CTkSlider(root, from_=8, to=64, number_of_steps=56, width=400)
+    passwordLengthSlider = CTkSlider(
+        root, from_=8, to=64, number_of_steps=56, width=400
+    )
 
     changeSettingsHeading.place(x=0, y=70)
-    toggleLetters.place(x=0, y=100)
-    toggleUppercaseLetters.place(x=0, y=130)
-    toggleNumbers.place(x=0, y=160)
-    toggleSpecialCharacters.place(x=0, y=190)
-    autoCopyCheckbox.place(x=0, y=220)
-    outputLengthHeading.place(x=0, y=250)
-    outputLength.place(x=0, y=280)
+    toggleLettersCheckbox.place(x=0, y=100)
+    toggleUppercaseCheckbox.place(x=0, y=130)
+    toggleNumbersCheckbox.place(x=0, y=160)
+    toggleSpecialsCheckbox.place(x=0, y=190)
+    automaticCopyCheckbox.place(x=0, y=220)
+    passwordLengthHeading.place(x=0, y=250)
+    passwordLengthSlider.place(x=0, y=280)
 
     return (
         changeSettingsHeading,
-        toggleLetters,
-        toggleUppercaseLetters,
-        toggleNumbers,
-        toggleSpecialCharacters,
-        autoCopyCheckbox,
-        outputLengthHeading,
-        outputLength,
+        toggleLettersCheckbox,
+        toggleUppercaseCheckbox,
+        toggleNumbersCheckbox,
+        toggleSpecialsCheckbox,
+        automaticCopyCheckbox,
+        passwordLengthHeading,
+        passwordLengthSlider,
     )
 
 
-def renderMainTab(root):
+def renderMainTab(root) -> None:
     (
         generatePasswordHeading,
         passwordOuputBox,
@@ -100,16 +113,27 @@ def renderMainTab(root):
     ) = renderSettingsSection(root)
 
     # Update password length heading on slider movement
-    passwordLengthSlider.bind(
+    sliderActionButtons = [
+        "<Button-1>",
         "<B1-Motion>",
-        lambda event: updatePasswordLength(passwordLengthSlider, passwordLengthHeading),
-    )
-    copyPasswordButton.bind(
-        "<Button-1>", lambda event: copyGeneratedPassword(passwordOuputBox)
-    )
+        "<ButtonRelease-1>",
+    ]
+    for action in sliderActionButtons:
+        passwordLengthSlider.bind(
+            action,
+            lambda event: updatePasswordLength(
+                slider=passwordLengthSlider,
+                heading=passwordLengthHeading,
+            ),
+        )
+
+    # Actions for generating and copying password
     generatePasswordButton.bind(
         "<Button-1>",
         lambda event: generatePassword(passwordOuputBox, *settingsElements),
+    )
+    copyPasswordButton.bind(
+        "<Button-1>", lambda event: copyGeneratedPassword(passwordOuputBox)
     )
 
     # Group all the settings elements for easier access
