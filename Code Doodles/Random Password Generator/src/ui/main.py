@@ -1,6 +1,6 @@
 from customtkinter import *
 
-from util.misc import updateOutputLength
+from util.misc import bindSettingChangeEvent, updatePasswordLength
 from util.settings import loadSettings, saveSettings, setSettings
 
 
@@ -90,105 +90,38 @@ def renderMainTab(root):
         toggleNumbers,
         toggleSpecialCharacters,
         excludeDuplicateCharacters,
-        outputLengthHeading,
-        outputLength,
+        passwordLengthHeading,
+        passwordLength,
     ) = renderSettingsSection(root)
 
-    outputLength.bind(
+    # Update password length heading on slider movement
+    passwordLength.bind(
         "<B1-Motion>",
-        lambda event: updateOutputLength(outputLength, outputLengthHeading),
+        lambda event: updatePasswordLength(passwordLength, passwordLengthHeading),
     )
 
-    localSettings = {
-        "includeLetters": True,
-        "includeUppercase": True,
-        "includeNumbers": True,
-        "includeSymbols": True,
-        "excludeDuplicates": True,
-        "length": 32,
-    }
-
-    loadSettings(localSettings)
-    setSettings(
-        localSettings,
+    # Group all the settings elements for easier access
+    settingsElements = [
         toggleLetters,
         toggleUppercaseLetters,
         toggleNumbers,
         toggleSpecialCharacters,
         excludeDuplicateCharacters,
-        outputLength,
-    )
-    updateOutputLength(outputLength, outputLengthHeading)
+        passwordLength,
+    ]
 
-    toggleLetters.bind(
-        "<Button-1>",
-        lambda event: saveSettings(
-            localSettings,
-            toggleLetters,
-            toggleUppercaseLetters,
-            toggleNumbers,
-            toggleSpecialCharacters,
-            excludeDuplicateCharacters,
-            outputLength,
-        ),
+    localSettings = dict()
+    loadSettings(localSettings)
+    setSettings(
+        localSettings,
+        *settingsElements,
     )
-    toggleUppercaseLetters.bind(
-        "<Button-1>",
-        lambda event: saveSettings(
-            localSettings,
-            toggleLetters,
-            toggleUppercaseLetters,
-            toggleNumbers,
-            toggleSpecialCharacters,
-            excludeDuplicateCharacters,
-            outputLength,
-        ),
-    )
-    toggleNumbers.bind(
-        "<Button-1>",
-        lambda event: saveSettings(
-            localSettings,
-            toggleLetters,
-            toggleUppercaseLetters,
-            toggleNumbers,
-            toggleSpecialCharacters,
-            excludeDuplicateCharacters,
-            outputLength,
-        ),
-    )
-    toggleSpecialCharacters.bind(
-        "<Button-1>",
-        lambda event: saveSettings(
-            localSettings,
-            toggleLetters,
-            toggleUppercaseLetters,
-            toggleNumbers,
-            toggleSpecialCharacters,
-            excludeDuplicateCharacters,
-            outputLength,
-        ),
-    )
-    excludeDuplicateCharacters.bind(
-        "<Button-1>",
-        lambda event: saveSettings(
-            localSettings,
-            toggleLetters,
-            toggleUppercaseLetters,
-            toggleNumbers,
-            toggleSpecialCharacters,
-            excludeDuplicateCharacters,
-            outputLength,
-        ),
-    )
-    outputLength.bind(
-        "<ButtonRelease-1>",
-        lambda event: saveSettings(
-            localSettings,
-            toggleLetters,
-            toggleUppercaseLetters,
-            toggleNumbers,
-            toggleSpecialCharacters,
-            excludeDuplicateCharacters,
-            outputLength,
-        ),
-    )
+    updatePasswordLength(passwordLength, passwordLengthHeading)
+
+    # Bind changing of each setting element to save settings
+    for element in settingsElements:
+        bindSettingChangeEvent(
+            widget=element,
+            settings=localSettings,
+            settingsElements=settingsElements,
+        )
