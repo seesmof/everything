@@ -22,7 +22,7 @@ def loadSettingsData():
             "includeUppercase": True,
             "includeNumbers": True,
             "includeSymbols": True,
-            "excludeDuplicates": False,
+            "autoCopy": False,
             "length": 32,
         }
 
@@ -33,7 +33,7 @@ def loadSettings(settings):
     settings["includeUppercase"] = loadedData["includeUppercase"]
     settings["includeNumbers"] = loadedData["includeNumbers"]
     settings["includeSymbols"] = loadedData["includeSymbols"]
-    settings["excludeDuplicates"] = loadedData["excludeDuplicates"]
+    settings["autoCopy"] = loadedData["autoCopy"]
     settings["length"] = loadedData["length"]
 
 
@@ -43,7 +43,7 @@ def setSettings(
     includeUppercase: CTkCheckBox,
     includeNumbers: CTkCheckBox,
     includeSymbols: CTkCheckBox,
-    excludeDuplicates: CTkCheckBox,
+    autoCopy: CTkCheckBox,
     outputLength: CTkSlider,
 ):
     includeLetters.select() if settings["includeLetters"] else includeLetters.deselect()
@@ -52,9 +52,7 @@ def setSettings(
     ] else includeUppercase.deselect()
     includeNumbers.select() if settings["includeNumbers"] else includeNumbers.deselect()
     includeSymbols.select() if settings["includeSymbols"] else includeSymbols.deselect()
-    excludeDuplicates.select() if settings[
-        "excludeDuplicates"
-    ] else excludeDuplicates.deselect()
+    autoCopy.select() if settings["autoCopy"] else autoCopy.deselect()
     outputLength.set(settings["length"])
 
 
@@ -64,14 +62,14 @@ def saveSettings(
     includeUppercase: CTkCheckBox,
     includeNumbers: CTkCheckBox,
     includeSymbols: CTkCheckBox,
-    excludeDuplicates: CTkCheckBox,
+    autoCopy: CTkCheckBox,
     outputLength: CTkSlider,
 ):
     settings["includeLetters"] = includeLetters.get()
     settings["includeUppercase"] = includeUppercase.get()
     settings["includeNumbers"] = includeNumbers.get()
     settings["includeSymbols"] = includeSymbols.get()
-    settings["excludeDuplicates"] = excludeDuplicates.get()
+    settings["autoCopy"] = autoCopy.get()
     settings["length"] = int(outputLength.get())
 
     saveSettingsData(settings)
