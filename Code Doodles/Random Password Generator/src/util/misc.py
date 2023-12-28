@@ -40,7 +40,7 @@ def generatePassword(box: CTkEntry, *settingsElements):
     useUppercase = settingsElements[1].get()
     useNumber = settingsElements[2].get()
     useSymbols = settingsElements[3].get()
-    excludeDuplicates = settingsElements[4].get()
+    autoCopy = settingsElements[4].get()
     length = int(settingsElements[5].get())
 
     if not useLetters and not useUppercase and not useNumber and not useSymbols:
@@ -63,3 +63,6 @@ def generatePassword(box: CTkEntry, *settingsElements):
     password = "".join(random.choices(characters, k=length))
 
     box.insert(0, password)
+
+    if autoCopy:
+        copyGeneratedPassword(box)

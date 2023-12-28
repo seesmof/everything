@@ -51,8 +51,8 @@ def renderSettingsSection(root):
     toggleSpecialCharacters = CTkCheckBox(
         root, text="Include special characters", font=("Arial", 12, "bold")
     )
-    excludeDuplicateCharacters = CTkCheckBox(
-        root, text="Exclude duplicate characters", font=("Arial", 12, "bold")
+    autoCopyCheckbox = CTkCheckBox(
+        root, text="Automatically copy password", font=("Arial", 12, "bold")
     )
     outputLengthHeading = CTkLabel(
         root, text="Password Length", font=("Arial", 12, "bold")
@@ -64,7 +64,7 @@ def renderSettingsSection(root):
     toggleUppercaseLetters.place(x=0, y=130)
     toggleNumbers.place(x=0, y=160)
     toggleSpecialCharacters.place(x=0, y=190)
-    excludeDuplicateCharacters.place(x=0, y=220)
+    autoCopyCheckbox.place(x=0, y=220)
     outputLengthHeading.place(x=0, y=250)
     outputLength.place(x=0, y=280)
 
@@ -74,7 +74,7 @@ def renderSettingsSection(root):
         toggleUppercaseLetters,
         toggleNumbers,
         toggleSpecialCharacters,
-        excludeDuplicateCharacters,
+        autoCopyCheckbox,
         outputLengthHeading,
         outputLength,
     )
@@ -94,7 +94,7 @@ def renderMainTab(root):
         toggleUppercaseCheckbox,
         toggleNumbersCheckbox,
         toggleSpecialsCheckbox,
-        excludeDuplicatesCheckbox,
+        automaticCopyCheckbox,
         passwordLengthHeading,
         passwordLengthSlider,
     ) = renderSettingsSection(root)
@@ -118,7 +118,7 @@ def renderMainTab(root):
         toggleUppercaseCheckbox,
         toggleNumbersCheckbox,
         toggleSpecialsCheckbox,
-        excludeDuplicatesCheckbox,
+        automaticCopyCheckbox,
         passwordLengthSlider,
     ]
 

@@ -6,8 +6,8 @@ get input from user on the:
     - include uppercase letters
     - include numbers
     - include special symbols
-    - exclude duplicate characters
-
+    - automatically copy generated password
+    
 have an input field which will actually be your output and two buttons next to it - Generate and Copy
 
 enable auto-saving of settings
