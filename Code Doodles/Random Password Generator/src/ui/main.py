@@ -1,5 +1,11 @@
 from customtkinter import *
 
+from util.misc import (
+    loadInitialSettings,
+    setInitialSettings,
+    updateOutputLength,
+)
+
 
 def renderGenerateSection(root):
     generatePasswordHeading = CTkLabel(
@@ -90,3 +96,28 @@ def renderMainTab(root):
         outputLengthHeading,
         outputLength,
     ) = renderSettingsSection(root)
+
+    outputLength.bind(
+        "<B1-Motion>",
+        lambda event: updateOutputLength(outputLength, outputLengthHeading),
+    )
+
+    localSettings = {
+        "includeLetters": True,
+        "includeUppercase": True,
+        "includeNumbers": True,
+        "includeSymbols": True,
+        "excludeDuplicates": True,
+        "length": 32,
+    }
+    loadInitialSettings(localSettings)
+    setInitialSettings(
+        localSettings,
+        toggleLetters,
+        toggleUppercaseLetters,
+        toggleNumbers,
+        toggleSpecialCharacters,
+        excludeDuplicateCharacters,
+        outputLength,
+    )
+    updateOutputLength(outputLength, outputLengthHeading)

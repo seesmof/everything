@@ -1,0 +1,8 @@
+{
+  "includeLetters": true,
+  "includeUppercase": true,
+  "includeNumbers": true,
+  "includeSymbols": true,
+  "excludeDuplicates": true,
+  "length": 32
+}
