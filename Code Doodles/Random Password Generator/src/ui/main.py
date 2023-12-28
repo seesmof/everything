@@ -1,6 +1,11 @@
 from customtkinter import *
 
-from util.misc import bindSettingChangeEvent, updatePasswordLength
+from util.misc import (
+    bindSettingChangeEvent,
+    copyGeneratedPassword,
+    generatePassword,
+    updatePasswordLength,
+)
 from util.settings import loadSettings, saveSettings, setSettings
 
 
@@ -11,7 +16,7 @@ def renderGenerateSection(root):
         font=("Arial", 14, "bold"),
     )
     passwordOuput = CTkEntry(
-        state="disabled",
+        placeholder_text="Password will appear here",
         master=root,
         width=250,
     )
@@ -98,6 +103,13 @@ def renderMainTab(root):
     passwordLengthSlider.bind(
         "<B1-Motion>",
         lambda event: updatePasswordLength(passwordLengthSlider, passwordLengthHeading),
+    )
+    copyPasswordButton.bind(
+        "<Button-1>", lambda event: copyGeneratedPassword(passwordOuputBox)
+    )
+    generatePasswordButton.bind(
+        "<Button-1>",
+        lambda event: generatePassword(passwordOuputBox, *settingsElements),
     )
 
     # Group all the settings elements for easier access
