@@ -78,36 +78,36 @@ def renderSettingsSection(root):
 def renderMainTab(root):
     (
         generatePasswordHeading,
-        passwordOuput,
-        generatePassword,
-        copyPassword,
+        passwordOuputBox,
+        generatePasswordButton,
+        copyPasswordButton,
     ) = renderGenerateSection(root)
 
     (
         changeSettingsHeading,
-        toggleLetters,
-        toggleUppercaseLetters,
-        toggleNumbers,
-        toggleSpecialCharacters,
-        excludeDuplicateCharacters,
+        toggleLettersCheckbox,
+        toggleUppercaseCheckbox,
+        toggleNumbersCheckbox,
+        toggleSpecialsCheckbox,
+        excludeDuplicatesCheckbox,
         passwordLengthHeading,
-        passwordLength,
+        passwordLengthSlider,
     ) = renderSettingsSection(root)
 
     # Update password length heading on slider movement
-    passwordLength.bind(
+    passwordLengthSlider.bind(
         "<B1-Motion>",
-        lambda event: updatePasswordLength(passwordLength, passwordLengthHeading),
+        lambda event: updatePasswordLength(passwordLengthSlider, passwordLengthHeading),
     )
 
     # Group all the settings elements for easier access
     settingsElements = [
-        toggleLetters,
-        toggleUppercaseLetters,
-        toggleNumbers,
-        toggleSpecialCharacters,
-        excludeDuplicateCharacters,
-        passwordLength,
+        toggleLettersCheckbox,
+        toggleUppercaseCheckbox,
+        toggleNumbersCheckbox,
+        toggleSpecialsCheckbox,
+        excludeDuplicatesCheckbox,
+        passwordLengthSlider,
     ]
 
     localSettings = dict()
@@ -116,7 +116,7 @@ def renderMainTab(root):
         localSettings,
         *settingsElements,
     )
-    updatePasswordLength(passwordLength, passwordLengthHeading)
+    updatePasswordLength(passwordLengthSlider, passwordLengthHeading)
 
     # Bind changing of each setting element to save settings
     for element in settingsElements:

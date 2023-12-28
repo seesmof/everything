@@ -5,8 +5,10 @@ def closeApp(app, event):
     app.destroy()
 
 
-def updatePasswordLength(outputLength, outputLengthHeading):
-    outputLengthHeading.configure(text=f"Password Length ({int(outputLength.get())})")
+def updatePasswordLength(passwordLengthSlider, passwordLengthHeading):
+    passwordLengthHeading.configure(
+        text=f"Password Length ({int(passwordLengthSlider.get())})"
+    )
 
 
 def bindSettingChangeEvent(widget, settings, settingsElements):
