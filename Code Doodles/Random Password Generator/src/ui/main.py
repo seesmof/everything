@@ -1,10 +1,7 @@
 from customtkinter import *
 
-from util.misc import (
-    loadSettings,
-    setSettings,
-    updateOutputLength,
-)
+from util.misc import updateOutputLength
+from util.settings import loadSettings, saveSettings, setSettings
 
 
 def renderGenerateSection(root):
@@ -122,3 +119,76 @@ def renderMainTab(root):
         outputLength,
     )
     updateOutputLength(outputLength, outputLengthHeading)
+
+    toggleLetters.bind(
+        "<Button-1>",
+        lambda event: saveSettings(
+            localSettings,
+            toggleLetters,
+            toggleUppercaseLetters,
+            toggleNumbers,
+            toggleSpecialCharacters,
+            excludeDuplicateCharacters,
+            outputLength,
+        ),
+    )
+    toggleUppercaseLetters.bind(
+        "<Button-1>",
+        lambda event: saveSettings(
+            localSettings,
+            toggleLetters,
+            toggleUppercaseLetters,
+            toggleNumbers,
+            toggleSpecialCharacters,
+            excludeDuplicateCharacters,
+            outputLength,
+        ),
+    )
+    toggleNumbers.bind(
+        "<Button-1>",
+        lambda event: saveSettings(
+            localSettings,
+            toggleLetters,
+            toggleUppercaseLetters,
+            toggleNumbers,
+            toggleSpecialCharacters,
+            excludeDuplicateCharacters,
+            outputLength,
+        ),
+    )
+    toggleSpecialCharacters.bind(
+        "<Button-1>",
+        lambda event: saveSettings(
+            localSettings,
+            toggleLetters,
+            toggleUppercaseLetters,
+            toggleNumbers,
+            toggleSpecialCharacters,
+            excludeDuplicateCharacters,
+            outputLength,
+        ),
+    )
+    excludeDuplicateCharacters.bind(
+        "<Button-1>",
+        lambda event: saveSettings(
+            localSettings,
+            toggleLetters,
+            toggleUppercaseLetters,
+            toggleNumbers,
+            toggleSpecialCharacters,
+            excludeDuplicateCharacters,
+            outputLength,
+        ),
+    )
+    outputLength.bind(
+        "<ButtonRelease-1>",
+        lambda event: saveSettings(
+            localSettings,
+            toggleLetters,
+            toggleUppercaseLetters,
+            toggleNumbers,
+            toggleSpecialCharacters,
+            excludeDuplicateCharacters,
+            outputLength,
+        ),
+    )
