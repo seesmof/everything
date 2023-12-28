@@ -1,8 +1,8 @@
 from customtkinter import *
 
 from util.misc import (
-    loadInitialSettings,
-    setInitialSettings,
+    loadSettings,
+    setSettings,
     updateOutputLength,
 )
 
@@ -110,8 +110,9 @@ def renderMainTab(root):
         "excludeDuplicates": True,
         "length": 32,
     }
-    loadInitialSettings(localSettings)
-    setInitialSettings(
+
+    loadSettings(localSettings)
+    setSettings(
         localSettings,
         toggleLetters,
         toggleUppercaseLetters,

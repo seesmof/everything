@@ -12,10 +12,6 @@ def closeApp(app, event):
     app.destroy()
 
 
-def updateOutputLength(outputLength, outputLengthHeading):
-    outputLengthHeading.configure(text=f"Password Length ({int(outputLength.get())})")
-
-
 def loadSettingsData():
     currentDir = path.dirname(path.abspath(__file__))
     settingsPath = path.join(currentDir, "..", "..", "data", "settings_cache.json")
@@ -35,7 +31,11 @@ def loadSettingsData():
         }
 
 
-def loadInitialSettings(settings):
+def updateOutputLength(outputLength, outputLengthHeading):
+    outputLengthHeading.configure(text=f"Password Length ({int(outputLength.get())})")
+
+
+def loadSettings(settings):
     loadedData = loadSettingsData()
     settings["includeLetters"] = loadedData["includeLetters"]
     settings["includeUppercase"] = loadedData["includeUppercase"]
@@ -45,7 +45,7 @@ def loadInitialSettings(settings):
     settings["length"] = loadedData["length"]
 
 
-def setInitialSettings(
+def setSettings(
     settings: dict,
     includeLetters: CTkCheckBox,
     includeUppercase: CTkCheckBox,
