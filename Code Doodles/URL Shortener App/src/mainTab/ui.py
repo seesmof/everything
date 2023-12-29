@@ -3,7 +3,7 @@ from components import Button, Heading
 from customtkinter import *
 
 
-def renderShortenTab(root):
+def renderShortenSection(root):
     shorteningInfoHeading = Heading(
         root=root, text="Enter the URL you want to shorten in the box below"
     )
@@ -23,8 +23,26 @@ def renderShortenTab(root):
     return shorteningInfoHeading, inputLinkEntry, outputLinkEntry, shortenButton
 
 
-def renderOptionsTab(root):
-    return "Not Implemented", "", "", ""
+def renderOptionsSection(root):
+    copyLinkButton = Button(root, text="Copy Link", width=80)
+    openLinkButton = Button(root, text="Open Link", width=80)
+    optionsInfoHeading = Heading(root, text="Options")
+    autoOpenToggle = CTkSwitch(root, text="Auto Open in Browser")
+    autoCopyToggle = CTkSwitch(root, text="Auto Copy Link")
+
+    copyLinkButton.place(x=325, y=70)
+    openLinkButton.place(x=410, y=70)
+    optionsInfoHeading.place(x=0, y=70)
+    autoOpenToggle.place(x=0, y=100)
+    autoCopyToggle.place(x=0, y=130)
+
+    return (
+        copyLinkButton,
+        openLinkButton,
+        optionsInfoHeading,
+        autoOpenToggle,
+        autoCopyToggle,
+    )
 
 
 def renderMainTab(root):
@@ -33,8 +51,12 @@ def renderMainTab(root):
         inputLinkEntry,
         outputLinkEntry,
         shortenButton,
-    ) = renderShortenTab(root)
+    ) = renderShortenSection(root)
 
-    copyLinkButton, openLinkButton, autoOpenToggle, autoCopyToggle = renderOptionsTab(
-        root
-    )
+    (
+        copyLinkButton,
+        openLinkButton,
+        optionsInfoHeading,
+        autoOpenToggle,
+        autoCopyToggle,
+    ) = renderOptionsSection(root)

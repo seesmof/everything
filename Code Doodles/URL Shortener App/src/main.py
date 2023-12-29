@@ -48,7 +48,7 @@ class App:
 
 
 def main():
-    app = App(title="URL Shortener", width=510)
+    app = App(title="URL Shortener", width=510, height=215)
 
     mainTab = app.addTab("Shortener")
     renderMainTab(mainTab)
