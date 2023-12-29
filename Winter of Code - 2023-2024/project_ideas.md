@@ -12,13 +12,14 @@
   - [Link](https://github.com/seesmof/project-ideas-manager-cli)
 - Todo List - 💭
   - A todo list CLI with Click, SQLite and Pydantic
+  - Name, Description, Priority, Status, Due Date, Tags
   - [Link](https://github.com/seesmof/todo-list-cli)
 - Bulk File Renamer - 💭
   - Bulk file renamer with Click
-  - [Link](https://github.com/seesmof/bulk-file-renamer)
+  - [Link](https://github.com/seesmof/bulk-file-renamer-cli)
 - Directory Tree Generator - 💭
   - Directory tree generator with Click and Rich
-  - [Link](https://github.com/seesmof/directory-tree-generator)
+  - [Link](https://github.com/seesmof/directory-tree-generator-cli)
 - Calculator - 💭
   - A simple calculator with CustomTkinter
   - [Link](https://github.com/seesmof/calculator)
