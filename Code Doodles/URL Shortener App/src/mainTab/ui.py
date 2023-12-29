@@ -1,7 +1,6 @@
-from components import Button, Heading
-
 from customtkinter import *
 
+from components import Button, Heading
 from mainTab.utils import loadOptions, openLink, saveOptions, shortenLink
 
 

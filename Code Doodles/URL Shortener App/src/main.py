@@ -1,11 +1,3 @@
-"""
-so what we need is
-- input field where user will enter his URL
-- output field next to it that will show the shortened URL
-- two buttons next to it saying Shorten and Copy
-- additional feature toggles below like Auto Copy and Auto Open in Browser
-"""
-
 from customtkinter import *
 
 from mainTab.ui import renderMainTab
