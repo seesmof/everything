@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "d100fd986fb41cc6",
+        "id": "a29741c833d4fe35",
         "type": "tabs",
         "children": [
           {
-            "id": "39dabb1bd30c7df2",
+            "id": "9d487b9e64e5b6a4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/1.md",
+                "file": "Winter of Code - 2023-2024/project_ideas.md",
                 "mode": "source",
                 "source": false
               }
@@ -71,7 +71,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/1.md"
+                "file": "Winter of Code - 2023-2024/project_ideas.md"
               }
             }
           }
@@ -115,7 +115,9 @@
             "state": {
               "type": "all-properties",
               "state": {
-                "sortOrder": "frequency"
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
               }
             }
           }
@@ -140,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/1.md",
+                "file": "Winter of Code - 2023-2024/project_ideas.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -157,7 +159,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/1.md",
+                "file": "Winter of Code - 2023-2024/project_ideas.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -184,8 +186,9 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "39dabb1bd30c7df2",
+  "active": "9d487b9e64e5b6a4",
   "lastOpenFiles": [
+    "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/1.md",
     "University/y2t1/DSA/tasks/ct1/docs/prod/~WRL0105.tmp",
     "University/y2t1/DSA/tasks/ct1/docs/prod/~WRD0097.tmp",
     "University/y2t1/DSA/tasks/ct1/docs/prod/~WRD0093.tmp",
@@ -211,7 +214,6 @@
     "University/y2t1/DSA/tasks/ct1/docs/prod/template copy.md",
     "University/y2t1/DSA/tasks/ct1/docs/prod/template.md",
     "University/y2t1/DSA/tasks/ct1/docs/prod/звіт.docx",
-    "University/y2t1/DSA/tasks/ct1/docs/prod",
     "University/y2t1/Дисципліни та Результати.md",
     "University/y2t1/CT/docs/Dec 14 - Fixing stuff/Fixing presentation.md",
     "University/y2t1/IY/tasks/Lecture-Abstracts/res.md",
