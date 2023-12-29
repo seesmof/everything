@@ -2,12 +2,13 @@ from components import AlertPopup
 from rich.console import Console
 from rich.traceback import install
 from pyshorteners import Shortener
+import webbrowser
 
 install()
 console = Console()
 
 
-def shortenUrl(inputLinkBox, outputLinkBox):
+def shortenLink(inputLinkBox, outputLinkBox):
     url = inputLinkBox.get()
     if url == "":
         AlertPopup("Please enter a URL you want to shorten")
@@ -17,3 +18,13 @@ def shortenUrl(inputLinkBox, outputLinkBox):
         shortener = Shortener()
         shortUrl = shortener.tinyurl.short(url)
         outputLinkBox.insert(0, shortUrl)
+
+
+def openLink(shortLink, fallbackLink):
+    if shortLink != "":
+        webbrowser.open(shortLink)
+    elif fallbackLink != "":
+        webbrowser.open(fallbackLink)
+    else:
+        AlertPopup("Please enter a URL you want to open")
+        console.log("[red]Failed to open URL - No input URL was entered[/red]")
