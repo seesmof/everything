@@ -63,10 +63,17 @@ def renderMainTab(root):
         autoCopyToggle,
     ) = renderOptionsSection(root)
 
+    optionsElements = [autoOpenToggle, autoCopyToggle]
+
+    """
+    loadOptions(*optionsElements)
+
+    for element in optionsElements:
+        element.bind("<ButtonRelease-1>", lambda event: saveOptions(*optionsElements))
+    """
+
     shortenButton.configure(
-        command=lambda: shortenLink(
-            inputLinkEntry, outputLinkEntry, autoCopyToggle.get(), autoOpenToggle.get()
-        )
+        command=lambda: shortenLink(inputLinkEntry, outputLinkEntry, *optionsElements)
     )
     openLinkButton.configure(
         command=lambda: openLink(outputLinkEntry.get(), inputLinkEntry.get())

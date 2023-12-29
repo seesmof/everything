@@ -8,7 +8,7 @@ install()
 console = Console()
 
 
-def shortenLink(inputLinkBox, outputLinkBox, doAutoCopy: bool, doAutoOpen: bool):
+def shortenLink(inputLinkBox, outputLinkBox, autoCopyToggle, autoOpenToggle):
     url = inputLinkBox.get()
     if url == "":
         AlertPopup("Please enter a URL you want to shorten")
@@ -18,6 +18,11 @@ def shortenLink(inputLinkBox, outputLinkBox, doAutoCopy: bool, doAutoOpen: bool)
         shortener = Shortener()
         shortUrl = shortener.tinyurl.short(url)
         outputLinkBox.insert(0, shortUrl)
+
+        doAutoCopy, doAutoOpen = (
+            autoCopyToggle.get(),
+            autoOpenToggle.get(),
+        )
 
         if doAutoCopy:
             copyLink(outputLinkBox)
