@@ -1,5 +1,33 @@
-| Name               | More Info                                           | Status | GitHub                                               |
-| ------------------ | --------------------------------------------------- | ------ | ---------------------------------------------------- |
-| Password Generator | A random password generator using CustomTkinter     | ✅     | [Yes](https://github.com/seesmof/password-generator) |
-| URL Shortener      | Link shortener using CustomTkinter and PyShorteners | ✅     | [Yes](https://github.com/seesmof/url-shortener)      |
-| Word Counter       | Words, symbols, lines counter with CustomTkinter    | ✅     | [Yes](https://github.com/seesmof/word-counter)       |
+- Password Generator - ✅
+  - A random password generator using CustomTkinter
+  - [Link](https://github.com/seesmof/password-generator)
+- URL Shortener - ✅
+  - Link shortener using CustomTkinter and PyShorteners
+  - [Link](https://github.com/seesmof/url-shortener)
+- Word Counter - ✅
+  - Words, symbols, lines counter with CustomTkinter
+  - [Link](https://github.com/seesmof/word-counter)
+- Project Ideas Manager - 💭
+  - Project ideas manager using Click and SQLite
+  - [Link](https://github.com/seesmof/project-ideas-manager-cli)
+- Todo List - 💭
+  - A todo list CLI with Click, SQLite and Pydantic
+  - [Link](https://github.com/seesmof/todo-list-cli)
+- Bulk File Renamer - 💭
+  - Bulk file renamer with Click
+  - [Link](https://github.com/seesmof/bulk-file-renamer)
+- Directory Tree Generator - 💭
+  - Directory tree generator with Click and Rich
+  - [Link](https://github.com/seesmof/directory-tree-generator)
+- Calculator - 💭
+  - A simple calculator with CustomTkinter
+  - [Link](https://github.com/seesmof/calculator)
+- Translator - 💭
+  - A simple translator with CustomTkinter
+  - [Link](https://github.com/seesmof/translation-tool)
+- Spaceship Tracker - 💭
+  - A spaceship tracker with CustomTkinter, SQLite and Pydantic
+  - [Link](https://github.com/seesmof/spaceship-tracker)
+- Contacts Book Manager - 💭
+  - A contacts book manager with CustomTkinter, SQLite and Pydantic
+  - [Link](https://github.com/seesmof/contacts-book-manager)
