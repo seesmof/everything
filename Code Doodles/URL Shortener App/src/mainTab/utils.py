@@ -43,14 +43,14 @@ def openLink(shortLink, fallbackLink):
         console.log("[red]Failed to open URL - No input URL was entered[/red]")
 
 
-def copyLink(box):
-    box.clipboard_clear()
-    box.clipboard_append(box.get())
+def copyLink(textbox):
+    textbox.clipboard_clear()
+    textbox.clipboard_append(textbox.get())
 
 
 def getOptionsData():
     currentDir = path.dirname(path.abspath(__file__))
-    dataFilePath = f"{currentDir}\..\..\data\settings_cache.json"
+    dataFilePath = path.join(currentDir, "..", "..", "data", "settings_cache.json")
 
     try:
         with open(dataFilePath, "r") as f:
@@ -76,7 +76,7 @@ def saveOptions(autoOpenToggle, autoCopyToggle):
     data["autoCopy"] = autoCopyToggle.get()
 
     currentDir = path.dirname(path.abspath(__file__))
-    dataFilePath = f"{currentDir}\..\..\data\settings_cache.json"
+    dataFilePath = path.join(currentDir, "..", "..", "data", "settings_cache.json")
 
     try:
         with open(dataFilePath, "w") as f:
