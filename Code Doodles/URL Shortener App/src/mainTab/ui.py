@@ -2,7 +2,7 @@ from components import Button, Heading
 
 from customtkinter import *
 
-from mainTab.utils import openLink, shortenLink
+from mainTab.utils import loadOptions, openLink, saveOptions, shortenLink
 
 
 def renderShortenSection(root):
@@ -65,12 +65,10 @@ def renderMainTab(root):
 
     optionsElements = [autoOpenToggle, autoCopyToggle]
 
-    """
     loadOptions(*optionsElements)
 
     for element in optionsElements:
         element.bind("<ButtonRelease-1>", lambda event: saveOptions(*optionsElements))
-    """
 
     shortenButton.configure(
         command=lambda: shortenLink(inputLinkEntry, outputLinkEntry, *optionsElements)
