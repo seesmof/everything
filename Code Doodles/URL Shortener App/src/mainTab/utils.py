@@ -8,7 +8,7 @@ install()
 console = Console()
 
 
-def shortenLink(inputLinkBox, outputLinkBox):
+def shortenLink(inputLinkBox, outputLinkBox, doAutoCopy: bool, doAutoOpen: bool):
     url = inputLinkBox.get()
     if url == "":
         AlertPopup("Please enter a URL you want to shorten")
@@ -19,6 +19,12 @@ def shortenLink(inputLinkBox, outputLinkBox):
         shortUrl = shortener.tinyurl.short(url)
         outputLinkBox.insert(0, shortUrl)
 
+        if doAutoCopy:
+            copyLink(outputLinkBox)
+
+        if doAutoOpen:
+            openLink(shortUrl, url)
+
 
 def openLink(shortLink, fallbackLink):
     if shortLink != "":
@@ -28,3 +34,8 @@ def openLink(shortLink, fallbackLink):
     else:
         AlertPopup("Please enter a URL you want to open")
         console.log("[red]Failed to open URL - No input URL was entered[/red]")
+
+
+def copyLink(box):
+    box.clipboard_clear()
+    box.clipboard_append(box.get())

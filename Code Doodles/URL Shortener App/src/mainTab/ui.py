@@ -64,7 +64,9 @@ def renderMainTab(root):
     ) = renderOptionsSection(root)
 
     shortenButton.configure(
-        command=lambda: shortenLink(inputLinkEntry, outputLinkEntry)
+        command=lambda: shortenLink(
+            inputLinkEntry, outputLinkEntry, autoCopyToggle.get(), autoOpenToggle.get()
+        )
     )
     openLinkButton.configure(
         command=lambda: openLink(outputLinkEntry.get(), inputLinkEntry.get())
