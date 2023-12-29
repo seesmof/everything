@@ -7,6 +7,12 @@ so what we need is
 """
 
 from customtkinter import *
+from rich.console import Console
+from rich.traceback import install
+from pyshorteners import Shortener
+
+install()
+console = Console()
 
 
 class AlertPopup(CTkToplevel):
@@ -82,17 +88,50 @@ class App:
     def run(self):
         self.app.mainloop()
 
+    def shortenUrl(self):
+        url = self.inputUrlBox.get()
+        if url == "":
+            AlertPopup("Please enter URL to shorten")
+            console.log("[red]Failed to shorten URL since none was entered[/]")
+        else:
+            shortener = Shortener()
+            shortUrl = shortener.tinyurl.short(url)
+            self.resultsBox.delete(0, "end")
+            self.resultsBox.insert("end", shortUrl)
+
 
 def main():
     app = App(height=400, width=600, title="URL Shortener")
 
     mainTab = app.addTab("Shorten your URL")
 
-    heading = Heading(mainTab, text="Shorten your URL")
-    heading.pack(pady=8)
+    app.inputUrlBox = CTkEntry(
+        mainTab,
+        placeholder_text="Enter URL to shorten",
+        width=200,
+    )
+    app.inputUrlBox.place(x=0, y=0)
 
-    button = Button(mainTab, text="Shorten")
-    button.pack(pady=8)
+    app.resultsBox = CTkEntry(
+        mainTab,
+        width=200,
+        placeholder_text="Shortened URL here...",
+    )
+    app.resultsBox.place(x=205, y=0)
+
+    app.shortenUrlButton = Button(
+        mainTab, text="Shorten", width=70, command=app.shortenUrl
+    )
+    app.shortenUrlButton.place(x=410, y=0)
+
+    app.copyUrlButton = Button(
+        mainTab,
+        text="Copy",
+        command=lambda: console.copy(
+            app.resultsBox.get() if app.resultsBox.get() else None
+        ),
+    )
+    app.copyUrlButton.place(x=485, y=0)
 
     app.run()
 
