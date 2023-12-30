@@ -13,7 +13,7 @@ from rich.traceback import install
 install()
 console = Console()
 
-import click
+from click_shell import shell
 import sqlite3
 
 currentDir = path.dirname(path.abspath(__file__))
@@ -25,30 +25,43 @@ databasePath = path.join(currentDir, "..", "data", "project_ideas.db")
 # list tasks
 
 
-@click.group()
-def cli():
+@shell(
+    prompt="> ",
+    intro="Welcome to Project Ideas Manager!\nEnter 'help' for list of commands",
+)
+def pm_shell():
     pass
 
 
-@click.command(help="Add new project idea")
-def add():
-    console.print("Adding new project idea...")
-
-
-@click.command(help="Remove project idea")
-def remove():
-    console.print("Removing project idea...")
-
-
-@click.command(help="List project ideas")
-def display():
-    console.print("Listing project ideas...")
-
-
-@cli.command()
+@pm_shell.command()
 def help():
-    console.print("Help...")
+    print(
+        """
+Here is a list of all commands:
+
+help: See this list
+add: Add a new project idea
+remove: Remove a project idea
+show: Show all project ideas
+"""
+    )
+
+
+def getNewIdeaData():
+    name = input("Project Name *: ")
+    description = input("Project Description: ")
+    status = input("Project Status: ")
+    difficulty = input("Project Difficulty: ")
+
+    description = description if description else None
+    status = status if status else "todo"
+    difficulty = difficulty if difficulty else 1
+
+
+@pm_shell.command()
+def add():
+    name, description, status, difficulty = getNewIdeaData()
 
 
 if __name__ == "__main__":
-    cli()
+    pm_shell()
