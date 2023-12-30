@@ -1,6 +1,5 @@
 from enum import Enum
 import sqlite3
-from rich.markdown import Markdown as md
 
 
 class Status(Enum):
@@ -16,13 +15,11 @@ class Difficulty(Enum):
 
 
 def getTableRows(cursor: sqlite3.Cursor, console) -> list:
-    try:
-        cursor.execute("SELECT * FROM project_ideas")
-    except sqlite3.OperationalError:
-        createTable(connection=cursor.connection, cursor=cursor)
+    createTable(connection=cursor.connection, cursor=cursor)
+    cursor.execute("SELECT * FROM project_ideas")
     rows = cursor.fetchall()
     if not rows:
-        console.print("No project ideas found. Create one with 'add'")
+        console.print("[red]No project ideas found[/]. Create one with 'add'")
         return []
     return rows
 
@@ -41,7 +38,7 @@ def addTask(
     difficulty: Difficulty,
     connection: sqlite3.Connection,
     cursor: sqlite3.Cursor,
-):
+) -> None:
     cursor.execute(
         "INSERT INTO project_ideas (name, description, status, difficulty) VALUES (?, ?, ?, ?)",
         (name, description, status.value, difficulty.value),

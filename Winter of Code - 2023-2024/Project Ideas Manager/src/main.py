@@ -58,6 +58,7 @@ Here is a list of all commands:
 - add: Add a new project idea
 - remove: Remove a project idea
 - show: Show all project ideas
+- exit: Exit the shell
 """
         )
     )
@@ -80,6 +81,18 @@ def add():
         cursor=cursor,
     )
     console.print("[green]Task added successfully[/]")
+
+
+@pm_shell.command()
+def remove():
+    rows = getTableRows(cursor=cursor, console=console)
+    if not rows:
+        console.print("[red]No project ideas found[/]. Create one with 'add'")
+        return
+    id = input("Enter the ID of the project idea you want to remove: ")
+    cursor.execute("DELETE FROM project_ideas WHERE id = ?", (id,))
+    connection.commit()
+    console.print("[green]Task removed successfully[/]")
 
 
 @pm_shell.command()
