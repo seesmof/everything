@@ -1,6 +1,5 @@
 from os import path
 from rich.markdown import Markdown as md
-from rich.table import Table
 from rich.console import Console
 from rich.traceback import install
 from click_shell import shell
@@ -11,6 +10,7 @@ from utills import (
     createTable,
     getNewIdeaData,
     getTableRows,
+    renderIdeasTable,
 )
 
 install()
@@ -54,6 +54,7 @@ Here is a list of all commands:
 @pm_shell.command()
 def add():
     name, description, status, difficulty = getNewIdeaData(console=console)
+
     if not name:
         console.print("[red]Name cannot be empty[/]")
         return
@@ -67,19 +68,26 @@ def add():
         connection=connection,
         cursor=cursor,
     )
+
     console.print("[green]Task added successfully[/]")
 
 
 @pm_shell.command()
 def remove():
     rows = getTableRows(cursor=cursor, console=console)
-    if not rows:
-        console.print("[red]No project ideas found[/]. Create one with 'add'")
+    renderIdeasTable(rows=rows, console=console)
+    try:
+        ideaId = int(input("Enter the ID of the project idea you want to remove: "))
+    except Exception:
+        console.print("[red]Invalid ID[/]")
         return
-    id = input("Enter the ID of the project idea you want to remove: ")
-    cursor.execute("DELETE FROM project_ideas WHERE id = ?", (id,))
-    connection.commit()
-    console.print("[green]Task removed successfully[/]")
+
+    try:
+        cursor.execute("DELETE FROM project_ideas WHERE id = ?", (ideaId,))
+        connection.commit()
+        console.print("[green]Task removed successfully[/]")
+    except Exception as e:
+        console.print(f"[red]Failed to remove task: {e}[/]")
 
 
 @pm_shell.command()
@@ -88,16 +96,31 @@ def edit():
     if not rows:
         console.print("[red]No project ideas found[/]. Create one with 'add'")
         return
-    id = input("Enter the ID of the project idea you want to edit: ")
+    renderIdeasTable(rows=rows, console=console)
+
+    try:
+        ideaId = int(input("Enter the ID of the project idea you want to edit: "))
+    except Exception:
+        console.print("[red]Invalid ID[/]")
+        return
+
     name, description, status, difficulty = getNewIdeaData(console=console)
+
     if not name:
         console.print("[red]Name cannot be empty[/]")
         return
-    cursor.execute(
-        "UPDATE project_ideas SET name = ?, description = ?, status = ?, difficulty = ? WHERE id = ?",
-        (name, description, status.value, difficulty.value, id),
-    )
-    connection.commit()
+
+    sqlQuery = """
+        UPDATE project_ideas
+        SET name = ?, description = ?, status = ?, difficulty = ?
+        WHERE id = ?
+    """
+
+    with connection:
+        cursor.execute(
+            sqlQuery, (name, description, status.value, difficulty.value, ideaId)
+        )
+
     console.print("[green]Task edited successfully[/]")
 
 
@@ -106,27 +129,8 @@ def show():
     rows = getTableRows(cursor=cursor, console=console)
     if not rows:
         return
-    t = Table("ID", "Name", "Description", "Status", "Difficulty")
 
-    for row in rows:
-        id, name, description, status, difficulty = row
-        t.add_row(
-            f"[bold]{id}[/]",
-            f"{name}",
-            f"{description[0].upper() + description[1:]}" if description else "",
-            f"[blue]{status.title()}[/]"
-            if status == "todo"
-            else f"[yellow]{status.title()}[/]"
-            if status == "doing"
-            else f"[green]{status.title()}[/]",
-            f"[green]{difficulty.title()}[/]"
-            if difficulty == "easy"
-            else f"[yellow]{difficulty.title()}[/]"
-            if difficulty == "medium"
-            else f"[red]{difficulty.title()}[/]",
-        )
-
-    console.print(t)
+    renderIdeasTable(rows=rows, console=console)
 
 
 if __name__ == "__main__":

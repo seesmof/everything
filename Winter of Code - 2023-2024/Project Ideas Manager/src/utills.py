@@ -1,5 +1,6 @@
 from enum import Enum
 import sqlite3
+from rich.table import Table
 
 
 class Status(Enum):
@@ -25,9 +26,16 @@ def getTableRows(cursor: sqlite3.Cursor, console) -> list:
 
 
 def createTable(cursor: sqlite3.Cursor, connection: sqlite3.Connection) -> None:
-    cursor.execute(
-        "CREATE TABLE IF NOT EXISTS project_ideas (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, description TEXT, status TEXT, difficulty TEXT)"
+    query = """
+    CREATE TABLE IF NOT EXISTS project_ideas (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        description TEXT,
+        status TEXT,
+        difficulty TEXT
     )
+    """
+    cursor.execute(query)
     connection.commit()
 
 
@@ -48,14 +56,17 @@ def addTask(
 
 def getNewIdeaData(console) -> tuple:
     console.print()
+
     name = input("Project Name - Required\n: ")
     description = input("Project Description - Can be empty\n: ")
     status = input("Project Status - todo | doing | done. Default is todo\n: ")
     difficulty = input("Project Difficulty - easy | medium | hard. Default is easy\n: ")
+
     console.print()
 
     name = name.title() if name else None
     description = description if description else None
+
     status = Status(status) if status in [s.value for s in Status] else Status.TODO
     difficulty = (
         Difficulty(difficulty)
@@ -64,3 +75,27 @@ def getNewIdeaData(console) -> tuple:
     )
 
     return name, description, status, difficulty
+
+
+def renderIdeasTable(rows: list, console: object) -> None:
+    t = Table("ID", "Name", "Description", "Status", "Difficulty")
+
+    for row in rows:
+        id, name, description, status, difficulty = row
+        t.add_row(
+            f"[bold]{id}[/]",
+            f"{name}",
+            f"{description[0].upper() + description[1:]}" if description else "",
+            f"[blue]{status.title()}[/]"
+            if status == "todo"
+            else f"[yellow]{status.title()}[/]"
+            if status == "doing"
+            else f"[green]{status.title()}[/]",
+            f"[green]{difficulty.title()}[/]"
+            if difficulty == "easy"
+            else f"[yellow]{difficulty.title()}[/]"
+            if difficulty == "medium"
+            else f"[red]{difficulty.title()}[/]",
+        )
+
+    console.print(t)
