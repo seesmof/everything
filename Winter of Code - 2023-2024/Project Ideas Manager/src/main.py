@@ -3,9 +3,16 @@ Properties: Name, Description, Status, Difficulty
 
 Difficulty: easy, medium, hard (1, 2, 3)
 Status: todo, doing, done
+
+- help
+- add
+- remove
+- edit
+- show
 """
 
 from os import path
+from rich.markdown import Markdown as md
 from rich.table import Table
 from rich.console import Console
 from rich.traceback import install
@@ -24,17 +31,10 @@ from utills import (
 install()
 console = Console()
 
-
 currentDir = path.dirname(path.abspath(__file__))
 databasePath = path.join(currentDir, "..", "data", "project_ideas.db")
-conn = sqlite3.connect(databasePath)
-c = conn.cursor()
-
-# help
-# add task
-# remove task
-# edit task
-# list tasks
+connection = sqlite3.connect(databasePath)
+cursor = connection.cursor()
 
 
 @shell(
@@ -47,15 +47,19 @@ def pm_shell():
 
 @pm_shell.command()
 def help():
-    print(
-        """
+    console.print(
+        md(
+            """
+This CLI tool helps you manage your project ideas. You can use it to add, remove and edit your project ideas as well as assign them different properties like `status` and `difficulty`.
+
 Here is a list of all commands:
 
-help: See this list
-add: Add a new project idea
-remove: Remove a project idea
-show: Show all project ideas
+- help: See this list
+- add: Add a new project idea
+- remove: Remove a project idea
+- show: Show all project ideas
 """
+        )
     )
 
 
@@ -63,24 +67,26 @@ show: Show all project ideas
 def add():
     name, description, status, difficulty = getNewIdeaData(console=console)
     if not name:
-        console.print("Name cannot be empty")
+        console.print("[red]Name cannot be empty[/]")
         return
 
-    createTable(connection=conn, cursor=c)
+    createTable(connection=connection, cursor=cursor)
     addTask(
         name=name,
         description=description,
         status=status,
         difficulty=difficulty,
-        connection=conn,
-        cursor=c,
+        connection=connection,
+        cursor=cursor,
     )
-    console.print("Task added successfully")
+    console.print("[green]Task added successfully[/]")
 
 
 @pm_shell.command()
 def show():
-    rows = getTableRows(cursor=c, console=console)
+    rows = getTableRows(cursor=cursor, console=console)
+    if not rows:
+        return
     t = Table("ID", "Name", "Description", "Status", "Difficulty")
 
     for row in rows:
@@ -94,11 +100,11 @@ def show():
             else f"[yellow]{status.title()}[/]"
             if status == "doing"
             else f"[green]{status.title()}[/]",
-            f"[green]{difficulty}[/]"
+            f"[green]{difficulty.title()}[/]"
             if difficulty == "easy"
-            else f"[yellow]{difficulty}[/]"
+            else f"[yellow]{difficulty.title()}[/]"
             if difficulty == "medium"
-            else f"[red]{difficulty}[/]",
+            else f"[red]{difficulty.title()}[/]",
         )
 
     console.print(t)
