@@ -24,10 +24,11 @@ cursor = connection.cursor()
 
 @shell(
     prompt="> ",
-    intro="Welcome to Project Ideas Manager!\nEnter 'help' for list of commands",
 )
 def pm_shell():
-    pass
+    console.print(
+        md("Welcome to _Project Ideas Manager_!\n\nEnter `help` for list of commands")
+    )
 
 
 @pm_shell.command()
