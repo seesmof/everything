@@ -9,25 +9,20 @@ from os import path
 from rich.table import Table
 from rich.console import Console
 from rich.traceback import install
+from click_shell import shell
+import sqlite3
+
+from utills import (
+    Difficulty,
+    Status,
+    addTask,
+    createTable,
+    getNewIdeaData,
+    getTableRows,
+)
 
 install()
 console = Console()
-
-from click_shell import shell
-import sqlite3
-from enum import Enum
-
-
-class Status(Enum):
-    TODO = "todo"
-    DOING = "doing"
-    DONE = "done"
-
-
-class Difficulty(Enum):
-    EASY = "easy"
-    MEDIUM = "medium"
-    HARD = "hard"
 
 
 currentDir = path.dirname(path.abspath(__file__))
@@ -64,63 +59,28 @@ show: Show all project ideas
     )
 
 
-def getNewIdeaData():
-    console.print()
-    name = input("Project Name - Required\n: ")
-    description = input("Project Description - Can be empty\n: ")
-    status = input("Project Status - todo | doing | done. Default is todo\n: ")
-    difficulty = input("Project Difficulty - easy | medium | hard. Default is easy\n: ")
-    console.print()
-
-    name = name.title() if name else None
-    description = description if description else None
-    status = Status(status) if status in [s.value for s in Status] else Status.TODO
-    difficulty = (
-        Difficulty(difficulty)
-        if difficulty in [d.value for d in Difficulty]
-        else Difficulty.EASY
-    )
-
-    return name, description, status, difficulty
-
-
-def createTable():
-    c.execute(
-        "CREATE TABLE IF NOT EXISTS project_ideas (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, description TEXT, status TEXT, difficulty TEXT)"
-    )
-    conn.commit()
-
-
-def addTask(name, description, status, difficulty):
-    c.execute(
-        "INSERT INTO project_ideas (name, description, status, difficulty) VALUES (?, ?, ?, ?)",
-        (name, description, status.value, difficulty.value),
-    )
-    conn.commit()
-
-
 @pm_shell.command()
 def add():
-    name, description, status, difficulty = getNewIdeaData()
+    name, description, status, difficulty = getNewIdeaData(console=console)
     if not name:
         console.print("Name cannot be empty")
         return
 
-    createTable()
-    addTask(name, description, status, difficulty)
+    createTable(connection=conn, cursor=c)
+    addTask(
+        name=name,
+        description=description,
+        status=status,
+        difficulty=difficulty,
+        connection=conn,
+        cursor=c,
+    )
     console.print("Task added successfully")
 
 
-def showTasks():
-    try:
-        c.execute("SELECT * FROM project_ideas")
-    except sqlite3.OperationalError:
-        createTable()
-    rows = c.fetchall()
-    if not rows:
-        console.print("No project ideas found. Create one with 'add'")
-        return
-
+@pm_shell.command()
+def show():
+    rows = getTableRows(cursor=c, console=console)
     t = Table("ID", "Name", "Description", "Status", "Difficulty")
 
     for row in rows:
@@ -128,12 +88,12 @@ def showTasks():
         t.add_row(
             f"[bold]{id}[/]",
             f"{name}",
-            f"{description}",
-            f"[blue]{status}[/]"
+            f"{description[0].upper() + description[1:]}" if description else "",
+            f"[blue]{status.title()}[/]"
             if status == "todo"
-            else f"[yellow]{status}[/]"
+            else f"[yellow]{status.title()}[/]"
             if status == "doing"
-            else f"[green]{status}[/]",
+            else f"[green]{status.title()}[/]",
             f"[green]{difficulty}[/]"
             if difficulty == "easy"
             else f"[yellow]{difficulty}[/]"
@@ -142,11 +102,6 @@ def showTasks():
         )
 
     console.print(t)
-
-
-@pm_shell.command()
-def show():
-    showTasks()
 
 
 if __name__ == "__main__":
