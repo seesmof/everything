@@ -38,6 +38,7 @@ c = conn.cursor()
 # help
 # add task
 # remove task
+# edit task
 # list tasks
 
 
@@ -71,7 +72,7 @@ def getNewIdeaData():
     difficulty = input("Project Difficulty - easy | medium | hard. Default is easy\n: ")
     console.print()
 
-    name = name if name else None
+    name = name.title() if name else None
     description = description if description else None
     status = Status(status) if status in [s.value for s in Status] else Status.TODO
     difficulty = (
@@ -123,12 +124,21 @@ def showTasks():
     t = Table("ID", "Name", "Description", "Status", "Difficulty")
 
     for row in rows:
+        id, name, description, status, difficulty = row
         t.add_row(
-            str(row[0]),
-            str(row[1]),
-            str(row[2]),
-            str(row[3]),
-            str(row[4]),
+            f"[bold]{id}[/]",
+            f"{name}",
+            f"{description}",
+            f"[blue]{status}[/]"
+            if status == "todo"
+            else f"[yellow]{status}[/]"
+            if status == "doing"
+            else f"[green]{status}[/]",
+            f"[green]{difficulty}[/]"
+            if difficulty == "easy"
+            else f"[yellow]{difficulty}[/]"
+            if difficulty == "medium"
+            else f"[red]{difficulty}[/]",
         )
 
     console.print(t)
