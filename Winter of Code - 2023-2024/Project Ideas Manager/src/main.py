@@ -1,16 +1,3 @@
-"""
-Properties: Name, Description, Status, Difficulty
-
-Difficulty: easy, medium, hard (1, 2, 3)
-Status: todo, doing, done
-
-- help
-- add
-- remove
-- edit
-- show
-"""
-
 from os import path
 from rich.markdown import Markdown as md
 from rich.table import Table
@@ -20,8 +7,6 @@ from click_shell import shell
 import sqlite3
 
 from utills import (
-    Difficulty,
-    Status,
     addTask,
     createTable,
     getNewIdeaData,
@@ -57,6 +42,7 @@ Here is a list of all commands:
 - help: See this list
 - add: Add a new project idea
 - remove: Remove a project idea
+- edit: Edit a project idea
 - show: Show all project ideas
 - exit: Exit the shell
 """
@@ -93,6 +79,25 @@ def remove():
     cursor.execute("DELETE FROM project_ideas WHERE id = ?", (id,))
     connection.commit()
     console.print("[green]Task removed successfully[/]")
+
+
+@pm_shell.command()
+def edit():
+    rows = getTableRows(cursor=cursor, console=console)
+    if not rows:
+        console.print("[red]No project ideas found[/]. Create one with 'add'")
+        return
+    id = input("Enter the ID of the project idea you want to edit: ")
+    name, description, status, difficulty = getNewIdeaData(console=console)
+    if not name:
+        console.print("[red]Name cannot be empty[/]")
+        return
+    cursor.execute(
+        "UPDATE project_ideas SET name = ?, description = ?, status = ?, difficulty = ? WHERE id = ?",
+        (name, description, status.value, difficulty.value, id),
+    )
+    connection.commit()
+    console.print("[green]Task edited successfully[/]")
 
 
 @pm_shell.command()
