@@ -7,7 +7,7 @@
 - Word Counter - ✅
   - Words, symbols, lines counter with CustomTkinter
   - [Link](https://github.com/seesmof/word-counter)
-- Project Ideas Manager - 💭
+- Project Ideas Manager - ✅
   - Project ideas manager using Click and SQLite
   - [Link](https://github.com/seesmof/project-ideas-manager-cli)
 - Todo List - 💭
