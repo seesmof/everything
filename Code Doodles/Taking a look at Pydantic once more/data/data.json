@@ -1,0 +1,94 @@
+{
+  "results": [
+    {
+      "id": 2916,
+      "title": "Cool Sweatshirt",
+      "variants": [
+        {
+          "name": "Small",
+          "variantCode": "S",
+          "available": "False",
+          "price": 35
+        },
+        {
+          "name": "Medium",
+          "variantCode": "M",
+          "available": "True",
+          "price": 45
+        },
+        {
+          "name": "Large",
+          "variantCode": "L",
+          "available": "True",
+          "price": 55
+        },
+        {
+          "name": "X-Large",
+          "variantCode": "X",
+          "available": "False",
+          "price": 65
+        }
+      ]
+    },
+    {
+      "id": 6212,
+      "title": "Winter Sweater",
+      "variants": [
+        {
+          "name": "Small",
+          "variantCode": "S",
+          "available": "True",
+          "price": 35
+        },
+        {
+          "name": "Medium",
+          "variantCode": "M",
+          "available": "True",
+          "price": 45
+        },
+        {
+          "name": "Large",
+          "variantCode": "L",
+          "available": "True",
+          "price": 55
+        },
+        {
+          "name": "X-Large",
+          "variantCode": "X",
+          "available": "True",
+          "price": 65
+        }
+      ]
+    },
+    {
+      "id": 7493,
+      "title": "Summer Hoodie",
+      "variants": [
+        {
+          "name": "Small",
+          "variantCode": "S",
+          "available": "True",
+          "price": 35
+        },
+        {
+          "name": "Medium",
+          "variantCode": "M",
+          "available": "True",
+          "price": 45
+        },
+        {
+          "name": "Large",
+          "variantCode": "L",
+          "available": "True",
+          "price": 55
+        },
+        {
+          "name": "X-Large",
+          "variantCode": "X",
+          "available": "False",
+          "price": 65
+        }
+      ]
+    }
+  ]
+}
