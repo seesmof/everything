@@ -27,9 +27,7 @@ def fetchMoviesFromFile(file: str) -> list[tuple[str, int]]:
 movies = fetchMoviesFromFile(moviesFile)
 console.print(movies)
 
-movieLinks = []
 for name, year in movies:
-    url = f"https://letterboxd.com/film/{name}/"
+    url = f"https://letterboxd.com/search/{name} {year}/"
     webbrowser.open(url)
-    sleep(2)
-console.print(movieLinks)
+    sleep(1)
