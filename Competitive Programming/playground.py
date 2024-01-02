@@ -1,18 +1,22 @@
-import os
-import sys
-from rich import print as pprint
+from rich.console import Console
+from rich.traceback import install
 
-sys.path.append(os.path.realpath("."))
-import inquirer  # noqa
+install()
+console = Console()
 
-questions = [
-    inquirer.List(
-        "size",
-        message="What size do you need?",
-        choices=["Jumbo", "Large", "Standard", "Medium", "Small", "Micro"],
-    ),
-]
 
-answers = inquirer.prompt(questions)
+def mergeAlternately(one: str, two: str):
+    res = ""
+    while one or two:
+        if one:
+            res += one[0]
+            one = one[1:]
+        if two:
+            res += two[0]
+            two = two[1:]
+    return res
 
-pprint(answers)
+
+one, two = "ab", "pqrs"
+res = mergeAlternately(one, two)
+console.print(res)
