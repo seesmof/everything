@@ -89,6 +89,11 @@
           "price": 65
         }
       ]
+    },
+    {
+      "id": 2093,
+      "title": "New Sneakers",
+      "variants": []
     }
   ]
 }

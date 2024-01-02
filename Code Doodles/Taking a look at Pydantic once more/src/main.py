@@ -1,3 +1,5 @@
+import json
+from os import path
 from typing import List, Optional
 from pydantic import BaseModel, field_validator
 from rich.console import Console
@@ -25,25 +27,10 @@ class Product(BaseModel):
     variants: Optional[List[Variant]]
 
 
-item = Product(
-    id=51981,
-    title="New T-Shirt",
-    variants=[
-        Variant(name="Small", variantCode="S", available=True, price=10),
-        Variant(name="Medium", variantCode="M", available=True, price=20),
-        Variant(name="Large", variantCode="L", available=False, price=30),
-        Variant(name="Extra Large", variantCode="X", available=True, price=40),
-    ],
-)
-console.print(item)
+currentDir = path.dirname(path.abspath(__file__))
+dataPath = path.join(currentDir, "..", "data", "data.json")
 
-newItem = Product(
-    id=51982,
-    title="New Sneakers",
-    variants=[
-        Variant(name="Small", variantCode="S", available=True, price=10),
-        Variant(name="Medium", variantCode="M", available=True, price=20),
-        Variant(name="Large", variantCode="L", available=False, price=30),
-        Variant(name="Extra Large", variantCode="X", available=True, price=40),
-    ],
-)
+with open(dataPath, "r") as f:
+    data = json.load(f)
+    products = [Product(**p) for p in data["results"]]
+console.print(products)
