@@ -1,4 +1,6 @@
 from os import path
+from time import sleep
+import webbrowser
 from rich.console import Console
 from rich.traceback import install
 
@@ -28,4 +30,6 @@ console.print(movies)
 movieLinks = []
 for name, year in movies:
     url = f"https://letterboxd.com/film/{name}/"
+    webbrowser.open(url)
+    sleep(2)
 console.print(movieLinks)
