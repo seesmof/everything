@@ -1,22 +1,17 @@
-from rich.console import Console
-from rich.traceback import install
-
-install()
-console = Console()
+from Archive.testing_imports import *
 
 
-def mergeAlternately(one: str, two: str):
-    res = ""
-    while one or two:
-        if one:
-            res += one[0]
-            one = one[1:]
-        if two:
-            res += two[0]
-            two = two[1:]
-    return res
+def solve(one: str, two: str) -> str:
+    count = 1
+    while True:
+        trial = one[:count]
+        console.print(trial)
+        if trial not in one or trial not in two:
+            return trial[:-1]
+        else:
+            count += 1
 
 
-one, two = "ab", "pqrs"
-res = mergeAlternately(one, two)
-console.print(res)
+one, two = "ABCABC", "ABC"
+res = solve(one, two)
+console.print(f"{one}, {two}: {res}")
