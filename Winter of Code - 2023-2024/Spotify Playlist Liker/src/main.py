@@ -8,6 +8,7 @@ out: Message - Success | Error
 
 import json
 from os import path
+from time import sleep
 import inquirer
 from rich.markdown import Markdown as md
 from rich.console import Console
@@ -110,7 +111,7 @@ try:
     playlist = spotifyApiObject.playlist(playlistUrl)
     tracks = playlist["tracks"]["items"]
     for index, track in spinner(
-        enumerate(tracks), description="Processing all the tracks"
+        enumerate(tracks), description="Processing all the tracks..."
     ):
         trackId = track["track"]["id"]
         spotifyApiObject.current_user_saved_tracks_add(
