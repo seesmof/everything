@@ -38,11 +38,10 @@ actionQuestion = [
 actionAnswer = inquirer.prompt(actionQuestion)
 actionTaken = actionAnswer["action"]
 
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
-
 currentDir = path.dirname(path.abspath(__file__))
 authDataPath = path.join(currentDir, "..", "data", "auth.json")
+cacheDataPath = path.join(currentDir, "..", "data", "cache.json")
+
 with open(authDataPath, "r", encoding="utf-8") as f:
     authData = json.load(f)
 
@@ -94,6 +93,9 @@ with open(authDataPath, "w", encoding="utf-8") as f:
         indent=4,
     )
 
+import spotipy
+from spotipy.oauth2 import SpotifyOAuth, CacheFileHandler
+
 scope = "user-library-modify"
 spotifyApiObject = spotipy.Spotify(
     auth_manager=SpotifyOAuth(
@@ -101,6 +103,7 @@ spotifyApiObject = spotipy.Spotify(
         client_id=clientId,
         client_secret=clientSecret,
         redirect_uri=redirectUri,
+        cache_handler=CacheFileHandler(cache_path=cacheDataPath),
     )
 )
 
@@ -109,13 +112,14 @@ playlistName = playlist["name"]
 tracks = playlist["tracks"]["items"]
 
 try:
-    for track in tracks:
-        trackId = track["track"]["id"]
-        spotifyApiObject.current_user_saved_tracks_add(
-            [trackId]
-        ) if actionTaken == "Like" else spotifyApiObject.current_user_saved_tracks_delete(
-            [trackId]
-        )
+    with console.status("Processing all the tracks..."):
+        for track in tracks:
+            trackId = track["track"]["id"]
+            spotifyApiObject.current_user_saved_tracks_add(
+                [trackId]
+            ) if actionTaken == "Like" else spotifyApiObject.current_user_saved_tracks_delete(
+                [trackId]
+            )
     console.print(
         f"[green]Successfully {actionTaken.lower()}d all tracks in {playlistName}[/green]"
     )
