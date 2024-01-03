@@ -89,7 +89,10 @@ with open(authDataPath, "w", encoding="utf-8") as f:
 scope = "user-library-modify"
 sp = spotipy.Spotify(
     auth_manager=SpotifyOAuth(
-        scope=scope, client_id=clientId, client_secret=clientSecret
+        scope=scope,
+        client_id=clientId,
+        client_secret=clientSecret,
+        redirect_uri="https://example.com/callback",
     )
 )
 
@@ -101,19 +104,12 @@ tracks = playlist["tracks"]["items"]
 
 # Iterate over each track
 for track in tracks:
-    track_id = track["track"]["id"]
+    trackId = track["track"]["id"]
 
-    # Check if the track is already liked or disliked
-    is_liked = sp.current_user_saved_tracks_contains([track_id])[0]
+    sp.current_user_saved_tracks_add(
+        [trackId]
+    ) if actionTaken == "Like" else sp.current_user_saved_tracks_delete([trackId])
 
-    if actionTaken == "Like" and not is_liked:
-        # Like the track
-        sp.current_user_saved_tracks_add([track_id])
-    elif actionTaken == "Dislike" and is_liked:
-        # Remove the track from liked tracks
-        sp.current_user_saved_tracks_delete([track_id])
-
-# Display success message
 console.print(
     f"[green]Successfully {actionTaken.lower()}d all tracks in given playlist[/green]"
 )
