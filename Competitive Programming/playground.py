@@ -1,29 +1,28 @@
-from typing import List
 from Archive.testing_imports import *
 
 
-def solve(numbers: List[int], target: int) -> List[int]:
-    """
-    Given an array of integers and a target number, return the indices of the two numbers
-    that add up to the target.
-    """
+def solve(nums: List[int]) -> List[List[int]]:
+    nums.sort()
+    console.print(nums)
+    res = []
+    for i in range(len(nums)):
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue
+        l, r = i + 1, len(nums) - 1
+        while l < r:
+            s = nums[i] + nums[l] + nums[r]
+            if s < 0:
+                l += 1
+            elif s > 0:
+                r -= 1
+            else:
+                res.append([nums[i], nums[l], nums[r]])
+                l += 1
+                while nums[l] == nums[l - 1] and l < r:
+                    l += 1
+    return res
 
-    # Sort the array first to make it easier to find the two numbers that add up to the target
-    numbers.sort()
 
-    # Use two pointers to find the two numbers that add up to the target
-    # Move the pointers towards each other until they meet or cross each other
-    left, right = 0, len(numbers) - 1
-    while left < right:
-        # Add the numbers at the current pointers and check if they equal the target
-        # If they do, return the indices of the numbers
-        # If they don't, move the pointers towards each other to find the two numbers that add up to the target
-        sum = numbers[left] + numbers[right]
-        if sum == target:
-            return [left + 1, right + 1]
-        elif sum < target:
-            left += 1
-        else:
-            right -= 1
-    # If no two numbers add up to the target, return an empty list
-    return []
+arr = [-1, 0, 1, 2, -1, -4]
+
+console.print(solve(arr))
