@@ -38,15 +38,9 @@ actionQuestion = [
 actionAnswer = inquirer.prompt(actionQuestion)
 actionTaken = actionAnswer["action"]
 
-console.print(f"{actionTaken} all tracks in {playlistUrl}")
-
-# get all tracks
-# for each perform the action
-
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
-# Load the auth data from file and see if its been saved earlier
 currentDir = path.dirname(path.abspath(__file__))
 authDataPath = path.join(currentDir, "..", "data", "auth.json")
 with open(authDataPath, "r", encoding="utf-8") as f:
@@ -76,40 +70,53 @@ else:
     clientSecretAnswer = inquirer.prompt(clientSecretQuestion)
     clientSecret = clientSecretAnswer["clientSecret"]
 
+if authData["redirectUri"] != "":
+    redirectUri = authData["redirectUri"]
+else:
+    redirectUriQuestion = [
+        inquirer.Text(
+            "redirectUri",
+            message="Enter your Redirect URI",
+            validate=lambda _, x: x != "",
+        )
+    ]
+    redirectUriAnswer = inquirer.prompt(redirectUriQuestion)
+    redirectUri = redirectUriAnswer["redirectUri"]
+
 with open(authDataPath, "w", encoding="utf-8") as f:
     json.dump(
         {
             "clientId": clientId,
             "clientSecret": clientSecret,
+            "redirectUri": redirectUri,
         },
         f,
         indent=4,
     )
 
 scope = "user-library-modify"
-sp = spotipy.Spotify(
+spotifyApiObject = spotipy.Spotify(
     auth_manager=SpotifyOAuth(
         scope=scope,
         client_id=clientId,
         client_secret=clientSecret,
-        redirect_uri="https://example.com/callback",
+        redirect_uri=redirectUri,
     )
 )
 
-# Retrieve the playlist data
-playlist = sp.playlist(playlistUrl)
-
-# Extract the track data
-tracks = playlist["tracks"]["items"]
-
-# Iterate over each track
-for track in tracks:
-    trackId = track["track"]["id"]
-
-    sp.current_user_saved_tracks_add(
-        [trackId]
-    ) if actionTaken == "Like" else sp.current_user_saved_tracks_delete([trackId])
-
-console.print(
-    f"[green]Successfully {actionTaken.lower()}d all tracks in given playlist[/green]"
-)
+try:
+    playlist = spotifyApiObject.playlist(playlistUrl)
+    tracks = playlist["tracks"]["items"]
+    # TODO add a spinner when the action is in progress
+    for track in tracks:
+        trackId = track["track"]["id"]
+        spotifyApiObject.current_user_saved_tracks_add(
+            [trackId]
+        ) if actionTaken == "Like" else spotifyApiObject.current_user_saved_tracks_delete(
+            [trackId]
+        )
+    console.print(
+        f"[green]Successfully {actionTaken.lower()}d all tracks in given playlist[/green]"
+    )
+except Exception as e:
+    console.print(f"[red]Failed to {actionTaken.lower()} all tracks: {e}[/red]")
