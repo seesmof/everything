@@ -105,22 +105,23 @@ spotifyApiObject = spotipy.Spotify(
     )
 )
 
-from rich.progress import track as spinner
+playlist = spotifyApiObject.playlist(playlistUrl)
+playlistName = playlist["name"]
+tracks = playlist["tracks"]["items"]
 
 try:
-    playlist = spotifyApiObject.playlist(playlistUrl)
-    tracks = playlist["tracks"]["items"]
-    for index, track in spinner(
-        enumerate(tracks), description="Processing all the tracks..."
-    ):
-        trackId = track["track"]["id"]
-        spotifyApiObject.current_user_saved_tracks_add(
-            [trackId]
-        ) if actionTaken == "Like" else spotifyApiObject.current_user_saved_tracks_delete(
-            [trackId]
-        )
+    with console.status("Processing all the tracks..."):
+        for track in tracks:
+            trackId = track["track"]["id"]
+            spotifyApiObject.current_user_saved_tracks_add(
+                [trackId]
+            ) if actionTaken == "Like" else spotifyApiObject.current_user_saved_tracks_delete(
+                [trackId]
+            )
     console.print(
-        f"[green]Successfully {actionTaken.lower()}d all tracks in given playlist[/green]"
+        f"[green]Successfully {actionTaken.lower()}d all tracks in {playlistName}[/green]"
     )
 except Exception as e:
-    console.print(f"[red]Failed to {actionTaken.lower()} all tracks: {e}[/red]")
+    console.print(
+        f"[red]Failed to {actionTaken.lower()} all tracks: {e.replace('error: ','')}[/red]"
+    )
