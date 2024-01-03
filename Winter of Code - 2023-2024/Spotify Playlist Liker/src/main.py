@@ -7,6 +7,7 @@ out: Message - Success | Error
 """
 
 import inquirer
+from rich.markdown import Markdown as md
 from rich.console import Console
 from rich.traceback import install
 
@@ -22,7 +23,17 @@ urlQuestion = [
     )
 ]
 urlAnswer = inquirer.prompt(urlQuestion)
-
 playlistUrl = urlAnswer["playlistUrl"]
 
-# get all tracks and like or dislike them
+actionQuestion = [
+    inquirer.List(
+        "action",
+        message="Choose an action",
+        choices=["Like", "Dislike"],
+        default="Like",
+    )
+]
+actionAnswer = inquirer.prompt(actionQuestion)
+actionTaken = actionAnswer["action"]
+
+console.print(f"{actionTaken} all tracks in {playlistUrl}")
