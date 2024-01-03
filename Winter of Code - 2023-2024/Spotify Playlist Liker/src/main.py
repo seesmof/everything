@@ -104,11 +104,14 @@ spotifyApiObject = spotipy.Spotify(
     )
 )
 
+from rich.progress import track as spinner
+
 try:
     playlist = spotifyApiObject.playlist(playlistUrl)
     tracks = playlist["tracks"]["items"]
-    # TODO add a spinner when the action is in progress
-    for track in tracks:
+    for index, track in spinner(
+        enumerate(tracks), description="Processing all the tracks"
+    ):
         trackId = track["track"]["id"]
         spotifyApiObject.current_user_saved_tracks_add(
             [trackId]
