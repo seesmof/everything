@@ -8,7 +8,6 @@ out: Message - Success | Error
 
 import json
 from os import path
-from time import sleep
 import inquirer
 from rich.markdown import Markdown as md
 from rich.console import Console
@@ -110,14 +109,13 @@ playlistName = playlist["name"]
 tracks = playlist["tracks"]["items"]
 
 try:
-    with console.status("Processing all the tracks..."):
-        for track in tracks:
-            trackId = track["track"]["id"]
-            spotifyApiObject.current_user_saved_tracks_add(
-                [trackId]
-            ) if actionTaken == "Like" else spotifyApiObject.current_user_saved_tracks_delete(
-                [trackId]
-            )
+    for track in tracks:
+        trackId = track["track"]["id"]
+        spotifyApiObject.current_user_saved_tracks_add(
+            [trackId]
+        ) if actionTaken == "Like" else spotifyApiObject.current_user_saved_tracks_delete(
+            [trackId]
+        )
     console.print(
         f"[green]Successfully {actionTaken.lower()}d all tracks in {playlistName}[/green]"
     )
