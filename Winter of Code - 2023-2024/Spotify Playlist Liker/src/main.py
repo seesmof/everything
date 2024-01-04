@@ -13,44 +13,44 @@ from spotipy import Spotify
 from spotipy.oauth2 import SpotifyOAuth, CacheFileHandler
 
 from utils import (
-    checkAndPromptData,
-    getAction,
-    getUrl,
-    loadJson,
-    performActionOnTracks,
-    saveJson,
+    check_and_prompt_data,
+    get_action,
+    get_url,
+    load_json,
+    perfrom_action_on_tracks,
+    save_json,
 )
 
 install()
 console = Console()
-currentDir = path.dirname(path.abspath(__file__))
-authFile = path.join(currentDir, "..", "data", "auth.json")
-cacheFile = path.join(currentDir, "..", "data", "cache.json")
+current_dir = path.dirname(path.abspath(__file__))
+auth_file = path.join(current_dir, "..", "data", "auth.json")
+cache_file = path.join(current_dir, "..", "data", "cache.json")
 scope = "user-library-modify"
 
 
 def main() -> None:
     # Get the URL and action from the user
-    url = getUrl()
-    action = getAction()
+    url = get_url()
+    action = get_action()
 
     # Load the authentication data from a JSON file
-    authData = loadJson(path=authFile)
+    auth_data = load_json(path=auth_file)
 
     # Extract the client ID, client secret, and redirect URL from the authentication data
     client_id, client_secret, redirect_url = (
-        checkAndPromptData(authData=authData, variable="clientId"),
-        checkAndPromptData(authData=authData, variable="clientSecret"),
-        checkAndPromptData(authData=authData, variable="redirectUri"),
+        check_and_prompt_data(auth_data=auth_data, variable="client_id"),
+        check_and_prompt_data(auth_data=auth_data, variable="client_secret"),
+        check_and_prompt_data(auth_data=auth_data, variable="redirect_url"),
     )
 
     # Save the extracted authentication data back to the JSON file
-    saveJson(
-        path=authFile,
+    save_json(
+        path=auth_file,
         data={
-            "clientId": client_id,
-            "clientSecret": client_secret,
-            "redirectUri": redirect_url,
+            "client_id": client_id,
+            "client_secret": client_secret,
+            "redirect_url": redirect_url,
         },
     )
 
@@ -61,7 +61,7 @@ def main() -> None:
             client_id=client_id,
             client_secret=client_secret,
             redirect_uri=redirect_url,
-            cache_handler=CacheFileHandler(cache_path=cacheFile),
+            cache_handler=CacheFileHandler(cache_path=cache_file),
         )
     )
 
@@ -69,7 +69,7 @@ def main() -> None:
     playlist = spotify.playlist(url)
 
     # Perform the specified action on the tracks in the playlist
-    performActionOnTracks(
+    perfrom_action_on_tracks(
         playlist=playlist, spotify=spotify, console=console, action=action
     )
 

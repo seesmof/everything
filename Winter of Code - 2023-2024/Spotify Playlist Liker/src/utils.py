@@ -2,7 +2,7 @@ import json
 import inquirer
 
 
-def getUrl() -> str:
+def get_url() -> str:
     question = [
         inquirer.Text(
             "url",
@@ -15,7 +15,7 @@ def getUrl() -> str:
     return answer["url"]
 
 
-def getAction() -> str:
+def get_action() -> str:
     question = [
         inquirer.List(
             "action",
@@ -28,21 +28,21 @@ def getAction() -> str:
     return answer["action"]
 
 
-def loadJson(path: str) -> dict:
+def load_json(path: str) -> dict:
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
-def saveJson(path: str, data: dict) -> None:
+def save_json(path: str, data: dict) -> None:
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4)
 
 
-def checkAndPromptData(authData: dict, variable: str) -> str:
-    if authData[variable] != "":
-        return authData[variable]
+def check_and_prompt_data(auth_data: dict, variable: str) -> str:
+    if auth_data[variable] != "":
+        return auth_data[variable]
     else:
-        name = variable.replace("_", " ").title()
+        name = variable.replace("_", " ").title().replace("Url", "URL")
         question = [
             inquirer.Text(
                 variable,
@@ -53,18 +53,18 @@ def checkAndPromptData(authData: dict, variable: str) -> str:
         return answer[variable]
 
 
-def performActionOnTracks(
+def perfrom_action_on_tracks(
     playlist: dict, spotify: object, console: object, action: str
 ):
     tracks = playlist["tracks"]["items"]
     try:
         with console.status("Processing all the tracks..."):
             for track in tracks:
-                trackId = track["track"]["id"]
+                track_id = track["track"]["id"]
                 spotify.current_user_saved_tracks_add(
-                    [trackId]
+                    [track_id]
                 ) if action == "Like" else spotify.current_user_saved_tracks_delete(
-                    [trackId]
+                    [track_id]
                 )
         console.print(
             f"[green]Successfully {action.lower()}d all tracks in {playlist['name']}[/green]"
