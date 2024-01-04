@@ -2,13 +2,26 @@ import json
 import inquirer
 
 
-def get_url() -> str:
+def get_collection_type() -> str:
+    question = [
+        inquirer.List(
+            "collection_type",
+            message="Choose a collection type",
+            choices=["Playlist", "Album", "Artist"],
+            default="Playlist",
+        )
+    ]
+    answer = inquirer.prompt(question)
+    return answer["collection_type"]
+
+
+def get_url(collection_type: str) -> str:
     question = [
         inquirer.Text(
             "url",
-            message="Enter a Spotify Playlist URL",
+            message=f"Enter a Spotify {collection_type.title()} URL",
             validate=lambda _, x: x != ""
-            and x.startswith("https://open.spotify.com/playlist/"),
+            and x.startswith(f"https://open.spotify.com/{collection_type.lower()}/"),
         )
     ]
     answer = inquirer.prompt(question)
@@ -42,7 +55,9 @@ def check_and_prompt_data(auth_data: dict, variable: str) -> str:
     if auth_data[variable] != "":
         return auth_data[variable]
     else:
-        name = variable.replace("_", " ").title().replace("Url", "URL")
+        name = (
+            variable.replace("_", " ").title().replace("Url", "URL").replace("Id", "ID")
+        )
         question = [
             inquirer.Text(
                 variable,
@@ -54,9 +69,13 @@ def check_and_prompt_data(auth_data: dict, variable: str) -> str:
 
 
 def perfrom_action_on_tracks(
-    playlist: dict, spotify: object, console: object, action: str
+    collection: dict,
+    collection_type: str,
+    spotify: object,
+    console: object,
+    action: str,
 ):
-    tracks = playlist["tracks"]["items"]
+    tracks = collection["tracks"]["items"]
     try:
         with console.status("Processing all the tracks..."):
             for track in tracks:
@@ -67,7 +86,7 @@ def perfrom_action_on_tracks(
                     [track_id]
                 )
         console.print(
-            f"[green]Successfully {action.lower()}d all tracks in {playlist['name']}[/green]"
+            f"[green]Successfully {action.lower()}d all tracks in {collection['name']}[/green]"
         )
     except Exception as e:
         console.print(f"[red]Failed to {action.lower()} all tracks: {e}[/red]")

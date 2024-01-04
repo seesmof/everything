@@ -15,6 +15,7 @@ from spotipy.oauth2 import SpotifyOAuth, CacheFileHandler
 from utils import (
     check_and_prompt_data,
     get_action,
+    get_collection_type,
     get_url,
     load_json,
     perfrom_action_on_tracks,
@@ -31,10 +32,6 @@ scope = "user-library-modify"
 
 # TODO: Add options for Albums and Artists
 def main() -> None:
-    # Get the URL and action from the user
-    url = get_url()
-    action = get_action()
-
     # Load the authentication data from a JSON file
     auth_data = load_json(path=auth_file)
 
@@ -55,6 +52,11 @@ def main() -> None:
         },
     )
 
+    # Get collection type from the user
+    collection_type = get_collection_type()
+    url = get_url(collection_type)
+    action = get_action()
+
     # Create a Spotify object with the extracted authentication details
     spotify = Spotify(
         auth_manager=SpotifyOAuth(
@@ -67,11 +69,20 @@ def main() -> None:
     )
 
     # Get the playlist using the Spotify object and the provided URL
-    playlist = spotify.playlist(url)
+    if collection_type == "Playlist":
+        collection = spotify.playlist(url)
+    elif collection_type == "Album":
+        collection = spotify.album(url)
+    elif collection_type == "Artist":
+        collection = spotify.artist(url)
 
     # Perform the specified action on the tracks in the playlist
     perfrom_action_on_tracks(
-        playlist=playlist, spotify=spotify, console=console, action=action
+        collection=collection,
+        collection_type=collection_type,
+        spotify=spotify,
+        console=console,
+        action=action,
     )
 
 
