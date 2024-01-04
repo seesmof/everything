@@ -68,6 +68,18 @@ def check_and_prompt_data(auth_data: dict, variable: str) -> str:
         return answer[variable]
 
 
+def get_playlist_tracks(playlist_object: object) -> list:
+    return [track for track in playlist_object["tracks"]["items"]]
+
+
+def get_album_tracks(album_object: object) -> list:
+    return [track for track in album_object["tracks"]["items"]]
+
+
+def get_artist_tracks(artist_object: object) -> list:
+    return [track for track in artist_object["top_tracks"]["tracks"]]
+
+
 def perfrom_action_on_tracks(
     collection: dict,
     collection_type: str,
@@ -75,7 +87,14 @@ def perfrom_action_on_tracks(
     console: object,
     action: str,
 ):
-    tracks = collection["tracks"]["items"]
+    tracks = (
+        get_playlist_tracks()
+        if collection_type == "Playlist"
+        else get_album_tracks()
+        if collection_type == "Album"
+        else get_artist_tracks()
+    )
+
     try:
         with console.status("Processing all the tracks..."):
             for track in tracks:
