@@ -5,4 +5,4 @@ if not exist "./data/packages_info.txt" (
 )
 
 python ./src/main.py
-exit
+pause
