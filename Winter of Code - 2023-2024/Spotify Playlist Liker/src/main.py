@@ -30,18 +30,21 @@ scope = "user-library-modify"
 
 
 def main() -> None:
-    # ask for url
+    # Get the URL and action from the user
     url = getUrl()
-    # ask for action
     action = getAction()
-    # load data from auth.json and check if they exist
+
+    # Load the authentication data from a JSON file
     authData = loadJson(path=authFile)
-    # if not ask for all of those too
+
+    # Extract the client ID, client secret, and redirect URL from the authentication data
     client_id, client_secret, redirect_url = (
         checkAndPromptData(authData=authData, variable="clientId"),
         checkAndPromptData(authData=authData, variable="clientSecret"),
         checkAndPromptData(authData=authData, variable="redirectUri"),
     )
+
+    # Save the extracted authentication data back to the JSON file
     saveJson(
         path=authFile,
         data={
@@ -50,18 +53,26 @@ def main() -> None:
             "redirectUri": redirect_url,
         },
     )
-    # create spotify object and get necessary variables
+
+    # Create a Spotify object with the extracted authentication details
     spotify = Spotify(
         auth_manager=SpotifyOAuth(
+            scope=scope,
             client_id=client_id,
             client_secret=client_secret,
             redirect_uri=redirect_url,
-            scope=scope,
-            cache_path=CacheFileHandler(cache_path=cacheFile),
+            cache_handler=CacheFileHandler(cache_path=cacheFile),
         )
     )
+
+    # Get the playlist using the Spotify object and the provided URL
     playlist = spotify.playlist(url)
-    # like or dislike all of the tracks
+
+    # Perform the specified action on the tracks in the playlist
     performActionOnTracks(
         playlist=playlist, spotify=spotify, console=console, action=action
     )
+
+
+if __name__ == "__main__":
+    main()
