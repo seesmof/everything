@@ -29,6 +29,7 @@ cache_file = path.join(current_dir, "..", "data", "cache.json")
 scope = "user-library-modify"
 
 
+# TODO: Add options for Albums and Artists
 def main() -> None:
     # Get the URL and action from the user
     url = get_url()

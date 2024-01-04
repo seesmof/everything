@@ -5,7 +5,7 @@
     <img src="./public/logo.png" alt="Logo" height="80">
   </a>
 
-<h1 align="center">Spotify Playlist Liker</h1>
+<h1 align="center">Spotify Batch Liker</h1>
 </div>
 
 ### Table of contents

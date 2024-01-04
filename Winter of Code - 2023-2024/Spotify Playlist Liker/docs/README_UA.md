@@ -5,7 +5,7 @@
     <img src="../public/logo.png" alt="Logo" height="80">
   </a>
 
-<h1 align="center">Вподобайник плейлиста Spotify</h1>
+<h1 align="center">Гуртовий вподобайлик Spotify</h1>
 </div>
 
 ### Зміст
