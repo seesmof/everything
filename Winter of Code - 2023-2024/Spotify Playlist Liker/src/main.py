@@ -27,19 +27,19 @@ def main() -> None:
     authData = loadJson(path=authFile)
 
     # Extract the client ID, client secret, and redirect URL from the authentication data
-    client_id, client_secret, redirect_url = (
-        checkAndPromptAuthData(auth_data=authData, variable="client_id"),
-        checkAndPromptAuthData(auth_data=authData, variable="client_secret"),
-        checkAndPromptAuthData(auth_data=authData, variable="redirect_url"),
+    clientId, clientSecret, redirectUrl = (
+        checkAndPromptAuthData(authData=authData, variable="client_id"),
+        checkAndPromptAuthData(authData=authData, variable="client_secret"),
+        checkAndPromptAuthData(authData=authData, variable="redirect_url"),
     )
 
     # Save the extracted authentication data back to the JSON file
     saveJson(
         path=authFile,
         data={
-            "client_id": client_id,
-            "client_secret": client_secret,
-            "redirect_url": redirect_url,
+            "client_id": clientId,
+            "client_secret": clientSecret,
+            "redirect_url": redirectUrl,
         },
     )
 
@@ -52,9 +52,9 @@ def main() -> None:
     spotify = Spotify(
         auth_manager=SpotifyOAuth(
             scope=scope,
-            client_id=client_id,
-            client_secret=client_secret,
-            redirect_uri=redirect_url,
+            client_id=clientId,
+            client_secret=clientSecret,
+            redirect_uri=redirectUrl,
             cache_handler=CacheFileHandler(cache_path=cacheFile),
         )
     )

@@ -1,4 +1,3 @@
-import json
 import inquirer
 
 
@@ -41,19 +40,9 @@ def getAction() -> str:
     return answer["action"]
 
 
-def loadJson(path: str) -> dict:
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def saveJson(path: str, data: dict) -> None:
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=4)
-
-
-def checkAndPromptAuthData(auth_data: dict, variable: str) -> str:
-    if auth_data[variable] != "":
-        return auth_data[variable]
+def checkAndPromptAuthData(authData: dict, variable: str) -> str:
+    if authData[variable] != "":
+        return authData[variable]
     else:
         name = (
             variable.replace("_", " ").title().replace("Url", "URL").replace("Id", "ID")
@@ -66,31 +55,3 @@ def checkAndPromptAuthData(auth_data: dict, variable: str) -> str:
         ]
         answer = inquirer.prompt(question)
         return answer[variable]
-
-
-def getId(url: str) -> str:
-    res = url.split("/")[-1]
-    return res.split("?")[0]
-
-
-def performActionOnTracks(
-    tracks: list,
-    collectionType: str,
-    spotify: object,
-    console: object,
-    action: str,
-):
-    try:
-        with console.status("Processing all the tracks..."):
-            for track in tracks:
-                trackId = track["id"]
-                spotify.current_user_saved_tracks_add(
-                    [trackId]
-                ) if action == "Like" else spotify.current_user_saved_tracks_delete(
-                    [trackId]
-                )
-        console.print(
-            f"[green]Successfully {action.lower()}d all tracks in a given {collectionType.lower()}[/green]"
-        )
-    except Exception as e:
-        console.print(f"[red]Failed to {action.lower()} all tracks: {e}[/red]")
