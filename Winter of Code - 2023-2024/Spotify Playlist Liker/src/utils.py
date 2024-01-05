@@ -68,44 +68,29 @@ def checkAndPromptAuthData(auth_data: dict, variable: str) -> str:
         return answer[variable]
 
 
-def getPlaylistTracks(playlist: object) -> list:
-    return [track for track in playlist["tracks"]["items"]]
-
-
-def getAlbumTracks(album: object) -> list:
-    return [track for track in album["tracks"]["items"]]
-
-
-def getArtistTracks(artist: object) -> list:
-    return [track for track in artist["top_tracks"]["tracks"]]
+def getId(url: str) -> str:
+    res = url.split("/")[-1]
+    return res.split("?")[0]
 
 
 def performActionOnTracks(
-    collection: dict,
+    tracks: list,
     collectionType: str,
     spotify: object,
     console: object,
     action: str,
 ):
-    tracks = (
-        getPlaylistTracks()
-        if collectionType == "Playlist"
-        else getAlbumTracks()
-        if collectionType == "Album"
-        else getArtistTracks()
-    )
-
     try:
         with console.status("Processing all the tracks..."):
             for track in tracks:
-                track_id = track["track"]["id"]
+                trackId = track["id"]
                 spotify.current_user_saved_tracks_add(
-                    [track_id]
+                    [trackId]
                 ) if action == "Like" else spotify.current_user_saved_tracks_delete(
-                    [track_id]
+                    [trackId]
                 )
         console.print(
-            f"[green]Successfully {action.lower()}d all tracks in {collection['name']}[/green]"
+            f"[green]Successfully {action.lower()}d all tracks in a given {collectionType.lower()}[/green]"
         )
     except Exception as e:
         console.print(f"[red]Failed to {action.lower()} all tracks: {e}[/red]")

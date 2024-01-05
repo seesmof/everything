@@ -12,15 +12,7 @@ from rich.traceback import install
 from spotipy import Spotify
 from spotipy.oauth2 import SpotifyOAuth, CacheFileHandler
 
-from utils import (
-    checkAndPromptAuthData,
-    getAction,
-    getCollectionType,
-    getUrl,
-    loadJson,
-    performActionOnTracks,
-    saveJson,
-)
+from utils import *
 
 install()
 console = Console()
@@ -30,7 +22,6 @@ cacheFile = path.join(currentDir, "..", "data", "cache.json")
 scope = "user-library-modify"
 
 
-# TODO: Add options for Albums and Artists
 def main() -> None:
     # Load the authentication data from a JSON file
     authData = loadJson(path=authFile)
@@ -70,15 +61,22 @@ def main() -> None:
 
     # Get the playlist using the Spotify object and the provided URL
     if collectionType == "Playlist":
-        collection = spotify.playlist(url)
+        container = spotify.playlist(url)
+        tracks = container["tracks"]["items"]
     elif collectionType == "Album":
-        collection = spotify.album(url)
+        container = spotify.album(album_id=getId(url))
+        tracks = container["tracks"]["items"]
     elif collectionType == "Artist":
-        collection = spotify.artist(url)
+        container = spotify.artist_albums(artist_id=getId(url))
+        tracks = []
+        for album in container["items"]:
+            albumObject = spotify.album(album_id=album["id"])
+            currentTracks = albumObject["tracks"]["items"]
+            tracks.extend(currentTracks)
 
     # Perform the specified action on the tracks in the playlist
     performActionOnTracks(
-        collection=collection,
+        tracks=tracks,
         collectionType=collectionType,
         spotify=spotify,
         console=console,
