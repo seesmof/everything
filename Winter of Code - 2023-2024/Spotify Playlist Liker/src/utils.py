@@ -2,7 +2,7 @@ import json
 import inquirer
 
 
-def get_collection_type() -> str:
+def getCollectionType() -> str:
     question = [
         inquirer.List(
             "collection_type",
@@ -15,20 +15,20 @@ def get_collection_type() -> str:
     return answer["collection_type"]
 
 
-def get_url(collection_type: str) -> str:
+def getUrl(collectionType: str) -> str:
     question = [
         inquirer.Text(
             "url",
-            message=f"Enter a Spotify {collection_type.title()} URL",
+            message=f"Enter a Spotify {collectionType.title()} URL",
             validate=lambda _, x: x != ""
-            and x.startswith(f"https://open.spotify.com/{collection_type.lower()}/"),
+            and x.startswith(f"https://open.spotify.com/{collectionType.lower()}/"),
         )
     ]
     answer = inquirer.prompt(question)
     return answer["url"]
 
 
-def get_action() -> str:
+def getAction() -> str:
     question = [
         inquirer.List(
             "action",
@@ -41,17 +41,17 @@ def get_action() -> str:
     return answer["action"]
 
 
-def load_json(path: str) -> dict:
+def loadJson(path: str) -> dict:
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
-def save_json(path: str, data: dict) -> None:
+def saveJson(path: str, data: dict) -> None:
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4)
 
 
-def check_and_prompt_data(auth_data: dict, variable: str) -> str:
+def checkAndPromptAuthData(auth_data: dict, variable: str) -> str:
     if auth_data[variable] != "":
         return auth_data[variable]
     else:
@@ -68,31 +68,31 @@ def check_and_prompt_data(auth_data: dict, variable: str) -> str:
         return answer[variable]
 
 
-def get_playlist_tracks(playlist_object: object) -> list:
-    return [track for track in playlist_object["tracks"]["items"]]
+def getPlaylistTracks(playlist: object) -> list:
+    return [track for track in playlist["tracks"]["items"]]
 
 
-def get_album_tracks(album_object: object) -> list:
-    return [track for track in album_object["tracks"]["items"]]
+def getAlbumTracks(album: object) -> list:
+    return [track for track in album["tracks"]["items"]]
 
 
-def get_artist_tracks(artist_object: object) -> list:
-    return [track for track in artist_object["top_tracks"]["tracks"]]
+def getArtistTracks(artist: object) -> list:
+    return [track for track in artist["top_tracks"]["tracks"]]
 
 
-def perfrom_action_on_tracks(
+def performActionOnTracks(
     collection: dict,
-    collection_type: str,
+    collectionType: str,
     spotify: object,
     console: object,
     action: str,
 ):
     tracks = (
-        get_playlist_tracks()
-        if collection_type == "Playlist"
-        else get_album_tracks()
-        if collection_type == "Album"
-        else get_artist_tracks()
+        getPlaylistTracks()
+        if collectionType == "Playlist"
+        else getAlbumTracks()
+        if collectionType == "Album"
+        else getArtistTracks()
     )
 
     try:

@@ -5,13 +5,13 @@ from spotipy import Spotify
 from spotipy.oauth2 import SpotifyOAuth, CacheFileHandler
 
 from utils import (
-    check_and_prompt_data,
-    get_action,
-    get_collection_type,
-    get_url,
-    load_json,
-    perfrom_action_on_tracks,
-    save_json,
+    checkAndPromptAuthData,
+    getAction,
+    getCollectionType,
+    getUrl,
+    loadJson,
+    performActionOnTracks,
+    saveJson,
 )
 
 install()
