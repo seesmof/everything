@@ -6,7 +6,7 @@ in list: Action - Like | Dislike
 out: Message - Success | Error
 """
 
-from os import path
+from os import path, remove
 from rich.console import Console
 from rich.traceback import install
 from spotipy import Spotify
@@ -59,43 +59,52 @@ def main() -> None:
         )
     )
 
-    # Get the playlist using the Spotify object and the provided URL
+    # Declare necessary variables like collection ID, tracks holder and error hint message
+    collectionId = getId(url)
+    tracks = []
+    errorHintMessage = "\n[grey0]Spotify might be down at the moment, check out status - https://downdetector.com/status/spotify/[/grey0]"
+
     if collectionType == "Playlist":
-        playlistId = getId(url)
+        # Try creating a Spotify container
         try:
-            container = spotify.playlist(playlist_id=playlistId)
+            container = spotify.playlist(playlist_id=collectionId)
         except Exception as e:
-            console.print(
-                f"[red]Failed to get playlist: '{e}'[/red]\n[grey0]Spotify might be down at the moment, check out status - https://downdetector.com/status/spotify/[/grey0]"
-            )
+            console.print(f"[red]Failed to get playlist: '{e}'[/red]{errorHintMessage}")
+            # Try removing cache file and see if it helps
+            remove(cacheFile)
             return
 
+        # Extract all the tracks from the playlist
         tracks = container["tracks"]["items"]
     elif collectionType == "Album":
-        albumId = getId(url)
+        # Try creating a Spotify container
         try:
-            container = spotify.album(album_id=albumId)
+            container = spotify.album(album_id=collectionId)
         except Exception as e:
-            console.print(
-                f"[red]Failed to get album: '{e}'[/red]\n[grey0]Spotify might be down at the moment, check out status - https://downdetector.com/status/spotify/[/grey0]"
-            )
+            console.print(f"[red]Failed to get album: '{e}'[/red]{errorHintMessage}")
+            # Try removing cache file and see if it helps
+            remove(cacheFile)
             return
 
+        # Extract all the tracks from the album
         tracks = container["tracks"]["items"]
     elif collectionType == "Artist":
-        artistId = getId(url)
+        # Try creating a Spotify container
         try:
-            container = spotify.artist_albums(artist_id=artistId)
+            container = spotify.artist_albums(artist_id=collectionId)
         except Exception as e:
-            console.print(
-                f"[red]Failed to get artist: '{e}'[/red]\n[grey0]Spotify might be down at the moment, check out status - https://downdetector.com/status/spotify/[/grey0]"
-            )
+            console.print(f"[red]Failed to get artist: '{e}'[/red]{errorHintMessage}")
+            # Try removing cache file and see if it helps
+            remove(cacheFile)
             return
 
-        tracks = []
+        # Loop over all albums in the given artist
         for album in container["items"]:
+            # Create a Spotify container for the album
             albumObject = spotify.album(album_id=album["id"])
+            # Extract all the tracks from the album
             currentTracks = albumObject["tracks"]["items"]
+            # Append the tracks to the list
             tracks.extend(currentTracks)
 
     # Perform the specified action on the tracks in the playlist
