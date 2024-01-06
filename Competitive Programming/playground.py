@@ -1,28 +1,25 @@
+from typing import Optional
 from Archive.testing_imports import *
 
 
-def solve(nums: List[int]) -> List[List[int]]:
-    nums.sort()
-    console.print(nums)
-    res = []
-    for i in range(len(nums)):
-        if i > 0 and nums[i] == nums[i - 1]:
-            continue
-        l, r = i + 1, len(nums) - 1
-        while l < r:
-            s = nums[i] + nums[l] + nums[r]
-            if s < 0:
-                l += 1
-            elif s > 0:
-                r -= 1
-            else:
-                res.append([nums[i], nums[l], nums[r]])
-                l += 1
-                while nums[l] == nums[l - 1] and l < r:
-                    l += 1
-    return res
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 
 
-arr = [-1, 0, 1, 2, -1, -4]
+def isSymmetric(root: Optional[TreeNode]) -> bool:
+    curr = root
+    while root:
+        console.print(root.val)
+        root = root.left
 
-console.print(solve(arr))
+
+tree = TreeNode(
+    1,
+    TreeNode(2, TreeNode(3, TreeNode(4))),
+    TreeNode(2, TreeNode(3, TreeNode(4))),
+)
+isSymmetric(tree)

@@ -6,6 +6,8 @@ from rich.table import Table
 from rich.console import Console
 from rich.traceback import install
 from typing import List
+import matplotlib.pyplot as plt
+import networkx as nx
 
 install()
 console = Console()
