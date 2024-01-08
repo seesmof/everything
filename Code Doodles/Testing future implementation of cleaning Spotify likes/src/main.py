@@ -1,8 +1,8 @@
 from os import path
-from rich.markdown import Markdown as md
-from rich.table import Table
 from rich.console import Console
 from rich.traceback import install
+from spotipy import Spotify
+from spotipy.oauth2 import SpotifyOAuth, CacheFileHandler
 
 install()
 console = Console()
@@ -20,8 +20,8 @@ with open(lyricsFile, "r", encoding="utf-8") as f:
 
 # Check the song for purity
 if any(word in lyrics for word in forbiddenWords):
-    console.print("[red]The song is not clean, you should ban it[/]")
+    console.print("[red]FILTHY[/] The song is not clean, you should ban it 😡")
 else:
-    console.print("[green]The song is clean 🙏[/]")
+    console.print("[green]CLEAN[/] The song is clean 🙏")
 
 # TODO query API to see the country of origin of the song and if its moscovian, ban it
