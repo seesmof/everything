@@ -1,0 +1,43 @@
+Hey, Miss Murder, can I? (Hey!)
+Hey, Miss Murder, can I? (Hey!)
+Make beauty stay if I take my life? (Hey!)
+Woah-oh-oh
+With just a look, they shook
+And heavens bowed before him
+Simply a look can break your heart
+The stars that pierce the sky
+He left them all behind
+We're left to wonder why
+He left us all behind
+Hey, Miss Murder, can I? (Hey!)
+Hey, Miss Murder, can I? (Hey!)
+Make beauty stay if I take my life? (Hey!)
+Woah-oh-oh
+Dreams of his crash won't pass
+Oh, how they all adored him
+Beauty will last when spiraled down
+The stars that mystified
+He left them all behind
+And how his children cried
+He left us all behind
+Hey Miss Murder, can I? (Hey!)
+Hey Miss Murder, can I? (Hey!)
+Make beauty stay if I take my life? (Hey!)
+Woah-oh-oh
+What's the hook, the twist within this verbose mystery?
+I would gladly bet my life upon it
+That the ghost you love, your ray of light
+Will fizzle out without hope
+We're the empty set just floating through
+Wrapped in skin
+Ever searching for what we were promised
+Reaching for that golden ring, we'd never let go
+Who would ever let us put our filthy hands upon it?
+Hey, Miss Murder, can I? (Hey!)
+Hey, Miss Murder, can I? (Hey!)
+Make beauty stay if I take my life? (Hey!)
+Woah-oh
+Hey, Miss Murder, can I? (Hey!)
+Hey, Miss Murder, can I? (Hey!)
+Make beauty stay if I take my life? (Hey!)
+Woah-oh

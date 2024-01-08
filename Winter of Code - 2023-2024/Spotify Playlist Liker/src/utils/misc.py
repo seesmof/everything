@@ -13,7 +13,7 @@ def performActionOnTracks(
     collectionType: str,
     spotify: object,
     action: str,
-):
+) -> None:
     try:
         with console.status("Processing all the tracks..."):
             for track in tracks:

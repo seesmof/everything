@@ -59,10 +59,9 @@ def main() -> None:
         )
     )
 
-    # Declare necessary variables like collection ID, tracks holder and error hint message
+    # Declare necessary variables like collection ID, and error hint message
     collectionId = getId(url)
-    tracks = []
-    errorHintMessage = "\n[grey0]Spotify might be down at the moment, check out status - https://downdetector.com/status/spotify/[/grey0]"
+    errorHintMessage = "\nSpotify might be down at the moment, check out status - https://downdetector.com/status/spotify/"
 
     if collectionType == "Playlist":
         # Try creating a Spotify container
@@ -98,6 +97,7 @@ def main() -> None:
             remove(cacheFile)
             return
 
+        tracks = []
         # Loop over all albums in the given artist
         for album in container["items"]:
             # Create a Spotify container for the album
@@ -112,7 +112,6 @@ def main() -> None:
         tracks=tracks,
         collectionType=collectionType,
         spotify=spotify,
-        console=console,
         action=action,
     )
 
