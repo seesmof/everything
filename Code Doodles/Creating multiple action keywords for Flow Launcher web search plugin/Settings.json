@@ -53,7 +53,7 @@
       "ActionKeyword": "i",
       "CustomIcon": true,
       "Icon": "stone.png",
-      "Url": "https://www.google.com/search?q={q}\u0026tbm=isch",
+      "Url": "https://www.google.com/search?q={q}&tbm=isch",
       "Enabled": true
     },
     {

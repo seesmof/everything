@@ -16,3 +16,6 @@ github:
 gmail:
   keyword: gm, пь, gmail
   url: https://mail.google.com/mail/ca/u/0/#apps/{q}
+google images:
+  keyword: x, ч
+  url: https://www.google.com/search?q={q}&tbm=isch
