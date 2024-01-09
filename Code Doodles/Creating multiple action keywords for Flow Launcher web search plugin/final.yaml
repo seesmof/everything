@@ -22,3 +22,6 @@ google images:
 youtube:
   keyword: y, н
   url: https://www.youtube.com/results?search_query={q}
+perplexity:
+  keyword: e, у
+  url: https://www.perplexity.ai/search?q={q}
