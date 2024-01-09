@@ -7,3 +7,9 @@ flaticon:
 phind:
   keyword: f, а, phind
   url: https://www.phind.com/search?q={q}
+google:
+  keyword: g, п, google
+  url: https://www.google.com/search?q={q}
+github:
+  keyword: gg, пп, git
+  url: https://github.com/search?q={q}
