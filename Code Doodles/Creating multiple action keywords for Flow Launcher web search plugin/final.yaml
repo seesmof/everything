@@ -19,3 +19,6 @@ gmail:
 google images:
   keyword: x, ч
   url: https://www.google.com/search?q={q}&tbm=isch
+youtube:
+  keyword: y, н
+  url: https://www.youtube.com/results?search_query={q}
