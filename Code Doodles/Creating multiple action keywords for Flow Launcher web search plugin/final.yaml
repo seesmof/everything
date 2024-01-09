@@ -13,3 +13,6 @@ google:
 github:
   keyword: gg, пп, git
   url: https://github.com/search?q={q}
+gmail:
+  keyword: gm, пь, gmail
+  url: https://mail.google.com/mail/ca/u/0/#apps/{q}
