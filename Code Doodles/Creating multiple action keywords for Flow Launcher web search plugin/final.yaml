@@ -25,3 +25,6 @@ youtube:
 perplexity:
   keyword: e, у
   url: https://www.perplexity.ai/search?q={q}
+slovnyk:
+  keyword: і
+  url: https://slovnyk.ua/index.php?swrd={q}
