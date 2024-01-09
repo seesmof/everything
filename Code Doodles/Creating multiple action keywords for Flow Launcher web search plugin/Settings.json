@@ -3,89 +3,160 @@
     {
       "Title": "Bing",
       "ActionKeyword": "*",
+      "Icon": "microsoft.png",
       "CustomIcon": true,
-      "Icon": "stone.png",
+      "Url": "https://www.bing.com/search?q={q}",
+      "Enabled": true
+    },
+    {
+      "Title": "Flaticon",
+      "ActionKeyword": "c",
+      "Icon": "stars.png",
+      "CustomIcon": true,
+      "Url": "https://www.flaticon.com/search?word={q}\u0026color=color\u0026shape=fill",
+      "Enabled": true
+    },
+    {
+      "Title": "Bing",
+      "ActionKeyword": "\u0438",
+      "Icon": "microsoft.png",
+      "CustomIcon": true,
+      "Url": "https://www.bing.com/search?q={q}",
+      "Enabled": true
+    },
+    {
+      "Title": "Bing",
+      "ActionKeyword": "b",
+      "Icon": "microsoft.png",
+      "CustomIcon": true,
       "Url": "https://www.bing.com/search?q={q}",
       "Enabled": true
     },
     {
       "Title": "Phind",
       "ActionKeyword": "f",
+      "Icon": "radar.png",
       "CustomIcon": true,
-      "Icon": "stone.png",
       "Url": "https://www.phind.com/search?q={q}",
       "Enabled": true
     },
     {
-      "Title": "🇺🇦 Phind",
-      "ActionKeyword": "а",
+      "Title": "Phind",
+      "ActionKeyword": "\u0430",
+      "Icon": "radar.png",
       "CustomIcon": true,
-      "Icon": "stone.png",
       "Url": "https://www.phind.com/search?q={q}",
       "Enabled": true
     },
     {
       "Title": "Google",
-      "ActionKeyword": "2",
+      "ActionKeyword": "g",
+      "Icon": "google.png",
       "CustomIcon": true,
-      "Icon": "stone.png",
+      "Url": "https://www.google.com/search?q={q}",
+      "Enabled": true
+    },
+    {
+      "Title": "Google",
+      "ActionKeyword": "\u043F",
+      "Icon": "google.png",
+      "CustomIcon": true,
       "Url": "https://www.google.com/search?q={q}",
       "Enabled": true
     },
     {
       "Title": "GitHub",
-      "ActionKeyword": "github",
+      "ActionKeyword": "gg",
+      "Icon": "github (2).png",
       "CustomIcon": true,
-      "Icon": "stone.png",
       "Url": "https://github.com/search?q={q}",
-      "Enabled": false
+      "Enabled": true
+    },
+    {
+      "Title": "GitHub",
+      "ActionKeyword": "\u043F\u043F",
+      "Icon": "github (2).png",
+      "CustomIcon": true,
+      "Url": "https://github.com/search?q={q}",
+      "Enabled": true
     },
     {
       "Title": "Gmail",
-      "ActionKeyword": "gmail",
+      "ActionKeyword": "gm",
+      "Icon": "gmail.png",
       "CustomIcon": true,
-      "Icon": "stone.png",
       "Url": "https://mail.google.com/mail/ca/u/0/#apps/{q}",
-      "Enabled": false
+      "Enabled": true
+    },
+    {
+      "Title": "Gmail",
+      "ActionKeyword": "\u043F\u044C",
+      "Icon": "gmail.png",
+      "CustomIcon": true,
+      "Url": "https://mail.google.com/mail/ca/u/0/#apps/{q}",
+      "Enabled": true
     },
     {
       "Title": "Google Images",
-      "ActionKeyword": "i",
+      "ActionKeyword": "x",
+      "Icon": "image.png",
       "CustomIcon": true,
-      "Icon": "stone.png",
-      "Url": "https://www.google.com/search?q={q}&tbm=isch",
+      "Url": "https://www.google.com/search?q={q}\u0026tbm=isch",
+      "Enabled": true
+    },
+    {
+      "Title": "Google Images",
+      "ActionKeyword": "\u0447",
+      "Icon": "image.png",
+      "CustomIcon": true,
+      "Url": "https://www.google.com/search?q={q}\u0026tbm=isch",
       "Enabled": true
     },
     {
       "Title": "YouTube",
-      "ActionKeyword": "3",
+      "ActionKeyword": "\u043D",
+      "Icon": "youtube (1).png",
       "CustomIcon": true,
-      "Icon": "stone.png",
       "Url": "https://www.youtube.com/results?search_query={q}",
       "Enabled": true
     },
-
+    {
+      "Title": "YouTube",
+      "ActionKeyword": "y",
+      "Icon": "youtube (1).png",
+      "CustomIcon": true,
+      "Url": "https://www.youtube.com/results?search_query={q}",
+      "Enabled": true
+    },
     {
       "Title": "Perplexity",
-      "ActionKeyword": "4",
+      "ActionKeyword": "e",
+      "Icon": "menu.png",
       "CustomIcon": true,
-      "Icon": "stone.png",
       "Url": "https://www.perplexity.ai/search?q={q}",
       "Enabled": true
     },
     {
-      "Title": "Slovnyk UA",
-      "ActionKeyword": "5",
+      "Title": "Perplexity",
+      "ActionKeyword": "\u0443",
+      "Icon": "menu.png",
       "CustomIcon": true,
-      "Icon": "stone.png",
+      "Url": "https://www.perplexity.ai/search?q={q}",
+      "Enabled": true
+    },
+    {
+      "Title": "\u0421\u043B\u043E\u0432\u043D\u0438\u043A",
+      "ActionKeyword": "\u0456",
+      "Icon": "dictionary.png",
+      "CustomIcon": true,
       "Url": "https://slovnyk.ua/index.php?swrd={q}",
       "Enabled": true
     },
     {
-      "Title": "Letterboxd Search",
-      "ActionKeyword": "l",
+      "Title": "Letterboxd",
+      "ActionKeyword": "m",
+      "Icon": "film-reel.png",
       "CustomIcon": true,
-      "Icon": "stone.png",
       "Url": "https://letterboxd.com/search/{q}/",
       "Enabled": true
     }
