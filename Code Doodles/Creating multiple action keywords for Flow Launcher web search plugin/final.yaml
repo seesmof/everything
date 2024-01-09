@@ -1,6 +1,9 @@
 bing:
-  keyword: GLOBAL
+  keyword: all, bing, b, и
   url: https://www.bing.com/search?q={q}
 flaticon:
   keyword: icon, flaticon, c
   url: https://www.flaticon.com/search?word={q}&color=color&shape=fill
+phind:
+  keyword: f, а, phind
+  url: https://www.phind.com/search?q={q}
