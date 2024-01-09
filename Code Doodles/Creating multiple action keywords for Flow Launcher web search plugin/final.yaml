@@ -28,3 +28,6 @@ perplexity:
 slovnyk:
   keyword: і
   url: https://slovnyk.ua/index.php?swrd={q}
+letterboxd:
+  keyword: m
+  url: https://letterboxd.com/search/{q}/
