@@ -8,6 +8,12 @@ from datetime import date
 import time
 import ctypes
 import os
+from rich.console import Console
+from rich.traceback import install
+
+install()
+console = Console()
+
 
 engine = pyttsx4.init()
 
@@ -21,23 +27,20 @@ classTimes = {
 }
 
 
-def getSunset():
-    latitude = 47.838800
-    longitude = 35.139567
+def getSunset(latitude: float = 47.838800, longitude: float = 35.139567):
     timezone = datetime.datetime.now()
-
     sun = Sun(latitude, longitude)
 
     try:
-        sunset_time = sun.get_local_sunset_time(timezone)
-        return sunset_time.strftime("%H:%M")
+        sunsetTime = sun.get_local_sunset_time(timezone)
+        return sunsetTime.strftime("%H:%M")
     except SunTimeException as e:
-        print("Error:", e)
+        console.log(f"Error: {e}")
 
 
 def speak(*args):
     input_text = " ".join(args)
-    print(f"\n{input_text}\n")
+    console.print(input_text)
     engine.say(input_text)
     engine.runAndWait()
 
