@@ -1,0 +1,140 @@
+{
+  "courses": {
+    "DSA": {
+      "full_name": "Data Structures and Algorithms",
+      "lecture": {
+        "class_url": "https://us04web.zoom.us/j/79660602873",
+        "notes_url": "obsidian://open?vault=everything",
+        "passcode": ""
+      },
+      "practice": {
+        "class_url": "https://meet.google.com/kwk-xiup-fvf",
+        "notes_url": "obsidian://open?vault=everything",
+        "passcode": ""
+      }
+    },
+    "TY": {
+      "full_name": "Theory of Probability",
+      "lecture": {
+        "class_url": "https://meet.google.com/arg-syjc-vcz",
+        "notes_url": "obsidian://open?vault=everything",
+        "passcode": ""
+      },
+      "practice": {
+        "class_url": "https://meet.google.com/arg-syjc-vcz",
+        "notes_url": "obsidian://open?vault=everything",
+        "passcode": ""
+      }
+    },
+    "SP": {
+      "full_name": "Competitive Programming",
+      "lecture": {
+        "class_url": "https://meet.google.com/dxa-pjjr-byx",
+        "notes_url": "obsidian://open?vault=everything",
+        "passcode": ""
+      },
+      "practice": {
+        "class_url": "https://meet.google.com/dxa-pjjr-byx",
+        "notes_url": "obsidian://open?vault=everything",
+        "passcode": ""
+      }
+    },
+    "WEB": {
+      "full_name": "Web technology and Web design",
+      "lecture": {
+        "class_url": "https://meet.google.com/igt-rmni-ftk",
+        "notes_url": "obsidian://open?vault=everything",
+        "passcode": ""
+      },
+      "practice": {
+        "class_url": "https://meet.google.com/igt-rmni-ftk",
+        "notes_url": "obsidian://open?vault=everything",
+        "passcode": ""
+      }
+    },
+    "OPI": {
+      "full_name": "Fundementals of Programming Engineering",
+      "lecture": {
+        "class_url": "https://us02web.zoom.us/j/5151534723",
+        "notes_url": "obsidian://open?vault=everything",
+        "passcode": "152334"
+      },
+      "practice": {
+        "class_url": "https://us02web.zoom.us/j/71772651691",
+        "notes_url": "obsidian://open?vault=everything",
+        "passcode": "2023"
+      }
+    },
+    "IY": {
+      "full_name": "History of Ukraine",
+      "lecture": {
+        "class_url": "https://us05web.zoom.us/j/82941381946",
+        "notes_url": "obsidian://open?vault=everything",
+        "passcode": ""
+      },
+      "practice": {
+        "class_url": "https://us05web.zoom.us/j/82941381946",
+        "notes_url": "obsidian://open?vault=everything",
+        "passcode": ""
+      }
+    },
+    "VM": {
+      "full_name": "Calculus",
+      "lecture": {
+        "class_url": "https://us05web.zoom.us/j/4344130497",
+        "notes_url": "obsidian://open?vault=everything",
+        "passcode": ""
+      },
+      "practice": {
+        "class_url": "https://meet.google.com/neu-xwef-ivi",
+        "notes_url": "obsidian://open?vault=everything",
+        "passcode": ""
+      }
+    }
+  },
+  "schedule": {
+    "Чисельник": {
+      "Monday": {
+        "3": "DSA Lecture",
+        "4": "TY Practice",
+        "5": "SP Lecture"
+      },
+      "Tuesday": {
+        "1": "WEB Practice",
+        "2": "DSA Practice",
+        "5": "OPI Practice"
+      },
+      "Wednesday": {
+        "1": "TY Lecture",
+        "2": "WEB Lecture"
+      },
+      "Thursday": {
+        "5": "IY Practice"
+      },
+      "Friday": {
+        "2": "VM Lecture",
+        "3": "VM Practice"
+      }
+    },
+    "Знаменник": {
+      "Monday": {
+        "3": "DSA Lecture",
+        "4": "SP Practice"
+      },
+      "Tuesday": {
+        "1": "WEB Practice",
+        "2": "DSA Practice",
+        "4": "OPI Practice",
+        "5": "OPI Practice"
+      },
+      "Wednesday": {
+        "2": "WEB Lecture"
+      },
+      "Thursday": {
+        "2": "OPI Lecture",
+        "5": "IY Lecture"
+      },
+      "Friday": {}
+    }
+  }
+}
