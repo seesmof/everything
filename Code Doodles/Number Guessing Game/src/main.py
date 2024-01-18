@@ -72,6 +72,7 @@ def main():
             while low <= high:
                 sleep(0.1)
                 guess = (low + high) // 2
+                console.print(f"Is it {guess}?")
                 if guess == number:
                     break
                 elif guess > number:
