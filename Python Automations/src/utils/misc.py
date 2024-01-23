@@ -80,7 +80,12 @@ def scheduleClasses(
 
         def openClass():
             webbrowser.open(classData["class_url"])
-            webbrowser.open(classData["notes_url"])
-            pyperclip.copy(classData["passcode"])
+            notesUrl = classData.get("notes_url")
+            webbrowser.open(notesUrl) if notesUrl else None
+            passcode = classData.get("passcode")
+            pyperclip.copy(passcode) if passcode else None
 
-        scheduler.every().day.at(scheduledTime).do(openClass)
+        scheduler.every().day.at("19:54").do(openClass)
+
+
+# TODO fix this thing, its not creating different jobs but just does the latest one. oh Gosh thats a bummer

@@ -3,53 +3,37 @@
     "DSA": {
       "full_name": "Data Structures and Algorithms",
       "lecture": {
-        "class_url": "https://us04web.zoom.us/j/79660602873",
-        "notes_url": "obsidian://open?vault=everything",
-        "passcode": ""
+        "class_url": "https://us04web.zoom.us/j/79660602873"
       },
       "practice": {
-        "class_url": "https://meet.google.com/kwk-xiup-fvf",
-        "notes_url": "obsidian://open?vault=everything",
-        "passcode": ""
+        "class_url": "https://meet.google.com/kwk-xiup-fvf"
       }
     },
     "TY": {
       "full_name": "Theory of Probability",
       "lecture": {
-        "class_url": "https://meet.google.com/arg-syjc-vcz",
-        "notes_url": "obsidian://open?vault=everything",
-        "passcode": ""
+        "class_url": "https://meet.google.com/arg-syjc-vcz"
       },
       "practice": {
-        "class_url": "https://meet.google.com/arg-syjc-vcz",
-        "notes_url": "obsidian://open?vault=everything",
-        "passcode": ""
+        "class_url": "https://meet.google.com/arg-syjc-vcz"
       }
     },
     "SP": {
       "full_name": "Competitive Programming",
       "lecture": {
-        "class_url": "https://meet.google.com/dxa-pjjr-byx",
-        "notes_url": "obsidian://open?vault=everything",
-        "passcode": ""
+        "class_url": "https://meet.google.com/dxa-pjjr-byx"
       },
       "practice": {
-        "class_url": "https://meet.google.com/dxa-pjjr-byx",
-        "notes_url": "obsidian://open?vault=everything",
-        "passcode": ""
+        "class_url": "https://meet.google.com/dxa-pjjr-byx"
       }
     },
     "WEB": {
       "full_name": "Web technology and Web design",
       "lecture": {
-        "class_url": "https://meet.google.com/igt-rmni-ftk",
-        "notes_url": "obsidian://open?vault=everything",
-        "passcode": ""
+        "class_url": "https://meet.google.com/igt-rmni-ftk"
       },
       "practice": {
-        "class_url": "https://meet.google.com/igt-rmni-ftk",
-        "notes_url": "obsidian://open?vault=everything",
-        "passcode": ""
+        "class_url": "https://meet.google.com/igt-rmni-ftk"
       }
     },
     "OPI": {
@@ -68,27 +52,19 @@
     "IY": {
       "full_name": "History of Ukraine",
       "lecture": {
-        "class_url": "https://us05web.zoom.us/j/82941381946",
-        "notes_url": "obsidian://open?vault=everything",
-        "passcode": ""
+        "class_url": "https://us05web.zoom.us/j/82941381946"
       },
       "practice": {
-        "class_url": "https://us05web.zoom.us/j/82941381946",
-        "notes_url": "obsidian://open?vault=everything",
-        "passcode": ""
+        "class_url": "https://us05web.zoom.us/j/82941381946"
       }
     },
     "VM": {
       "full_name": "Calculus",
       "lecture": {
-        "class_url": "https://us05web.zoom.us/j/4344130497",
-        "notes_url": "obsidian://open?vault=everything",
-        "passcode": ""
+        "class_url": "https://us05web.zoom.us/j/4344130497"
       },
       "practice": {
-        "class_url": "https://meet.google.com/neu-xwef-ivi",
-        "notes_url": "obsidian://open?vault=everything",
-        "passcode": ""
+        "class_url": "https://meet.google.com/neu-xwef-ivi"
       }
     }
   },
