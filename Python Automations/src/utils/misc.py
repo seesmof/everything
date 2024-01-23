@@ -4,6 +4,9 @@ from suntime import Sun, SunTimeException
 from rich.console import Console
 from rich.traceback import install
 import pyttsx4
+import ctypes
+import webbrowser
+import pyperclip
 
 install()
 console = Console()
@@ -37,3 +40,47 @@ def readJson(path: str) -> dict:
 def writeJson(path: str, data: dict | list) -> None:
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
+
+
+def closeWindow():
+    speak("Close window.")
+
+
+def goodNight():
+    speak("Good night, bro.")
+    ctypes.windll.user32.LockWorkStation()
+
+
+def openWorkout():
+    speak("Time to work out.")
+    webbrowser.open(
+        "obsidian://open?vault=obsidian-main-vault&file=sport%2FWorkout%20Guide"
+    )
+
+
+def scheduleClasses(
+    day: str,
+    week: str,
+    schedule: dict,
+    scheduler: object,
+    times: dict,
+    disciplines: dict,
+):
+    classesToday = schedule[week].get(day, {})
+    if not classesToday:
+        speak("No classes.")
+        return
+
+    for time, description in classesToday.items():
+        scheduledTime = times[time]
+        discipline, classType = description.split(" ")
+        disciplineName = disciplines[discipline]["full_name"]
+        classData = disciplines[discipline][classType.lower()]
+        speak(f"{disciplineName} {classType} at {scheduledTime}")
+
+        def openClass():
+            webbrowser.open(classData["class_url"])
+            webbrowser.open(classData["notes_url"])
+            pyperclip.copy(classData["passcode"])
+
+        scheduler.every().day.at(scheduledTime).do(openClass)
