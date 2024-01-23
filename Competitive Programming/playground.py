@@ -1,25 +1,10 @@
-from typing import Optional
-from Archive.testing_imports import *
+# Кількість сторінок, які займають обидві розповіді
+total_pages_of_two_stories = 56
 
+# Загальна частина книги, яку займають обидві розповіді
+total_fraction_of_two_stories = 7 / 13
 
-# Definition for a binary tree node.
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+# Загальна кількість сторінок у книзі
+total_pages_of_book = total_pages_of_two_stories / total_fraction_of_two_stories
 
-
-def isSymmetric(root: Optional[TreeNode]) -> bool:
-    curr = root
-    while root:
-        console.print(root.val)
-        root = root.left
-
-
-tree = TreeNode(
-    1,
-    TreeNode(2, TreeNode(3, TreeNode(4))),
-    TreeNode(2, TreeNode(3, TreeNode(4))),
-)
-isSymmetric(tree)
+print(total_pages_of_book)
