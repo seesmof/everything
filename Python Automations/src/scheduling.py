@@ -1,9 +1,9 @@
-from datetime import date
 from os import path
 from time import sleep
+from datetime import date
+import schedule as scheduler
 from rich.console import Console
 from rich.traceback import install
-import schedule as scheduler
 
 from utils.misc import *
 
@@ -38,7 +38,7 @@ try:
         disciplines=courses,
     )
 except:
-    console.log("Failed to schedule classes")
+    console.log("[red]Failed to schedule classes[/red]")
 
 sunsetTime = getSunset()
 scheduler.every().day.at(sunsetTime).do(closeWindow)
