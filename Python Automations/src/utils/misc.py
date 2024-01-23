@@ -85,7 +85,7 @@ def scheduleClasses(
             passcode = classData.get("passcode")
             pyperclip.copy(passcode) if passcode else None
 
-        scheduler.every().day.at("19:54").do(openClass)
+        scheduler.every().day.at(scheduledTime).do(openClass)
 
 
 # TODO fix this thing, its not creating different jobs but just does the latest one. oh Gosh thats a bummer
