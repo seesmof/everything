@@ -12,7 +12,7 @@ install()
 console = Console()
 
 
-def getSunset(latitude: float = 47.838800, longitude: float = 35.139567):
+def getSunset(latitude: float = 47.838800, longitude: float = 35.139567) -> str:
     timezone = datetime.datetime.now()
     sun = Sun(latitude, longitude)
 
@@ -23,7 +23,7 @@ def getSunset(latitude: float = 47.838800, longitude: float = 35.139567):
         console.log(f"Error: {e}")
 
 
-def speak(*args):
+def speak(*args) -> None:
     inputText = " ".join(args)
     console.log(inputText)
 
@@ -42,16 +42,16 @@ def writeJson(path: str, data: dict | list) -> None:
         json.dump(data, f, indent=2)
 
 
-def closeWindow():
+def closeWindow() -> None:
     speak("Close window.")
 
 
-def goodNight():
+def goodNight() -> None:
     speak("Good night, bro.")
     ctypes.windll.user32.LockWorkStation()
 
 
-def openWorkout():
+def openWorkout() -> None:
     speak("Time to work out.")
     webbrowser.open(
         "obsidian://open?vault=obsidian-main-vault&file=sport%2FWorkout%20Guide"
@@ -65,7 +65,7 @@ def scheduleClasses(
     scheduler: object,
     times: dict,
     disciplines: dict,
-):
+) -> None:
     classesToday = schedule[week].get(day, {})
     if not classesToday:
         speak("No classes.")
