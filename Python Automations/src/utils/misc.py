@@ -21,11 +21,11 @@ def getSunset(latitude: float = 47.838800, longitude: float = 35.139567):
 
 
 def speak(*args):
-    input_text = " ".join(args)
-    console.print(input_text)
+    inputText = " ".join(args)
+    console.log(inputText)
 
     engine = pyttsx4.init()
-    engine.say(input_text)
+    engine.say(inputText)
     engine.runAndWait()
 
 
