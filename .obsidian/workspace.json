@@ -188,6 +188,7 @@
   },
   "active": "9d487b9e64e5b6a4",
   "lastOpenFiles": [
+    "Python Automations/requirements.txt",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/1.md",
     "University/y2t1/DSA/tasks/ct1/docs/prod/~WRL0105.tmp",
     "University/y2t1/DSA/tasks/ct1/docs/prod/~WRD0097.tmp",
@@ -232,7 +233,6 @@
     "University/y2t1/CT/prod/code/packages/MailKit.4.3.0/docs/FAQ.md",
     "University/y2t1/CT/prod/code/packages/MailKit.4.3.0/docs/ExchangeOAuth2.md",
     "University/y2t1/CT/prod/code/packages/Newtonsoft.Json.13.0.3/README.md",
-    "University/y2t1/CT/prod/code/packages/Newtonsoft.Json.13.0.3/LICENSE.md",
-    "University/y2t1/CT/prod/code/packages/BouncyCastle.Cryptography.2.2.1/README.md"
+    "University/y2t1/CT/prod/code/packages/Newtonsoft.Json.13.0.3/LICENSE.md"
   ]
 }
