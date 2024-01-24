@@ -9,8 +9,6 @@
 class Solution:
     def containsDuplicate(self, nums: [int]) -> bool:
         seen = {element for element in nums}
-        print(seen)
-
         return len(seen) != len(nums)
 
 

@@ -8,9 +8,9 @@
 # @lc code=start
 class Solution:
     def search(self, nums: [int], target: int) -> int:
-        high, low = 0, len(nums)
+        low, high = 0, len(nums) - 1
 
-        while high <= low:
+        while low <= high:
             mid = (low + high) // 2
             guess = nums[mid]
 
