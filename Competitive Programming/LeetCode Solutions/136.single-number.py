@@ -10,11 +10,12 @@ from typing import List
 
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        frequencies = {num: 0 for num in nums}
-        for num in nums:
-            frequencies[num] += 1
-        frequencies = sorted(frequencies.items(), key=lambda x: x[1])
-        return frequencies[0][0]
+        print(f"Set Values: {set(nums)}")
+        print(f"Sum of Set: {sum(set(nums))}")
+        print(f"Sum of Set times 2: {sum(set(nums)) * 2}")
+        print(f"Sum of List: {sum(nums)}")
+        # This is really smart
+        return sum(set(nums)) * 2 - sum(nums)
 
 
 # @lc code=end
