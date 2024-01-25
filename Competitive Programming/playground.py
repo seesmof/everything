@@ -1,10 +1,34 @@
-# Кількість сторінок, які займають обидві розповіді
-total_pages_of_two_stories = 56
+import inquirer
+from rich.console import Console
+from rich.traceback import install
 
-# Загальна частина книги, яку займають обидві розповіді
-total_fraction_of_two_stories = 7 / 13
+install()
+console = Console()
 
-# Загальна кількість сторінок у книзі
-total_pages_of_book = total_pages_of_two_stories / total_fraction_of_two_stories
 
-print(total_pages_of_book)
+def findSqrt(n: int) -> int:
+    if n < 2:
+        return n
+    low, high = 1, n
+    while low <= high:
+        guess = (low + high) / 2
+        if guess * guess == n:
+            return guess
+        elif guess * guess < n:
+            low = guess + 1
+        else:
+            high = guess - 1
+    return high
+
+
+question = [
+    inquirer.Text(
+        "number",
+        message="Enter number",
+        validate=lambda _, x: x.isnumeric() and int(x) > 0,
+    )
+]
+answer = inquirer.prompt(question)
+n = int(answer["number"])
+res = findSqrt(n)
+console.print(f"Square root of {n} is {res}")
