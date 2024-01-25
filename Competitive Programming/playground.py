@@ -6,6 +6,17 @@ install()
 console = Console()
 
 
+def reverse(n: int) -> int:
+    string = str(n)
+    neg = False
+    if "-" in string:
+        string = string[1:]
+        neg = True
+    reverse = string[::-1]
+    res = int(reverse)
+    return res if not neg else -res
+
+
 def findSqrt(n: int) -> int:
     if n < 2:
         return n
@@ -21,14 +32,6 @@ def findSqrt(n: int) -> int:
     return high
 
 
-question = [
-    inquirer.Text(
-        "number",
-        message="Enter number",
-        validate=lambda _, x: x.isnumeric() and int(x) > 0,
-    )
-]
-answer = inquirer.prompt(question)
-n = int(answer["number"])
-res = findSqrt(n)
-console.print(f"Square root of {n} is {res}")
+n = "-123"
+res = reverse(n)
+console.print(f"Reverse of {n} is {res}")
