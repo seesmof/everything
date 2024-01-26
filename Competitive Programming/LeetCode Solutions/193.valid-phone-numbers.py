@@ -24,9 +24,10 @@ table.add_column("Number", style="cyan", no_wrap=True)
 
 
 def validateNumber(number: str) -> bool:
-    pattern = "^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$|^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
-    result = re.match(pattern, number)
-    return True if result else False
+    # Define the pattern for a valid phone number in the format (123) 456-7890 or 123-456-7890.
+    pattern = r"^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$|^[0-9]{3}-[0-9]{3}-[0-9]{4}$"
+    # Use the re.match function to check if the number matches the defined pattern and return the result as a boolean.
+    return bool(re.match(pattern, number))
 
 
 for number in numbers:
