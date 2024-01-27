@@ -6,7 +6,7 @@ install()
 console = Console()
 
 currentDir = path.dirname(path.abspath(__file__))
-dataFolder = path.join(currentDir, "data")
+dataFolder = path.join(currentDir, "..", "data")
 lineyFile = path.join(dataFolder, "195-lotta-lines.txt")
 
 lines = []
