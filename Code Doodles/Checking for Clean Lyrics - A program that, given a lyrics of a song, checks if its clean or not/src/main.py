@@ -1,8 +1,6 @@
 from os import path
 from rich.console import Console
 from rich.traceback import install
-from spotipy import Spotify
-from spotipy.oauth2 import SpotifyOAuth, CacheFileHandler
 
 install()
 console = Console()
@@ -23,5 +21,3 @@ if any(word in lyrics for word in forbiddenWords):
     console.print("[red]FILTHY[/] The song is not clean, you should ban it 😡")
 else:
     console.print("[green]CLEAN[/] The song is clean 🙏")
-
-# TODO query API to see the country of origin of the song and if its moscovian, ban it
