@@ -7,3 +7,15 @@ we can also create a basic authentication system for our app, and for each user 
 
 we would need to create the basic Create Read Update Delete ( CRUD ) functionality for our app to work
 """
+
+from os import path
+from rich.table import Table
+from rich.console import Console
+from rich.traceback import install
+
+install()
+console = Console()
+
+# def main() -> None:
+currentDir = path.dirname(path.abspath(__file__))
+dataFolder = path.join(currentDir, "..", "data")
