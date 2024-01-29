@@ -7,24 +7,36 @@ install()
 console = Console()
 
 
-def search(nums: List[int], target: int) -> int:
-    low, high = 0, len(nums) - 1
-    while low <= high:
-        mid = (low + high) // 2
-        guess = nums[mid]
-        if guess == target:
-            return mid
-        if guess > target:
-            high = mid - 1
-        else:
-            low = mid + 1
-    return -1
+def closeDuplicatesBruteForce(nums: List[int], k: int) -> bool:
+    for L in range(len(nums)):
+        for R in range(L + 1, min(L + k, len(nums))):
+            if nums[L] == nums[R]:
+                return True
+    return False
 
 
-def tests():
-    assert search(nums=[-1, 0, 3, 5, 9, 12], target=9) == 4
-    assert search(nums=[-1, 0, 3, 5, 9, 12], target=2) == -1
-    console.print("[green bold]Passed all tests![/]")
+def closeDuplicates(nums: List[int], k: int) -> bool:
+    window = set()
+    L = 0
+
+    for R in range(len(nums)):
+        if R - L + 1 > k:
+            window.remove(nums[L])
+            L += 1
+        if nums[R] in window:
+            return True
+        window.add(nums[R])
+
+    return False
 
 
-tests()
+arr = [1, 2, 3, 2, 3, 3]
+k = 3
+res = closeDuplicatesBruteForce(arr, k)
+console.print(
+    f"[bold]Brute Force[/]: For {arr} and a window of size {k} the result is {res}"
+)
+res = closeDuplicates(arr, k)
+console.print(
+    f"[bold]Hash Set[/]: For {arr} and a window of size {k} the result is {res}"
+)
