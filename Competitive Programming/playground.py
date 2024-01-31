@@ -8,15 +8,15 @@ console = Console()
 
 
 def maxProfit(prices: List[int]) -> int:
-    if prices == sorted(prices, reverse=True):
-        return 0
+    buy = prices[0]
+    res = 0
 
-    top = 0
-    for buy in range(len(prices)):
-        pricesAfterBuy = prices[buy:]
-        sell = max(pricesAfterBuy)
-        top = max(top, sell - prices[buy])
-    return top
+    for sell in prices:
+        if sell < buy:
+            buy = sell
+        else:
+            res = max(res, sell - buy)
+    return res
 
 
 def tests():
