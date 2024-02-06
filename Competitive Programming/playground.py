@@ -7,22 +7,35 @@ install()
 console = Console()
 
 
-def maxProfit(prices: List[int]) -> int:
-    buy = prices[0]
-    res = 0
-
-    for sell in prices:
-        if sell < buy:
-            buy = sell
-        else:
-            res = max(res, sell - buy)
-    return res
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
 
-def tests():
-    assert maxProfit([7, 6, 4, 3, 1]) == 0
-    assert maxProfit([7, 1, 5, 3, 6, 4]) == 5
-    console.print("[green bold]All tests passed![/]")
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def fromArray(self, arr: List[int]):
+        self.head = ListNode(arr[0])
+        curr = self.head
+        for i in range(1, len(arr)):
+            curr.next = ListNode(arr[i])
+            curr = curr.next
+
+    def display(self):
+        curr = self.head
+        while curr:
+            console.print(curr.val, end=" -> " if curr.next else "\n")
+            curr = curr.next
 
 
-tests()
+def reverseList(head: ListNode) -> ListNode:
+    pass
+
+
+arr = [7, 1, 5, 3, 6, 4]
+linkedList = LinkedList()
+linkedList.fromArray(arr)
+linkedList.display()
