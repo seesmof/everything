@@ -6,10 +6,29 @@ from rich.traceback import install
 install()
 console = Console()
 
-number: int = 3000500722
-console.print(f"{number:_}")
 
-Amen: str = "Jesus Christ is our Lord"
-console.print(f"[bold]{Amen}[/]")
+def solve(arr: List[int]) -> List[int]:
+    prefix = []
+    curr = arr[0]
+    for num in arr:
+        curr *= num
+        prefix.append(curr)
+    res = []
+    console.print(f"{prefix = }")
+    prefix = list(reversed(prefix))
+    for i, num in enumerate(arr):
+        console.print(num)
+        curr = num * prefix[i]
+        res.append(curr)
+    console.print(f"{res = }")
 
-console.print(f"{number = }")
+
+arr = [1, 2, 3, 4]
+solve(arr)
+
+
+def tests() -> None:
+    with console.status("[bold]Running tests...[/]"):
+        assert solve([1, 2, 3, 4]) == [24, 12, 8, 6]
+        assert solve([-1, 1, 0, -3, 3]) == [0, 0, 9, 0, 0]
+    console.print("[bold green]All tests passed![/]")
