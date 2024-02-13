@@ -1,5 +1,6 @@
 from typing import List
 from functools import cache
+import inquirer
 from rich.console import Console
 from rich.traceback import install
 
@@ -7,28 +8,22 @@ install()
 console = Console()
 
 
-def solve(arr: List[int]) -> List[int]:
-    prefix = []
-    curr = arr[0]
-    for num in arr:
-        curr *= num
-        prefix.append(curr)
-    res = []
-    console.print(f"{prefix = }")
-    prefix = list(reversed(prefix))
-    for i, num in enumerate(arr):
-        console.print(num)
-        curr = num * prefix[i]
-        res.append(curr)
-    console.print(f"{res = }")
+def getN() -> int:
+    askForN = [
+        inquirer.Text("n", message="Enter n", validate=lambda _, x: x.isnumeric())
+    ]
+    lookForN = inquirer.prompt(askForN)
+    return int(lookForN["n"])
 
 
-arr = [1, 2, 3, 4]
-solve(arr)
-
-
-def tests() -> None:
-    with console.status("[bold]Running tests...[/]"):
-        assert solve([1, 2, 3, 4]) == [24, 12, 8, 6]
-        assert solve([-1, 1, 0, -3, 3]) == [0, 0, 9, 0, 0]
-    console.print("[bold green]All tests passed![/]")
+allOptions = [1, 2, 5, 10, 20, 50, 100, 200, 500]
+allOptions = sorted(allOptions, reverse=True)
+n = int(input())
+takes = 0
+for meow in allOptions:
+    fit = n // meow
+    takes += fit
+    n -= fit * meow
+    if n == 0:
+        break
+print(takes)
