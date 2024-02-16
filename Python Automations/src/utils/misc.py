@@ -47,7 +47,7 @@ def closeWindow() -> None:
 
 
 def goodNight() -> None:
-    speak("Good night, bro.")
+    speak("Good night.")
     ctypes.windll.user32.LockWorkStation()
 
 
@@ -58,34 +58,35 @@ def openWorkout() -> None:
     )
 
 
+def openClass(classData: dict) -> None:
+    webbrowser.open(classData["class_url"])
+    notesUrl = classData.get(
+        "notes_url",
+        "obsidian://open?vault=everything&file=University%2F%D0%A0%D0%BE%D0%B7%D0%BA%D0%BB%D0%B0%D0%B4%20%D0%B4%D0%B7%D0%B2%D1%96%D0%BD%D0%BA%D1%96%D0%B2",
+    )
+    webbrowser.open(notesUrl)
+    passcode = classData.get("passcode")
+    pyperclip.copy(passcode) if passcode else None
+
+
 def scheduleClasses(
-    day: str,
-    week: str,
+    dayName: str,
+    weekStatus: str,
     schedule: dict,
     scheduler: object,
-    times: dict,
-    disciplines: dict,
+    classTimes: dict,
+    courses: dict,
 ) -> None:
-    classesToday = schedule[week].get(day, {})
+    classesToday = schedule[weekStatus].get(dayName, {})
     if not classesToday:
         speak("No classes.")
         return
 
-    for time, description in classesToday.items():
-        scheduledTime = times[time]
-        discipline, classType = description.split(" ")
-        disciplineName = disciplines[discipline]["full_name"]
-        classData = disciplines[discipline][classType.lower()]
+    for classTime, classDescription in classesToday.items():
+        scheduledTime = classTimes[classTime]
+        discipline, classType = classDescription.split(" ")
+        disciplineName = courses[discipline]["full_name"]
+        classData = courses[discipline][classType.lower()]
         speak(f"{disciplineName} {classType} at {scheduledTime}")
 
-        def openClass():
-            webbrowser.open(classData["class_url"])
-            notesUrl = classData.get("notes_url")
-            webbrowser.open(notesUrl) if notesUrl else None
-            passcode = classData.get("passcode")
-            pyperclip.copy(passcode) if passcode else None
-
-        scheduler.every().day.at(scheduledTime).do(openClass)
-
-
-# TODO fix this thing, its not creating different jobs but just does the latest one. oh Gosh thats a bummer
+        scheduler.every().day.at(scheduledTime).do(openClass, classData=classData)

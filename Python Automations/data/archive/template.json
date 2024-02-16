@@ -1,0 +1,37 @@
+{
+  "courses": {
+    "DSA": {
+      "full_name": "Data Structures and Algorithms",
+      "lecture": {
+        "class_url": "https://us04web.zoom.us/j/79660602873",
+        "notes_url": "obsidian://open?vault=everything",
+        "passcode": "152334"
+      },
+      "practice": {
+        "class_url": "https://meet.google.com/kwk-xiup-fvf",
+        "notes_url": "obsidian://open?vault=everything",
+        "passcode": "2023"
+      }
+    }
+  },
+  "schedule": {
+    "Чисельник": {
+      "Monday": {
+        "2": "DSA Lecture"
+      },
+      "Tuesday": {},
+      "Wednesday": {},
+      "Thursday": {},
+      "Friday": {}
+    },
+    "Знаменник": {
+      "Monday": {
+        "1": "DSA Practice"
+      },
+      "Tuesday": {},
+      "Wednesday": {},
+      "Thursday": {},
+      "Friday": {}
+    }
+  }
+}

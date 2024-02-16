@@ -31,12 +31,12 @@ else:
 try:
     dayName = date.today().strftime("%A")
     scheduleClasses(
-        day=dayName,
-        week=weekStatus,
+        dayName=dayName,
+        weekStatus=weekStatus,
         schedule=schedule,
         scheduler=scheduler,
-        times=classTimes,
-        disciplines=courses,
+        classTimes=classTimes,
+        courses=courses,
     )
 except:
     console.log("[red]Failed to schedule classes[/red]")

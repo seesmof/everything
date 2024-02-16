@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "a29741c833d4fe35",
+        "id": "42db23c5e06c6c63",
         "type": "tabs",
         "children": [
           {
-            "id": "9d487b9e64e5b6a4",
+            "id": "a193d75e385ab041",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Winter of Code - 2023-2024/project_ideas.md",
+                "file": "University/y2t2/Дисципліни.md",
                 "mode": "source",
                 "source": false
               }
@@ -71,7 +71,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Winter of Code - 2023-2024/project_ideas.md"
+                "file": "University/y2t2/Дисципліни.md"
               }
             }
           }
@@ -142,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Winter of Code - 2023-2024/project_ideas.md",
+                "file": "University/y2t2/Дисципліни.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -159,7 +159,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Winter of Code - 2023-2024/project_ideas.md",
+                "file": "University/y2t2/Дисципліни.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -170,7 +170,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 381.5
+    "width": 381.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -186,15 +187,28 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "9d487b9e64e5b6a4",
+  "active": "a193d75e385ab041",
   "lastOpenFiles": [
-    "Python Automations/requirements.txt",
+    "University/y2t2/Дисципліни.png",
+    "University/y2t2/msedge_NBQzElWq6X.png",
+    "University/y2t2/ES/data.md",
+    "University/y2t2/DB/notes/Intro.md",
+    "University/y2t2/ES/notes/Intro.md",
+    "University/y2t2/Дисципліни.md",
+    "University/y2t2/ES/tasks",
+    "University/y2t2/ES/notes",
+    "University/y2t2/ES/docs",
+    "University/y2t2/ES",
+    "University/y2t2/MA copy/notes",
+    "University/y2t2/MA copy/tasks",
+    "University/y2t2/MA copy/docs",
+    "University/y2t2/MA copy/data.md",
+    "University/y2t2/MA copy",
+    "University/y2t2/Без назви",
+    "University/y2t2/CT/docs/~$Вибір теми курсового проекту.xlsx",
+    "University/Розклад дзвінків.md",
+    "Winter of Code - 2023-2024/project_ideas.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/1.md",
-    "University/y2t1/DSA/tasks/ct1/docs/prod/~WRL0105.tmp",
-    "University/y2t1/DSA/tasks/ct1/docs/prod/~WRD0097.tmp",
-    "University/y2t1/DSA/tasks/ct1/docs/prod/~WRD0093.tmp",
-    "University/y2t1/DSA/tasks/ct1/largeText_decompressed.txt",
-    "University/y2t1/DSA/tasks/ct1/largeText.bin",
     "University/y2t1/DSA/tasks/ct1/docs/prod/images/Buildings Arrangements Interface.png",
     "University/y2t1/DSA/tasks/ct1/docs/prod/images/Buildings Arrangements Method.png",
     "University/y2t1/DSA/tasks/ct1/docs/prod/images/Robots DP Solution Interface.png",
@@ -204,17 +218,11 @@
     "University/y2t1/DSA/tasks/ct1/docs/prod/images/Huffman Decompress Interface.png",
     "University/y2t1/DSA/tasks/ct1/docs/prod/images/Huffman Compress Interface.png",
     "University/y2t1/DSA/tasks/ct1/docs/prod/images/Huffman Compress Method.png",
-    "University/y2t1/DSA/tasks/ct1/docs/prod/images/Hash Table Task Implementation.png",
-    "University/y2t1/DSA/tasks/ct1/docs/prod/images",
-    "University/y2t1/DSA/tasks/ct1/docs/prod/Нова папка",
     "University/y2t1/DSA/tasks/ct1/docs/prod/report-sections/main.md",
     "University/y2t1/DSA/tasks/ct1/docs/prod/report-sections/intro.md",
-    "University/y2t1/DSA/tasks/ct1/docs/prod/report-sections",
-    "University/y2t1/DSA/tasks/ct1/docs/prod/~$звіт.docx",
     "University/y2t1/DSA/tasks/ct1/docs/prod/res.md",
     "University/y2t1/DSA/tasks/ct1/docs/prod/template copy.md",
     "University/y2t1/DSA/tasks/ct1/docs/prod/template.md",
-    "University/y2t1/DSA/tasks/ct1/docs/prod/звіт.docx",
     "University/y2t1/Дисципліни та Результати.md",
     "University/y2t1/CT/docs/Dec 14 - Fixing stuff/Fixing presentation.md",
     "University/y2t1/IY/tasks/Lecture-Abstracts/res.md",
@@ -226,13 +234,6 @@
     "University/y2t1/CT/prod/docs/Загальні вимоги до проєкту.md",
     "University/y2t1/CT/prod/docs/Інформація на захист.md",
     "University/y2t1/CT/prod/docs/Ідеї та поточні завдання.md",
-    "University/y2t1/CT/prod/code/packages/MimeKit.4.3.0/docs/FAQ.md",
-    "University/y2t1/CT/prod/code/packages/MimeKit.4.3.0/docs/README.md",
-    "University/y2t1/CT/prod/code/packages/MailKit.4.3.0/docs/README.md",
-    "University/y2t1/CT/prod/code/packages/MailKit.4.3.0/docs/GMailOAuth2.md",
-    "University/y2t1/CT/prod/code/packages/MailKit.4.3.0/docs/FAQ.md",
-    "University/y2t1/CT/prod/code/packages/MailKit.4.3.0/docs/ExchangeOAuth2.md",
-    "University/y2t1/CT/prod/code/packages/Newtonsoft.Json.13.0.3/README.md",
-    "University/y2t1/CT/prod/code/packages/Newtonsoft.Json.13.0.3/LICENSE.md"
+    "University/y2t1/CT/prod/code/packages/MimeKit.4.3.0/docs/FAQ.md"
   ]
 }

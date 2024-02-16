@@ -1,5 +1,35 @@
 {
-  "courses": {},
+  "courses": {
+    "DB": {
+      "full_name": "Databases",
+      "lecture": {
+        "class_url": "https://us02web.zoom.us/j/3667974509",
+        "passcode": "781942",
+        "notes_url": "obsidian://open?vault=everything&file=University%2Fy2t2%2FDB%2Fdata"
+      },
+      "practice": {
+        "class_url": "https://us02web.zoom.us/j/3667974509",
+        "passcode": "781942",
+        "notes_url": "obsidian://open?vault=everything&file=University%2Fy2t2%2FDB%2Fdata"
+      }
+    },
+    "ES": {
+      "full_name": "Environmental Safety",
+      "lecture": {
+        "class_url": "https://us04web.zoom.us/j/91453248786?pwd=anlSNHBHc3VIZzB4TEpPbEpvdmpOdz09",
+        "passcode": "vjRP04",
+        "notes_url": "obsidian://open?vault=everything&file=University%2Fy2t2%2FES%2Fdata"
+      },
+      "practice": {
+        "class_url": "",
+        "notes_url": "obsidian://open?vault=everything&file=University%2Fy2t2%2FES%2Fdata"
+      }
+    },
+    "DS": {
+      "full_name": "Discrete Structures",
+      "lecture": {}
+    }
+  },
   "schedule": {
     "Чисельник": {
       "Monday": {},
