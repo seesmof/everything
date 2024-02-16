@@ -1,31 +1,16 @@
-from typing import Optional
-
-
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-
-class Solution:
-    def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        def getLen(head):
-            res = 0
-            while head:
-                res += 1
-                head = head.next
-            return res
-
-        length = getLen(head)
-        mid = length // 2
-        indexer = 0
-        dummy = ListNode(0, head)
-        cur = dummy
-
-        while cur:
-            if indexer == mid:
-                cur.next = cur.next.next if cur.next else None
-
-            indexer += 1
-            cur = cur.next
-        return dummy.next
+n = int(input())
+A, B, C = [], [], []
+for _ in range(n):
+    a, b, c = map(int, input().split())
+    A.append(a)
+    B.append(b)
+    C.append(c)
+A, B, C = sorted(A), sorted(B), sorted(C)
+subA = (A[n // 2] + A[n // 2 - 1]) // 2
+subB = (B[n // 2] + B[n // 2 - 1]) // 2
+subC = (C[n // 2] + C[n // 2 - 1]) // 2
+res = 0
+for a, b, c in zip(A, B, C):
+    cur = abs(subA - a) + abs(subB - b) + abs(subC - c)
+    res += cur
+print(res)

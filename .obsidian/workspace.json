@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "University/y2t2/Дисципліни.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               }
             }
@@ -189,6 +189,16 @@
   },
   "active": "a193d75e385ab041",
   "lastOpenFiles": [
+    "University/y2t2/MA/notes",
+    "University/y2t2/MA/tasks",
+    "University/y2t2/MA/data.md",
+    "University/y2t2/MA/docs",
+    "University/y2t2/MA",
+    "University/y2t2/MODO copy/tasks",
+    "University/y2t2/MODO copy/notes",
+    "University/y2t2/MODO copy/docs",
+    "University/y2t2/MODO copy/data.md",
+    "University/y2t2/MODO copy",
     "University/y2t2/Дисципліни.png",
     "University/y2t2/msedge_NBQzElWq6X.png",
     "University/y2t2/ES/data.md",
@@ -198,14 +208,7 @@
     "University/y2t2/ES/tasks",
     "University/y2t2/ES/notes",
     "University/y2t2/ES/docs",
-    "University/y2t2/ES",
-    "University/y2t2/MA copy/notes",
-    "University/y2t2/MA copy/tasks",
-    "University/y2t2/MA copy/docs",
     "University/y2t2/MA copy/data.md",
-    "University/y2t2/MA copy",
-    "University/y2t2/Без назви",
-    "University/y2t2/CT/docs/~$Вибір теми курсового проекту.xlsx",
     "University/Розклад дзвінків.md",
     "Winter of Code - 2023-2024/project_ideas.md",
     "University/y2t1/_ Other Files and Docs/Христя-ДЗ/pra1/1.md",
@@ -217,7 +220,6 @@
     "University/y2t1/DSA/tasks/ct1/docs/prod/images/Shopkeeper Solve Task Method.png",
     "University/y2t1/DSA/tasks/ct1/docs/prod/images/Huffman Decompress Interface.png",
     "University/y2t1/DSA/tasks/ct1/docs/prod/images/Huffman Compress Interface.png",
-    "University/y2t1/DSA/tasks/ct1/docs/prod/images/Huffman Compress Method.png",
     "University/y2t1/DSA/tasks/ct1/docs/prod/report-sections/main.md",
     "University/y2t1/DSA/tasks/ct1/docs/prod/report-sections/intro.md",
     "University/y2t1/DSA/tasks/ct1/docs/prod/res.md",
@@ -232,8 +234,6 @@
     "University/y2t1/CT/prod/docs/Тексти секцій/Help Section Text.md",
     "University/y2t1/CT/prod/docs/Тексти секцій/Developers Info Section Text.md",
     "University/y2t1/CT/prod/docs/Загальні вимоги до проєкту.md",
-    "University/y2t1/CT/prod/docs/Інформація на захист.md",
-    "University/y2t1/CT/prod/docs/Ідеї та поточні завдання.md",
-    "University/y2t1/CT/prod/code/packages/MimeKit.4.3.0/docs/FAQ.md"
+    "University/y2t1/CT/prod/docs/Інформація на захист.md"
   ]
 }

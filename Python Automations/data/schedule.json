@@ -26,24 +26,69 @@
       }
     },
     "DS": {
-      "full_name": "Discrete Structures",
-      "lecture": {}
+      "full_name": "Discrete Structures"
+    },
+    "KP": {
+      "full_name": "Crossplatform Programming"
+    },
+    "MODO": {
+      "full_name": "Methods of Optimization and Data Observation"
+    },
+    "MA": {
+      "full_name": "Modeling and Analysis"
+    },
+    "SA": {
+      "full_name": "System Analysis"
+    },
+    "SP": {
+      "full_name": "Sports Programming"
     }
   },
   "schedule": {
     "Чисельник": {
-      "Monday": {},
-      "Tuesday": {},
-      "Wednesday": {},
-      "Thursday": {},
-      "Friday": {}
+      "Monday": {
+        "1": "ES Practice",
+        "2": "SA Lecture",
+        "3": "DS Practice",
+        "4": "KP Practice",
+        "5": "MA Lecture",
+        "6": "DS Lecture"
+      },
+      "Tuesday": {
+        "1": "SP Practice"
+      },
+      "Wednesday": {
+        "4": "KP Lecture",
+        "5": "MODO Lecture",
+        "6": "MA Practice"
+      },
+      "Thursday": {
+        "2": "MODO Practice",
+        "3": "DB Practice"
+      },
+      "Friday": {
+        "5": "DB Lecture"
+      }
     },
     "Знаменник": {
-      "Monday": {},
+      "Monday": {
+        "1": "ES Lecture",
+        "3": "SA Practice",
+        "4": "KP Practice",
+        "5": "SP Lecture"
+      },
       "Tuesday": {},
-      "Wednesday": {},
-      "Thursday": {},
-      "Friday": {}
+      "Wednesday": {
+        "5": "MODO Lecture",
+        "6": "MA Practice"
+      },
+      "Thursday": {
+        "2": "MODO Practice",
+        "3": "DB Practice"
+      },
+      "Friday": {
+        "5": "DB Lecture"
+      }
     }
   }
 }
