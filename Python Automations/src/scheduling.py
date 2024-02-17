@@ -12,7 +12,6 @@ console = Console()
 
 currentDir = path.dirname(path.abspath(__file__))
 schedulePath = path.join(currentDir, "..", "data", "schedule.json")
-# schedulePath = path.join(currentDir, "..", "data", "archive", "2_1.json")
 miscDataPath = path.join(currentDir, "..", "data", "misc.json")
 
 miscData = readJson(miscDataPath)

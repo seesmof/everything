@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "42db23c5e06c6c63",
+        "id": "c82090a609aec7dc",
         "type": "tabs",
         "children": [
           {
-            "id": "a193d75e385ab041",
+            "id": "9e701778abf35363",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/y2t2/Дисципліни.md",
-                "mode": "preview",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -70,9 +66,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "University/y2t2/Дисципліни.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -142,7 +136,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t2/Дисципліни.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -159,7 +152,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t2/Дисципліни.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -187,27 +179,28 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "d785a87909210767",
+  "active": "9e701778abf35363",
   "lastOpenFiles": [
-    "University/y2t2/KP/docs/лекції.zip",
-    "University/y2t2/KP/docs/методичка_лаби_2.pdf",
+    "University/y2t2/Дисципліни.md",
+    "University/y2t2/MA/docs/MТаПЗ_2020.pdf",
+    "University/y2t2/MA/docs/MТаПЗ_2020.pdf.crdownload",
+    "University/y2t2/MODO/docs/~$таДО лаб 2024.docx",
+    "University/y2t2/MODO/docs/МОтаДО лаб 2024.docx",
     "University/y2t2/KP/docs/методичка_лаби_1.pdf",
-    "University/y2t2/KP/docs/КПП частина 2.pdf",
-    "University/y2t2/KP/docs/КПП лекції.zip",
-    "University/y2t2/KP/docs/КПП частина 1.pdf",
+    "University/y2t2/KP/docs/методичка_лаби_2.pdf",
     "University/y2t2/DS/docs/mopz_labmet.pdf",
-    "University/y2t2/DS/docs/mopz_kp.doc",
     "University/y2t2/DS/docs/mopz_book.pdf",
-    "University/y2t2/DS/docs/ds_labmet.doc",
-    "University/y2t2/DS/docs/CS_NI_labmet.doc",
+    "University/y2t2/CT/docs/методичка_кп.pdf",
+    "University/y2t2/Графік навчального процесу.jpeg",
+    "University/y2t2/Розклад.png",
+    "University/y2t2/ES/data.md",
+    "University/y2t2/DB/docs/методичка_лаби_2.pdf",
     "University/y2t2/MA/data.md",
     "University/y2t2/MODO copy/data.md",
     "University/y2t2/Дисципліни.png",
     "University/y2t2/msedge_NBQzElWq6X.png",
-    "University/y2t2/ES/data.md",
     "University/y2t2/DB/notes/Intro.md",
     "University/y2t2/ES/notes/Intro.md",
-    "University/y2t2/Дисципліни.md",
     "University/y2t2/MA copy/data.md",
     "University/Розклад дзвінків.md",
     "Winter of Code - 2023-2024/project_ideas.md",
@@ -218,8 +211,6 @@
     "University/y2t1/DSA/tasks/ct1/docs/prod/images/Robots DP Solution Method.png",
     "University/y2t1/DSA/tasks/ct1/docs/prod/images/Shopkeeper Solve Task Interface.png",
     "University/y2t1/DSA/tasks/ct1/docs/prod/images/Shopkeeper Solve Task Method.png",
-    "University/y2t1/DSA/tasks/ct1/docs/prod/images/Huffman Decompress Interface.png",
-    "University/y2t1/DSA/tasks/ct1/docs/prod/images/Huffman Compress Interface.png",
     "University/y2t1/DSA/tasks/ct1/docs/prod/report-sections/main.md",
     "University/y2t1/DSA/tasks/ct1/docs/prod/report-sections/intro.md",
     "University/y2t1/DSA/tasks/ct1/docs/prod/res.md",
@@ -233,7 +224,6 @@
     "University/y2t1/DSA/tasks/ct1/docs/Elements spacing guidelines.md",
     "University/y2t1/CT/prod/docs/Тексти секцій/Help Section Text.md",
     "University/y2t1/CT/prod/docs/Тексти секцій/Developers Info Section Text.md",
-    "University/y2t1/CT/prod/docs/Загальні вимоги до проєкту.md",
-    "University/y2t1/CT/prod/docs/Інформація на захист.md"
+    "University/y2t1/CT/prod/docs/Загальні вимоги до проєкту.md"
   ]
 }
