@@ -26,22 +26,76 @@
       }
     },
     "DS": {
-      "full_name": "Discrete Structures"
+      "full_name": "Discrete Structures",
+      "lecture": {
+        "class_url": "https://us02web.zoom.us/j/87428735194",
+        "passcode": "ZpNuKpZ23",
+        "notes_url": "obsidian://open?vault=everything&file=University%2Fy2t2%2FDS%2Fdata"
+      },
+      "practice": {
+        "class_url": "https://meet.google.com/sor-axaz-zxk",
+        "notes_url": "obsidian://open?vault=everything&file=University%2Fy2t2%2FDS%2Fdata"
+      }
     },
     "KP": {
-      "full_name": "Crossplatform Programming"
+      "full_name": "Crossplatform Programming",
+      "lecture": {
+        "class_url": "http://meet.google.com/wjo-bact-cek",
+        "notes_url": "obsidian://open?vault=everything&file=University%2Fy2t2%2FKP%2Fdata"
+      },
+      "practice": {
+        "class_url": "https://meet.google.com/ahm-ojvb-dfw",
+        "notes_url": "obsidian://open?vault=everything&file=University%2Fy2t2%2FKP%2Fdata"
+      }
     },
     "MODO": {
-      "full_name": "Methods of Optimization and Data Observation"
+      "full_name": "Methods of Optimization and Data Observation",
+      "lecture": {
+        "class_url": "https://us02web.zoom.us/j/9226877360",
+        "passcode": "bt5bgR",
+        "notes_url": "obsidian://open?vault=everything&file=University%2Fy2t2%2FMODO%2Fdata"
+      },
+      "practice": {
+        "class_url": "https://us02web.zoom.us/j/89655521136",
+        "passcode": "249201",
+        "notes_url": "obsidian://open?vault=everything&file=University%2Fy2t2%2FMODO%2Fdata"
+      }
     },
     "MA": {
-      "full_name": "Modeling and Analysis"
+      "full_name": "Modeling and Analysis",
+      "lecture": {
+        "class_url": "https://us02web.zoom.us/j/9061742629",
+        "passcode": "651173",
+        "notes_url": "obsidian://open?vault=everything&file=University%2Fy2t2%2FMA%2Fdata"
+      },
+      "practice": {
+        "class_url": "https://us02web.zoom.us/j/9061742629",
+        "passcode": "651173",
+        "notes_url": "obsidian://open?vault=everything&file=University%2Fy2t2%2FMA%2Fdata"
+      }
     },
     "SA": {
-      "full_name": "System Analysis"
+      "full_name": "System Analysis",
+      "lecture": {
+        "class_url": "https://us02web.zoom.us/j/89846475470",
+        "passcode": "294018",
+        "notes_url": "obsidian://open?vault=everything&file=University%2Fy2t2%2FSA%2Fdata"
+      },
+      "practice": {
+        "class_url": "http://meet.google.com/gqp-uchp-vxv",
+        "notes_url": "obsidian://open?vault=everything&file=University%2Fy2t2%2FSA%2Fdata"
+      }
     },
     "SP": {
-      "full_name": "Sports Programming"
+      "full_name": "Sports Programming",
+      "lecture": {
+        "class_url": "https://meet.google.com/dxa-pjjr-byx",
+        "notes_url": "obsidian://open?vault=everything&file=University%2Fy2t2%2FSP%2Fdata"
+      },
+      "practice": {
+        "class_url": "https://meet.google.com/dxa-pjjr-byx",
+        "notes_url": "obsidian://open?vault=everything&file=University%2Fy2t2%2FSP%2Fdata"
+      }
     }
   },
   "schedule": {
