@@ -127,14 +127,14 @@
     "Знаменник": {
       "Monday": {
         "1": "ES Lecture",
-        "3": "SA Practice",
+        "3": "KP Lecture",
         "4": "KP Practice",
         "5": "SP Lecture"
       },
       "Tuesday": {},
       "Wednesday": {
-        "5": "MODO Lecture",
-        "6": "MA Practice"
+        "2": "MA Practice",
+        "5": "MODO Lecture"
       },
       "Thursday": {
         "2": "MODO Practice",
