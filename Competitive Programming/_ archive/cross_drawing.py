@@ -1,3 +1,11 @@
+"""
+✝️💗🙏
+♰
+☧
+✙
+†
+"""
+
 import turtle
 
 # Create a turtle object

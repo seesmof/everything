@@ -1,3 +1,12 @@
+"""
+♰
+☧
+💙💛
+🇺🇦
+ꑭ
+✙
+"""
+
 import turtle
 
 screen = turtle.Screen()
