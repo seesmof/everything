@@ -4,11 +4,65 @@
     "type": "split",
     "children": [
       {
-        "id": "4ccf06d4409d3f8a",
+        "id": "f48d337918b31a6a",
         "type": "tabs",
+        "dimension": 49.68888888888889,
         "children": [
           {
-            "id": "bfc30c874043959c",
+            "id": "87b527d12b83ba21",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "University/y2t2/KP/notes/лют 19, 2024.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "40b6321dea72a34b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "University/y2t2/KP/Кросплатформне Програмування.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "8dfd2811729eaea4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "University/y2t2/Дисципліни.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "5b37cadae401c13f",
+        "type": "tabs",
+        "dimension": 50.3111111111111,
+        "children": [
+          {
+            "id": "e60ed81f99008daa",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "University/y2t2/KP/docs/лекції/1 характеристики комп'ютерних систем.pdf"
+              }
+            }
+          },
+          {
+            "id": "0e8a45cefc10dea0",
             "type": "leaf",
             "state": {
               "type": "pdf",
@@ -17,7 +71,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -69,7 +124,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/y2t2/KP/docs/методичка_лаби_1.pdf"
+                "file": "University/y2t2/KP/notes/лют 19, 2024.md"
               }
             }
           }
@@ -140,7 +195,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t2/KP/docs/методичка_лаби_1.pdf",
+                "file": "University/y2t2/KP/notes/лют 19, 2024.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -157,7 +212,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t2/KP/docs/методичка_лаби_1.pdf",
+                "file": "University/y2t2/KP/notes/лют 19, 2024.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -185,21 +240,23 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "bfc30c874043959c",
+  "active": "87b527d12b83ba21",
   "lastOpenFiles": [
+    "University/y2t2/KP/docs/методичка_лаби_1.pdf",
+    "University/y2t2/KP/notes/лют 19, 2024.md",
+    "University/y2t2/KP/Кросплатформне Програмування.md",
+    "University/y2t2/ES/notes/лют 19, 2024.md",
+    "University/y2t2/KP/docs/лекції/1 характеристики комп'ютерних систем.pdf",
+    "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
+    "University/y2t2/Дисципліни.md",
+    "University/y2t2/KP/docs/лекції/2 Гіпервізори.pdf",
     "University/y2t2/KP/docs/лекції/3KVM.pdf",
     "University/y2t2/KP/docs/лекції/3 лекція Принципи хмарних обчислень.pdf",
-    "University/y2t2/KP/docs/лекції/2 Гіпервізори.pdf",
-    "University/y2t2/KP/docs/лекції/1 характеристики комп'ютерних систем.pdf",
     "University/y2t2/KP/docs/лекції/2 Virtual.pdf",
     "University/y2t2/KP/docs/лекції/5захист хмарних систем_.pdf",
     "University/y2t2/KP/docs/лекції/4Docker_.pdf",
     "University/y2t2/KP/docs/лекції",
     "University/y2t2/ES/docs/Тема 1.pdf",
-    "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
-    "University/y2t2/ES/notes/лют 19, 2024.md",
-    "University/y2t2/ES/docs/Тема 2.pdf",
-    "University/y2t2/ES/docs/2_ОП.pdf",
     "Competitive Programming/_ archive/logo.png",
     "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/public/app-screenshots/popular-words-view.png",
     "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/public/app-screenshots/main-tab.png",
@@ -228,10 +285,7 @@
     "Competitive Programming/Winter of Code - 2023-2024/Twitch AI Chatbot Rework/README.md",
     "Competitive Programming/Winter of Code - 2023-2024/Spotify Playlist Liker/README.md",
     "Competitive Programming/Winter of Code - 2023-2024/project_ideas.md",
-    "University/y2t2/Дисципліни.md",
     "University/y2t2/MA/data.md",
-    "University/y2t2/MODO copy/data.md",
-    "University/y2t2/DB/notes/Intro.md",
-    "University/y2t2/ES/notes/Intro.md"
+    "University/y2t2/MODO copy/data.md"
   ]
 }
