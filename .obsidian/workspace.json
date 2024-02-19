@@ -6,13 +6,47 @@
       {
         "id": "c82090a609aec7dc",
         "type": "tabs",
+        "dimension": 45.422222222222224,
         "children": [
           {
             "id": "9e701778abf35363",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "University/y2t2/ES/notes/лют 19, 2024.md",
+                "mode": "preview",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "baf37be7ee43533d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "20b655fbc674d10b",
+        "type": "tabs",
+        "dimension": 54.57777777777778,
+        "children": [
+          {
+            "id": "6c5355c86ceef359",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "University/y2t2/ES/docs/Тема 1.pdf"
+              }
             }
           }
         ]
@@ -66,7 +100,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "University/y2t2/ES/notes/лют 19, 2024.md"
+              }
             }
           }
         ]
@@ -136,6 +172,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "University/y2t2/ES/notes/лют 19, 2024.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,6 +189,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "University/y2t2/ES/notes/лют 19, 2024.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -181,17 +219,19 @@
   },
   "active": "9e701778abf35363",
   "lastOpenFiles": [
-    "Library/_ BIBLE _ The Childrens' Bible.pdf",
-    "Library/Matthew Henry _ Bible Commentary Vol 6 - Acts to Revelation.pdf",
-    "Library/Matthew Henry _ Bible Commentary Vol 6 - Acts to Revelation.pdf.crdownload",
-    "Library/Matthew Henry _ Bible Commentary Vol 5 - Matthew to John.pdf",
-    "Library/Matthew Henry _ Bible Commentary Vol 5 - Matthew to John.pdf.crdownload",
-    "Library/Matthew Henry _ Bible Commentary Vol 4 - Isaiah to Malachi.pdf",
-    "Library/Matthew Henry _ Bible Commentary Vol 4 - Isaiah to Malachi.pdf.crdownload",
-    "Library/Matthew Henry _ Bible Commentary Vol 3 - Job to Songs of Solomon.pdf",
-    "Library/Matthew Henry _ Bible Commentary Vol 3 - Job to Songs of Solomon.pdf.crdownload",
-    "Library/Matthew Henry _ Bible Commentary Vol 2 - Joshua to Esther.pdf",
-    "Library/Matthew Henry _ Bible Commentary Vol 2 - Joshua to Esther.pdf.crdownload",
+    "University/y2t2/ES/docs/Тема 2.pdf",
+    "University/y2t2/ES/docs/2_ОП.pdf",
+    "University/y2t2/ES/notes/лют 19, 2024.md",
+    "University/y2t2/ES/docs/5_ОП.pdf",
+    "University/y2t2/ES/docs/5_ОП.pdf.crdownload",
+    "University/y2t2/ES/docs/4_ОП.pdf",
+    "University/y2t2/ES/docs/4_ОП.pdf.crdownload",
+    "University/y2t2/ES/docs/3_ОП.pdf",
+    "University/y2t2/ES/docs/3_ОП.pdf.crdownload",
+    "University/y2t2/ES/docs/2_ОП.pdf.crdownload",
+    "University/y2t2/ES/docs/1_ОП.pdf",
+    "University/y2t2/ES/docs/1_ОП.pdf.crdownload",
+    "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
     "Competitive Programming/_ archive/logo.png",
     "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/public/app-screenshots/popular-words-view.png",
     "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/public/app-screenshots/main-tab.png",
@@ -221,11 +261,9 @@
     "Competitive Programming/Winter of Code - 2023-2024/Spotify Playlist Liker/README.md",
     "Competitive Programming/Winter of Code - 2023-2024/project_ideas.md",
     "University/y2t2/Дисципліни.md",
-    "University/y2t2/ES/data.md",
     "University/y2t2/MA/data.md",
     "University/y2t2/MODO copy/data.md",
     "University/y2t2/DB/notes/Intro.md",
-    "University/y2t2/ES/notes/Intro.md",
-    "University/y2t2/MA copy/data.md"
+    "University/y2t2/ES/notes/Intro.md"
   ]
 }
