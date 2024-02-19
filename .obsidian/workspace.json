@@ -4,48 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "c82090a609aec7dc",
+        "id": "4ccf06d4409d3f8a",
         "type": "tabs",
-        "dimension": 45.422222222222224,
         "children": [
           {
-            "id": "9e701778abf35363",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/y2t2/ES/notes/лют 19, 2024.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "baf37be7ee43533d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
-      },
-      {
-        "id": "20b655fbc674d10b",
-        "type": "tabs",
-        "dimension": 54.57777777777778,
-        "children": [
-          {
-            "id": "6c5355c86ceef359",
+            "id": "bfc30c874043959c",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "University/y2t2/ES/docs/Тема 1.pdf"
+                "file": "University/y2t2/KP/docs/методичка_лаби_1.pdf"
               }
             }
           }
@@ -101,7 +69,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/y2t2/ES/notes/лют 19, 2024.md"
+                "file": "University/y2t2/KP/docs/методичка_лаби_1.pdf"
               }
             }
           }
@@ -172,7 +140,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t2/ES/notes/лют 19, 2024.md",
+                "file": "University/y2t2/KP/docs/методичка_лаби_1.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -189,7 +157,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t2/ES/notes/лют 19, 2024.md",
+                "file": "University/y2t2/KP/docs/методичка_лаби_1.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -217,21 +185,21 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "9e701778abf35363",
+  "active": "bfc30c874043959c",
   "lastOpenFiles": [
+    "University/y2t2/KP/docs/лекції/3KVM.pdf",
+    "University/y2t2/KP/docs/лекції/3 лекція Принципи хмарних обчислень.pdf",
+    "University/y2t2/KP/docs/лекції/2 Гіпервізори.pdf",
+    "University/y2t2/KP/docs/лекції/1 характеристики комп'ютерних систем.pdf",
+    "University/y2t2/KP/docs/лекції/2 Virtual.pdf",
+    "University/y2t2/KP/docs/лекції/5захист хмарних систем_.pdf",
+    "University/y2t2/KP/docs/лекції/4Docker_.pdf",
+    "University/y2t2/KP/docs/лекції",
+    "University/y2t2/ES/docs/Тема 1.pdf",
+    "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
+    "University/y2t2/ES/notes/лют 19, 2024.md",
     "University/y2t2/ES/docs/Тема 2.pdf",
     "University/y2t2/ES/docs/2_ОП.pdf",
-    "University/y2t2/ES/notes/лют 19, 2024.md",
-    "University/y2t2/ES/docs/5_ОП.pdf",
-    "University/y2t2/ES/docs/5_ОП.pdf.crdownload",
-    "University/y2t2/ES/docs/4_ОП.pdf",
-    "University/y2t2/ES/docs/4_ОП.pdf.crdownload",
-    "University/y2t2/ES/docs/3_ОП.pdf",
-    "University/y2t2/ES/docs/3_ОП.pdf.crdownload",
-    "University/y2t2/ES/docs/2_ОП.pdf.crdownload",
-    "University/y2t2/ES/docs/1_ОП.pdf",
-    "University/y2t2/ES/docs/1_ОП.pdf.crdownload",
-    "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
     "Competitive Programming/_ archive/logo.png",
     "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/public/app-screenshots/popular-words-view.png",
     "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/public/app-screenshots/main-tab.png",
