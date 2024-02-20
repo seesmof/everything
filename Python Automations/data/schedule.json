@@ -111,12 +111,11 @@
         "6": "DS Lecture"
       },
       "Tuesday": {
-        "1": "SP Practice"
+        "4": "SA Practice"
       },
       "Wednesday": {
-        "4": "KP Lecture",
-        "5": "MODO Lecture",
-        "6": "MA Practice"
+        "2": "MA Practice",
+        "5": "MODO Lecture"
       },
       "Thursday": {
         "2": "MODO Practice",
@@ -130,8 +129,7 @@
       "Monday": {
         "1": "ES Lecture",
         "3": "KP Lecture",
-        "4": "KP Practice",
-        "5": "SP Lecture"
+        "4": "KP Practice"
       },
       "Tuesday": {},
       "Wednesday": {
