@@ -45,6 +45,30 @@
             }
           },
           {
+            "id": "c7482ec053a8575a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "University/y2t2/MA/notes/лют 22, 2024.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "8ba9f373d3e36d8a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "University/y2t2/MODO/notes/лют 22, 2024.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "38b0337f2145d5a6",
             "type": "leaf",
             "state": {
@@ -57,7 +81,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       },
       {
         "id": "c6a777ba922c4be3",
@@ -147,7 +171,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/Розклад дзвінків.md"
+                "file": "University/y2t2/MODO/notes/лют 22, 2024.md"
               }
             }
           }
@@ -218,7 +242,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/Розклад дзвінків.md",
+                "file": "University/y2t2/MODO/notes/лют 22, 2024.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -235,7 +259,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/Розклад дзвінків.md",
+                "file": "University/y2t2/MODO/notes/лют 22, 2024.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -263,10 +287,17 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "ebadd20e583b0d47",
+  "active": "8ba9f373d3e36d8a",
   "lastOpenFiles": [
-    "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
+    "University/y2t2/KP/tasks/lb1/res/~WRD0915.tmp",
+    "University/y2t2/KP/tasks/lb1/res/~$ищенко _ КНТ-122 _ Лаба№1 _ Варіант19.docx",
+    "University/y2t2/KP/tasks/lb1/res/Онищенко _ КНТ-122 _ Лаба№1 _ Варіант19.docx",
+    "University/y2t2/KP/docs/Онищенко _ КНТ-122 _ Лаба№ _ Варіант19.docx",
+    "University/y2t2/KP/docs/Онищенко_КНТ-122_Лаба№_Варіант19.docx",
+    "University/y2t2/KP/docs/Онищенко_КНТ-122_Лаба1_Варіант19.docx",
     "University/y2t2/MA/notes/лют 22, 2024.md",
+    "University/Розклад дзвінків.md",
+    "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
     "University/y2t2/MA/docs/MТаПЗ_2020.pdf",
     "University/y2t2/DB/notes/лют 22, 2024.md",
     "University/y2t2/DB/docs/методичка_PostgreSQL.pdf",
@@ -279,15 +310,10 @@
     "University/y2t2/Дисципліни.md",
     "University/y2t2/MODO/Методи Оптимізації та Дослідження Операцій.md",
     "University/y2t2/KP/tasks/lb1/res/~WRL1109.tmp",
-    "University/y2t2/KP/tasks/lb1/res/~WRD0005.tmp",
-    "University/y2t2/KP/tasks/lb1/res/~WRD0004.tmp",
     "University/y2t2/SP/Спортивне Програмування.md",
     "University/y2t2/SA/Системний Аналіз.md",
     "University/y2t2/DS/Дискретні Структури та Подання Знань.md",
     "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
-    "University/y2t2/MODO/docs/МОтаДО лаб 2024.pdf",
-    "University/y2t2/MODO/docs/mso1DAB.tmp",
-    "University/y2t2/MODO/docs/mso967.tmp",
     "University/y2t2/KP/Кросплатформне Програмування.md",
     "University/y2t2/SP/notes/лют 19, 2024.md",
     "University/y2t2/KP/notes/лют 19, 2024.md",
@@ -307,7 +333,6 @@
     "Code Doodles/archive/Winter of Code - 2023-2024/Spotify Playlist Liker/docs/README_UA.md",
     "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/README.md",
     "Code Doodles/archive/Winter of Code - 2023-2024/Twitch AI Chatbot Rework/README.md",
-    "Code Doodles/archive/Winter of Code - 2023-2024/Spotify Playlist Liker/README.md",
     "Competitive Programming/Winter of Code - 2023-2024/Word Counter App/public/app-screenshots/popular-words-view.png",
     "Competitive Programming/Winter of Code - 2023-2024/Word Counter App/public/app-screenshots/main-tab.png"
   ]

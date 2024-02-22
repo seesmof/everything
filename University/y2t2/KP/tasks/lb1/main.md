@@ -19,4 +19,4 @@ HTCondor - це система високопропускних обчислен
 ## Додаткові нотатки
 
 - pool name - `main`
-- before installing HTCondor on VM install [Microsoft Visual C++](https://aka.ms/vs/17/release/vc_redist.x64.exe)
+- before installing HTCondor on VM install [Microsoft Visual C++](https://aka.ms/vs/17/release/vc_redist.x64.exe) and [Java](https://www.java.com/en/download/)
