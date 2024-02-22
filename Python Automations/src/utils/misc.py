@@ -68,6 +68,10 @@ def openClass(classData: dict) -> None:
     passcode = classData.get("passcode")
     pyperclip.copy(passcode) if passcode else None
 
+    console.log(
+        f"Class URL: {classData['class_url']}\nNotes URL: {notesUrl}\nPasscode: {passcode}"
+    )
+
 
 def scheduleClasses(
     dayName: str,
