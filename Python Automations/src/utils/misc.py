@@ -1,5 +1,7 @@
 import datetime
 import json
+import os
+import sys
 from suntime import Sun, SunTimeException
 from rich.console import Console
 from rich.traceback import install
@@ -59,12 +61,18 @@ def openWorkout() -> None:
 
 
 def openClass(classData: dict) -> None:
+    originalStdout = sys.stdout
+    sys.stdout = open(os.devnull, "w")
+
     webbrowser.open(classData["class_url"])
     notesUrl = classData.get(
         "notes_url",
         "obsidian://open?vault=everything&file=University%2F%D0%A0%D0%BE%D0%B7%D0%BA%D0%BB%D0%B0%D0%B4%20%D0%B4%D0%B7%D0%B2%D1%96%D0%BD%D0%BA%D1%96%D0%B2",
     )
     webbrowser.open(notesUrl)
+
+    sys.stdout = originalStdout
+
     passcode = classData.get("passcode")
     pyperclip.copy(passcode) if passcode else None
 
