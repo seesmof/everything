@@ -60,7 +60,7 @@ def openWorkout() -> None:
     )
 
 
-def openClass(classData: dict) -> None:
+def openClass(classData: dict, disciplineName: str, classType: str) -> None:
     originalStdout = sys.stdout
     sys.stdout = open(os.devnull, "w")
 
@@ -76,9 +76,7 @@ def openClass(classData: dict) -> None:
     passcode = classData.get("passcode")
     pyperclip.copy(passcode) if passcode else None
 
-    console.log(
-        f"Class URL: {classData['class_url']}\nNotes URL: {notesUrl}\nPasscode: {passcode}"
-    )
+    speak(f"Opening {disciplineName} {classType}")
 
 
 def scheduleClasses(
@@ -101,4 +99,9 @@ def scheduleClasses(
         classData = courses[discipline][classType.lower()]
         speak(f"{disciplineName} {classType} at {scheduledTime}")
 
-        scheduler.every().day.at(scheduledTime).do(openClass, classData=classData)
+        scheduler.every().day.at(scheduledTime).do(
+            openClass,
+            classData=classData,
+            disciplineName=disciplineName,
+            classType=classType,
+        )
