@@ -1,9 +1,9 @@
-Universe   = vanilla
+Universe = vanilla
 Executable = simple.exe
-Arguments  = 4 10
-Log        = simple.log
-Output     = simple.$(Process).out
-Error      = simple.$(Process).error
+Arguments = 4 10
+Log = simple.log
+Output = simple.$(Process).out
+Error = simple.$(Process).error
 Queue
 Arguments = 4 11
 Queue
