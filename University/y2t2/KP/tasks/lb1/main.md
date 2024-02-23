@@ -20,3 +20,4 @@ HTCondor - це система високопропускних обчислен
 
 - pool name - `main`
 - before installing HTCondor on VM install [Microsoft Visual C++](https://aka.ms/vs/17/release/vc_redist.x64.exe) and [Java](https://www.java.com/en/download/)
+- for installing gcc use this [site](http://www.equation.com/servlet/equation.cmd?fa=fortran) and this link for [direct download](http://www.equation.com/ftpdir/gcc/gcc-13.2.0-64.exe)
