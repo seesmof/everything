@@ -56,9 +56,18 @@ plt.axvline(x=3, color="blue", label="x1 <= 3")
 # X2 <= 5
 plt.axhline(y=5, color="lime", label="x2 <= 5")
 
+# C(2,2)
 vectorStart = [0, 2]
 vectorEnd = [0, 2]
 plt.plot(vectorStart, vectorEnd, color="purple", label="C(2,2)")
+
+# The Line
+theLineX1 = [0, 2]
+theLineX2 = [2, 0]
+theLineSlope = getSlope(X1=theLineX1, X2=theLineX2)
+x = np.linspace(-6, 6, 100)
+y = theLineSlope * (x - theLineX1[0]) + theLineX2[0]
+plt.plot(x, y, color="orange", label="Фінальна лінія")
 
 plt.grid()
 plt.legend()
