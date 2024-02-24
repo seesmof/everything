@@ -1,4 +1,4 @@
-#include "simc.h"
+#include "../simc/simc.h"
 
 int main()
 {
