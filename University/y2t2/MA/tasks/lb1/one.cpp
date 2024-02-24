@@ -3,12 +3,12 @@
 int main()
 {
   long long N = 10,
-            I = 20,
+            D = 20,
             T = 100;
 
   /*
   N - inteval of creating
-  I - delay between creating
+  D - delay between creating
   T - time of simulation
   */
 
@@ -48,20 +48,16 @@ int main()
     case 2:
       seize(factory);
       break;
-    // the work takes time, so we will wait for it to get produced for I relative time points
+    // the work takes time, so we will wait for it to get produced for D relative time points
     case 3:
-      delayt(I);
+      delayt(D);
       break;
-    // our factory workers finish their work and leave our machinery
+    // our raw material is processed into chocolate and can now leave machinery into our warehouse
     case 4:
       outfac(factory);
       break;
-    // our raw material is processed into chocolate and can now leave machinery into our warehouse
-    case 5:
-      outfac(factory);
-      break;
     // we no longer have to keep track of it, this is not our responsibility anymore, so we destroy our memory of it for good
-    case 6:
+    case 5:
       destroy();
       break;
     }
