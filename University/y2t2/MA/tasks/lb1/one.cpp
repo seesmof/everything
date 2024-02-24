@@ -19,7 +19,7 @@ int main()
   initlist(T);
 
   // appoint a safety officer for our factory - he will trace our production
-  // starttrace();
+  starttrace();
 
   // getting all of our raw material for chocolate and producing the first batch - right as our factory opens
   initcreate(1, 0);
