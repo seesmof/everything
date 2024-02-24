@@ -1,19 +1,14 @@
-#include "../Simc23_VS/simc.h"
+#include "../lb1/simc.h"
 
 int main()
 {
-  // initializing our main facility - a chocolate factory
-  pfacility mainFascility;
-  // allocating memory for it
+  pfacility f;
   initlist(100);
-  // creating a first chocolate batch right as our factory opens
+  starttrace();
   initcreate(1, 0);
-  // creating our chocolate factory
-  newfac(mainFascility, "Chocolate Factory");
-  // run our factory for 100 hours
+  newfac(f, "Device");
   while (systime < 100)
   {
-    // start the chocolate production
     plan();
     switch (sysevent)
     {
@@ -21,20 +16,19 @@ int main()
       create(10);
       break;
     case 2:
-      seize(mainFascility);
+      seize(f);
       break;
     case 3:
       delayt(20);
       break;
     case 4:
-      outfac(mainFascility);
+      outfac(f);
       break;
     case 5:
       destroy();
       break;
     }
   }
-  // view the results of our production
   printall();
   return 0;
 }
