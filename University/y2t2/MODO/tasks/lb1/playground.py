@@ -50,13 +50,11 @@ x = np.linspace(-6, 6, 100)
 y = slope * (x - twoX1[0]) + twoX2[0]
 plt.plot(x, y, color="green", label="x1 + x2 >= 3")
 
-"""
 # X1 <= 3
 plt.axvline(x=3, color="blue", label="x1 <= 3")
 
 # X2 <= 5
-plt.axhline(y=5, color="orange", label="x2 <= 5")
-"""
+plt.axhline(y=5, color="lime", label="x2 <= 5")
 
 plt.grid()
 plt.legend()
