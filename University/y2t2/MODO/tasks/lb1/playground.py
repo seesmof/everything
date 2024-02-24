@@ -56,6 +56,10 @@ plt.axvline(x=3, color="blue", label="x1 <= 3")
 # X2 <= 5
 plt.axhline(y=5, color="lime", label="x2 <= 5")
 
+vectorStart = [0, 2]
+vectorEnd = [0, 2]
+plt.plot(vectorStart, vectorEnd, color="purple", label="C(2,2)")
+
 plt.grid()
 plt.legend()
 plt.show()
