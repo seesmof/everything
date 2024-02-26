@@ -26,7 +26,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
+                "file": "University/y2t2/MA/notes/лют 26, 2024.md",
                 "mode": "source",
                 "source": false
               }
@@ -47,6 +47,16 @@
               "type": "pdf",
               "state": {
                 "file": "University/y2t2/DB/docs/методичка_лаби_1.pdf"
+              }
+            }
+          },
+          {
+            "id": "7afa4807d8192e7f",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "University/y2t2/KP/docs/методичка_лаби_1.pdf"
               }
             }
           },
@@ -81,7 +91,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -133,7 +143,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md"
+                "file": "University/y2t2/MA/notes/лют 26, 2024.md"
               }
             }
           }
@@ -204,7 +214,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
+                "file": "University/y2t2/MA/notes/лют 26, 2024.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -221,7 +231,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
+                "file": "University/y2t2/MA/notes/лют 26, 2024.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -251,28 +261,36 @@
   },
   "active": "730adea95bd61748",
   "lastOpenFiles": [
+    "University/y2t2/MODO/tasks/lb1/res/~WRL3345.tmp",
+    "University/y2t2/MODO/tasks/lb1/res/~WRD3313.tmp",
+    "University/y2t2/MODO/tasks/lb1/res/~WRD3309.tmp",
+    "University/y2t2/KP/notes/лют 26, 2024.md",
+    "University/y2t2/MA/notes/лют 26, 2024.md",
+    "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
+    "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний_виділення.png.~tmp",
+    "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний_виділення.png",
+    "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний.png",
+    "University/y2t2/MODO/tasks/lb1/msedge_nuFjqOHx3x.png",
+    "University/y2t2/MODO/playground.md",
+    "University/y2t2/MODO/playground copy.py",
+    "University/y2t2/KP/docs/методичка_лаби_1.pdf",
+    "University/y2t2/DB/docs/методичка_лаби_1.pdf",
+    "University/y2t2/DS/docs/mopz_labmet.pdf",
+    "University/y2t2/KP/notes/лют 19, 2024.md",
+    "University/y2t2/DS/notes/лют 26, 2024.md",
+    "University/y2t2/DS/notes/Без назви.md",
+    "University/y2t2/KP/Кросплатформне Програмування.md",
     "University/y2t2/MODO/tasks/lb1/linprog.py",
     "University/y2t2/MODO/tempCodeRunnerFile.py",
     "University/y2t2/MODO/tasks/lb1/output.txt",
     "University/y2t2/SP/Спортивне Програмування.md",
-    "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
-    "University/y2t2/DS/notes/лют 26, 2024.md",
-    "University/y2t2/DS/docs/mopz_labmet.pdf",
-    "University/y2t2/DS/docs/mopz_book.pdf",
     "University/y2t2/DS/Дискретні Структури та Подання Знань.md",
     "University/y2t2/ES/notes/лют 26, 2024.md",
-    "University/y2t2/MODO/tasks/lb1/other_try.py",
-    "University/y2t2/MODO/tasks/lb1/linprog copy.py",
-    "University/y2t2/MODO/tasks/lb1/plot copy.py",
-    "University/y2t2/MODO/tasks/lb1/plot.py",
-    "University/y2t2/MODO/playground.py",
     "University/y2t2/SA/Системний Аналіз.md",
-    "University/y2t2/ES/docs/Лаба_1_практика.pdf",
     "University/y2t2/ES/tasks/lb1/example.jpg",
     "University/y2t2/ES/notes/лют 19, 2024.md",
     "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
     "University/y2t2/DB/notes/лют 23, 2024.md",
-    "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний.png",
     "University/y2t2/MODO/tasks/lb1/python3.10_4xCqhDl2AH.png",
     "University/y2t2/MODO/tasks/lb1/main.md",
     "University/y2t2/DB/Бази Даних.md",
@@ -284,18 +302,10 @@
     "University/y2t2/Дисципліни.png",
     "University/y2t2/Дисципліни.md",
     "University/y2t2/MODO/Методи Оптимізації та Дослідження Операцій.md",
-    "University/y2t2/KP/Кросплатформне Програмування.md",
     "University/y2t2/SP/notes/лют 19, 2024.md",
-    "University/y2t2/KP/notes/лют 19, 2024.md",
-    "University/y2t2/KP/tasks/lb1/main.md",
     "Competitive Programming/_ archive/logo.png",
     "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/public/app-screenshots/popular-words-view.png",
     "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/public/app-screenshots/main-tab.png",
-    "Code Doodles/archive/Winter of Code - 2023-2024/Twitch AI Chatbot Rework/docs/archive/Previous development plans.md",
-    "Code Doodles/archive/Winter of Code - 2023-2024/Twitch AI Chatbot Rework/docs/architecture/Handling data.md",
-    "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/public/logo.png",
-    "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/docs/README_Ukrainian.md",
-    "Code Doodles/archive/Winter of Code - 2023-2024/Twitch AI Chatbot Rework/public/logo.png",
-    "Code Doodles/archive/Winter of Code - 2023-2024/Spotify Playlist Liker/public/logo.png"
+    "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/public/logo.png"
   ]
 }
