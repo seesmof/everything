@@ -4,47 +4,72 @@
     "type": "split",
     "children": [
       {
-        "id": "2bda15933d4d8300",
-        "type": "tabs",
+        "id": "3405f2cdc1a88440",
+        "type": "split",
         "dimension": 47.155555555555544,
         "children": [
           {
-            "id": "91987a7d5c87fce4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/y2t2/ES/notes/лют 26, 2024.md",
-                "mode": "source",
-                "source": false
+            "id": "2bda15933d4d8300",
+            "type": "tabs",
+            "dimension": 32.77777777777778,
+            "children": [
+              {
+                "id": "91987a7d5c87fce4",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "University/y2t2/ES/notes/лют 26, 2024.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              },
+              {
+                "id": "730adea95bd61748",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              },
+              {
+                "id": "38b0337f2145d5a6",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "University/y2t2/SP/Спортивне Програмування.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
               }
-            }
+            ]
           },
           {
-            "id": "730adea95bd61748",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
-                "mode": "source",
-                "source": false
+            "id": "5346b73422e1aec0",
+            "type": "tabs",
+            "dimension": 67.22222222222223,
+            "children": [
+              {
+                "id": "3441b71fedc286cc",
+                "type": "leaf",
+                "state": {
+                  "type": "image",
+                  "state": {
+                    "file": "University/y2t2/ES/tasks/lb1/example.jpg"
+                  }
+                }
               }
-            }
-          },
-          {
-            "id": "38b0337f2145d5a6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/y2t2/SP/Спортивне Програмування.md",
-                "mode": "source",
-                "source": false
-              }
-            }
+            ]
           }
-        ]
+        ],
+        "direction": "horizontal"
       },
       {
         "id": "c6a777ba922c4be3",
@@ -252,22 +277,25 @@
   },
   "active": "91987a7d5c87fce4",
   "lastOpenFiles": [
-    "University/y2t2/ES/docs/Лаба_1_практика.pdf",
+    "University/y2t2/MODO/tasks/lb1/linprog.py",
+    "University/y2t2/MODO/tasks/lb1/plot copy.py",
+    "University/y2t2/MODO/tasks/lb1/plot.py",
+    "University/y2t2/MODO/playground.py",
+    "University/y2t2/SA/Системний Аналіз.md",
     "University/y2t2/ES/notes/лют 26, 2024.md",
+    "University/y2t2/ES/docs/Лаба_1_практика.pdf",
+    "University/y2t2/ES/tasks/lb1/example.jpg",
+    "University/y2t2/ES/tasks/lb1/example.jpg.crdownload",
+    "University/y2t2/ES/tasks/lb1",
+    "University/y2t2/ES/tasks/Нова папка",
     "University/y2t2/ES/docs/Лаба_1_практика.pdf.crdownload",
     "University/y2t2/ES/notes/лют 19, 2024.md",
     "University/y2t2/ES/docs/4_ОП.pdf",
     "University/y2t2/ES/docs/5_ОП.pdf",
-    "University/y2t2/ES/docs/Тема 1.pdf",
-    "University/y2t2/ES/docs/3_ОП.pdf",
-    "University/y2t2/ES/docs/2_ОП.pdf",
-    "University/y2t2/ES/docs/1_ОП.pdf",
     "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
     "University/y2t2/DB/notes/лют 23, 2024.md",
-    "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний.png.~tmp",
     "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний.png",
     "University/y2t2/MODO/tasks/lb1/python3.10_4xCqhDl2AH.png",
-    "University/y2t2/MODO/tasks/lb1/playground.py",
     "University/y2t2/MODO/tasks/lb1/main.md",
     "University/y2t2/DB/Бази Даних.md",
     "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
@@ -280,7 +308,6 @@
     "University/y2t2/Дисципліни.md",
     "University/y2t2/MODO/Методи Оптимізації та Дослідження Операцій.md",
     "University/y2t2/SP/Спортивне Програмування.md",
-    "University/y2t2/SA/Системний Аналіз.md",
     "University/y2t2/DS/Дискретні Структури та Подання Знань.md",
     "University/y2t2/KP/Кросплатформне Програмування.md",
     "University/y2t2/SP/notes/лют 19, 2024.md",
@@ -295,7 +322,6 @@
     "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/docs/README_Ukrainian.md",
     "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/data/latest.md",
     "Code Doodles/archive/Winter of Code - 2023-2024/Twitch AI Chatbot Rework/public/logo.png",
-    "Code Doodles/archive/Winter of Code - 2023-2024/Spotify Playlist Liker/public/logo.png",
-    "Code Doodles/archive/Winter of Code - 2023-2024/Spotify Playlist Liker/public/app.png"
+    "Code Doodles/archive/Winter of Code - 2023-2024/Spotify Playlist Liker/public/logo.png"
   ]
 }
