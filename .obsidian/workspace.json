@@ -26,7 +26,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/y2t2/MA/notes/лют 26, 2024.md",
+                "file": "University/y2t2/DS/notes/лют 26, 2024.md",
                 "mode": "source",
                 "source": false
               }
@@ -40,6 +40,26 @@
         "type": "tabs",
         "dimension": 52.844444444444456,
         "children": [
+          {
+            "id": "98ee6433800858d0",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "University/y2t2/DS/docs/mopz_book.pdf"
+              }
+            }
+          },
+          {
+            "id": "abbf7bb43883bb2b",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "University/y2t2/MA/docs/методичка_лаби.pdf"
+              }
+            }
+          },
           {
             "id": "cae58981659b4d70",
             "type": "leaf",
@@ -90,8 +110,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -143,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/y2t2/MA/notes/лют 26, 2024.md"
+                "file": "University/y2t2/DS/notes/лют 26, 2024.md"
               }
             }
           }
@@ -214,7 +233,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t2/MA/notes/лют 26, 2024.md",
+                "file": "University/y2t2/DS/notes/лют 26, 2024.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -231,7 +250,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t2/MA/notes/лют 26, 2024.md",
+                "file": "University/y2t2/DS/notes/лют 26, 2024.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -261,11 +280,19 @@
   },
   "active": "730adea95bd61748",
   "lastOpenFiles": [
+    "University/y2t2/DS/docs/mopz_book.pdf",
+    "University/y2t2/DS/notes/лют 26, 2024.md",
+    "University/y2t2/DS/docs/mopz_labmet.pdf",
+    "University/y2t2/MA/notes/лют 26, 2024.md",
+    "University/y2t2/DS/notes/Без назви.md",
+    "University/y2t2/DS/Дискретні Структури та Подання Знань.md",
+    "University/Розклад дзвінків.md",
+    "University/y2t2/MA/docs/методичка_лаби.pdf",
+    "University/y2t2/MODO/tasks/lb1/res/~$ищенко _ КНТ-122 _ Лаба№1 _ Варіант19.docx",
     "University/y2t2/MODO/tasks/lb1/res/~WRL3345.tmp",
     "University/y2t2/MODO/tasks/lb1/res/~WRD3313.tmp",
     "University/y2t2/MODO/tasks/lb1/res/~WRD3309.tmp",
     "University/y2t2/KP/notes/лют 26, 2024.md",
-    "University/y2t2/MA/notes/лют 26, 2024.md",
     "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
     "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний_виділення.png.~tmp",
     "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний_виділення.png",
@@ -274,17 +301,9 @@
     "University/y2t2/MODO/playground.md",
     "University/y2t2/MODO/playground copy.py",
     "University/y2t2/KP/docs/методичка_лаби_1.pdf",
-    "University/y2t2/DB/docs/методичка_лаби_1.pdf",
-    "University/y2t2/DS/docs/mopz_labmet.pdf",
     "University/y2t2/KP/notes/лют 19, 2024.md",
-    "University/y2t2/DS/notes/лют 26, 2024.md",
-    "University/y2t2/DS/notes/Без назви.md",
     "University/y2t2/KP/Кросплатформне Програмування.md",
-    "University/y2t2/MODO/tasks/lb1/linprog.py",
-    "University/y2t2/MODO/tempCodeRunnerFile.py",
-    "University/y2t2/MODO/tasks/lb1/output.txt",
     "University/y2t2/SP/Спортивне Програмування.md",
-    "University/y2t2/DS/Дискретні Структури та Подання Знань.md",
     "University/y2t2/ES/notes/лют 26, 2024.md",
     "University/y2t2/SA/Системний Аналіз.md",
     "University/y2t2/ES/tasks/lb1/example.jpg",
@@ -294,7 +313,6 @@
     "University/y2t2/MODO/tasks/lb1/python3.10_4xCqhDl2AH.png",
     "University/y2t2/MODO/tasks/lb1/main.md",
     "University/y2t2/DB/Бази Даних.md",
-    "University/Розклад дзвінків.md",
     "University/y2t2/MA/notes/лют 22, 2024.md",
     "University/y2t2/MODO/notes/лют 22, 2024.md",
     "University/y2t2/DB/notes/лют 22, 2024.md",
