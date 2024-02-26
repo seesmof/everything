@@ -14,7 +14,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/y2t2/DB/notes/лют 23, 2024.md",
+                "file": "University/y2t2/ES/notes/лют 26, 2024.md",
                 "mode": "source",
                 "source": false
               }
@@ -70,9 +70,19 @@
                 "file": "University/y2t2/DB/docs/методичка_PostgreSQL.pdf"
               }
             }
+          },
+          {
+            "id": "a76a4a6246da8d6e",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "University/y2t2/ES/docs/Лаба_1_практика.pdf"
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -124,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/y2t2/DB/notes/лют 23, 2024.md"
+                "file": "University/y2t2/ES/notes/лют 26, 2024.md"
               }
             }
           }
@@ -195,7 +205,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t2/DB/notes/лют 23, 2024.md",
+                "file": "University/y2t2/ES/notes/лют 26, 2024.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -212,7 +222,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t2/DB/notes/лют 23, 2024.md",
+                "file": "University/y2t2/ES/notes/лют 26, 2024.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -242,21 +252,23 @@
   },
   "active": "91987a7d5c87fce4",
   "lastOpenFiles": [
+    "University/y2t2/ES/docs/Лаба_1_практика.pdf",
+    "University/y2t2/ES/notes/лют 26, 2024.md",
+    "University/y2t2/ES/docs/Лаба_1_практика.pdf.crdownload",
+    "University/y2t2/ES/notes/лют 19, 2024.md",
+    "University/y2t2/ES/docs/4_ОП.pdf",
+    "University/y2t2/ES/docs/5_ОП.pdf",
+    "University/y2t2/ES/docs/Тема 1.pdf",
+    "University/y2t2/ES/docs/3_ОП.pdf",
+    "University/y2t2/ES/docs/2_ОП.pdf",
+    "University/y2t2/ES/docs/1_ОП.pdf",
+    "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
+    "University/y2t2/DB/notes/лют 23, 2024.md",
     "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний.png.~tmp",
     "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний.png",
     "University/y2t2/MODO/tasks/lb1/python3.10_4xCqhDl2AH.png",
     "University/y2t2/MODO/tasks/lb1/playground.py",
-    "University/y2t2/MODO/tasks/lb1/res/~$ищенко _ КНТ-122 _ Лаба№1 _ Варіант19.docx",
     "University/y2t2/MODO/tasks/lb1/main.md",
-    "University/y2t2/MODO/tasks/lb1/res/Онищенко _ КНТ-122 _ Лаба№1 _ Варіант19.docx",
-    "University/y2t2/MODO/tasks/lb1/res/Онищенко _ КНТ-122 _ Лаба№ _ Варіант19.docx",
-    "University/y2t2/MODO/tasks/lb1/res",
-    "University/y2t2/MODO/tasks/lb1",
-    "University/y2t2/MODO/docs/~WRL0002.tmp",
-    "University/y2t2/MODO/docs/~WRD0001.tmp",
-    "University/y2t2/MODO/docs/~WRD0000.tmp",
-    "University/y2t2/MODO/docs/~$ищенко _ КНТ-122 _ Лаба№ _ Варіант19.docx",
-    "University/y2t2/DB/notes/лют 23, 2024.md",
     "University/y2t2/DB/Бази Даних.md",
     "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
     "University/Розклад дзвінків.md",
@@ -270,12 +282,10 @@
     "University/y2t2/SP/Спортивне Програмування.md",
     "University/y2t2/SA/Системний Аналіз.md",
     "University/y2t2/DS/Дискретні Структури та Подання Знань.md",
-    "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
     "University/y2t2/KP/Кросплатформне Програмування.md",
     "University/y2t2/SP/notes/лют 19, 2024.md",
     "University/y2t2/KP/notes/лют 19, 2024.md",
     "University/y2t2/KP/tasks/lb1/main.md",
-    "University/y2t2/ES/notes/лют 19, 2024.md",
     "Competitive Programming/_ archive/logo.png",
     "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/public/app-screenshots/popular-words-view.png",
     "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/public/app-screenshots/main-tab.png",
@@ -286,7 +296,6 @@
     "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/data/latest.md",
     "Code Doodles/archive/Winter of Code - 2023-2024/Twitch AI Chatbot Rework/public/logo.png",
     "Code Doodles/archive/Winter of Code - 2023-2024/Spotify Playlist Liker/public/logo.png",
-    "Code Doodles/archive/Winter of Code - 2023-2024/Spotify Playlist Liker/public/app.png",
-    "Code Doodles/archive/Winter of Code - 2023-2024/Spotify Playlist Liker/docs/README_UA.md"
+    "Code Doodles/archive/Winter of Code - 2023-2024/Spotify Playlist Liker/public/app.png"
   ]
 }
