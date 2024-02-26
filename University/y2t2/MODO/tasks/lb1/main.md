@@ -61,3 +61,34 @@ X_1=\frac{4}{3}
 $$
 
 2. Відповідно маємо точку перетину наших двох обмежень - $(1.3, 5)$
+
+---
+
+$$
+\displaystyle
+F = 2 \cdot X_1 + 2 \cdot X_2 \rightarrow max \\
+3 \cdot X_1 - 2 \cdot X_2 \ge -6 \\
+X_1 + X_2 \ge 3 \\
+X_1 \le 3 \\
+X_2 \le 5 \\
+X_1, X_2 \ge 0
+$$
+
+$$
+F = -2X_1 - 2X_2 \rightarrow min \\
+-3X_1 + 2X_2 \le 6 \\
+-X_1 - X_2 \le -3 \\
+X_1 \le 3 \\
+X_2 \le 5 \\
+X_1, X_2 \ge 0
+$$
+
+$$
+\displaystyle
+max \space\space -2X_1 - 2X_2 \\
+-3X_1 + 2X_2 \le 6 \\
+-X_1 - X_2 \le -3 \\
+X_1 \le 3 \\
+X_2 \le 5 \\
+X_1, X_2 \ge 0
+$$
