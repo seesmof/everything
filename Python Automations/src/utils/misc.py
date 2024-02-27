@@ -76,7 +76,7 @@ def openClass(classData: dict, disciplineName: str, classType: str) -> None:
     passcode = classData.get("passcode")
     pyperclip.copy(passcode) if passcode else None
 
-    speak(f"Opening {disciplineName} {classType}")
+    speak(f"{disciplineName} {classType}")
 
 
 def scheduleClasses(

@@ -38,7 +38,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/y2t2/MA/notes/лют 26, 2024.md",
+                "file": "University/y2t2/SA/notes/лют 27, 2024.md",
                 "mode": "source",
                 "source": false
               }
@@ -52,6 +52,16 @@
         "type": "tabs",
         "dimension": 52.844444444444456,
         "children": [
+          {
+            "id": "cb3c2a12b86fd599",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "University/y2t2/SA/docs/методичка_лаби.pdf"
+              }
+            }
+          },
           {
             "id": "98ee6433800858d0",
             "type": "leaf",
@@ -174,7 +184,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/y2t2/MA/notes/лют 26, 2024.md"
+                "file": "University/y2t2/SA/notes/лют 27, 2024.md"
               }
             }
           }
@@ -245,7 +255,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t2/MA/notes/лют 26, 2024.md",
+                "file": "University/y2t2/SA/notes/лют 27, 2024.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -262,7 +272,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t2/MA/notes/лют 26, 2024.md",
+                "file": "University/y2t2/SA/notes/лют 27, 2024.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -292,17 +302,20 @@
   },
   "active": "2cef5ac267a4bcb1",
   "lastOpenFiles": [
+    "University/y2t2/SA/tasks/play.py",
+    "University/y2t2/SA/tasks/lb1/variant_12/data/words.txt",
+    "University/y2t2/SA/tasks/lb1/variant_12/data",
+    "University/y2t2/SA/tasks/lb1/variant_12/main.py",
+    "University/y2t2/SA/tasks/lb1/variant_12",
+    "University/y2t2/SA/tasks/lb1/res",
+    "University/y2t2/SA/tasks/lb1",
+    "University/y2t2/SA/docs/методичка_лаби.pdf",
+    "University/y2t2/SA/notes/лют 27, 2024.md",
+    "University/y2t2/SA/docs/СА_ЛР_2023.pdf",
+    "University/y2t2/SA/Системний Аналіз.md",
+    "University/y2t2/MA/notes/лют 26, 2024.md",
     "Python Automations/play.py",
-    "Code Doodles/Testing Bible BibleGateway API/main.js",
-    "Code Doodles/Testing Bible BibleGateway API/package-lock.json",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/acorn/dist/bin.js",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/acorn/dist/acorn.mjs.map",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/acorn/dist/acorn.mjs.d.ts",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/acorn/dist/acorn.mjs",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/acorn/dist/acorn.js",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/acorn/dist/acorn.js.map",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/acorn/dist/acorn.d.ts",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/acorn/dist",
+    "Python Automations/data/Bible_verses.json",
     "Code Doodles/Testing Bible BibleGateway API/node_modules/uri-js/README.md",
     "Code Doodles/Testing Bible BibleGateway API/node_modules/qs/README.md",
     "Code Doodles/Testing Bible BibleGateway API/node_modules/qs/LICENSE.md",
@@ -326,9 +339,6 @@
     "Code Doodles/Testing Bible BibleGateway API/node_modules/bcrypt-pbkdf/CONTRIBUTING.md",
     "Code Doodles/Testing Bible BibleGateway API/node_modules/safer-buffer/Readme.md",
     "Code Doodles/Testing Bible BibleGateway API/node_modules/safer-buffer/Porting-Buffer.md",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/lodash/release.md",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/lodash/README.md",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/tr46/README.md",
     "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний_виділення.png",
     "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний.png",
     "University/y2t2/MODO/tasks/lb1/msedge_nuFjqOHx3x.png",
