@@ -26,10 +26,6 @@ versesBiblePath = path.join(currentDir, "..", "data", "Bible_verses.json")
 verses = readJson(versesBiblePath)
 dailyVerse = random.choice(verses)
 
-if date.today().isocalendar()[1] % 2 == 0:
-    weekStatus = "Знаменник"
-else:
-    weekStatus = "Чисельник"
 dayName = date.today().strftime("%A")
 dayNameCorrespondings = {
     "Monday": "Понеділок",
@@ -40,34 +36,47 @@ dayNameCorrespondings = {
     "Saturday": "Субота",
     "Sunday": "Неділя",
 }
+monthNamesCorrespondings = {
+    1: "Січень",
+    2: "Лютий",
+    3: "Березень",
+    4: "Квітень",
+    5: "Травень",
+    6: "Червень",
+    7: "Липень",
+    8: "Серпень",
+    9: "Вересень",
+    10: "Жовтень",
+    11: "Листопад",
+    12: "Грудень",
+}
+currentWeather = getWeatherScrape()
+if "хуртовин" in currentWeather:
+    currentWeather = currentWeather.split("\n")[-1]
+clothing = getClothing(weather=currentWeather)
+currentMonth = getMonthName(month=date.today().month)
 
-"""
-Glory to Jesus Christ
-
-daily Bible verse
-
-day name
-week status
-weather
-sunset time
-clothes calculator by algorithm
-
-Clothes Algorithm:
-weather = fetch weather
-if weather <= 5: winter coat + sweater + warm pants + winter shoes
-"""
+if date.today().isocalendar()[1] % 2 == 0:
+    weekStatus = "Знаменник"
+else:
+    weekStatus = "Чисельник"
 
 dailyMessage = f"""
-[bold]Слава [green underline]Ісусу Христу[/][/]
+### Слава Ісусу Христу
 
-{dailyVerse["content"]} - [bright_green italic]{dailyVerse["name"]}[/]
+> {dailyVerse["content"]} - __{dailyVerse["name"]}__
 
-
-Сьогодні - [bold yellow]{dayNameCorrespondings[dayName]}[/]
-Тиждень - [bold yellow]{weekStatus}[/]
+- Сьогодні - `{dayNameCorrespondings[dayName]}, {date.today().strftime("%d.%m.%Y")}`
+- Тиждень - `{weekStatus}`
+- На вулиці - `{currentWeather}`
+- Одяг на вулицю - `{clothing}`
+- Захід сонця - `{getSunset()}`
 """
 
-console.print(dailyMessage)
+console.print()
+console.print(md(dailyMessage))
+console.print()
+webbrowser.open(dailyVerse["url"])
 
 try:
     scheduleClasses(

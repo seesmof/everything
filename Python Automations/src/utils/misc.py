@@ -2,6 +2,8 @@ import datetime
 import json
 import os
 import sys
+from bs4 import BeautifulSoup
+import requests
 from suntime import Sun, SunTimeException
 from rich.console import Console
 from rich.traceback import install
@@ -12,6 +14,7 @@ import pyperclip
 
 install()
 console = Console()
+openWeatherApiKey = "de0da57ef7133cd5dc35076a664291c5"
 
 
 def getSunset(latitude: float = 47.838800, longitude: float = 35.139567) -> str:
@@ -23,6 +26,66 @@ def getSunset(latitude: float = 47.838800, longitude: float = 35.139567) -> str:
         return sunsetTime.strftime("%H:%M")
     except SunTimeException as e:
         console.log(f"Error: {e}")
+
+
+def getWeatherScrape(city: str = "Запоріжжя") -> str:
+    url = f"https://www.google.com/search?q=weather+{city}"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, "html.parser")
+    temperature = soup.find("div", attrs={"class": "BNeawe iBp4i AP7Wnd"}).text
+    return temperature
+
+
+def getWeatherOpenWeather(city: str = "Запоріжжя") -> str:
+    url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={openWeatherApiKey}"
+    response = requests.get(url)
+    data = response.json()
+    temperature = data["main"]["temp"]
+    return temperature
+
+
+def getClothing(weather: str | int) -> str:
+    if type(weather) == str and "°" in weather:
+        weather = weather.split("°")[0]
+    weather = int(weather)
+
+    if weather <= -5:
+        return "зимова куртка + светр + теплі штани + зимове взуття"
+    elif weather <= 5:
+        return "зимова куртка + футболка + теплі штани + зимове взуття"
+    elif weather <= 15:
+        return "легка куртка + светр + теплі штани + легке взуття"
+    elif weather <= 20:
+        return "светр + легкі штани + легке взуття"
+    else:
+        return "футболка + шорти + легке взуття"
+
+
+def getMonthName(month: int) -> str:
+    if month == 1:
+        return "Січень"
+    elif month == 2:
+        return "Лютий"
+    elif month == 3:
+        return "Березень"
+    elif month == 4:
+        return "Квітень"
+    elif month == 5:
+        return "Травень"
+    elif month == 6:
+        return "Червень"
+    elif month == 7:
+        return "Липень"
+    elif month == 8:
+        return "Серпень"
+    elif month == 9:
+        return "Вересень"
+    elif month == 10:
+        return "Жовтень"
+    elif month == 11:
+        return "Листопад"
+    elif month == 12:
+        return "Грудень"
 
 
 def speak(*args) -> None:

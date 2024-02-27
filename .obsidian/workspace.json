@@ -184,7 +184,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/y2t2/SA/notes/лют 27, 2024.md"
+                "file": "University/y2t2/SA/docs/методичка_лаби.pdf"
               }
             }
           }
@@ -255,7 +255,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t2/SA/notes/лют 27, 2024.md",
+                "file": "University/y2t2/SA/docs/методичка_лаби.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -272,7 +272,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t2/SA/notes/лют 27, 2024.md",
+                "file": "University/y2t2/SA/docs/методичка_лаби.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -300,8 +300,12 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "2cef5ac267a4bcb1",
+  "active": "cb3c2a12b86fd599",
   "lastOpenFiles": [
+    "Python Automations/playground.py",
+    "University/y2t2/MODO/docs/методичка_лекції_Дейнега.pdf",
+    "University/y2t2/SA/notes/лют 27, 2024.md",
+    "Python Automations/tempCodeRunnerFile.py",
     "University/y2t2/SA/tasks/play.py",
     "University/y2t2/SA/tasks/lb1/variant_12/data/words.txt",
     "University/y2t2/SA/tasks/lb1/variant_12/data",
@@ -310,12 +314,8 @@
     "University/y2t2/SA/tasks/lb1/res",
     "University/y2t2/SA/tasks/lb1",
     "University/y2t2/SA/docs/методичка_лаби.pdf",
-    "University/y2t2/SA/notes/лют 27, 2024.md",
-    "University/y2t2/SA/docs/СА_ЛР_2023.pdf",
     "University/y2t2/SA/Системний Аналіз.md",
     "University/y2t2/MA/notes/лют 26, 2024.md",
-    "Python Automations/play.py",
-    "Python Automations/data/Bible_verses.json",
     "Code Doodles/Testing Bible BibleGateway API/node_modules/uri-js/README.md",
     "Code Doodles/Testing Bible BibleGateway API/node_modules/qs/README.md",
     "Code Doodles/Testing Bible BibleGateway API/node_modules/qs/LICENSE.md",
