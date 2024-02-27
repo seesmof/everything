@@ -4,6 +4,7 @@ from datetime import date
 import schedule as scheduler
 from rich.console import Console
 from rich.traceback import install
+from rich.markdown import Markdown as md
 
 from utils.misc import *
 
@@ -22,10 +23,28 @@ courses, schedule = scheduleData["courses"], scheduleData["schedule"]
 
 if date.today().isocalendar()[1] % 2 == 0:
     weekStatus = "Знаменник"
-    speak("Week is Denominator.")
 else:
     weekStatus = "Чисельник"
-    speak("Week is Numerator.")
+
+"""
+Glory to Jesus Christ
+
+day name
+week status
+weather
+sunset time
+clothes calculator by algorithm
+
+Clothes Algorithm:
+weather = fetch weather
+if weather <= 5: winter coat + sweater + warm pants + winter shoes
+"""
+
+dailyMessage = """
+## Glory to Jesus Christ
+"""
+
+console.print(md(dailyMessage))
 
 try:
     dayName = date.today().strftime("%A")

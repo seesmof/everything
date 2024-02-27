@@ -9,18 +9,26 @@ console = Console()
 
 import requests
 
-baseUrl = "https://biblia-api-pdf.herokuapp.com/api"
+url = "https://api.biblegateway.com/2/search/verses.php"
 params = {
-    "method": "bible",
-    "version": "AMP",
-    "book": "MAT",
-    "cStart": "19",
-    "cEnd": "19",
-    "vStart": "26",
-    "vEnd": "26",
+    "json": {
+        "book": "Matthew",
+        "bid": "40",
+        "chapter": "19",
+        "chapter_roman": "XIX",
+        "verse": "26",
+        "found": 1,
+        "next_chapter": "read-mat-20",
+        "version": "nasb",
+    }
 }
-response = requests.get(baseUrl, params=params)
+
+response = requests.get(url, params=params)
 console.print(response)
+
+"""
 data = response.json()
-verseContent = data["content"][0]["verses"]["v26"]
-console.print(f"Matthew 19:26 AMP - {verseContent}")
+
+parsed_data = f'"{data["text"]}"—{data["book"]} {data["chapter"]}:{data["verses"]} [{data["version"].upper()}]'
+print(parsed_data)
+"""
