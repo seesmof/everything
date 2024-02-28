@@ -1,3 +1,4 @@
+from collections import defaultdict
 import json
 import time
 import inquirer
@@ -59,20 +60,29 @@ class Movie:
         self.rooms: list[Room] = rooms
 
 
+class Ticket:
+    def __init__(self, movie: Movie, room: Room, row: int, seat: int):
+        self.movie: Movie = movie
+        self.room: Room = room
+        self.row: int = row
+        self.seat: int = seat
+
+
 class Cinema:
     def __init__(self, name: str = "Cinema", movies: list[Movie] = []):
         self.movies: list[Movie] = movies
         self.name: str = name
-        self.boughtTickets: list[dict] = []
+        self.tickets: list[Ticket] = []
+        self.watched: dict = defaultdict(int)
 
     def buyTicket(self, movie: Movie, room: Room, row: int, seat: int) -> None:
-        self.boughtTickets.append(
-            {"movie": movie.title, "room": room.number, "row": row, "seat": seat}
-        )
         room.seats[row][seat] = 0
+        self.tickets.append(Ticket(movie, room, row, seat))
 
-    def sellTicket(self, ticket: dict) -> None:
-        self.boughtTickets.remove(ticket)
+    def sellTicket(self, ticket: Ticket) -> None:
+        self.tickets.remove(ticket)
+        room = ticket.room
+        room.seats[ticket.row][ticket.seat] = 1
 
     def readMoviesFromJson(self, path: str = "") -> None:
         with open(path, "r", encoding="utf-8") as f:
@@ -101,14 +111,58 @@ def drawRoomTable(room: Room, movie: Movie) -> None:
     )
 
 
+def drawTicketsTable(tickets: list[Ticket]) -> None:
+    table = Table(box=box.ROUNDED)
+    table.add_column("Index", justify="right", style="cyan", no_wrap=True)
+    table.add_column("Movie", style="bold yellow")
+    table.add_column("Year", style="violet", no_wrap=True)
+    table.add_column("Room", style="magenta", no_wrap=True)
+    table.add_column("Row", style="green", no_wrap=True)
+    table.add_column("Seat", style="blue", no_wrap=True)
+    for i, ticket in enumerate(tickets):
+        name, year = ticket.movie.title.split(" - ")
+        table.add_row(
+            f"{i+1}",
+            f"{name}",
+            f"{year}",
+            f"{ticket.room.number}",
+            f"{ticket.row+1}",
+            f"{ticket.seat+1}",
+        )
+    console.print(table, "\n")
+
+
+def drawMoviesTable() -> None:
+    table = Table(box=box.ROUNDED)
+    table.add_column("Index", style="cyan", no_wrap=True, justify="right")
+    table.add_column("Movie", style="bold yellow", no_wrap=True)
+    table.add_column("Year", style="violet", no_wrap=True)
+    table.add_column("Times Watched", style="magenta", no_wrap=True, justify="left")
+    for i, (movie, count) in enumerate(cinema.watched.items()):
+        name, year = movie.split(" - ")
+        table.add_row(
+            f"{i+1}",
+            f"{name}",
+            f"{year}",
+            f"{count}",
+        )
+    console.print(table, "\n")
+
+
 currentDir: str = path.dirname(path.abspath(__file__))
-moviesDataPath = path.join(currentDir, "..", "data", "movies.json")
+moviesDataPath: str = path.join(currentDir, "..", "data", "movies.json")
 
 cinema: Cinema = Cinema()
 cinema.readMoviesFromJson(moviesDataPath)
 
 while True:
-    actions = ["View movies", "View bought tickets", "Add new movie", "Exit"]
+    actions = [
+        "Browse Tickets",
+        "View Bought Tickets",
+        "View Watched Movies",
+        "Add New Movie",
+        "Exit",
+    ]
     action = inquirer.prompt(
         [
             inquirer.List(
@@ -119,7 +173,10 @@ while True:
         ]
     )["action"]
 
-    if action == "View movies":
+    if action == "Browse Tickets":
+        if not cinema.movies:
+            console.print("[bold]No movies found[/bold]\n")
+
         movie = inquirer.prompt(
             [
                 inquirer.List(
@@ -142,7 +199,6 @@ while True:
             ]
         )["room"]
         room = movie.rooms[room - 1]
-        console.print(room.number)
 
         drawRoomTable(room, movie)
 
@@ -186,38 +242,53 @@ while True:
 
         drawRoomTable(room, movie)
 
-    elif action == "View bought tickets":
-        tickets = [
-            f"\"{ticket['movie']}\" in room {ticket['room']} on row {ticket['row']+1} at seat {ticket['seat']+1}"
-            for ticket in cinema.boughtTickets
-        ]
-        if not tickets:
-            console.print("[bold]No tickets bought yet[/]\n")
+    elif action == "View Bought Tickets":
+        if not cinema.tickets:
+            console.print("[bold]No bought tickets found[/bold]\n")
             continue
+        drawTicketsTable(cinema.tickets)
 
-        ticket = inquirer.prompt(
+        indeces = range(1, len(cinema.tickets) + 1)
+        ticketIndex = inquirer.prompt(
             [
                 inquirer.List(
                     "ticket",
-                    message="Which ticket would you like to see?",
-                    choices=tickets,
+                    message="Choose a ticket number",
+                    choices=indeces,
                 )
             ]
         )["ticket"]
-        ticket = tickets.index(ticket)
-        console.print(ticket)
+        ticketIndex = ticketIndex - 1
 
         action = inquirer.prompt(
             [
                 inquirer.List(
                     "action",
                     message="What would you like to do?",
-                    choices=["Watch movie", "Return ticket"],
+                    choices=["Watch movie", "Return ticket", "Exit"],
                 )
             ]
         )["action"]
 
-        cinema.sellTicket(cinema.boughtTickets[ticket])
+        ticketData = cinema.tickets[ticketIndex]
+        movieName = ticketData.movie.title
 
-    elif action == "Add new movie":
+        if action == "Return ticket":
+            cinema.sellTicket(ticketData)
+            console.print(f'[bold]"{movieName}"[/bold] was returned!\n')
+        elif action == "Watch movie":
+            cinema.watched[movieName] += 1
+            console.print(f'[bold]"{movieName}"[/bold] was watched!\n')
+            cinema.tickets.remove(ticketData)
+
+    elif action == "View Watched Movies":
+        if not cinema.watched:
+            console.print("[bold]No watched movies found[/bold]\n")
+            continue
+        drawMoviesTable()
+
+    elif action == "Add New Movie":
         pass
+
+    else:
+        break
