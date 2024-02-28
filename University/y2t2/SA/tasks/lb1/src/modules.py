@@ -69,3 +69,22 @@ class Cinema:
     def __init__(self, name: str = "Cinema", movies: list[Movie] = []):
         self.movies = movies
         self.name = name
+
+    def readMoviesFromJson(self, path: str = "") -> None:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        self.name = data["name"]
+        for movie in data["movies"]:
+            rooms = []
+            for room in movie["rooms"]:
+                curRoom = Room(number=room["number"], seats=room["seats"])
+                rooms.append(curRoom)
+            curMovie = Movie(title=movie["title"], rooms=rooms)
+            self.movies.append(curMovie)
+
+
+currentDir = path.dirname(path.abspath(__file__))
+moviesDataPath = path.join(currentDir, "..", "data", "movies.json")
+
+cinema = Cinema()
+cinema.readMoviesFromJson(moviesDataPath)
