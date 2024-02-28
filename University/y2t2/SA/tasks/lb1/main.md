@@ -16,7 +16,12 @@
       - group by extension
       - sort by name
       - output in format "/first directory/.../file name.extension/"
-- Продаж квитків у кінотеатр з можливістю переглядати сеанси, переглядати доступні та зайняті місця для перегляду заданого сеансу у відповідному залі, бронювання та звільнення місць. Інформація про нові сеанси може додаватися
+- Продаж квитків у кінотеатр з можливістю переглядати сеанси, переглядати доступні та зайняті місця для перегляду заданого сеансу у відповідній залі, бронювання та звільнення місць. Інформація про нові сеанси може додаватися
+  - cinema with different movies
+  - for each movie we have different rooms
+  - for each room we need to have free and taken seats
+    - with ability to take and free a seat
+  - and with ability to add new movies by user
 
 ## Висновки
 
