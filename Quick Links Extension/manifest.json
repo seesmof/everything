@@ -26,12 +26,12 @@
       },
       "description": "Opens Phind in a new tab."
     },
-    "open-monkeytype": {
+    "open-Bible": {
       "suggested_key": {
-        "default": "Alt+G",
-        "mac": "Alt+G"
+        "default": "Alt+S",
+        "mac": "Alt+S"
       },
-      "description": "Opens MonkeyType in a new tab."
+      "description": "Opens The Holy Bible in AMP version in a new tab."
     }
   },
   "background": {

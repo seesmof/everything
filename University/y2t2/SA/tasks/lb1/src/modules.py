@@ -192,7 +192,7 @@ while True:
             for ticket in cinema.boughtTickets
         ]
         if not tickets:
-            console.print("No tickets bought yet")
+            console.print("[bold]No tickets bought yet[/]\n")
             continue
 
         ticket = inquirer.prompt(
