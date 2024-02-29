@@ -7,19 +7,7 @@
 ## Завдання до роботи
 
 - Файл містить перелік повних адрес файлів (ім'я диску, список каталогів, ім'я файлу та розширення). Виділити з кожної адреси ім'я файлу, розширення та адресу першого каталогу. Перевірити для кожного файлу чи існує він. Вивести у файл, ім'я якого формується з імені початкового файлу додаванням постфіксу "str", перелік файлів, які існують на диску, згрупувавши їх за форматами та відсортувавши в алфавітному порядку за іменем файлів. Імена файлів виводити у форматі "/першийКаталог/.../ім'яФайлу/", сортуючи за розширенням та шляхом
-  - input file
-    - C:\Windows\System32\drivers\etc\hosts\run.exe
-  - from each address take a file name, extension and the first directory
-  - check if exists
-  - to output file - input file + str
-    - print all files that exist on the disk
-      - group by extension
-      - sort by name
-      - output in format "/first directory/.../file name.extension/"
 - Продаж квитків у кінотеатр з можливістю переглядати сеанси, переглядати доступні та зайняті місця для перегляду заданого сеансу у відповідній залі, бронювання та звільнення місць. Інформація про нові сеанси може додаватися
-  - see bought tickets
-    - from there either watch a movie or sell a seat
-  - add information about new sessions
 
 ## Висновки
 

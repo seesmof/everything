@@ -357,7 +357,7 @@ def taskTwo() -> None:
                     inquirer.Text(
                         "rooms",
                         message="Enter number of available rooms",
-                        validate=lambda _, x: x != "",
+                        validate=lambda _, x: x != "" and x.isdigit(),
                     )
                 ]
             )["rooms"]

@@ -38,7 +38,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/y2t2/MODO/notes/лют 29, 2024.md",
+                "file": "University/y2t2/MA/notes/лют 29, 2024.md",
                 "mode": "source",
                 "source": false
               }
@@ -65,37 +65,7 @@
         "dimension": 52.844444444444456,
         "children": [
           {
-            "id": "67afb22060c36a05",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "University/y2t2/MODO/docs/методичка_лекції_Дейнега.pdf"
-              }
-            }
-          },
-          {
-            "id": "25ba7860cf5c66a1",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "University/y2t2/MODO/docs/методичка_лаби.pdf"
-              }
-            }
-          },
-          {
-            "id": "98ee6433800858d0",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "University/y2t2/DS/docs/mopz_book.pdf"
-              }
-            }
-          },
-          {
-            "id": "abbf7bb43883bb2b",
+            "id": "6bd53e74ce8d75c8",
             "type": "leaf",
             "state": {
               "type": "pdf",
@@ -103,59 +73,8 @@
                 "file": "University/y2t2/MA/docs/методичка_лаби.pdf"
               }
             }
-          },
-          {
-            "id": "cae58981659b4d70",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "University/y2t2/DB/docs/методичка_лаби_1.pdf"
-              }
-            }
-          },
-          {
-            "id": "7afa4807d8192e7f",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "University/y2t2/KP/docs/методичка_лаби_1.pdf"
-              }
-            }
-          },
-          {
-            "id": "8ec23df50b65ba28",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "University/y2t2/DB/docs/методичка_PostgreSQL.pdf"
-              }
-            }
-          },
-          {
-            "id": "a76a4a6246da8d6e",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "University/y2t2/ES/docs/Лаба_1_практика.pdf"
-              }
-            }
-          },
-          {
-            "id": "a3a78cad4eb489cc",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "University/y2t2/DS/docs/mopz_labmet.pdf"
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -207,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/y2t2/MODO/notes/лют 29, 2024.md"
+                "file": "University/y2t2/MA/notes/лют 29, 2024.md"
               }
             }
           }
@@ -278,7 +197,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t2/MODO/notes/лют 29, 2024.md",
+                "file": "University/y2t2/MA/notes/лют 29, 2024.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -295,7 +214,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t2/MODO/notes/лют 29, 2024.md",
+                "file": "University/y2t2/MA/notes/лют 29, 2024.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -325,20 +244,24 @@
   },
   "active": "2cef5ac267a4bcb1",
   "lastOpenFiles": [
-    "University/y2t2/SA/tasks/lb1/dev/data/files_str.txt",
-    "University/y2t2/SA/tasks/lb1/dev/data/existingFiles/should_check.txt",
-    "University/y2t2/SA/tasks/lb1/dev/data/existingFiles/exists.txt",
-    "University/y2t2/SA/tasks/lb1/dev/data/existingFiles/probably.json",
-    "University/y2t2/SA/tasks/lb1/dev/data/existingFiles/perhaps.txt",
-    "University/y2t2/SA/tasks/lb1/dev/data/existingFiles/maybe.txt",
-    "University/y2t2/SA/tasks/lb1/dev/data/existingFiles/not_sure.txt",
-    "University/y2t2/SA/tasks/lb1/dev/data/existingFiles/maybe.md",
-    "University/y2t2/SA/tasks/lb1/dev/data/existingFiles/does_it.txt",
-    "University/y2t2/SA/tasks/lb1/dev/data/existingFiles/definitely_doesnt.txt",
-    "University/y2t2/SA/tasks/lb1/dev/data/movies.json",
-    "University/y2t2/SA/tasks/lb1/dev/data/files.txt",
-    "University/y2t2/SA/notes/лют 29, 2024.md",
+    "University/y2t2/SA/tasks/lb1/res/~WRL1792.tmp",
+    "University/y2t2/SA/tasks/lb1/res/~WRD1768.tmp",
+    "University/y2t2/SA/tasks/lb1/res/~WRD1760.tmp",
+    "University/y2t2/MA/docs/методичка_лаби.pdf",
+    "University/y2t2/MA/tasks/lb1/class_two.cpp",
+    "University/y2t2/MA/tasks/lb1/two copy.cpp",
+    "University/y2t2/MA/notes/лют 29, 2024.md",
+    "University/y2t2/DB/notes/лют 29, 2024.md",
+    "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
+    "University/y2t2/SA/tasks/lb1/res/Онищенко _ КНТ-122 _ Лаба№1 _ Варіант19.pdf",
+    "University/y2t2/SA/tasks/lb1/res/msoE287.tmp",
+    "University/y2t2/SA/tasks/lb1/res/msoD6AF.tmp",
+    "University/y2t2/SA/tasks/lb1/res/~$ищенко _ КНТ-122 _ Лаба№1 _ Варіант19.docx",
     "University/y2t2/MODO/notes/лют 29, 2024.md",
+    "University/y2t2/DB/Бази Даних.md",
+    "University/y2t2/MODO/docs/методичка_лаби.pdf",
+    "University/y2t2/SA/tasks/lb1/dev/data/existingFiles/maybe.md",
+    "University/y2t2/SA/notes/лют 29, 2024.md",
     "University/y2t2/MODO/Методи Оптимізації та Дослідження Операцій.md",
     "University/y2t2/MODO/notes/лют 28, 2024.md",
     "University/y2t2/MODO/tasks/lb1/main.md",
@@ -357,10 +280,6 @@
     "Code Doodles/Testing Bible BibleGateway API/node_modules/whatwg-url/README.md",
     "Code Doodles/Testing Bible BibleGateway API/node_modules/asn1/README.md",
     "Code Doodles/Testing Bible BibleGateway API/node_modules/request-promise-core/README.md",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/sshpk/README.md",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/xmlchars/README.md",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/safe-buffer/README.md",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/lodash.sortby/README.md",
     "Code Doodles/Testing Bible BibleGateway API/node_modules/psl/browserstack-logo.svg",
     "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний_виділення.png",
     "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний.png",
