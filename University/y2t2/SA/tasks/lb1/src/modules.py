@@ -1,5 +1,6 @@
 from collections import defaultdict
 import json
+import random
 import time
 import inquirer
 from rich.markdown import Markdown as md
@@ -97,7 +98,7 @@ class Cinema:
             self.movies.append(curMovie)
 
 
-def drawRoomTable(room: Room, movie: Movie) -> None:
+def drawSeatsGrid(room: Room, movie: Movie) -> None:
     seats = [["🔴" if not seat else "🟢" for seat in row] for row in room.seats]
 
     table = Table.grid(padding=(1, 1))
@@ -112,7 +113,7 @@ def drawRoomTable(room: Room, movie: Movie) -> None:
 
 
 def drawTicketsTable(tickets: list[Ticket]) -> None:
-    table = Table(box=box.ROUNDED)
+    table = Table(box=box.ROUNDED, title="Bought Tickets")
     table.add_column("Index", justify="right", style="cyan", no_wrap=True)
     table.add_column("Movie", style="bold yellow")
     table.add_column("Year", style="violet", no_wrap=True)
@@ -133,7 +134,7 @@ def drawTicketsTable(tickets: list[Ticket]) -> None:
 
 
 def drawMoviesTable() -> None:
-    table = Table(box=box.ROUNDED)
+    table = Table(box=box.ROUNDED, title="Watched Movies")
     table.add_column("Index", style="cyan", no_wrap=True, justify="right")
     table.add_column("Movie", style="bold yellow", no_wrap=True)
     table.add_column("Year", style="violet", no_wrap=True)
@@ -200,7 +201,7 @@ while True:
         )["room"]
         room = movie.rooms[room - 1]
 
-        drawRoomTable(room, movie)
+        drawSeatsGrid(room, movie)
 
         availableRows = [i + 1 for i, row in enumerate(room.seats) if True in row]
         row = inquirer.prompt(
@@ -240,7 +241,7 @@ while True:
             cinema.buyTicket(movie, room, row, seat)
             console.print("\n[bold]Ticket bought![/bold]\n")
 
-        drawRoomTable(room, movie)
+        drawSeatsGrid(room, movie)
 
     elif action == "View Bought Tickets":
         if not cinema.tickets:
@@ -288,7 +289,40 @@ while True:
         drawMoviesTable()
 
     elif action == "Add New Movie":
-        pass
+        title: str = inquirer.prompt(
+            [
+                inquirer.Text(
+                    "title",
+                    message="Enter movie title. Make sure to separate the title from the year with a dash (-)",
+                    validate=lambda _, x: x != "" and "-" in x,
+                )
+            ]
+        )["title"]
+        title, year = title.split("-")
+        title, year = title.strip(), year.strip()
+
+        numOfRooms: int = inquirer.prompt(
+            [
+                inquirer.Text(
+                    "rooms",
+                    message="Enter number of available rooms",
+                    validate=lambda _, x: x != "",
+                )
+            ]
+        )["rooms"]
+        numOfRooms = int(numOfRooms)
+
+        seats = [
+            [[random.choice([0, 1]) for _ in range(10)] for _ in range(5)]
+            for _ in range(numOfRooms)
+        ]
+        rooms: list[Room] = []
+        for i in range(1, numOfRooms + 1):
+            rooms.append(Room(i, seats[i - 1]))
+
+        console.print(f'\n[bold]"{title} - {year}"[/bold] has been added!\n')
+        movie = Movie(f"{title} - {year}", rooms)
+        cinema.movies.append(movie)
 
     else:
         break
