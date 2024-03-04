@@ -14,13 +14,36 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "University/y2t2/ES/notes/лют 26, 2024.md",
+                "file": "University/y2t2/KP/notes/бер 04, 2024.md",
                 "mode": "source",
                 "source": false
               }
             }
+          },
+          {
+            "id": "8ce43cefbd0004df",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "University/y2t2/KP/Кросплатформне Програмування.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "87dbfb679702d1ed",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "University/y2t2/KP/tasks/lb1/res/Онищенко _ КНТ-122 _ Лаба№1 _ Варіант19.pdf"
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "c6a777ba922c4be3",
@@ -28,12 +51,12 @@
         "dimension": 52.844444444444456,
         "children": [
           {
-            "id": "6bd53e74ce8d75c8",
+            "id": "8af7905019c09f07",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "University/y2t2/MA/docs/методичка_лаби.pdf"
+                "file": "University/y2t2/ES/docs/Тема 2.pdf"
               }
             }
           }
@@ -89,7 +112,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "University/y2t2/ES/notes/лют 26, 2024.md"
+                "file": "University/y2t2/KP/Кросплатформне Програмування.md"
               }
             }
           }
@@ -160,7 +183,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t2/ES/notes/лют 26, 2024.md",
+                "file": "University/y2t2/KP/Кросплатформне Програмування.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -177,7 +200,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t2/ES/notes/лют 26, 2024.md",
+                "file": "University/y2t2/KP/Кросплатформне Програмування.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -205,19 +228,33 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "3a8bde78b78566ed",
+  "active": "8ce43cefbd0004df",
   "lastOpenFiles": [
+    "University/y2t2/MA/tasks/lb1/res/~$ищенко _ КНТ-122 _ Лаба№1 _ Варіант19.docx",
+    "University/y2t2/MA/tasks/lb1/html/two_traceless.html",
+    "University/y2t2/MA/tasks/lb1/html/one_traceless.html",
+    "University/y2t2/MA/tasks/lb1/two_traceless.html",
+    "University/y2t2/MA/tasks/lb1/one_traceless.html",
+    "University/y2t2/MA/tasks/lb1/two.html",
+    "University/y2t2/MA/tasks/lb1/one.html",
+    "University/y2t2/MA/tasks/lb1/two.exe",
+    "University/y2t2/MA/tasks/lb1/one.exe",
+    "University/y2t2/MA/tasks/lb1/images/individual_values.png",
+    "University/y2t2/MA/tasks/lb1/main.md",
+    "University/y2t2/MA/tasks/lb1/images/my_values.png",
+    "University/y2t2/MA/tasks/lb1/images",
+    "University/y2t2/MA/tasks/lb1/html/twoT.html",
+    "University/y2t2/KP/tasks/lb2/main.md",
+    "University/y2t2/KP/notes/бер 04, 2024.md",
+    "University/y2t2/KP/Кросплатформне Програмування.md",
+    "University/y2t2/KP/notes/лют 26, 2024.md",
+    "University/y2t2/ES/notes/бер 04, 2024.md",
+    "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
+    "University/y2t2/ES/notes/лют 26, 2024.md",
+    "University/y2t2/MA/tasks/lb1/res/my_values.png",
+    "University/y2t2/MA/tasks/lb1/res/msedge_1CzQ13JlMK (1).png",
+    "University/y2t2/MA/tasks/lb1/res/main.md",
     "University/y2t2/DS/notes/бер 01, 2024.md",
-    "University/y2t2/SA/tasks/lb1/res/~WRL2864.tmp",
-    "University/y2t2/SA/tasks/lb1/res/~WRD2837.tmp",
-    "University/y2t2/SA/tasks/lb1/res/~WRD2833.tmp",
-    "University/y2t2/SA/tasks/lb1/res/dev.zip",
-    "University/y2t2/SA/tasks/lb1/dev/dev.zip",
-    "University/y2t2/SA/tasks/lb1/res/mso1A2A.tmp",
-    "University/y2t2/SA/tasks/lb1/res/msoE80.tmp",
-    "University/y2t2/SA/tasks/lb1/res/~$ищенко _ КНТ-122 _ Лаба№1 _ Варіант19.docx",
-    "University/y2t2/MA/tasks/lb1/two_no_comments.cpp",
-    "University/y2t2/MA/tasks/lb1/two copy.cpp",
     "University/y2t2/DB/Бази Даних.md",
     "University/y2t2/MODO/tasks/lb1/main.md",
     "University/y2t2/DS/notes/лют 26, 2024.md",
@@ -233,24 +270,11 @@
     "University/y2t2/MODO/notes/лют 22, 2024.md",
     "University/y2t2/SA/notes/лют 27, 2024.md",
     "University/y2t2/SA/tasks/lb1/data/existingFiles/maybe.md",
-    "University/y2t2/SA/tasks/lb1/main.md",
-    "University/y2t2/DB/tasks/lb1/main.md",
-    "University/y2t2/SA/Системний Аналіз.md",
-    "University/y2t2/MA/notes/лют 26, 2024.md",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/uri-js/README.md",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/qs/README.md",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/qs/LICENSE.md",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/qs/CHANGELOG.md",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/whatwg-url/README.md",
     "Code Doodles/Testing Bible BibleGateway API/node_modules/psl/browserstack-logo.svg",
     "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний_виділення.png",
     "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний.png",
     "University/y2t2/MODO/tasks/lb1/msedge_nuFjqOHx3x.png",
     "University/y2t2/ES/tasks/lb1/example.jpg",
-    "University/y2t2/MODO/tasks/lb1/python3.10_4xCqhDl2AH.png",
-    "University/y2t2/Дисципліни.png",
-    "Competitive Programming/_ archive/logo.png",
-    "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/public/app-screenshots/popular-words-view.png",
-    "Code Doodles/archive/Winter of Code - 2023-2024/Word Counter App/public/app-screenshots/main-tab.png"
+    "University/y2t2/MODO/tasks/lb1/python3.10_4xCqhDl2AH.png"
   ]
 }
