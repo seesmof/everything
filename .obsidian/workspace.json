@@ -4,60 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "2bda15933d4d8300",
+        "id": "94545a6184a11b14",
         "type": "tabs",
-        "dimension": 47.155555555555544,
         "children": [
           {
-            "id": "3a8bde78b78566ed",
+            "id": "a1f6110b37553db7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/y2t2/KP/notes/бер 04, 2024.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "8ce43cefbd0004df",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "University/y2t2/KP/Кросплатформне Програмування.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "87dbfb679702d1ed",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "University/y2t2/KP/tasks/lb1/res/Онищенко _ КНТ-122 _ Лаба№1 _ Варіант19.pdf"
-              }
-            }
-          }
-        ],
-        "currentTab": 1
-      },
-      {
-        "id": "c6a777ba922c4be3",
-        "type": "tabs",
-        "dimension": 52.844444444444456,
-        "children": [
-          {
-            "id": "8af7905019c09f07",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "University/y2t2/ES/docs/Тема 2.pdf"
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -111,9 +66,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "University/y2t2/KP/Кросплатформне Програмування.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -183,7 +136,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "University/y2t2/KP/Кросплатформне Програмування.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -200,7 +152,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "University/y2t2/KP/Кросплатформне Програмування.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -228,53 +179,53 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "8ce43cefbd0004df",
+  "active": "a1f6110b37553db7",
   "lastOpenFiles": [
-    "University/y2t2/MA/tasks/lb1/res/~$ищенко _ КНТ-122 _ Лаба№1 _ Варіант19.docx",
-    "University/y2t2/MA/tasks/lb1/html/two_traceless.html",
-    "University/y2t2/MA/tasks/lb1/html/one_traceless.html",
-    "University/y2t2/MA/tasks/lb1/two_traceless.html",
-    "University/y2t2/MA/tasks/lb1/one_traceless.html",
-    "University/y2t2/MA/tasks/lb1/two.html",
-    "University/y2t2/MA/tasks/lb1/one.html",
-    "University/y2t2/MA/tasks/lb1/two.exe",
-    "University/y2t2/MA/tasks/lb1/one.exe",
-    "University/y2t2/MA/tasks/lb1/images/individual_values.png",
-    "University/y2t2/MA/tasks/lb1/main.md",
-    "University/y2t2/MA/tasks/lb1/images/my_values.png",
-    "University/y2t2/MA/tasks/lb1/images",
-    "University/y2t2/MA/tasks/lb1/html/twoT.html",
-    "University/y2t2/KP/tasks/lb2/main.md",
+    "University/y2t2/MA/docs/методичка_лаби.pdf",
+    "University/y2t2/KP/tasks/lb1/res/Онищенко _ КНТ-122 _ Лаба№1 _ Варіант19.pdf",
+    "University/y2t2/DS/notes/бер 08, 2024.md",
+    "University/y2t2/DB/Бази Даних.md",
+    "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
+    "Library/David Liesenfelt _ Invitation from GOD.pdf",
+    "Library/David Liesenfelt _ Invitation from GOD.pdf.crdownload",
+    "Library/Job Friend _ GOD's strange plan.pdf",
+    "Library/Job Friend _ GOD's strange plan.pdf.crdownload",
+    "Library/Job Friend _ Decision filters.pdf",
+    "Library/Job Friend _ Decision filters.pdf.crdownload",
+    "Library/Job Friend _ Life charts.pdf",
+    "Library/Job Friend _ Life charts.pdf.crdownload",
+    "Library/Job Friend _ Why Job suffered.pdf",
+    "University/y2t2/MA/notes/бер 07, 2024.md",
+    "University/y2t2/ES/tasks/lb1/res/PXL_20240307_160115456.jpg",
+    "University/y2t2/ES/tasks/lb1/res/PXL_20240307_160109239.jpg",
+    "University/y2t2/ES/tasks/lb1/res/PXL_20240307_160105754.jpg",
+    "University/y2t2/ES/tasks/lb1/res/PXL_20240307_160050074.jpg",
+    "University/y2t2/ES/tasks/lb1/res/PXL_20240307_160045017.jpg",
+    "University/y2t2/MA/tasks/lb1/images/results.png",
+    "University/y2t2/MA/tasks/lb1/images/msedge_LcTSI3dtqJ.png",
+    "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
+    "University/y2t2/MODO/notes/бер 06, 2024.md",
+    "University/y2t2/ES/tasks/lb1/main.md",
+    "University/y2t2/MODO/Методи Оптимізації та Дослідження Операцій.md",
     "University/y2t2/KP/notes/бер 04, 2024.md",
     "University/y2t2/KP/Кросплатформне Програмування.md",
+    "University/y2t2/MA/tasks/lb1/images/values_code.png",
+    "University/y2t2/MA/tasks/lb1/images/Code_Ph5SE6uz0E.png",
+    "University/y2t2/MA/tasks/lb1/images/individual_values.png",
+    "University/y2t2/MA/tasks/lb1/main.md",
+    "University/y2t2/KP/tasks/lb2/main.md",
     "University/y2t2/KP/notes/лют 26, 2024.md",
     "University/y2t2/ES/notes/бер 04, 2024.md",
-    "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
     "University/y2t2/ES/notes/лют 26, 2024.md",
-    "University/y2t2/MA/tasks/lb1/res/my_values.png",
-    "University/y2t2/MA/tasks/lb1/res/msedge_1CzQ13JlMK (1).png",
     "University/y2t2/MA/tasks/lb1/res/main.md",
     "University/y2t2/DS/notes/бер 01, 2024.md",
-    "University/y2t2/DB/Бази Даних.md",
     "University/y2t2/MODO/tasks/lb1/main.md",
     "University/y2t2/DS/notes/лют 26, 2024.md",
     "University/y2t2/MA/notes/лют 29, 2024.md",
     "University/y2t2/DB/notes/лют 29, 2024.md",
-    "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
     "University/y2t2/MODO/notes/лют 29, 2024.md",
     "University/y2t2/SA/tasks/lb1/dev/data/existingFiles/maybe.md",
     "University/y2t2/SA/notes/лют 29, 2024.md",
-    "University/y2t2/MODO/Методи Оптимізації та Дослідження Операцій.md",
-    "University/y2t2/MODO/notes/лют 28, 2024.md",
-    "University/y2t2/MODO/notes/лют 21, 2024.md",
-    "University/y2t2/MODO/notes/лют 22, 2024.md",
-    "University/y2t2/SA/notes/лют 27, 2024.md",
-    "University/y2t2/SA/tasks/lb1/data/existingFiles/maybe.md",
-    "Code Doodles/Testing Bible BibleGateway API/node_modules/psl/browserstack-logo.svg",
-    "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний_виділення.png",
-    "University/y2t2/MODO/tasks/lb1/Багатокутник_рішень_фінальний.png",
-    "University/y2t2/MODO/tasks/lb1/msedge_nuFjqOHx3x.png",
-    "University/y2t2/ES/tasks/lb1/example.jpg",
-    "University/y2t2/MODO/tasks/lb1/python3.10_4xCqhDl2AH.png"
+    "University/y2t2/MODO/notes/лют 28, 2024.md"
   ]
 }

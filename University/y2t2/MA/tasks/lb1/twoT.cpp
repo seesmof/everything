@@ -53,4 +53,4 @@ int main()
   printall();
   return 0;
 }
-// g++ two.cpp ../simc/simc.cpp -o two
+// g++ twoT.cpp ../simc/simc.cpp -o two

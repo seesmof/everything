@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title></title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <table>
+<thead>
+<tr>
+<th>Case #</th>
+<th>Case Description</th>
+<th>System Time</th>
+<th>List Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Транзакт 1. З'являється в моделі. NT=0</td>
+<td>0</td>
+<td>Delist</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Транзакт 2. З'являється в моделі. NT=0</td>
+<td>0</td>
+<td>Delist</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Транзакт 3. Транзакт створено. NT=3</td>
+<td>0</td>
+<td>Delist</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Транзакт 4. Транзакт створено. NT=4</td>
+<td>0</td>
+<td>Delist</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Транзакт 1. Зайняв прилад</td>
+<td>0</td>
+<td>Current</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Транзакт 1. Транзакт затримано. NT=4</td>
+<td>0</td>
+<td>Future</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Транзакт 2. Намагався зайняти прилад</td>
+<td>0</td>
+<td>Facility List</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Транзакт 5. Транзакт створено. NT=6</td>
+<td>3</td>
+<td>Delist</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Транзакт 3. Намагався зайняти прилад</td>
+<td>3</td>
+<td>Facility List</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Транзакт 1. Звільнив прилад</td>
+<td>4</td>
+<td>Current</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Транзакт 1. Транзакт знищено</td>
+<td>4</td>
+<td>Delist</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Транзакт 6. Транзакт створено. NT=8</td>
+<td>4</td>
+<td>Delist</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Транзакт 4. Зайняв прилад</td>
+<td>4</td>
+<td>Current</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Транзакт 4. Транзакт затримано. NT=7</td>
+<td>4</td>
+<td>Future</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Транзакт 2. Намагався зайняти прилад</td>
+<td>4</td>
+<td>Facility List</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Транзакт 7. Транзакт створено. NT=9</td>
+<td>6</td>
+<td>Delist</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Транзакт 3. Намагався зайняти прилад</td>
+<td>6</td>
+<td>Facility List</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Транзакт 4. Звільнив прилад</td>
+<td>7</td>
+<td>Current</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Транзакт 4. Транзакт знищено</td>
+<td>7</td>
+<td>Delist</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Транзакт 3. Зайняв прилад</td>
+<td>7</td>
+<td>Current</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Транзакт 3. Транзакт затримано. NT=11</td>
+<td>7</td>
+<td>Future</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Транзакт 8. Транзакт створено. NT=12</td>
+<td>8</td>
+<td>Delist</td>
+</tr>
+</tbody>
+</table>
+
+            
+            
+        </body>
+        </html>
