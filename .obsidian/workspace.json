@@ -6,13 +6,35 @@
       {
         "id": "94545a6184a11b14",
         "type": "tabs",
+        "dimension": 47.15555555555555,
         "children": [
           {
             "id": "a1f6110b37553db7",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "University/y2t2/SA/Системний Аналіз.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "6f850306515c14a3",
+        "type": "tabs",
+        "dimension": 52.84444444444445,
+        "children": [
+          {
+            "id": "ac458f00982f2162",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "University/y2t2/ES/docs/Лаба_2_практика.pdf"
+              }
             }
           }
         ]
@@ -66,7 +88,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "University/y2t2/SA/Системний Аналіз.md"
+              }
             }
           }
         ]
@@ -136,6 +160,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "University/y2t2/SA/Системний Аналіз.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,6 +177,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "University/y2t2/SA/Системний Аналіз.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -181,22 +207,30 @@
   },
   "active": "a1f6110b37553db7",
   "lastOpenFiles": [
-    "University/y2t2/DS/tasks/lb1/play.py",
-    "University/y2t2/DS/tasks/lb1/play.md",
-    "University/y2t2/DS/docs/методичка_лекції.pdf",
-    "University/y2t2/DS/docs/~$opz_kp.doc",
-    "University/y2t2/DS/docs/методичка_лаби.pdf",
-    "University/y2t2/DS/tasks/lb1/main.html",
+    "University/y2t2/DS/tasks/theory.md",
+    "University/y2t2/DS/tasks/lb1/res/~WRL1816.tmp",
+    "University/y2t2/DS/tasks/lb1/res/~WRD1809.tmp",
+    "University/y2t2/DS/tasks/lb1/res/~WRL0175.tmp",
+    "University/y2t2/DS/tasks/lb1/res/~WRD0168.tmp",
+    "University/y2t2/DS/tasks/lb1/res/~WRL0017.tmp",
+    "University/y2t2/DS/tasks/lb1/res/~WRD0014.tmp",
+    "University/y2t2/DS/tasks/lb1/res/~WRL0159.tmp",
+    "University/y2t2/DS/tasks/lb1/res/~WRD0155.tmp",
+    "University/y2t2/DS/tasks/lb1/res/~WRL1554.tmp",
+    "University/y2t2/DS/tasks/lb1/res/~WRD1547.tmp",
+    "University/y2t2/DS/notes/бер 11, 2024.md",
+    "University/y2t2/DS/Дискретні Структури та Подання Знань.md",
+    "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
+    "University/y2t2/KP/Кросплатформне Програмування.md",
     "University/y2t2/DS/tasks/lb1/main.md",
-    "University/y2t2/DS/tasks/lb1",
-    "University/y2t2/MA/docs/методичка_лаби.pdf",
-    "University/y2t2/KP/tasks/lb1/res/Онищенко _ КНТ-122 _ Лаба№1 _ Варіант19.pdf",
+    "University/y2t2/ES/tasks/lb1/main.md",
+    "University/y2t2/SA/Системний Аналіз.md",
+    "University/y2t2/ES/notes/бер 11, 2024.md",
+    "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
+    "University/y2t2/DS/tasks/lb1/semantic_network.png",
+    "University/y2t2/DS/tasks/lb1/play.md",
     "University/y2t2/DS/notes/бер 08, 2024.md",
     "University/y2t2/DB/Бази Даних.md",
-    "University/y2t2/ES/Безпека існування людини в навколишньому середовищі та охорона праці.md",
-    "Library/David Liesenfelt _ Invitation from GOD.pdf",
-    "Library/David Liesenfelt _ Invitation from GOD.pdf.crdownload",
-    "Library/Job Friend _ GOD's strange plan.pdf",
     "University/y2t2/MA/notes/бер 07, 2024.md",
     "University/y2t2/ES/tasks/lb1/res/PXL_20240307_160115456.jpg",
     "University/y2t2/ES/tasks/lb1/res/PXL_20240307_160109239.jpg",
@@ -205,15 +239,11 @@
     "University/y2t2/ES/tasks/lb1/res/PXL_20240307_160045017.jpg",
     "University/y2t2/MA/tasks/lb1/images/results.png",
     "University/y2t2/MA/tasks/lb1/images/msedge_LcTSI3dtqJ.png",
-    "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
     "University/y2t2/MODO/notes/бер 06, 2024.md",
-    "University/y2t2/ES/tasks/lb1/main.md",
     "University/y2t2/MODO/Методи Оптимізації та Дослідження Операцій.md",
     "University/y2t2/KP/notes/бер 04, 2024.md",
-    "University/y2t2/KP/Кросплатформне Програмування.md",
     "University/y2t2/MA/tasks/lb1/images/values_code.png",
     "University/y2t2/MA/tasks/lb1/images/Code_Ph5SE6uz0E.png",
-    "University/y2t2/MA/tasks/lb1/images/individual_values.png",
     "University/y2t2/MA/tasks/lb1/main.md",
     "University/y2t2/KP/tasks/lb2/main.md",
     "University/y2t2/KP/notes/лют 26, 2024.md",
@@ -222,10 +252,6 @@
     "University/y2t2/MA/tasks/lb1/res/main.md",
     "University/y2t2/DS/notes/бер 01, 2024.md",
     "University/y2t2/MODO/tasks/lb1/main.md",
-    "University/y2t2/DS/notes/лют 26, 2024.md",
-    "University/y2t2/MA/notes/лют 29, 2024.md",
-    "University/y2t2/DB/notes/лют 29, 2024.md",
-    "University/y2t2/MODO/notes/лют 29, 2024.md",
-    "University/y2t2/SA/tasks/lb1/dev/data/existingFiles/maybe.md"
+    "University/y2t2/DS/notes/лют 26, 2024.md"
   ]
 }

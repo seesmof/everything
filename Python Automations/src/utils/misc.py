@@ -152,7 +152,6 @@ def scheduleClasses(
 ) -> None:
     classesToday = schedule[weekStatus].get(dayName, {})
     if not classesToday:
-        speak("No classes.")
         return
 
     for classTime, classDescription in classesToday.items():

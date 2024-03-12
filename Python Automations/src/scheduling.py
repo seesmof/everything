@@ -36,21 +36,9 @@ dayNameCorrespondings = {
     "Saturday": "Субота",
     "Sunday": "Неділя",
 }
-monthNamesCorrespondings = {
-    1: "Січень",
-    2: "Лютий",
-    3: "Березень",
-    4: "Квітень",
-    5: "Травень",
-    6: "Червень",
-    7: "Липень",
-    8: "Серпень",
-    9: "Вересень",
-    10: "Жовтень",
-    11: "Листопад",
-    12: "Грудень",
-}
-currentWeather = getWeatherScrape()
+
+with console.status("Getting weather...", spinner="point"):
+    currentWeather = getWeatherScrape()
 if "хуртовин" in currentWeather:
     currentWeather = currentWeather.split("\n")[-1]
 clothing = getClothing(weather=currentWeather)
