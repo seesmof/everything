@@ -6,7 +6,7 @@
       {
         "id": "94545a6184a11b14",
         "type": "tabs",
-        "dimension": 47.15555555555555,
+        "dimension": 47.155555555555544,
         "children": [
           {
             "id": "a1f6110b37553db7",
@@ -25,7 +25,7 @@
       {
         "id": "6f850306515c14a3",
         "type": "tabs",
-        "dimension": 52.84444444444445,
+        "dimension": 52.844444444444456,
         "children": [
           {
             "id": "ac458f00982f2162",
@@ -207,6 +207,8 @@
   },
   "active": "a1f6110b37553db7",
   "lastOpenFiles": [
+    "University/y2t2/DS/tasks/lb1/res/~WRL1883.tmp",
+    "University/y2t2/DS/tasks/lb1/res/~WRD1875.tmp",
     "University/y2t2/DS/tasks/theory.md",
     "University/y2t2/DS/tasks/lb1/res/~WRL1816.tmp",
     "University/y2t2/DS/tasks/lb1/res/~WRD1809.tmp",
@@ -217,7 +219,6 @@
     "University/y2t2/DS/tasks/lb1/res/~WRL0159.tmp",
     "University/y2t2/DS/tasks/lb1/res/~WRD0155.tmp",
     "University/y2t2/DS/tasks/lb1/res/~WRL1554.tmp",
-    "University/y2t2/DS/tasks/lb1/res/~WRD1547.tmp",
     "University/y2t2/DS/notes/бер 11, 2024.md",
     "University/y2t2/DS/Дискретні Структури та Подання Знань.md",
     "University/y2t2/MA/Моделювання та Аналіз Програмного Забезпечення.md",
@@ -251,7 +252,6 @@
     "University/y2t2/ES/notes/лют 26, 2024.md",
     "University/y2t2/MA/tasks/lb1/res/main.md",
     "University/y2t2/DS/notes/бер 01, 2024.md",
-    "University/y2t2/MODO/tasks/lb1/main.md",
-    "University/y2t2/DS/notes/лют 26, 2024.md"
+    "University/y2t2/MODO/tasks/lb1/main.md"
   ]
 }
