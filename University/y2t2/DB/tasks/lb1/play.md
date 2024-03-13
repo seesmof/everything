@@ -1,0 +1,24 @@
+## Мета роботи
+
+Ознайомитися з системою керування базами даних PostgreSQL, набути початкових навичок роботи з нею та створити схему бази даних.
+
+## Завдання до роботи
+
+- Ознайомитися зі змістом теоретичних відомостей
+- Відповідно до індивідуального завдання розробити схему бази даних за допомогою інструментів PgAdmin та мови SQL
+- Ввести необхідні дані
+
+---
+
+- window installation company
+  - departments
+    - material acquirers
+    - window installers
+  - employees
+    - name
+    - department
+    - position
+    - birth date
+    - address
+    - gender
+    - age
