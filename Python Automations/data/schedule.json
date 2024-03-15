@@ -114,11 +114,11 @@
         "4": "SA Practice"
       },
       "Wednesday": {
+        "4": "MA Practice",
         "5": "MODO Lecture"
       },
       "Thursday": {
-        "3": "DB Practice",
-        "5": "MA Practice"
+        "3": "DB Practice"
       },
       "Friday": {
         "5": "DB Lecture"
@@ -132,11 +132,11 @@
       },
       "Tuesday": {},
       "Wednesday": {
+        "4": "MA Practice",
         "5": "MODO Lecture"
       },
       "Thursday": {
-        "3": "DB Practice",
-        "5": "MA Practice"
+        "3": "DB Practice"
       },
       "Friday": {
         "5": "DB Lecture"
