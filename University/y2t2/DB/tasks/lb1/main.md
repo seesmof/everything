@@ -51,4 +51,4 @@
 
 #### Схема даних
 
-![Схема даних](https://lh3.googleusercontent.com/pw/AP1GczN9LsWqVefmopo097DwPewnS2xCQscT6J_yLJZIXUuG4_esqn3GW-iDsNcXnMfq7fThM4t8_f9FzpjF7xo5mZvbNi2A4_s_UCOzkK_CKxt3Q5yJR5nNUXSIm3_JdsZnxwk4BxScBuAbyLHTmYEeJD1NSQ=w1132-h441-s-no?authuser=0)
+![Схема даних](https://lh3.googleusercontent.com/pw/AP1GczNTgg3jfvfm30LjTfwwXw5t4MnMgaoJ6JWlg2Wk891OmlTD5mO6Wep2Kpuqvev8D1uynitAhaDI_V7v5GWCvfAD0xjR5PsFsurkAUl20Gfyg2VZQpdrVgQr4TE73hPBzbX57qnBYeNoyMpx-rRSJLXh2w=w873-h776-s-no?authuser=1)

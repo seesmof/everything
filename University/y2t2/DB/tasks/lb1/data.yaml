@@ -25,22 +25,15 @@ Position:
 Employee:
   - Name: Sarah
     PositionName: Administrative Assistant
-    DepartmentName: Office Administration Department
   - Name: Ruth
     PositionName: Administrative Assistant
-    DepartmentName: Office Administration Department
   - Name: Mary
     PositionName: Office Manager
-    DepartmentName: Office Administration Department
   - Name: Matthew
     PositionName: Installation Technician
-    DepartmentName: Field Operations Department
   - Name: Mark
-    PositionName: Field Supervisor
-    DepartmentName: Field Operations Department
+    PositionName: Installation Technician
   - Name: Luke
     PositionName: Installation Technician
-    DepartmentName: Field Operations Department
   - Name: John
-    PositionName: Installation Technician
-    DepartmentName: Field Operations Department
+    PositionName: Field Supervisor
