@@ -10,14 +10,33 @@ install()
 console = Console()
 
 currentDir: str = path.dirname(path.abspath(__file__))
-mainFilePath: str = path.join(currentDir, "AMP to UKR", "main.json")
-main = {}
+targetFolderPath: str = path.join(currentDir, "AMP to UKR")
+mainFilePath: str = path.join(targetFolderPath, "main.json")
+
 with open(mainFilePath, "r", encoding="utf-8") as jsonFile:
     main = json.load(jsonFile)
+
 for Testament in main:
+    # create folder in targetFolder for each Testament
+    targetTestamentFolder: str = path.join(targetFolderPath, Testament)
+    if not os.path.exists(targetTestamentFolder):
+        os.makedirs(targetTestamentFolder)
+
     for Book in main[Testament]:
-        ChaptersCount = Book["Chapters_Count"]
-        Chapters = {f"{i+1}": {"1": ""} for i in range(ChaptersCount)}
-        Book["Chapters"] = Chapters
-with open(mainFilePath, "w", encoding="utf-8") as jsonFile:
-    json.dump(main, jsonFile, indent=2)
+        Book_Name = Book["Name"]
+        # create folder in targetFolder for each Book
+        targetTestamentBookFolder: str = path.join(targetTestamentFolder, Book_Name)
+        if not os.path.exists(targetTestamentBookFolder):
+            os.makedirs(targetTestamentBookFolder)
+
+        for Chapter in Book["Chapters"]:
+            Chapter_File = f"{Chapter}.md"
+            # create file in targetFolder for each Chapter
+            targetTestamentBookChapterFile: str = path.join(
+                targetTestamentBookFolder, Chapter_File
+            )
+            if not os.path.exists(targetTestamentBookChapterFile):
+                with open(
+                    targetTestamentBookChapterFile, "w", encoding="utf-8"
+                ) as mdFile:
+                    mdFile.write(f"# {Chapter}\n\n")
