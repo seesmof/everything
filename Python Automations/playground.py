@@ -13,7 +13,7 @@ targetDir: str = "C:\\Users\\seesm\\Downloads\\"
 replacePattern: dict = {"  ": " - "}
 
 
-def removePatterns(dir: str, patterns: list[str]) -> None:
+def replacePatterns(dir: str, patterns: list[str]) -> None:
     files = [f for f in os.listdir(dir)]
 
     for file in files:
@@ -83,5 +83,6 @@ def printAvailablesTable(availables: dict[int, int]) -> None:
 
 availables = checkAvailability(targetDir, {})
 missings = [k for k, v in availables.items() if v == 0]
-console.print(*missings, sep=", ")
-printAvailablesTable(availables)
+
+replacePatterns(targetDir, replacePattern)
+replacePatterns(targetDir, patternsToRemove)
