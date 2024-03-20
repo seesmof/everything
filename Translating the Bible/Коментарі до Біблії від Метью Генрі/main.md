@@ -1,0 +1,1 @@
+Брав матеріали [звідси](https://www.biblestudytools.com/commentaries/matthew-henry-complete/)
