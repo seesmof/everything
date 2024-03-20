@@ -42,3 +42,13 @@ for Testament in main:
                 ) as mdFile:
                     # just create an empty file
                     mdFile.write("")
+
+        # optinal Intro file
+        Intro_File = "Intro.md"
+        targetTestamentBookIntroFile: str = path.join(
+            targetTestamentBookFolder, Intro_File
+        )
+        if not os.path.exists(targetTestamentBookIntroFile):
+            with open(targetTestamentBookIntroFile, "w", encoding="utf-8") as mdFile:
+                # just create an empty file
+                mdFile.write("")
