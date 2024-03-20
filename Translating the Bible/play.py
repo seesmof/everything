@@ -12,7 +12,7 @@ console = Console()
 currentDir: str = path.dirname(path.abspath(__file__))
 targetFolderPath: str = path.join(currentDir, "Сучасний Американо-Український - САУ")
 mainFilePath: str = path.join(targetFolderPath, "main.json")
-target = path.join(currentDir, "Розширений Американсько-Український - РАУ")
+target = path.join(currentDir, "Коментарі до Біблії від Метью Генрі")
 
 with open(mainFilePath, "r", encoding="utf-8") as jsonFile:
     main = json.load(jsonFile)
@@ -31,7 +31,7 @@ for Testament in main:
             os.makedirs(targetTestamentBookFolder)
 
         for Chapter in Book["Chapters"]:
-            Chapter_File = f"{Chapter}.docx"
+            Chapter_File = f"{Chapter}.md"
             # create file in targetFolder for each Chapter
             targetTestamentBookChapterFile: str = path.join(
                 targetTestamentBookFolder, Chapter_File
