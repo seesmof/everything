@@ -25,7 +25,7 @@ def functional(filePath: str) -> tuple[int, int]:
     wordsCount = len(words)
 
     shortestWordLength = reduce(
-        lambda acc, word: min(acc, len(word)), words, float("inf")
+        lambda shortestSoFar, word: min(shortestSoFar, len(word)), words, float("inf")
     )
 
     return wordsCount, shortestWordLength
