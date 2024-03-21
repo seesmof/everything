@@ -4,10 +4,11 @@
 """
 
 import inquirer
-from rich.markdown import Markdown as md
-from rich.table import Table
 from rich.console import Console
 from rich.traceback import install
+
+import one as taskOne
+import two as taskTwo
 
 install()
 console = Console()
@@ -29,9 +30,9 @@ def main() -> None:
     )["task"]
 
     if selectedTask == availableTasks[0]:
-        pass
+        taskOne.main()
     elif selectedTask == availableTasks[1]:
-        pass
+        taskTwo.main()
 
 
 if __name__ == "__main__":
