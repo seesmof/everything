@@ -6,9 +6,6 @@ Print all valid combinations of pairs of parentheses that can be formed from n c
 Functional:
 - function calls - defining anonymous functions based on calls to other functions
 - recursion (i.e., it is forbidden to use loops, conditional statements, assignment statements, control statements except for return)
-
-Imperative:
-- ?
 """
 
 import inquirer
