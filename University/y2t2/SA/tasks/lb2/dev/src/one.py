@@ -72,7 +72,7 @@ def main() -> None:
         [
             inquirer.Text(
                 "number of brackets",
-                message="How many brackets would you like to use?",
+                message="How many bracket pairs would you like to have?",
                 validate=lambda _, x: x != "" and x.isdigit() and int(x) > 0,
             )
         ]
