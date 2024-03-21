@@ -1,47 +1,28 @@
-def print_valid_parentheses_combinations(n):
-    def generate_valid_combinations(open_count, close_count, current_combination):
-        if open_count == close_count == n:
-            print("".join(current_combination))
-            return
+from functools import reduce
+from rich.console import Console
+from rich.traceback import install
 
-        if open_count < n:
-            current_combination.append("(")
-            generate_valid_combinations(
-                open_count + 1, close_count, current_combination
-            )
-            current_combination.pop()
-
-        if close_count < open_count:
-            current_combination.append(")")
-            generate_valid_combinations(
-                open_count, close_count + 1, current_combination
-            )
-            current_combination.pop()
-
-    generate_valid_combinations(0, 0, [])
+install()
+console = Console()
 
 
-n = int(input("Enter the number of brackets: "))
-print_valid_parentheses_combinations(n)
-print()
+def count_words_and_shortest_length(file_path):
+    with open(file_path, "r", encoding="utf-8") as file:
+        text = file.read()
+
+    punctuation = '!@#$%^&*()_+{}|:"<>?`~'
+    translation_table = str.maketrans("", "", punctuation)
+    words = text.translate(translation_table).split()
+    wordsCount = len(words)
+    shortestWordLength = reduce(
+        lambda acc, word: min(acc, len(word)), words, float("inf")
+    )
+
+    return wordsCount, shortestWordLength
 
 
-def print_valid_parentheses_combinations_imperative(n):
-    stack = []
-    stack.append(("", 0, 0))
-
-    while stack:
-        current_combination, open_count, close_count = stack.pop()
-
-        if open_count == close_count == n:
-            print(current_combination)
-            continue
-
-        if open_count < n:
-            stack.append((current_combination + "(", open_count + 1, close_count))
-
-        if close_count < open_count:
-            stack.append((current_combination + ")", open_count, close_count + 1))
-
-
-print_valid_parentheses_combinations_imperative(n)
+# Usage
+file_path = "D:\\everything\\University\\y2t2\\SA\\tasks\\lb2\\dev\\data\\input.txt"
+word_count, shortest_length = count_words_and_shortest_length(file_path)
+print(f"Number of words: {word_count}")
+print(f"Length of shortest word: {shortest_length}")
