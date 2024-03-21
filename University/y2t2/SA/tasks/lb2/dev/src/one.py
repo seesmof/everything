@@ -20,11 +20,44 @@ console = Console()
 
 
 def functional(n: int) -> None:
-    pass
+    res = []
+
+    def isValid(s: str) -> bool:
+        return s.count("(") == s.count(")")
+
+    def generate(s: str, left: int, right: int, arr: list):
+        if left == right == 0:
+            return [s] if isValid(s) else []
+        else:
+            if left > 0:
+                arr += generate(s + "(", left - 1, right, arr)
+            if right > 0 and right > left:
+                arr += generate(s + ")", left, right - 1, arr)
+
+    generate("", n, n, res)
+    console.print(f"All possible bracket pairs for {n = }:\n{', '.join(res)}")
 
 
 def imperative(n: int) -> None:
-    pass
+    res = []
+
+    def isValid(s: str) -> bool:
+        res = {"(": 0, ")": 0}
+        for c in s:
+            res[c] += 1
+        return res["("] == res[")"]
+
+    def generate(s: str, left: int, right: int, arr: list[str]):
+        if left == 0 and right == 0:
+            arr.append(s) if isValid(s=s) else None
+
+        if left > 0:
+            generate(s + "(", left - 1, right, arr)
+        if right > 0 and right > left:
+            generate(s + ")", left, right - 1, arr)
+
+    generate("", n, n, res)
+    console.print(f"All possible bracket pairs for {n = }:\n{', '.join(res)}")
 
 
 def main() -> None:

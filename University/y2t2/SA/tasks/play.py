@@ -39,6 +39,15 @@ def generate_parentheses(n):
     return res
 
 
-# Example usage
 res = generate_parentheses(3)
-console.print(res, type(res))
+
+
+def isValid(s: str) -> bool:
+    res = {"(": 0, ")": 0}
+    for c in s:
+        res[c] += 1
+    return res["("] == res[")"]
+
+
+res = isValid("((()))(())()(())()()")
+console.print(res)
