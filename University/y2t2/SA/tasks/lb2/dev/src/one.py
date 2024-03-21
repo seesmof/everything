@@ -20,57 +20,43 @@ console = Console()
 
 
 def functional(n: int) -> None:
-    res = []
+    def helper(openCount: int, closeCount: int, currentCombination: list[str]):
+        if openCount == closeCount == n:
+            console.print("".join(currentCombination))
+            return
 
-    def isValid(s: str) -> bool:
-        return s.count("(") == s.count(")")
+        if openCount < n:
+            currentCombination.append("(")
+            helper(openCount + 1, closeCount, currentCombination)
+            currentCombination.pop()
 
-    def generate(s: str, left: int, right: int, arr: list):
-        if left == right == 0:
-            return [s] if isValid(s) else []
-        else:
-            if left > 0:
-                arr += generate(s + "(", left - 1, right, arr)
-            if right > 0 and right > left:
-                arr += generate(s + ")", left, right - 1, arr)
+        if closeCount < openCount:
+            currentCombination.append(")")
+            helper(openCount, closeCount + 1, currentCombination)
+            currentCombination.pop()
 
-    generate("", n, n, res)
-    console.print(f"All possible bracket pairs for {n = }:\n{', '.join(res)}")
+    helper(0, 0, [])
 
 
 def imperative(n: int) -> None:
-    res = []
+    stack: list[tuple[str, int, int]] = []
+    stack.append(("", 0, 0))
 
-    def isValid(s: str) -> bool:
-        res = {"(": 0, ")": 0}
-        for c in s:
-            res[c] += 1
-        return res["("] == res[")"]
+    while stack:
+        currentCombination, openCount, closeCount = stack.pop()
 
-    def generate(s: str, left: int, right: int, arr: list[str]):
-        if left == 0 and right == 0:
-            arr.append(s) if isValid(s=s) else None
+        if openCount == closeCount == n:
+            console.print(currentCombination)
+            continue
 
-        if left > 0:
-            generate(s + "(", left - 1, right, arr)
-        if right > 0 and right > left:
-            generate(s + ")", left, right - 1, arr)
+        if openCount < n:
+            stack.append((currentCombination + "(", openCount + 1, closeCount))
 
-    generate("", n, n, res)
-    console.print(f"All possible bracket pairs for {n = }:\n{', '.join(res)}")
+        if closeCount < openCount:
+            stack.append((currentCombination + ")", openCount, closeCount + 1))
 
 
 def main() -> None:
-    bracketsNumber = inquirer.prompt(
-        [
-            inquirer.Text(
-                "bracketsNumber",
-                message="How many brackets would you like to use?",
-                validate=lambda _, x: x != "" and x.isdigit(),
-            )
-        ]
-    )["bracketsNumber"]
-
     options = [
         "Functional Programming",
         "Imperative Programming",
@@ -85,10 +71,22 @@ def main() -> None:
         ]
     )["solution"]
 
+    bracketsNumber = inquirer.prompt(
+        [
+            inquirer.Text(
+                "number of brackets",
+                message="How many brackets would you like to use?",
+                validate=lambda _, x: x != "" and x.isdigit() and int(x) > 0,
+            )
+        ]
+    )["number of brackets"]
+    bracketsNumber = int(bracketsNumber)
+
+    console.print(f"\nAll possible bracket pairs for {bracketsNumber} bracket pairs:")
     if choice == options[0]:
-        functional(n=int(bracketsNumber))
+        functional(n=bracketsNumber)
     elif choice == options[1]:
-        imperative(n=int(bracketsNumber))
+        imperative(n=bracketsNumber)
 
 
 if __name__ == "__main__":

@@ -1,53 +1,47 @@
-from rich.markdown import Markdown as md
-from rich.table import Table
-from rich.console import Console
-from rich.traceback import install
-
-install()
-console = Console()
-
-
-def generate_parentheses(n):
-    def is_valid(s):
-        # Check if the string is valid
-        stack = []
-        for char in s:
-            if char == "(":
-                stack.append(char)
-            else:
-                if not stack or stack.pop() != "(":
-                    return False
-        return not stack  # If the stack is empty, the string is valid
-
-    def generate(s, left, right, arr):
-        # Base case: if we have used all pairs of parentheses
-        if left == 0 and right == 0:
-            if is_valid(s):
-                arr.append(s)
+def print_valid_parentheses_combinations(n):
+    def generate_valid_combinations(open_count, close_count, current_combination):
+        if open_count == close_count == n:
+            print("".join(current_combination))
             return
 
-        # Recursive case: try adding an opening parenthesis
-        if left > 0:
-            generate(s + "(", left - 1, right, arr)
+        if open_count < n:
+            current_combination.append("(")
+            generate_valid_combinations(
+                open_count + 1, close_count, current_combination
+            )
+            current_combination.pop()
 
-        # Recursive case: try adding a closing parenthesis
-        if right > 0 and left < right:
-            generate(s + ")", left, right - 1, arr)
+        if close_count < open_count:
+            current_combination.append(")")
+            generate_valid_combinations(
+                open_count, close_count + 1, current_combination
+            )
+            current_combination.pop()
 
-    res = []
-    generate("", n, n, res)
-    return res
-
-
-res = generate_parentheses(3)
-
-
-def isValid(s: str) -> bool:
-    res = {"(": 0, ")": 0}
-    for c in s:
-        res[c] += 1
-    return res["("] == res[")"]
+    generate_valid_combinations(0, 0, [])
 
 
-res = isValid("((()))(())()(())()()")
-console.print(res)
+n = int(input("Enter the number of brackets: "))
+print_valid_parentheses_combinations(n)
+print()
+
+
+def print_valid_parentheses_combinations_imperative(n):
+    stack = []
+    stack.append(("", 0, 0))
+
+    while stack:
+        current_combination, open_count, close_count = stack.pop()
+
+        if open_count == close_count == n:
+            print(current_combination)
+            continue
+
+        if open_count < n:
+            stack.append((current_combination + "(", open_count + 1, close_count))
+
+        if close_count < open_count:
+            stack.append((current_combination + ")", open_count, close_count + 1))
+
+
+print_valid_parentheses_combinations_imperative(n)
