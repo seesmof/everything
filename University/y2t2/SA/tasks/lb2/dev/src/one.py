@@ -18,19 +18,28 @@ console = Console()
 
 def functional(n: int) -> None:
     def helper(openCount: int, closeCount: int, currentCombination: list[str]):
-        if openCount == closeCount == n:
+        def printCombination() -> None:
             console.print("".join(currentCombination))
-            return
 
-        if openCount < n:
+        def addLeftParenthesis() -> None:
             currentCombination.append("(")
             helper(openCount + 1, closeCount, currentCombination)
             currentCombination.pop()
 
-        if closeCount < openCount:
+        def addRightParenthesis() -> None:
             currentCombination.append(")")
             helper(openCount, closeCount + 1, currentCombination)
             currentCombination.pop()
+
+        if openCount == closeCount == n:
+            printCombination()
+            return
+
+        if openCount < n:
+            addLeftParenthesis()
+
+        if closeCount < openCount:
+            addRightParenthesis()
 
     helper(0, 0, [])
 
@@ -54,16 +63,13 @@ def imperative(n: int) -> None:
 
 
 def main() -> None:
-    options = [
-        "Functional Programming",
-        "Imperative Programming",
-    ]
+    tasks = {"Functional Programming": functional, "Imperative Programming": imperative}
     choice = inquirer.prompt(
         [
             inquirer.List(
                 "solution",
                 message="Which solution would you like to use?",
-                choices=options,
+                choices=list(tasks.keys()),
             )
         ]
     )["solution"]
@@ -80,10 +86,7 @@ def main() -> None:
     bracketsNumber = int(bracketsNumber)
 
     console.print(f"\nAll possible bracket pairs for {bracketsNumber} bracket pairs:")
-    if choice == options[0]:
-        functional(n=bracketsNumber)
-    elif choice == options[1]:
-        imperative(n=bracketsNumber)
+    tasks[choice](n=bracketsNumber)
 
 
 if __name__ == "__main__":

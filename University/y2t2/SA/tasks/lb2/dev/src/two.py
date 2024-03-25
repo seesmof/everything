@@ -32,6 +32,19 @@ def functional(filePath: str) -> tuple[int, int]:
 
 
 def main() -> None:
+    def getOwnFilePath() -> str:
+        filePathQuestions = [
+            inquirer.Text(
+                name="path",
+                message="Enter full path to your file",
+                validate=lambda _, x: path.exists(x) and path.isfile(x),
+            )
+        ]
+        filePathAnswer = inquirer.prompt(filePathQuestions)
+        console.print()
+
+        return filePathAnswer["path"]
+
     currentDir: str = path.dirname(path.abspath(__file__))
     filePath: str = path.join(currentDir, "..", "data", "input.txt")
 
@@ -49,17 +62,7 @@ def main() -> None:
         ]
     )["choose"]
 
-    if decision == choices[1]:
-        filePath = inquirer.prompt(
-            [
-                inquirer.Text(
-                    "path",
-                    message="Enter full path to your file",
-                    validate=lambda _, x: path.exists(x) and path.isfile(x),
-                )
-            ]
-        )["path"]
-        console.print()
+    filePath = filePath if decision == choices[0] else getOwnFilePath()
 
     wordsCount, shortestWordLength = functional(filePath)
     console.print(f"Number of words: {wordsCount}")

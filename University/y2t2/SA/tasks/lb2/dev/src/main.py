@@ -13,12 +13,14 @@ import two as taskTwo
 install()
 console = Console()
 
+tasks = {
+    "First - Bracket Pairs": taskOne.main,
+    "Second - Words Counter": taskTwo.main,
+}
+
 
 def main() -> None:
-    availableTasks = [
-        "First - Bracket Pairs",
-        "Second - Words Counter",
-    ]
+    availableTasks = list(tasks.keys())
     selectedTask = inquirer.prompt(
         [
             inquirer.List(
@@ -29,10 +31,7 @@ def main() -> None:
         ]
     )["task"]
 
-    if selectedTask == availableTasks[0]:
-        taskOne.main()
-    elif selectedTask == availableTasks[1]:
-        taskTwo.main()
+    tasks[selectedTask]()
 
 
 if __name__ == "__main__":
