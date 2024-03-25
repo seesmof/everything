@@ -1,0 +1,4 @@
+- select all employees if they work in office
+- delete all employees if they are supervisors
+- insert new supervisors for each department
+- update all employees Hired_Since date to today

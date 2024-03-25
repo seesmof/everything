@@ -1,8 +1,6 @@
+import os
 import json
 from os import path
-import os
-from rich.markdown import Markdown as md
-from rich.table import Table
 from rich.console import Console
 from rich.traceback import install
 
@@ -10,8 +8,7 @@ install()
 console = Console()
 
 currentDir: str = path.dirname(path.abspath(__file__))
-targetFolderPath: str = path.join(currentDir, "Сучасний Американо-Український - САУ")
-mainFilePath: str = path.join(targetFolderPath, "main.json")
+mainFilePath: str = path.join(currentDir, "main.json")
 target = path.join(currentDir, "Коментарі до Біблії від Метью Генрі")
 
 with open(mainFilePath, "r", encoding="utf-8") as jsonFile:
