@@ -31,15 +31,9 @@ def functional(n: int) -> None:
             helper(openCount, closeCount + 1, currentCombination)
             currentCombination.pop()
 
-        if openCount == closeCount == n:
-            printCombination()
-            return
-
-        if openCount < n:
-            addLeftParenthesis()
-
-        if closeCount < openCount:
-            addRightParenthesis()
+        (openCount == closeCount == n and printCombination()) or (
+            openCount < n and addLeftParenthesis()
+        ) or (closeCount < openCount and addRightParenthesis())
 
     helper(0, 0, [])
 
