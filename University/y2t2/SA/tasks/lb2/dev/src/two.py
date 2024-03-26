@@ -62,7 +62,9 @@ def main() -> None:
         ]
     )["choose"]
 
-    filePath = filePath if decision == choices[0] else getOwnFilePath()
+    (decision == choices[0] and filePath) or (
+        decision == choices[1] and getOwnFilePath()
+    )
 
     wordsCount, shortestWordLength = functional(filePath)
     console.print(f"Number of words: {wordsCount}")

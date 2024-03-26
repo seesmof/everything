@@ -1,4 +1,3 @@
 - select all employees if they work in office
-- delete all employees if they are supervisors
-- insert new supervisors for each department
-- update all employees Hired_Since date to today
+- select all employees if their base salary is less than 200
+- select all employees that are supervisors

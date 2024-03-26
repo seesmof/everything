@@ -45,15 +45,18 @@ def imperative(n: int) -> None:
     while stack:
         currentCombination, openCount, closeCount = stack.pop()
 
-        if openCount == closeCount == n:
+        def printCombination() -> None:
             console.print(currentCombination)
-            continue
 
-        if openCount < n:
+        def addLeftParenthesis() -> None:
             stack.append((currentCombination + "(", openCount + 1, closeCount))
 
-        if closeCount < openCount:
+        def addRightParenthesis() -> None:
             stack.append((currentCombination + ")", openCount, closeCount + 1))
+
+        (openCount == closeCount == n and printCombination()) or (
+            openCount < n and addLeftParenthesis()
+        ) or (closeCount < openCount and addRightParenthesis())
 
 
 def main() -> None:
