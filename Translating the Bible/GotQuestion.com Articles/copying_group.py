@@ -17,7 +17,6 @@ translatedFolder: str = path.join(targetGroupFolder, "translated")
 
 
 def copyOriginalDocs() -> None:
-    # check if originals folder is not empty
     if len(os.listdir(originalsFolder)) > 0:
         for file in os.listdir(originalsFolder):
             originalPath = path.join(originalsFolder, file)
@@ -31,3 +30,6 @@ def copyOriginalDocs() -> None:
                 shutil.copy2(originalPath, targetPath)
     else:
         console.print("[red]No original files to copy[/]")
+
+
+copyOriginalDocs()
