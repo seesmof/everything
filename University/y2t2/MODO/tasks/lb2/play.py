@@ -40,7 +40,6 @@ def goldenSearch(f: callable = f, a: float = -1, b: float = 3, tol: float = 1e-5
 
 
 def bisectionSearch(f: callable = f, a: float = -1, b: float = 3, tol: float = 1e-5):
-    c = a
     while (b - a) >= tol:
         c = (a + b) / 2
         if f(c) == 0.0:
@@ -52,15 +51,25 @@ def bisectionSearch(f: callable = f, a: float = -1, b: float = 3, tol: float = 1
     return c
 
 
-resGolden: float = goldenSearch()
-testGolden: float = optimize.golden(f)
-resBisection: float = bisectionSearch()
-testBisection: float = optimize.bisect(f, -1, 2)
-# scipy bisect не працює для [-1, 3], але чомусь працює для [-1, 2]. результат правильний видає
+with console.status("Оптимізуємо...", spinner="point"):
+    # limiting floating point precision to 2 digits after comma
+    resGolden: float = f"{goldenSearch():.2f}"
+    testGolden: float = f"{optimize.golden(f):.2f}"
+    resBisection: float = f"{bisectionSearch():.2f}"
+    testBisection: float = f"{optimize.bisect(f, -1, 2):.2f}"
+    # scipy bisect не працює для [-1, 3], але чомусь працює для [-1, 2]. результат правильний видає
 
-console.print(f"Golden Section Method: {resGolden:.2f}")
-console.print(f"Golden Section Method (from scipy): {testGolden:.2f}")
-console.print(f"Bisection Method: {resBisection:.2f}")
-console.print(f"Bisection Method (from scipy): {testBisection:.2f}")
+console.print(f"Golden Section Method: {resGolden}")
+console.print(f"Golden Section Method (from scipy): {testGolden}")
+console.print(f"Bisection Method: {resBisection}")
+console.print(f"Bisection Method (from scipy): {testBisection}")
+console.print()
+console.print(
+    "[green bold]Correct answer found![/green bold]"
+    if resGolden == testGolden
+    and resBisection == testBisection
+    and resGolden == testGolden == resBisection == testBisection
+    else "[red bold]Doesn't match![/red bold]"
+)
 
 plt.show()
