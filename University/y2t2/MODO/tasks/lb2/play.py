@@ -58,17 +58,26 @@ with console.status("Оптимізуємо...", spinner="point"):
     resBisection: float = f"{bisectionSearch():.2f}"
     testBisection: float = f"{optimize.bisect(f, -1, 2):.2f}"
     # scipy bisect не працює для [-1, 3], але чомусь працює для [-1, 2]. результат правильний видає
+    scalarBounded: float = optimize.minimize_scalar(f, bounds=(-1, 3)).x
 
 console.print(f"Golden Section Method: {resGolden}")
 console.print(f"Golden Section Method (from scipy): {testGolden}")
 console.print(f"Bisection Method: {resBisection}")
 console.print(f"Bisection Method (from scipy): {testBisection}")
+console.print(f"Scalar Bounded (from scipy): {scalarBounded}")
 console.print()
 console.print(
     "[green bold]Correct answer found![/green bold]"
-    if resGolden == testGolden
-    and resBisection == testBisection
-    and resGolden == testGolden == resBisection == testBisection
+    if [
+        x == resGolden
+        for x in [
+            resGolden,
+            testGolden,
+            resBisection,
+            testBisection,
+            scalarBounded,
+        ]
+    ]
     else "[red bold]Doesn't match![/red bold]"
 )
 
