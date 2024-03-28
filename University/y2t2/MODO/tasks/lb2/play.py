@@ -1,35 +1,66 @@
-"""
-(x-2)^2 
-
--1<x<3
-"""
-
 from rich.console import Console
 from rich.traceback import install
+
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy import optimize
 
 install()
 console = Console()
 
 
-def findMax(x, y):
-    maxIndex = np.argmax(y)
-    return x[maxIndex], y[maxIndex]
+def f(x):
+    return (x - 2) ** 2
 
 
-import numpy as np
-import matplotlib.pyplot as plt
+x = np.linspace(-1, 3, 400)
+y = f(x)
 
-x = np.linspace(-1, 3, 1000)
-y = (x - 2) ** 2
-
-plt.plot(x, y)
-plt.xlabel("X")
-plt.ylabel("Y")
-plt.title("(x-2)^2")
+plt.figure(figsize=(10, 6))
+plt.plot(x, y, label="(x-2)^2")
+plt.title("Plot of (x-2)^2")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
 plt.grid(True)
 
-maxX, maxY = findMax(x, y)
-console.print(f"Max: ({maxX}, {maxY})")
 
-plt.scatter(maxX, maxY, color="red", marker="x", s=100)
+def goldenSearch(f: callable = f, a: float = -1, b: float = 3, tol: float = 1e-5):
+    ratio = (5**0.5 - 1) / 2
+    c = b - ratio * (b - a)
+    d = a + ratio * (b - a)
+    while abs(c - d) > tol:
+        if f(c) < f(d):
+            b = d
+        else:
+            a = c
+        c = b - ratio * (b - a)
+        d = a + ratio * (b - a)
+    return (a + b) / 2
+
+
+def bisectionSearch(f: callable = f, a: float = -1, b: float = 3, tol: float = 1e-5):
+    c = a
+    while (b - a) >= tol:
+        c = (a + b) / 2
+        if f(c) == 0.0:
+            break
+        if f(a) * f(c) < 0:
+            b = c
+        else:
+            a = c
+    return c
+
+
+resGolden: float = goldenSearch()
+testGolden: float = optimize.golden(f)
+resBisection: float = bisectionSearch()
+testBisection: float = optimize.bisect(f, -1, 2)
+# scipy bisect не працює для [-1, 3], але чомусь працює для [-1, 2]. результат правильний видає
+
+console.print(f"Golden Section Method: {resGolden:.2f}")
+console.print(f"Golden Section Method (from scipy): {testGolden:.2f}")
+console.print(f"Bisection Method: {resBisection:.2f}")
+console.print(f"Bisection Method (from scipy): {testBisection:.2f}")
+
 plt.show()
