@@ -24,4 +24,4 @@ $\displaystyle-\frac{\ln(x^2+1)}{\epsilon^x}$
 
 ---
 
--
+$\frac{ \sqrt{5}-1 }{ 2 }$

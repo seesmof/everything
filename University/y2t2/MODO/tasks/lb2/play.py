@@ -85,17 +85,12 @@ def bisectionSearch(f: callable = f, a: float = -1, b: float = 3, tol: float = 1
 with console.status("Оптимізуємо...", spinner="point"):
     # limiting floating point precision to 2 digits after comma
     resGolden: float = f"{goldenSearch():.2f}"
-    testGolden: float = f"{optimize.golden(f):.2f}"
     resBisection: float = f"{bisectionSearch():.2f}"
-    testBisection: float = f"{optimize.bisect(f, -1, 2):.2f}"
-    # scipy bisect не працює для [-1, 3], але чомусь працює для [-1, 2]. результат правильний видає
     scalarBounded: float = optimize.minimize_scalar(f, bounds=(-1, 3)).x
 
 console.print(f"Golden Section Method: {resGolden}")
-console.print(f"Golden Section Method (from scipy): {testGolden}")
 console.print(f"Bisection Method: {resBisection}")
-console.print(f"Bisection Method (from scipy): {testBisection}")
-console.print(f"Scalar Bounded (from scipy): {scalarBounded}")
+console.print(f"Bounded Scalar (from scipy): {scalarBounded}")
 console.print()
 console.print(
     "[green bold]Correct answer found![/green bold]"
@@ -103,9 +98,7 @@ console.print(
         x == resGolden
         for x in [
             resGolden,
-            testGolden,
             resBisection,
-            testBisection,
             scalarBounded,
         ]
     ]

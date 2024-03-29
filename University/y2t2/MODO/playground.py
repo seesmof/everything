@@ -1,43 +1,28 @@
-import matplotlib.pyplot as plt
+from scipy.optimize import minimize_scalar
 import numpy as np
+import matplotlib.pyplot as plt
 
 
-def plot_bisection_search(f, a, b, tol):
-    # Create a range of x values for plotting
-    x = np.linspace(a, b, 1000)
-
-    # Initialize the plot
-    plt.figure(figsize=(10, 6))
-    plt.plot(x, f(x), label="f(x)")
-    plt.title("Bisection Search Method Visualization")
-    plt.xlabel("x")
-    plt.ylabel("f(x)")
-    plt.legend()
-
-    # Plot the initial interval
-    plt.plot([a, b], [f(a), f(b)], "r--", label="Initial Interval")
-
-    while (b - a) >= tol:
-        c = (a + b) / 2
-        if f(c) == 0.0:
-            break
-        if f(a) * f(c) < 0:
-            b = c
-        else:
-            a = c
-
-        # Plot the current interval
-        plt.plot([a, b], [f(a), f(b)], "g--", label="Current Interval")
-        plt.pause(0.1)  # Pause for a short time to allow the plot to update
-
-    # Plot the final interval
-    plt.plot([a, b], [f(a), f(b)], "b--", label="Final Interval")
-    plt.show()
-
-
-# Example usage
+# Define your function here
 def f(x):
     return (x - 2) ** 2
 
 
-plot_bisection_search(f, -1, 3, 1e-5)
+# Use the golden section search method
+result = minimize_scalar(f, method="golden")
+
+print(result.x)  # The x-coordinate of the minimum
+
+# plot the function
+x = np.linspace(0, 3, 400)
+y = f(x)
+
+plt.figure(figsize=(10, 6))
+plt.plot(x, y, label="(x-2)^2")
+plt.title("Plot of (x-2)^2")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+plt.grid(True)
+
+plt.show()
