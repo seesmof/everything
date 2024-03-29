@@ -29,6 +29,16 @@ def goldenSearch(f: callable = f, a: float = -1, b: float = 3, tol: float = 1e-5
     ratio = (5**0.5 - 1) / 2
     c = b - ratio * (b - a)
     d = a + ratio * (b - a)
+
+    x = np.linspace(a, b, 1000)
+    plt.figure(figsize=(10, 6))
+    plt.plot(x, f(x), label="f(x)")
+    plt.title("Golden Search Method Visualization")
+    plt.xlabel("x")
+    plt.ylabel("f(x)")
+    plt.legend()
+    plt.plot([a, b], [f(a), f(b)], "r--", label="Initial Interval")
+
     while abs(c - d) > tol:
         if f(c) < f(d):
             b = d
@@ -36,10 +46,25 @@ def goldenSearch(f: callable = f, a: float = -1, b: float = 3, tol: float = 1e-5
             a = c
         c = b - ratio * (b - a)
         d = a + ratio * (b - a)
+
+        plt.plot([a, b], [f(a), f(b)], "g--", label="Current Interval")
+        plt.pause(0.1)
+
+    plt.plot([a, b], [f(a), f(b)], "b--", label="Final Interval")
+    plt.show()
     return (a + b) / 2
 
 
 def bisectionSearch(f: callable = f, a: float = -1, b: float = 3, tol: float = 1e-5):
+    x = np.linspace(a, b, 1000)
+    plt.figure(figsize=(10, 6))
+    plt.plot(x, f(x), label="f(x)")
+    plt.title("Bisection Search Method Visualization")
+    plt.xlabel("x")
+    plt.ylabel("f(x)")
+    plt.legend()
+    plt.plot([a, b], [f(a), f(b)], "r--", label="Initial Interval")
+
     while (b - a) >= tol:
         c = (a + b) / 2
         if f(c) == 0.0:
@@ -48,6 +73,12 @@ def bisectionSearch(f: callable = f, a: float = -1, b: float = 3, tol: float = 1
             b = c
         else:
             a = c
+
+        plt.plot([a, b], [f(a), f(b)], "g--", label="Current Interval")
+        plt.pause(0.1)
+
+    plt.plot([a, b], [f(a), f(b)], "b--", label="Final Interval")
+    plt.show()
     return c
 
 
