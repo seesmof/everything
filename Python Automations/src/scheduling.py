@@ -52,13 +52,13 @@ else:
 dailyMessage = f"""
 ### Слава Ісусу Христу
 
-> {dailyVerse["content"]} - __{dailyVerse["name"]}__
+> {dailyVerse["content"]} - {dailyVerse["name"]}
 
-- Сьогодні - `{dayNameCorrespondings[dayName]}, {date.today().strftime("%d.%m.%Y")}`
-- Тиждень - `{weekStatus}`
-- На вулиці - `{currentWeather}`
-- Одяг на вулицю - `{clothing}`
-- Захід сонця - `{getSunset()}`
+- Сьогодні - **{dayNameCorrespondings[dayName]}, {date.today().strftime("%d.%m.%Y")}**
+- Тиждень - **{weekStatus}**
+- На вулиці - **{currentWeather}**
+- Одяг на вулицю - **{clothing}**
+- Захід сонця - **{getSunset()}**
 """
 
 console.print()
