@@ -15,9 +15,7 @@ function activate(context) {
   }
 
   interval = setInterval(async () => {
-    if (vscode.window.state.focused) {
-      message();
-    }
+    message();
   }, parseInt(vscode.workspace.getConfiguration("bibletext").get("duration") || "1") * 60 * 1000);
 
   let disposable = vscode.commands.registerCommand(
@@ -73,13 +71,18 @@ async function message(_message) {
     .then((e) => {
       if (e == "Copy") {
         vscode.env.clipboard.writeText(
-          data.verse.details.text + " - " + data.verse.details.reference
+          `${data.verse.details.text} - ${data.verse.details.reference}`
         );
+      }
+      if (e == data.verse.details.reference) {
+        let url = `https://www.biblegateway.com/passage/?search=${encodeURIComponent(
+          data.verse.details.reference
+        )}&version=AMP;ERV-UK`;
+        vscode.env.openExternal(vscode.Uri.parse(url));
       }
     });
 }
 
-// this method is called when your extension is deactivated
 function deactivate() {
   if (interval) {
     clearInterval(interval);
