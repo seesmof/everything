@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&Rcy;&iecy;&zcy;&yucy;&mcy;&iecy;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <div align="center">
+  <h3>Звіт з Лабораторної Роботи №2</h3>
+  <p>Виконав <strong>Онищенко Олег</strong>, студент групи <strong>КНТ-122</strong></p>
+</div>
+<h4 id="резюме">Резюме</h4>
+<p>В рамках лабораторної роботи 2 було спроектовано 4 запити до схеми даних з предметної області <strong>автоматизована система розрахунку заробітної плати</strong>. Деталі запитів наведені нижче.</p>
+<ul>
+<li>Відібрати всіх співробітників, якщо вони працюють в офісі</li>
+<li>Відібрати всіх працівників, якщо їхня базова зарплатня менша за 200</li>
+<li>Відібрати всіх співробітників, які є менеджерами</li>
+<li>Відібрати всіх співробітників-жінок</li>
+</ul>
+<h4 id="запити-до-бази-даних">Запити до бази даних</h4>
+<h5 id="працівники-з-офісу">Працівники з офісу</h5>
+<h6 id="запит-мовою-sql">Запит мовою SQL</h6>
+<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> Employee.Employee_Name, Employee.Employee_Position, Position.Department_Name
+<span class="hljs-keyword">FROM</span> [Position]
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> Employee <span class="hljs-keyword">ON</span> Position.[Position_ID] <span class="hljs-operator">=</span> Employee.[Employee_Position]
+<span class="hljs-keyword">WHERE</span> Position.Department_Name <span class="hljs-operator">=</span> <span class="hljs-number">1</span>
+</code></pre>
+<p>Оскільки Department_Name є зовнішнім ключем, то зазначаємо індекс департаменту, який нас цікавить. Таблиця Department виглядає наступним чином:
+<img src="https://lh3.googleusercontent.com/pw/AP1GczNjxyqDNDV3z9xPDUX-JWcQ6XlIQa0ypPS3aDSc-9gt-Oo09ERwQJOkzIIAhv80qquFamaidSpsDIbqjkm5fwY0CUTdu-QRFKiXkk9kp1AcBI4FEcMQf7M245dvtFEkl6xWuEfOIzpYkRywP40mS9R09Q=w1393-h46-s-no?authuser=0" alt="Таблиця департаментів"></p>
+<h6 id="результати-запиту">Результати запиту</h6>
+<p>В результаті запиту отримуємо таблицю наступного вигляду:</p>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczM6mj4nxBotDTDeTVxgxislaXAQMRtQ6TKsi7AKhY29dOlPvLvp5yoWGLST4RX22AUSYXSAhV-8hSy5Gj9zop7LLMew4X8c-pfTZOw-4tqiwPQghqCw9-7YqR-dq_odcV3XCuwM0QCAzvt4F0cIeVfnHw=w986-h128-s-no?authuser=0" alt="Результат"></p>
+<h5 id="працівники-з-нижчою-базовою-зарплатой">Працівники з нижчою базовою зарплатой</h5>
+<h6 id="запит-мовою-sql-1">Запит мовою SQL</h6>
+<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> Employee.Employee_Name, Employee.Employee_Position, Position.Base_Pay_per_Day
+<span class="hljs-keyword">FROM</span> [Position]
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> Employee <span class="hljs-keyword">ON</span> Position.[Position_ID] <span class="hljs-operator">=</span> Employee.[Employee_Position]
+<span class="hljs-keyword">WHERE</span> Position.[Base_Pay_per_Day] <span class="hljs-operator">&lt;</span> <span class="hljs-number">200</span>
+</code></pre>
+<p>Таблиця Position має наступний вигляд:</p>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczNb4LjpmimhsCUtnKxTniBoRqvd-GkTUPC6cF6xCAILejW6RbB-Hlt0_Yc6jlvrYxYpjY9MhFccNds7e9CfNbRoMibkT-UoiQmas26N5XrzTzelD3X2039zawuw8ScEzG1eG0v-oT9uhKXLZUqTEKmCCQ=w1393-h90-s-no?authuser=0" alt="Таблиця позицій"></p>
+<h6 id="результати-запиту-1">Результати запиту</h6>
+<p>В результаті запиту отримуємо таблицю наступного вигляду:</p>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczM9CDSIElPjoVNCzQEv0GIEM1MGzsVrkS1KPZWDPIKB57tRl1ftFFTAO27Wl-kaYozcmxCJZ28Idr_edwXDTBDjBFgDLj2mwsEdreM0bIw-RfCLsQsPN9jOV3IEsNfoLuNmrlluprStcHM8dEufQ8hwow=w832-h192-s-no?authuser=0" alt="Результат"></p>
+<h5 id="працівники-які-є-менеджерами">Працівники які є менеджерами</h5>
+<h6 id="запит-мовою-sql-2">Запит мовою SQL</h6>
+<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> Employee.Employee_Name, Employee.Employee_Position, Position.Position_ID
+<span class="hljs-keyword">FROM</span> [Position]
+<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> Employee <span class="hljs-keyword">ON</span> Position.[Position_ID] <span class="hljs-operator">=</span> Employee.[Employee_Position]
+<span class="hljs-keyword">WHERE</span> Position.[Position_ID] <span class="hljs-operator">=</span> <span class="hljs-number">2</span> <span class="hljs-keyword">OR</span> Position.[Position_ID] <span class="hljs-operator">=</span> <span class="hljs-number">4</span>
+</code></pre>
+<p>Де 2 та 4 є ідексами позицій Office Manager та Field Supervisor.</p>
+<h6 id="результати-запиту-2">Результати запиту</h6>
+<p>В результаті запиту отримуємо таблицю наступного вигляду:</p>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczOZ2Eo4WQGIMPFA0YUntFvZ-BI51lWkf6AZDtaECLBPokvDD7IMCauyw9UHOfamYvK_FSSx3l3HJ_tukrtYWisdTV7PMrs6kXqbtnSFVFU5qwRauy07tkZE7oNKTISRgfITT_NS_MTRCispr2zZzlOTSw=w741-h96-s-no?authuser=0" alt="Результат"></p>
+<h5 id="працівники-жінки">Працівники жінки</h5>
+<h6 id="запит-мовою-sql-3">Запит мовою SQL</h6>
+<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> Employee.Employee_Name, Employee.Employee_Position, Employee.Gender
+<span class="hljs-keyword">FROM</span> Employee
+<span class="hljs-keyword">WHERE</span> Employee.Gender <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Female&#x27;</span>
+</code></pre>
+<h6 id="результати-запиту-3">Результати запиту</h6>
+<p>В результаті запиту отримуємо таблицю наступного вигляду:</p>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczMqI7rAcNeThyQP06TElohYpCMovd_R-G-dASE_hjY3-xjNfZz8YFGLv46TIPLQGMlZTkSnwXgodF7XN0Rwo6DVZWeRg7RsHFTAfYgYCoLvbjwqvWtwRd1m4n-hcSYWVTHJnnHkuZH6-PiYgaus3V3y2A=w667-h116-s-no?authuser=0" alt="Результат"></p>
+
+            
+            
+        </body>
+        </html>

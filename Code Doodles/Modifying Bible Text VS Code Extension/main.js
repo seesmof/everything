@@ -15,7 +15,9 @@ function activate(context) {
   }
 
   interval = setInterval(async () => {
-    message();
+    if (vscode.window.state.focused) {
+      message();
+    }
   }, parseInt(vscode.workspace.getConfiguration("bibletext").get("duration") || "1") * 60 * 1000);
 
   let disposable = vscode.commands.registerCommand(

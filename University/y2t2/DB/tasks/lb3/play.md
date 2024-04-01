@@ -1,0 +1,4 @@
+- count number of employees in field
+- average salary of all employees
+- 2 best positions by max salary
+- employees grouped by month of their job start
