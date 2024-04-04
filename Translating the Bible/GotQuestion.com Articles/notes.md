@@ -1,0 +1,3 @@
+- replace all Bible quotes from BibleGateway version UKR which is UBIO (переклад Огієнка)
+- add links to each verse reference in BibleGateway version UKR
+- replace all христ to Христ, regarding the word Christians
