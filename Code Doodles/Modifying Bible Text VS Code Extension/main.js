@@ -79,7 +79,7 @@ async function message(_message) {
       if (e == data.verse.details.reference) {
         let url = `https://www.biblegateway.com/passage/?search=${encodeURIComponent(
           data.verse.details.reference
-        )}&version=AMP;ERV-UK`;
+        )}&version=NASB;UKR`;
         vscode.env.openExternal(vscode.Uri.parse(url));
       }
     });
