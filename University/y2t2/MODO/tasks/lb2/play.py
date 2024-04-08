@@ -48,7 +48,7 @@ def goldenSearch(f, a: float = -1, b: float = 3, tol: float = 1e-5):
         d = a + ratio * (b - a)
 
         plt.plot([a, b], [f(a), f(b)], "g--", label="Current Interval")
-        plt.pause(0.1)
+        plt.pause(0.01)
 
     plt.plot([a, b], [f(a), f(b)], "b--", label="Final Interval")
     plt.show()
@@ -75,7 +75,7 @@ def bisectionSearch(f, a: float = -1, b: float = 3, tol: float = 1e-5):
             a = x1
 
         plt.plot([a, b], [f(a), f(b)], "g--", label="Current Interval")
-        plt.pause(0.1)
+        plt.pause(0.01)
 
     plt.plot([a, b], [f(a), f(b)], "b--", label="Final Interval")
     plt.show()

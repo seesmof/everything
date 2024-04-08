@@ -48,7 +48,7 @@ def goldenSearch(f: callable = f, a: float = -1, b: float = 3, tol: float = 1e-5
         d = a + ratio * (b - a)
 
         plt.plot([a, b], [f(a), f(b)], "g--", label="Current Interval")
-        plt.pause(0.1)
+        plt.pause(0.01)
 
     plt.plot([a, b], [f(a), f(b)], "b--", label="Final Interval")
     plt.show()
@@ -65,21 +65,21 @@ def bisectionSearch(f: callable = f, a: float = -1, b: float = 3, tol: float = 1
     plt.legend()
     plt.plot([a, b], [f(a), f(b)], "r--", label="Initial Interval")
 
-    while (b - a) >= tol:
-        c = (a + b) / 2
-        if f(c) == 0.0:
-            break
-        if f(a) * f(c) < 0:
-            b = c
+    while abs(b - a) >= tol:
+        x1 = a + (b - a) / 3
+        x2 = b - (b - a) / 3
+
+        if f(x1) < f(x2):
+            b = x2
         else:
-            a = c
+            a = x1
 
         plt.plot([a, b], [f(a), f(b)], "g--", label="Current Interval")
-        plt.pause(0.1)
+        plt.pause(0.01)
 
     plt.plot([a, b], [f(a), f(b)], "b--", label="Final Interval")
     plt.show()
-    return c
+    return (a + b) / 2
 
 
 with console.status("Optimizing...", spinner="point"):
