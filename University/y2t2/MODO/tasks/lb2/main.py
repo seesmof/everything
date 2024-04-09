@@ -9,35 +9,29 @@ install()
 console = Console()
 
 
-def f(x):
+def f(x: float) -> float:
     return (x - 2) ** 2
 
 
-x = np.linspace(-1, 3, 400)
-y = f(x)
-
-plt.figure(figsize=(10, 6))
-plt.plot(x, y, label="(x-2)^2")
-plt.title("Plot of (x-2)^2")
-plt.xlabel("x")
-plt.ylabel("y")
-plt.legend()
-plt.grid(True)
-
-
-def goldenSearch(f: callable = f, a: float = -1, b: float = 3, tol: float = 1e-5):
-    ratio = (5**0.5 - 1) / 2
-    c = b - ratio * (b - a)
-    d = a + ratio * (b - a)
-
+def plotFunction(f, a: float, b: float, title: str) -> None:
     x = np.linspace(a, b, 1000)
     plt.figure(figsize=(10, 6))
     plt.plot(x, f(x), label="f(x)")
-    plt.title("Golden Search Method Visualization")
+    plt.title(title)
     plt.xlabel("x")
     plt.ylabel("f(x)")
     plt.legend()
     plt.plot([a, b], [f(a), f(b)], "r--", label="Initial Interval")
+
+
+def goldenSearch(
+    f: callable = f, a: float = -1, b: float = 3, tol: float = 1e-5
+) -> float:
+    ratio = (5**0.5 - 1) / 2
+    c = b - ratio * (b - a)
+    d = a + ratio * (b - a)
+
+    plotFunction(f, a, b, "Golden Search Method Visualization")
 
     while abs(c - d) > tol:
         if f(c) < f(d):
@@ -55,15 +49,10 @@ def goldenSearch(f: callable = f, a: float = -1, b: float = 3, tol: float = 1e-5
     return (a + b) / 2
 
 
-def bisectionSearch(f: callable = f, a: float = -1, b: float = 3, tol: float = 1e-5):
-    x = np.linspace(a, b, 1000)
-    plt.figure(figsize=(10, 6))
-    plt.plot(x, f(x), label="f(x)")
-    plt.title("Bisection Search Method Visualization")
-    plt.xlabel("x")
-    plt.ylabel("f(x)")
-    plt.legend()
-    plt.plot([a, b], [f(a), f(b)], "r--", label="Initial Interval")
+def bisectionSearch(
+    f: callable = f, a: float = -1, b: float = 3, tol: float = 1e-5
+) -> float:
+    plotFunction(f, a, b, "Bisection Search Method Visualization")
 
     while abs(b - a) >= tol:
         x1 = a + (b - a) / 3
@@ -82,19 +71,24 @@ def bisectionSearch(f: callable = f, a: float = -1, b: float = 3, tol: float = 1
     return (a + b) / 2
 
 
-with console.status("Optimizing...", spinner="point"):
-    resGolden: float = f"{goldenSearch():.2f}"
-    resBisection: float = f"{bisectionSearch():.2f}"
-    scalarBounded: float = f"{optimize.minimize_scalar(f, bounds=(-1, 3)).x:.2f}"
+def main() -> None:
+    with console.status("Optimizing...", spinner="point"):
+        resGolden: float = f"{goldenSearch():.2f}"
+        resBisection: float = f"{bisectionSearch():.2f}"
+        scalarBounded: float = f"{optimize.minimize_scalar(f, bounds=(-1, 3)).x:.2f}"
 
-console.print(f"Golden Section Method: {resGolden}")
-console.print(f"Bisection Method: {resBisection}")
-console.print(f"Bounded Scalar (from scipy): {scalarBounded}")
-console.print()
-console.print(
-    "[green bold]Correct answer found![/green bold]"
-    if resGolden == resBisection == scalarBounded
-    else "[red bold]Doesn't match![/red bold]"
-)
+    console.print(f"Golden Section Method: {resGolden}")
+    console.print(f"Bisection Method: {resBisection}")
+    console.print(f"Bounded Scalar (from scipy): {scalarBounded}")
+    console.print()
+    console.print(
+        "[green bold]Correct answer found![/green bold]"
+        if resGolden == resBisection == scalarBounded
+        else "[red bold]Doesn't match![/red bold]"
+    )
 
-plt.show()
+    plt.show()
+
+
+if __name__ == "__main__":
+    main()
