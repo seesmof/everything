@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&Zcy;&acy;&scy;&tcy;&ocy;&scy;&ucy;&vcy;&acy;&ncy;&ncy;&yacy; &scy;&icy;&scy;&tcy;&iecy;&mcy;&ncy;&ocy;&gcy;&ocy; &pcy;&iukcy;&dcy;&khcy;&ocy;&dcy;&ucy; &dcy;&ocy; &pcy;&rcy;&ocy;&gcy;&rcy;&acy;&mcy;&ucy;&vcy;&acy;&ncy;&ncy;&yacy; &mcy;&ocy;&vcy;&ocy;&yucy; Python</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="застосування-системного-підходу-до-програмування-мовою-python">Застосування системного підходу до програмування мовою Python</h1>
+<h2 id="код-роботи-один">Код роботи один</h2>
+<pre><code class="language-python"><span class="hljs-comment"># main.py</span>
+
+<span class="hljs-keyword">import</span> json
+<span class="hljs-keyword">import</span> random
+<span class="hljs-keyword">import</span> inquirer
+<span class="hljs-keyword">from</span> os <span class="hljs-keyword">import</span> path
+<span class="hljs-keyword">from</span> rich <span class="hljs-keyword">import</span> box
+<span class="hljs-keyword">from</span> rich.table <span class="hljs-keyword">import</span> Table
+<span class="hljs-keyword">from</span> rich.console <span class="hljs-keyword">import</span> Console
+<span class="hljs-keyword">from</span> rich.traceback <span class="hljs-keyword">import</span> install
+<span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict
+
+install()
+console = Console()
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">taskOne</span>() -&gt; <span class="hljs-literal">None</span>:
+    currentDir = path.dirname(path.abspath(__file__))
+    inputFilePath = path.join(currentDir, <span class="hljs-string">&quot;..&quot;</span>, <span class="hljs-string">&quot;data&quot;</span>, <span class="hljs-string">&quot;files.txt&quot;</span>)
+
+    doUseReadyFile = inquirer.prompt(
+        [
+            inquirer.<span class="hljs-type">List</span>(
+                <span class="hljs-string">&quot;choice&quot;</span>,
+                message=<span class="hljs-string">&quot;Would you like to use a predefined example or enter your own file path?&quot;</span>,
+                choices=[<span class="hljs-string">&quot;Predefined Example&quot;</span>, <span class="hljs-string">&quot;Own File Path&quot;</span>],
+            )
+        ]
+    )[<span class="hljs-string">&quot;choice&quot;</span>]
+    <span class="hljs-keyword">if</span> doUseReadyFile == <span class="hljs-string">&quot;Own File Path&quot;</span>:
+        inputFilePath = inquirer.prompt(
+            [
+                inquirer.Text(
+                    <span class="hljs-string">&quot;file path&quot;</span>,
+                    message=<span class="hljs-string">&quot;Enter your input file path&quot;</span>,
+                    validate=<span class="hljs-keyword">lambda</span> _, x: <span class="hljs-string">&quot;\\&quot;</span> <span class="hljs-keyword">in</span> x <span class="hljs-keyword">or</span> <span class="hljs-string">&quot;/&quot;</span> <span class="hljs-keyword">in</span> x <span class="hljs-keyword">and</span> x != <span class="hljs-string">&quot;&quot;</span>,
+                )
+            ]
+        )[<span class="hljs-string">&quot;file path&quot;</span>]
+
+    outputFilePath = path.join(
+        currentDir, <span class="hljs-string">&quot;..&quot;</span>, <span class="hljs-string">&quot;data&quot;</span>, inputFilePath.split(<span class="hljs-string">&quot;\\&quot;</span>)[-<span class="hljs-number">1</span>][:-<span class="hljs-number">4</span>] + <span class="hljs-string">&quot;_str.txt&quot;</span>
+    )
+
+    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(inputFilePath, <span class="hljs-string">&quot;r&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> f:
+        fileNames = [line.strip() <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f.readlines()]
+
+    filesData = [
+        {
+            <span class="hljs-string">&quot;name&quot;</span>: file.split(<span class="hljs-string">&quot;\\&quot;</span>)[-<span class="hljs-number">1</span>].split(<span class="hljs-string">&quot;.&quot;</span>)[<span class="hljs-number">0</span>],
+            <span class="hljs-string">&quot;extension&quot;</span>: file.split(<span class="hljs-string">&quot;\\&quot;</span>)[-<span class="hljs-number">1</span>].split(<span class="hljs-string">&quot;.&quot;</span>)[-<span class="hljs-number">1</span>],
+            <span class="hljs-string">&quot;first_dir&quot;</span>: file.split(<span class="hljs-string">&quot;\\&quot;</span>)[<span class="hljs-number">1</span>],
+            <span class="hljs-string">&quot;does_exist&quot;</span>: path.exists(file),
+            <span class="hljs-string">&quot;full_path&quot;</span>: file,
+        }
+        <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> fileNames
+    ]
+
+    outputTable = Table(box=box.ROUNDED, title=<span class="hljs-string">&quot;All Files&quot;</span>)
+    outputTable.add_column(<span class="hljs-string">&quot;Index&quot;</span>, justify=<span class="hljs-string">&quot;right&quot;</span>, style=<span class="hljs-string">&quot;cyan&quot;</span>, no_wrap=<span class="hljs-literal">True</span>)
+    outputTable.add_column(<span class="hljs-string">&quot;File Name&quot;</span>, style=<span class="hljs-string">&quot;green&quot;</span>)
+    outputTable.add_column(<span class="hljs-string">&quot;Extension&quot;</span>, style=<span class="hljs-string">&quot;blue&quot;</span>)
+    outputTable.add_column(<span class="hljs-string">&quot;First Directory&quot;</span>, style=<span class="hljs-string">&quot;magenta&quot;</span>)
+    outputTable.add_column(<span class="hljs-string">&quot;Does Exist&quot;</span>, style=<span class="hljs-string">&quot;red&quot;</span>, no_wrap=<span class="hljs-literal">True</span>, justify=<span class="hljs-string">&quot;right&quot;</span>)
+    <span class="hljs-keyword">for</span> i, file <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(filesData):
+        outputTable.add_row(
+            <span class="hljs-string">f&quot;<span class="hljs-subst">{i}</span>&quot;</span>,
+            file[<span class="hljs-string">&quot;name&quot;</span>],
+            file[<span class="hljs-string">&quot;extension&quot;</span>],
+            file[<span class="hljs-string">&quot;first_dir&quot;</span>],
+            <span class="hljs-string">&quot;[green]Yes[/]&quot;</span> <span class="hljs-keyword">if</span> file[<span class="hljs-string">&quot;does_exist&quot;</span>] <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;No&quot;</span>,
+        )
+    console.<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\n&quot;</span>, outputTable, <span class="hljs-string">&quot;\n&quot;</span>)
+
+    <span class="hljs-keyword">with</span> console.status(<span class="hljs-string">&quot;Checking for existing files...&quot;</span>, spinner=<span class="hljs-string">&quot;point&quot;</span>):
+        existingFiles = [file <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> filesData <span class="hljs-keyword">if</span> file[<span class="hljs-string">&quot;does_exist&quot;</span>]]
+        existingFiles.sort(key=<span class="hljs-keyword">lambda</span> x: (x[<span class="hljs-string">&quot;extension&quot;</span>], x[<span class="hljs-string">&quot;full_path&quot;</span>], x[<span class="hljs-string">&quot;name&quot;</span>]))
+
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(existingFiles) == <span class="hljs-number">0</span>:
+        console.<span class="hljs-built_in">print</span>(
+            <span class="hljs-string">&quot;[red]No existing files found. Please check your input file path or contents.[/]\n&quot;</span>
+        )
+        <span class="hljs-keyword">return</span>
+
+    resultsTable = Table(box=box.ROUNDED, title=<span class="hljs-string">&quot;Existing Files&quot;</span>)
+    resultsTable.add_column(<span class="hljs-string">&quot;Index&quot;</span>, justify=<span class="hljs-string">&quot;right&quot;</span>, style=<span class="hljs-string">&quot;cyan&quot;</span>, no_wrap=<span class="hljs-literal">True</span>)
+    resultsTable.add_column(<span class="hljs-string">&quot;File Name&quot;</span>, style=<span class="hljs-string">&quot;green&quot;</span>)
+    resultsTable.add_column(<span class="hljs-string">&quot;Extension&quot;</span>, style=<span class="hljs-string">&quot;blue&quot;</span>)
+    resultsTable.add_column(<span class="hljs-string">&quot;File Path&quot;</span>, style=<span class="hljs-string">&quot;yellow&quot;</span>)
+    <span class="hljs-keyword">for</span> i, file <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(existingFiles):
+        resultsTable.add_row(
+            <span class="hljs-string">f&quot;<span class="hljs-subst">{i}</span>&quot;</span>,
+            file[<span class="hljs-string">&quot;name&quot;</span>],
+            file[<span class="hljs-string">&quot;extension&quot;</span>],
+            <span class="hljs-string">f&quot;/<span class="hljs-subst">{file[<span class="hljs-string">&#x27;first_dir&#x27;</span>]}</span>/.../<span class="hljs-subst">{file[<span class="hljs-string">&#x27;name&#x27;</span>]}</span>.<span class="hljs-subst">{file[<span class="hljs-string">&#x27;extension&#x27;</span>]}</span>&quot;</span>,
+        )
+    console.<span class="hljs-built_in">print</span>(resultsTable, <span class="hljs-string">&quot;\n&quot;</span>)
+
+    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(outputFilePath, <span class="hljs-string">&quot;w&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> f:
+        prevExtension = <span class="hljs-string">&quot;&quot;</span>
+        <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> existingFiles:
+            curExtension = file[<span class="hljs-string">&quot;extension&quot;</span>]
+            <span class="hljs-keyword">if</span> curExtension != prevExtension:
+                f.write(<span class="hljs-string">f&quot;\n<span class="hljs-subst">{curExtension.upper()}</span>\n&quot;</span>)
+            f.write(<span class="hljs-string">f&quot;<span class="hljs-subst">{file[<span class="hljs-string">&#x27;name&#x27;</span>]}</span>.<span class="hljs-subst">{file[<span class="hljs-string">&#x27;extension&#x27;</span>]}</span>\n&quot;</span>)
+            prevExtension = curExtension
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">taskTwo</span>() -&gt; <span class="hljs-literal">None</span>:
+    <span class="hljs-keyword">class</span> <span class="hljs-title class_">Room</span>:
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, number: <span class="hljs-built_in">int</span> = <span class="hljs-number">0</span>, seats: <span class="hljs-built_in">list</span>[<span class="hljs-built_in">list</span>[<span class="hljs-built_in">int</span>]] = []</span>) -&gt; <span class="hljs-literal">None</span>:
+            self.seats: <span class="hljs-built_in">list</span>[<span class="hljs-built_in">list</span>[<span class="hljs-built_in">int</span>]] = seats
+            self.number: <span class="hljs-built_in">int</span> = number
+
+    <span class="hljs-keyword">class</span> <span class="hljs-title class_">Movie</span>:
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, title: <span class="hljs-built_in">str</span> = <span class="hljs-string">&quot;Movie&quot;</span>, rooms: <span class="hljs-built_in">list</span>[Room] = []</span>) -&gt; <span class="hljs-literal">None</span>:
+            self.title: <span class="hljs-built_in">str</span> = title
+            self.rooms: <span class="hljs-built_in">list</span>[Room] = rooms
+
+    <span class="hljs-keyword">class</span> <span class="hljs-title class_">Ticket</span>:
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, movie: Movie, room: Room, row: <span class="hljs-built_in">int</span>, seat: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:
+            self.movie: Movie = movie
+            self.room: Room = room
+            self.row: <span class="hljs-built_in">int</span> = row
+            self.seat: <span class="hljs-built_in">int</span> = seat
+
+    <span class="hljs-keyword">class</span> <span class="hljs-title class_">Cinema</span>:
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, name: <span class="hljs-built_in">str</span> = <span class="hljs-string">&quot;Cinema&quot;</span>, movies: <span class="hljs-built_in">list</span>[Movie] = []</span>) -&gt; <span class="hljs-literal">None</span>:
+            self.movies: <span class="hljs-built_in">list</span>[Movie] = movies
+            self.name: <span class="hljs-built_in">str</span> = name
+            self.tickets: <span class="hljs-built_in">list</span>[Ticket] = []
+            self.watched: <span class="hljs-built_in">dict</span> = defaultdict(<span class="hljs-built_in">int</span>)
+
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">buyTicket</span>(<span class="hljs-params">self, movie: Movie, room: Room, row: <span class="hljs-built_in">int</span>, seat: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:
+            room.seats[row][seat] = <span class="hljs-number">0</span>
+            self.tickets.append(Ticket(movie, room, row, seat))
+
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">sellTicket</span>(<span class="hljs-params">self, ticket: Ticket</span>) -&gt; <span class="hljs-literal">None</span>:
+            ticket.room.seats[ticket.row][ticket.seat] = <span class="hljs-number">1</span>
+            self.tickets.remove(ticket)
+
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">readMoviesFromJson</span>(<span class="hljs-params">self, path: <span class="hljs-built_in">str</span> = <span class="hljs-string">&quot;&quot;</span></span>) -&gt; <span class="hljs-literal">None</span>:
+            <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(path, <span class="hljs-string">&quot;r&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> f:
+                data = json.load(f)
+            self.name = data[<span class="hljs-string">&quot;name&quot;</span>]
+            <span class="hljs-keyword">for</span> movieData <span class="hljs-keyword">in</span> data[<span class="hljs-string">&quot;movies&quot;</span>]:
+                rooms = []
+                <span class="hljs-keyword">for</span> room <span class="hljs-keyword">in</span> movieData[<span class="hljs-string">&quot;rooms&quot;</span>]:
+                    rooms.append(Room(number=room[<span class="hljs-string">&quot;number&quot;</span>], seats=room[<span class="hljs-string">&quot;seats&quot;</span>]))
+                self.movies.append(Movie(title=movieData[<span class="hljs-string">&quot;title&quot;</span>], rooms=rooms))
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">drawSeatsGrid</span>(<span class="hljs-params">room: Room, movie: Movie</span>) -&gt; <span class="hljs-literal">None</span>:
+        seats = [[<span class="hljs-string">&quot;🔴&quot;</span> <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> seat <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;🟢&quot;</span> <span class="hljs-keyword">for</span> seat <span class="hljs-keyword">in</span> row] <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> room.seats]
+
+        table: Table = Table.grid(padding=(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>))
+        <span class="hljs-keyword">for</span> i, row <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(seats):
+            table.add_row(*[<span class="hljs-string">f&quot;[bold]<span class="hljs-subst">{i+<span class="hljs-number">1</span>}</span>[/]&quot;</span>] + row)
+
+        console.<span class="hljs-built_in">print</span>(
+            <span class="hljs-string">f&#x27;[bold]All seats for &quot;<span class="hljs-subst">{movie.title}</span>&quot; in room #<span class="hljs-subst">{room.number}</span>[/bold]\n&#x27;</span>,
+            table,
+            <span class="hljs-string">&quot;\n&quot;</span>,
+        )
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">drawTicketsTable</span>(<span class="hljs-params">tickets: <span class="hljs-built_in">list</span>[Ticket]</span>) -&gt; <span class="hljs-literal">None</span>:
+        table: Table = Table(box=box.ROUNDED, title=<span class="hljs-string">&quot;Bought Tickets&quot;</span>)
+        table.add_column(<span class="hljs-string">&quot;Index&quot;</span>, justify=<span class="hljs-string">&quot;right&quot;</span>, style=<span class="hljs-string">&quot;cyan&quot;</span>, no_wrap=<span class="hljs-literal">True</span>)
+        table.add_column(<span class="hljs-string">&quot;Movie&quot;</span>, style=<span class="hljs-string">&quot;bold yellow&quot;</span>)
+        table.add_column(<span class="hljs-string">&quot;Year&quot;</span>, style=<span class="hljs-string">&quot;violet&quot;</span>, no_wrap=<span class="hljs-literal">True</span>)
+        table.add_column(<span class="hljs-string">&quot;Room&quot;</span>, style=<span class="hljs-string">&quot;magenta&quot;</span>, no_wrap=<span class="hljs-literal">True</span>)
+        table.add_column(<span class="hljs-string">&quot;Row&quot;</span>, style=<span class="hljs-string">&quot;green&quot;</span>, no_wrap=<span class="hljs-literal">True</span>)
+        table.add_column(<span class="hljs-string">&quot;Seat&quot;</span>, style=<span class="hljs-string">&quot;blue&quot;</span>, no_wrap=<span class="hljs-literal">True</span>)
+        <span class="hljs-keyword">for</span> i, ticket <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(tickets):
+            name, year = ticket.movie.title.split(<span class="hljs-string">&quot; - &quot;</span>)
+            table.add_row(
+                <span class="hljs-string">f&quot;<span class="hljs-subst">{i+<span class="hljs-number">1</span>}</span>&quot;</span>,
+                <span class="hljs-string">f&quot;<span class="hljs-subst">{name}</span>&quot;</span>,
+                <span class="hljs-string">f&quot;<span class="hljs-subst">{year}</span>&quot;</span>,
+                <span class="hljs-string">f&quot;<span class="hljs-subst">{ticket.room.number}</span>&quot;</span>,
+                <span class="hljs-string">f&quot;<span class="hljs-subst">{ticket.row+<span class="hljs-number">1</span>}</span>&quot;</span>,
+                <span class="hljs-string">f&quot;<span class="hljs-subst">{ticket.seat+<span class="hljs-number">1</span>}</span>&quot;</span>,
+            )
+        console.<span class="hljs-built_in">print</span>(table, <span class="hljs-string">&quot;\n&quot;</span>)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">drawMoviesTable</span>() -&gt; <span class="hljs-literal">None</span>:
+        table: Table = Table(box=box.ROUNDED, title=<span class="hljs-string">&quot;Watched Movies&quot;</span>)
+        table.add_column(<span class="hljs-string">&quot;Index&quot;</span>, style=<span class="hljs-string">&quot;cyan&quot;</span>, no_wrap=<span class="hljs-literal">True</span>, justify=<span class="hljs-string">&quot;right&quot;</span>)
+        table.add_column(<span class="hljs-string">&quot;Movie&quot;</span>, style=<span class="hljs-string">&quot;bold yellow&quot;</span>, no_wrap=<span class="hljs-literal">True</span>)
+        table.add_column(<span class="hljs-string">&quot;Year&quot;</span>, style=<span class="hljs-string">&quot;violet&quot;</span>, no_wrap=<span class="hljs-literal">True</span>)
+        table.add_column(<span class="hljs-string">&quot;Times Watched&quot;</span>, style=<span class="hljs-string">&quot;magenta&quot;</span>, no_wrap=<span class="hljs-literal">True</span>, justify=<span class="hljs-string">&quot;left&quot;</span>)
+        <span class="hljs-keyword">for</span> i, (movie, count) <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(cinema.watched.items()):
+            name, year = movie.split(<span class="hljs-string">&quot; - &quot;</span>)
+            table.add_row(
+                <span class="hljs-string">f&quot;<span class="hljs-subst">{i+<span class="hljs-number">1</span>}</span>&quot;</span>,
+                <span class="hljs-string">f&quot;<span class="hljs-subst">{name}</span>&quot;</span>,
+                <span class="hljs-string">f&quot;<span class="hljs-subst">{year}</span>&quot;</span>,
+                <span class="hljs-string">f&quot;<span class="hljs-subst">{count}</span>&quot;</span>,
+            )
+        console.<span class="hljs-built_in">print</span>(table, <span class="hljs-string">&quot;\n&quot;</span>)
+
+    currentDir: <span class="hljs-built_in">str</span> = path.dirname(path.abspath(__file__))
+    moviesDataPath: <span class="hljs-built_in">str</span> = path.join(currentDir, <span class="hljs-string">&quot;..&quot;</span>, <span class="hljs-string">&quot;data&quot;</span>, <span class="hljs-string">&quot;movies.json&quot;</span>)
+
+    cinema: Cinema = Cinema()
+    cinema.readMoviesFromJson(moviesDataPath)
+
+    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+        actions: <span class="hljs-built_in">list</span>[<span class="hljs-built_in">str</span>] = [
+            <span class="hljs-string">&quot;Browse Tickets&quot;</span>,
+            <span class="hljs-string">&quot;View Bought Tickets&quot;</span>,
+            <span class="hljs-string">&quot;View Watched Movies&quot;</span>,
+            <span class="hljs-string">&quot;Add New Movie&quot;</span>,
+            <span class="hljs-string">&quot;Exit&quot;</span>,
+        ]
+        action = inquirer.prompt(
+            [
+                inquirer.<span class="hljs-type">List</span>(
+                    <span class="hljs-string">&quot;action&quot;</span>,
+                    message=<span class="hljs-string">&quot;What would you like to do?&quot;</span>,
+                    choices=actions,
+                )
+            ]
+        )[<span class="hljs-string">&quot;action&quot;</span>]
+
+        <span class="hljs-keyword">if</span> action == <span class="hljs-string">&quot;Browse Tickets&quot;</span>:
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> cinema.movies:
+                console.<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[bold]No movies available[/bold]\n&quot;</span>)
+
+            movie = inquirer.prompt(
+                [
+                    inquirer.<span class="hljs-type">List</span>(
+                        <span class="hljs-string">&quot;movie&quot;</span>,
+                        message=<span class="hljs-string">&quot;Which movie would you like to watch?&quot;</span>,
+                        choices=[movie.title <span class="hljs-keyword">for</span> movie <span class="hljs-keyword">in</span> cinema.movies],
+                    )
+                ]
+            )[<span class="hljs-string">&quot;movie&quot;</span>]
+            movie = [movie.title <span class="hljs-keyword">for</span> movie <span class="hljs-keyword">in</span> cinema.movies].index(movie)
+            movie = cinema.movies[movie]
+
+            room = inquirer.prompt(
+                [
+                    inquirer.<span class="hljs-type">List</span>(
+                        <span class="hljs-string">&quot;room&quot;</span>,
+                        message=<span class="hljs-string">&quot;Choose a room (hall) where you would like to watch the movie&quot;</span>,
+                        choices=<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(movie.rooms) + <span class="hljs-number">1</span>),
+                    )
+                ]
+            )[<span class="hljs-string">&quot;room&quot;</span>]
+            room = movie.rooms[room - <span class="hljs-number">1</span>]
+
+            drawSeatsGrid(room, movie)
+
+            availableRows = [i + <span class="hljs-number">1</span> <span class="hljs-keyword">for</span> i, row <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(room.seats) <span class="hljs-keyword">if</span> <span class="hljs-literal">True</span> <span class="hljs-keyword">in</span> row]
+            row = inquirer.prompt(
+                [
+                    inquirer.<span class="hljs-type">List</span>(
+                        <span class="hljs-string">&quot;row&quot;</span>,
+                        message=<span class="hljs-string">&quot;Choose a seat row where you would like to watch the movie&quot;</span>,
+                        choices=availableRows,
+                    )
+                ]
+            )[<span class="hljs-string">&quot;row&quot;</span>]
+            row = row - <span class="hljs-number">1</span>
+
+            seats = [i + <span class="hljs-number">1</span> <span class="hljs-keyword">for</span> i, seat <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(room.seats[row]) <span class="hljs-keyword">if</span> seat]
+            seat = inquirer.prompt(
+                [
+                    inquirer.<span class="hljs-type">List</span>(
+                        <span class="hljs-string">&quot;seat&quot;</span>,
+                        message=<span class="hljs-string">&quot;Choose a seat where you would like to watch the movie&quot;</span>,
+                        choices=seats,
+                    )
+                ]
+            )[<span class="hljs-string">&quot;seat&quot;</span>]
+            seat = seat - <span class="hljs-number">1</span>
+
+            confirmation = inquirer.prompt(
+                [
+                    inquirer.Confirm(
+                        <span class="hljs-string">&quot;confirm&quot;</span>,
+                        message=<span class="hljs-string">f&#x27;Are you sure you want to buy a ticket for &quot;<span class="hljs-subst">{movie.title}</span>&quot; in room <span class="hljs-subst">{room.number}</span> row <span class="hljs-subst">{row+<span class="hljs-number">1</span>}</span> seat <span class="hljs-subst">{seat+<span class="hljs-number">1</span>}</span>?&#x27;</span>,
+                        default=<span class="hljs-literal">True</span>,
+                    )
+                ]
+            )
+
+            <span class="hljs-keyword">if</span> confirmation[<span class="hljs-string">&quot;confirm&quot;</span>]:
+                cinema.buyTicket(movie, room, row, seat)
+                console.<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\n[bold]Ticket bought![/bold]\n&quot;</span>)
+
+            drawSeatsGrid(room, movie)
+
+        <span class="hljs-keyword">elif</span> action == <span class="hljs-string">&quot;View Bought Tickets&quot;</span>:
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> cinema.tickets:
+                console.<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[bold]No bought tickets found[/bold]\n&quot;</span>)
+                <span class="hljs-keyword">continue</span>
+            drawTicketsTable(cinema.tickets)
+
+            indeces = <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(cinema.tickets) + <span class="hljs-number">1</span>)
+            ticketIndex = inquirer.prompt(
+                [
+                    inquirer.<span class="hljs-type">List</span>(
+                        <span class="hljs-string">&quot;ticket&quot;</span>,
+                        message=<span class="hljs-string">&quot;Choose a ticket number&quot;</span>,
+                        choices=indeces,
+                    )
+                ]
+            )[<span class="hljs-string">&quot;ticket&quot;</span>]
+            ticketIndex = ticketIndex - <span class="hljs-number">1</span>
+
+            action = inquirer.prompt(
+                [
+                    inquirer.<span class="hljs-type">List</span>(
+                        <span class="hljs-string">&quot;action&quot;</span>,
+                        message=<span class="hljs-string">&quot;What would you like to do?&quot;</span>,
+                        choices=[<span class="hljs-string">&quot;Watch movie&quot;</span>, <span class="hljs-string">&quot;Return ticket&quot;</span>, <span class="hljs-string">&quot;Exit&quot;</span>],
+                    )
+                ]
+            )[<span class="hljs-string">&quot;action&quot;</span>]
+
+            ticketData = cinema.tickets[ticketIndex]
+            movieName = ticketData.movie.title
+
+            <span class="hljs-keyword">if</span> action == <span class="hljs-string">&quot;Return ticket&quot;</span>:
+                cinema.sellTicket(ticketData)
+                console.<span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;[bold]&quot;<span class="hljs-subst">{movieName}</span>&quot;[/bold] was returned!\n&#x27;</span>)
+            <span class="hljs-keyword">elif</span> action == <span class="hljs-string">&quot;Watch movie&quot;</span>:
+                cinema.watched[movieName] += <span class="hljs-number">1</span>
+                console.<span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;[bold]&quot;<span class="hljs-subst">{movieName}</span>&quot;[/bold] was watched!\n&#x27;</span>)
+                cinema.tickets.remove(ticketData)
+
+        <span class="hljs-keyword">elif</span> action == <span class="hljs-string">&quot;View Watched Movies&quot;</span>:
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> cinema.watched:
+                console.<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;[bold]No watched movies found[/bold]\n&quot;</span>)
+                <span class="hljs-keyword">continue</span>
+            drawMoviesTable()
+
+        <span class="hljs-keyword">elif</span> action == <span class="hljs-string">&quot;Add New Movie&quot;</span>:
+            title: <span class="hljs-built_in">str</span> = inquirer.prompt(
+                [
+                    inquirer.Text(
+                        <span class="hljs-string">&quot;title&quot;</span>,
+                        message=<span class="hljs-string">&quot;Enter movie title. Make sure to separate the title from the year with a dash (-)&quot;</span>,
+                        validate=<span class="hljs-keyword">lambda</span> _, x: x != <span class="hljs-string">&quot;&quot;</span> <span class="hljs-keyword">and</span> <span class="hljs-string">&quot;-&quot;</span> <span class="hljs-keyword">in</span> x,
+                    )
+                ]
+            )[<span class="hljs-string">&quot;title&quot;</span>]
+            title, year = title.split(<span class="hljs-string">&quot;-&quot;</span>)
+            title, year = title.strip(), year.strip()
+
+            numOfRooms: <span class="hljs-built_in">int</span> = inquirer.prompt(
+                [
+                    inquirer.Text(
+                        <span class="hljs-string">&quot;rooms&quot;</span>,
+                        message=<span class="hljs-string">&quot;Enter number of available rooms&quot;</span>,
+                        validate=<span class="hljs-keyword">lambda</span> _, x: x != <span class="hljs-string">&quot;&quot;</span> <span class="hljs-keyword">and</span> x.isdigit(),
+                    )
+                ]
+            )[<span class="hljs-string">&quot;rooms&quot;</span>]
+            numOfRooms = <span class="hljs-built_in">int</span>(numOfRooms)
+
+            seats = [
+                [[random.choice([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>)] <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>)]
+                <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(numOfRooms)
+            ]
+            rooms: <span class="hljs-built_in">list</span>[Room] = []
+            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, numOfRooms + <span class="hljs-number">1</span>):
+                rooms.append(Room(i, seats[i - <span class="hljs-number">1</span>]))
+
+            console.<span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;\n[bold]&quot;<span class="hljs-subst">{title}</span> - <span class="hljs-subst">{year}</span>&quot;[/bold] has been added!\n&#x27;</span>)
+            movie = Movie(<span class="hljs-string">f&quot;<span class="hljs-subst">{title}</span> - <span class="hljs-subst">{year}</span>&quot;</span>, rooms)
+            cinema.movies.append(movie)
+
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">break</span>
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>() -&gt; <span class="hljs-literal">None</span>:
+    availableTasks = [
+        <span class="hljs-string">&quot;First - Checking Files&quot;</span>,
+        <span class="hljs-string">&quot;Second - Cinema Tickets&quot;</span>,
+    ]
+    selectedTask = inquirer.prompt(
+        [
+            inquirer.<span class="hljs-type">List</span>(
+                <span class="hljs-string">&quot;task&quot;</span>,
+                message=<span class="hljs-string">&quot;Which task would you like to look at?&quot;</span>,
+                choices=availableTasks,
+            )
+        ]
+    )[<span class="hljs-string">&quot;task&quot;</span>]
+
+    <span class="hljs-keyword">if</span> selectedTask == availableTasks[<span class="hljs-number">0</span>]:
+        taskOne()
+    <span class="hljs-keyword">elif</span> selectedTask == availableTasks[<span class="hljs-number">1</span>]:
+        taskTwo()
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+    main()
+
+</code></pre>
+<h2 id="код-роботи-два">Код роботи два</h2>
+<pre><code class="language-python"><span class="hljs-comment"># main.py</span>
+
+<span class="hljs-keyword">import</span> inquirer
+<span class="hljs-keyword">from</span> rich.console <span class="hljs-keyword">import</span> Console
+<span class="hljs-keyword">from</span> rich.traceback <span class="hljs-keyword">import</span> install
+
+<span class="hljs-keyword">import</span> one <span class="hljs-keyword">as</span> taskOne
+<span class="hljs-keyword">import</span> two <span class="hljs-keyword">as</span> taskTwo
+
+install()
+console = Console()
+
+tasks = {
+    <span class="hljs-string">&quot;First - Bracket Pairs&quot;</span>: taskOne.main,
+    <span class="hljs-string">&quot;Second - Words Counter&quot;</span>: taskTwo.main,
+}
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>() -&gt; <span class="hljs-literal">None</span>:
+    availableTasks = <span class="hljs-built_in">list</span>(tasks.keys())
+    selectedTask = inquirer.prompt(
+        [
+            inquirer.<span class="hljs-type">List</span>(
+                <span class="hljs-string">&quot;task&quot;</span>,
+                message=<span class="hljs-string">&quot;Which task would you like to look at?&quot;</span>,
+                choices=availableTasks,
+            )
+        ]
+    )[<span class="hljs-string">&quot;task&quot;</span>]
+
+    tasks[selectedTask]()
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+    main()
+</code></pre>
+<pre><code class="language-python"><span class="hljs-comment"># one.py</span>
+
+<span class="hljs-keyword">import</span> inquirer
+<span class="hljs-keyword">from</span> rich.console <span class="hljs-keyword">import</span> Console
+<span class="hljs-keyword">from</span> rich.traceback <span class="hljs-keyword">import</span> install
+
+install()
+console = Console()
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">functional</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">helper</span>(<span class="hljs-params">openCount: <span class="hljs-built_in">int</span>, closeCount: <span class="hljs-built_in">int</span>, currentCombination: <span class="hljs-built_in">list</span>[<span class="hljs-built_in">str</span>]</span>):
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">printCombination</span>() -&gt; <span class="hljs-literal">None</span>:
+            console.<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&quot;</span>.join(currentCombination))
+
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">addLeftParenthesis</span>() -&gt; <span class="hljs-literal">None</span>:
+            currentCombination.append(<span class="hljs-string">&quot;(&quot;</span>)
+            helper(openCount + <span class="hljs-number">1</span>, closeCount, currentCombination)
+            currentCombination.pop()
+
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">addRightParenthesis</span>() -&gt; <span class="hljs-literal">None</span>:
+            currentCombination.append(<span class="hljs-string">&quot;)&quot;</span>)
+            helper(openCount, closeCount + <span class="hljs-number">1</span>, currentCombination)
+            currentCombination.pop()
+
+        (openCount == closeCount == n <span class="hljs-keyword">and</span> printCombination()) <span class="hljs-keyword">or</span> (
+            openCount &lt; n <span class="hljs-keyword">and</span> addLeftParenthesis()
+        ) <span class="hljs-keyword">or</span> (closeCount &lt; openCount <span class="hljs-keyword">and</span> addRightParenthesis())
+
+    helper(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, [])
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">imperative</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-literal">None</span>:
+    stack: <span class="hljs-built_in">list</span>[<span class="hljs-built_in">tuple</span>[<span class="hljs-built_in">str</span>, <span class="hljs-built_in">int</span>, <span class="hljs-built_in">int</span>]] = []
+    stack.append((<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>))
+
+    <span class="hljs-keyword">while</span> stack:
+        currentCombination, openCount, closeCount = stack.pop()
+
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">printCombination</span>() -&gt; <span class="hljs-literal">None</span>:
+            console.<span class="hljs-built_in">print</span>(currentCombination)
+
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">addLeftParenthesis</span>() -&gt; <span class="hljs-literal">None</span>:
+            stack.append((currentCombination + <span class="hljs-string">&quot;(&quot;</span>, openCount + <span class="hljs-number">1</span>, closeCount))
+
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">addRightParenthesis</span>() -&gt; <span class="hljs-literal">None</span>:
+            stack.append((currentCombination + <span class="hljs-string">&quot;)&quot;</span>, openCount, closeCount + <span class="hljs-number">1</span>))
+
+        (openCount == closeCount == n <span class="hljs-keyword">and</span> printCombination()) <span class="hljs-keyword">or</span> (
+            openCount &lt; n <span class="hljs-keyword">and</span> addLeftParenthesis()
+        ) <span class="hljs-keyword">or</span> (closeCount &lt; openCount <span class="hljs-keyword">and</span> addRightParenthesis())
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>() -&gt; <span class="hljs-literal">None</span>:
+    tasks = {<span class="hljs-string">&quot;Functional Programming&quot;</span>: functional, <span class="hljs-string">&quot;Imperative Programming&quot;</span>: imperative}
+    choice = inquirer.prompt(
+        [
+            inquirer.<span class="hljs-type">List</span>(
+                <span class="hljs-string">&quot;solution&quot;</span>,
+                message=<span class="hljs-string">&quot;Which solution would you like to use?&quot;</span>,
+                choices=<span class="hljs-built_in">list</span>(tasks.keys()),
+            )
+        ]
+    )[<span class="hljs-string">&quot;solution&quot;</span>]
+
+    bracketsNumber = inquirer.prompt(
+        [
+            inquirer.Text(
+                <span class="hljs-string">&quot;number of brackets&quot;</span>,
+                message=<span class="hljs-string">&quot;How many bracket pairs would you like to have?&quot;</span>,
+                validate=<span class="hljs-keyword">lambda</span> _, x: x != <span class="hljs-string">&quot;&quot;</span> <span class="hljs-keyword">and</span> x.isdigit() <span class="hljs-keyword">and</span> <span class="hljs-built_in">int</span>(x) &gt; <span class="hljs-number">0</span>,
+            )
+        ]
+    )[<span class="hljs-string">&quot;number of brackets&quot;</span>]
+    bracketsNumber = <span class="hljs-built_in">int</span>(bracketsNumber)
+
+    console.<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;\nAll possible bracket pairs for <span class="hljs-subst">{bracketsNumber}</span> bracket pairs:&quot;</span>)
+    tasks[choice](n=bracketsNumber)
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+    main()
+</code></pre>
+<pre><code class="language-python"><span class="hljs-comment"># two.py</span>
+
+<span class="hljs-keyword">import</span> inquirer
+<span class="hljs-keyword">from</span> os <span class="hljs-keyword">import</span> path
+<span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> reduce
+<span class="hljs-keyword">from</span> rich.console <span class="hljs-keyword">import</span> Console
+<span class="hljs-keyword">from</span> rich.traceback <span class="hljs-keyword">import</span> install
+
+install()
+console = Console()
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">functional</span>(<span class="hljs-params">filePath: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">tuple</span>[<span class="hljs-built_in">int</span>, <span class="hljs-built_in">int</span>]:
+    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(filePath, <span class="hljs-string">&quot;r&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> file:
+        text = file.read()
+
+    punctuation = <span class="hljs-string">&#x27;!@#$%^&amp;*()_+{}|:&quot;&lt;&gt;?`~&#x27;</span>
+    table = <span class="hljs-built_in">str</span>.maketrans(<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, punctuation)
+
+    words = text.translate(table).split()
+    wordsCount = <span class="hljs-built_in">len</span>(words)
+
+    shortestWordLength = reduce(
+        <span class="hljs-keyword">lambda</span> shortestSoFar, word: <span class="hljs-built_in">min</span>(shortestSoFar, <span class="hljs-built_in">len</span>(word)), words, <span class="hljs-built_in">float</span>(<span class="hljs-string">&quot;inf&quot;</span>)
+    )
+
+    <span class="hljs-keyword">return</span> wordsCount, shortestWordLength
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>() -&gt; <span class="hljs-literal">None</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">getOwnFilePath</span>() -&gt; <span class="hljs-built_in">str</span>:
+        filePathQuestions = [
+            inquirer.Text(
+                name=<span class="hljs-string">&quot;path&quot;</span>,
+                message=<span class="hljs-string">&quot;Enter full path to your file&quot;</span>,
+                validate=<span class="hljs-keyword">lambda</span> _, x: path.exists(x) <span class="hljs-keyword">and</span> path.isfile(x),
+            )
+        ]
+        filePathAnswer = inquirer.prompt(filePathQuestions)
+        console.<span class="hljs-built_in">print</span>()
+
+        <span class="hljs-keyword">return</span> filePathAnswer[<span class="hljs-string">&quot;path&quot;</span>]
+
+    currentDir: <span class="hljs-built_in">str</span> = path.dirname(path.abspath(__file__))
+    filePath: <span class="hljs-built_in">str</span> = path.join(currentDir, <span class="hljs-string">&quot;..&quot;</span>, <span class="hljs-string">&quot;data&quot;</span>, <span class="hljs-string">&quot;input.txt&quot;</span>)
+
+    choices = [
+        <span class="hljs-string">&quot;Use provided file&quot;</span>,
+        <span class="hljs-string">&quot;Enter path for my own&quot;</span>,
+    ]
+    decision = inquirer.prompt(
+        [
+            inquirer.<span class="hljs-type">List</span>(
+                <span class="hljs-string">&quot;choose&quot;</span>,
+                message=<span class="hljs-string">&quot;Which path would you like to use?&quot;</span>,
+                choices=choices,
+            )
+        ]
+    )[<span class="hljs-string">&quot;choose&quot;</span>]
+
+    (decision == choices[<span class="hljs-number">0</span>] <span class="hljs-keyword">and</span> filePath) <span class="hljs-keyword">or</span> (
+        decision == choices[<span class="hljs-number">1</span>] <span class="hljs-keyword">and</span> getOwnFilePath()
+    )
+
+    wordsCount, shortestWordLength = functional(filePath)
+    console.<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Number of words: <span class="hljs-subst">{wordsCount}</span>&quot;</span>)
+    console.<span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Length of shortest word: <span class="hljs-subst">{shortestWordLength}</span>&quot;</span>)
+
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:
+    main()
+</code></pre>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>
