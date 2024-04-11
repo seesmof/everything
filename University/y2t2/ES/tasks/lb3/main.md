@@ -1,6 +1,6 @@
 > Роботу виконав Онищенко Олег Антонович (КНТ-122).
 > Роботу почав за [часовою міткою](https://www.unixtimestamp.com/) 1712731246.
-> Роботу закінчив за [часовою міткою](https://www.unixtimestamp.com/) 1711219350.
+> Роботу закінчив за [часовою міткою](https://www.unixtimestamp.com/) 1712826235.
 
 ### Дослідження опору тіла людини електричному струму
 
@@ -113,12 +113,15 @@
 
 #### Результати роботи
 
-<table>
-  <tr>
-    <th rowspan="2">Площа поверхні контактів, см<sup>2</sup></th>
-    <th></th>
-  </tr>
-</table>
+| Площа поверхні контактів | Опір при сухій шкірі | Опір при вологій шкірі |
+| ------------------------ | -------------------- | ---------------------- |
+| 2                        | 200                  | 18                     |
+| 4                        | 100                  | 12                     |
+| 8                        | 50                   | 10                     |
+| 16                       | 25                   | 8                      |
+| 32                       | 14                   | 6                      |
+
+![Графік](https://lh3.googleusercontent.com/pw/AP1GczMsg66kLWrGsARnPzG_2XABWRnWahqsMgeB9nFVqdXCqyKfIZAu8fgsYx1wJr6jUoVuX6kuTqlfE-Nqq0pfFK5c5QKGcqU92in9jiqAhOchL2NYS7AxWQeUbJnlfi_Yj917LeNtujSeswk57O-etAopPA=w1393-h784-s-no?authuser=1)
 
 #### Висновки
 

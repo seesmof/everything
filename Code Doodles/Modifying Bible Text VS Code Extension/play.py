@@ -46,4 +46,4 @@ translationsUpper = [
     "WEBBE",
 ]
 
-getAllTranslations("Gen 4:13", ["KJV", "WEB"])
+getAllTranslations("1 Samuel 2:25")

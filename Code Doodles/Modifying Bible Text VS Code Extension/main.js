@@ -78,7 +78,7 @@ async function message(_message) {
     var verse = data.text;
     var reference = data.reference;
   } else {
-    var query = "https://bible-api.com/?random=verse";
+    var query = "https://bible-api.com/?random=verse&translation=BBE";
     var response = await fetch(query);
     var data = await response.json();
     lastMessage = data;
