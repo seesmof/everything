@@ -55,15 +55,37 @@ async function message(_message) {
     .getConfiguration("bibletext")
     .get("translation");
 
-  let baseUrl = "https://bible-api.com/";
-  const query = `${baseUrl}?random=verse&translation=${translation}`;
+  if (translation == "NIV") {
+    var data;
+    if (_message) {
+      data = _message;
+    } else {
+      data = await fetch(
+        "https://beta.ourmanna.com/api/v1/get/?format=json&order=random"
+      );
+      data = await data.json();
+    }
+    lastMessage = data;
 
-  const response = await fetch(query);
-  const data = await response.json();
-  lastMessage = data;
+    var verse = data.verse.details.text;
+    var reference = data.verse.details.reference;
+  } else if (translation == "KJV") {
+    var query = "https://bible-api.com/?random=verse&translation=KJV";
+    var response = await fetch(query);
+    var data = await response.json();
+    lastMessage = data;
 
-  const verse = data.text;
-  const reference = data.reference;
+    var verse = data.text;
+    var reference = data.reference;
+  } else {
+    var query = "https://bible-api.com/?random=verse";
+    var response = await fetch(query);
+    var data = await response.json();
+    lastMessage = data;
+
+    var verse = data.text;
+    var reference = data.reference;
+  }
 
   vscode.window
     .showInformationMessage(
@@ -72,7 +94,7 @@ async function message(_message) {
         modal: false,
       },
       "Copy",
-      translation
+      reference
     )
     .then((e) => {
       if (e == "Copy") {
