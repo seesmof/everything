@@ -53,22 +53,30 @@ def bisectionSearch(
     f: callable = f, a: float = -1, b: float = 3, tol: float = 1e-5
 ) -> float:
     plotFunction(f, a, b, "Bisection Search Method Visualization")
+    L = b - a
 
-    while abs(b - a) >= tol:
-        x1 = a + (b - a) / 3
-        x2 = b - (b - a) / 3
+    while L > tol:
+        x1 = a + L / 4
+        xm = (a + b) / 2
+        x2 = b - L / 4
 
-        if f(x1) < f(x2):
-            b = x2
+        if f(x1) > f(xm):
+            if f(xm) < f(x2):
+                a = x1
+                b = x2
+            else:
+                a = xm
         else:
-            a = x1
+            b = xm
+        L = b - a
 
         plt.plot([a, b], [f(a), f(b)], "g--", label="Current Interval")
         plt.pause(0.01)
 
     plt.plot([a, b], [f(a), f(b)], "b--", label="Final Interval")
     plt.show()
-    return (a + b) / 2
+
+    return (b + a) / 2
 
 
 def main() -> None:

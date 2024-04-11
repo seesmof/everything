@@ -51,34 +51,36 @@ function activate(context) {
 }
 
 async function message(_message) {
-  let data;
-  if (_message) {
-    data = _message;
-  } else {
-    data = await fetch(
-      "https://beta.ourmanna.com/api/v1/get/?format=json&order=random"
-    );
-    data = await data.json();
-  }
+  let translation = vscode.workspace
+    .getConfiguration("bibletext")
+    .get("translation");
+
+  let baseUrl = "https://bible-api.com/";
+  const query = `${baseUrl}?random=verse&translation=${translation}`;
+
+  const response = await fetch(query);
+  const data = await response.json();
   lastMessage = data;
+
+  const verse = data.text;
+  const reference = data.reference;
+
   vscode.window
     .showInformationMessage(
-      data.verse.details.text,
+      verse,
       {
         modal: false,
       },
       "Copy",
-      data.verse.details.reference
+      translation
     )
     .then((e) => {
       if (e == "Copy") {
-        vscode.env.clipboard.writeText(
-          `${data.verse.details.text} - ${data.verse.details.reference}`
-        );
+        vscode.env.clipboard.writeText(`${verse} - ${reference}`);
       }
-      if (e == data.verse.details.reference) {
+      if (e == reference) {
         let url = `https://www.biblegateway.com/passage/?search=${encodeURIComponent(
-          data.verse.details.reference
+          reference
         )}&version=NASB;UKR`;
         vscode.env.openExternal(vscode.Uri.parse(url));
       }
