@@ -18,10 +18,10 @@ console = Console()
 
 
 def taskOne() -> None:
-    currentDir = path.dirname(path.abspath(__file__))
-    inputFilePath = path.join(currentDir, "..", "data", "files.txt")
+    currentDir: str = path.dirname(path.abspath(__file__))
+    inputFilePath: str = path.join(currentDir, "..", "data", "files.txt")
 
-    doUseReadyFile = inquirer.prompt(
+    doUseReadyFile: str = inquirer.prompt(
         [
             inquirer.List(
                 "choice",
@@ -41,14 +41,14 @@ def taskOne() -> None:
             ]
         )["file path"]
 
-    outputFilePath = path.join(
+    outputFilePath: str = path.join(
         currentDir, "..", "data", inputFilePath.split("\\")[-1][:-4] + "_str.txt"
     )
 
     with open(inputFilePath, "r", encoding="utf-8") as f:
-        fileNames = [line.strip() for line in f.readlines()]
+        fileNames: list[str] = [line.strip() for line in f.readlines()]
 
-    filesData = [
+    filesData: list[dict] = [
         {
             "name": file.split("\\")[-1].split(".")[0],
             "extension": file.split("\\")[-1].split(".")[-1],
@@ -59,7 +59,7 @@ def taskOne() -> None:
         for file in fileNames
     ]
 
-    outputTable = Table(box=box.ROUNDED, title="All Files")
+    outputTable: Table = Table(box=box.ROUNDED, title="All Files")
     outputTable.add_column("Index", justify="right", style="cyan", no_wrap=True)
     outputTable.add_column("File Name", style="green")
     outputTable.add_column("Extension", style="blue")
@@ -76,7 +76,7 @@ def taskOne() -> None:
     console.print("\n", outputTable, "\n")
 
     with console.status("Checking for existing files...", spinner="point"):
-        existingFiles = [file for file in filesData if file["does_exist"]]
+        existingFiles: list[dict] = [file for file in filesData if file["does_exist"]]
         existingFiles.sort(key=lambda x: (x["extension"], x["full_path"], x["name"]))
 
     if len(existingFiles) == 0:
@@ -85,7 +85,7 @@ def taskOne() -> None:
         )
         return
 
-    resultsTable = Table(box=box.ROUNDED, title="Existing Files")
+    resultsTable: Table = Table(box=box.ROUNDED, title="Existing Files")
     resultsTable.add_column("Index", justify="right", style="cyan", no_wrap=True)
     resultsTable.add_column("File Name", style="green")
     resultsTable.add_column("Extension", style="blue")
@@ -100,9 +100,9 @@ def taskOne() -> None:
     console.print(resultsTable, "\n")
 
     with open(outputFilePath, "w", encoding="utf-8") as f:
-        prevExtension = ""
+        prevExtension: str = ""
         for file in existingFiles:
-            curExtension = file["extension"]
+            curExtension: str = file["extension"]
             if curExtension != prevExtension:
                 f.write(f"\n{curExtension.upper()}\n")
             f.write(f"{file['name']}.{file['extension']}\n")
@@ -153,7 +153,9 @@ def taskTwo() -> None:
                 self.movies.append(Movie(title=movieData["title"], rooms=rooms))
 
     def drawSeatsGrid(room: Room, movie: Movie) -> None:
-        seats = [["🔴" if not seat else "🟢" for seat in row] for row in room.seats]
+        seats: list[list[str]] = [
+            ["🔴" if not seat else "🟢" for seat in row] for row in room.seats
+        ]
 
         table: Table = Table.grid(padding=(1, 1))
         for i, row in enumerate(seats):
@@ -215,7 +217,7 @@ def taskTwo() -> None:
             "Add New Movie",
             "Exit",
         ]
-        action = inquirer.prompt(
+        action: str = inquirer.prompt(
             [
                 inquirer.List(
                     "action",
@@ -229,7 +231,7 @@ def taskTwo() -> None:
             if not cinema.movies:
                 console.print("[bold]No movies available[/bold]\n")
 
-            movie = inquirer.prompt(
+            movie: str = inquirer.prompt(
                 [
                     inquirer.List(
                         "movie",
@@ -238,10 +240,10 @@ def taskTwo() -> None:
                     )
                 ]
             )["movie"]
-            movie = [movie.title for movie in cinema.movies].index(movie)
-            movie = cinema.movies[movie]
+            movie: Movie = [movie.title for movie in cinema.movies].index(movie)
+            movie: Movie = cinema.movies[movie]
 
-            room = inquirer.prompt(
+            room: int = inquirer.prompt(
                 [
                     inquirer.List(
                         "room",
@@ -250,12 +252,14 @@ def taskTwo() -> None:
                     )
                 ]
             )["room"]
-            room = movie.rooms[room - 1]
+            room: Room = movie.rooms[room - 1]
 
             drawSeatsGrid(room, movie)
 
-            availableRows = [i + 1 for i, row in enumerate(room.seats) if True in row]
-            row = inquirer.prompt(
+            availableRows: list = [
+                i + 1 for i, row in enumerate(room.seats) if True in row
+            ]
+            row: int = inquirer.prompt(
                 [
                     inquirer.List(
                         "row",
@@ -264,10 +268,10 @@ def taskTwo() -> None:
                     )
                 ]
             )["row"]
-            row = row - 1
+            row: int = row - 1
 
-            seats = [i + 1 for i, seat in enumerate(room.seats[row]) if seat]
-            seat = inquirer.prompt(
+            seats: list[int] = [i + 1 for i, seat in enumerate(room.seats[row]) if seat]
+            seat: int = inquirer.prompt(
                 [
                     inquirer.List(
                         "seat",
@@ -276,9 +280,9 @@ def taskTwo() -> None:
                     )
                 ]
             )["seat"]
-            seat = seat - 1
+            seat: int = seat - 1
 
-            confirmation = inquirer.prompt(
+            confirmation: dict = inquirer.prompt(
                 [
                     inquirer.Confirm(
                         "confirm",
@@ -300,8 +304,8 @@ def taskTwo() -> None:
                 continue
             drawTicketsTable(cinema.tickets)
 
-            indeces = range(1, len(cinema.tickets) + 1)
-            ticketIndex = inquirer.prompt(
+            indeces: list = range(1, len(cinema.tickets) + 1)
+            ticketIndex: int = inquirer.prompt(
                 [
                     inquirer.List(
                         "ticket",
@@ -310,9 +314,9 @@ def taskTwo() -> None:
                     )
                 ]
             )["ticket"]
-            ticketIndex = ticketIndex - 1
+            ticketIndex: int = ticketIndex - 1
 
-            action = inquirer.prompt(
+            action: str = inquirer.prompt(
                 [
                     inquirer.List(
                         "action",
@@ -322,8 +326,8 @@ def taskTwo() -> None:
                 ]
             )["action"]
 
-            ticketData = cinema.tickets[ticketIndex]
-            movieName = ticketData.movie.title
+            ticketData: Ticket = cinema.tickets[ticketIndex]
+            movieName: str = ticketData.movie.title
 
             if action == "Return ticket":
                 cinema.sellTicket(ticketData)
@@ -361,9 +365,9 @@ def taskTwo() -> None:
                     )
                 ]
             )["rooms"]
-            numOfRooms = int(numOfRooms)
+            numOfRooms: int = int(numOfRooms)
 
-            seats = [
+            seats: list[list[list[int]]] = [
                 [[random.choice([0, 1]) for _ in range(10)] for _ in range(5)]
                 for _ in range(numOfRooms)
             ]
@@ -372,7 +376,7 @@ def taskTwo() -> None:
                 rooms.append(Room(i, seats[i - 1]))
 
             console.print(f'\n[bold]"{title} - {year}"[/bold] has been added!\n')
-            movie = Movie(f"{title} - {year}", rooms)
+            movie: Movie = Movie(f"{title} - {year}", rooms)
             cinema.movies.append(movie)
 
         else:
@@ -384,7 +388,7 @@ def main() -> None:
         "First - Checking Files",
         "Second - Cinema Tickets",
     ]
-    selectedTask = inquirer.prompt(
+    selectedTask: str = inquirer.prompt(
         [
             inquirer.List(
                 "task",

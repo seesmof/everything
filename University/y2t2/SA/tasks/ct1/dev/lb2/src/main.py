@@ -13,15 +13,15 @@ import two as taskTwo
 install()
 console = Console()
 
-tasks = {
+tasks: dict[str, callable] = {
     "First - Bracket Pairs": taskOne.main,
     "Second - Words Counter": taskTwo.main,
 }
 
 
 def main() -> None:
-    availableTasks = list(tasks.keys())
-    selectedTask = inquirer.prompt(
+    availableTasks: list[str] = list(tasks.keys())
+    selectedTask: str = inquirer.prompt(
         [
             inquirer.List(
                 "task",

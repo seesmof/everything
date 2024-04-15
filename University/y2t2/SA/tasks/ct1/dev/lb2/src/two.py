@@ -18,13 +18,13 @@ def functional(filePath: str) -> tuple[int, int]:
     with open(filePath, "r", encoding="utf-8") as file:
         text = file.read()
 
-    punctuation = '!@#$%^&*()_+{}|:"<>?`~'
-    table = str.maketrans("", "", punctuation)
+    punctuation: str = '!@#$%^&*()_+{}|:"<>?`~'
+    table: str = str.maketrans("", "", punctuation)
 
-    words = text.translate(table).split()
-    wordsCount = len(words)
+    words: list[str] = text.translate(table).split()
+    wordsCount: int = len(words)
 
-    shortestWordLength = reduce(
+    shortestWordLength: int = reduce(
         lambda shortestSoFar, word: min(shortestSoFar, len(word)), words, float("inf")
     )
 
@@ -33,26 +33,26 @@ def functional(filePath: str) -> tuple[int, int]:
 
 def main() -> None:
     def getOwnFilePath() -> str:
-        filePathQuestions = [
-            inquirer.Text(
-                name="path",
-                message="Enter full path to your file",
-                validate=lambda _, x: path.exists(x) and path.isfile(x),
-            )
-        ]
-        filePathAnswer = inquirer.prompt(filePathQuestions)
-        console.print()
+        filePath = inquirer.prompt(
+            [
+                inquirer.Text(
+                    name="file path",
+                    message="Enter full path to your file",
+                    validate=lambda _, x: path.exists(x) and path.isfile(x),
+                )
+            ]
+        )["file path"]
 
-        return filePathAnswer["path"]
+        return filePath
 
     currentDir: str = path.dirname(path.abspath(__file__))
     filePath: str = path.join(currentDir, "..", "data", "input.txt")
 
-    choices = [
+    choices: list[str] = [
         "Use provided file",
         "Enter path for my own",
     ]
-    decision = inquirer.prompt(
+    decision: str = inquirer.prompt(
         [
             inquirer.List(
                 "choose",

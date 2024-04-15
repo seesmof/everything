@@ -1,6 +1,19 @@
 # Застосування системного підходу до програмування мовою Python
 
-## Код роботи один
+## Мета роботи
+
+Навчитися застосовувати системний підхід до розробки програмного забезпечення мовою Python та набути практичних навичок використання інструментів мови Python.
+
+## Результати роботи
+
+## Перша робота
+
+### Завдання до роботи
+
+- Файл містить перелік повних адрес файлів (ім'я диску, список каталогів, ім'я файлу та розширення). Виділити з кожної адреси ім'я файлу, розширення та адресу першого каталогу. Перевірити для кожного файлу чи існує він. Вивести у файл, ім'я якого формується з імені початкового файлу додаванням постфіксу "str", перелік файлів, які існують на диску, згрупувавши їх за форматами та відсортувавши в алфавітному порядку за іменем файлів. Імена файлів виводити у форматі "/першийКаталог/.../ім'яФайлу/", сортуючи за розширенням та шляхом
+- Продаж квитків у кінотеатр з можливістю переглядати сеанси, переглядати доступні та зайняті місця для перегляду заданого сеансу у відповідному залі, бронювання та звільнення місць. Інформація про нові сеанси може додаватися
+
+### Код програми роботи
 
 ```python
 # main.py
@@ -20,10 +33,10 @@ console = Console()
 
 
 def taskOne() -> None:
-    currentDir = path.dirname(path.abspath(__file__))
-    inputFilePath = path.join(currentDir, "..", "data", "files.txt")
+    currentDir: str = path.dirname(path.abspath(__file__))
+    inputFilePath: str = path.join(currentDir, "..", "data", "files.txt")
 
-    doUseReadyFile = inquirer.prompt(
+    doUseReadyFile: str = inquirer.prompt(
         [
             inquirer.List(
                 "choice",
@@ -43,14 +56,14 @@ def taskOne() -> None:
             ]
         )["file path"]
 
-    outputFilePath = path.join(
+    outputFilePath: str = path.join(
         currentDir, "..", "data", inputFilePath.split("\\")[-1][:-4] + "_str.txt"
     )
 
     with open(inputFilePath, "r", encoding="utf-8") as f:
-        fileNames = [line.strip() for line in f.readlines()]
+        fileNames: list[str] = [line.strip() for line in f.readlines()]
 
-    filesData = [
+    filesData: list[dict] = [
         {
             "name": file.split("\\")[-1].split(".")[0],
             "extension": file.split("\\")[-1].split(".")[-1],
@@ -61,7 +74,7 @@ def taskOne() -> None:
         for file in fileNames
     ]
 
-    outputTable = Table(box=box.ROUNDED, title="All Files")
+    outputTable: Table = Table(box=box.ROUNDED, title="All Files")
     outputTable.add_column("Index", justify="right", style="cyan", no_wrap=True)
     outputTable.add_column("File Name", style="green")
     outputTable.add_column("Extension", style="blue")
@@ -78,7 +91,7 @@ def taskOne() -> None:
     console.print("\n", outputTable, "\n")
 
     with console.status("Checking for existing files...", spinner="point"):
-        existingFiles = [file for file in filesData if file["does_exist"]]
+        existingFiles: list[dict] = [file for file in filesData if file["does_exist"]]
         existingFiles.sort(key=lambda x: (x["extension"], x["full_path"], x["name"]))
 
     if len(existingFiles) == 0:
@@ -87,7 +100,7 @@ def taskOne() -> None:
         )
         return
 
-    resultsTable = Table(box=box.ROUNDED, title="Existing Files")
+    resultsTable: Table = Table(box=box.ROUNDED, title="Existing Files")
     resultsTable.add_column("Index", justify="right", style="cyan", no_wrap=True)
     resultsTable.add_column("File Name", style="green")
     resultsTable.add_column("Extension", style="blue")
@@ -102,9 +115,9 @@ def taskOne() -> None:
     console.print(resultsTable, "\n")
 
     with open(outputFilePath, "w", encoding="utf-8") as f:
-        prevExtension = ""
+        prevExtension: str = ""
         for file in existingFiles:
-            curExtension = file["extension"]
+            curExtension: str = file["extension"]
             if curExtension != prevExtension:
                 f.write(f"\n{curExtension.upper()}\n")
             f.write(f"{file['name']}.{file['extension']}\n")
@@ -155,7 +168,9 @@ def taskTwo() -> None:
                 self.movies.append(Movie(title=movieData["title"], rooms=rooms))
 
     def drawSeatsGrid(room: Room, movie: Movie) -> None:
-        seats = [["🔴" if not seat else "🟢" for seat in row] for row in room.seats]
+        seats: list[list[str]] = [
+            ["🔴" if not seat else "🟢" for seat in row] for row in room.seats
+        ]
 
         table: Table = Table.grid(padding=(1, 1))
         for i, row in enumerate(seats):
@@ -217,7 +232,7 @@ def taskTwo() -> None:
             "Add New Movie",
             "Exit",
         ]
-        action = inquirer.prompt(
+        action: str = inquirer.prompt(
             [
                 inquirer.List(
                     "action",
@@ -231,7 +246,7 @@ def taskTwo() -> None:
             if not cinema.movies:
                 console.print("[bold]No movies available[/bold]\n")
 
-            movie = inquirer.prompt(
+            movie: str = inquirer.prompt(
                 [
                     inquirer.List(
                         "movie",
@@ -240,10 +255,10 @@ def taskTwo() -> None:
                     )
                 ]
             )["movie"]
-            movie = [movie.title for movie in cinema.movies].index(movie)
-            movie = cinema.movies[movie]
+            movie: Movie = [movie.title for movie in cinema.movies].index(movie)
+            movie: Movie = cinema.movies[movie]
 
-            room = inquirer.prompt(
+            room: int = inquirer.prompt(
                 [
                     inquirer.List(
                         "room",
@@ -252,12 +267,14 @@ def taskTwo() -> None:
                     )
                 ]
             )["room"]
-            room = movie.rooms[room - 1]
+            room: Room = movie.rooms[room - 1]
 
             drawSeatsGrid(room, movie)
 
-            availableRows = [i + 1 for i, row in enumerate(room.seats) if True in row]
-            row = inquirer.prompt(
+            availableRows: list = [
+                i + 1 for i, row in enumerate(room.seats) if True in row
+            ]
+            row: int = inquirer.prompt(
                 [
                     inquirer.List(
                         "row",
@@ -266,10 +283,10 @@ def taskTwo() -> None:
                     )
                 ]
             )["row"]
-            row = row - 1
+            row: int = row - 1
 
-            seats = [i + 1 for i, seat in enumerate(room.seats[row]) if seat]
-            seat = inquirer.prompt(
+            seats: list[int] = [i + 1 for i, seat in enumerate(room.seats[row]) if seat]
+            seat: int = inquirer.prompt(
                 [
                     inquirer.List(
                         "seat",
@@ -278,9 +295,9 @@ def taskTwo() -> None:
                     )
                 ]
             )["seat"]
-            seat = seat - 1
+            seat: int = seat - 1
 
-            confirmation = inquirer.prompt(
+            confirmation: dict = inquirer.prompt(
                 [
                     inquirer.Confirm(
                         "confirm",
@@ -302,8 +319,8 @@ def taskTwo() -> None:
                 continue
             drawTicketsTable(cinema.tickets)
 
-            indeces = range(1, len(cinema.tickets) + 1)
-            ticketIndex = inquirer.prompt(
+            indeces: list = range(1, len(cinema.tickets) + 1)
+            ticketIndex: int = inquirer.prompt(
                 [
                     inquirer.List(
                         "ticket",
@@ -312,9 +329,9 @@ def taskTwo() -> None:
                     )
                 ]
             )["ticket"]
-            ticketIndex = ticketIndex - 1
+            ticketIndex: int = ticketIndex - 1
 
-            action = inquirer.prompt(
+            action: str = inquirer.prompt(
                 [
                     inquirer.List(
                         "action",
@@ -324,8 +341,8 @@ def taskTwo() -> None:
                 ]
             )["action"]
 
-            ticketData = cinema.tickets[ticketIndex]
-            movieName = ticketData.movie.title
+            ticketData: Ticket = cinema.tickets[ticketIndex]
+            movieName: str = ticketData.movie.title
 
             if action == "Return ticket":
                 cinema.sellTicket(ticketData)
@@ -363,9 +380,9 @@ def taskTwo() -> None:
                     )
                 ]
             )["rooms"]
-            numOfRooms = int(numOfRooms)
+            numOfRooms: int = int(numOfRooms)
 
-            seats = [
+            seats: list[list[list[int]]] = [
                 [[random.choice([0, 1]) for _ in range(10)] for _ in range(5)]
                 for _ in range(numOfRooms)
             ]
@@ -374,7 +391,7 @@ def taskTwo() -> None:
                 rooms.append(Room(i, seats[i - 1]))
 
             console.print(f'\n[bold]"{title} - {year}"[/bold] has been added!\n')
-            movie = Movie(f"{title} - {year}", rooms)
+            movie: Movie = Movie(f"{title} - {year}", rooms)
             cinema.movies.append(movie)
 
         else:
@@ -386,7 +403,7 @@ def main() -> None:
         "First - Checking Files",
         "Second - Cinema Tickets",
     ]
-    selectedTask = inquirer.prompt(
+    selectedTask: str = inquirer.prompt(
         [
             inquirer.List(
                 "task",
@@ -404,10 +421,16 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
 ```
 
-## Код роботи два
+## Друга робота
+
+### Завдання до роботи
+
+- Вивести всі коректні комбінації пар круглих дужок, які можна сформувати з n дужок, що закриваються і відкриваються. Наприклад, коректна комбінація (()()), некоректна (()))(. Кількість дужок задається користувачем
+- Визначити кількість слів у тексті, що зберігається у файлі, та довжину найкоротшого слова. Слова відділяються одне від одного не тільки пробілами, але й будь-якими знаками пунктуації
+
+### Код програми роботи
 
 ```python
 # main.py
@@ -422,15 +445,15 @@ import two as taskTwo
 install()
 console = Console()
 
-tasks = {
+tasks: dict[str, callable] = {
     "First - Bracket Pairs": taskOne.main,
     "Second - Words Counter": taskTwo.main,
 }
 
 
 def main() -> None:
-    availableTasks = list(tasks.keys())
-    selectedTask = inquirer.prompt(
+    availableTasks: list[str] = list(tasks.keys())
+    selectedTask: str = inquirer.prompt(
         [
             inquirer.List(
                 "task",
@@ -502,8 +525,11 @@ def imperative(n: int) -> None:
 
 
 def main() -> None:
-    tasks = {"Functional Programming": functional, "Imperative Programming": imperative}
-    choice = inquirer.prompt(
+    tasks: dict[str, callable] = {
+        "Functional Programming": functional,
+        "Imperative Programming": imperative,
+    }
+    choice: str = inquirer.prompt(
         [
             inquirer.List(
                 "solution",
@@ -513,7 +539,7 @@ def main() -> None:
         ]
     )["solution"]
 
-    bracketsNumber = inquirer.prompt(
+    bracketsNumber: str = inquirer.prompt(
         [
             inquirer.Text(
                 "number of brackets",
@@ -522,7 +548,7 @@ def main() -> None:
             )
         ]
     )["number of brackets"]
-    bracketsNumber = int(bracketsNumber)
+    bracketsNumber: int = int(bracketsNumber)
 
     console.print(f"\nAll possible bracket pairs for {bracketsNumber} bracket pairs:")
     tasks[choice](n=bracketsNumber)
@@ -549,13 +575,13 @@ def functional(filePath: str) -> tuple[int, int]:
     with open(filePath, "r", encoding="utf-8") as file:
         text = file.read()
 
-    punctuation = '!@#$%^&*()_+{}|:"<>?`~'
-    table = str.maketrans("", "", punctuation)
+    punctuation: str = '!@#$%^&*()_+{}|:"<>?`~'
+    table: str = str.maketrans("", "", punctuation)
 
-    words = text.translate(table).split()
-    wordsCount = len(words)
+    words: list[str] = text.translate(table).split()
+    wordsCount: int = len(words)
 
-    shortestWordLength = reduce(
+    shortestWordLength: int = reduce(
         lambda shortestSoFar, word: min(shortestSoFar, len(word)), words, float("inf")
     )
 
@@ -564,26 +590,26 @@ def functional(filePath: str) -> tuple[int, int]:
 
 def main() -> None:
     def getOwnFilePath() -> str:
-        filePathQuestions = [
-            inquirer.Text(
-                name="path",
-                message="Enter full path to your file",
-                validate=lambda _, x: path.exists(x) and path.isfile(x),
-            )
-        ]
-        filePathAnswer = inquirer.prompt(filePathQuestions)
-        console.print()
+        filePath = inquirer.prompt(
+            [
+                inquirer.Text(
+                    name="file path",
+                    message="Enter full path to your file",
+                    validate=lambda _, x: path.exists(x) and path.isfile(x),
+                )
+            ]
+        )["file path"]
 
-        return filePathAnswer["path"]
+        return filePath
 
     currentDir: str = path.dirname(path.abspath(__file__))
     filePath: str = path.join(currentDir, "..", "data", "input.txt")
 
-    choices = [
+    choices: list[str] = [
         "Use provided file",
         "Enter path for my own",
     ]
-    decision = inquirer.prompt(
+    decision: str = inquirer.prompt(
         [
             inquirer.List(
                 "choose",
@@ -605,3 +631,7 @@ def main() -> None:
 if __name__ == "__main__":
     main()
 ```
+
+## Висновки
+
+Таким чином, ми навчилися застосовувати системний підхід до розробки програмного забезпечення мовою Python та набули практичних навичок використання інструментів мови Python.

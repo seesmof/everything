@@ -17,25 +17,16 @@ console = Console()
 
 
 def functional(n: int) -> None:
-    def helper(openCount: int, closeCount: int, currentCombination: list[str]):
-        def printCombination() -> None:
-            console.print("".join(currentCombination))
+    def helper(openCount: int = 0, closeCount: int = 0, currentCombination: str = ""):
+        (openCount == closeCount == n and console.print(currentCombination)) or (
+            openCount < n
+            and helper(openCount + 1, closeCount, currentCombination + "(")
+        ) or (
+            closeCount < openCount
+            and helper(openCount, closeCount + 1, currentCombination + ")")
+        )
 
-        def addLeftParenthesis() -> None:
-            currentCombination.append("(")
-            helper(openCount + 1, closeCount, currentCombination)
-            currentCombination.pop()
-
-        def addRightParenthesis() -> None:
-            currentCombination.append(")")
-            helper(openCount, closeCount + 1, currentCombination)
-            currentCombination.pop()
-
-        (openCount == closeCount == n and printCombination()) or (
-            openCount < n and addLeftParenthesis()
-        ) or (closeCount < openCount and addRightParenthesis())
-
-    helper(0, 0, [])
+    helper(0, 0, "")
 
 
 def imperative(n: int) -> None:
@@ -60,8 +51,11 @@ def imperative(n: int) -> None:
 
 
 def main() -> None:
-    tasks = {"Functional Programming": functional, "Imperative Programming": imperative}
-    choice = inquirer.prompt(
+    tasks: dict[str, callable] = {
+        "Functional Programming": functional,
+        "Imperative Programming": imperative,
+    }
+    choice: str = inquirer.prompt(
         [
             inquirer.List(
                 "solution",
@@ -71,7 +65,7 @@ def main() -> None:
         ]
     )["solution"]
 
-    bracketsNumber = inquirer.prompt(
+    bracketsNumber: str = inquirer.prompt(
         [
             inquirer.Text(
                 "number of brackets",
@@ -80,7 +74,7 @@ def main() -> None:
             )
         ]
     )["number of brackets"]
-    bracketsNumber = int(bracketsNumber)
+    bracketsNumber: int = int(bracketsNumber)
 
     console.print(f"\nAll possible bracket pairs for {bracketsNumber} bracket pairs:")
     tasks[choice](n=bracketsNumber)
