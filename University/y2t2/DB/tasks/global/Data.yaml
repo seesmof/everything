@@ -1,0 +1,41 @@
+Department:
+  - Name: Office Administration Department (OAD)
+    Description: This department is responsible for the internal functioning of the company. They handle contracts, procurement of materials, scheduling of jobs, and overall management of office tasks.
+  - Name: Field Operations Department (FOD)
+    Description: The FOD is the backbone of the company, where the actual installation of windows takes place. They are responsible for on-site work, customer interactions, and ensuring installations are completed efficiently.
+
+Position:
+  - Name: Administrative Assistant
+    Description: Assists in daily office needs and managing general administrative activities.
+    BasePay: 120
+    DepartmentName: Office Administration Department
+  - Name: Office Manager
+    Description: Oversees the entire office operations, supervises staff, and ensures compliance with company policies.
+    BasePay: 200
+    DepartmentName: Office Administration Department
+  - Name: Installation Technician
+    Description: Performs the installation of windows at various job sites, following safety and quality standards.
+    BasePay: 150
+    DepartmentName: Field Operations Department
+  - Name: Field Supervisor
+    Description: Manages the installation teams, coordinates with the OAD for materials, and ensures project deadlines are met.
+    BasePay: 230
+    DepartmentName: Field Operations Department
+
+Employee:
+  - Name: Sarah
+    PositionName: Administrative Assistant
+  - Name: Ruth
+    PositionName: Administrative Assistant
+  - Name: Abraham
+    PositionName: Administrative Assistant
+  - Name: Mary
+    PositionName: Office Manager
+  - Name: Matthew
+    PositionName: Installation Technician
+  - Name: Mark
+    PositionName: Installation Technician
+  - Name: Luke
+    PositionName: Installation Technician
+  - Name: John
+    PositionName: Field Supervisor
