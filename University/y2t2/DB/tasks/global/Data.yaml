@@ -39,3 +39,13 @@ Employee:
     PositionName: Installation Technician
   - Name: John
     PositionName: Field Supervisor
+
+Tax:
+  - Type: Military
+    Rate: 6%
+  - Type: Social Security
+    Rate: 3,5%
+  - Type: Income Tax
+    Rate: 8%
+  - Type: Local Tax
+    Rate: 2%
