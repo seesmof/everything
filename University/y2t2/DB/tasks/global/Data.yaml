@@ -7,19 +7,19 @@ Department:
 Position:
   - Name: Administrative Assistant
     Description: Assists in daily office needs and managing general administrative activities.
-    BasePay: 120
+    BasePay: 12000
     DepartmentName: Office Administration Department
   - Name: Office Manager
     Description: Oversees the entire office operations, supervises staff, and ensures compliance with company policies.
-    BasePay: 200
+    BasePay: 20000
     DepartmentName: Office Administration Department
   - Name: Installation Technician
     Description: Performs the installation of windows at various job sites, following safety and quality standards.
-    BasePay: 150
+    BasePay: 15000
     DepartmentName: Field Operations Department
   - Name: Field Supervisor
     Description: Manages the installation teams, coordinates with the OAD for materials, and ensures project deadlines are met.
-    BasePay: 230
+    BasePay: 23000
     DepartmentName: Field Operations Department
 
 Employee:

@@ -1,3 +1,7 @@
+- GOD our Lord Jesus Christ is right here with us hello Daddy Jesus please help me Lord GOD
+
+---
+
 - main menu from which we would go into the different tables
   - department
     - view existing departments

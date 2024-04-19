@@ -139,63 +139,35 @@
         </head>
         <body class="vscode-body vscode-light">
             <div align="center">
-  <h3>Звіт з Лабораторної Роботи №3</h3>
+  <h3>Звіт з Лабораторної Роботи №4</h3>
   <p>Виконав <strong>Онищенко Олег</strong>, студент групи <strong>КНТ-122</strong></p>
 </div>
 <h4 id="резюме">Резюме</h4>
-<p>В рамках лабораторної роботи 3 було спроектовано 4 складних запити до схеми даних з предметної області <strong>автоматизована система розрахунку заробітної плати</strong>. Деталі запитів наведені нижче.</p>
+<p>В рамках лабораторної роботи 4 було спроектовано 6 форм подання даних до бази даних з предметної області <strong>автоматизована система розрахунку заробітної плати</strong>. Деталі форм наведені нижче.</p>
 <ul>
-<li>отримати середню зарплату для кожного відділу</li>
-<li>порахувати всіх працівників, згрупованих за статтю</li>
-<li>додати нового працівника Аврама у відділ</li>
-<li>змініть ім'я Аврама на Авраам</li>
+<li>головне меню з посиланнями на всі інші форми</li>
+<li>форма майже для кожної таблиці бази даних
+<ul>
+<li>Allowance - justified</li>
+<li>Deduction - justified</li>
+<li>Tax - tabular</li>
+<li>Position - justified</li>
+<li>Department - justified</li>
 </ul>
-<h4 id="запити-до-бази-даних">Запити до бази даних</h4>
-<h5 id="середня-зарплатня">Середня зарплатня</h5>
-<h6 id="запит-мовою-sql">Запит мовою SQL</h6>
-<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span>
-  IIF(Department_Name <span class="hljs-operator">=</span> <span class="hljs-number">1</span>, &quot;Office&quot;, &quot;Field&quot;) <span class="hljs-keyword">AS</span> &quot;Department&quot;,
-  <span class="hljs-built_in">AVG</span>(Base_Pay_per_Day) <span class="hljs-keyword">AS</span> &quot;Average Base Pay&quot;
-<span class="hljs-keyword">FROM</span> Position
-<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> Department_Name
-</code></pre>
-<h6 id="результати-запиту">Результати запиту</h6>
-<p>Результати запиту наведено нижче у вигляді знімку з екрану.</p>
-<p><img src="https://lh3.googleusercontent.com/pw/AP1GczNIuBhC6WYjzQMyJlrArIKBnSV6xgAQGI9rKykkTJ3ozKRywCAYs3AXZpaf2P6OH7o5WpEfzu9izy22CkpssNOQPyFYbZRVbxaH94bREdYpK0lM1nITVBfAG5nkkLu5z29saCeotIM4X-iGy249XNX41Q=w358-h60-s-no?authuser=0" alt="Query Results"></p>
-<h5 id="кількість-працівників">Кількість працівників</h5>
-<h6 id="запит-мовою-sql-1">Запит мовою SQL</h6>
-<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span>
-  IIF(Gender <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Male&#x27;</span>, &quot;Males&quot;, &quot;Females&quot;) <span class="hljs-keyword">AS</span> &quot;Gender&quot;,
-  <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>) <span class="hljs-keyword">AS</span> &quot;Count&quot;
-<span class="hljs-keyword">FROM</span> Employee
-<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> Gender
-</code></pre>
-<h6 id="результати-запиту-1">Результати запиту</h6>
-<p>Результати запиту наведено нижче у вигляді знімку з екрану.</p>
-<p><img src="https://lh3.googleusercontent.com/pw/AP1GczNLX5sjzxdZvSqdcoMJyM9wKcLZErq2QsafN5NytRER_9Kw4lMlJ2mjDvIwIb4cy8YRdFIHWG-cfLiLGRB3cT_BycNkKjGo6EBwPFoi-UgKbuug995TPEKlsODtYCwOUhV2Od2AEnVjRdpFKMXvDK_9xg=w191-h59-s-no?authuser=0" alt="Query Results"></p>
-<h5 id="додання-аврама-у-офіс">Додання Аврама у офіс</h5>
-<h6 id="запит-мовою-sql-2">Запит мовою SQL</h6>
-<pre><code class="language-sql"><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> Employee (Employee_Name, Employee_Position, Hired_Since, Gender)
-<span class="hljs-keyword">VALUES</span> (&quot;Abram&quot;, <span class="hljs-number">1</span>, &quot;2024-04-01&quot;, &quot;Male&quot;);
-</code></pre>
-<h6 id="результати-запиту-2">Результати запиту</h6>
-<p>Аби виконати запит, потрібно двічі натиснути на нього у списку об'єктів Microsoft Access, після чого з'явиться вікно підтвердження, де необхідно натиснути &quot;Так&quot; задля виконання операції додавання нового об'єкту у таблицю &quot;Employee&quot;.</p>
-<p>Вікно підтвердження виглядає наступним чином:</p>
-<p><img src="https://lh3.googleusercontent.com/pw/AP1GczPfsLu2he7PLRXYQKfv_IQjqglOb6PA6J1UG9d5ioMphJb2l00KDQP5HmGHEzOjyEIA_iKAgszl5rJh90NwtZyamcbo1ZdrT3GQ9wWiWM5btEcF2H6H5GWfAosP_H-cF71VleBEKoPttP9HIP2xgEqQ9Q=w363-h246-s-no?authuser=0" alt="Вікно підтвердження"></p>
-<p>Результати запиту наведено нижче у вигляді знімку з екрану.</p>
-<p><img src="https://lh3.googleusercontent.com/pw/AP1GczP_ofp2O0vEpNvLF1s4eJS0kTs5WxpG8IvZRwF2Weixn1DIFtqIMH8jGOhmX-0qEe6INV5imLK-M-JOykuS5TY-4HFFD8X5uWHS_6e1iY_eLoxhX269cufLDVhhdpNV6-kMJkreIYC7yORc2DY0IQ44kg=w726-h175-s-no?authuser=0" alt="Query Results"></p>
-<p>Можемо бачити новододаний об'єкт в таблиці &quot;Employee&quot; під індексом 14.</p>
-<h5 id="перейменування-аврама">Перейменування Аврама</h5>
-<h6 id="запит-мовою-sql-3">Запит мовою SQL</h6>
-<pre><code class="language-sql"><span class="hljs-keyword">UPDATE</span> Employee
-<span class="hljs-keyword">SET</span> Employee_Name <span class="hljs-operator">=</span> &quot;Abraham&quot;
-<span class="hljs-keyword">WHERE</span> Employee_Name <span class="hljs-operator">=</span> &quot;Abram&quot;
-</code></pre>
-<h6 id="результати-запиту-3">Результати запиту</h6>
-<p>Аналогічна процедура виконання запиту на зміну елементу - натискаємо двічі на запит у списку об'єктів Microsoft Access і підтверджуємо наші наміри у відповідному вікні.</p>
-<p>Результати запиту наведено нижче у вигляді знімку з екрану.</p>
-<p><img src="https://lh3.googleusercontent.com/pw/AP1GczPkE9MpAoq1rmfDP7InpFYYBGVVYBbW4hxEg0J2Xtsi9Zv029LvHptZUIpLxvg1dE8ZT_dB-uBDlsopyrksu1HdgNtVK5leR_OkdIIaNrXyNnlHTZ9pYfLdjbdouUjiwgYZ4hIWGo5FFUTUhPD11FXdmA=w724-h176-s-no?authuser=0" alt="Query Results"></p>
-<p>Можемо бачити об'єкт в таблиці &quot;Employee&quot; під індексом 14 зі зміненою властивістю &quot;Employee_Name&quot; на &quot;Abraham&quot;.</p>
+</li>
+</ul>
+<h4 id="форми-бази-даних">Форми бази даних</h4>
+<p>Нижче наведено всі форми у відкритому вигляді.</p>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczMI4DQ-YQMTvxjSyH1mtzWg5pata_tdTbqNYLhhe7oQwPBraQzI68Dc_8zj4QCYhEgdO3a-CyYlQFVxhm-_83LIkoXwCT7p7XNWR_RvVYvJ8SKGIe0QygGES5wOiwZRjnuAW6ARds-emxlrgIC5D8-lHg=w2058-h1430-s-no?authuser=0" alt="форми"></p>
+<p>Кожна з форм була створена за допомогою засобу Form Wizard зі стандартних інструментів Microsoft Access:</p>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczNV64vsUIeZ1S4CHU7I9fvUgUYiikoBulpKXfedFztE-dIRipn0dXUJFlWMKlLxQNkC_8qr88AXy5tpbwakzV8c_DPBaegWGMes60Pbjk-6Y7eIx3PgPbMsJr5r4zPMgGAwXHXUZMf0K9PcOLSaaomoOg=w1920-h181-s-no?authuser=0" alt="створення форм"></p>
+<p>Для кожної з форм були застосовані певні модифікації у поданні Design View:</p>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczMNzSV2TgSdO_XXDfdzQ-NK0ONVbpFy5Yexk5DYy2568e2VKwlwDlFfXFypA7rpnvkZTzE5bwRPhc-NvVUETwv9OuREAgO7cB2OvoPsJzgs8o93Ldz3BZz-6TaiPI_XsXfeTzXK5dKGxDBV1yh1iy4TrQ=w337-h877-s-no?authuser=0" alt="редагування форм"></p>
+<p>Кожній з форм було визначено відповідний колір зі списку стандартних кольорів Microsoft. Колір цей був використаний у шапці форми та у всіх елементах керування як колір акценту:</p>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczNu7R27lD1xYyNuU2iXviLbsuWdcUyHziNy2d960LFSa1rnzZLq1SqEsqyoOxKjs5tONZwOEskObViW3b5yhpEwhELKyq4bTszbOM8ioe6XWmcVduj8_MWxh7mNoxwPUR1fOprWP1bunLlIersIUdWTPQ=w2887-h1789-s-no?authuser=0" alt="призначення кольорів"></p>
+<p>До кожної форми відповідної таблиці було додано всі її атрибути, поле ID було деактивовано аби запобігти небажаним змінам первинного ключа поля:</p>
+<p><img src="https://lh3.googleusercontent.com/pw/AP1GczN_wj6zoEtSOqF57DoVArb2XLdKQrTDDGndvSvz9zU3z2O3JUqxSuqQvjwU1f7mPfzc1lajzQfknm5NfxbGi9iofdTT_o96Zd4wjG-SwT9Jbp6mEWmoiEhw2akmU7Yb-H8itn508aFh-i1S_XwwO-KznQ=w3050-h1647-s-no?authuser=0" alt="блокування поля первинного ключа"></p>
+<p>Різні типи форм застосовувалися при їх розробці, а саме форма justified (вирівняна) і tabular (стрічкова). Justified була корисна аби показати всі властивості певної однієї сутності таблиці, а tabular корисна тим, що показує всі сутності таблиці одразу у вигляді таблиці, схожої на звичайне подання таблиці у Microsoft Access.</p>
 
             
             
