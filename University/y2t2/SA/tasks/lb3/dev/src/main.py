@@ -33,8 +33,10 @@ from pygame.locals import *
 
 pygame.init()
 screen = pygame.display.set_mode((800, 400))
+screen.fill("white")
 pygame.display.set_caption("Thrower Game")
 clock = pygame.time.Clock()
+score = 0
 
 
 class Object:
@@ -84,6 +86,7 @@ projectiles = [
         color=projectileProps["red"]["color"],
     ),
 ]
+font = pygame.font.SysFont("Times New Roman", 32)
 
 while True:
     keys = pygame.key.get_pressed()
@@ -105,22 +108,36 @@ while True:
                 )
 
     for object in objects:
-        # if object.moving:
-        #     object.y += random.randint(-10, 10)
         object.draw(screen)
     for projectile in projectiles:
         projectile.x += projectile.direction[0] * projectile.speed
         projectile.y += projectile.direction[1] * projectile.speed
 
-    for projectile in projectiles:
-        for object in objects:
-            distance = (
-                (projectile.x - object.x) ** 2 + (projectile.y - object.y) ** 2
-            ) ** 0.5
-            if distance < projectile.speed * 2:
-                object.knockback = 10
+    # check collisions
+    for projectile in projectiles[:]:
+        projectile_rect = pygame.Rect(
+            projectile.x - projectile.speed,
+            projectile.y - projectile.speed,
+            2 * projectile.speed,
+            2 * projectile.speed,
+        )
+        for object in objects[:]:
+            object_rect = pygame.Rect(
+                object.x - object.radius,
+                object.y - object.radius,
+                2 * object.radius,
+                2 * object.radius,
+            )
+            if projectile_rect.colliderect(object_rect):
+                score += 1
+                objects.remove(object)
+                projectiles.remove(projectile)
+                break
 
+    scoreText = font.render(f"Score: {score}", True, (0, 0, 0))
     screen.fill("white")
+    screen.blit(scoreText, (10, 10))
+
     for object in objects:
         object.draw(screen)
     for projectile in projectiles:
